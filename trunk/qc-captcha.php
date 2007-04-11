@@ -22,10 +22,4 @@ function fnQcCaptcha(&$template)
 {
  $template->set('fnQcOutCaptcha',"<p><img src='/extensions/qc-imagebuilder.php' border='1'></p><p><label for='captcha'>Enter captcha code</label><br /><input type='text' name='captcha' id='captcha' size='8' maxlength='8' value='' /></p>");
 }
-
-function fnQcOutCaptcha()
-{
-
-}
-
 ?>

@@ -29,7 +29,6 @@
  *
  * History:
  * - v1.0
- *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'addHTML Extension', 

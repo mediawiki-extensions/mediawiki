@@ -44,7 +44,7 @@ class HeaderFooterClass
 	 */
 	public function setNsParams( $ns, $p ) { $this->nsPar[$ns] = $p; }
 	
-	public function hAddHeaderFooter( &$article, &$content )
+	public function hAddHeaderFooter( &$article )
 	{
 		global $action;
 
@@ -57,7 +57,7 @@ class HeaderFooterClass
 		$this->done = true; 
 
 		// check the per-namespace enable/disable attribute.
-		$ns = $article->mTitle->getNamespace();
+		$ns = $article->mTitle->getNamespace(); 
 		if (!$this->nsPar[$ns]['enable'])
 			return true;
 
@@ -76,24 +76,26 @@ class HeaderFooterClass
 		// and skip if true.
 		$e = explode("/", $name);
 		$t = $e[count($e)-1];
-		$u=strtolower($t);
+		$u = strtolower($t);
 		
 		// take care of namespace prefix if present.
 		$v=explode(":", $u);
 		if (count($v)>1)
-			$u= $v[1];
+			$u = $v[1];
 
 		$hdisable=false;
 		$fdisable=false;
 		
 		// check for disabling directives.
-		if (strpos($content, "<noheader/>")!==false)
-			$hdisable=true;
-		if (strpos($content, "<nofooter/>")!==false)
-			$fdisable=true;
+		if (strpos($content, "<noheader/>")!==false) $hdisable=true;
+		if (strpos($content, "<nofooter/>")!==false) $fdisable=true;
+		if (strpos($content, "__NOHEADER__")!==false) $hdisable=true; // v1.13
+		if (strpos($content, "__NOFOOTER__")!==false) $fdisable=true; // v1.13
 		
 		$content = preg_replace('/<noheader\/>/si','', $content);
 		$content = preg_replace('/<nofooter\/>/si','', $content);		
+		$content = preg_replace('/__NOHEADER__/si','', $content); // v1.13
+		$content = preg_replace('/__NOFOOTER__/si','', $content); // v1.13		
 		
 		if ($u<>"header" and $u<>"footer")
 		{	
@@ -105,13 +107,12 @@ class HeaderFooterClass
 			if (!empty($h)) $h = preg_replace( '/<noinclude>.*<\/noinclude>/si', '', $h );
 			if (!empty($f)) $f = preg_replace( '/<noinclude>.*<\/noinclude>/si', '', $f );
 	
-			$content = $h.$content.$f;
+			$content = $ht.$content.$ft;
 		}		
 		// RESET re-entrancy flag.
 		$this->inproc= false;
 		
 		return true;		
 	}
-	
 } // END CLASS DEFINITION
 ?>

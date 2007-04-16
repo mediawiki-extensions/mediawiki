@@ -44,7 +44,7 @@ class HeaderFooterClass
 	 */
 	public function setNsParams( $ns, $p ) { $this->nsPar[$ns] = $p; }
 	
-	public function hAddHeaderFooter( &$article )
+	public function hAddHeaderFooter( &$article, &$content )
 	{
 		global $action;
 

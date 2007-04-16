@@ -20,11 +20,12 @@
  *          v1.1 -- re-crafted to derive from 'ExtensionClass'
  *          v1.2 -- adding proofing against 'bad titles'
  *          v1.3 -- small fix regarding hook chaining
+ *          v1.4 -- changed hook method for better parser caching integration.
  *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ImageLink',
-	'version' => '1.3',
+	'version' => '1.4',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

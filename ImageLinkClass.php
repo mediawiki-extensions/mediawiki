@@ -54,7 +54,7 @@ class ImageLinkClass extends ExtensionClass
 		if (!$this->hookInPlace)
 		{
 			global $wgHooks;	
-			$wgHooks['OutputPageBeforeHTML'][]= array($this, 'hBeforeHTML');
+			$wgHooks['ParserAfterTidy'][]= array($this, 'hAfterTidy');
 			$this->hookInPlace = true;
 		}			
 		
@@ -63,7 +63,7 @@ class ImageLinkClass extends ExtensionClass
 		return $t;
 	}
 
-	public function hBeforeHTML( $op, &$text )
+	public function hAfterTidy( $parser, &$text )
 	/*
 	 *  This function is called just before the HTML is rendered to the client browser.
 	 */

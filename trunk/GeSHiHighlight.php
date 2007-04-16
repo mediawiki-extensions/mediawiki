@@ -88,14 +88,19 @@ $wgExtensionCredits['other'][''] = array(
 function wfSyntaxExtension() {                                                                                                                                 
         global $wgParser, $wgVersion;
 
-        $langArray = array(     "actionscript-french", "actionscript", "ada", "apache", "applescript", 
-                                "asm", "asp", "bash", "c", "caddcl", "cadlisp", "cpp", "csharp", 
-                                "css", "c_mac", "d", "delphi", "diff", "dos", "eiffel", 
-                                "freebasic", "gml", "html4strict", "ini", "inno", "java", "javascript", 
+        $langArray = array(     "xml", "php", "java", "javascript", "c", "cpp", "bash", "css", "sql",
+							);
+							/*
+								"actionscript-french", "actionscript", "ada", "apache", "applescript", 
+                                "asm", "asp", "caddcl", "cadlisp", "csharp", 
+                                "c_mac", "d", "delphi", "diff", "dos", "eiffel", 
+                                "freebasic", "gml", "html4strict", "ini", "inno",  
                                 "lisp", "lua", "matlab", "mpasm", "nsis", "objc", "ocaml-brief", 
-                                "ocaml", "oobas", "oracle8", "pascal", "perl", "php-brief", "php", 
-                                "python", "qbasic", "ruby", "scheme", "sdlbasic", "smarty", "sql", 
-                                "vb", "vbnet", "vhdl", "visualfoxpro", "xml");
+                                "ocaml", "oobas", "oracle8", "pascal", "perl", "php-brief",  
+                                "python", "qbasic", "ruby", "scheme", "sdlbasic", "smarty",  
+                                "vb", "vbnet", "vhdl", "visualfoxpro");
+		
+							*/
 
         if ( version_compare( $wgVersion, "1.5" ) >= 0 ) { //If version 1.5 or above, $attrib param is included
                 foreach ( $langArray as $lang ){                                                                                                                                                                                              

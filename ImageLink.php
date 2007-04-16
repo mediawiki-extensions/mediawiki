@@ -10,7 +10,7 @@
  *           an article title (which may or may not exist
  *           in the database). 
  *
- * USAGE E.g.:	{{#imagelink:New Clock.gif|Admin:Show Time|alternate text}}
+ * USAGE E.g.:	{{#imagelink:New Clock.gif|Admin:Show Time|alternate text | width | height | border }}
  * 
  * Tested Compatibility: MW 1.8.2, 1.9.3
  *

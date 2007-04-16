@@ -107,7 +107,7 @@ class HeaderFooterClass
 			if (!empty($h)) $h = preg_replace( '/<noinclude>.*<\/noinclude>/si', '', $h );
 			if (!empty($f)) $f = preg_replace( '/<noinclude>.*<\/noinclude>/si', '', $f );
 	
-			$content = $ht.$content.$ft;
+			$content = $h.$content.$f;
 		}		
 		// RESET re-entrancy flag.
 		$this->inproc= false;

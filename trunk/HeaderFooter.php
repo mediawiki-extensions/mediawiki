@@ -29,11 +29,16 @@
  *                  articles fetched during the rendering process)
  *                  (helps with some other extensions that do fetch multiple pages
  *                   before returning the final render requested page).
- * -- Version 1.13: - Added support for '__NOHEADER__' and '__NOFOOTER__' magic words          
+ * -- Version 1.13: - Added support for '__NOHEADER__' and '__NOFOOTER__' magic words         
+ * -- Version 1.14: - Added support for better parser cache integration
+ *                    i.e. the normal MW behavior is to save an updated/created article
+ *                    in the parser cache BEFORE this extension has the chance to execute.
+ *                    This extension update disables this behavior but don't worry, the article will
+ *                    be saved by MW the next time the article is viewed.   
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'HeaderFooter Extension', 
-	'version' => '1.13',
+	'version' => '1.14',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -41,4 +46,5 @@ $wgExtensionCredits['other'][] = array(
 require_once("HeaderFooterClass.php");
 $hfObj = &HeaderFooterClass::singleton();
 $wgHooks['ArticleAfterFetchContent'][] = array( $hfObj, 'hAddHeaderFooter' );
+$wgHooks['ArticleSave'][] =              array( $hfObj, 'hArticleSave' );
 ?>

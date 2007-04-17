@@ -114,5 +114,28 @@ class HeaderFooterClass
 		
 		return true;		
 	}
+	public function hArticleSave( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags )
+	// V1.14 enhancement.
+	{
+		global $wgParserCacheType;
+				
+		// check the per-namespace enable/disable attribute.
+		// If the extension is enabled in this namespace, then proceed.
+		$ns = $article->mTitle->getNamespace(); 
+		if (!$this->nsPar[$ns]['enable'])
+			return true;
+
+		// disable the parser cache for this transaction.
+		// The hack below will affect the method Article::editUpdates
+		// into not saving the current article to a potential real cache.
+		// BUT, once the article is viewed, the article will then be stored in the real cache.	
+		$wgParserCacheType = CACHE_NONE;
+		$apc =& wfGetParserCacheStorage();
+		
+		$pc = & ParserCache::singleton();
+		$pc->mMemc = $apc;
+
+		return true;
+	}
 } // END CLASS DEFINITION
 ?>

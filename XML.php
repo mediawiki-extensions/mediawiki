@@ -45,7 +45,7 @@
  *                 b) small optimisation in 'hInclude'
  *
  * -- Version 1.5 -a) Added 'setparameter' to the {{#xsl:}} magic word for passing parameters to a stylesheet
- *                 b) 
+ *                 b) Added support for 'server-side' processing.
  *
  */
 $wgExtensionCredits['other'][] = array( 

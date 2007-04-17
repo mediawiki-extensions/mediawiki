@@ -44,10 +44,13 @@
  *                    (factor of 2 observed on an operation of ~800 substitutions performed).
  *                 b) small optimisation in 'hInclude'
  *
+ * -- Version 1.5 -a) Added 'setparameter' to the {{#xsl:}} magic word for passing parameters to a stylesheet
+ *                 b) 
+ *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'XML processor', 
-	'version' => '1.4',
+	'version' => '1.5',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

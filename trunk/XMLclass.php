@@ -81,9 +81,11 @@ class XMLclass
 	// collection.
 	var $data;
 	
+	// Parameters to the stylesheet
+	var $params;
+	
 	// 
 	var $view;
-	var $tableElementAdded;
 	
 	// variables extension shortcut.
 	var $vars;
@@ -91,6 +93,12 @@ class XMLclass
 	
 	var $xmloldhook;
 	var $xsloldhook;
+	
+	// XSL related
+	var $xslPage;
+	var $xslText;	
+	
+	var $clientSide;
 	
 	public static function &singleton() 
 	{
@@ -117,6 +125,11 @@ class XMLclass
 		$this->view    = false;
 		$this->pageDataAdded = false;
 		$this->tableElementAdded = false;
+		$this->clientSide = false;			// default is server-side processing. 
+		
+		$this->params = array();
+		$this->xslPage = null;
+		$this->xslText = null;
 		
 		$this->cache = &ArticleCacheClass::singleton();
 		
@@ -148,8 +161,18 @@ class XMLclass
 	 *  <xml view=x> ... </xml>
 	 */
 	public function xml	( &$text, &$argv, &$parser )
+	/*
+	 *  By default, server-side processing is performed UNLESS
+	 *  the directive "client" is given.
+	 */
 	{
-		if (isset($argv['src']))
+		if (isset($argv['client']))
+		{
+			$this->clientSide = true;
+			return '<div id="xmltable"></div>';  // add xhtml element for the JS code.
+		}
+			
+		if (isset($argv['src']))  // for client-side processing.
 		// add the client-side JS variable for locating an XML data source.
 		// The Mediawiki title name should be used here.
 			$this->doAddJsVar( "xmlsrcpage", $argv['src'] );
@@ -166,13 +189,8 @@ class XMLclass
 		if (isset($argv['island'])) // v1.3 (a)
 			return "<xml id='xmlisland'>".$text.'</xml>';
 
-		if (!$this->tableElementAdded)
-		{
-			$this->tableElementAdded = true;
-			return '<div id="xmltable"></div>';
-		}
-		
-		return '';
+		// Server-Side Processing
+		return $this->process( $text );
 	}
 	
 	/*
@@ -184,10 +202,24 @@ class XMLclass
 	
 	public function xsl(&$text, &$argv, &$parser )
 	{
+		if (!empty($text))
+			$this->xslText = $text;
+	
 		if (isset($argv['src']))
 		// add the client-side JS variable for locating an XSL data source.
 		// The Mediawiki title name should be used here.
+		{
+			$this->xslPage = $argv['src'];
 			$this->doAddJsVar( "xslsrcpage", str_replace(" ","_", $argv['src']) );
+		}
+		// {{#xsl:parameter=key|value='value'}}
+		if (isset($argv['parameter']))
+		{
+			$key   = $argv['parameter'];
+			$value = $argv['value'];
+			$this->params[$key] = $value;
+			return; 
+		}
 			
 		if (isset($argv['view']))
 		{
@@ -238,6 +270,58 @@ class XMLclass
 		$wgOut->addScript( '<script type="text/javascript"> var '.$key.'="'.Xml::escapeJsString($value).'"; </script>'); 
 	}
 
+	private function process( &$text )
+	/*
+	 *  Server-side XSLT processing.
+	 */
+	{
+		if (empty( $text ))
+			return;
+			
+		# get the XSL text
+		if (!empty( $this->xslPage ))
+		{
+			$xslArticle = $this->cache->getArticle( $this->xslPage );
+			if (!is_object($xslArticle))
+				return "XML extension: error loading XSL page <br/>";
+				
+			$t = $this->cache->getArticleContent( $this->xslPage );
+			
+			$this->xslText = $this->extractSection( "xsl", trim($t) );
+		}
+		# Create the XSL document
+		$xsl = new DOMDocument;
+		try { $xsl->loadXML( $this->xslText ); }
+		catch(Exception $e) { return "XML extension: error loading XSL code <br/>"; }
+		
+		# Instantiate the Processor
+		$proc = new XSLTProcessor;
+		
+		try      { $proc->importStyleSheet( $xsl );	} 
+		catch(Exception $e) { return "XML extension: error importing stylesheet <br/>"; }
+
+		# Set Parameters
+		foreach( $this->params as $key => $value )
+			$proc->setParameter('', $key, $value );
+
+		#By default, include the 'wgArticlePath' parameter
+		global $wgArticlePath;
+		$path = str_replace('$1','', $wgArticlePath);
+		$proc->setParameter('', 'articlepath', $path );
+		
+		# Process the include directives.
+		$this->hInclude( $text );
+		
+		# Create the XML document
+		$xml = new DOMDocument;
+		$xml->loadXML( $text );
+		
+		# Apply the transform
+		try { $result = $proc->transformToXML( $xml ); }
+		catch(Exception $e) { return "XML extension: error transforming the document <br/>"; }
+		
+		return $result;
+	}
 
 // -------------------------------------------------------------------------------------------------
 // Phase 2 related
@@ -355,8 +439,22 @@ class XMLclass
 	
 	public function extractXMLsection( &$content )
 	{
+		return $this->extractSection( "xml", $content );
+	
 		# We skip over any attributes enclosed in the XML tag
 	 	$r = preg_match( "/<xml(?:.*)\>(.*)(?:\<.?xml>)/siU", $content,  $c );
+	  
+	 	// return the sub-pattern matches only.
+	 	if ($r==1)
+			return $c[1];
+			
+		return null;
+	}
+	public function extractSection( $tag, &$content )
+	{
+		# We skip over any attributes enclosed in the XML tag
+		$p = "/<".$tag."(?:.*)\>(.*)(?:\<.?".$tag.">)/siU";
+	 	$r = preg_match( $p, $content,  $c );
 	  
 	 	// return the sub-pattern matches only.
 	 	if ($r==1)

@@ -29,10 +29,11 @@
  *
  * History:
  * - v1.0
+ * - v1.1 : changed hook method for better parser cache integration.
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'addHTML Extension', 
-	'version' => '1.0',
+	'version' => '1.1',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -73,7 +74,7 @@ class addHTMLclass extends ExtensionClass
 		if (!$this->hookInPlace)
 		{
 			global $wgHooks;	
-			$wgHooks['OutputPageBeforeHTML'][]= array($this, 'feedHtml');
+			$wgHooks['ParserAfterTidy'][]= array($this, 'feedHtml');
 			$this->hookInPlace = true;
 		}			
 
@@ -85,7 +86,7 @@ class addHTMLclass extends ExtensionClass
 		$marker = "<".self::tag." id={$id} />";
 		return $marker;
 	}
-	public function feedHtml( $op, &$text )
+	public function feedHtml( $parser, &$text )
 	{
 		// Some substitution to do?
 		if (empty($this->hlist)) return;

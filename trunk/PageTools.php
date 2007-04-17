@@ -28,6 +28,8 @@
  *
  * {{#pageexists: 'article title' }}
  *
+ * {{#pagepath:}}
+ *
  * DEPENDANCIES:
  * 1) 'ArticleEx' extension (from v1.6)
  * 2) 'ExtensionClass' extension (from v1.2)
@@ -43,7 +45,8 @@
  *                  This correction is due to the change in ExtensionClass behavior.
  *
  * -- Version 1.3:  Added 'pageexists': does the article title exists?
- * 
+ * -- Version 1.4:  Added 'pagepath': return the global variable '$wgArticlePath'
+ *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'PageTools Extension', 
@@ -60,7 +63,7 @@ class PageTools extends ExtensionClass
 	static $mgwords = array('pageincategory', 'pagenumcategories' , 'pagecategory', 
 							'pagetitle','pagetitleadd',
 							'pagesubtitle',
-							'pageexists' );
+							'pageexists', 'pagepath' );
 	
 	public static function &singleton( )
 	{ return parent::singleton(); }
@@ -151,6 +154,11 @@ class PageTools extends ExtensionClass
 		else $id = 0;
 		
 		return ($id == 0 ? false:true);		
+	}
+	public function mg_pagepath( &$parser )
+	{
+		global $wgArticlePath;
+		return $wgArticlePath;	
 	}
 	// =========================================================================	
 	public function hBeforePageDisplay( $op )

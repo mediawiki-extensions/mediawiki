@@ -428,27 +428,13 @@ class XMLclass
 				// exists.
 				$t = $this->cache->getArticleContent( $el );
 				// and in [3] the article content (a reference to it)
-				$m[3][$index] = trim($this->extractXMLsection( $t ));
+				$m[3][$index] = trim($this->extractSection( "xml", $t ));
 			}
 			else
 				$m[3][$index] = "<missing>$el</missing>";  // TODO // v1.4b
 		}
 		// Finally, substitute
 		$content = str_replace($m[0], $m[3], $content);
-	}
-	
-	public function extractXMLsection( &$content )
-	{
-		return $this->extractSection( "xml", $content );
-	
-		# We skip over any attributes enclosed in the XML tag
-	 	$r = preg_match( "/<xml(?:.*)\>(.*)(?:\<.?xml>)/siU", $content,  $c );
-	  
-	 	// return the sub-pattern matches only.
-	 	if ($r==1)
-			return $c[1];
-			
-		return null;
 	}
 	public function extractSection( $tag, &$content )
 	{

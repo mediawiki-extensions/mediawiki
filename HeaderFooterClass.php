@@ -117,6 +117,11 @@ class HeaderFooterClass
 	public function hArticleSave( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags )
 	// V1.14 enhancement.
 	{
+		// If ParserCacheControl extension is already handling
+		// the article update/creation, then bail out. (v1.15 feature)
+		if (class_exists('ParserCacheControl'))
+			return true;
+			
 		global $wgParserCacheType;
 				
 		// check the per-namespace enable/disable attribute.

@@ -34,11 +34,13 @@
  *                    i.e. the normal MW behavior is to save an updated/created article
  *                    in the parser cache BEFORE this extension has the chance to execute.
  *                    This extension update disables this behavior but don't worry, the article will
- *                    be saved by MW the next time the article is viewed.   
+ *                    be saved by MW the next time the article is viewed. 
+ * -- Version 1.15: - Integration with 'ParserCacheControl' extension.
+ *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'HeaderFooter Extension', 
-	'version' => '1.14',
+	'version' => '1.15',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

@@ -39,10 +39,13 @@
  *           -- Strip all '.' from the URI hence '.js' extension
  *              cannot be supplied by user anymore and therefore
  *              extension appends it.
+ *
+ * - v1.3    - Changed hook method to make it easier on parser caching.
+ *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'AddScript Extension', 
-	'version' => '1.2',
+	'version' => '1.3',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -56,7 +59,7 @@ function wfAddScriptSetup( )
 	global $asObj;
 	global $wgHooks;
 
-	$wgHooks['BeforePageDisplay'][] = array( $asObj, 'feedScripts' );	
+	$wgHooks['ParserAfterTidy'][] = array( $asObj, 'feedScripts' );	
 
 	global $wgParser;
 	$wgParser->setHook(         'addscript', array( &$asObj, 'pSet' ) );
@@ -108,8 +111,6 @@ class AddScriptClass
 	}
 	private function checkURI( $uri )
 	{
-		global $wgScriptPath;
-		
 		// uri must resolved to a local file in the $base directory.
 		$spath = self::$base.$uri.'.js';
 		
@@ -127,7 +128,7 @@ class AddScriptClass
 		$magicWords['addscript'] = array( 0, 'addscript' );
 		return true;		
 	}
-	public function feedScripts( $op )
+	public function feedScripts( &$parser, &$text )
 	{
 		global $wgScriptPath;
 		

@@ -131,10 +131,11 @@ class AddScriptClass
 	public function feedScripts( &$parser, &$text )
 	{
 		global $wgScriptPath;
+		global $wgOut;
 		
 		if (!empty($this->slist))
 			foreach($this->slist as $sc)
-				$op->addScript('<script src="'.$wgScriptPath.'/'.self::$base.$sc.'.js" type="text/javascript"></script>');
+				$wgOut->addScript('<script src="'.$wgScriptPath.'/'.self::$base.$sc.'.js" type="text/javascript"></script>');
 				
 		return true; // v1.2 fix
 	}

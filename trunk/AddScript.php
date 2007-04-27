@@ -4,7 +4,7 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
- * $LastChangedRevision$
+ * 
  * Purpose:  Inserts <script> tags at the bottom of the page's head.
  *
  * Features:
@@ -45,7 +45,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'AddScript Extension', 
-	'version' => '1.3',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

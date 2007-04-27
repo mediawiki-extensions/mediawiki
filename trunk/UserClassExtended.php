@@ -5,8 +5,7 @@
  * 
  * Provides a superclass for the Mediawiki "user class" 
  * (includes/user.php) supporting enhanced rights management
- * functionality. The rights management methods are provided
- * through 
+ * functionality. 
  *
  * @author: Jean-Lou Dupont
  * www.bluecortex.com
@@ -53,6 +52,9 @@
  * ================
  * Version 1.0:   - Initial availability
  * Version 1.01:  - Minor addition to make it compatible with MW > 1.10
+ * -------------  Changed to SVN 
+ * 
+ *
  */
 
 $wgExtensionCredits['other'][] = array(

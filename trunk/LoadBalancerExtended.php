@@ -45,11 +45,6 @@
  * - Code borrowed from MW 1.9.3: method 'reallyOpenConnection'
  */
 
-$wgExtensionCredits['other'][] = array(
-    'name'    => "LoadBalancerExtended [http://www.bluecortex.com]",
-	'version' => '$LastChangedRevision$',
-	'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
-);
 
 // REQUIRED INCLUDES.
 // MW does not load the following in the order we need it
@@ -67,6 +62,15 @@ class LoadBalancerEx extends LoadBalancer
 	
 	public function LoadBalancerEx()
 	{
+		global $wgExtensionCredits;
+		
+		$wgExtensionCredits['other'][] = array(
+		    'name'        => self::thisName,
+			'version'     => '$LastChangedRevision$',
+			'author'      => 'Jean-Lou Dupont [http://www.bluecortex.com]',
+			'description' => 'Extends the standard LoadBalancer class. '
+		);
+
 		global $wgHooks;
 		$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );				
 		
@@ -92,7 +96,7 @@ class LoadBalancerEx extends LoadBalancer
 	public function hUpdateExtensionCredits( &$sp, &$extensionTypes )
 	{
 		global $wgExtensionCredits, $wgDBclass, $wgDBtype;
-		
+	
 		if (!isset( $wgDBclass)) return;
 			
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )

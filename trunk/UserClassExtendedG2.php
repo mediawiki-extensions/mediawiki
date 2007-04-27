@@ -55,7 +55,7 @@ require_once("includes/User.php");
 // Note that we are pushing the initialisation of this class at the top of the stack. 
 // Also note that we are not implementing 'stubbing'.
 array_unshift( 	$wgExtensionFunctions, 
-				create_function('','$GLOBALS[`wgUser`]= UserClassG2::loadFromSession();') 
+				create_function('','$GLOBALS["wgUser"] = UserClassG2::loadFromSession();') 
 			);
 
 /*  SUPERCLASS DEFINITION
@@ -114,5 +114,76 @@ class UserClassG2 extends User
 		// so that HNP understands it.
 		return hnpClass::userCanInternal($this, $ns, $pt, $action);
 	}
+###################################################################################
+/*
+    Overloaded Methods
+*/
+###################################################################################
+
+	function loadFromSession()
+	/* 
+	    Code borrowed from MW 1.8.2
+	*/ 
+	{
+		global $wgMemc, $wgCookiePrefix;
+
+		if ( isset( $_SESSION['wsUserID'] ) ) {
+			if ( 0 != $_SESSION['wsUserID'] ) {
+				$sId = $_SESSION['wsUserID'];
+			} else {
+				return new UserClassExtendedG2();
+			}
+		} else if ( isset( $_COOKIE["{$wgCookiePrefix}UserID"] ) ) {
+			$sId = intval( $_COOKIE["{$wgCookiePrefix}UserID"] );
+			$_SESSION['wsUserID'] = $sId;
+		} else {
+			return new UserClassG2();
+		}
+		if ( isset( $_SESSION['wsUserName'] ) ) {
+			$sName = $_SESSION['wsUserName'];
+		} else if ( isset( $_COOKIE["{$wgCookiePrefix}UserName"] ) ) {
+			$sName = $_COOKIE["{$wgCookiePrefix}UserName"];
+			$_SESSION['wsUserName'] = $sName;
+		} else {
+			return new UserClassG2();
+		}
+
+		$passwordCorrect = FALSE;
+		$user = $wgMemc->get( $key = wfMemcKey( 'user', 'id', $sId ) );
+		if( !is_object( $user ) || $user->mVersion < MW_USER_VERSION ) {
+			# Expire old serialized objects; they may be corrupt.
+			$user = false;
+		}
+		if($makenew = !$user) {
+			wfDebug( "User::loadFromSession() unable to load from memcached\n" );
+			$user = new UserClassG2();
+			$user->mId = $sId;
+			$user->loadFromDatabase();
+		} else {
+			wfDebug( "User::loadFromSession() got from cache!\n" );
+			# Set block status to unloaded, that should be loaded every time
+			$user->mBlockedby = -1;
+		}
+
+		if ( isset( $_SESSION['wsToken'] ) ) {
+			$passwordCorrect = $_SESSION['wsToken'] == $user->mToken;
+		} else if ( isset( $_COOKIE["{$wgCookiePrefix}Token"] ) ) {
+			$passwordCorrect = $user->mToken == $_COOKIE["{$wgCookiePrefix}Token"];
+		} else {
+			return new UserClassG2(); # Can't log in from session
+		}
+
+		if ( ( $sName == $user->mName ) && $passwordCorrect ) {
+			if($makenew) {
+				if($wgMemc->set( $key, $user ))
+					wfDebug( "User::loadFromSession() successfully saved user\n" );
+				else
+					wfDebug( "User::loadFromSession() unable to save to memcached\n" );
+			}
+			return $user;
+		}
+		return new UserClassG2(); # Can't log in from session
+	}	
+	
 } # end class definition
 ?>

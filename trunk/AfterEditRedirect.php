@@ -1,5 +1,7 @@
 <?php
 # AfterEditRedirect.php 
+# $LastChangedRevision$
+#
 # Mediawiki Extension
 # -------------------------------
 # Author: Jean-Lou Dupont

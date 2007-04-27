@@ -1,7 +1,8 @@
 <?php
 /*
  * AfterEdit
- * V1.0
+ * $LastChangedRevision$
+ *
  * Mediawiki Extensions
  *
  * @author: Jean-Lou Dupont (www.bluecortex.com)

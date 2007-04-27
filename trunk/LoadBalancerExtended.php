@@ -47,7 +47,7 @@
 
 $wgExtensionCredits['other'][] = array(
     'name'    => "LoadBalancerExtended [http://www.bluecortex.com]",
-	'version' => '$LastChangedRevision: 43 $',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

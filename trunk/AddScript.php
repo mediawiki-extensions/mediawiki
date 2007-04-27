@@ -4,7 +4,7 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
- *
+ * Last Changed Revision: $LastChangedRevision$
  * Purpose:  Inserts <script> tags at the bottom of the page's head.
  *
  * Features:

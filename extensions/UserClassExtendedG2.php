@@ -1,6 +1,6 @@
 <?php
 /* 
- * UserClassExtendedG2.php
+ * UserClassExtendedG2.php   (DEPRECATED IN FAVOR OF DIRECT PATCH)
  * MediaWiki extension
  * 
  * Provides a superclass for the Mediawiki "user class" 
@@ -42,7 +42,7 @@
  */
 
 $wgExtensionCredits['other'][] = array(
-    'name'    => "UserClassExtendedG2 [http://www.bluecortex.com]",
+    'name'    => "UserClassExtendedG2",
 	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );

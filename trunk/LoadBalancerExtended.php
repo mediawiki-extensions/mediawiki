@@ -62,8 +62,14 @@ array_unshift( 	$wgExtensionFunctions,
 
 class LoadBalancerEx extends LoadBalancer
 {
+	const thisName = 'LoadBalancerEx';
+	const thisType = 'other';  // must use this type in order to display useful info in Special:Version
+	
 	public function LoadBalancerEx()
-	{ 
+	{
+		global $wgHooks;
+		$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );				
+		
 		// Let's copy-cat what we can from 'Setup.php' when it initializes
 		// the LoadBalancer stub object:
 		/*
@@ -77,6 +83,23 @@ class LoadBalancerEx extends LoadBalancer
 		$wgDBservers[0]['classname'] = $wgDBclass;
 		
 		return parent::__construct( $wgDBservers, false, $wgMasterWaitTimeout, true );	
+	}
+###################################################################################
+/*
+    New Methods
+*/
+###################################################################################
+	public function hUpdateExtensionCredits( &$sp, &$extensionTypes )
+	{
+		global $wgExtensionCredits, $wgDBclass, $wgDBtype;
+		
+		if (!isset( $wgDBclass)) return;
+			
+		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
+		{
+			if ($el['name']==self::thisName)
+				$el['description'].=" \$wgDBtype is set to <b>{$wgDBtype}</b> and \$wgDBclass is set to a <b>{$wgDBclass}</b>.";	
+		}
 	}
 
 ###################################################################################
@@ -92,11 +115,11 @@ class LoadBalancerEx extends LoadBalancer
 
 		extract( $server );
 		
-		// BEGIN PATCH
+		// ************** BEGIN PATCH ******************
 		if (isset( $classname))
 			if ( ($type == 'mysql') && (!empty($classname)) )
 				$type = $classname;
-		// END PATCH
+		// **************  END PATCH  ******************
 		
 		# Get class for this database type
 		$class = 'Database' . ucfirst( $type );

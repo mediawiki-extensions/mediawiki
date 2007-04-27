@@ -50,7 +50,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'XML processor', 
-	'version' => '1.5',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

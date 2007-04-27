@@ -19,8 +19,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
     die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
 
-$wgExtensionCredits['parserhook'][] = array( 'name' => 'VariablesExtension',  
-                                             'author' => 'Rob Adams, Jean-Lou Dupont' );
+$wgExtensionCredits['parserhook'][] = array( 
+ 'name' => 'VariablesExtension',
+ 'version'=> '$LastChangedRevision$',
+ 'author' => 'Rob Adams, Jean-Lou Dupont' );
 
 $wgExtensionFunctions[] = 'wfSetupVariables';
 $wgHooks['LanguageGetMagic'][]  = 'wfVariablesLanguageGetMagic';

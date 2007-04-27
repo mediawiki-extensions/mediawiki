@@ -52,7 +52,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ArticleEx',
-	'version' => '1.7',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

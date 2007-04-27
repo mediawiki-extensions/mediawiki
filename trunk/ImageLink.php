@@ -25,7 +25,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ImageLink',
-	'version' => '1.4',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

@@ -49,7 +49,7 @@
  */
 $wgExtensionCredits['other'][] = array(
     'name'   => "UnknownActionHandler [http://www.bluecortex.com]",
-	'version'=> "1.3",
+	'version'=> '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont' 
 );
 

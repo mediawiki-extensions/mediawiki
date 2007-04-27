@@ -68,7 +68,7 @@
 #  - Tested on Mediawiki v1.8.2
 #
 $wgExtensionCredits['other'][] = array( 
-	'version'=> "1.6",
+	'version'=> '$LastChangedRevision$',
     'name'   => "RunPHP Page [http://www.bluecortex.com]",
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );

@@ -54,7 +54,7 @@ class ParserCacheControl extends ExtensionClass
 		// 'Special:Version' page.
 		$wgExtensionCredits[self::thisType][] = array( 
 			'name'    => self::thisName, 
-			'version' => '1.0',
+			'version' => '$LastChangedRevision$',
 			'author'  => 'Jean-Lou Dupont', 
 			'url'     => 'http://www.bluecortex.com',
 			'description' => "Parser Cache (\$wgEnableParserCache) is currently <b>".($wgEnableParserCache ? "enabled":"disabled").

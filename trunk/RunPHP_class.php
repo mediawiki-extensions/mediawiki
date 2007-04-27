@@ -27,7 +27,7 @@
  *
 */
 $wgExtensionCredits['class'][] = array( 
-	'version'=> "1.3",
+	'version'=> '$LastChangedRevision$',
     'name'   => "RunPHP Class [http://www.bluecortex.com]",
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );

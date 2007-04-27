@@ -41,7 +41,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'UserRightsMagic Extension', 
-	'version' => '1.0',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

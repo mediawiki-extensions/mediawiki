@@ -25,7 +25,7 @@
 */
 $wgExtensionCredits['other'][] = array(
     'name'   => "getJs [http://www.bluecortex.com]",
-	'version'=> "1.0",
+	'version'=> '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont' 
 );
 

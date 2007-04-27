@@ -52,7 +52,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'Clipboard Extension', 
-	'version' => '1.01',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

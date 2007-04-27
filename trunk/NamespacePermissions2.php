@@ -41,10 +41,9 @@
  * - Added ability to easily perform 'security audits'.
  *
  */
-$nsPermissions2 = "(v2.1)";
-
 $wgExtensionCredits['other'][] = array(
-    'name' => "NamespacePermissions2 $nsPermissions2 [http://www.bluecortex.com]",
+    'name' => "NamespacePermissions2 [http://www.bluecortex.com]",
+	'version' => '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

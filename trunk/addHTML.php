@@ -33,7 +33,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'addHTML Extension', 
-	'version' => '1.1',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

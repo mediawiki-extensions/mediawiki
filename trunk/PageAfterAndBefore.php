@@ -39,7 +39,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'PageAfterAndBefore Extension', 
-	'version' => '1.1',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

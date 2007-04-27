@@ -35,7 +35,10 @@
  * =========
  *  - No code change in the standard Mediawiki package.
  *  - Support for 'extended' MySQL Database class
- *  - Support for 'wgDBclass' (defaults to 'mysql' when wgDBtype=='mysql') 
+ *  - Support for '$wgDBclass' (defaults to 'mysql' when wgDBtype=='mysql')
+ *    This global parameter complements the set available to describe the database.
+ *    This global parameter must be set along with the usual ones (e.g. $wgDBtype etc.)
+ *    in 'LocalSettings.php'. 
  *
  * HISTORY:
  * ================
@@ -56,7 +59,6 @@ require_once("includes/LoadBalancer.php");
 array_unshift( 	$wgExtensionFunctions, 
 				create_function('','$GLOBALS["wgLoadBalancer"] = new LoadBalancerEx(); ') 
 			);
-
 
 class LoadBalancerEx extends LoadBalancer
 {
@@ -79,13 +81,6 @@ class LoadBalancerEx extends LoadBalancer
 
 ###################################################################################
 /*
-    New Methods
-*/
-###################################################################################
-
-
-###################################################################################
-/*
     Overloaded Methods
 */
 ###################################################################################
@@ -98,8 +93,9 @@ class LoadBalancerEx extends LoadBalancer
 		extract( $server );
 		
 		// BEGIN PATCH
-		if ( ($type == 'mysql') && (!empty($classname) )
-			$type = $classname;
+		if (isset( $classname))
+			if ( ($type == 'mysql') && (!empty($classname)) )
+				$type = $classname;
 		// END PATCH
 		
 		# Get class for this database type

@@ -82,6 +82,7 @@ $wgExtensionFunctions[] = "wfSyntaxExtension";
 
 $wgExtensionCredits['other'][''] = array(
         'name' => 'GeSHiHighlight',
+		'version' => '$LastChangedRevision$',
         'url' => 'http://meta.wikimedia.org/wiki/User:Ajqnic:GeSHiHighlight',
         'description' => 'Allows for the highlighting of various types of code including php, html, xml, sql, c, pascal, etc');
                                                                                                                                                               

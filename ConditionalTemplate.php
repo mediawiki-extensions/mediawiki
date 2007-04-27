@@ -16,10 +16,9 @@
  * HISTORY:
  * v1.0
  */
-$ctVersion = "(v1.0)";
-
 $wgExtensionCredits['parserhook'][] = array(
-    'name' => "ConditionalTemplate $ctVersion [http://www.bluecortex.com]",
+    'name' => "ConditionalTemplate [http://www.bluecortex.com]",
+	'version' => '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

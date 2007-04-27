@@ -20,7 +20,7 @@
  */
 $wgExtensionCredits['other'][] = array(
     'name'    => "AuthorRestriction [http://www.bluecortex.com]",
-	'version' => "1.2",
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 $wgExtensionFunctions[] = 'AuthorRestrictionSetup';

@@ -40,7 +40,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'HeaderFooter Extension', 
-	'version' => '1.15',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

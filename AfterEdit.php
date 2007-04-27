@@ -36,7 +36,8 @@
  */
 
 $wgExtensionCredits['other'][] = array(
-    'name' => 'AfterEdit',
+    'name'    => 'AfterEdit',
+	'version' => '$LastChangedRevision$',
     'description' => "adds a new ''AfterEdit''[http://www.bluecortex.com] hook",
 	'author' => 'Jean-Lou Dupont' 
 );

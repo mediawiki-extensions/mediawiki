@@ -1,6 +1,5 @@
 <?php
 # AfterEditRedirect.php 
-# $LastChangedRevision$
 #
 # Mediawiki Extension
 # -------------------------------
@@ -51,10 +50,9 @@
 # v1.0    Initial availability
 # ---------------------------------
 
-$aeRedirect = "(v1.0)";
-
 $wgExtensionCredits['other'][] = array(
-    'name' => "AfterEditRedirect $aeRedirect [http://www.bluecortex.com]",
+    'name' => "AfterEditRedirect [http://www.bluecortex.com]",
+	'version' => '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

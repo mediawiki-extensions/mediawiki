@@ -21,10 +21,9 @@
  * HISTORY:
  * v1.0
  */
-$postloaderVersion = "(v1.0)";
-
 $wgExtensionCredits['other'][] = array(
-    'name' => "Postloader $postloaderVersion [http://www.bluecortex.com]",
+    'name' => "Postloader [http://www.bluecortex.com]",
+	'version' => '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

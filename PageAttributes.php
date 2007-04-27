@@ -37,7 +37,7 @@
 
 $wgExtensionCredits['other'][] = array(
     'name'    => "PageAttributes [http://www.bluecortex.com]",
-	'version' => "1.3",
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

@@ -50,7 +50,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'PageTools Extension', 
-	'version' => '1.3',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

@@ -45,7 +45,7 @@
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'AddScript Extension', 
-	'version' => '$LastChangedDate$ $LastChangedRevision$',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

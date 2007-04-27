@@ -40,10 +40,9 @@
 # v1.0    Initial availability
 # ---------------------------------
 
-$formtoolsVersion = "(v1.0)";
-
 $wgExtensionCredits['other'][] = array(
-    'name' => "FormTools $formtoolsVersion [http://www.bluecortex.com]",
+    'name' => "FormTools [http://www.bluecortex.com]",
+	'version' => '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

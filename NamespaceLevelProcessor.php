@@ -95,7 +95,7 @@
  */
 $wgExtensionCredits['other'][] = array(
     'name'   => "NamespaceLevelProcessor [http://www.bluecortex.com]",
-	'version'=> "2.6",
+	'version'=> '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
   

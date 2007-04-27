@@ -19,7 +19,7 @@
 # ---------------------------------
 $wgExtensionCredits['other'][] = array(
     'name'   => "NukeHtmlPhp [http://www.bluecortex.com]",
-	'version'=> "v1.0",
+	'version'=> '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

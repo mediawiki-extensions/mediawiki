@@ -50,10 +50,9 @@ global $ftLowerLimit, $ftUpperLimit;
 define('ftUpperLimit', 100);
 define('ftLowerLimit',1);
 
-$filterTitlesVersion = "(v1.3)";
-
 $wgExtensionCredits['other'][] = array(
     'name' => "FilterTitles $filterTitlesVersion [http://www.bluecortex.com]",
+	'version' => '$LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 $wgExtensionFunctions[] = "wfSetupFilterTitles";

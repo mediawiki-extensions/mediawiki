@@ -43,7 +43,7 @@
 
 $wgExtensionCredits['other'][] = array(
     'name'    => "UserClassExtendedG2 [http://www.bluecortex.com]",
-	'version' => '$LastChangedRevision: 39 $',
+	'version' => '$LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

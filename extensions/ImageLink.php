@@ -21,11 +21,12 @@
  *          v1.2 -- adding proofing against 'bad titles'
  *          v1.3 -- small fix regarding hook chaining
  *          v1.4 -- changed hook method for better parser caching integration.
- *
+ * ------------- -- changed to SVN management
+ *          v1.5 -- Support for inter-wiki links
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ImageLink',
-	'version' => '$LastChangedRevision$',
+	'version' => 'v1.5 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );

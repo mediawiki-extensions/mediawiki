@@ -10,6 +10,7 @@ class ImageLinkClass extends ExtensionClass
 {
 	var $links;
 	var $hookInPlace;
+	var $done;
 	
 	static $mgwords = array( 'imagelink' );
 
@@ -22,6 +23,7 @@ class ImageLinkClass extends ExtensionClass
 		parent::__construct( self::$mgwords );
 		
 		$this->hookInPlace = false;
+		$this->done = false;
 	}
 	
 	public function mg_imagelink( &$parser, $img, $page,  							// mandatory parameters  
@@ -42,8 +44,13 @@ class ImageLinkClass extends ExtensionClass
 		if (!is_object($title)) return;
 		
 		$iURL = $image->getURL();
-		$tURL = $title->getLocalUrl();
 		
+		// distinguish between local and interwiki URI
+		if ($title->isLocal())
+			$tURL = $title->getLocalUrl();
+		else
+			$tURL = $title->getFullURL();
+				
 		// Optional parameters
 		if ($alt    !== null)	$alt    = "alt='${alt}'"; 		else $alt='';
 		if ($width  !== null)	$width  = "width='${width}'"; 	else $width='';
@@ -57,9 +64,12 @@ class ImageLinkClass extends ExtensionClass
 			$wgHooks['ParserAfterTidy'][]= array($this, 'hAfterTidy');
 			$this->hookInPlace = true;
 		}			
-		
+
+		$t = "_imagelink_".date('Ymd').count($this->links)."_/imagelink_";
+				
 		// let's put an easy marker that we can 'safely' find once we need to render the HTML
-		$t = $this->links[] = "<imagelink><a href='${tURL}'><img src='${iURL}' $alt $width $height $border /></a></imagelink>";
+		$this->links[] = "<a href='${tURL}'><img src='${iURL}' $alt $width $height $border /></a>";
+
 		return $t;
 	}
 
@@ -68,17 +78,17 @@ class ImageLinkClass extends ExtensionClass
 	 *  This function is called just before the HTML is rendered to the client browser.
 	 */
 	{
+		// sometimes, the parser gets called more than once.
+		if ($this->done) return;
+		$this->done = true;
+		
 		// Some substitution to do?
 		if (empty($this->links)) return;
-		
+
 		foreach($this->links as $index => $link)
 		{
-			// our marker will have been escaped by the MW parser.
-			$l = htmlspecialchars($link);
-			// This is what our marker looks like without the escaping.
-			$p = "/\<\/?imagelink\>/si";
-			$r = preg_replace($p,"", $link);
-			$text = str_ireplace($l, $r, $text);
+			$p = "/_imagelink_".date('Ymd').$index."_\/imagelink_/si";
+			$text = preg_replace( $p, $link, $text );
 		}
 	
 		return true; // v1.3 fix.

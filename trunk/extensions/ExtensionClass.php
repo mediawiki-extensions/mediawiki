@@ -36,6 +36,8 @@ class ExtensionClass
 {
 	static $gObj; // singleton instance
 	
+	var $className;
+	
 	var $paramPassingStyle;
 	var $ext_mgwords;	
 	
@@ -72,7 +74,7 @@ class ExtensionClass
 		
 		// Let's first extract the callee's classname
 		$trace = debug_backtrace();
-		$cname = $trace[1]['class'];
+		$this->className= $cname = $trace[1]['class'];
 		// And let's retrieve the global object's name
 		$n = self::$gObj[$cname];
 		
@@ -84,19 +86,19 @@ class ExtensionClass
 			global $wgHooks;
 			$wgHooks['LanguageGetMagic'][] = array($this, 'getMagic');
 		}
+
+		// v1.3 feature
+		if ( in_array( 'hUpdateExtensionCredits', get_class_methods($this->className) ) )
+		{
+			global $wgHooks;
+			$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );				
+		}
 	}
 	public function getParamPassingStyle() { return $this->passingStyle; }
 	public function setup()
 	{
 		if (is_array($this->ext_mgwords))
 			$this->setupMagic();
-			
-		// v1.3 feature
-		if (method_exists($this, 'hUpdateExtensionCredits'))
-		{
-			global $wgHooks;
-			$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );				
-		}
 	}
 	// ================== MAGIC WORD HELPER FUNCTIONS ===========================
 	public function getMagic( &$magicwords, $langCode )

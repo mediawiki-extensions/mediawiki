@@ -12,10 +12,10 @@
  * DEPENDANCIES:
  * =============
  * 1) ExtensionClass (>v1.3)
- * 2) Hierarchical Namespace Permissions
+ * 2) Hierarchical Namespace Permissions extension
  *
  * Installation:
- * include("extensions/ViewsourceRestriction.php");
+ * include("extensions/ViewsourceRight.php");
  *
  * HISTORY:
  * ========
@@ -67,7 +67,9 @@ echo 'THRE ???';
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if ($el['name']==self::thisName)
-				$el['description'].=$result;	
+				$el['description'].=$result;
+				
+		return true; // continue hook-chain.
 	}
 	
 	public function hAlternateEditHook( &$ep )

@@ -41,7 +41,7 @@ function AuthorRestrictionSetup()
 	global $wgExtensionCredits;
 	$wgExtensionCredits['other'][] = array(
 		'name'    => "AuthorRestriction",
-		'version' => 'v1.3 $LastChangedRevision$',
+		'version' => 'v2.0 $LastChangedRevision$',
 		'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]',
 		'description' => 'ArticleEx extension status: '
 	);

@@ -156,12 +156,14 @@ class RawPage {
 		$mode = $this->mPrivateCache ? 'private' : 'public';
 		header( 'Cache-Control: '.$mode.', s-maxage='.$this->mSmaxage.', max-age='.$this->mMaxage );
 
-// JLD  from SVN MW 1.10		
+// JLD  from SVN MW 1.10
+		$text = $this->getRawText();		
 		if( !wfRunHooks( 'RawPageViewBeforeOutput', array( &$this, &$text ) ) ) {
 			wfDebug( __METHOD__ . ': RawPageViewBeforeOutput hook broke raw page output.' );
 		}
+		echo $text;		
 // JLD
-		echo $this->getRawText();
+
 		$wgOut->disable();
 	}
 

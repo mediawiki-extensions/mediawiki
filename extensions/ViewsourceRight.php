@@ -77,7 +77,7 @@ class ViewsourceRight extends ExtensionClass
 		global $wgUser;
 		
 		$title =  $ep->mTitle;
-		$new   = !$ep->mTitle->exists();		
+		$new   = !$title->exists();		
 		$save  =  $ep->save;
 		
 		if (!$new && !$save)
@@ -89,6 +89,8 @@ class ViewsourceRight extends ExtensionClass
 				
 				if (!$wgUser->isAllowedEx($ns,$titre,'viewsource'))
 				{
+					global $wgOut;
+				
 					$skin = $wgUser->getSkin();
 					$wgOut->setPageTitle( wfMsg( 'viewsource' ) );
 					$wgOut->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );

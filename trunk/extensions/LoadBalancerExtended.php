@@ -104,6 +104,8 @@ class LoadBalancerEx extends LoadBalancer
 			if ($el['name']==self::thisName)
 				$el['description'].=" \$wgDBtype is set to <b>{$wgDBtype}</b> and \$wgDBclass is set to a <b>{$wgDBclass}</b>.";	
 		}
+	
+		return true; // continue hook-chain.
 	}
 
 ###################################################################################

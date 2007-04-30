@@ -83,6 +83,8 @@ class ParserCacheControl extends ExtensionClass
 			if ($el['name']==self::thisName)
 				$el['description'].=" and \$parserMemc is set to a <b>{$pmc}</b> object";	
 		}
+		
+		return true; // continue hook-chain.
 	}
 	public function hArticleSave( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags )
 	{

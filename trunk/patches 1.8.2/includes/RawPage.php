@@ -102,7 +102,7 @@ class RawPage {
 # <file name="RawPage.php" />
 # <func name="view" />
 # User rights management included.
-
+/*
 		global $wgUser;
 		$ns    = $this->mTitle->getNamespace();
 		$titre = $this->mTitle->mDbkeyform;
@@ -113,6 +113,7 @@ class RawPage {
 				'Unsufficient access rights.' );
 			return;
 		}
+*/
 # </jld>
 
 		if( isset( $_SERVER['SCRIPT_URL'] ) ) {
@@ -154,6 +155,12 @@ class RawPage {
 		# allow the client to cache this for 24 hours
 		$mode = $this->mPrivateCache ? 'private' : 'public';
 		header( 'Cache-Control: '.$mode.', s-maxage='.$this->mSmaxage.', max-age='.$this->mMaxage );
+
+// JLD  from SVN MW 1.10		
+		if( !wfRunHooks( 'RawPageViewBeforeOutput', array( &$this, &$text ) ) ) {
+			wfDebug( __METHOD__ . ': RawPageViewBeforeOutput hook broke raw page output.' );
+		}
+// JLD
 		echo $this->getRawText();
 		$wgOut->disable();
 	}

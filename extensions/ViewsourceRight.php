@@ -115,6 +115,9 @@ class ViewsourceRight extends ExtensionClass
 		global $wgUser;
 		global $action;
 
+		// if the user can 'edit' the title, don't bother with 'viewsource' then.
+		if ($titre->userCan('edit') ) return;
+
 		if ($wgUser->isAllowedEx( $ns, $titre, 'viewsource'))
 		{
 			$content_actions['viewsource'] = array(

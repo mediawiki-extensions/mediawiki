@@ -238,7 +238,9 @@ class EditPage {
 # Enables the implementation of the 'viewsource' right
 		# If the article does not exists,
 		# is this thus 'new'
-		$new=!$this->mTitle->exists();
+		
+		
+		#$new=!$this->mTitle->exists();
 # </JLD>		
 
 		if ( ! wfRunHooks( 'AlternateEdit', array( &$this  ) ) )
@@ -274,6 +276,7 @@ class EditPage {
 */
 # Begin modification
         // If the user is saving a form, the "edit" right is out of scope.
+/*
 		if (!$new && !$this->save)
 		{
 			if ( ! $this->mTitle->userCanEdit() ) 
@@ -281,7 +284,6 @@ class EditPage {
 				$ns = $this->mTitle->getNamespace();
 				$titre = $this->mTitle->mDbkeyform;
 				
-				#if (!hnpClass::userCanX($ns,$titre,"viewsource"))
 				if (!$wgUser->isAllowedEx($ns,$titre,'viewsource'))
 				{
 					$skin = $wgUser->getSkin();
@@ -298,6 +300,7 @@ class EditPage {
 				return;
 			}
 		}
+*/
 # </JLD>
 
 		wfDebug( "$fname: Checking blocks\n" );
@@ -442,6 +445,7 @@ class EditPage {
 
 // <jld>
 // Now is a good time to check if the user has the "edit" right!
+/*
 		if ( !$this->mTitle->userCanEdit() )
 		{
 			wfDebug( "$fname: no create permission\n" );
@@ -449,7 +453,7 @@ class EditPage {
 			wfProfileOut( $fname );
 			return;
 		}
-
+*/
 // </jld>
 
 		if(!$this->mTitle->getArticleID() && ('initial' == $this->formtype || $this->firsttime )) { # new article

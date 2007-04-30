@@ -22,7 +22,7 @@
  *          v1.3 -- small fix regarding hook chaining
  *          v1.4 -- changed hook method for better parser caching integration.
  * ------------- -- changed to SVN management
- *          v1.5 -- Support for inter-wiki links
+ *          v1.5 -- Support for inter-wiki links (thanks to Andrew Culver)
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ImageLink',

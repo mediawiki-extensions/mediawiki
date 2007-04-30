@@ -98,24 +98,6 @@ class RawPage {
 	function view() {
 		global $wgOut, $wgScript;
 
-# <jld id="">
-# <file name="RawPage.php" />
-# <func name="view" />
-# User rights management included.
-/*
-		global $wgUser;
-		$ns    = $this->mTitle->getNamespace();
-		$titre = $this->mTitle->mDbkeyform;
-		
-		if (! $wgUser->isAllowedEx( $ns,$titre,"raw") )		
-		{
-			wfHttpError( 403, 'Forbidden',
-				'Unsufficient access rights.' );
-			return;
-		}
-*/
-# </jld>
-
 		if( isset( $_SERVER['SCRIPT_URL'] ) ) {
 			# Normally we use PHP_SELF to get the URL to the script
 			# as it was called, minus the query string.

@@ -53,7 +53,9 @@ class ViewsourceRight extends ExtensionClass
 		parent::setup();
 		
 		global $wgHooks;
-		$wgHooks['AlternateEdit'][] = array( &$this, 'hAlternateEditHook' );
+		$wgHooks['AlternateEdit'][]    = array( &$this, 'hAlternateEditHook' );
+		$wgHooks['SkinTemplateTabs'][] = array( &$this, 'hSkinTemplateTabs' );		
+		
 	}
 	public function hUpdateExtensionCredits( &$sp, &$extensionTypes )
 	// setup of this hook occurs in 'ExtensionClass' base class.
@@ -103,6 +105,25 @@ class ViewsourceRight extends ExtensionClass
 		// if the user can't 'edit',
 		// the normal processing flow will catch this.
 		return true;		
+	}
+
+	public function hSkinTemplateTabs( &$st , &$content_actions )
+	{
+		$ns    = $st->mTitle->getNamespace();
+		$titre = $st->mTitle->mDbkeyform;
+		
+		global $wgUser;
+		global $action;
+
+		if ($wgUser->isAllowedEx( $ns, $titre, 'viewsource'))
+		{
+			$content_actions['viewsource'] = array(
+				'class' => ($action == 'edit') ? 'selected' : false,
+				'text' => wfMsg('viewsource'),
+				'href' => $st->mTitle->getLocalUrl( $st->editUrlOptions() )
+			);
+		}
+
 	}
 
 } // end class definition.

@@ -88,6 +88,8 @@ function AuthorRestrictionSpecialPage()
 		if ($el['name']=='AuthorRestriction')
 			$el['description'].=$result;
 	}
+	
+	return true; // continue hook-chain.
 }
 
 ?>

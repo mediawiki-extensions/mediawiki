@@ -16,54 +16,78 @@
  *  - Corrected shortcoming when dealing with non-'read' actions.
  * v1.2
  *  - Changed loading order of extension in order to integrate better
- *    with other Namespace Permission type extensions.	
+ *    with other Namespace Permission type extensions.
+ * -- Moved to SVN management
+ * v2.0 - Integration with ArticleEx to get rid of patch in Article.php
+ *        (almost complete re-write)
  */
-$wgExtensionCredits['other'][] = array(
-    'name'    => "AuthorRestriction [http://www.bluecortex.com]",
-	'version' => '$LastChangedRevision$',
-	'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
-);
+
 $wgExtensionFunctions[] = 'AuthorRestrictionSetup';
-$wgHooks['userCan'][] =      'AuthorRestrictionUserCan';
+global $wgHooks;
+$wgHooks['SpecialVersionExtensionTypes'][] = 'AuthorRestrictionSpecialPage' ;
 
 function AuthorRestrictionSetup()
 {
-  global $wgMessageCache, $wgRestrictionTypes, $wgRestrictionLevels, $wgHooks ;
+	global $wgMessageCache, $wgRestrictionTypes, $wgRestrictionLevels, $wgHooks ;
 
-  $wgRestrictionTypes[] =      'read';
-  $wgMessageCache->addMessage( 'restriction-read' ,    'Read' );
-  $wgMessageCache->addMessage( 'protect-level-author', 'Authors Only' );
-  $wgRestrictionLevels[] =     'author';	
+	$wgRestrictionTypes[] =      'read';
+	$wgMessageCache->addMessage( 'restriction-read' ,    'Read' );
+	$wgMessageCache->addMessage( 'protect-level-author', 'Authors Only' );
+	$wgRestrictionLevels[] =     'author';
+  
+	global $wgHooks;
+	$wgHooks['ArticleViewExBegin'][] = 'AuthorRestrictionUserCan';
+    
+	global $wgExtensionCredits;
+	$wgExtensionCredits['other'][] = array(
+		'name'    => "AuthorRestriction",
+		'version' => 'v1.3 $LastChangedRevision$',
+		'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]',
+		'description' => 'ArticleEx extension status: '
+	);
 }
 
-function AuthorRestrictionUserCan( $title, $user, $action, $result )
+function AuthorRestrictionUserCan( &$article )
 {
-  # if the action is not related to a 'read' request, get out.
-  if ($action != 'read')
-  {
-   $result=null; #result is indetermined from our point of view.
+  global $action, $wgUser;
+  
+  # if the action is not related to a 'view' (i.e. 'read') request, get out.
+  if ($action != 'view')
    return true;  #don't stop processing the hook chain
-  }
 
   // Load any restriction associated with the 'read' right
-  $r = $title->getRestrictions('read');
-  $i = in_array('author', $r);
-  
+  $r = $article->mTitle->getRestrictions('read');
+    
   // If 'author' restriction is active, then check for 'author' right
-  if ( $i===true ) 
+  if ( in_array('author', $r) === true ) 
   {
     // Does the user belongs in the 'author' group?
-  	if ( !in_array('author', $user->getGroups()) )
-	  $result = false;
-	else 
-	  $result = true;
- 
-    #either case, stop processing the hook chain
-	# because we encountered a 'read' restriction
-	# and no other extension is assumed to handle these.
-    return false; 
+  	#if ( !in_array('author', $user->getGroups()) )
+  	if ( !in_array('author', $wgUser->getGroups()) )
+	{
+		global $wgOut;
+		$wgOut->setPageTitle( wfMsg( 'badaccess' ) );
+		$wgOut->addWikiText( wfMsg( 'badaccess-group0' ) );
+		$wgOut->output();
+		exit;
+	}	
   }
-  
   return true; # don't stop processing hook chain.
 }
+function AuthorRestrictionSpecialPage()
+{
+	global $wgExtensionCredits;
+
+	if (class_exists('ArticleExClass'))
+		$result = 'Found -- Author Restriction extension operational!';
+	else
+		$result = '<b>not found -- Author Restriction extension not operational!</b>';
+
+	foreach ( $wgExtensionCredits['other'] as $index => &$el )
+	{
+		if ($el['name']=='AuthorRestriction')
+			$el['description'].=$result;
+	}
+}
+
 ?>

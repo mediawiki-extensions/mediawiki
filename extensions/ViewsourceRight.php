@@ -59,9 +59,9 @@ class ViewsourceRight extends ExtensionClass
 	// setup of this hook occurs in 'ExtensionClass' base class.
 	{
 		global $wgExtensionCredits;
-echo 'THRE ???';
+
 		if (class_exists('hnpClass'))
-			$result = 'operational';
+			$result = '<b>operational</b>';
 		else
 			$result = '<b>not operational: missing Hierarchical Namespace Permissions extension </b>';
 		

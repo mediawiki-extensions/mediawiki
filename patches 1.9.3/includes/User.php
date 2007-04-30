@@ -1652,13 +1652,13 @@ class User {
 			// In the spirit of DWIM
 			return true;
 
-	// BEGIN PATCH
+	// JLD: BEGIN PATCH
 		return $this->isAllowedEx("~", "~" , $action);
-	// END PATCH
+	// JLD: END PATCH
 
 		return in_array( $action, $this->getRights() );
 	}
-	// BEGIN PATCH
+	// JLD: BEGIN PATCH
 	// For namespace dependant rights.	
 	function isAllowedEx( $ns, $pt, $action)
 	{
@@ -1688,7 +1688,7 @@ class User {
 	}
 	public function setSI( $si )
 	{ $this->addGroup( 'si_'.$si ); }
-	// END PATCH
+	// JLD: END PATCH
 
 	/**
 	 * Load a skin if it doesn't exist or return it

@@ -5,30 +5,11 @@
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
  *
- * Purpose:  Provides a toolkit for easier Mediawiki
- *           extension development.
- *
- * FEATURES:
- * - 'singleton' implementation suited for extensions that require single instance
- * - 'magic word' helper functionality
- * - limited pollution of global namespace
- *
- * Tested Compatibility: MW 1.8.2 (PHP5), 1.9.3
- *
  * History:
- * v1.0		Initial availability
- * v1.01    Small enhancement in processArgList
- * v1.02    Corrected minor bug
- * v1.1     Added function 'checkPageEditRestriction'
- * v1.2     Added 'getArticle' function
+ * ========
+ * - makeList: from SVN MW 1.10 rev 21466
  *
  */
-$wgExtensionCredits['other'][] = array( 
-	'name'    => '',
-	'version' => '$LastChangedRevision: 53 $',
-	'author'  => 'Jean-Lou Dupont', 
-	'url'     => 'http://www.bluecortex.com',
-);
 
 class DatabaseMysqlex extends DatabaseMysql
 {
@@ -41,13 +22,18 @@ class DatabaseMysqlex extends DatabaseMysql
 		
 		$wgExtensionCredits['other'][] = array(
 		    'name'        => self::thisName,
-			'version'     => '$LastChangedRevision: 53 $',
+			'version'     => '$LastChangedRevision$',
 			'author'      => 'Jean-Lou Dupont [http://www.bluecortex.com]',
 			'description' => 'Extends the standard DatabaseMysql class. '
 		);
 
 		global $wgHooks;
-		$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );				
+		$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );
+		
+		// WATCH THIS !
+		// the way 'LoadBalancer' creates this class of object,
+		// no need to send parameters across.
+		parent::__construct();			
 	}
 ###################################################################################
 /*
@@ -66,6 +52,63 @@ class DatabaseMysqlex extends DatabaseMysql
 				$el['description'].=" \$wgDBtype is set to <b>{$wgDBtype}</b> and \$wgDBclass is set to a <b>{$wgDBclass}</b>.";	
 		}
 	}
-	
+	private function fixConditions( &$cond )
+	{
+		
+	}
+
+###################################################################################
+/*
+    Overloaded Methods
+*/
+###################################################################################
+
+	function makeList( $a, $mode = LIST_COMMA ) 
+	{
+		/*
+		if ( !is_array( $a ) ) {
+			throw new DBUnexpectedError( $this, 'Database::makeList called with incorrect parameters' );
+		}
+
+		$first = true;
+		$list = '';
+		foreach ( $a as $field => $value ) {
+			if ( !$first ) {
+				if ( $mode == LIST_AND ) {
+					$list .= ' AND ';
+				} elseif($mode == LIST_OR) {
+					$list .= ' OR ';
+				} else {
+					$list .= ',';
+				}
+			} else {
+				$first = false;
+			}
+			if ( ($mode == LIST_AND || $mode == LIST_OR) && is_numeric( $field ) ) {
+				$list .= "($value)";
+			} elseif ( ($mode == LIST_SET) && is_numeric( $field ) ) {
+				$list .= "$value";
+			} elseif ( ($mode == LIST_AND || $mode == LIST_OR) && is_array ($value) ) {
+				$list .= $field." IN (".$this->makeList($value).") ";
+			} else {
+				if ( $mode == LIST_AND || $mode == LIST_OR || $mode == LIST_SET ) {
+					$list .= "$field = ";
+				}
+				$list .= $mode == LIST_NAMES ? $value : $this->addQuotes( $value );
+			}
+		}
+		return $list;
+		*/
+		
+		return parent::makeList( $a, $mode );
+	}
+
+
+	/* WATCH THIS! FIX THIS TOO?
+	function conditional( $cond, $trueVal, $falseVal ) {
+		return " IF($cond, $trueVal, $falseVal) ";
+	}
+	*/
+
 } // end class definition.
 ?>

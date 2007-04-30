@@ -21,6 +21,8 @@
  * v1.02    Corrected minor bug
  * v1.1     Added function 'checkPageEditRestriction'
  * v1.2     Added 'getArticle' function
+ * ----     Moved to SVN management
+ * v1.3     Added wgExtensionCredits updating upon Special:Version viewing
  *
  */
 $wgExtensionCredits['other'][] = array( 
@@ -87,7 +89,14 @@ class ExtensionClass
 	public function setup()
 	{
 		if (is_array($this->ext_mgwords))
-			$this->setupMagic(); 
+			$this->setupMagic();
+			
+		// v1.3 feature
+		if (method_exists($this, 'hUpdateExtensionCredits'))
+		{
+			global $wgHooks;
+			$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );				
+		}
 	}
 	// ================== MAGIC WORD HELPER FUNCTIONS ===========================
 	public function getMagic( &$magicwords, $langCode )

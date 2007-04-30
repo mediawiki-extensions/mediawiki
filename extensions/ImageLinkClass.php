@@ -68,7 +68,7 @@ class ImageLinkClass extends ExtensionClass
 		$t = "_imagelink_".date('Ymd').count($this->links)."_/imagelink_";
 				
 		// let's put an easy marker that we can 'safely' find once we need to render the HTML
-		$this->links[] = "<a href='${tURL}'><img src='${iURL}' $alt $width $height $border /></a>";
+		$this->links[] = "<a class='plainlinks' href='${tURL}'><img src='${iURL}' $alt $width $height $border /></a>";
 
 		return $t;
 	}

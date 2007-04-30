@@ -118,7 +118,7 @@ class LoadBalancerEx extends LoadBalancer
 		if( !is_array( $server ) ) {
 			throw new MWException( 'You must update your load-balancing configuration. See DefaultSettings.php entry for $wgDBservers.' );
 		}
-
+echo 'here  ';
 		extract( $server );
 		
 		// ************** BEGIN PATCH ******************

@@ -1,6 +1,6 @@
 <?php
 /*
- * ViewsourceRight.php
+ * RawRight.php
  *
  * @author Jean-Lou Dupont -- www.bluecortex.com
  * @package MediaWiki
@@ -8,6 +8,12 @@
  * 
  * <b>Purpose:</b>  This extension adds a 'viewsource' right.
  * Only the users with the 'viewsource' permission can 'view' an article's source wikitext.
+ *
+ * FEATURES:
+ * =========
+ * 1) Displays operational information in 'Special:Version' page
+ * 2) Integrates with Hierarchical Namespace Permissions extension to provide
+ *    'raw' right.
  *
  * DEPENDANCIES:
  * =============
@@ -68,11 +74,12 @@ class RawRight extends ExtensionClass
 			$hresult = '<b>Hierarchical Namespace Permissions extension <i>not</i> operational</b>';
 
 		// check directly in the source if the hook is present 
-		$rawpage = @file_get_contents('../includes/RawPage.php');
-		if (!empty($rawpage))
-			$r = preg_match('/RawPageViewBeforeOutput/',$rawpage);
+		$rawpage = @file_get_contents('includes/RawPage.php');
 		
-		if ( $r>=1 )
+		if (!empty($rawpage))
+			$r = preg_match('/RawPageViewBeforeOutput/si',$rawpage);
+		
+		if ( $r==1 )
 			$rresult = '<b>RawPageViewBeforeOutput hook operational</b>';
 		else
 			$rresult = '<b>RawPageViewBeforeOutput hook <i>not</i> operational</b>';
@@ -88,13 +95,13 @@ class RawRight extends ExtensionClass
 	{
 		global $wgUser;
 		
-		$ns    = $this->mTitle->getNamespace();
-		$titre = $this->mTitle->mDbkeyform;
+		$ns    = $rawpage->mTitle->getNamespace();
+		$titre = $rawpage->mTitle->mDbkeyform;
 		
 		if (! $wgUser->isAllowedEx( $ns,$titre,"raw") )		
 		{
-			wfHttpError( 403, 'Forbidden',
-				'Unsufficient access rights.' );
+			$text = '';
+			wfHttpError( 403, 'Forbidden', 'Unsufficient access rights.' );
 			return false;
 		}
 		

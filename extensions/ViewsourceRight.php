@@ -35,13 +35,9 @@ class ViewsourceRight extends ExtensionClass
 	
 	// Our class defines magic words: tell it to our helper class.
 	public function ViewsourceRight() 
-	{ parent::__construct( ); }
+	{ 
+		parent::__construct( ); 
 	
-	public function setup()
-	{
-		global $wgHooks;
-		$wgHooks['AlternateEdit'][] = array( &$this, 'hAlternateEditHook' );
-
 		global $wgExtensionCredits;
 		$wgExtensionCredits[self::thisType][] = array( 
 			'name'    => self::thisName, 
@@ -51,11 +47,19 @@ class ViewsourceRight extends ExtensionClass
 			'description' => "Status: "
 		);
 	}
+	
+	public function setup()
+	{
+		parent::setup();
+		
+		global $wgHooks;
+		$wgHooks['AlternateEdit'][] = array( &$this, 'hAlternateEditHook' );
+	}
 	public function hUpdateExtensionCredits( &$sp, &$extensionTypes )
 	// setup of this hook occurs in 'ExtensionClass' base class.
 	{
 		global $wgExtensionCredits;
-		
+echo 'THRE ???';
 		if (class_exists('hnpClass'))
 			$result = 'operational';
 		else

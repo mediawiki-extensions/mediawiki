@@ -16,7 +16,7 @@
  * - Parser Cache disabling upon article updating/creation (default behavior)
  *
  * DEPENDANCIES:
- * - ExtensionClass
+ * - ExtensionClass (>v1.3)
  *
  * Tested Compatibility:  MW 1.8.2, 1.9.3
  *
@@ -67,9 +67,10 @@ class ParserCacheControl extends ExtensionClass
 	}
 	public function setup()
 	{
+		parent::setup();
+		
 		global $wgHooks;
 		$wgHooks['ArticleSave'][] =                  array( &$this, 'hArticleSave' );	
-		$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );
 	}
 	public function hUpdateExtensionCredits( &$sp, &$extensionTypes )
 	{

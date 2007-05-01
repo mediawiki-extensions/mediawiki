@@ -23,11 +23,12 @@
  * v1.2     Added 'getArticle' function
  * ----     Moved to SVN management
  * v1.3     Added wgExtensionCredits updating upon Special:Version viewing
+ * v1.4     Fixed broken singleton functionality
  *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ExtensionClass',
-	'version' => '$LastChangedRevision$',
+	'version' => 'v1.4 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -60,7 +61,7 @@ class ExtensionClass
 		if (!isset(self::$gObj[$cname]) )
 			self::$gObj[$cname] = $globalObjName; 
 				
-		if ( !isset( $GLOBALS[$cname] ) ) 
+		if ( !isset( $GLOBALS[self::$gObj[$cname]] ) )
 			$GLOBALS[$globalObjName] = new $cname( $mwlist, $passingStyle );
 			
 		return $GLOBALS[self::$gObj[$cname]];

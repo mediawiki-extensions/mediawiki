@@ -59,6 +59,9 @@ class LoadBalancerEx extends LoadBalancer
 {
 	const thisName = 'LoadBalancerEx';
 	const thisType = 'other';  // must use this type in order to display useful info in Special:Version
+
+	public static function &singleton( )
+	{ return parent::singleton( ); }
 	
 	public function LoadBalancerEx()
 	{

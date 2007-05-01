@@ -24,19 +24,14 @@
 
 UserEx::singleton();
 
-// Required for proper timing with MW class loading.
-// Note that we are pushing the initialisation of this class at the top of the stack. 
-// Also note that we are not implementing 'stubbing'.
-array_unshift( 	$wgExtensionFunctions, 
-				create_function('','$GLOBALS["wgUser"] = UserClassG2::loadFromSession();') 
-			);
-
 /*  SUPERCLASS DEFINITION
    ***********************/
 class UserEx extends ExtensionClass
 {
 	const thisName = 'UserClassExtendedG2';
 	const thisType = 'other';  // must use this type in order to display useful info in Special:Version
+
+	var $nRights;
 
 	public static function &singleton( )
 	{ return parent::singleton( ); }
@@ -50,6 +45,8 @@ class UserEx extends ExtensionClass
 		'author'      => 'Jean-Lou Dupont [http://www.bluecortex.com]',
 		'description' => 'Status: '
 		);
+
+		$this->nRights = array();
 
 		return parent::__construct();	
 	}
@@ -65,9 +62,9 @@ class UserEx extends ExtensionClass
 	{
 		// first check if the proper rights management class is in place.
 		if ( $hr = class_exists('hnpClass'))
-			$hresult = '<b>Hierarchical Namespace Permissions extension operational</b>';
+			$hresult = 'Hierarchical Namespace Permissions extension <b>operational</b>';
 		else
-			$hresult = '<b>Hierarchical Namespace Permissions extension <i>not</i> operational</b>';
+			$hresult = 'Hierarchical Namespace Permissions extension <b><i>not</i> operational</b>';
 		
 		// check directly in the source if the hook is present 
 		$userclass = @file_get_contents('includes/user.php');
@@ -82,21 +79,29 @@ class UserEx extends ExtensionClass
 		
 		$status = (($rr==1) && ($hr==true)) ? "<b>operational</b>":"<b><i>not</i> operational</b>";
 		
+		$rights = $this->getRights();
+		
+		$c = count($rights);
+		foreach( $rights as $index => $r )
+		{
+			$rl .= " $r";
+			if ($index != ($c-1) )
+				$rl.=",";
+ 		}
+		
+		global $wgExtensionCredits;
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 		{
 			if ($el['name']==self::thisName)
-				$el['description'].= $status." ".$hresult." and ".$rresult;	
+				$el['description'].= $status." (".$hresult." , ".$rresult.") (Extended rights = { ".$rl." }";	
 		}
 	
 		return true; // continue hook-chain.
 	}
 
-
-###################################################################################
-/*
-    New Methods
-*/
-###################################################################################
+	// Interface to add new 'namespace' level rights.
+	public function addRight( $right ) { $this->nRights[] = $right; }
+	public function getRights() { return array_merge( self::$eRights, $this->nRights );	}
 
 	// Global rights found in MW v1.8.2
 	static $gRights = array( 
@@ -146,23 +151,40 @@ class UserEx extends ExtensionClass
 'unwatchedpages',
 	);
 	
-	public function hUserCanEx( $action )
-	{
-		
-	}
-	
-	// For namespace dependant rights.	
-	function isAllowedEx( $ns, $pt, $action)
+	public function hUserCanEx( &$user, $action )
 	{
 		// Check if the extension
 		// "Hierarchical Namespace Permission" is loaded
 		// If not, continue normal processing.
 		if ( !class_exists('hnpClass') )
 			return true;
+		
+		// check if the required action/right can be extended.
+		$r = in_array( $action, self::$eRights);
+		
+		if ($r == true)
+			return $this->isAllowedEx( $user, $action );
+		else
+			return $this->isAllowed( $user, $action );
+	}
+	
+	// For namespace dependant rights.	
+	function isAllowedEx( &$user, $action )
+	{
+		// Get the required namespace level information.
+		global $wgTitle;
+		$ns = $wgTitle->getNamespace();
+		$pt = $wgTitle->getPrefixedDBkey();
 
 		// If the extension is loaded, reformat the "action query"
 		// so that HNP understands it.
-		return hnpClass::userCanInternal($this, $ns, $pt, $action);
+		return hnpClass::userCanInternal($user, $ns, $pt, $action);
+	}
+
+	function isAllowed( &$user, $action )
+	// Namespace independant query.
+	{
+		return hnpClass::userCanInternal($user, "~", "~", $action);
 	}
 
 	public function getSI() 

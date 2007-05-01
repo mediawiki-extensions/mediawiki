@@ -1355,43 +1355,12 @@ class User {
             return true;
 
 	// JLD: BEGIN PATCH
-		return $this->isAllowedEx("~", "~" , $action);
+		return wfRunHooks('UserCanEx', array( &$this, $action) );
 	// JLD: END PATCH
 	
         $this->loadFromDatabase();
         return in_array( $action , $this->mRights );
     }
-	// JLD: BEGIN PATCH
-	// For namespace dependant rights.	
-	function isAllowedEx( $ns, $pt, $action)
-	{
-		// Check if the extension
-		// "Hierarchical Namespace Permission" is loaded
-		// If not, continue normal processing.
-		if ( !class_exists('hnpClass') )
-			return true;
-
-		// If the extension is loaded, reformat the "action query"
-		// so that HNP understands it.
-		return hnpClass::userCanInternal($this, $ns, $pt, $action);
-	}
-	public function getSI() 
-	{ 
-		$g = $this->getGroups();
-		
-		$r = null; // assume the worst.
-		
-		// scan through the list of groups
-		// for an instance beginning with 'si_'
-		foreach( $g as $el )
-			if ( substr($el, 0, 3) === 'si_' )
-				$r = substr( $el, 3 );
-			
-		return $r; 
-	}
-	public function setSI( $si )
-	{ $this->addGroup( 'si_'.$si ); }
-	// JLD: END PATCH
 	
     /**
      * Load a skin if it doesn't exist or return it

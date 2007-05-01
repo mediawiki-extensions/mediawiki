@@ -12,7 +12,7 @@
  *
  * DEPENDANCIES:
  * =============
- *
+ * 1) ExtensionClass (>v1.3)
  *
  * FEATURES:
  * =========
@@ -22,7 +22,7 @@
  * v1.0
  */
 
-UserClassG2::singleton();
+UserEx::singleton();
 
 // Required for proper timing with MW class loading.
 // Note that we are pushing the initialisation of this class at the top of the stack. 
@@ -45,9 +45,10 @@ class UserEx extends ExtensionClass
 	{ 
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array(
-	    'name'    => self::thisName,
-		'version' => '$LastChangedRevision$',
-		'author'  => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
+	    'name'        => self::thisName,
+		'version'     => 'v1.0 $LastChangedRevision$',
+		'author'      => 'Jean-Lou Dupont [http://www.bluecortex.com]',
+		'description' => 'Status: '
 		);
 
 		return parent::__construct();	
@@ -62,21 +63,29 @@ class UserEx extends ExtensionClass
 	
 	public function hUpdateExtensionCredits( &$sp, &$extensionTypes )
 	{
+		// first check if the proper rights management class is in place.
+		if ( $hr = class_exists('hnpClass'))
+			$hresult = '<b>Hierarchical Namespace Permissions extension operational</b>';
+		else
+			$hresult = '<b>Hierarchical Namespace Permissions extension <i>not</i> operational</b>';
+		
 		// check directly in the source if the hook is present 
 		$userclass = @file_get_contents('includes/user.php');
 		
 		if (!empty($userclass))
-			$r = preg_match('/UserCanEx/si',$userclass);
+			$rr = preg_match('/UserCanEx/si',$userclass);
 		
-		if ( $r==1 )
+		if ( $rr==1 )
 			$rresult = '<b>UserCanEx hook operational</b>';
 		else
 			$rresult = '<b>UserCanEx hook <i>not</i> operational</b>';
 		
+		$status = (($rr==1) && ($hr==true)) ? "<b>operational</b>":"<b><i>not</i> operational</b>";
+		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 		{
 			if ($el['name']==self::thisName)
-				$el['description'].= $rresult;	
+				$el['description'].= $status." ".$hresult." and ".$rresult;	
 		}
 	
 		return true; // continue hook-chain.
@@ -88,27 +97,60 @@ class UserEx extends ExtensionClass
     New Methods
 */
 ###################################################################################
-	static $gRights = array(
+
+	// Global rights found in MW v1.8.2
+	static $gRights = array( 
+'read', 
+'delete', 
+'patrol', 
+'createpage', 
+'createtalk',
+'protect',
+'block',
+'rollback',	 
+'ipblock-exempt',
+'proxyunbannable',
+'bot',
+'createaccount',
+'autoconfirmed',
+'trackback',
+'minoredit',
+'reupload',
+'reupload-shared',
+'editinterface',
+'hiderevision',
+'deleterevision',
+'move',
+'importupload',
+'siteadmin',
+'unwatchedpages',
+'upload_by_url',
+'upload',
 	); 
+
+	// Extensible rights i.e. rights that can be extended to be
+	// 'scopeable' at the namespace level. 
+	static $eRights = array(
+'read', 
+'delete', 
+'patrol', 
+'createpage', 
+'createtalk',
+'protect',
+'rollback',	 
+'trackback',
+'minoredit',
+'hiderevision',
+'deleterevision',
+'move',
+'unwatchedpages',
+	);
 	
-	public function hUserCanEx( $action, )
+	public function hUserCanEx( $action )
 	{
 		
 	}
 	
-	// For namespace independant rights.
-	// This function overrides the parent User::isAllowed function.
-	// ------------------------------------------------------------
-	function isAllowed( $action='read'  )
-	{
-		// Sometimes "isAllowed" is called
-		// with an empty $action variable.
-		// This happens for example in "SpecialPage.php".
-		if ($action=='')
-			return true;
-			
-		return $this->isAllowedEx("~", "~" , $action);
-	}
 	// For namespace dependant rights.	
 	function isAllowedEx( $ns, $pt, $action)
 	{

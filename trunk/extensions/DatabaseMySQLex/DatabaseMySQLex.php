@@ -7,7 +7,7 @@
  *
  * History:
  * ========
- *
+ * 
  */
 
 class DatabaseMySQLex extends DatabaseMysql

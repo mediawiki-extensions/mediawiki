@@ -1,0 +1,25 @@
+!SESSION 2007-04-11 14:37:05.265 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.5.0_11
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_CA
+Framework arguments:  C:\Program Files\Aptana\aptana.exe #VM Runtime Configuration File
+Command-line arguments:  -data C:\Documents and Settings\Jean-Lou Dupont\aptana\workspace\mediawiki -os win32 -ws win32 -arch x86 C:\Program Files\Aptana\aptana.exe #VM Runtime Configuration File
+
+!ENTRY com.aptana.ide.rcp.main 1 0 2007-04-11 14:37:07.421
+!MESSAGE (Build 0.2.7.13425) dotAptanaFile 'c:\program files\aptana\.aptana'
+
+!ENTRY com.aptana.ide.rcp.main 1 0 2007-04-11 14:37:07.468
+!MESSAGE (Build 0.2.7.13425) Bound to port 9980
+
+!ENTRY com.aptana.ide.core.ui 1 0 2007-04-11 14:37:17.46
+!MESSAGE (Build 0.2.7.13425) Connected to database aptanaDB 
+
+!ENTRY com.aptana.ide.core.ui 1 0 2007-04-11 14:37:26.15
+!MESSAGE (Build 0.2.7.13425) current Aptana build number
+
+!ENTRY com.aptana.ide.scripting 1 0 2007-04-11 14:37:29.437
+!MESSAGE (Build 0.2.7.13425) Scripting server started on port 9000
+
+!ENTRY com.aptana.ide.core.ui 1 0 2007-04-11 14:37:46.843
+!MESSAGE (Build 0.2.7.13425) Database shut down normally 

@@ -98,7 +98,7 @@ class RawRight extends ExtensionClass
 		$ns    = $rawpage->mTitle->getNamespace();
 		$titre = $rawpage->mTitle->mDbkeyform;
 		
-		if (! $wgUser->isAllowedEx( $ns,$titre,"raw") )		
+		if (! $wgUser->isAllowed( "raw") )		
 		{
 			$text = '';
 			wfHttpError( 403, 'Forbidden', 'Unsufficient access rights.' );

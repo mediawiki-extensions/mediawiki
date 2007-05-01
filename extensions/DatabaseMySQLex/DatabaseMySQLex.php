@@ -7,7 +7,6 @@
  *
  * History:
  * ========
- * - makeList: from SVN MW 1.10 rev 21466
  *
  */
 
@@ -41,10 +40,8 @@ class DatabaseMySQLex extends DatabaseMysql
 		if (!isset( $wgDBclass)) return;
 			
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
-		{
 			if ($el['name']==self::thisName)
 				$el['description'].=" \$wgDBtype is set to <b>{$wgDBtype}</b> and \$wgDBclass is set to a <b>{$wgDBclass}</b>.";	
-		}
 	}
 
 ###################################################################################

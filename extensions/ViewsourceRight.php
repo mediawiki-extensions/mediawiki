@@ -89,7 +89,7 @@ class ViewsourceRight extends ExtensionClass
 				$ns    = $title->getNamespace();
 				$titre = $title->mDbkeyform;
 				
-				if (!$wgUser->isAllowedEx($ns,$titre,'viewsource'))
+				if (!$wgUser->isAllowed('viewsource'))
 				{
 					global $wgOut;
 				
@@ -118,7 +118,7 @@ class ViewsourceRight extends ExtensionClass
 		// if the user can 'edit' the title, don't bother with 'viewsource' then.
 		if ($st->mTitle->userCan('edit') ) return;
 
-		if ($wgUser->isAllowedEx( $ns, $titre, 'viewsource'))
+		if ($wgUser->isAllowed( 'viewsource') )
 		{
 			$content_actions['viewsource'] = array(
 				'class' => ($action == 'edit') ? 'selected' : false,

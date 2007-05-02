@@ -5,6 +5,57 @@
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
  *
+ * IMPLEMENTATIONS NOTES:
+   
+	Article 'pageData' --> uses 'selectRow' && namespace translation required
+	Article 'insertOn' --> uses 'insert' &&  namespace translation required
+	Article 'updateRedirectOn' --> uses 'replace' && namespace translation required
+  	Article::delete --> uses 'selectField' && namespace translation required
+	Article::getLastNAuthors --> uses 'select', 'fetchObject' && namespace translation required
+  	Article::doDeleteArticle --> uses 'insertSelect' for archiving && namespace translation required
+	Article::doDeleteArticle --> uses 'delete' for updating recentchanges && namespace translation required
+	Article::info --> 'selectField' && n t r
+	Article::getUsedTemplates --> 'select', 'fetchObject'  && n t r
+   Article Delete:
+   
+   
+   Article Update:
+
+	LinksUpdate::queueRecursiveJobs --> 'select', 'fetchObject' && n t r
+	LinksUpdate::invalidatePages -->  'select', 'fetchObject', 'update' && n t r
+	LinksUpdate::getLinkInsertions --> 
+	LinksUpdate::incrTableUpdate --> 'delete', 'insert' && n t r
+	LinksUpdate::getExistingLinks --> 'fetchObj' && n t r 
+	LinksUpdate::getExistingTemplates
+	
+	
+	LogPage::saveContent --> 'insert' && n t r
+
+	RecentChange::save --> uses 'insert'  && namespace translation required
+	RecentChange::notifyEdit --> uses RecentChange::save
+	RecentChange::notifyNew  --> uses RecentChange::save
+	RecentChange::notifyMove --> uses RecentChange::save
+	RecentChange::notifyLog  --> uses RecentChange::save
+	RecentChange::loadFromCurRow --> static function used ...
+
+	Revision 'fetchFromConds' --> uses 'select' && namespace translation required
+	
+	
+	Revision 'newFromTitle' --> namespace translation required
+	Revision 'loadFromTitle'--> namespace translation required
+	Revision 'loadFromTimestamp'--> namespace translation required
+	Revision 'fetchAllRevisions'--> namespace translation required
+	Revision 'fetchRevision'--> namespace translation required
+	
+	Revision 'getTitle': uses 'selectRow' and namespace translation required 
+
+	Title::pageCond --> namespace dependancy
+	Title::invalidateCache --> 'update' && n t r
+
+ * TODO
+ * ====
+ * 1) add protection against use with unsupported MW version
+ * 
  * History:
  * ========
  * v1.0

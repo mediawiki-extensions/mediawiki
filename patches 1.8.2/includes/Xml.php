@@ -90,7 +90,7 @@ class Xml {
 # <file name="Xml.php" />
 # <func name="&namespaceSelector" />
 # Restrict the ability to browse as per user rights
-			if (! $wgUser->isAllowed( "browse" ) continue;
+			if (! $wgUser->isAllowed( "browse" ) ) continue;
 			#if (! hnpClass::userCanX($index,"~","browse" ) )  continue;
 # </JLD>
 

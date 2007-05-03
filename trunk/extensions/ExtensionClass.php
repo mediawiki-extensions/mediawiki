@@ -24,11 +24,15 @@
  * ----     Moved to SVN management
  * v1.3     Added wgExtensionCredits updating upon Special:Version viewing
  * v1.4     Fixed broken singleton functionality
+ * v1.5		Added automatic registration of hook functions based
+ *          on the definition of an handler in the derived class
+ *          (e.g. if handler 'hArticleSave' exists, then the appropriate
+ *           'ArticleSave' hook is registered)
  *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ExtensionClass',
-	'version' => 'v1.4 $LastChangedRevision$',
+	'version' => 'v1.5 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -70,7 +74,9 @@ class ExtensionClass
 	/*
 	 *  $mgwords: array of 'magic words' to subscribe to *if* required.
 	 */
-	{	
+	{
+		global $wgHooks;
+			
 		$this->paramPassingStyle = $passingStyle;
 		
 		// Let's first extract the callee's classname
@@ -83,17 +89,17 @@ class ExtensionClass
 		$wgExtensionFunctions[] = create_function('',"global $".$n."; $".$n."->setup();");
 		$this->ext_mgwords = $mgwords;		
 		if (is_array($this->ext_mgwords) )
-		{ 
-			global $wgHooks;
 			$wgHooks['LanguageGetMagic'][] = array($this, 'getMagic');
-		}
+
 
 		// v1.3 feature
 		if ( in_array( 'hUpdateExtensionCredits', get_class_methods($this->className) ) )
-		{
-			global $wgHooks;
 			$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );				
-		}
+
+		// v1.5 feature
+		foreach (self::$hookList as $index => $hookName)
+			if ( in_array( $hookName), get_class_methods('h'.$hookName) )
+				$wgHooks[$hookName][] = array( &$this, 'h'.$hookName );				
 	}
 	public function getParamPassingStyle() { return $this->passingStyle; }
 	public function setup()
@@ -186,5 +192,152 @@ class ExtensionClass
 
 		return $article;	
 	}
+	
+	function isSysop( $user = null ) // v1.5 feature
+	{
+		if ($user == null)
+		{
+			global $wgUser;
+			$user = $wgUser	
+		}	
+	
+		return in_array( $user->getGroups(), 'sysop' );
+	}
 }
+
+// List up-to-date with MW 1.10 SVN 21828
+static $hookList = array(
+'ArticlePageDataBefore', 
+'ArticlePageDataAfter', 
+'ArticleAfterFetchContent',
+'ArticleViewRedirect', 
+'ArticleViewHeader',
+'ArticlePurge',
+'ArticleSave', 
+'ArticleInsertComplete',
+'ArticleSaveComplete',
+'MarkPatrolled', 
+'MarkPatrolledComplete', 
+'WatchArticle', 
+'WatchArticleComplete',
+'UnwatchArticle', 
+'UnwatchArticleComplete', 
+'ArticleProtect', 
+'ArticleProtectComplete',
+'ArticleDelete', 
+'ArticleDeleteComplete', 
+'ArticleEditUpdatesDeleteFromRecentchanges',
+'ArticleEditUpdateNewTalk',
+'DisplayOldSubtitle',
+'IsFileCacheable',
+'CategoryPageView',
+'FetchChangesList',
+'DiffViewHeader',
+'AlternateEdit', 
+'EditFormPreloadText', 
+'EditPage::attemptSave', 
+'EditFilter', 
+'EditPage::showEditForm:initial',
+'EditPage::showEditForm:fields',
+'SiteNoticeBefore',
+'SiteNoticeAfter',
+'FileUpload',
+'BadImage', 
+'MagicWordMagicWords', 
+'MagicWordwgVariableIDs',
+'MathAfterTexvc',
+'MessagesPreLoad',
+'LoadAllMessages',
+'OutputPageParserOutput',
+'OutputPageBeforeHTML',
+'AjaxAddScript', 
+'PageHistoryBeforeList',
+'PageHistoryLineEnding',
+'ParserClearState', 
+'ParserBeforeStrip',
+'ParserAfterStrip',
+'ParserBeforeTidy',
+'ParserAfterTidy',
+'ParserBeforeStrip',
+'ParserAfterStrip', 
+'ParserBeforeStrip',
+'ParserAfterStrip', 
+'ParserBeforeInternalParse',
+'InternalParseBeforeLinks', 
+'ParserGetVariableValueVarCache',
+'ParserGetVariableValueTs', 
+'ParserGetVariableValueSwitch',
+'IsTrustedProxy',
+'wgQueryPages', 
+'RawPageViewBeforeOutput', 
+'RecentChange_save',
+'SearchUpdate', 
+'AuthPluginSetup', 
+'LogPageValidTypes',
+'LogPageLogName', 
+'LogPageLogHeader', 
+'LogPageActionText',
+'SkinTemplateTabs', 
+'BeforePageDisplay', 
+'SkinTemplateOutputPageBeforeExec', 
+'PersonalUrls', 
+'SkinTemplatePreventOtherActiveTabs',
+'SkinTemplateTabs', 
+'SkinTemplateBuildContentActionUrlsAfterSpecialPage',
+'SkinTemplateContentActions', 
+'SkinTemplateBuildNavUrlsNav_urlsAfterPermalink',
+'SkinTemplateSetupPageCss',
+'BlockIp', 
+'BlockIpComplete', 
+'BookInformation', 
+'SpecialContributionsBeforeMainOutput',
+'EmailUser', 
+'EmailUserComplete',
+'SpecialMovepageAfterMove',
+'SpecialMovepageAfterMove',
+'SpecialPage_initList',
+'SpecialPageExecuteBeforeHeader',
+'SpecialPageExecuteBeforePage',
+'SpecialPageExecuteAfterPage',
+'PreferencesUserInformationPanel',
+'SpecialSearchNogomatch',
+'ArticleUndelete',
+'UndeleteShowRevision',
+'UploadForm:BeforeProcessing',
+'UploadVerification',
+'UploadComplete',
+'UploadForm:initial',
+'AddNewAccount',
+'AbortNewAccount',
+'UserLoginComplete',
+'UserCreateForm',
+'UserLoginForm',
+'UserLogout',
+'UserLogoutComplete',
+'UserRights',
+/*'SpecialVersionExtensionTypes',*/ // reserved special treatment
+'UnwatchArticle',
+'AutoAuthenticate', 
+'GetFullURL',
+'GetLocalURL',
+'GetInternalURL',
+'userCan',
+'TitleMoveComplete',
+'isValidPassword',
+'UserToggles',
+'GetBlockedStatus',
+'PingLimiter',
+'UserRetrieveNewTalks',
+'UserClearNewTalkNotification',
+'PageRenderingHash',
+'EmailConfirmed',
+'ArticleFromTitle',
+'CustomEditor',
+'UnknownAction',
+/*'LanguageGetMagic', */ // reserved a special treatment in this class 
+'LangugeGetSpecialPageAliases',
+'MonoBookTemplateToolboxEnd',
+'SkinTemplateSetupPageCss',
+'SkinTemplatePreventOtherActiveTabs'
+);
 ?>

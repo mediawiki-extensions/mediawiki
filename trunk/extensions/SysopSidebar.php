@@ -34,7 +34,7 @@ SysopSidebarClass::singleton();
 class SysopSidebarClass extends ExtensionClass
 {
 	// constants.
-	const thisName = 'SysopToolBox';
+	const thisName = 'SysopSidebar';
 	const thisType = 'other';  // must use this type in order to display useful info in Special:Version
 	const pageName = 'MediaWiki:Sidebar/Sysop';
 
@@ -51,7 +51,7 @@ class SysopSidebarClass extends ExtensionClass
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
 			'name'        => self::thisName, 
-			'version'     => 'v1.0 $LastChangedRevision: 53 $',
+			'version'     => 'v1.0 $LastChangedRevision$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
 			'description' => 'MediaWiki:Sidebar/Sysop page '

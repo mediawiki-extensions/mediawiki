@@ -1,12 +1,12 @@
 <?php
 /*
- * SysopToolBox.php
+ * SysopSidebar.php
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
  *
  * Purpose:  Provides a means of adding page links to the
- * ========  'toolbox' for the 'sysop' users.
+ * ========  'sidebar' for the 'sysop' users.
  *           The page links are configured through:
  *           'MediaWiki:Sidebar/Sysop' 
  *
@@ -29,9 +29,9 @@
  *
  */
 
-SysopToolBoxClass::singleton();
+SysopSidebarClass::singleton();
 
-class SysopToolBoxClass extends ExtensionClass
+class SysopSidebarClass extends ExtensionClass
 {
 	// constants.
 	const thisName = 'SysopToolBox';
@@ -44,7 +44,7 @@ class SysopToolBoxClass extends ExtensionClass
 	public static function &singleton( ) // required by ExtensionClass
 	{ return parent::singleton( ); }
 	
-	function SysopToolBoxClass()
+	function SysopSidebarClass()
 	{
 		parent::__construct(); 			// required by ExtensionClass
 
@@ -61,50 +61,35 @@ class SysopToolBoxClass extends ExtensionClass
 	}
 	public function setup() { parent::setup(); } // nothing special to do in this case.
 
-	public function hSkinTemplateOutputPageBeforeExec( $skin, &$tpl )
+	public function hSkinTemplateOutputPageBeforeExec( &$skin, &$tpl )
 	{
 		// make sure we are dealing with a 'sysop' user.
 		if (!$this->isSysop()) return true; // continue hook-chain
 		
 		$a = $this->getArticle(self::pageName);
 		if (empty($a))
-		{ 
+		{
 			$this->foundPage = false;
 			return true;
 		}
 		else $this->foundPage = true;
 		
-		$text = $a->getContents();
+		$text = $a->getContent();
 		$bar  = $this->processSidebarText( $text );
 		
 		// get current sidebar text
 		$cbar = $tpl->data['sidebar'];
-		
+
 		// add our own here
-		$tpl->set( 'sidebar', $cbar.$bar );		
+		$tpl->set( 'sidebar', array_merge($cbar, $bar) );		
 		
 		return true;
 	}
-	public function hUpdateExtensionCredits( &$sp, &$extensionTypes )
-	// setup of this hook occurs in 'ExtensionClass' base class.
-	{
-		global $wgExtensionCredits;
-
-		if ($this->foundPage)
-			$result = '<b>found</b>';
-		else
-			$result = '<b><i>not</i> found</b>';
-		
-		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
-			if ($el['name']==self::thisName)
-				$el['description'].=$result;
-				
-		return true; // continue hook-chain.
-	}
-	private function processSidebarText( &$text )
+	private function processSidebarText( &$textSideBar )
+	// copied from SkinTemplate MW 1.8.x SVN
 	{
 		$bar = array();
-		$lines = explode( "\n", $text );
+		$lines = explode( "\n", $textSideBar );
 		foreach ($lines as $line) {
 			if (strpos($line, '*') !== 0)
 				continue;
@@ -121,19 +106,7 @@ class SysopToolBoxClass extends ExtensionClass
 						$text = $line[1];
 					if (wfEmptyMsg($line[0], $link))
 						$link = $line[0];
-
-					if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $link ) ) {
-						$href = $link;
-					} else {
-						$title = Title::newFromText( $link );
-						if ( $title ) {
-							$title = $title->fixSpecialName();
-							$href = $title->getLocalURL();
-						} else {
-							$href = 'INVALID-TITLE';
-						}
-					}
-
+					$href = self::makeInternalOrExternalUrl( $link );
 					$bar[$heading][] = array(
 						'text' => $text,
 						'href' => $href,
@@ -145,5 +118,34 @@ class SysopToolBoxClass extends ExtensionClass
 		}
 		return $bar;	
 	}
+	static function makeInternalOrExternalUrl( $name )
+	// copied from SkinTemplate MW 1.8.x SVN	 
+	{
+		if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $name ) ) {
+			return $name;
+		} else {
+			return self::makeUrl( $name );
+		}
+	}
+
+	static function makeUrl( $name, $urlaction = '' )
+	// copied from SkinTemplate MW 1.8.x SVN 
+	{
+		$title = Title::newFromText( $name );
+		self::checkTitle( $title, $name );
+		return $title->getLocalURL( $urlaction );
+	}
+
+	static function checkTitle( &$title, &$name )
+	// copied from SkinTemplate MW 1.8.x SVN 
+	{
+		if( !is_object( $title ) ) {
+			$title = Title::newFromText( $name );
+			if( !is_object( $title ) ) {
+				$title = Title::newFromText( '--error: link target missing--' );
+			}
+		}
+	}
+
 } // END CLASS DEFINITION
 ?>

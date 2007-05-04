@@ -6,8 +6,8 @@
  * @package MediaWiki
  * @subpackage Extensions
  * 
- * <b>Purpose:</b>  This extension adds a 'viewsource' right.
- * Only the users with the 'viewsource' permission can 'view' an article's source wikitext.
+ * <b>Purpose:</b>  This extension adds a 'raw' right.
+ * Only the users with the 'raw' permission can 'raw view' an article's source wikitext.
  *
  * FEATURES:
  * =========

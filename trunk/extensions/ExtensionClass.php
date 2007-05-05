@@ -28,11 +28,12 @@
  *          on the definition of an handler in the derived class
  *          (e.g. if handler 'hArticleSave' exists, then the appropriate
  *           'ArticleSave' hook is registered)
+ * v1.51    Fixed '$passingStyle' bug (thanks to Joshua C. Lerner)
  *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ExtensionClass',
-	'version' => 'v1.5 $LastChangedRevision$',
+	'version' => 'v1.51 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -186,7 +187,7 @@ static $hookList = array(
 	const mw_style = 1;
 	const tk_style = 2;
 	
-	public static function &singleton( $mwlist=null ,$globalObjName=null, $passingStyle = mw_style )
+	public static function &singleton( $mwlist=null ,$globalObjName=null, $passingStyle = self::mw_style )
 	{
 		// Let's first extract the callee's classname
 		$trace = debug_backtrace();
@@ -206,7 +207,7 @@ static $hookList = array(
 			
 		return $GLOBALS[self::$gObj[$cname]];
 	}
-	public function ExtensionClass( $mgwords=null, $passingStyle = mw_style )
+	public function ExtensionClass( $mgwords=null, $passingStyle = self::mw_style )
 	/*
 	 *  $mgwords: array of 'magic words' to subscribe to *if* required.
 	 */

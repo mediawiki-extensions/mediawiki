@@ -16,20 +16,30 @@
  *
  * DEPENDANCY: ExtensionClass
  * 
+ * LocalSettings.php:
+ * ==================
+ * require("extensions/ExtensionClass.php");
+ * require("extensions/ImageLink.php");
+ *
  * HISTORY:	v1.0
- *          v1.1 -- re-crafted to derive from 'ExtensionClass'
- *          v1.2 -- adding proofing against 'bad titles'
- *          v1.3 -- small fix regarding hook chaining
- *          v1.4 -- changed hook method for better parser caching integration.
- * ------------- -- changed to SVN management
- *          v1.5 -- Support for inter-wiki links (thanks to Andrew Culver)
+ *          v1.1  -- re-crafted to derive from 'ExtensionClass'
+ *          v1.2  -- adding proofing against 'bad titles'
+ *          v1.3  -- small fix regarding hook chaining
+ *          v1.4  -- changed hook method for better parser caching integration.
+ * -------------  -- changed to SVN management
+ *          v1.5  -- Support for inter-wiki links (thanks to Andrew Culver)
+ *          v1.51 -- Added check for ExtensionClass dependancy.
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ImageLink',
-	'version' => 'v1.5 $LastChangedRevision$',
+	'version' => 'v1.51 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
+
+// Verify if 'ExtensionClass' is present.
+if ( !class_exists('ExtensionClass') )
+	echo 'ExtensionClass missing: ImageLink extension will not work!';	
 
 require_once(dirname( __FILE__ ) . '/ImageLinkClass.php');
 

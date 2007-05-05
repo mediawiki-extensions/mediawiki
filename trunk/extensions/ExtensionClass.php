@@ -29,6 +29,7 @@
  *          (e.g. if handler 'hArticleSave' exists, then the appropriate
  *           'ArticleSave' hook is registered)
  * v1.51    Fixed '$passingStyle' bug (thanks to Joshua C. Lerner)
+ * v1.6     Added 'updateCreditsDescription' helper method.
  *
  */
 $wgExtensionCredits['other'][] = array( 
@@ -339,6 +340,15 @@ static $hookList = array(
 		}	
 	
 		return in_array( 'sysop', $user->getGroups() );
+	}
+	
+	function updateCreditsDescription( &$text ) // v1.6 feature.
+	{
+		global $wgExtensionCredits;
+	
+		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
+			if ($el['name']==self::thisName)
+				$el['description'].=$text;	
 	}
 } // end class definition.
 ?>

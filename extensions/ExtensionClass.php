@@ -30,7 +30,7 @@
  *           'ArticleSave' hook is registered)
  * v1.51    Fixed '$passingStyle' bug (thanks to Joshua C. Lerner)
  * v1.6     Added 'updateCreditsDescription' helper method.
- * v1.7		Added 'depth' parameter support.
+ * v1.7		Added 'depth' parameter support: more than 1 class depth can be created.
  *          Added 'setupTags' method (support for parser tags)
  *
  */
@@ -196,8 +196,6 @@ static $hookList = array(
 		$trace = debug_backtrace();
 		$cname = $trace[$depth]['class'];
 
-		#echo "Extension::singleton with $cname \n";
-
 		// If no globalObjName was given, create a unique one.
 		if ($globalObjName === null)
 			$globalObjName = substr(create_function('',''), 1 );
@@ -217,7 +215,6 @@ static $hookList = array(
 	 *  $mgwords: array of 'magic words' to subscribe to *if* required.
 	 */
 	{
-		#echo "Extension::__construct\n";
 		global $wgHooks;
 			
 		$this->paramPassingStyle = $passingStyle;
@@ -246,7 +243,6 @@ static $hookList = array(
 	public function getParamPassingStyle() { return $this->passingStyle; }
 	public function setup()
 	{
-		#echo "Extension::setup\n";
 		if (is_array($this->ext_mgwords))
 			$this->setupMagic();
 	}
@@ -349,7 +345,6 @@ static $hookList = array(
 			global $wgUser;
 			$user = $wgUser;
 		}	
-	
 		return in_array( 'sysop', $user->getGroups() );
 	}
 	

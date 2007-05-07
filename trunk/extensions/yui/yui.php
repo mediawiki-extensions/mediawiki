@@ -73,6 +73,7 @@ class yuiClass extends ExtensionClass
 
 	// variables.
 	var $slist;
+	var $stylelist;
 	var $done;
 	
 	public static function &singleton($mwlist, $globalObjName, $passingStyle , $depth ) // required by ExtensionClass
@@ -96,6 +97,7 @@ class yuiClass extends ExtensionClass
 		);
 		
 		$this->slist = array();
+		$this->stylelist = array();
 		$this->done = false;
 	}
 	public function setup() 
@@ -116,7 +118,15 @@ class yuiClass extends ExtensionClass
 			if ( !in_array( $sc, $this->slist) )
 				$this->slist[] = $sc;
 	}
-
+	function addStyle( $styleList )
+	{
+		if (!is_array($styleList))
+			$styleList = array( $styleList );
+		
+		foreach( $styleList as $index => $style)
+			if ( !in_array( $style, $this->stylelist) )
+				$this->stylelist[] = $style;
+	}
 	// this function hook gets auto-provisioned by 'ExtensionClass'
 	public function hParserAfterTidy( &$parser, &$text )
 	{
@@ -128,7 +138,11 @@ class yuiClass extends ExtensionClass
 		
 		global $wgScriptPath;
 		global $wgOut;
-		
+
+		if (!empty($this->stylelist))
+			foreach($this->stylelist as $index => $style)
+				$wgOut->addScript('<link rel="stylesheet" type="text/css" href="'.$this->cssURI[$style].'">');
+	
 		if (!empty($this->slist))
 			foreach($this->slist as $index => $sc)
 				$wgOut->addScript('<script src="'.$this->jsURI[$sc].'" type="text/javascript"></script>');

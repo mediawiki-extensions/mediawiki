@@ -73,6 +73,9 @@ class yuiPanelClass extends yuiClass
 		// these are the scripts we need from Yahoo.
 		$l = array( 'yahoo', 'dom', 'event', 'container','dragdrop' );
 		$this->addScript( $l );
+		
+		$c = array( 'container' );
+		$this->addStyle( $c );
 	} 
 
 /********************
@@ -106,15 +109,17 @@ class yuiPanelClass extends yuiClass
 		if (!$this->placedJS)
 		{
 $text .= <<<EOT
+
 <script language=javascript>
 function initPanel()
 {
-	panel0 = new YAHOO.widget.Panel("panel0", { width:"300px", visible:true, constraintoviewport:true } );
+	panel0 = new YAHOO.widget.Panel("panel0", { width:"300px", visible:true, draggable: true, constraintoviewport:false } );
 	panel0.render();
 	panel0.show();
 }
 YAHOO.util.Event.addListener(window, "load", initPanel); 
 </script>		
+
 EOT;
 			$this->placedJS = true;
 		}

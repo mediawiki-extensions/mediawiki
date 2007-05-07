@@ -32,7 +32,7 @@ class yuiClass extends ExtensionClass
 	const thisName = 'yuiClass';
 	const thisType = 'other';  // must use this type in order to display useful info in Special:Version
 
-	var cssURI = array(
+	var $cssURI = array(
 	'reset'       => 'http://yui.yahooapis.com/2.2.2/build/reset/reset-min.css',
 	'fonts'       => 'http://yui.yahooapis.com/2.2.2/build/fonts/fonts-min.css',
 	'grids'       => 'http://yui.yahooapis.com/2.2.2/build/grids/grids-min.css',	
@@ -47,7 +47,7 @@ class yuiClass extends ExtensionClass
 	'tree'        => 'http://yui.yahooapis.com/2.2.2/build/treeview/assets/tree.css',
 	); 
 
-	var jsURI = array(
+	var $jsURI = array(
 	/* Utilities (also aggregated in yahoo-dom-event.js and utilities.js) */ 
 	'yahoo'      => "http://yui.yahooapis.com/2.2.2/build/yahoo/yahoo-min.js", 
 	'dom'        => "http://yui.yahooapis.com/2.2.2/build/dom/dom-min.js", 
@@ -72,6 +72,8 @@ class yuiClass extends ExtensionClass
 	);
 
 	// variables.
+	var $slist;
+	var $done;
 	
 	public static function &singleton($mwlist, $globalObjName, $passingStyle , $depth ) // required by ExtensionClass
 	{ return parent::singleton( $mwlist, $globalObjName, $passingStyle , $depth ); }
@@ -83,14 +85,46 @@ class yuiClass extends ExtensionClass
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
 			'name'        => self::thisName, 
-			'version'     => 'v1.0 $LastChangedRevision: 115 $',
+			'version'     => 'v1.0 $LastChangedRevision$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
 			'description' => 'Yahoo User Interface base class for Mediawiki '
 		);
+		
+		$this->slist = array();
+		$this->done = false;
 	}
 	public function setup() { parent::setup(); } 
+	
+	private function addScript( $scList )
+	/* This function helps us make sure that the scripts are listed
+	   one time iff used at all.
+	*/
+	{
+		if (!is_array($scList))
+			$scList = array( $scList );
+			
+		foreach( $scList as $index => $sc)
+			if ( !in_array( $sc, $this->slist) )
+				$this->slist[ $sc ] = true;
+	}
 
+	// this function hook gets auto-provisioned by 'ExtensionClass'
+	public function hParserAfterTidy( &$parser, &$text )
+	{
+		// sometimes, the parser gets called more than once.
+		if ($this->done) return;
+		$this->done = true;
+		
+		global $wgScriptPath;
+		global $wgOut;
+		
+		if (!empty($this->slist))
+			foreach($this->slist as $index => $sc)
+				$wgOut->addScript('<script src="'.$this->jsURI[$sc].'" type="text/javascript"></script>');
+				
+		return true; 
+	}
 
 } // END CLASS DEFINITION
 ?>

@@ -76,11 +76,15 @@ class yuiClass extends ExtensionClass
 	var $done;
 	
 	public static function &singleton($mwlist, $globalObjName, $passingStyle , $depth ) // required by ExtensionClass
-	{ return parent::singleton( $mwlist, $globalObjName, $passingStyle , $depth ); }
-	
-	function yuiClass( $mgwords, $passingStyle )
 	{
-		parent::__construct( $mgwords, $passingStyle ); 			// required by ExtensionClass
+		#echo "yuiClass::singleton\n"; 
+		return parent::singleton( $mwlist, $globalObjName, $passingStyle , $depth ); 
+	}
+	
+	function yuiClass( $mgwords = null, $passingStyle = self::mw_style, $depth = 1 )
+	{
+		#echo "yuiClass::__construct\n";		
+		parent::__construct( $mgwords, $passingStyle, $depth );		// required by ExtensionClass
 
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
@@ -94,26 +98,32 @@ class yuiClass extends ExtensionClass
 		$this->slist = array();
 		$this->done = false;
 	}
-	public function setup() { parent::setup(); } 
+	public function setup() 
+	{
+		#echo "yuiPanel::setup\n"; 
+		parent::setup(); 
+	} 
 	
-	private function addScript( $scList )
+	function addScript( $scList )
 	/* This function helps us make sure that the scripts are listed
 	   one time iff used at all.
 	*/
 	{
 		if (!is_array($scList))
 			$scList = array( $scList );
-			
+		
 		foreach( $scList as $index => $sc)
 			if ( !in_array( $sc, $this->slist) )
-				$this->slist[ $sc ] = true;
+				$this->slist[] = $sc;
 	}
 
 	// this function hook gets auto-provisioned by 'ExtensionClass'
 	public function hParserAfterTidy( &$parser, &$text )
 	{
+		#echo "yuiClass::hParserAfterTidy \n";
+		
 		// sometimes, the parser gets called more than once.
-		if ($this->done) return;
+		if ($this->done) return true;
 		$this->done = true;
 		
 		global $wgScriptPath;

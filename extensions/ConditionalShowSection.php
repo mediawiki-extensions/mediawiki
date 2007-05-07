@@ -21,7 +21,7 @@
  */
 $wgExtensionCredits['other'][] = array(
     'name'   => "ConditionalShowSection [http://www.bluecortex.com]",
-	'version'=> '$LastChangedRevision$',
+	'version'=> 'v1.4 $LastChangedRevision$',
 	'author' => 'Jean-Lou Dupont [http://www.bluecortex.com]' 
 );
 

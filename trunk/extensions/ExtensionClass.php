@@ -196,6 +196,8 @@ static $hookList = array(
 		$trace = debug_backtrace();
 		$cname = $trace[$depth]['class'];
 
+		#echo "Extension::singleton with $cname \n";
+
 		// If no globalObjName was given, create a unique one.
 		if ($globalObjName === null)
 			$globalObjName = substr(create_function('',''), 1 );
@@ -210,18 +212,19 @@ static $hookList = array(
 			
 		return $GLOBALS[self::$gObj[$cname]];
 	}
-	public function ExtensionClass( $mgwords=null, $passingStyle = self::mw_style )
+	public function ExtensionClass( $mgwords=null, $passingStyle = self::mw_style, $depth = 1 )
 	/*
 	 *  $mgwords: array of 'magic words' to subscribe to *if* required.
 	 */
 	{
+		#echo "Extension::__construct\n";
 		global $wgHooks;
 			
 		$this->paramPassingStyle = $passingStyle;
 		
 		// Let's first extract the callee's classname
 		$trace = debug_backtrace();
-		$this->className= $cname = $trace[1]['class'];
+		$this->className= $cname = $trace[$depth]['class'];
 		// And let's retrieve the global object's name
 		$n = self::$gObj[$cname];
 		
@@ -243,6 +246,7 @@ static $hookList = array(
 	public function getParamPassingStyle() { return $this->passingStyle; }
 	public function setup()
 	{
+		#echo "Extension::setup\n";
 		if (is_array($this->ext_mgwords))
 			$this->setupMagic();
 	}

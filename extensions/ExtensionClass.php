@@ -30,11 +30,13 @@
  *           'ArticleSave' hook is registered)
  * v1.51    Fixed '$passingStyle' bug (thanks to Joshua C. Lerner)
  * v1.6     Added 'updateCreditsDescription' helper method.
+ * v1.7		Added 'depth' parameter support.
+ *          Added 'setupTags' method (support for parser tags)
  *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ExtensionClass',
-	'version' => 'v1.51 $LastChangedRevision$',
+	'version' => 'v1.7 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -188,11 +190,11 @@ static $hookList = array(
 	const mw_style = 1;
 	const tk_style = 2;
 	
-	public static function &singleton( $mwlist=null ,$globalObjName=null, $passingStyle = self::mw_style )
+	public static function &singleton( $mwlist=null ,$globalObjName=null, $passingStyle = self::mw_style, $depth = 1 )
 	{
 		// Let's first extract the callee's classname
 		$trace = debug_backtrace();
-		$cname = $trace[1]['class'];
+		$cname = $trace[$depth]['class'];
 
 		// If no globalObjName was given, create a unique one.
 		if ($globalObjName === null)
@@ -204,7 +206,7 @@ static $hookList = array(
 			self::$gObj[$cname] = $globalObjName; 
 				
 		if ( !isset( $GLOBALS[self::$gObj[$cname]] ) )
-			$GLOBALS[$globalObjName] = new $cname( $mwlist, $passingStyle );
+			$GLOBALS[self::$gObj[$cname]] = new $cname( $mwlist, $passingStyle );
 			
 		return $GLOBALS[self::$gObj[$cname]];
 	}
@@ -229,7 +231,6 @@ static $hookList = array(
 		if (is_array($this->ext_mgwords) )
 			$wgHooks['LanguageGetMagic'][] = array($this, 'getMagic');
 
-
 		// v1.3 feature
 		if ( in_array( 'hUpdateExtensionCredits', get_class_methods($this->className) ) )
 			$wgHooks['SpecialVersionExtensionTypes'][] = array( &$this, 'hUpdateExtensionCredits' );				
@@ -252,11 +253,17 @@ static $hookList = array(
 			$magicwords [$key] = array( 0, $key );
 		return true;
 	}
-	public function setupMagic( )	
+	public function setupMagic( )
 	{
 		global $wgParser;
 		foreach($this->ext_mgwords as $index => $key)
 			$wgParser->setFunctionHook( "$key", array( $this, "mg_$key" ) );
+	}
+	public function setupTags( $tagList )
+	{
+		global $wgParser;
+		foreach($tagList as $index => $key)
+			$wgParser->setHook( "$key", array( $this, "tag_$key" ) );
 	}
 	// ================== GENERAL PURPOSE HELPER FUNCTIONS ===========================
 	public function processArgList( $list, $getridoffirstparam=false )

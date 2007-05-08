@@ -35,18 +35,18 @@ class yuiPanelClass extends yuiClass
 
 	static $tags   = array( 'yuipanel' );
 	static $defaults = array(
-		array( 'key' => 'close',              'format' => 'bool',  'default' => 'true'),
-		array( 'key' => 'draggable',          'format' => 'bool',  'default' => 'true' ),
-		array( 'key' => 'modal',              'format' => 'bool',  'default' => 'false' ),
-		array( 'key' => 'visible',            'format' => 'bool',  'default' => 'true' ),
-		array( 'key' => 'x',                  'format' => 'int',   'default' => 'null' ),
-		array( 'key' => 'y',                  'format' => 'int',   'default' => 'null' ),
-		array( 'key' => 'fixedcenter',        'format' => 'bool',  'default' => 'false' ),
-		array( 'key' => 'width',              'format' => 'string','default' => '300px' ),
-		array( 'key' => 'height',             'format' => 'string','default' => '100px' ),
-		array( 'key' => 'zIndex',             'format' => 'int',   'default' => '0' ),
-		array( 'key' => 'constraintoviewport','format' => 'bool',  'default' => 'false' ),
-		array( 'key' => 'underlay',           'format' => 'string','default' => 'shadow' ),
+		array( 'key' => 'close',              'format' => 'bool',  'default' => 'true', 'index' => null ),
+		array( 'key' => 'draggable',          'format' => 'bool',  'default' => 'true', 'index' => null  ),
+		array( 'key' => 'modal',              'format' => 'bool',  'default' => 'false', 'index' => null  ),
+		array( 'key' => 'visible',            'format' => 'bool',  'default' => 'true', 'index' => null  ),
+		array( 'key' => 'x',                  'format' => 'int',   'default' => 'null', 'index' => null  ),
+		array( 'key' => 'y',                  'format' => 'int',   'default' => 'null', 'index' => null  ),
+		array( 'key' => 'fixedcenter',        'format' => 'bool',  'default' => 'false', 'index' => null  ),
+		array( 'key' => 'width',              'format' => 'string','default' => '300px', 'index' => null  ),
+		array( 'key' => 'height',             'format' => 'string','default' => '100px', 'index' => null  ),
+		array( 'key' => 'zIndex',             'format' => 'int',   'default' => '0', 'index' => null  ),
+		array( 'key' => 'constraintoviewport','format' => 'bool',  'default' => 'false', 'index' => null  ),
+		array( 'key' => 'underlay',           'format' => 'string','default' => 'shadow', 'index' => null  ),
 	);
 	
 	// variables.
@@ -122,46 +122,49 @@ class yuiPanelClass extends yuiClass
 		if (!$this->placedJS)
 		{
 
-$text .= <<<EOT
+			$text .= "<script language=javascript> function initPanels() { ";
 
-<script language=javascript>
-function initPanels()
-{
-EOT;
 			foreach( $this->configs as $index => $cfg )
 			{
-				$this->initParams( $cfg, self::$params );
-				$this->formatParams( $cfg, self::$params );	
-				$l = $this->formatCfgLine( $cfg );
+				$this->initParams( $cfg, self::$defaults );
+				$this->formatParams( $cfg, self::$defaults );
+		
+				$l = $this->formatCfgLine( $cfg, self::$defaults );
 
 $text .= <<<EOT
-	panel"$index" = new YAHOO.widget.Panel('panel"$index"', { "$cfg" } );
-	panel"$index".render();
-	panel"$index".show();
-EOT;				
+	panel{$index} = new YAHOO.widget.Panel('panel{$index}', { {$l} } );
+	panel{$index}.render();
+	panel{$index}.show();
+EOT;
 			}
 
-$text .= <<<EOT
-YAHOO.util.Event.addListener(window, "load", initPanels); 
-</script>		
-EOT;
+			$text .= " } YAHOO.util.Event.addListener(window, 'load', initPanels); </script>";		
+
 			$this->placedJS = true;
 		}
 		
 		return true;
 	}
 	
-	private function formatCfgLine( &$cfg )
+	function formatCfgLine( &$cfg, &$template )
 	{
 		$r = '';
 		$last  = count ( $cfg );
 		$index = 0;
 		foreach( $cfg as $key => $value )
 		{
-			$r .= $key.":".$value;
-			if ($index!=$last)
+			// get format of the key
+			$f = $this->getFormat( $key, $template );
+			
+			if ($f=='string')
+				$r .= $key.":"."'$value'";
+			else
+				$r .= $key.":".$value;
+				
+			if ($index!=($last-1))
 				$r.=", ";
-		}		
+		}
+		return $r;	
 	}
 	
 	

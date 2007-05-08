@@ -33,22 +33,33 @@ class yuiPanelClass extends yuiClass
 	const thisName = 'yuiPanelClass';
 	const thisType = 'other';  // must use this type in order to display useful info in Special:Version
 
-	static $tags  = array( 'yuipanel' );
+	static $tags   = array( 'yuipanel' );
+	static $defaults = array(
+		array( 'key' => 'close',              'format' => 'bool',  'default' => 'true'),
+		array( 'key' => 'draggable',          'format' => 'bool',  'default' => 'true' ),
+		array( 'key' => 'modal',              'format' => 'bool',  'default' => 'false' ),
+		array( 'key' => 'visible',            'format' => 'bool',  'default' => 'true' ),
+		array( 'key' => 'x',                  'format' => 'int',   'default' => 'null' ),
+		array( 'key' => 'y',                  'format' => 'int',   'default' => 'null' ),
+		array( 'key' => 'fixedcenter',        'format' => 'bool',  'default' => 'false' ),
+		array( 'key' => 'width',              'format' => 'string','default' => '300px' ),
+		array( 'key' => 'height',             'format' => 'string','default' => '100px' ),
+		array( 'key' => 'zIndex',             'format' => 'int',   'default' => '0' ),
+		array( 'key' => 'constraintoviewport','format' => 'bool',  'default' => 'false' ),
+		array( 'key' => 'underlay',           'format' => 'string','default' => 'shadow' ),
+	);
 	
 	// variables.
-	var $panels; 
+	var $panels;
+	var $configs;
 	var $done;
 	var $placedJS;
 	
 	public static function &singleton() // required by ExtensionClass
-	{
-		#echo "yuiPanelClass::singleton\n"; 
-		return parent::singleton( null, null, self::mw_style, 2 ); 
-	}
+	{ return parent::singleton( null, null, self::mw_style, 2 ); }
 	
 	function yuiPanelClass( $mgwords = null, $passingStyle = self::mw_style, $depth = 2)
 	{
-		#echo "yuiPanelClass::__construct\n";
 		parent::__construct( null, self::mw_style, 2 );		// required by ExtensionClass
 
 		global $wgExtensionCredits;
@@ -61,12 +72,12 @@ class yuiPanelClass extends yuiClass
 		);
 		
 		$this->panels = array();
+		$this->configs = array();
 		$this->done = false;
 		$this->placedJS = false;
 	}
 	public function setup() 
 	{ 
-		#echo "yuiPanelClass::setup\n";
 		parent::setup();
 		$this->setupTags( self::$tags );
 		
@@ -74,6 +85,7 @@ class yuiPanelClass extends yuiClass
 		$l = array( 'yahoo', 'dom', 'event', 'container','dragdrop' );
 		$this->addScript( $l );
 		
+		// and the css stylesheets.
 		$c = array( 'container' );
 		$this->addStyle( $c );
 	} 
@@ -82,12 +94,16 @@ class yuiPanelClass extends yuiClass
 	Tag handler
 *********************/
 	public function tag_yuipanel ( $input, $argv, &$parser )
-	// <yuipanel> ... </yuipanel>
+	// <yuipanel parameters > ... </yuipanel>
 	{
 		// if we get here, then that means we'll have to process
 		// yui objects later on
 		$i = count( $this->panels );
-		$this->panels[] = "<div id='panel{$i}'>".$input."</div>";
+		$this->panels[]  = "<div id='panel{$i}'>".$input."</div>";
+
+		// input parameters are in an array with the following form:
+		// 'key' = 'value'
+		$this->configs[] = $argv; 
 		
 		// positional marker
 		return '___PANEL'.$i.'___';
@@ -97,34 +113,57 @@ class yuiPanelClass extends yuiClass
 	{
 		parent::hParserAfterTidy( $parser, $text );
 		
-		// sometimes, the parser gets called more than once.
-		#if ($this->done) return true;
-		#$this->done = true;
-	
 		// replace our markets
 		foreach( $this->panels as $index => $panel)
 			$text = preg_replace( "/___PANEL{$index}___/" , $panel, $text );	
-			
-		// add the required JS code.
+		
+		// Sometimes this hook is called more than once: make sure
+		// we only include the JS code once!
 		if (!$this->placedJS)
 		{
+
 $text .= <<<EOT
 
 <script language=javascript>
-function initPanel()
+function initPanels()
 {
-	panel0 = new YAHOO.widget.Panel("panel0", { width:"300px", visible:true, draggable: true, constraintoviewport:false } );
-	panel0.render();
-	panel0.show();
-}
-YAHOO.util.Event.addListener(window, "load", initPanel); 
-</script>		
+EOT;
+			foreach( $this->configs as $index => $cfg )
+			{
+				$this->initParams( $cfg, self::$params );
+				$this->formatParams( $cfg, self::$params );	
+				$l = $this->formatCfgLine( $cfg );
 
+$text .= <<<EOT
+	panel"$index" = new YAHOO.widget.Panel('panel"$index"', { "$cfg" } );
+	panel"$index".render();
+	panel"$index".show();
+EOT;				
+			}
+
+$text .= <<<EOT
+YAHOO.util.Event.addListener(window, "load", initPanels); 
+</script>		
 EOT;
 			$this->placedJS = true;
 		}
 		
 		return true;
 	}
+	
+	private function formatCfgLine( &$cfg )
+	{
+		$r = '';
+		$last  = count ( $cfg );
+		$index = 0;
+		foreach( $cfg as $key => $value )
+		{
+			$r .= $key.":".$value;
+			if ($index!=$last)
+				$r.=", ";
+		}		
+	}
+	
+	
 } // END CLASS DEFINITION
 ?>

@@ -325,14 +325,8 @@ static $hookList = array(
 	}
 	private function formatParam( &$key, &$value, &$template )
 	{
-		$found = false;
-		foreach( $template as $index => &$el )
-			if ( $el['key'] == $key )
-			{
-				$found = true;
-				$format  = $el['format'];
-			}
-		if ($found)
+		$format = $this->getFormat( $key, $template );
+		if ($format !==null )
 		{
 			switch ($format)
 			{
@@ -348,7 +342,16 @@ static $hookList = array(
 					break;					
 			}			
 		}
-	} 
+	}
+	public function getFormat( &$key, &$template )
+	{
+		$format = null;
+		foreach( $template as $index => &$el )
+			if ( $el['key'] == $key )
+				$format  = $el['format'];
+			
+		return $format;
+	}
 	public function checkPageEditRestriction( &$title )
 	// v1.1 feature
 	// where $title is a Mediawiki Title class object instance

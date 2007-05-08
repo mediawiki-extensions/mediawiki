@@ -111,6 +111,9 @@ class yuiPanelClass extends yuiClass
 
 	public function hParserAfterTidy( &$parser, &$text )
 	{
+		if (empty($this->panels))
+			return true;
+
 		parent::hParserAfterTidy( $parser, $text );
 		
 		// replace our markets
@@ -121,7 +124,6 @@ class yuiPanelClass extends yuiClass
 		// we only include the JS code once!
 		if (!$this->placedJS)
 		{
-
 			$text .= "<script language=javascript> function initPanels() { ";
 
 			foreach( $this->configs as $index => $cfg )

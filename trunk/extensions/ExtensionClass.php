@@ -32,7 +32,8 @@
  * v1.6     Added 'updateCreditsDescription' helper method.
  * v1.7		Added 'depth' parameter support: more than 1 class depth can be created.
  *          Added 'setupTags' method (support for parser tags)
- *
+ *          Enhancement to 'getParam' method
+ *          Added 'formatParams' method
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ExtensionClass',
@@ -304,7 +305,7 @@ static $hookList = array(
 	{
 		if (array_key_exists($key, $alist) )
 			return $alist[$key];
-		elseif (array_key_exists($index, $alist) )
+		elseif (array_key_exists($index, $alist) && $index!==null )
 			return $alist[$index];
 		else
 			return $default;
@@ -314,6 +315,40 @@ static $hookList = array(
 		foreach( $templateElements as $index => &$el )
 			$alist[$el['key']] = $this->getParam( $alist, $el['key'], $el['index'], $el['default'] );
 	}
+	public function formatParams( &$alist , &$template )
+	// look at yuiPanel extension for usage example.
+	// $alist = { 'key' => 'value' ... }
+	{
+		foreach ( $alist as $key => $value )
+			// format the entry.
+			$this->formatParam( $key, $value, $template );
+	}
+	private function formatParam( &$key, &$value, &$template )
+	{
+		$found = false;
+		foreach( $template as $index => &$el )
+			if ( $el['key'] == $key )
+			{
+				$found = true;
+				$format  = $el['format'];
+			}
+		if ($found)
+		{
+			switch ($format)
+			{
+				case 'bool':
+					$value = (bool) $value;
+					break; 
+				case 'int':
+					$value = (int) $value;
+					break;
+				default:
+				case 'string':
+					$value = (string) $value;
+					break;					
+			}			
+		}
+	} 
 	public function checkPageEditRestriction( &$title )
 	// v1.1 feature
 	// where $title is a Mediawiki Title class object instance

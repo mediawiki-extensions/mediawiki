@@ -152,7 +152,7 @@ EOT;
 	{
 		$r = '';
 		$last  = count ( $cfg );
-		$index = 0;
+		$index = 1;
 		foreach( $cfg as $key => $value )
 		{
 			// get format of the key
@@ -163,8 +163,7 @@ EOT;
 			else
 				$r .= $key.":".$value;
 				
-			if ($index!=($last-1))
-				$r.=", ";
+			if ($index++!=$last) $r.=", ";
 		}
 		return $r;	
 	}

@@ -1,0 +1,20 @@
+Purpose:  This extension is about adding the support for 'SuperGroups' to Mediawiki. 
+
+What are 'SuperGroups' ?
+------------------------
+Mediawiki currently supports one way of 'grouping' users: user groups. There are only a 
+few groups defined by default:
+1) '*' group:    default group for all users (anonymous)
+2) 'user' group: default group for all logged in users
+3) 'sysop' group
+4) 'bureaucrat' group
+
+The SuperGroups feature is about supporting 'closed user groups' i.e. group of users having 
+their own Namespaces set.
+
+
+Design Notes:
+-------------
+
+-- Requirement for a new database table
+ 

@@ -1,5 +1,8 @@
 CREATE TABLE /*$wgDBprefix*/supergroups (
-  `sgr_name` varbinary(255) NOT NULL,
-  `sgr_user` int(11) NOT NULL,
-  UNIQUE KEY `bil_name` (`bil_name`)
+  `sgr_user` int(5) unsigned,
+  `sgr_group` int(5) default '0',
+  
+  PRIMARY KEY (sgr_user,sgr_group),
+  KEY (sgr_group)
+  
 ) TYPE=InnoDB;

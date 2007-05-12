@@ -40,6 +40,9 @@ $dbclass = $wgDBtype == 'MySql'
 			? 'Database'
 			: 'Database' . ucfirst( strtolower( $wgDBtype ) );
 $dbc = new $dbclass;
+
+echo "$wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname \n";
+
 $dba =& $dbc->newFromParams( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1 );
 
 # Check we're connected

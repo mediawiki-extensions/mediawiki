@@ -34,10 +34,11 @@
  *          Added 'setupTags' method (support for parser tags)
  *          Enhancement to 'getParam' method
  *          Added 'formatParams' method
+ * v1.8     Added 'initFirst' parameter
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ExtensionClass',
-	'version' => 'v1.7 $LastChangedRevision$',
+	'version' => 'v1.8 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -191,7 +192,9 @@ static $hookList = array(
 	const mw_style = 1;
 	const tk_style = 2;
 	
-	public static function &singleton( $mwlist=null ,$globalObjName=null, $passingStyle = self::mw_style, $depth = 1 )
+	public static function &singleton( $mwlist=null ,$globalObjName=null, 
+										$passingStyle = self::mw_style, $depth = 1,
+										$initFirst = false )
 	{
 		// Let's first extract the callee's classname
 		$trace = debug_backtrace();
@@ -207,17 +210,19 @@ static $hookList = array(
 			self::$gObj[$cname] = $globalObjName; 
 				
 		if ( !isset( $GLOBALS[self::$gObj[$cname]] ) )
-			$GLOBALS[self::$gObj[$cname]] = new $cname( $mwlist, $passingStyle );
+			$GLOBALS[self::$gObj[$cname]] = new $cname( $mwlist, $passingStyle, $depth, $initFirst );
 			
 		return $GLOBALS[self::$gObj[$cname]];
 	}
-	public function ExtensionClass( $mgwords=null, $passingStyle = self::mw_style, $depth = 1 )
+	public function ExtensionClass( $mgwords=null, $passingStyle = self::mw_style, 
+									$depth = 1, $initFirst = false )
 	/*
 	 *  $mgwords: array of 'magic words' to subscribe to *if* required.
 	 */
 	{
 		global $wgHooks;
 			
+		if ($passingStyle == null) $passingStyle = self::mw_style; // prevention...
 		$this->paramPassingStyle = $passingStyle;
 		
 		// Let's first extract the callee's classname
@@ -227,7 +232,13 @@ static $hookList = array(
 		$n = self::$gObj[$cname];
 		
 		global $wgExtensionFunctions;
-		$wgExtensionFunctions[] = create_function('',"global $".$n."; $".$n."->setup();");
+		
+		// v1.8 feature
+		$initFnc = create_function('',"global $".$n."; $".$n."->setup();");
+		if ($initFirst)
+			 array_unshift(	$wgExtensionFunctions, $initFnc );
+		else $wgExtensionFunctions[] = $initFnc;
+		
 		$this->ext_mgwords = $mgwords;		
 		if (is_array($this->ext_mgwords) )
 			$wgHooks['LanguageGetMagic'][] = array($this, 'getMagic');
@@ -330,16 +341,10 @@ static $hookList = array(
 		{
 			switch ($format)
 			{
-				case 'bool':
-					$value = (bool) $value;
-					break; 
-				case 'int':
-					$value = (int) $value;
-					break;
+				case 'bool':   $value = (bool) $value; break; 
+				case 'int':    $value = (int) $value; break;
 				default:
-				case 'string':
-					$value = (string) $value;
-					break;					
+				case 'string': $value = (string) $value; break;					
 			}			
 		}
 	}

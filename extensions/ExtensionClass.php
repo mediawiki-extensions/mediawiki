@@ -393,6 +393,7 @@ static $hookList = array(
 	
 	function updateCreditsDescription( &$text ) // v1.6 feature.
 	{
+		#echo "classname= ".$this->className."\n";
 		global $wgExtensionCredits;
 	
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )

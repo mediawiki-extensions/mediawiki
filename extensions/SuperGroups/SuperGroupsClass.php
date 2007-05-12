@@ -12,11 +12,13 @@ class SuperGroupsClass extends ExtensionClass
 	const thisType = 'other';  
 
 	const nssSize  = 256;  // namespace set size
+	const nssOffset= 100;  // offset as additional precaution
+	                       // against collision with standard MW namespaces.
 
 	static $tableName = 'supergroups';
 	static $errId;
 		
-	// 
+	// This user's supergroup id.
 	var $sgid;
 	
 	// We need to be sure we are getting initialized one of the first:
@@ -33,19 +35,20 @@ class SuperGroupsClass extends ExtensionClass
 		global $wgExtensionCredits;
 
 		// check first for the existence of the required database table.
-		$dbr = wfGetDB(DB_SLAVE);
-		$r   = $dbr->tableExists(self::$tableName);
+		$r = $this->checkTable();
 
 		if ( $r ) $result1 = '<b><i>supergroups</i> database table found</b>';
 		else      $result1 = '<b><i>supergroups</i> database table NOT found</b>';
 		
 		// then let's check if we had errors in the $sgExtraNamespace array
-		if (self::$errId) $result2 = '<b><i>$sgExtraNamespaces</i> array appears OK</b>';
-		else              $result2 = '<b><i>$sgExtraNamespaces</i> array has errors</b>';
+		if (!self::$errId) $result2 = '<b><i>$sgExtraNamespaces</i> array appears OK</b>';
+		else               $result2 = '<b><i>$sgExtraNamespaces</i> array has errors</b>';
 		
 		$result = $result1." and ".$result2.". User's supergroup id=".$this->sgid;
 		
-		$this->updateCreditsDescription($result);
+		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
+			if ($el['name']==self::thisName)
+				$el['description'].=$result;
 		
 		return true; // continue hook-chain.
 	}
@@ -54,8 +57,11 @@ class SuperGroupsClass extends ExtensionClass
 	{
 		parent::setup();
 		
-		self::$errId = false;
-		$this->sgid = 0; // assume default.
+		self::$errId = null; // assume 'sgExtraNamespaces' array doesn't exist
+		$this->sgid  = 0;     // assume default.
+		
+		$r = $this->checkTable();
+		if ($r == false) return;
 		
 		// setup 'supergroup' id based on looking up
 		// user in the 'supergroups' database table
@@ -68,7 +74,7 @@ class SuperGroupsClass extends ExtensionClass
 		
 		// if we got a 'null', then not much to do!
 		// (i.e. there is no 'extra' namespaces asked for)
-		if ($r == null) return;
+		if ($r === null) return;
 		
 		// if we got 'false', then an error with the
 		// namespace ids was declared.
@@ -78,6 +84,11 @@ class SuperGroupsClass extends ExtensionClass
 		// if we got a 'true' response, then let's setup!
 		$this->setupExtraNamespaceSet();
 		
+	}
+	public function checkTable()
+	{
+		$dbr = wfGetDB(DB_SLAVE);
+		return $dbr->tableExists(self::$tableName);
 	}
 	private function checkBoundaries()
 	{
@@ -98,16 +109,17 @@ class SuperGroupsClass extends ExtensionClass
 	private function setupExtraNamespaceSet()
 	{
 		global $sgExtraNamespaces;
-		global $wgExtraNamespaces;
+		global $wgExtraNamespaces, $wgCanonicalNamespaceNames;
 		
 		// for each extra namespace we need to
 		// to use 'supergroup' identifier to derive the 'base'
 		// namespace set offset.
 		foreach( $sgExtraNamespaces as $id => &$el )
 		{
-			$nid = ($this->sgid*self::nssSize) + $id;
+			$nid = ($this->sgid*self::nssSize) + $id + self::nssOffset;
 			define( $el['id'], $nid );
-			$wgExtraNamespacesp[$nid] = $el['name'];
+			$wgExtraNamespaces[$nid] = $el['name'];
+			$wgCanonicalNamespaceNames[$nid] = $el['name']; 
 		}
 	}
 

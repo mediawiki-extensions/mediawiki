@@ -43,6 +43,8 @@ class SuperGroupsClass extends ExtensionClass
 		if (self::$errId) $result2 = '<b><i>$sgExtraNamespaces</i> array appears OK</b>';
 		else              $result2 = '<b><i>$sgExtraNamespaces</i> array has errors</b>';
 		
+		$result = $result1." and ".$result2.". User's supergroup id=".$this->sgid;
+		
 		$this->updateCreditsDescription($result);
 		
 		return true; // continue hook-chain.
@@ -54,6 +56,11 @@ class SuperGroupsClass extends ExtensionClass
 		
 		self::$errId = false;
 		$this->sgid = 0; // assume default.
+		
+		// setup 'supergroup' id based on looking up
+		// user in the 'supergroups' database table
+		global $wgUser;
+		$this->sgid = $this->getSgId( $wgUser );
 		
 		// namespace boundary checks
 		// only allowed 256 namespaces per SuperGroup
@@ -102,6 +109,26 @@ class SuperGroupsClass extends ExtensionClass
 			define( $el['id'], $nid );
 			$wgExtraNamespacesp[$nid] = $el['name'];
 		}
+	}
+
+	public function getSgId( &$user )
+	{
+		$uid = $user->getID();
+		
+		// if we get a '0', then the user isn't logged
+		if ($uid == 0) return 0;
+		
+		$dbr = wfGetDB( DB_SLAVE ); 
+		
+		$row = $dbr->selectRow( self::$tableName,
+								array('sgr_group'),
+								array('sgr_user' => $uid),
+								'SuperGroups::getSgId'      );
+
+		if (!empty($row))
+			return $row->sgr_group;
+	
+		return 0;
 	}
 
 } // end class definition.

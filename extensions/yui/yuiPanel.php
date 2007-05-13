@@ -82,7 +82,7 @@ class yuiPanelClass extends yuiClass
 		$this->setupTags( self::$tags );
 		
 		// these are the scripts we need from Yahoo.
-		$l = array( 'yahoo', 'dom', 'event', 'container','dragdrop' );
+		$l = array( 'yahoo', 'dom', 'event', 'dragdrop', 'container' );
 		$this->addScript( $l );
 		
 		// and the css stylesheets.

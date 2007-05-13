@@ -145,7 +145,7 @@ class yuiClass extends ExtensionClass
 	
 		if (!empty($this->slist))
 			foreach($this->slist as $index => $sc)
-				$wgOut->addScript('<script src="'.$this->jsURI[$sc].'" type="text/javascript"></script>');
+				$wgOut->addScript('<script type="text/javascript" src="'.$this->jsURI[$sc].'"></script>');
 				
 		return true; 
 	}

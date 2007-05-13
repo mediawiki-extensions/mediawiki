@@ -128,6 +128,7 @@ $text .= <<<EOT
 		<script language=javascript> 
 		function initPanels() 
 		{
+
 EOT;
 
 
@@ -148,7 +149,7 @@ EOT;
 
 $text .= <<<EOT
 		} 
-		YAHOO.util.Event.addListener(window, 'load', initPanels); 
+		YAHOO.util.Event.onDOMReady(initPanels); 
 		</script>		
 EOT;
 			$this->placedJS = true;

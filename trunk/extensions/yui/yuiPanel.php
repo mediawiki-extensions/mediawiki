@@ -124,7 +124,11 @@ class yuiPanelClass extends yuiClass
 		// we only include the JS code once!
 		if (!$this->placedJS)
 		{
-			$text .= "<script language=javascript> function initPanels() { ";
+$text .= <<<EOT
+		<script language=javascript> function initPanels() 
+		{
+EOT;
+
 
 			foreach( $this->configs as $index => $cfg )
 			{
@@ -140,8 +144,11 @@ $text .= <<<EOT
 EOT;
 			}
 
-			$text .= " } YAHOO.util.Event.addListener(window, 'load', initPanels); </script>";		
-
+$text .= <<<EOT
+		} 
+		YAHOO.util.Event.addListener(window, 'load', initPanels); 
+		</script>		
+EOT;
 			$this->placedJS = true;
 		}
 		

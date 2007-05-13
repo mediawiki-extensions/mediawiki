@@ -141,7 +141,7 @@ class yuiClass extends ExtensionClass
 
 		if (!empty($this->stylelist))
 			foreach($this->stylelist as $index => $style)
-				$wgOut->addScript('<link rel="stylesheet" type="text/css" href="'.$this->cssURI[$style].'">');
+				$wgOut->addScript('<link rel="stylesheet" type="text/css" href="'.$this->cssURI[$style].'" />');
 	
 		if (!empty($this->slist))
 			foreach($this->slist as $index => $sc)

@@ -125,7 +125,7 @@ class yuiPanelClass extends yuiClass
 		if (!$this->placedJS)
 		{
 $text .= <<<EOT
-		<script language=javascript> 
+		<script type="text/javascript"> 
 		function initPanels() 
 		{
 

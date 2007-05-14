@@ -404,7 +404,13 @@ static $hookList = array(
 	}
 
 /*  Add scripts & stylesheets functionality.
-*********************************************/
+This process must be done in two phases:
+phase 1- encode information related to the required
+         scripts & stylesheets in a 'meta form' in
+		 the parser cache text.
+phase 2- when the page is rendered, extract the meta information
+         and include the information appropriately in the 'head' of the page.		  
+************************************************************************************/
 	var $scriptList;
 	var $scriptsAdded;
 
@@ -412,6 +418,7 @@ static $hookList = array(
 	{ $this->scriptList[] = $st; }
 	
 	function hParserAfterTidy( &$parser, &$text )
+	// set the meta information in the parsed 'wikitext'.
 	{
 		if (!empty($this->scriptList))
 			foreach($this->scriptList as $sc)

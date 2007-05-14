@@ -106,6 +106,7 @@ class yuiClass extends ExtensionClass
 	   one time iff used at all.
 	*/
 	{
+		echo "yui::addScript ";
 		if (!is_array($scList))
 			$scList = array( $scList );
 		
@@ -115,6 +116,7 @@ class yuiClass extends ExtensionClass
 	}
 	function addStyle( $styleList )
 	{
+		echo "yui::addStyle ";		
 		if (!is_array($styleList))
 			$styleList = array( $styleList );
 		

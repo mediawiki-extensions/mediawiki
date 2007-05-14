@@ -13,7 +13,7 @@
  * - 'magic word' helper functionality
  * - limited pollution of global namespace
  *
- * Tested Compatibility: MW 1.8.2 (PHP5), 1.9.3
+ * Tested Compatibility: MW 1.8.2 (PHP5), 1.9.3, 1.10
  *
  * History:
  * v1.0		Initial availability
@@ -411,29 +411,27 @@ phase 1- encode information related to the required
 phase 2- when the page is rendered, extract the meta information
          and include the information appropriately in the 'head' of the page.		  
 ************************************************************************************/
-	var $scriptList;
-	var $scriptsAdded;
-	var $scriptsListed;
+	static $scriptList;
+	static $scriptsAdded;
+	static $scriptsListed;
 
 	function addHeadScript( $st )
 	{ 
-		$this->scriptList[] = $st; 
-		$this->scriptsAdded = false;
-		$this->scriptsListed = false;
+		self::$scriptList[] = $st; 
+		self::$scriptsAdded = false;
+		self::$scriptsListed = false;
 	}
 	
 	function hParserAfterTidy( &$parser, &$text )
 	// set the meta information in the parsed 'wikitext'.
 	{
-		if ($this->scriptsListed) return true;
-		$this->scriptsListed = true;
+		if (self::$scriptsListed) return true;
+		self::$scriptsListed = true;
 
-		echo 'ExtensionClass::hParserAfterTidy ';
-
-		if (!empty($this->scriptList))
-			foreach($this->scriptList as $sc)
+		if (!empty(self::$scriptList))
+			foreach(self::$scriptList as $sc)
 				$text .= '<!-- META_KEYWORDS '.base64_encode($sc).' -->'; 
-				
+
 		return true;
 	}	
 	function hOutputPageBeforeHTML( &$op, &$text )
@@ -442,10 +440,8 @@ phase 2- when the page is rendered, extract the meta information
 	// in the page's HEAD.
 	{
 		// some hooks get called more than once...
-		if ($this->scriptsAdded) return true;
-		$this->scriptsAdded = true;
-		
-		echo 'ExtensionClass::hOutputPageBeforeHTML ';
+		if (self::$scriptsAdded) return true;
+		self::$scriptsAdded = true;
 		
 		if (preg_match_all(
         	'/<!-- META_KEYWORDS ([0-9a-zA-Z\\+\\/]+=*) -->/m', 
@@ -453,7 +449,7 @@ phase 2- when the page is rendered, extract the meta information
         	$matches)===false) return true;
 			
     	$data = $matches[1];
-    
+
 	    foreach ($data AS $item) 
 		{
 	        $content = @base64_decode($item);

@@ -35,10 +35,13 @@
  *          Enhancement to 'getParam' method
  *          Added 'formatParams' method
  * v1.8     Added 'initFirst' parameter
+ * v1.9     Added support for including 'head' scripts and stylesheeets
+ *          in a manner compatible with parser caching functionality.
+ *          (Original idea from [user:Jimbojw]
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ExtensionClass',
-	'version' => 'v1.8 $LastChangedRevision$',
+	'version' => 'v1.9 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -393,12 +396,53 @@ static $hookList = array(
 	
 	function updateCreditsDescription( &$text ) // v1.6 feature.
 	{
-		#echo "classname= ".$this->className."\n";
 		global $wgExtensionCredits;
 	
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if ($el['name']==self::thisName)
 				$el['description'].=$text;	
 	}
+
+/*  Add scripts & stylesheets functionality.
+*********************************************/
+	var $scriptList;
+	var $scriptsAdded;
+
+	function addHeadScript( $st )
+	{ $this->scriptList[] = $st; }
+	
+	function hParserAfterTidy( &$parser, &$text )
+	{
+		if (!empty($this->scriptList))
+			foreach($this->scriptList as $sc)
+				$text .= '<!-- META_KEYWORDS '.base64_encode($sc).' -->'; 
+				
+		return true;
+	}	
+	
+	function hOutputPageBeforeHTML( &$op, &$text )
+	// This function sifts through 'meta tags' embedded in html comments
+	// and picks out scripts & stylesheet references that need to be put
+	// in the page's HEAD.
+	{
+		// some hooks get called more than once...
+		if (isset($this->scriptsAdded)) return true;
+		$this->scriptsAdded = true;
+		
+		if (preg_match_all(
+        	'/<!-- META_KEYWORDS ([0-9a-zA-Z\\+\\/]+=*) -->/m', 
+        	$text, 
+        	$matches)===false) return true;
+			
+    	$data = $matches[1];
+    
+	    foreach ($data AS $item) 
+		{
+	        $content = @base64_decode($item);
+	        if ($content) $op->addScript( $content );
+	    }
+	    return true;
+	}
+
 } // end class definition.
 ?>

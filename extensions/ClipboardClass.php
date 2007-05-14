@@ -49,11 +49,12 @@
  * - v1.0
  * - v1.01  - Missing 'global $wgScriptPath' ...
  * - v1.02  - Added extra protection for when hook '' is called multiple times.
- *
+ * - v1.03  - Adjusted a variable in order to resolve conflict with new
+ *            'ExtensionClass' extension version.
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'Clipboard Extension', 
-	'version' => 'v1.02 $LastChangedRevision$',
+	'version' => 'v1.03 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -67,7 +68,7 @@ class ClipboardClass extends ExtensionClass
 	static $extList =         array( 'png', 'gif', 'jpg', 'jpeg' );
 	static $JsHandlerScript = 'jsscripts/Clipboard.js';
 	
-	var $scriptsAdded;
+	var $_scriptsAdded;
 	
 	public static function &singleton( ) // required by ExtensionClass
 	{ return parent::singleton( ); }
@@ -80,7 +81,7 @@ class ClipboardClass extends ExtensionClass
 		$wgHooks['MonoBookTemplateToolboxEnd'][] = array( $this, 'hToolboxEnd');
 		$wgHooks['BeforePageDisplay'][]          = array( $this, 'hBeforePageDisplay' );
 		
-		$this->scriptsAdded = false;
+		$this->_scriptsAdded = false;
 	}
 	public function setup() { } // nothing special to do in this case.
 
@@ -128,8 +129,8 @@ class ClipboardClass extends ExtensionClass
 	 *  - Add the required 'head' script
 	 */
 	{
-		if ($this->scriptsAdded) return true;
-		$this->scriptsAdded = true;
+		if ($this->_scriptsAdded) return true;
+		$this->_scriptsAdded = true;
 		
 		global $wgScriptPath; // v1.01
 		$op->addScript('<script src="'.$wgScriptPath.'/'.self::$JsHandlerScript.'" type="text/javascript"></script>');

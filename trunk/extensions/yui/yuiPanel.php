@@ -146,7 +146,7 @@ EOT;
 
 $text .= <<<EOT
 		} 
-		YAHOO.util.Event.onDOMReady(initPanels); 
+		YAHOO.util.Event.onContentReady(initPanels); 
 		</script>		
 EOT;
 			$this->placedJS = true;

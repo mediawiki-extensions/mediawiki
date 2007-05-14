@@ -38,10 +38,12 @@
  * v1.9     Added support for including 'head' scripts and stylesheeets
  *          in a manner compatible with parser caching functionality.
  *          (Original idea from [user:Jimbojw]
+ * v1.91    Added check for screening script duplicates in 'addHeadScript'
+ * 
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ExtensionClass',
-	'version' => 'v1.9 $LastChangedRevision$',
+	'version' => 'v1.91 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -416,8 +418,10 @@ phase 2- when the page is rendered, extract the meta information
 	static $scriptsListed;
 
 	function addHeadScript( $st )
-	{ 
-		self::$scriptList[] = $st; 
+	{
+		if (!in_array($st, self::$scriptList)) 
+			self::$scriptList[] = $st;
+			 
 		self::$scriptsAdded = false;
 		self::$scriptsListed = false;
 	}
@@ -440,6 +444,10 @@ phase 2- when the page is rendered, extract the meta information
 	// in the page's HEAD.
 	{
 		// some hooks get called more than once...
+		// In this case, since ExtensionClass provides a 
+		// base class for numerous extensions, then it is very
+		// likely this method will be called more than once;
+		// so, we want to make sure we include the head scripts just once.
 		if (self::$scriptsAdded) return true;
 		self::$scriptsAdded = true;
 		

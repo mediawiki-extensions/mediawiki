@@ -430,7 +430,7 @@ phase 2- when the page is rendered, extract the meta information
 
 		if (!empty(self::$scriptList))
 			foreach(self::$scriptList as $sc)
-				$text .= '<!-- META_KEYWORDS '.base64_encode($sc).' -->\n'; 
+				$text .= '<!-- META_KEYWORDS '.base64_encode($sc).' -->'; 
 
 		return true;
 	}	

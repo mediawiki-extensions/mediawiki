@@ -21,7 +21,7 @@
  *  require("extensions/yui/yuiPanel.php");
  *
  * History:
- * - v1.0
+ * - v1.01  -- Fixed bug with IE
  *
  */
 
@@ -65,7 +65,7 @@ class yuiPanelClass extends yuiClass
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
 			'name'        => self::thisName, 
-			'version'     => 'v1.0 $LastChangedRevision$',
+			'version'     => 'v1.01 $LastChangedRevision$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
 			'description' => 'Yahoo User Interface Panel class for Mediawiki '
@@ -137,16 +137,16 @@ EOT;
 				$l = $this->formatCfgLine( $cfg, self::$defaults );
 
 $text .= <<<EOT
-	panel{$index} = new YAHOO.widget.Panel('panel{$index}', { {$l} } );
+	var panel{$index} = new YAHOO.widget.Panel('panel{$index}', { {$l} } );
 	panel{$index}.render();
-	// panel{$index}.show();
+	panel{$index}.show();
 	
 EOT;
 			}
 
 $text .= <<<EOT
 		} 
-		YAHOO.util.Event.onContentReady(initPanels); 
+		YAHOO.util.Event.onContentReady('content',initPanels); 
 		</script>		
 EOT;
 			$this->placedJS = true;

@@ -128,11 +128,9 @@ $text .= <<<EOT
 		<script type="text/javascript"> 
 		function initPanels() 
 		{
-
+			alert("here");
 EOT;
-
-
-			foreach( $this->configs as $index => $cfg )
+		foreach( $this->configs as $index => $cfg )
 			{
 				$this->initParams( $cfg, self::$defaults );
 				$this->formatParams( $cfg, self::$defaults );

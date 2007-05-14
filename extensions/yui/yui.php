@@ -11,7 +11,7 @@
  * Features:
  * *********
  *
- * DEPENDANCY:  ExtensionClass extension (>v1.7)
+ * DEPENDANCY:  ExtensionClass extension (>=v1.9)
  * 
  * Tested Compatibility:  
  *
@@ -101,10 +101,7 @@ class yuiClass extends ExtensionClass
 		$this->done = false;
 	}
 	public function setup() 
-	{
-		#echo "yuiPanel::setup\n"; 
-		parent::setup(); 
-	} 
+	{ parent::setup();	} 
 	
 	function addScript( $scList )
 	/* This function helps us make sure that the scripts are listed
@@ -116,7 +113,8 @@ class yuiClass extends ExtensionClass
 		
 		foreach( $scList as $index => $sc)
 			if ( !in_array( $sc, $this->slist) )
-				$this->slist[] = $sc;
+				$this->addHeadScript('<script type="text/javascript" src="'.$this->jsURI[$sc].'"></script>');
+				//$this->slist[] = $sc;
 	}
 	function addStyle( $styleList )
 	{
@@ -125,13 +123,13 @@ class yuiClass extends ExtensionClass
 		
 		foreach( $styleList as $index => $style)
 			if ( !in_array( $style, $this->stylelist) )
-				$this->stylelist[] = $style;
+				$this->addHeadScript('<link rel="stylesheet" type="text/css" href="'.$this->cssURI[$style].'" />');
+				//$this->stylelist[] = $style;
 	}
+/*
 	// this function hook gets auto-provisioned by 'ExtensionClass'
 	public function hParserAfterTidy( &$parser, &$text )
 	{
-		#echo "yuiClass::hParserAfterTidy \n";
-		
 		// sometimes, the parser gets called more than once.
 		if ($this->done) return true;
 		$this->done = true;
@@ -149,6 +147,7 @@ class yuiClass extends ExtensionClass
 				
 		return true; 
 	}
+*/
 
 } // END CLASS DEFINITION
 ?>

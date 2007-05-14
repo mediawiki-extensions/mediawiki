@@ -139,7 +139,7 @@ EOT;
 $text .= <<<EOT
 	panel{$index} = new YAHOO.widget.Panel('panel{$index}', { {$l} } );
 	panel{$index}.render();
-	panel{$index}.show();
+	// panel{$index}.show();
 	
 EOT;
 			}

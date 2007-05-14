@@ -413,16 +413,26 @@ phase 2- when the page is rendered, extract the meta information
 ************************************************************************************/
 	var $scriptList;
 	var $scriptsAdded;
+	var $scriptsListed;
 
 	function addHeadScript( $st )
-	{ $this->scriptList[] = $st; }
+	{ 
+		$this->scriptList[] = $st; 
+		$this->scriptsAdded = false;
+		$this->scriptsListed = false;
+	}
 	
 	function hParserAfterTidy( &$parser, &$text )
 	// set the meta information in the parsed 'wikitext'.
 	{
+		if ($this->scriptsListed) return true;
+		$this->scriptsListed = true;
+
+		echo 'ExtensionClass::hParserAfterTidy ';
+
 		if (!empty($this->scriptList))
 			foreach($this->scriptList as $sc)
-				$text .= '<!-- META_KEYWORDS '.base64_encode($sc).' -->\\r\\n'; 
+				$text .= '<!-- META_KEYWORDS '.base64_encode($sc).' -->'; 
 				
 		return true;
 	}	
@@ -432,8 +442,10 @@ phase 2- when the page is rendered, extract the meta information
 	// in the page's HEAD.
 	{
 		// some hooks get called more than once...
-		if (isset($this->scriptsAdded)) return true;
+		if ($this->scriptsAdded) return true;
 		$this->scriptsAdded = true;
+		
+		echo 'ExtensionClass::hOutputPageBeforeHTML ';
 		
 		if (preg_match_all(
         	'/<!-- META_KEYWORDS ([0-9a-zA-Z\\+\\/]+=*) -->/m', 

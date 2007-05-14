@@ -23,7 +23,7 @@
  *
  * History:
  * - v1.0
- *
+ * - v1.01  -- Added better support for parser caching functionality.
  */
 
 class yuiClass extends ExtensionClass
@@ -78,19 +78,17 @@ class yuiClass extends ExtensionClass
 	
 	public static function &singleton($mwlist, $globalObjName, $passingStyle , $depth ) // required by ExtensionClass
 	{
-		#echo "yuiClass::singleton\n"; 
 		return parent::singleton( $mwlist, $globalObjName, $passingStyle , $depth ); 
 	}
 	
 	function yuiClass( $mgwords = null, $passingStyle = self::mw_style, $depth = 1 )
 	{
-		#echo "yuiClass::__construct\n";		
 		parent::__construct( $mgwords, $passingStyle, $depth );		// required by ExtensionClass
 
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
 			'name'        => self::thisName, 
-			'version'     => 'v1.0 $LastChangedRevision$',
+			'version'     => 'v1.01 $LastChangedRevision$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
 			'description' => 'Yahoo User Interface base class for Mediawiki '
@@ -114,7 +112,6 @@ class yuiClass extends ExtensionClass
 		foreach( $scList as $index => $sc)
 			if ( !in_array( $sc, $this->slist) )
 				$this->addHeadScript('<script type="text/javascript" src="'.$this->jsURI[$sc].'"></script>');
-				//$this->slist[] = $sc;
 	}
 	function addStyle( $styleList )
 	{
@@ -124,30 +121,6 @@ class yuiClass extends ExtensionClass
 		foreach( $styleList as $index => $style)
 			if ( !in_array( $style, $this->stylelist) )
 				$this->addHeadScript('<link rel="stylesheet" type="text/css" href="'.$this->cssURI[$style].'" />');
-				//$this->stylelist[] = $style;
 	}
-/*
-	// this function hook gets auto-provisioned by 'ExtensionClass'
-	public function hParserAfterTidy( &$parser, &$text )
-	{
-		// sometimes, the parser gets called more than once.
-		if ($this->done) return true;
-		$this->done = true;
-		
-		global $wgScriptPath;
-		global $wgOut;
-
-		if (!empty($this->stylelist))
-			foreach($this->stylelist as $index => $style)
-				$wgOut->addScript('<link rel="stylesheet" type="text/css" href="'.$this->cssURI[$style].'" />');
-	
-		if (!empty($this->slist))
-			foreach($this->slist as $index => $sc)
-				$wgOut->addScript('<script type="text/javascript" src="'.$this->jsURI[$sc].'"></script>');
-				
-		return true; 
-	}
-*/
-
 } // END CLASS DEFINITION
 ?>

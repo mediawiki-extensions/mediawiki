@@ -72,14 +72,11 @@ class yuiClass extends ExtensionClass
 	);
 
 	// variables.
-	var $slist;
-	var $stylelist;
-	var $done;
+	static $slist;
+	static $stylelist;
 	
 	public static function &singleton($mwlist, $globalObjName, $passingStyle , $depth ) // required by ExtensionClass
-	{
-		return parent::singleton( $mwlist, $globalObjName, $passingStyle , $depth ); 
-	}
+	{ return parent::singleton( $mwlist, $globalObjName, $passingStyle , $depth );	}
 	
 	function yuiClass( $mgwords = null, $passingStyle = self::mw_style, $depth = 1 )
 	{
@@ -94,9 +91,8 @@ class yuiClass extends ExtensionClass
 			'description' => 'Yahoo User Interface base class for Mediawiki '
 		);
 		
-		$this->slist = array();
-		$this->stylelist = array();
-		$this->done = false;
+		self::$slist = array();
+		self::$stylelist = array();
 	}
 	public function setup() 
 	{ parent::setup();	} 
@@ -106,23 +102,27 @@ class yuiClass extends ExtensionClass
 	   one time iff used at all.
 	*/
 	{
-		echo "yui::addScript ";
 		if (!is_array($scList))
 			$scList = array( $scList );
 		
 		foreach( $scList as $index => $sc)
-			if ( !in_array( $sc, $this->slist) )
+			if ( !in_array( $sc, self::$slist) )
+			{
 				$this->addHeadScript('<script type="text/javascript" src="'.$this->jsURI[$sc].'"></script>');
+				self::$slist[] = $sc;
+			}
 	}
 	function addStyle( $styleList )
 	{
-		echo "yui::addStyle ";		
 		if (!is_array($styleList))
 			$styleList = array( $styleList );
 		
 		foreach( $styleList as $index => $style)
-			if ( !in_array( $style, $this->stylelist) )
+			if ( !in_array( $style, self::$stylelist) )
+			{
 				$this->addHeadScript('<link rel="stylesheet" type="text/css" href="'.$this->cssURI[$style].'" />');
+				self::$stylelist[] = $style;
+			}
 	}
 } // END CLASS DEFINITION
 ?>

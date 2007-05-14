@@ -415,11 +415,10 @@ static $hookList = array(
 	{
 		if (!empty($this->scriptList))
 			foreach($this->scriptList as $sc)
-				$text .= '<!-- META_KEYWORDS '.base64_encode($sc).' -->'; 
+				$text .= '<!-- META_KEYWORDS '.base64_encode($sc).' -->\\r\\n'; 
 				
 		return true;
 	}	
-	
 	function hOutputPageBeforeHTML( &$op, &$text )
 	// This function sifts through 'meta tags' embedded in html comments
 	// and picks out scripts & stylesheet references that need to be put

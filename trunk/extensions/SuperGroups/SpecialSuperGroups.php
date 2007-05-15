@@ -37,4 +37,14 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 extAddSpecialPage( dirname(__FILE__) . '/SpecialMakesysop_body.php', 'Makesysop', 'MakeSysopPage' );
 
+function extAddSpecialPage( $file, $name, $params ) {
+		global $wgSpecialPages, $wgAutoloadClasses;
+		if ( !is_array( $params ) ) {
+			$className = $params;
+		} else {
+			$className = $params[0];
+		}
+		$wgSpecialPages[$name] = $params;
+		$wgAutoloadClasses[$className] = $file;
+	}
 ?>

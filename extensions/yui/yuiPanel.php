@@ -22,7 +22,8 @@
  *
  * History:
  * - v1.01  -- Fixed bug with IE
- *
+ * - v1.02  -- Added check to include JS+stylesheet files
+ *             only when panels are actually used.
  */
 
 yuiPanelClass::singleton();
@@ -80,14 +81,6 @@ class yuiPanelClass extends yuiClass
 	{ 
 		parent::setup();
 		$this->setupTags( self::$tags );
-		
-		// these are the scripts we need from Yahoo.
-		$l = array( 'yahoo', 'dom', 'event', 'dragdrop', 'container' );
-		$this->addScript( $l );
-		
-		// and the css stylesheets.
-		$c = array( 'container' );
-		$this->addStyle( $c );
 	} 
 
 /********************
@@ -96,6 +89,18 @@ class yuiPanelClass extends yuiClass
 	public function tag_yuipanel ( $input, $argv, &$parser )
 	// <yuipanel parameters > ... </yuipanel>
 	{
+		// add the js scripts and stylesheet only when necessary
+		if (empty($this->panels))
+		{
+			// these are the scripts we need from Yahoo.
+			$l = array( 'yahoo', 'dom', 'event', 'dragdrop', 'container' );
+			$this->addScript( $l );
+			
+			// and the css stylesheets.
+			$c = array( 'container' );
+			$this->addStyle( $c );
+		}
+		
 		// if we get here, then that means we'll have to process
 		// yui objects later on
 		$i = count( $this->panels );

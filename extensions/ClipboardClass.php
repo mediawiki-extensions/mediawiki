@@ -51,15 +51,20 @@
  * - v1.02  - Added extra protection for when hook '' is called multiple times.
  * - v1.03  - Adjusted a variable in order to resolve conflict with new
  *            'ExtensionClass' extension version.
+ * - v1.04  - Added warning if 'ExtensionClass' dependancy not found.
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'Clipboard Extension', 
-	'version' => 'v1.03 $LastChangedRevision$',
+	'version' => 'v1.04 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
 
-ClipboardClass::singleton();
+// Verify if 'ExtensionClass' is present.
+if ( !class_exists('ExtensionClass') )
+	echo 'ExtensionClass missing: Clipboard extension will not work!';	
+else
+	ClipboardClass::singleton();
 
 class ClipboardClass extends ExtensionClass
 {

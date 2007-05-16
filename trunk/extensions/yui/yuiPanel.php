@@ -66,7 +66,7 @@ class yuiPanelClass extends yuiClass
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
 			'name'        => self::thisName, 
-			'version'     => 'v1.01 $LastChangedRevision$',
+			'version'     => 'v1.02 $LastChangedRevision$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
 			'description' => 'Yahoo User Interface Panel class for Mediawiki '

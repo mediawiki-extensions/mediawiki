@@ -92,43 +92,48 @@ class AddScriptCssClass extends ExtensionClass
 	var $slist;
 
 	public function pSet( &$text, &$argv, &$parser)
+	{ return $this->processURI( $argv['src'], $argv['type'] );	}
+	
+	public function mg_addscript( $args )
 	{
-		$text = $this->processURI( $argv['src'] );
-		return $text;
+		$params = $this->processArgList( $args, true );		
+		return $this->processURI( $params['src'], $params['type'] );
 	}
-	public function mg_addscript( &$parser, $uri )
+	private function processURI( $uri, $type = type_js )
 	{
-		$e = explode( '=', $uri );
-		if ( count($e) > 1)
-		{ 
-			if ($e[0] != 'src')
-				return;
-			$uri = $e[1];				
-		}
-		return $this->processURI( $uri );
-	}
-	private function processURI( $uri )
-	{
-		$uri = $this->cleanURI( $uri );
-		if ($this->checkURI( $uri ))
+		$uri = $this->cleanURI( $uri, $type );
+		if (!$this->checkURI( $uri, $type ))
+			return 'addscript: invalid uri   <i><b>'.$uri.'</b></i><br/>'; //FIXME
+
+		global $wgScriptPath;
+		$p = $wgScriptPath.'/'.self::$base.$uri.$this->getExt( $type );
+
+		switch( $type )
 		{
-			$this->slist[] = $uri;
-			return;
-		}
-		return 'addscript: invalid uri   <i><b>'.$uri.'</b></i><br/>';
+			case type_css:
+				$t = '<link href="'.$p.'" rel="stylesheet" type="text/css" />';
+				break;		
+			default:
+			case type_js:
+				$t = '<script src="'.$p.'" type="text/javascript"></script>';
+				break;
+		}	
+
+		$this->addHeadScript( $t );
+
+		// everything OK
+		return null;
 	}
 	private function cleanURI( $uri )
 	{
-		// v1.2: address XSS vulnerability
-		$clean_uri = str_replace( array('/../', '../', '\\..\\',
+		return str_replace( array('/../', '../', '\\..\\',
 										 "..\\",'"','`','&','?',
 										 '<','>','.' ), "", $uri);
-		return $clean_uri;
 	}
-	private function checkURI( $uri )
+	private function checkURI( $uri, $type = type_js )
 	{
 		// uri must resolved to a local file in the $base directory.
-		$spath = self::$base.$uri.'.js';
+		$spath = self::$base.$uri.$this->getExt( $type );
 		
 		// we need the full path on windows system...
 		$cpath = dirname(__FILE__);
@@ -140,16 +145,16 @@ class AddScriptCssClass extends ExtensionClass
 		return file_exists( $bpath."/{$spath}" );
 	} 
 
-	public function feedScripts( &$parser, &$text )
+	private function getExt( $type )
 	{
-		global $wgScriptPath;
-		global $wgOut;
-		
-		if (!empty($this->slist))
-			foreach($this->slist as $sc)
-				$wgOut->addScript('<script src="'.$wgScriptPath.'/'.self::$base.$sc.'.js" type="text/javascript"></script>');
-				
-		return true; // v1.2 fix
+		switch( $type )
+		{
+			case type_css:
+				return '.css';
+			default:
+			case type_js:
+				return '.js';	
+		}	
 	}
 	
 } // END CLASS DEFINITION

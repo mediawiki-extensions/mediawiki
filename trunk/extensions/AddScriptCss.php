@@ -39,6 +39,12 @@
  *
  * DEPENDANCY:  ExtensionClass (>=v1.92)
  * 
+ * USAGE NOTES:
+ * ============
+ * 1) When using 'pos=body', it is recommended to use
+ * the extension 'ParserCacheControl' in order to better
+ * integrate this extension with the standard MW parser cache.
+ * 
  * Tested Compatibility:  MW 1.8.2, 1.10
  *
  * History:
@@ -62,14 +68,6 @@ class AddScriptCssClass extends ExtensionClass
 	const thisName = 'AddScriptCss';
 	const thisType = 'other';  
 
-	// script types
-	const type_js  = 1;
-	const type_css = 2;
-	
-	// position types
-	const pos_body = 1;
-	const pos_head = 2;
-	
 	// error codes.
 	const error_none     = 0;
 	const error_uri      = 1;
@@ -79,6 +77,8 @@ class AddScriptCssClass extends ExtensionClass
 	static $base = 'scripts/';
 
 	static $mgwords = array( 'addscript' );
+
+	static $slist;
 
 	public static function &singleton($mwlist, $globalObjName, $passingStyle , $depth ) // required by ExtensionClass
 	{ return parent::singleton( $mwlist, $globalObjName, $passingStyle , $depth );	}
@@ -96,14 +96,14 @@ class AddScriptCssClass extends ExtensionClass
 			'description' => 'Adds javascript and css scripts to the page HEAD '
 		);
 
+		self::$slist = array();
+
 		// <addscript... />
 		global $wgParser;
 		$wgParser->setHook( 'addscript', array( &$this, 'pSet' ) );
 	}
 	public function setup() 
 	{ parent::setup();	} 
-
-	var $slist;
 
 	public function pSet( &$text, &$params, &$parser)
 	{ 
@@ -117,13 +117,13 @@ class AddScriptCssClass extends ExtensionClass
 	}
 	private function setupParams( &$params )
 	{
-		$template = array(
+		static $template = array(
 			array( 'key' => 'src',  'index' => '0', 'default' => '' ),
 			array( 'key' => 'type', 'index' => '1', 'default' => 'js' ),
 			array( 'key' => 'pos',  'index' => '2', 'default' => 'body' ),
 			#array( 'key' => '', 'index' => '', 'default' => '' ),
 		);
-		parent::initParams( $params, $template, true );
+		parent::initParams( $params, self::$template, true );
 	}
 	private function normalizeParams( &$params )
 	{
@@ -159,6 +159,7 @@ class AddScriptCssClass extends ExtensionClass
 		global $wgScriptPath;
 		$p = $wgScriptPath.'/'.self::$base.$src.'.'.$type;
 
+		// Which type of script does the user want?
 		switch( $type )
 		{
 			case 'css':
@@ -170,7 +171,18 @@ class AddScriptCssClass extends ExtensionClass
 				break;
 		}	
 
-		$this->addHeadScript( $t );
+		// Where does the user want the script?
+		switch( $pos )
+		{
+			case 'head':
+				$this->addHeadScript( $t );
+				break;			
+			default:
+			case 'body':
+				self::$slist[] = $t;
+				$this->setupHook();
+				break;	
+		}
 
 		// everything OK
 		return null;
@@ -199,17 +211,40 @@ class AddScriptCssClass extends ExtensionClass
 	{
 		static $m = array(
 			self::error_none => 'no error',
-			self::error_uri:
-			self::error_bad_type:
-			self::error_bad_pos:
-
+			self::error_uri  => 'invalid URI',
+			self::error_bad_type => 'invalid TYPE parameter',
+			self::error_bad_pos  => 'invalid POS parameter',
 		);
 		
-		 invalid URI  <i><b>'.$uri.'</b></i><br/>'; //FIXME
-		
-		$message = 'AddScriptCss: '.$m[ $errCode ];
-	
+		return 'AddScriptCss: '.self::$m[ $errCode ];
 	}
+/****************************************************************************
+  Support for scripts in the document 'body'
+****************************************************************************/	
+	private function setupBodyHook()
+	{
+		// only setup hook once.
+		static $installed = false;
+		if (self::$installed) return;
+		self::$installed = true;
+		
+		global $wgHooks;
+		$wgHooks['ParserAfterTidy'][] = array( &$this, 'feedScripts' );	
+	}
+	public function feedScripts( &$parser, &$text )
+	/*  The scripts we include in the document 'body' are subjected
+	    to parser caching.
+	*/
+	{
+		global $wgScriptPath;
+		
+		if (!empty(self::$slist))
+			foreach(self::$slist as $sc)
+				$text .= $sc;
+				
+		return true;
+	}
+	
 	
 } // END CLASS DEFINITION
 ?>

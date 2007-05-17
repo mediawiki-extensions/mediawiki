@@ -27,15 +27,15 @@
  *
  * Syntax:
  * =======
- * -- <addscript src=filename />
- * -- <addscript src=filename type=[js|css] />
+ * Form 1: <addscript src=filename [type={js|css}] [pos={head|body}] />
  *
- * -- {{#addscript:filename}}
- * -- {{#addscript:src=filename}}
- * -- {{#addscript:src=filename|type=[js|css]}}
+ * Form 2: {{#addscript:src=filename [|type={js|css} [|pos={head|body}] }}
  *
  * If no 'type' field is present, then the extension
- * assumes '.js'.
+ * assumes 'js'.
+ *
+ * If no 'pos' field is present, then the extension
+ * assumes 'body'
  *
  * DEPENDANCY:  ExtensionClass (>=v1.91)
  * 
@@ -66,6 +66,10 @@ class AddScriptCssClass extends ExtensionClass
 	const type_js  = 1;
 	const type_css = 2;
 	
+	// position types
+	const pos_body = 1;
+	const pos_head = 2;
+	
 	static $base = 'scripts/';
 
 	static $mgwords = array( 'addscript' );
@@ -95,29 +99,39 @@ class AddScriptCssClass extends ExtensionClass
 
 	var $slist;
 
-	public function pSet( &$text, &$argv, &$parser)
-	{ return $this->processURI( $argv['src'], $argv['type'] );	}
+	public function pSet( &$text, &$params, &$parser)
+	{ 
+		return $this->process( $params ); 
+	}
 	
-	public function mg_addscript( $args )
+	public function mg_addscript( $params )
 	{
-		$params = $this->processArgList( $args, true );		
-		return $this->processURI( $params['src'], $params['type'] );
+		$params = $this->processArgList( $params, true );		
+		return $this->process( $params );
 	}
 	private function setupParams( &$params )
 	{
 		$template = array(
-			array( 'key' => 'src',      'index' => '0', 'default' => '' ),
-			array( 'key' => 'type',     'index' => '1', 'default' => '' ),
+			array( 'key' => 'src',  'index' => '0', 'default' => '' ),
+			array( 'key' => 'type', 'index' => '1', 'default' => 'js' ),
+			array( 'key' => 'pos',  'index' => '2', 'default' => 'body' ),
 			#array( 'key' => '', 'index' => '', 'default' => '' ),
 		);
 		parent::initParams( $params, $template );
 	}
 
 	
-	private function processURI( $uri, $type = type_js )
+	private function process( &$params )
 	{
-		$uri = $this->cleanURI( $uri, $type );
-		if (!$this->checkURI( $uri, $type ))
+		$this->setupParams( $params );
+
+		$this->validateParams( $params );
+
+		extract( $params );
+		// src, type, pos
+		
+		$src = $this->cleanURI( $src, $type );
+		if (!$this->checkURI( $src, $type ))
 			return 'AddScriptCss: invalid URI  <i><b>'.$uri.'</b></i><br/>'; //FIXME
 
 		global $wgScriptPath;

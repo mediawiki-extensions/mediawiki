@@ -39,11 +39,12 @@
  *          in a manner compatible with parser caching functionality.
  *          (Original idea from [user:Jimbojw]
  * v1.91    Added check for screening script duplicates in 'addHeadScript'
- * 
+ * v1.92    Added optional removal of parameters not listed in template.
+ *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ExtensionClass',
-	'version' => 'v1.91 $LastChangedRevision$',
+	'version' => 'v1.92 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -326,8 +327,14 @@ static $hookList = array(
 		else
 			return $default;
 	}
-	public function initParams( &$alist, &$templateElements )
+	public function initParams( &$alist, &$templateElements, $removeNotInTemplate = true )
 	{
+		// v1.92 feature.
+		if ($removeNotInTemplate)
+			foreach( $templateElements as $index => &$el )
+				if ( !isset($alist[ $el['key'] ]) )
+					unset( $alist[$el['key']] );
+		
 		foreach( $templateElements as $index => &$el )
 			$alist[$el['key']] = $this->getParam( $alist, $el['key'], $el['index'], $el['default'] );
 	}

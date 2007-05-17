@@ -37,7 +37,7 @@
  * If no 'type' field is present, then the extension
  * assumes '.js'.
  *
- * DEPENDANCY:  ExtensionClass (>=v1.9)
+ * DEPENDANCY:  ExtensionClass (>=v1.91)
  * 
  * Tested Compatibility:  MW 1.8.2, 1.10
  *
@@ -50,7 +50,11 @@
  * - internationalize
  */
 
-AddScriptCssClass::singleton();
+// Verify if 'ExtensionClass' is present.
+if ( !class_exists('ExtensionClass') )
+	echo 'ExtensionClass missing: AddScriptCss extension will not work!';	
+else
+	AddScriptCssClass::singleton();
 
 class AddScriptCssClass extends ExtensionClass
 {
@@ -99,11 +103,22 @@ class AddScriptCssClass extends ExtensionClass
 		$params = $this->processArgList( $args, true );		
 		return $this->processURI( $params['src'], $params['type'] );
 	}
+	private function setupParams( &$params )
+	{
+		$template = array(
+			array( 'key' => 'src',      'index' => '0', 'default' => '' ),
+			array( 'key' => 'type',     'index' => '1', 'default' => '' ),
+			#array( 'key' => '', 'index' => '', 'default' => '' ),
+		);
+		parent::initParams( $params, $template );
+	}
+
+	
 	private function processURI( $uri, $type = type_js )
 	{
 		$uri = $this->cleanURI( $uri, $type );
 		if (!$this->checkURI( $uri, $type ))
-			return 'addscript: invalid uri   <i><b>'.$uri.'</b></i><br/>'; //FIXME
+			return 'AddScriptCss: invalid URI  <i><b>'.$uri.'</b></i><br/>'; //FIXME
 
 		global $wgScriptPath;
 		$p = $wgScriptPath.'/'.self::$base.$uri.$this->getExt( $type );
@@ -149,11 +164,9 @@ class AddScriptCssClass extends ExtensionClass
 	{
 		switch( $type )
 		{
-			case type_css:
-				return '.css';
+			case type_css:  return '.css';
 			default:
-			case type_js:
-				return '.js';	
+			case type_js:	return '.js';	
 		}	
 	}
 	

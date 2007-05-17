@@ -80,8 +80,8 @@ class AddScriptCssClass extends ExtensionClass
 
 	static $slist;
 
-	public static function &singleton($mwlist, $globalObjName, $passingStyle , $depth ) // required by ExtensionClass
-	{ return parent::singleton( $mwlist, $globalObjName, $passingStyle , $depth );	}
+	public static function &singleton()
+	{ return parent::singleton( );	}
 	
 	function AddScriptCssClass( $mgwords = null, $passingStyle = self::mw_style, $depth = 1 )
 	{
@@ -93,17 +93,19 @@ class AddScriptCssClass extends ExtensionClass
 			'version'     => 'v1.00 $id$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
-			'description' => 'Adds javascript and css scripts to the page HEAD '
+			'description' => 'Adds javascript and css scripts to the page HEAD or BODY sections'
 		);
 
 		self::$slist = array();
+	}
+	public function setup() 
+	{ 
+		parent::setup();
 
 		// <addscript... />
 		global $wgParser;
 		$wgParser->setHook( 'addscript', array( &$this, 'pSet' ) );
-	}
-	public function setup() 
-	{ parent::setup();	} 
+	} 
 
 	public function pSet( &$text, &$params, &$parser)
 	{ 
@@ -180,7 +182,7 @@ class AddScriptCssClass extends ExtensionClass
 			default:
 			case 'body':
 				self::$slist[] = $t;
-				$this->setupHook();
+				$this->setupBodyHook();
 				break;	
 		}
 
@@ -244,7 +246,5 @@ class AddScriptCssClass extends ExtensionClass
 				
 		return true;
 	}
-	
-	
 } // END CLASS DEFINITION
 ?>

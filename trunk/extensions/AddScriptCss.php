@@ -112,20 +112,20 @@ class AddScriptCssClass extends ExtensionClass
 		return $this->process( $params ); 
 	}
 	
-	public function mg_addscript( $params )
+	public function mg_addscript( &$parser )
 	{
-		$params = $this->processArgList( $params, true );		
+		$params = $this->processArgList( func_get_args(), true );		
 		return $this->process( $params );
 	}
 	private function setupParams( &$params )
 	{
-		static $template = array(
+		$template = array(
 			array( 'key' => 'src',  'index' => '0', 'default' => '' ),
 			array( 'key' => 'type', 'index' => '1', 'default' => 'js' ),
 			array( 'key' => 'pos',  'index' => '2', 'default' => 'body' ),
 			#array( 'key' => '', 'index' => '', 'default' => '' ),
 		);
-		parent::initParams( $params, self::$template, true );
+		parent::initParams( $params, $template, true );
 	}
 	private function normalizeParams( &$params )
 	{
@@ -211,14 +211,14 @@ class AddScriptCssClass extends ExtensionClass
 	} 
 	private function errMessage( $errCode )
 	{
-		static $m = array(
+		$m = array(
 			self::error_none => 'no error',
 			self::error_uri  => 'invalid URI',
 			self::error_bad_type => 'invalid TYPE parameter',
 			self::error_bad_pos  => 'invalid POS parameter',
 		);
 		
-		return 'AddScriptCss: '.self::$m[ $errCode ];
+		return 'AddScriptCss: '.$m[ $errCode ];
 	}
 /****************************************************************************
   Support for scripts in the document 'body'
@@ -227,8 +227,8 @@ class AddScriptCssClass extends ExtensionClass
 	{
 		// only setup hook once.
 		static $installed = false;
-		if (self::$installed) return;
-		self::$installed = true;
+		if  ($installed) return;
+		else $installed = true;
 		
 		global $wgHooks;
 		$wgHooks['ParserAfterTidy'][] = array( &$this, 'feedScripts' );	

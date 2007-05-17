@@ -329,6 +329,7 @@ static $hookList = array(
 	}
 	public function initParams( &$alist, &$templateElements, $removeNotInTemplate = true )
 	{
+			#var_dump( $alist );
 		// v1.92 feature.
 		if ($removeNotInTemplate)
 			foreach( $templateElements as $index => &$el )
@@ -426,7 +427,11 @@ phase 2- when the page is rendered, extract the meta information
 
 	function addHeadScript( $st )
 	{
-		if (!in_array($st, self::$scriptList)) 
+		if ( !isset($st) ) return;
+		
+		if ( !isset(self::$scriptList) )
+			self::$scriptList[] = $st;
+		elseif	(!in_array($st, self::$scriptList)) 
 			self::$scriptList[] = $st;
 			 
 		self::$scriptsAdded = false;

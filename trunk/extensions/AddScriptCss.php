@@ -37,7 +37,7 @@
  * If no 'pos' field is present, then the extension
  * assumes 'body'
  *
- * DEPENDANCY:  ExtensionClass (>=v1.91)
+ * DEPENDANCY:  ExtensionClass (>=v1.92)
  * 
  * Tested Compatibility:  MW 1.8.2, 1.10
  *
@@ -70,6 +70,12 @@ class AddScriptCssClass extends ExtensionClass
 	const pos_body = 1;
 	const pos_head = 2;
 	
+	// error codes.
+	const error_none     = 0;
+	const error_uri      = 1;
+	const error_bad_type = 2;
+	const error_bad_pos  = 3;
+		
 	static $base = 'scripts/';
 
 	static $mgwords = array( 'addscript' );
@@ -117,33 +123,49 @@ class AddScriptCssClass extends ExtensionClass
 			array( 'key' => 'pos',  'index' => '2', 'default' => 'body' ),
 			#array( 'key' => '', 'index' => '', 'default' => '' ),
 		);
-		parent::initParams( $params, $template );
+		parent::initParams( $params, $template, true );
 	}
+	private function normalizeParams( &$params )
+	{
+		// This function checks the validity of the following
+		// parameters: 'type' and 'pos'
+		extract( $params );
+		
+		$type=strtolower( $type );
+		if ( ($type!='js') && ($type!='css') )
+			return self::error_bad_type;
 
-	
+		$pos=strtolower( $pos );
+		if ( ($pos!='head') && ($pos!='body') )
+			return self::error_bad_pos;
+
+		return self::error_none;		
+	}
 	private function process( &$params )
 	{
 		$this->setupParams( $params );
 
-		$this->validateParams( $params );
+		$errCode = self::error_none;
+		$r = $this->normalizeParams( $params );
+		if ($r!=self::error_none) return $this->errMessage( $r );
 
 		extract( $params );
 		// src, type, pos
 		
 		$src = $this->cleanURI( $src, $type );
 		if (!$this->checkURI( $src, $type ))
-			return 'AddScriptCss: invalid URI  <i><b>'.$uri.'</b></i><br/>'; //FIXME
+			return $this->errMessage( self::error_uri ); 
 
 		global $wgScriptPath;
-		$p = $wgScriptPath.'/'.self::$base.$uri.$this->getExt( $type );
+		$p = $wgScriptPath.'/'.self::$base.$src.'.'.$type;
 
 		switch( $type )
 		{
-			case type_css:
+			case 'css':
 				$t = '<link href="'.$p.'" rel="stylesheet" type="text/css" />';
 				break;		
 			default:
-			case type_js:
+			case 'js':
 				$t = '<script src="'.$p.'" type="text/javascript"></script>';
 				break;
 		}	
@@ -159,10 +181,10 @@ class AddScriptCssClass extends ExtensionClass
 										 "..\\",'"','`','&','?',
 										 '<','>','.' ), "", $uri);
 	}
-	private function checkURI( $uri, $type = type_js )
+	private function checkURI( $uri, $type )
 	{
 		// uri must resolved to a local file in the $base directory.
-		$spath = self::$base.$uri.$this->getExt( $type );
+		$spath = self::$base.$uri.'.'.$type;
 		
 		// we need the full path on windows system...
 		$cpath = dirname(__FILE__);
@@ -173,15 +195,20 @@ class AddScriptCssClass extends ExtensionClass
 		
 		return file_exists( $bpath."/{$spath}" );
 	} 
-
-	private function getExt( $type )
+	private function errMessage( $errCode )
 	{
-		switch( $type )
-		{
-			case type_css:  return '.css';
-			default:
-			case type_js:	return '.js';	
-		}	
+		static $m = array(
+			self::error_none => 'no error',
+			self::error_uri:
+			self::error_bad_type:
+			self::error_bad_pos:
+
+		);
+		
+		 invalid URI  <i><b>'.$uri.'</b></i><br/>'; //FIXME
+		
+		$message = 'AddScriptCss: '.$m[ $errCode ];
+	
 	}
 	
 } // END CLASS DEFINITION

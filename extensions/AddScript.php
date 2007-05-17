@@ -30,6 +30,11 @@
  * 
  * Tested Compatibility:  MW 1.8.2, 1.9.3
  *
+ * IMPORTANT NOTE:
+ * ===============
+ * The current version of this extension (v1.3) is not
+ * 'parser cache' friendly. 
+ *
  * History:
  * - v1.0
  * - v1.1    - Added 'magic word' interface

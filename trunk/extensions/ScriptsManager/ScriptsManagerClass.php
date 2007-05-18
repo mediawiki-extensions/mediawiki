@@ -13,15 +13,13 @@ class ScriptsManagerClass extends ExtensionClass
 	const thisName = 'ScriptsManager';
 	const thisType = 'other';
 	  
-	const actionName = 'editscripts'; 
+	const actionName = 'commitscript'; 
 
 	static $base = 'scripts/';
 	
 	// error code constants
 	const msg_nons = 1;
 	const msg_folder_not_writable = 2;
-	const msg_save_success     = 3;
-	const msg_save_not_success = 4;
 
 	public static function &singleton()
 	{ return parent::singleton( );	}
@@ -49,11 +47,11 @@ class ScriptsManagerClass extends ExtensionClass
 
 		# Add a new log type
 		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-		$wgLogTypes[]                           = 'editscript';
-		$wgLogNames['editscript']               = 'editscriptlogpage';
-		$wgLogHeaders['editscript']             = 'editscriptlogpagetext';
-		$wgLogActions['editscript/editsuccess'] = 'editscriptlog-editsuccess-entry';
-		$wgLogActions['editscript/editfail']    = 'editscriptlog-editfail-entry';
+		$wgLogTypes[]                           = 'commitscript';
+		$wgLogNames['commitscript']             = 'commitscriptlogpage';
+		$wgLogHeaders['commitscript']           = 'commitscriptlogpagetext';
+		$wgLogActions['commitscript/commitok']  = 'commitscriptlog-commitsuccess-entry';
+		$wgLogActions['commitscript/commitfail']= 'commitscriptlog-commitfail-entry';
 		
 		global $wgMessageCache, $wgScriptsManagerLogMessages;
 		foreach( $wgScriptsManagerLogMessages as $key => $value )
@@ -81,8 +79,6 @@ class ScriptsManagerClass extends ExtensionClass
 		$message = array(
 			self::msg_nons                => 'NS_SCRIPTS namespace <b>not</b> declared.',
 			self::msg_folder_not_writable => 'Scripts folder can <b>not</b> be written to.',
-			self::msg_save_success        => 'Script commit successful',
-			self::msg_save_not_success    => 'Script commit <b>not</b> successful',
 		);
 		
 		return $message[ $code ];
@@ -104,21 +100,18 @@ class ScriptsManagerClass extends ExtensionClass
 		
 		$titre = $article->mTitle->getBaseText();
 		
+		// attempt committing the script to the filesystem
 		$r = file_put_contents( self::$base.$titre, $text );
 		
 		// write a log entry with the action result.
-		$action = ($r === FALSE ? 'editfail':'editsuccess' );		
-		$message = wfMsgForContent( 'editscriptlog-edit-text', $user->getName() );
+		$action = ($r === FALSE ? 'commitfail':'commitok' );
+		$nsname = Namespace::getCanonicalName( $ns );	
+		$message = wfMsgForContent( 'commitscriptlog-commit-text', $nsname, $titre );
 		
-		$log = new LogPage( 'editscript' );
+		$log = new LogPage( 'commitscript' );
 		$log->addEntry( $action, $user->getUserPage(), $message );
 		
 		return true; // continue hook-chain.
-	}
-	public function hSiteNoticeAfter( &$siteNotice )
-	{
-		$siteNotice .= $this->result;
-		return true;	
 	}
 	
 	// public function hUnknownAction( $action, $article )

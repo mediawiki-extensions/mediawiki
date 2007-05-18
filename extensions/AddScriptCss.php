@@ -5,25 +5,28 @@
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
  * 
- * Purpose:  Inserts <script> & <link> tags at the bottom of the page's head.
+ * Purpose:  Inserts <script> & <link> (i.e. CSS) tags at the bottom of the page's head
+ * ========  or within the page's body.
  *
  * Features:
  * *********
  * 
- * -- Local files only
+ * -- Local files (URI) only
  * -- Files must be located in wiki installation
  *    home directory/scripts
  *
  * Examples:
  * =========
  * -- <addscript src='local URL' />
- *    e.g. <addscript src=/sarissa/sarissa />
- *    e.g. {{#addscript: src=/sarissa/sarissa }}
- *    e.g. {{#addscript: /sarissa/sarissa }}
+ *    1) e.g. <addscript src=/sarissa/sarissa type=js />
+ *    2) e.g. {{#addscript: src=/styleinfo|pos=head|type=css}}
  *
- *    Results in /home/scripts/sarissa/sarissa.js
- *    being added to the page's head section <script> tags,
- *    provided the said file exists.
+ *    R1) Results in /home/scripts/sarissa/sarissa.js
+ *        being added to the page's body section
+ *        provided the said file exists.
+ *
+ *    R2) The CSS file /home/scripts/styleinfo.css will be
+ *        added to the page's HEAD section (provided it exists).
  *
  * Syntax:
  * =======
@@ -31,19 +34,17 @@
  *
  * Form 2: {{#addscript:src=filename [|type={js|css} [|pos={head|body}] }}
  *
- * If no 'type' field is present, then the extension
- * assumes 'js'.
+ * If no 'type' field is present, then the extension assumes 'js'.
  *
- * If no 'pos' field is present, then the extension
- * assumes 'body'
+ * If no 'pos' field is present, then the extension assumes 'body'
  *
  * DEPENDANCY:  ExtensionClass (>=v1.92)
  * 
  * USAGE NOTES:
  * ============
  * 1) When using 'pos=body', it is recommended to use
- * the extension 'ParserCacheControl' in order to better
- * integrate this extension with the standard MW parser cache.
+ *    the extension 'ParserCacheControl' in order to better
+ *    integrate this extension with the standard MW parser cache.
  * 
  * Tested Compatibility:  MW 1.8.2, 1.10
  *
@@ -76,7 +77,7 @@ class AddScriptCssClass extends ExtensionClass
 		
 	static $base = 'scripts/';
 
-	static $mgwords = array( 'addscript' );
+	static $mgwords = array( 'addscript' ); // {{#addscript: ...}}
 
 	static $slist;
 
@@ -108,9 +109,7 @@ class AddScriptCssClass extends ExtensionClass
 	} 
 
 	public function pSet( &$text, &$params, &$parser)
-	{ 
-		return $this->process( $params ); 
-	}
+	{ return $this->process( $params );	}
 	
 	public function mg_addscript( &$parser )
 	{
@@ -125,6 +124,8 @@ class AddScriptCssClass extends ExtensionClass
 			array( 'key' => 'pos',  'index' => '2', 'default' => 'body' ),
 			#array( 'key' => '', 'index' => '', 'default' => '' ),
 		);
+		// ask initParams to strip off the parameters
+		// which aren't registered in $template.
 		parent::initParams( $params, $template, true );
 	}
 	private function normalizeParams( &$params )
@@ -151,8 +152,8 @@ class AddScriptCssClass extends ExtensionClass
 		$r = $this->normalizeParams( $params );
 		if ($r!=self::error_none) return $this->errMessage( $r );
 
-		extract( $params );
 		// src, type, pos
+		extract( $params );
 		
 		$src = $this->cleanURI( $src, $type );
 		if (!$this->checkURI( $src, $type ))
@@ -164,36 +165,26 @@ class AddScriptCssClass extends ExtensionClass
 		// Which type of script does the user want?
 		switch( $type )
 		{
-			case 'css':
-				$t = '<link href="'.$p.'" rel="stylesheet" type="text/css" />';
-				break;		
+			case 'css': $t = '<link href="'.$p.'" rel="stylesheet" type="text/css" />'; break;		
 			default:
-			case 'js':
-				$t = '<script src="'.$p.'" type="text/javascript"></script>';
-				break;
+			case 'js':	$t = '<script src="'.$p.'" type="text/javascript"></script>';   break;
 		}	
 
 		// Where does the user want the script?
 		switch( $pos )
 		{
-			case 'head':
-				$this->addHeadScript( $t );
-				break;			
+			case 'head': $this->addHeadScript( $t ); break;			
 			default:
-			case 'body':
-				self::$slist[] = $t;
-				$this->setupBodyHook();
-				break;	
+			case 'body': self::$slist[] = $t; $this->setupBodyHook(); break;	
 		}
-
 		// everything OK
 		return null;
 	}
 	private function cleanURI( $uri )
 	{
 		return str_replace( array('/../', '../', '\\..\\',
-										 "..\\",'"','`','&','?',
-										 '<','>','.' ), "", $uri);
+									"..\\",'"','`','&','?',
+									'<','>','.' ), "", $uri);
 	}
 	private function checkURI( $uri, $type )
 	{
@@ -209,15 +200,14 @@ class AddScriptCssClass extends ExtensionClass
 		
 		return file_exists( $bpath."/{$spath}" );
 	} 
-	private function errMessage( $errCode )
+	private function errMessage( $errCode )  // FIXME
 	{
 		$m = array(
-			self::error_none => 'no error',
-			self::error_uri  => 'invalid URI',
+			self::error_none     => 'no error',
+			self::error_uri      => 'invalid URI',
 			self::error_bad_type => 'invalid TYPE parameter',
 			self::error_bad_pos  => 'invalid POS parameter',
 		);
-		
 		return 'AddScriptCss: '.$m[ $errCode ];
 	}
 /****************************************************************************
@@ -244,7 +234,7 @@ class AddScriptCssClass extends ExtensionClass
 			foreach(self::$slist as $sc)
 				$text .= $sc;
 				
-		return true;
+		return true; // continue hook chain.
 	}
 } // END CLASS DEFINITION
 ?>

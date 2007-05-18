@@ -18,6 +18,8 @@ class ScriptsManagerClass extends ExtensionClass
 	// error code constants
 	const msg_nons = 1;
 	const msg_folder_not_writable = 2;
+	const msg_save_success     = 3;
+	const msg_save_not_success = 4;
 
 	public static function &singleton()
 	{ return parent::singleton( );	}
@@ -42,6 +44,8 @@ class ScriptsManagerClass extends ExtensionClass
 		// Keep this 'true' until I get around to doing
 		// the 'commit' functionality.
 		$this->docommit = true;
+		
+		$this->result = '';
 	} 
 	public function hUpdateExtensionCredits( &$sp, &$extensionTypes )
 	{
@@ -65,6 +69,8 @@ class ScriptsManagerClass extends ExtensionClass
 		$message = array(
 			self::msg_nons => 'SCRIPTS namespace <b>not</b> declared.',
 			self::msg_folder_not_writable => 'Scripts folder can <b>not</b> be written to.',
+			self::msg_save_success     => 'Script commit successful',
+			self::msg_save_not_success => 'Script commit <b>not</b> successful',
 		);
 		
 		return $message[ $code ];
@@ -84,7 +90,15 @@ class ScriptsManagerClass extends ExtensionClass
 		
 		$r = file_put_contents( self::$base.$titre, $text );
 		
+		$this->result = $r ?	$this->getMessage(self::msg_save_success):
+								$this->getMessage(self::msg_save_not_success);
+		
 		return true; // continue hook-chain.
+	}
+	public function hSiteNoticeAfter( &$siteNotice )
+	{
+		$siteNotice .= $this->result;
+		return true;	
 	}
 	
 	// public function hUnknownAction( $action, $article )

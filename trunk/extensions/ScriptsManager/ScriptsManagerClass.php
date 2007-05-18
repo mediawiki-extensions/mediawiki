@@ -90,8 +90,8 @@ class ScriptsManagerClass extends ExtensionClass
 		
 		$r = file_put_contents( self::$base.$titre, $text );
 		
-		$this->result = $r ?	$this->getMessage(self::msg_save_success):
-								$this->getMessage(self::msg_save_not_success);
+		$this->result = $r === FALSE ?	$this->getMessage(self::msg_save_not_success):
+								$this->getMessage(self::msg_save_success);
 		
 		return true; // continue hook-chain.
 	}

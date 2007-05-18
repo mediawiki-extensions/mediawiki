@@ -11,7 +11,9 @@ class ScriptsManagerClass extends ExtensionClass
 {
 	// constants.
 	const thisName = 'ScriptsManager';
-	const thisType = 'other';  
+	const thisType = 'other';
+	  
+	const actionName = 'editscripts'; 
 
 	static $base = 'scripts/';
 	
@@ -44,8 +46,18 @@ class ScriptsManagerClass extends ExtensionClass
 		// Keep this 'true' until I get around to doing
 		// the 'commit' functionality.
 		$this->docommit = true;
+
+		# Add a new log type
+		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
+		$wgLogTypes[]                           = 'editscript';
+		$wgLogNames['editscript']               = 'editscriptlogpage';
+		$wgLogHeaders['editscript']             = 'editscriptlogpagetext';
+		$wgLogActions['editscript/editsuccess'] = 'editscriptlog-editsuccess-entry';
+		$wgLogActions['editscript/editfail']    = 'editscriptlog-editfail-entry';
 		
-		$this->result = '';
+		global $wgMessageCache, $wgScriptsManagerLogMessages;
+		foreach( $wgScriptsManagerLogMessages as $key => $value )
+			$wgMessageCache->addMessages( $wgScriptsManagerLogMessages[$key], $key );		
 	} 
 	public function hUpdateExtensionCredits( &$sp, &$extensionTypes )
 	{
@@ -81,7 +93,11 @@ class ScriptsManagerClass extends ExtensionClass
 		// check if we are in the right namespace
 		$ns = $article->mTitle->getNamespace();
 		if ($ns != NS_SCRIPTS) return true;
-		
+
+		// does the user have the right to edit the scripts?
+		// i.e. commit the changes to the file system.
+		if (! $article->mTitle->userCan(self::actionName) ) return true;  
+
 		// we are in the right namespace,
 		// but are we committing to file?
 		if (!$this->docommit) return true;
@@ -90,8 +106,12 @@ class ScriptsManagerClass extends ExtensionClass
 		
 		$r = file_put_contents( self::$base.$titre, $text );
 		
-		$this->result = $r === FALSE ?	$this->getMessage(self::msg_save_not_success):
-								$this->getMessage(self::msg_save_success);
+		// write a log entry with the action result.
+		$action = ($r === FALSE ? 'editfail':'editsuccess' );		
+		$message = wfMsgForContent( 'editscriptlog-edit-text', $user->getName() );
+		
+		$log = new LogPage( 'editscript' );
+		$log->addEntry( $action, $user->getUserPage(), $message );
 		
 		return true; // continue hook-chain.
 	}

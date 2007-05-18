@@ -26,7 +26,7 @@ class ScriptsManagerClass extends ExtensionClass
 	
 	function ScriptsManagerClass( $mgwords = null, $passingStyle = self::mw_style, $depth = 1 )
 	{
-		parent::__construct( self::$mgwords, $passingStyle, $depth );
+		parent::__construct( );
 
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
@@ -67,10 +67,10 @@ class ScriptsManagerClass extends ExtensionClass
 	private function getMessage( $code ) // FIXME: internationalise
 	{
 		$message = array(
-			self::msg_nons => 'SCRIPTS namespace <b>not</b> declared.',
+			self::msg_nons                => 'NS_SCRIPTS namespace <b>not</b> declared.',
 			self::msg_folder_not_writable => 'Scripts folder can <b>not</b> be written to.',
-			self::msg_save_success     => 'Script commit successful',
-			self::msg_save_not_success => 'Script commit <b>not</b> successful',
+			self::msg_save_success        => 'Script commit successful',
+			self::msg_save_not_success    => 'Script commit <b>not</b> successful',
 		);
 		
 		return $message[ $code ];

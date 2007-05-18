@@ -95,9 +95,6 @@ class RawRight extends ExtensionClass
 	{
 		global $wgUser;
 		
-		$ns    = $rawpage->mTitle->getNamespace();
-		$titre = $rawpage->mTitle->mDbkeyform;
-		
 		if (! $wgUser->isAllowed( "raw") )		
 		{
 			$text = '';

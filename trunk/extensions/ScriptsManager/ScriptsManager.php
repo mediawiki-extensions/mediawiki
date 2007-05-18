@@ -37,7 +37,9 @@ if ( !class_exists('ExtensionClass') )
 	echo 'ExtensionClass missing: ScriptsManager extension will not work!';	
 else
 {
-	require("ScriptsManagerClass.php");
+	# Internationalisation file
+	require( 'ScriptsManager.i18n.php' );
+	require( "ScriptsManagerClass.php" );
 	ScriptsManagerClass::singleton();
 }
 ?>

@@ -34,7 +34,7 @@ class ScriptsManagerClass extends ExtensionClass
 			'version'     => 'v1.00 $id$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
-			'description' => 'Manages the script files in /home/scripts. '
+			'description' => 'Manages the script files in /home/'.self::$base;
 		);
 	}
 	public function setup() 
@@ -47,12 +47,12 @@ class ScriptsManagerClass extends ExtensionClass
 
 		# Add a new log type
 		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-		$wgLogTypes[]                              = 'commitscript';
-		$wgLogNames['commitscript']                = 'commitscriptlogpage';
-		$wgLogHeaders['commitscript']              = 'commitscriptlogpagetext';
-		$wgLogActions['commitscript/commitscript'] = 'commitscriptlogentry';
-		$wgLogActions['commitscript/commitok']     = 'commitscriptlog-commitok-entry';
-		$wgLogActions['commitscript/commitfail']   = 'commitscriptlog-commitfail-entry';
+		$wgLogTypes[]                           = 'commitscript';
+		$wgLogNames  ['commitscr']              = 'commitscriptlogpage';
+		$wgLogHeaders['commitscr']              = 'commitscriptlogpagetext';
+		$wgLogActions['commitscr/commitscr']    = 'commitscriptlogentry';
+		$wgLogActions['commitscr/commitok']     = 'commitscriptlog-commitok-entry';
+		$wgLogActions['commitscr/commitfail']   = 'commitscriptlog-commitfail-entry';
 		
 		global $wgMessageCache, $wgScriptsManagerLogMessages;
 		foreach( $wgScriptsManagerLogMessages as $key => $value )
@@ -105,18 +105,19 @@ class ScriptsManagerClass extends ExtensionClass
 		$r = file_put_contents( self::$base.$titre, $text );
 		
 		// write a log entry with the action result.
-		$action = ($r === FALSE ? 'commitfail':'commitok' );
-		$nsname = Namespace::getCanonicalName( $ns );	
+		// -----------------------------------------
+		$action  = ($r === FALSE ? 'commitfail':'commitok' );
+		$nsname  = Namespace::getCanonicalName( $ns );	
 		$message = wfMsgForContent( 'commitscriptlog-commit-text', $nsname, $titre );
 		
-		$log = new LogPage( 'commitscript' );
+		$log = new LogPage( 'commitscr' );
 		$log->addEntry( $action, $user->getUserPage(), $message );
 		
 		return true; // continue hook-chain.
 	}
 	
 	// public function hUnknownAction( $action, $article )
-	/*  This hook is used to implement the custom 'action=commit'
+	/*  This hook is used to implement the custom 'action=commitscript'
 	 */
 	
 } // END CLASS DEFINITION

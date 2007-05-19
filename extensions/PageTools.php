@@ -30,6 +30,9 @@
  *
  * {{#pagepath:}}
  *
+ * {{#pageext:}}                    current article
+ * {{#pageext: 'article title' }}   specified article
+ *
  * DEPENDANCIES:
  * 1) 'ArticleEx' extension (from v1.6)
  * 2) 'ExtensionClass' extension (from v1.2)
@@ -45,12 +48,13 @@
  *                  This correction is due to the change in ExtensionClass behavior.
  *
  * -- Version 1.3:  Added 'pageexists': does the article title exists?
- * -- Version 1.4:  Added 'pagepath': return the global variable '$wgArticlePath'
+ * -- Version 1.4:  Added 'pagepath': returns the global variable '$wgArticlePath'
+ * -- Version 1.5:  Added 'pageext': returns the 'extension' of the title page. 
  *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'PageTools Extension', 
-	'version' => '$LastChangedRevision$',
+	'version' => 'v1.5 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -63,7 +67,8 @@ class PageTools extends ExtensionClass
 	static $mgwords = array('pageincategory', 'pagenumcategories' , 'pagecategory', 
 							'pagetitle','pagetitleadd',
 							'pagesubtitle',
-							'pageexists', 'pagepath' );
+							'pageexists', 'pagepath',
+							'pageext' );
 	
 	public static function &singleton( )
 	{ return parent::singleton(); }
@@ -160,6 +165,21 @@ class PageTools extends ExtensionClass
 		global $wgArticlePath;
 		return $wgArticlePath;	
 	}
+	public function mg_pageext( &$parser, $titre )
+	{
+		global $wgArticle;
+		
+		if (empty( $titre ))
+			$titre = $wgArticle->mTitle->getBaseText();
+		
+		// extension starts with the ending '.'
+		$pos   = strrpos( $titre, '.' );
+		if ($pos === false) return null;   // didn't find any '.'
+		
+		// ok we found a '.', extract what's after it.
+		return substr( $titre, $pos+1 );
+	}
+
 	// =========================================================================	
 	public function hBeforePageDisplay( $op )
 	{

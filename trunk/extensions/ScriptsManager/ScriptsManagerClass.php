@@ -14,6 +14,7 @@ class ScriptsManagerClass extends ExtensionClass
 	const thisType = 'other';
 	  
 	const actionName = 'commitscript'; 
+	const mNoCommit  = '__NOCOMMIT__';
 
 	static $base = 'scripts/';
 	
@@ -31,7 +32,7 @@ class ScriptsManagerClass extends ExtensionClass
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
 			'name'        => self::thisName, 
-			'version'     => 'v1.00 $Id$',
+			'version'     => 'v1.01 $Id$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
 			'description' => 'Manages the script files in /home/'.self::$base,
@@ -91,7 +92,7 @@ class ScriptsManagerClass extends ExtensionClass
 		$ns = $article->mTitle->getNamespace();
 		if ($ns != NS_SCRIPTS) return true;
 
-		// does the user have the right to edit the scripts?
+		// does the user have the right to commit scripts?
 		// i.e. commit the changes to the file system.
 		if (! $article->mTitle->userCan(self::actionName) ) return true;  
 
@@ -99,9 +100,12 @@ class ScriptsManagerClass extends ExtensionClass
 		// but are we committing to file?
 		if (!$this->docommit) return true;
 		
-		$titre = $article->mTitle->getBaseText();
+		// do we have a 'no commit' command in the text?
+		$r = preg_match('/'.self::mNoCommit.'/si', $text);
+		if ($r==1) return true;
 		
-		// attempt committing the script to the filesystem
+		// we can attempt commit then.
+		$titre = $article->mTitle->getBaseText();
 		$r = file_put_contents( self::$base.$titre, $text );
 		
 		// write a log entry with the action result.
@@ -110,6 +114,7 @@ class ScriptsManagerClass extends ExtensionClass
 		$nsname  = Namespace::getCanonicalName( $ns );	
 		$message = wfMsgForContent( 'commitscriptlog-commit-text', $nsname, $titre );
 		
+		// we need to limit the text to 'commitscr' because of the database schema.
 		$log = new LogPage( 'commitscr' );
 		$log->addEntry( $action, $user->getUserPage(), $message );
 		

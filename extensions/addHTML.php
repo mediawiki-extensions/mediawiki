@@ -30,10 +30,11 @@
  * History:
  * - v1.0
  * - v1.1 : changed hook method for better parser cache integration.
+ * - v1.2 : fixed hook chain in 'ParserAfterTidy'
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'addHTML Extension', 
-	'version' => '$LastChangedRevision$',
+	'version' => 'v1.2 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -89,7 +90,7 @@ class addHTMLclass extends ExtensionClass
 	public function feedHtml( $parser, &$text )
 	{
 		// Some substitution to do?
-		if (empty($this->hlist)) return;
+		if (empty($this->hlist)) return true;
 
 		foreach($this->hlist as $index => $html)
 		{
@@ -98,6 +99,9 @@ class addHTMLclass extends ExtensionClass
 		}
 		return true; // continue hook chain.
 	}
+/* -----------------------------------------------------------------------
+    PUBLIC INTERFACE FOR OTHER EXTENSIONS WISHING TO ADD ARBITRARY HTML
+   ----------------------------------------------------------------------- */
 	public function addHtml( $id, $html ) {	$this->hlist[ $id ] = $html; }
 	
 } // END CLASS DEFINITION

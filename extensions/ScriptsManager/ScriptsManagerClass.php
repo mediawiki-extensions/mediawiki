@@ -47,11 +47,12 @@ class ScriptsManagerClass extends ExtensionClass
 
 		# Add a new log type
 		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-		$wgLogTypes[]                           = 'commitscript';
-		$wgLogNames['commitscript']             = 'commitscriptlogpage';
-		$wgLogHeaders['commitscript']           = 'commitscriptlogpagetext';
-		$wgLogActions['commitscript/commitok']  = 'commitscriptlog-commitsuccess-entry';
-		$wgLogActions['commitscript/commitfail']= 'commitscriptlog-commitfail-entry';
+		$wgLogTypes[]                              = 'commitscript';
+		$wgLogNames['commitscript']                = 'commitscriptlogpage';
+		$wgLogHeaders['commitscript']              = 'commitscriptlogpagetext';
+		$wgLogActions['commitscript/commitscript'] = 'commitscriptlogentry';
+		$wgLogActions['commitscript/commitok']     = 'commitscriptlog-commitok-entry';
+		$wgLogActions['commitscript/commitfail']   = 'commitscriptlog-commitfail-entry';
 		
 		global $wgMessageCache, $wgScriptsManagerLogMessages;
 		foreach( $wgScriptsManagerLogMessages as $key => $value )

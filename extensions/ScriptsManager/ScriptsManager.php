@@ -9,7 +9,7 @@
  * ========  
  *
  * Features:
- * *********
+ * =========
  *
  * DEPENDANCY:  ExtensionClass (>=v1.92)
  * ===========
@@ -37,7 +37,6 @@ if ( !class_exists('ExtensionClass') )
 	echo 'ExtensionClass missing: ScriptsManager extension will not work!';	
 else
 {
-	# Internationalisation file
 	require( 'ScriptsManager.i18n.php' );
 	require( "ScriptsManagerClass.php" );
 	ScriptsManagerClass::singleton();

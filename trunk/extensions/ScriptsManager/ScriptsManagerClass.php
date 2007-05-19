@@ -34,7 +34,7 @@ class ScriptsManagerClass extends ExtensionClass
 			'version'     => 'v1.00 $id$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
-			'description' => 'Manages the script files in /home/'.self::$base;
+			'description' => 'Manages the script files in /home/'.self::$base,
 		);
 	}
 	public function setup() 

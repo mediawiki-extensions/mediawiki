@@ -31,7 +31,7 @@ class ScriptsManagerClass extends ExtensionClass
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
 			'name'        => self::thisName, 
-			'version'     => 'v1.00 $id$',
+			'version'     => 'v1.00 $Id$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
 			'description' => 'Manages the script files in /home/'.self::$base,

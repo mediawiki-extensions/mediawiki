@@ -5,19 +5,22 @@
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
  * 
- * Purpose:  
- * ========  
+ * Purpose:   This Mediawiki extension enables a user with the 'commitscript' right
+ * ========   to edit scripts in the NS_SCRIPTS namespace and commit those to filesystem.  
  *
  * Features:
  * =========
+ * 1) New right: 'commitscript'
+ * 2) New Namespace: 'NS_SCRIPTS'
+ * 3) Logging
  *
- * DEPENDANCY:  ExtensionClass (>=v1.92)
+ * DEPENDANCY:  
  * ===========
- * 
+ * 1) Extension 'ExtensionClass' (>=v1.92) 
+ *
  * USAGE NOTES:
  * ============
- * 1) An extra namespace ( NS_SCRIPTS ) must be declared
- *    in 'LocalSettings.php'.
+ * 1) An extra namespace ( NS_SCRIPTS ) must be declared in 'LocalSettings.php'.
  *
  * Tested Compatibility:  MW 1.8.2, 1.10
  * =====================
@@ -28,7 +31,7 @@
  *
  * TODO:
  * =====
- * -- Commit Action
+ * -- Commit Action handling (currently save==commit)
  * 
  */
 

@@ -28,6 +28,7 @@
  * History:
  * ========
  * - v1.0
+ * - v1.01   - Added '__NOCOMMIT__' magic word
  *
  * TODO:
  * =====

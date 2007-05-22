@@ -49,25 +49,20 @@ class HeaderFooterClass
 		global $action;
 
 		// only show up the header/footer on page views		
-		if ($action != 'view')
-			return true;
+		if ($action != 'view') return true;
 
-		if ( $this->done ) // v1.12
-			return;
+		if ( $this->done ) return true;
 		$this->done = true; 
 
 		// check the per-namespace enable/disable attribute.
 		$ns = $article->mTitle->getNamespace(); 
-		if (!$this->nsPar[$ns]['enable'])
-			return true;
+		if (!$this->nsPar[$ns]['enable']) return true;
 
 		// Re-entrancy check
 		// If this function is called recursively,
 		// that probably means a processor code page 
 		// is being fetched. Get out.
-		if ($this->inproc)
-			return true; 
-		
+		if ($this->inproc) return true; 
 		$this->inproc= true;		
 
 		$name = $article->mTitle->getPrefixedDBkey();
@@ -117,11 +112,6 @@ class HeaderFooterClass
 	public function hArticleSave( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags )
 	// V1.14 enhancement.
 	{
-		// If ParserCacheControl extension is already handling
-		// the article update/creation, then bail out. (v1.15 feature)
-		if (class_exists('ParserCacheControl'))
-			return true;
-			
 		global $wgParserCacheType;
 				
 		// check the per-namespace enable/disable attribute.

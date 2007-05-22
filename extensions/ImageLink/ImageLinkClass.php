@@ -4,7 +4,7 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
- *
+ * $Id$
  */
 class ImageLinkClass extends ExtensionClass
 {
@@ -84,11 +84,11 @@ class ImageLinkClass extends ExtensionClass
 	 */
 	{
 		// sometimes, the parser gets called more than once.
-		if ($this->done) return;
+		if ($this->done) return true;
 		$this->done = true;
 		
 		// Some substitution to do?
-		if (empty($this->links)) return;
+		if (empty($this->links)) return true;
 
 		foreach($this->links as $index => $link)
 		{

@@ -4,6 +4,7 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
+ * $Id$
  *
  * Purpose:  Provides a clickable image link using
  *           an image stored in the Image namespace and
@@ -12,7 +13,7 @@
  *
  * USAGE E.g.:	{{#imagelink:New Clock.gif|Admin:Show Time|alternate text | width | height | border }}
  * 
- * Tested Compatibility: MW 1.8.2, 1.9.3
+ * Tested Compatibility: MW 1.8.2, 1.9.3, 1.10
  *
  * DEPENDANCY: ExtensionClass
  * 
@@ -29,10 +30,12 @@
  * -------------  -- changed to SVN management
  *          v1.5  -- Support for inter-wiki links (thanks to Andrew Culver)
  *          v1.51 -- Added check for ExtensionClass dependancy.
+ *          v1.52 -- Fixed hook chain bug.
+ *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'ImageLink',
-	'version' => 'v1.51 $LastChangedRevision$',
+	'version' => 'v1.52 $Id$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -40,8 +43,8 @@ $wgExtensionCredits['other'][] = array(
 // Verify if 'ExtensionClass' is present.
 if ( !class_exists('ExtensionClass') )
 	echo 'ExtensionClass missing: ImageLink extension will not work!';	
-
-require_once(dirname( __FILE__ ) . '/ImageLinkClass.php');
+else
+	require(dirname( __FILE__ ) . '/ImageLinkClass.php');
 
 ImageLinkClass::singleton();
 

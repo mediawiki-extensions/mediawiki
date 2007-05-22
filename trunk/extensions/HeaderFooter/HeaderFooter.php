@@ -36,11 +36,13 @@
  *                    This extension update disables this behavior but don't worry, the article will
  *                    be saved by MW the next time the article is viewed. 
  * -- Version 1.15: - Integration with 'ParserCacheControl' extension.
+ * -- Version 1.16: - Added missing 'return true' in function handler.
+ *                  - Added check for 'ParserCacheControl' in hook creation.
  *
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'HeaderFooter Extension', 
-	'version' => '$LastChangedRevision$',
+	'version' => 'v1.16 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
@@ -48,5 +50,8 @@ $wgExtensionCredits['other'][] = array(
 require_once("HeaderFooterClass.php");
 $hfObj = &HeaderFooterClass::singleton();
 $wgHooks['ArticleAfterFetchContent'][] = array( $hfObj, 'hAddHeaderFooter' );
-$wgHooks['ArticleSave'][] =              array( $hfObj, 'hArticleSave' );
+
+// v1.16
+if (!class_exists('ParserCacheControl'))
+	$wgHooks['ArticleSave'][] =          array( $hfObj, 'hArticleSave' );
 ?>

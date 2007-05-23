@@ -12,10 +12,13 @@
  *
  * Features:
  * =========
- *
- *
- *
- *
+   1) Integration with Mediawiki's Parser Cache functionality
+      - An article can contain cached wikitext as well as Smarty template calls.
+
+   2) Usage through a parser 'magic word'
+   3) Smarty Config files support
+
+
  * DEPENDANCIES:  
  * =============
    1) Extension 'ExtensionClass' (>=v1.92)

@@ -34,6 +34,10 @@ class SmartyAdaptorClass extends ExtensionClass
 		self::typeCfg   => '/configs',		
 	);
 
+	// The actual filename where Smarty's implementation lies.
+	static $smartyClassFileName = 'Smarty.class.php';
+	static $smartyClassName     = 'Smarty';
+
 	// base directory for this extension
 	static $base  = 'scripts/smarty';
 
@@ -119,7 +123,18 @@ class SmartyAdaptorClass extends ExtensionClass
 
 		// something to do?
 		if ( ($r===0) || ( $r===false)) return true; 
-	
+
+		// let's load Smarty
+		@require( $IP.self::$base.'/'.self::$smartyClassFileName );
+
+		// make sure we have the required class loaded.
+		if ( !class_exists( self::$smartyClassName ) )
+		{
+			$errMsg = wfMsgForContent( 'smartyadaptor-smarty-classnotfound' );
+ 			$text .= '<br/'.$errMsg;
+			return true;
+		}
+
 		// go through all matches & replace associated marker with result
 		// full match: $m[0]
 		// proc: first sub-patterns array -> $m[1]

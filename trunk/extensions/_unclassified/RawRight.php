@@ -48,7 +48,7 @@ class RawRight extends ExtensionClass
 		global $wgExtensionCredits;
 		$wgExtensionCredits[self::thisType][] = array( 
 			'name'    => self::thisName, 
-			'version' => 'v1.0 $LastChangedRevision: 82 $',
+			'version' => 'v1.0 $LastChangedRevision$',
 			'author'  => 'Jean-Lou Dupont', 
 			'url'     => 'http://www.bluecortex.com',
 			'description' => "Status: "

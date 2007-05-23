@@ -4,6 +4,8 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
+ * $Id$
+ * $LastChangedRevision$
  *
  * Purpose:  Provides the following functions:
  *           1- article content caching

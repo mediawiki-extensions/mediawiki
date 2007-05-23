@@ -4,7 +4,8 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
- *
+ * $Id$
+ * $LastChangedRevision$
  * Purpose: insert an header and/or footer to an article
  *          upon a 'view' action.
  *

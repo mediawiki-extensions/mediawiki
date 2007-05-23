@@ -3,8 +3,9 @@
 /**
  * Installation script for the bad 'SuperGroups' extension
  *
- * @addtogroup Extensions
  * @author Jean-Lou Dupont
+ * $Id$
+ * $LastChangedRevision$
  */
 
 # We're going to have to assume we're running from one of two places

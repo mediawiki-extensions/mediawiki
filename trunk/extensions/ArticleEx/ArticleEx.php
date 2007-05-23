@@ -4,6 +4,8 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
+ * $Id$
+ * $LastChangedRevision$
  *
  * Purpose:  Extends the MW Article class to handle
  *           the serving of pages without skin and addressed

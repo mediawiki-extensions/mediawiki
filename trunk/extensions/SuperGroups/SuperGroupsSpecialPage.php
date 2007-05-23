@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * $Id$
+ * $LastChangedRevision$
+ */
 # Add messages
 global $wgMessageCache, $wgDesysopMessages;
 foreach( $wgDesysopMessages as $key => $value ) {

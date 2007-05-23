@@ -1,7 +1,8 @@
 <?php
 /**
  * Internationalisation file for SuperGroups extension.
- *
+ * $Id$
+ * $LastChangedRevision$
 */
 
 $wgDesysopMessages = array();

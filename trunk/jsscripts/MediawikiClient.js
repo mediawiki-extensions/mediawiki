@@ -1,6 +1,8 @@
 /**
  * MediawikiClient.js
  * @author Jean-Lou Dupont
+ * $Id$
+ * $LastChangedRevision$
  */
 
 MediawikiClient = function()

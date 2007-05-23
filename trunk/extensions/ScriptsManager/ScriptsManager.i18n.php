@@ -2,7 +2,9 @@
 /**
  * Internationalisation file for ScriptsManager extension.
  *
- * @addtogroup Extensions
+ * $Id$
+ * $LastChangedRevision$
+
 */
 
 $wgScriptsManagerLogMessages = array();

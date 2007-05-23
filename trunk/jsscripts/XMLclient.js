@@ -1,7 +1,9 @@
 /*
- *  XMLclient.js
+ * XMLclient.js
  *  
- *  Author: Jean-Lou Dupont  (www.bluecortex.com)
+ * Author: Jean-Lou Dupont  (www.bluecortex.com)
+ * $Id$
+ * $LastChangedRevision$
  *  
  *  Purpose:  This JS class serves as client side
  *  ========  XML processor helper class for "Sarissa", the cross-browser

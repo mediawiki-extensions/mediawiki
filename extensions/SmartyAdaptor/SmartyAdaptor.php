@@ -71,9 +71,13 @@
  * 
  * 
  */
+ 
+if (!isset($wgFullInstallDir))
+	echo 'Smarty Adaptor Extension: variable $wgFullInstallDir not defined in LocalSettings.php';
+	
 // Verify if 'ExtensionClass' is present.
 if ( !class_exists('ExtensionClass') )
-	echo 'ExtensionClass missing: SmartyAdaptor extension will not work!';	
+	echo 'Smarty Adaptor extension: ExtensionClass missing.';	
 else
 {
 	require( 'SmartyAdaptor.i18n.php' );

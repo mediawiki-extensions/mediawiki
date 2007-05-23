@@ -43,7 +43,7 @@ class SmartyAdaptorClass extends ExtensionClass
 
 	// Smarty Framework files
 	// (relative to $base)
-	static $smarty = '/smarty';
+	static $smarty = '/smarty/libs';
 	
 	// {{#smarty: ... }}
 	static $mgwords = array('smarty');
@@ -73,7 +73,7 @@ class SmartyAdaptorClass extends ExtensionClass
 	{ 
 		parent::setup();
 		
-		$this->markerPattern = "/_".self::$marker.'_\((.*)\)\((.*)\)\((.*)\)_\/'.self::$marker."_/si";
+		$this->markerPattern = "/_".self::marker.'_\((.*)\)\((.*)\)\((.*)\)_\/'.self::marker."_/si";
 		
 		// Messages.
 		global $wgMessageCache, $wgSmartyAdaptorMessages;
@@ -85,7 +85,7 @@ class SmartyAdaptorClass extends ExtensionClass
 	   Parser MAGIC WORD handling method
 	   ---------------------------------
 	*/
-	public function mg_smarty( &$parser, $proc, $tpl, $config )  
+	public function mg_smarty( &$parser, $proc, $tpl, $config = null )  
 	{
 		// check processor script availability
 		$r1 = $this->checkFile( $proc, self::typeProc );
@@ -96,9 +96,10 @@ class SmartyAdaptorClass extends ExtensionClass
 		if ($r2 === false) $m2 = wfMsgForContent( 'smartyadaptor-tpl-filenotfound', $tpl );			
 
 		// check template script availability
+		if ( $config !==null )	{
 		$r3 = $this->checkFile( $config, self::typeCfg );
-		if ($r3 === false) $m3 = wfMsgForContent( 'smartyadaptor-cfg-filenotfound', $config );			
-
+		if ($r3 === false) $m3 = wfMsgForContent( 'smartyadaptor-cfg-filenotfound', $config ); }
+		
 		if ( ($r1 === false) || ($r2 === false) || ($r3 === false) )
 			return $m1.'<br/>'.$m2.'<br/>'.$m3;
 		

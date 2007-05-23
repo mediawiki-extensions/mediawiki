@@ -4,7 +4,8 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
- * $Id$ 
+ * $Id$
+ * $LastChangedRevision$
  *
  * Purpose:   
  * ========     
@@ -36,6 +37,10 @@
    1) Smarty processor scripts must be located in: $base/$procs
    2) Smarty templates must be located in: $base/$tpl
    3) Smarty framework must be located located in $base/$smarty
+   4) Smarty processor scripts must be contain a class definition
+      matching the filename (minus the file's extension).
+	  E.g.  SmartyCommentForm.php  must contain a class definition
+	        named 'SmartyCommentForm'.
  
  * LocalSettings.php:
  * ==================

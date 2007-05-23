@@ -1,5 +1,7 @@
 /**
  * Clipboard.js 
+ * $Id$
+ * $LastChangedRevision$
  * version 1.0
  * 
  * This program is meant to be used in conjunction with

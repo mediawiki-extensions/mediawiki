@@ -1,6 +1,7 @@
 <?php
 /**
- * @addtogroup SpecialPage
+ * $Id$
+ * $LastChangedRevision$
  */
 
 /**

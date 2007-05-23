@@ -4,8 +4,11 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
+ * $Id$
+ * $LastChangedRevision$
  *
  * Purpose:  Facilitates client-side XML processing.
+ * ========
  *
  * COMPATIBILITY:  tested on MW 1.8.2 and 1.9.3
  *

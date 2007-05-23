@@ -4,6 +4,8 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
+ * $Id$
+ * $LastChangedRevision$
  *
  * Purpose:  Provides a base for Yahoo User Interface components.
  * ========  

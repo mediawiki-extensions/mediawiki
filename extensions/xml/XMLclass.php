@@ -4,7 +4,8 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
- *
+ * $Id$
+ * $LastChangedRevision$
  * DEPENDANCIES:
  * -- (optional) "variables extension" for inter-extension
  *    communication with this one.

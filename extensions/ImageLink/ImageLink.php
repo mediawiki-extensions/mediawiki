@@ -5,6 +5,7 @@
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
  * $Id$
+ * $LastChangedRevision$
  *
  * Purpose:  Provides a clickable image link using
  *           an image stored in the Image namespace and

@@ -4,6 +4,8 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
+ * $Id$
+ * $LastChangedRevision$
  * 
  * Purpose:   This Mediawiki extension enables a user with the 'commitscript' right
  * ========   to edit scripts in the NS_SCRIPTS namespace and commit those to filesystem.  

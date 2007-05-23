@@ -4,7 +4,8 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
- * $Id$ 
+ * $Id$
+ * $LastChangedRevision$
  *
  * Internationalisation file for SmartyAdaptor extension.
  *

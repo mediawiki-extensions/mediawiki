@@ -4,7 +4,9 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
-*/
+ * $Id$
+ * $LastChangedRevision$
+ */
 
 require_once("$IP/includes/Article.php");
 

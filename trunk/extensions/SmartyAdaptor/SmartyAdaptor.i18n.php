@@ -16,10 +16,10 @@ $wgSmartyAdaptorMessages = array();
 
 $wgSmartyAdaptorMessages['en'] = array(
 	'smartyadaptor-smarty-classnotfound' => 'Smarty Adaptor Extension: Smarty class not found',
-	'smartyadaptor-proc-filenotfound' => 'Smarty Adaptor Extension: processor script $1 not found',
-	'smartyadaptor-tpl-filenotfound'  => 'Smarty Adaptor Extension: template script $1 not found',
-	'smartyadaptor-cfg-filenotfound'  => 'Smarty Adaptor Extension: config file $1 not found',
-	'smartyadaptor-class-notfound'    => 'Smarty Adaptor Extension: class $1 not found',	
+	'smartyadaptor-proc-filenotfound' => 'Smarty Adaptor Extension: processor script <b>$1</b> not found',
+	'smartyadaptor-tpl-filenotfound'  => 'Smarty Adaptor Extension: template script <b>$1</b> not found',
+	'smartyadaptor-cfg-filenotfound'  => 'Smarty Adaptor Extension: config file <b>$1</b> not found',
+	'smartyadaptor-class-notfound'    => 'Smarty Adaptor Extension: class <b>$1</b> not found',	
 	#'' => '',	
 );
 ?>

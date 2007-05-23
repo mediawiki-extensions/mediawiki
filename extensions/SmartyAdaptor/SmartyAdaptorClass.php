@@ -190,7 +190,11 @@ class SmartyAdaptorClass extends ExtensionClass
 	{	return file_exists( $this->getFilename( $file, $type) ); }
 	
 	private function getDirectory( $type )
-	{ return $IP.self::$base.self::$dirs[ $type ]; }
+	{ 
+		global $wgInstallDir;
+		return $wgInstallDir.'/'.self::$base.self::$dirs[ $type ];
+		#return $wgInstallDir; 
+	}
 	
 	private function getExtension( $type )
 	{	return self::$ext[ $type ]; }

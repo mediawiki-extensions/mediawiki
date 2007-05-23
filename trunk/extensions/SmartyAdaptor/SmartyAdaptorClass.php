@@ -191,8 +191,8 @@ class SmartyAdaptorClass extends ExtensionClass
 	
 	private function getDirectory( $type )
 	{ 
-		global $wgInstallDir;
-		return $wgInstallDir.'/'.self::$base.self::$dirs[ $type ];
+		global $wgFullInstallDir;
+		return $wgFullInstallDir.'/'.self::$base.self::$dirs[ $type ];
 		#return $wgInstallDir; 
 	}
 	

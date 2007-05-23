@@ -17,13 +17,18 @@
  *
  * DEPENDANCY:  
  * ===========
- * 1) Extension 'ExtensionClass' (>=v1.92) 
+ * 1) Extension 'ExtensionClass' (>=v1.92)
+ * 2) Smarty framework (available @ ) 
  *
  * USAGE NOTES:
  * ============
+ * {{#smarty: 'processor' | 'template' }}
  *
+ * 1) Smarty processor scripts must be located in: $base/$procs
+ * 2) Smarty templates must be located in: $base/$tpl
+ * 3) Smarty framework must be located located in $base/$smarty
  *
- * Tested Compatibility:  
+ * Tested Compatibility:  1.8.2
  * =====================
  *
  * History:

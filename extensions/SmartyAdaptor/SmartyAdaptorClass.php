@@ -35,16 +35,12 @@ class SmartyAdaptorClass extends ExtensionClass
 	);
 
 	// The actual filename where Smarty's implementation lies.
-	static $smartyClassFileName = 'Smarty.class.php';
+	static $smartyClassFileName = '/libs/Smarty.class.php';
 	static $smartyClassName     = 'Smarty';
 
 	// base directory for this extension
 	static $base  = 'scripts/smarty';
 
-	// Smarty Framework files
-	// (relative to $base)
-	static $smarty = '/smarty/libs';
-	
 	// {{#smarty: ... }}
 	static $mgwords = array('smarty');
 	
@@ -104,7 +100,7 @@ class SmartyAdaptorClass extends ExtensionClass
 			return $m1.'<br/>'.$m2.'<br/>'.$m3;
 		
 		// prepare the marker
-		$marker = "_".self::$marker."_($proc)($tpl)($cfg)_/".self::$marker.'_';
+		$marker = "_".self::marker."_($proc)($tpl)($cfg)_/".self::marker.'_';
 		
 		// insert 'marker' in the parsed text 
 		// for the hook 'OutputPageBeforeHTML' to find.
@@ -126,7 +122,7 @@ class SmartyAdaptorClass extends ExtensionClass
 		if ( ($r===0) || ( $r===false)) return true; 
 
 		// let's load Smarty
-		@require( $IP.self::$base.'/'.self::$smartyClassFileName );
+		require( $IP.self::$base.'/'.self::$smartyClassFileName );
 
 		// make sure we have the required class loaded.
 		if ( !class_exists( self::$smartyClassName ) )
@@ -135,7 +131,7 @@ class SmartyAdaptorClass extends ExtensionClass
  			$text .= '<br/'.$errMsg;
 			return true;
 		}
-
+		
 		// go through all matches & replace associated marker with result
 		// full match: $m[0]
 		// proc: first sub-patterns array -> $m[1]
@@ -186,7 +182,9 @@ class SmartyAdaptorClass extends ExtensionClass
    ------------------------------------------------------------------ */	
 	
 	private function replaceMarker( $m, $r, &$subject )
-	{	$subject = preg_replace( $m, $r, $subject );	}
+	{
+		$subject = str_replace( $m, $r, $subject );
+	}
 
 	private function checkFile( $file, $type )
 	{	return file_exists( $this->getFilename( $file, $type) ); }

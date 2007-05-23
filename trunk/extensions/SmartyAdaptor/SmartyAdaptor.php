@@ -28,6 +28,11 @@
  * 2) Smarty templates must be located in: $base/$tpl
  * 3) Smarty framework must be located located in $base/$smarty
  *
+ * LocalSettings.php:
+ * ==================
+ * require("extensions/ExtensionClass.php");
+ * require("extensions/SmartyAdaptor.php");
+ *
  * Tested Compatibility:  1.8.2
  * =====================
  *
@@ -41,7 +46,6 @@
  * 
  * 
  */
-
 // Verify if 'ExtensionClass' is present.
 if ( !class_exists('ExtensionClass') )
 	echo 'ExtensionClass missing: SmartyAdaptor extension will not work!';	

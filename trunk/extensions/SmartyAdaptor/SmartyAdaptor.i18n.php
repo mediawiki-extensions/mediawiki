@@ -2,7 +2,7 @@
 /**
  * SmartyAdaptor.php
  * 
- * MediaWiki extension
+ * MediaWiki Extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
  * $Id$
  * $LastChangedRevision$

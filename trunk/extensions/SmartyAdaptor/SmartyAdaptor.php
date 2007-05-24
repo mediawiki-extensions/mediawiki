@@ -7,8 +7,8 @@
  * $Id$
  * $LastChangedRevision$
  *
- * Purpose:   
- * ========     
+ * Purpose:  This extension provides access to the Smarty PHP template
+ * ========  processor framework. See http://smarty.php.net/ for more details.     
  *
  * Features:
  * =========
@@ -22,7 +22,7 @@
  * DEPENDANCIES:  
  * =============
    1) Extension 'ExtensionClass' (>=v1.92)
-   2) Smarty framework (available @ ) 
+   2) Smarty framework (available @ http://smarty.php.net/download.php ) 
  
  * FILESYSTEM LAYOUT:
  * ==================
@@ -30,6 +30,12 @@
 		  /scripts/Smarty             [framework files]
 		  /scripts/Smarty/processors  [processor files]
 		  /scripts/Smarty/templates   [template  files]
+		  
+     * directories required by Smarty
+	 --------------------------------
+	 	  
+		  /scripts/Smarty/templates/compile   [compile directory]		  
+		  /scripts/Smarty/templates/cache     [template cache directory]		  
  
    (note that the variable $IP is defined in Mediawiki)
  
@@ -52,9 +58,18 @@
    8) Smarty processor scripts are assumed to have the .php file extension
    9) Smarty template scripts are assumed to have the .tpl file extension   
  
+ * INSTALLATION NOTES:
+ * ===================
+   1) Download the Smarty framework from the link provided in 'Dependancies' above.
+   2) Put the Smarty framework files according to the filesystem layer (see above).
+   3) Create the 'compile' and 'cache' directories
+   4) Adjust the permissions for all directories (Linux/Unix)
+   5) Adjust 'LocalSettings.php' according to the instructions listed below.
  
  * LocalSettings.php:
  * ==================
+   
+   $wgFullInstallDir = dirname( __FILE__ );   // required when using a Windows based system
    require("extensions/ExtensionClass.php");
    require("extensions/SmartyAdaptor.php");
  
@@ -68,8 +83,7 @@
  
  * TODO:
  * =====
- * 
- * 
+
  */
  
 if (!isset($wgFullInstallDir))

@@ -1,4 +1,4 @@
-{* Smarty Test Template *}
+{* Smarty Adaptor Mediawiki extension -- Test Template *}
 {* $Id$ *}
 
 Variable: {$testvariable}

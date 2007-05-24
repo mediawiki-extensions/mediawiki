@@ -71,7 +71,7 @@ class SmartyAdaptorClass extends ExtensionClass
 	{ 
 		parent::setup();
 		
-		$this->markerPattern = "/_".self::marker.'_\((.*)\)\((.*)\)\((.*)\)_\/'.self::marker."_/si";
+		$this->markerPattern = "/_".self::marker.'_\((.*)\)\((.*)\)\((.*)\)_\/'.self::marker."_/siU";
 		
 		// Messages.
 		global $wgMessageCache, $wgSmartyAdaptorMessages;

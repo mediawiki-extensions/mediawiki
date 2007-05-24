@@ -14,6 +14,8 @@ class CreateAccountCaptchaClass extends ExtensionClass
 	// constants.
 	const thisName = 'CreateAccountCaptchaClass';
 	const thisType = 'other';
+	
+	const captchaScript = '/extensions/CreateAccountCaptcha/qc-imagebuilder.php';
 
 /* ---------------------------------
    Initialization methods
@@ -53,17 +55,46 @@ class CreateAccountCaptchaClass extends ExtensionClass
 	/*  This hook will call the processing script(s).
 	 */
 	{
+		global $wgScriptPath;
+		
+		session_start();
+		
+		$imageSrc = self::captchaScript.'?sname='.session_name();
+		
+		$markup = <<<EOT
+<div class='captcha'>
+	<table>
+		<tr>
+	 		<td align='right'>Captcha :</td>
+	 		<td align='left'><img src='{$imageSrc}' border='1' alt='captcha' /></td>
+		</tr>
+	</table>
+</div>
+EOT;
+	
+		$template->set( 'header', $markup);
+		
 		return true; // continue hook chain.
 	}
 
 	function hAbortNewAccount( $u, &$message )
 	{
-		
+		if ($this->verifyCaptcha( &$result ))
+			$message = wfMsg( 'createaccountcaptcha-create-success' );
+		else
+			$message = wfMsg( 'createaccountcaptcha-create-fail' );
+			
+		return $result;	
 	}
 	
 /* ------------------------------------------------------------------
     SUPPORT METHODS                                                
    ------------------------------------------------------------------ */	
-	
+	private function verifyCaptcha( &$result )
+	{
+		$result = true;
+		
+		return $result; 	
+	}	
 } // END CLASS DEFINITION
 ?>

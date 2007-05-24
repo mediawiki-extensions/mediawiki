@@ -223,7 +223,7 @@ static $hookList = array(
 		return $GLOBALS[self::$gObj[$cname]];
 	}
 	public function ExtensionClass( $mgwords=null, $passingStyle = self::mw_style, 
-									$depth = 1, $initFirst = false )
+									$depth = 1, $initFirst = false, $replaceHookList = null )
 	/*
 	 *  $mgwords: array of 'magic words' to subscribe to *if* required.
 	 */
@@ -258,8 +258,16 @@ static $hookList = array(
 		// v1.5 feature
 		foreach (self::$hookList as $index => $hookName)
 		{
+			if (!empty($replaceHookList))
+				$replaceFlag = in_array( $hookName, $replaceHookList);
+					
 			if ( in_array( 'h'.$hookName, get_class_methods($this->className) ) )
-				$wgHooks[$hookName][] = array( &$this, 'h'.$hookName );
+			{
+				if ( $replaceFlag )
+					$wgHooks[$hookName][count($wgHooks[$hookName])-1] = array( &$this, 'h'.$hookName );
+				else
+					$wgHooks[$hookName][] = array( &$this, 'h'.$hookName );
+			}
 		}
 	}
 	public function getParamPassingStyle() { return $this->passingStyle; }

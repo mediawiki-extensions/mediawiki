@@ -46,9 +46,11 @@ class SmartyAdaptorClass extends ExtensionClass
 	
 	// marker pattern
 	var $markerPattern;	
-	
-	// error code constants
 
+/* ---------------------------------
+   Initialization methods
+   ---------------------------------
+*/
 	public static function &singleton()
 	{ return parent::singleton( );	}
 	
@@ -62,7 +64,7 @@ class SmartyAdaptorClass extends ExtensionClass
 			'version'     => 'v1.00 $Id$',
 			'author'      => 'Jean-Lou Dupont', 
 			'url'         => 'http://www.bluecortex.com',
-			'description' => 'Extension base directory: '.self::$base,
+			'description' => 'Smarty [http://smarty.php.net/] Template Processor. Extension base directory: '.self::$base,
 		);
 	}
 	public function setup() 
@@ -182,18 +184,15 @@ class SmartyAdaptorClass extends ExtensionClass
    ------------------------------------------------------------------ */	
 	
 	private function replaceMarker( $m, $r, &$subject )
-	{
-		$subject = str_replace( $m, $r, $subject );
-	}
+	{	$subject = str_replace( $m, $r, $subject ); }
 
 	private function checkFile( $file, $type )
 	{	return file_exists( $this->getFilename( $file, $type) ); }
 	
 	private function getDirectory( $type )
 	{ 
-		global $wgFullInstallDir;
+		global $wgFullInstallDir;  // required by Windows based systems.
 		return $wgFullInstallDir.'/'.self::$base.self::$dirs[ $type ];
-		#return $wgInstallDir; 
 	}
 	
 	private function getExtension( $type )

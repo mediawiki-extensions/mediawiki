@@ -1,4 +1,4 @@
-{* Smarty *}
+{* Smarty Test Template *}
 {* $Id$ *}
 
 Variable: {$testvariable}

@@ -10,7 +10,10 @@
  */
 class SmartyTest extends Smarty
 {
-	
+	public function SmartyTest()
+	{
+		$this->assign('testvariable', 'This is a test variable');	
+	}
 }
  
  ?>

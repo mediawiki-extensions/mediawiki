@@ -130,7 +130,7 @@ class SmartyAdaptorClass extends ExtensionClass
 		if ( !class_exists( self::$smartyClassName ) )
 		{
 			$errMsg = wfMsgForContent( 'smartyadaptor-smarty-classnotfound' );
- 			$text .= '<br/'.$errMsg;
+ 			$text .= '<br/>'.$errMsg;
 			return true;
 		}
 		

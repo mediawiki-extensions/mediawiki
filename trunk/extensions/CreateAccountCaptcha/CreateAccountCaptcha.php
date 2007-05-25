@@ -52,9 +52,14 @@ if ( !class_exists('ExtensionClass') )
 	echo 'CreateAccountCaptcha extension: ExtensionClass missing.';	
 else
 {
-	$wgAutoloadClasses('extensions/CreateAccountCaptcha/CreateAccountCaptchaClass.php');
-	$f = create_function( '', 'CreateAccountCaptcha::singleton(); return true;');
-	$wgHooks['UserCreateForm'][]  = $f;
-	$wgHooks['AbortNewAccount'][] = $f;
+	$wgAutoloadClasses['CreateAccountCaptchaClass'] = 'extensions/CreateAccountCaptcha/CreateAccountCaptchaClass.php';
+	
+	$wgHooks['UserCreateForm'][] = 
+		create_function( '&$template', 
+						'return CreateAccountCaptchaClass::singleton()->hUserCreateForm(&$template);');
+	
+	$wgHooks['AbortNewAccount'][] = 
+		create_function( '$user, &$message', 
+						'return CreateAccountCaptchaClass::singleton()->hAbortNewAccount($user,&$message);');
 }
 ?>

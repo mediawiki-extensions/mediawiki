@@ -24,9 +24,9 @@ class CreateAccountCaptchaClass extends ExtensionClass
 	public static function &singleton()
 	{ return parent::singleton( );	}
 	
-	function SmartyAdaptorClass( $mgwords = null, $passingStyle = self::mw_style, $depth = 1 )
+	function CreateAccountCaptchaClass( $mgwords = null, $passingStyle = self::mw_style, $depth = 1 )
 	{
-		parent::__construct( );
+		parent::__construct( null, self::mw_style, 1, false );
 
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
@@ -55,8 +55,6 @@ class CreateAccountCaptchaClass extends ExtensionClass
 	/*  This hook will call the processing script(s).
 	 */
 	{
-		global $wgScriptPath;
-		
 		session_start();
 		
 		$imageSrc = self::captchaScript.'?sname='.session_name();

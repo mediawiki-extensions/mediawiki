@@ -4,6 +4,7 @@
  * 
  * MediaWiki extension
  * @author: Jean-Lou Dupont (http://www.bluecortex.com)
+ * $Id$
  *
  * Purpose:  Provides a toolkit for easier Mediawiki
  *           extension development.

@@ -14,8 +14,8 @@
 $wgCreateAccountCaptchaMessages = array();
 
 $wgCreateAccountCaptchaMessages['en'] = array(
-	'createaccountcaptcha-create-success' => '',
-	'createaccountcaptcha-create-fail' => '',	
+	'createaccountcaptcha-create-success' => 'Account creation success',
+	'createaccountcaptcha-create-fail'    => 'Account creation failure',	
 	#'createaccountcaptcha' => '',	
 );
 ?>

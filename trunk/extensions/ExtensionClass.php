@@ -13,6 +13,7 @@
  * - 'singleton' implementation suited for extensions that require single instance
  * - 'magic word' helper functionality
  * - limited pollution of global namespace
+ * - Automatic registration of hooks
  *
  * Tested Compatibility: MW 1.8.2 (PHP5), 1.9.3, 1.10
  *

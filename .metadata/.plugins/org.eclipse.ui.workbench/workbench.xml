@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench version="2.0">
+<workbench version="2.0" progressCount="11">
 <workbenchAdvisor/>
-<window height="768" width="1024" x="1408" y="113">
+<window x="0" y="25" width="1024" height="768">
 <fastViewData fastViewLocation="1024"/>
 <intro standby="false"/>
 <perspectiveBar>
@@ -9,72 +9,60 @@
 </perspectiveBar>
 <coolbarLayout locked="0">
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="95" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="0" y="28"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="com.aptana.ide.editors.actionSet" itemType="typeToolBarContribution" x="82" y="22"/>
 <coolItem id="com.aptana.ide.scripting.actionSet" itemType="typeToolBarContribution" x="36" y="22"/>
 <coolItem id="com.aptana.ide.server.ui.launchActionSet" itemType="typeToolBarContribution" x="49" y="22"/>
-<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="85" y="22"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="36" y="22"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="0" y="28"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="0" y="28"/>
+<coolItem id="org.eclipse.ui.WorkingSetActionSet" itemType="typeToolBarContribution" x="0" y="28"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="108" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="182" y="28"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
-<page focus="true" label="Workspace - Aptana">
+<page label="Workspace - Aptana" focus="true">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
-<folder appearance="1" expanded="2">
+<folder expanded="2" appearance="1">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
 </editors>
 <views>
-<view id="com.aptana.ide.js.ui.views.profilesView" partName="Code Assist Profiles">
-<viewState/>
-</view>
-<view id="com.aptana.ide.js.ui.views.problemsView" partName="Problems (0 errors, 0 warnings)">
-<viewState/>
-</view>
-<view id="com.aptana.ide.js.ui.views.actionsView" partName="Actions">
-<viewState/>
-</view>
-<view id="com.aptana.ide.syncing.SyncView" partName="Sync Manager"/>
-<view id="com.aptana.ide.js.ui.views.FileExplorerView" partName="File">
-<viewState/>
-</view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console"/>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.internal.introview" partName="Welcome">
 <viewState>
-<presentation currentPage="root" restore="true"/>
+<presentation restore="true" currentPage="root"/>
 <standbyPart/>
 </viewState>
 </view>
-<view id="com.aptana.ide.core.ui.AptanaNavigator" partName="Project"/>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
 </views>
-<perspectives activePart="org.eclipse.ui.internal.introview" activePerspective="com.aptana.ide.js.ui.WebPerspective">
-<perspective editorAreaVisible="1" fixed="0" version="0.016">
-<descriptor class="com.aptana.ide.core.ui.WebPerspectiveFactory" id="com.aptana.ide.js.ui.WebPerspective" label="Aptana"/>
+<perspectives activePerspective="com.aptana.ide.js.ui.WebPerspective" activePart="org.eclipse.ui.internal.introview">
+<perspective version="0.016" editorAreaVisible="1" fixed="0">
+<descriptor id="com.aptana.ide.js.ui.WebPerspective" label="Aptana" class="com.aptana.ide.core.ui.WebPerspectiveFactory"/>
 <alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
 <alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.openExternalFile"/>
 <alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
 <alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
 <alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
 <alwaysOnActionSet id="org.eclipse.update.ui.softwareUpdates"/>
-<alwaysOnActionSet id="com.aptana.ide.core.ui.actionSet"/>
-<alwaysOnActionSet id="com.aptana.ide.editors.actionSet"/>
-<alwaysOnActionSet id="com.aptana.ide.server.ui.launchActionSet"/>
 <alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
-<alwaysOnActionSet id="com.aptana.ide.debug.ui.JSDebugActionSet"/>
-<alwaysOnActionSet id="com.aptana.ide.scripting.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.WorkingSetActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
 <show_view_action id="com.aptana.ide.js.ui.views.actionsView"/>
 <show_view_action id="com.aptana.ide.core.ui.AptanaNavigator"/>
 <show_view_action id="com.aptana.ide.js.ui.views.FileExplorerView"/>
@@ -95,71 +83,64 @@
 <new_wizard_action id="com.aptana.ide.editors.wizards.file.xmlUntitledWizard"/>
 <new_wizard_action id="com.aptana.ide.editors.wizards.file.UntitledTextFileWizard"/>
 <perspective_action id="com.aptana.ide.js.ui.WebPerspective"/>
-<view id="com.aptana.ide.js.ui.views.profilesView"/>
-<view id="com.aptana.ide.syncing.SyncView"/>
-<view id="com.aptana.ide.js.ui.views.FileExplorerView"/>
-<view id="com.aptana.ide.core.ui.AptanaNavigator"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="com.aptana.ide.js.ui.views.actionsView"/>
-<view id="com.aptana.ide.js.ui.views.problemsView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.ui.internal.introview"/>
 <layout>
 <mainWindow>
-<info folder="true" part="leftTop">
-<folder activePageID="com.aptana.ide.js.ui.views.profilesView" appearance="2" expanded="2">
-<page content="com.aptana.ide.js.ui.views.profilesView" label="Code Assist Profiles"/>
-<page content="com.aptana.ide.syncing.SyncView" label="Sync Manager"/>
+<info part="leftTop" folder="true">
+<folder activePageID="com.aptana.ide.js.ui.views.profilesView" expanded="2" appearance="2">
+<page label="LabelNotFound" content="com.aptana.ide.js.ui.views.profilesView"/>
+<page label="LabelNotFound" content="com.aptana.ide.syncing.SyncView"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@fd1810" ratio="0.74950296" ratioLeft="754" ratioRight="252" relationship="2" relative="leftTop">
-<folder activePageID="org.eclipse.ui.internal.introview" appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.internal.introview" label="Welcome"/>
-<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<info part="org.eclipse.ui.internal.ViewStack@fd1810" relative="leftTop" relationship="2" ratioLeft="754" ratioRight="252" ratio="0.74950296" folder="true">
+<folder activePageID="org.eclipse.ui.internal.introview" expanded="2" appearance="2">
+<page label="LabelNotFound" content="org.eclipse.help.ui.HelpView"/>
+<page label="Welcome" content="org.eclipse.ui.internal.introview"/>
+<page label="LabelNotFound" content="org.eclipse.ui.cheatsheets.views.CheatSheetView"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.19980119" ratioLeft="201" ratioRight="805" relationship="2" relative="leftTop"/>
-<info folder="true" part="right" ratio="0.8" ratioLeft="644" ratioRight="161" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
-<page content="com.aptana.ide.js.ui.views.walkthrough.WalkthroughView" label="LabelNotFound"/>
+<info part="org.eclipse.ui.editorss" relative="leftTop" relationship="2" ratioLeft="201" ratioRight="805" ratio="0.19980119"/>
+<info part="right" relative="org.eclipse.ui.editorss" relationship="2" ratioLeft="644" ratioRight="161" ratio="0.8" folder="true">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" expanded="2" appearance="2">
+<page label="Outline" content="org.eclipse.ui.views.ContentOutline"/>
+<page label="LabelNotFound" content="com.aptana.ide.js.ui.views.walkthrough.WalkthroughView"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="rightBottom" ratio="0.7996965" ratioLeft="527" ratioRight="132" relationship="4" relative="right">
-<folder activePageID="com.aptana.ide.js.ui.views.actionsView" appearance="2" expanded="2">
-<page content="com.aptana.ide.js.ui.views.actionsView" label="Actions"/>
+<info part="rightBottom" relative="right" relationship="4" ratioLeft="527" ratioRight="132" ratio="0.7996965" folder="true">
+<folder activePageID="com.aptana.ide.js.ui.views.actionsView" expanded="2" appearance="2">
+<page label="LabelNotFound" content="com.aptana.ide.js.ui.views.actionsView"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottom" ratio="0.7996965" ratioLeft="527" ratioRight="132" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="com.aptana.ide.js.ui.views.problemsView" appearance="2" expanded="2">
-<page content="com.aptana.ide.js.ui.views.problemsView" label="Problems (0 errors, 0 warnings)"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<page content="com.aptana.ide.js.ui.views.GenericScriptableView:*" label="LabelNotFound"/>
+<info part="bottom" relative="org.eclipse.ui.editorss" relationship="4" ratioLeft="527" ratioRight="132" ratio="0.7996965" folder="true">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" expanded="2" appearance="2">
+<page label="LabelNotFound" content="com.aptana.ide.js.ui.views.problemsView"/>
+<page label="Console" content="org.eclipse.ui.console.ConsoleView"/>
+<page label="LabelNotFound" content="com.aptana.ide.js.ui.views.GenericScriptableView:*"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="left" ratio="0.2989378" ratioLeft="197" ratioRight="462" relationship="4" relative="leftTop">
-<folder activePageID="com.aptana.ide.js.ui.views.FileExplorerView" appearance="2" expanded="2">
-<page content="com.aptana.ide.js.ui.views.FileExplorerView" label="File"/>
-<page content="com.aptana.ide.js.ui.views.FileExplorerView:*" label="LabelNotFound"/>
-<page content="com.aptana.ide.core.ui.AptanaNavigator" label="Project"/>
+<info part="left" relative="leftTop" relationship="4" ratioLeft="197" ratioRight="462" ratio="0.2989378" folder="true">
+<folder activePageID="com.aptana.ide.js.ui.views.FileExplorerView" expanded="2" appearance="2">
+<page label="LabelNotFound" content="com.aptana.ide.js.ui.views.FileExplorerView"/>
+<page label="LabelNotFound" content="com.aptana.ide.js.ui.views.FileExplorerView:*"/>
+<page label="LabelNotFound" content="com.aptana.ide.core.ui.AptanaNavigator"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
@@ -170,12 +151,23 @@
 </layout>
 </perspective>
 </perspectives>
+<workingSets/>
 <navigationHistory/>
 <stickyState/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+</trimArea>
+</trimLayout>
 </window>
 <mruList/>
 </workbench>

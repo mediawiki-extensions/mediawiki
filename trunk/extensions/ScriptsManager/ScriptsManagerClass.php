@@ -121,7 +121,19 @@ class ScriptsManagerClass extends ExtensionClass
 		
 		return true; // continue hook-chain.
 	}
-	
+	public function hArticleFromTitle( &$title, &$article )
+	// This hook is used to:
+	// - Verify if a script is available in the filesystem
+	// - Verify if a script is available in the database system
+	{
+		// Are we in the right namespace at all??
+		$ns = $title->getNamespace();
+		if ($ns != NS_SCRIPTS) return true; // continue hook chain.
+				
+		// If article is present in the database, used it.
+
+		
+	}
 	// public function hUnknownAction( $action, $article )
 	/*  This hook is used to implement the custom 'action=commitscript'
 	 */

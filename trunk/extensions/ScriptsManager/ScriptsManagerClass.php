@@ -126,13 +126,26 @@ class ScriptsManagerClass extends ExtensionClass
 	// - Verify if a script is available in the filesystem
 	// - Verify if a script is available in the database system
 	{
+		// Paranoia
+		if (empty($title)) return true; // let somebody else deal with this.
+		
 		// Are we in the right namespace at all??
 		$ns = $title->getNamespace();
 		if ($ns != NS_SCRIPTS) return true; // continue hook chain.
 				
 		// If article is present in the database, used it.
+		$a = new Article( $title );
+		if ( $a->getId() !=0 ) 
+		{
+			$article = $a; // might as well return the object since we already created it!
+			return true;
+		}
 
-		
+		// From this point, we know the article does not
+		// exist in the database... let's check the filesystem.
+		$filename = $title->getBaseText();
+		$content  = file_get_contents( self::$base.$filename );
+
 	}
 	// public function hUnknownAction( $action, $article )
 	/*  This hook is used to implement the custom 'action=commitscript'

@@ -152,15 +152,33 @@ class ScriptsManagerClass extends ExtensionClass
 		// From this point, we know the article does not
 		// exist in the database... let's check the filesystem.
 		$filename = $title->getBaseText();
-		$content  = file_get_contents( self::$base.$filename );
+		$result   = file_exists( self::$base.$filename );
+		
+		$id = $result ? 'scriptsmanager-script-exists':'scriptsmanager-script-notexists';
+		$message = wfMsgForContent( $id, $filename );
 
+		// display a nice message to the user about the state of the script in the filesystem.
+		global $wgOut;
+		$wgOut->setSubtitle( $message );
+		
+		return true; // continue hook-chain.
 	}
 	public function hEditFormPreloadText( &$text, &$title )
 	// This hook is called to preload text upon initial page creation.
 	// If we are in the NS_SCRIPTS namespace and no article is found ('initial creation')
 	// then let's check if the underlying file exists and preload it.
+	//
+	// NOTE that the 'edit' permission is assumed to be checked prior to entering this hook.
+	//
 	{
+		// Are we in the right namespace at all??
+		$ns = $title->getNamespace();
+		if ($ns != NS_SCRIPTS) return true; // continue hook chain.
+
+		$filename = $title->getBaseText();
+		$text = file_get_contents( $filename );
 	
+		return true; // be nice.
 	}
 	// public function hUnknownAction( $action, $article )
 	/*  This hook is used to implement the custom 'action=commitscript'

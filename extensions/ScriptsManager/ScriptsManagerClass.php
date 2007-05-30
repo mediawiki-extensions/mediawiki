@@ -14,8 +14,9 @@ class ScriptsManagerClass extends ExtensionClass
 	const thisName = 'ScriptsManager';
 	const thisType = 'other';
 	  
-	const actionName = 'commitscript'; 
-	const mNoCommit  = '__NOCOMMIT__';
+	const actionCommit = 'commitscript';
+	const actionRead   = 'read';
+	const mNoCommit    = '__NOCOMMIT__';
 
 	static $base = 'scripts/';
 	
@@ -95,7 +96,7 @@ class ScriptsManagerClass extends ExtensionClass
 
 		// does the user have the right to commit scripts?
 		// i.e. commit the changes to the file system.
-		if (! $article->mTitle->userCan(self::actionName) ) return true;  
+		if (! $article->mTitle->userCan(self::actionCommit) ) return true;  
 
 		// we are in the right namespace,
 		// but are we committing to file?
@@ -132,8 +133,10 @@ class ScriptsManagerClass extends ExtensionClass
 		// Are we in the right namespace at all??
 		$ns = $title->getNamespace();
 		if ($ns != NS_SCRIPTS) return true; // continue hook chain.
-				
+
+
 		// If article is present in the database, used it.
+		// Permissions are checked through normal flow.
 		$a = new Article( $title );
 		if ( $a->getId() !=0 ) 
 		{
@@ -141,6 +144,11 @@ class ScriptsManagerClass extends ExtensionClass
 			return true;
 		}
 
+		// Can the current user even 'read' the article page at all??
+		// An extension can verify permission against namespace e.g.
+		// 'Hierarchical Namespace Permissions'
+		if (! $title->userCan(self::actionRead) ) return true;		
+		
 		// From this point, we know the article does not
 		// exist in the database... let's check the filesystem.
 		$filename = $title->getBaseText();

@@ -155,6 +155,13 @@ class ScriptsManagerClass extends ExtensionClass
 		$content  = file_get_contents( self::$base.$filename );
 
 	}
+	public function hEditFormPreloadText( &$text, &$title )
+	// This hook is called to preload text upon initial page creation.
+	// If we are in the NS_SCRIPTS namespace and no article is found ('initial creation')
+	// then let's check if the underlying file exists and preload it.
+	{
+	
+	}
 	// public function hUnknownAction( $action, $article )
 	/*  This hook is used to implement the custom 'action=commitscript'
 	 */

@@ -17,6 +17,15 @@
  * 
  * Tested Compatibility:  MW 1.10
  * Patches for MW 1.8.x and MW 1.9.x available
+ * 
+ * SUGGESTIONS FROM USER(S):
+ * ========================
+ * 1) Bluecortex, is there a way I can grant other usergroups the ability to see this sidebar? 
+ * I think this is an awesome extension, but with our setup it's not effective.
+ * What would be cool is if it was a permission I could grant in the localsettings.php, 
+ * like makesysop, userrights, or any other standard wiki permission. 
+ * Thanks in advance! --24.164.92.162 12:57, 31 May 2007 (EDT) 
+ * 
  *
  * INSTALLATION NOTES:
  * -------------------

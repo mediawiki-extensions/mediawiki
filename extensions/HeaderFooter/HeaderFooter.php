@@ -21,6 +21,11 @@
  *
  *
  * Tested Compatibility:  MW 1.8.2, 1.9.3
+ * 
+ * TODO:
+ *  1) Suggestion from a user:
+ *     // Look for the header and footer in the Template: namespace
+ *     $name = "Template:".($ns==0 ? "Main" : Namespace::getCanonicalName($ns))."/".$name;
  *
  * HISTORY:
  * -- Version 1.1:	added support for <noheader/> and <nofooter/>

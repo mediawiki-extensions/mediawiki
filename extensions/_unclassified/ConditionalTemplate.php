@@ -15,6 +15,8 @@
  *
  * HISTORY:
  * v1.0
+ * ==== moved to svn
+ * better error handling.
  */
 $wgExtensionCredits['parserhook'][] = array(
     'name' => "ConditionalTemplate [http://www.bluecortex.com]",
@@ -39,20 +41,26 @@ function efCondTemplateSetup()
 
 function efCondTemplateExec(&$parser, $page, $cond = false )
 {
-	return ($cond ? CondTemplateLoadPage($page) : '' );
+	return ($cond ? efCondTemplateLoadPage($page) : '' );
 }
 
 #
 # LoadPage function
 # 
-function CondTemplateLoadPage( $p )
+function efCondTemplateLoadPage( $p )
 {
-	global $mediaWiki;
-	
+
 	$title = Title::newFromText( $p );
-	$article = $mediaWiki->articleFromTitle( $title );
-	$article->loadContent();
+	if ( $title->getArticleID() == 0 )
+	{
+		$text = "<b>[[".$p.']]</b>';
+	}
+	else
+	{
+		$article = new Article( $title );
+		$text = $article->getContent();
+	}
 	
-	return $article->mContent;
+	return $text;
 }
 ?>

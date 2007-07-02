@@ -85,7 +85,7 @@ function ConditionalShowSection( $input, $argv, &$parser ) {
 			$cond2=true;
 	}
 	# if both conditions are met, then SHOW else HIDE
-	if ($cond1 and $cond2)
+	if (($cond1===true) and ($cond2===true))
 	 $output=$parser->recursiveTagParse($input);
    
 	return $output;

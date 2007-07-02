@@ -59,7 +59,7 @@ function ConditionalShowSection( $input, $argv, &$parser ) {
 	$userReqGroup  = "" ;    # assuming no group membership required
 	$output = ""; 	         # assuming the section is hidden by default.
 
-	$cond1 = true;			 
+	$cond1 = false;			 
 	$cond2 = false;			 # by default, don't show the section to just anybody
      
 	# Extract the parameters passed

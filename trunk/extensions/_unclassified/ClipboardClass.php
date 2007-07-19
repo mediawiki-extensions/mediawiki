@@ -52,19 +52,14 @@
  * - v1.03  - Adjusted a variable in order to resolve conflict with new
  *            'ExtensionClass' extension version.
  * - v1.04  - Added warning if 'ExtensionClass' dependancy not found.
+ * - v1.05  - Moved singleton invocation at the end of file -- helps with some PHP versions
  */
 $wgExtensionCredits['other'][] = array( 
 	'name'    => 'Clipboard Extension', 
-	'version' => 'v1.04 $LastChangedRevision$',
+	'version' => 'v1.05 $LastChangedRevision$',
 	'author'  => 'Jean-Lou Dupont', 
 	'url'     => 'http://www.bluecortex.com',
 );
-
-// Verify if 'ExtensionClass' is present.
-if ( !class_exists('ExtensionClass') )
-	echo 'ExtensionClass missing: Clipboard extension will not work!';	
-else
-	ClipboardClass::singleton();
 
 class ClipboardClass extends ExtensionClass
 {
@@ -173,4 +168,10 @@ class ClipboardClass extends ExtensionClass
 	}
 	
 } // END CLASS DEFINITION
+
+// Verify if 'ExtensionClass' is present.
+if ( !class_exists('ExtensionClass') )
+	echo 'ExtensionClass missing: Clipboard extension will not work!';	
+else
+	ClipboardClass::singleton();
 ?>

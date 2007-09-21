@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo"
-    xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo
-    http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
+<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 <pi>
 <p>
  <n>ImageLink</n>
@@ -13,7 +11,7 @@
  <r xlink:href="/rest/r/ImageLink"/>
 </p>
 <a>
- <r><v>1.0.0</v><s>stable</s></r>
+ <r><v>1.0.0</v> <s>stable</s></r>
 </a>
 </pi>
 </f>

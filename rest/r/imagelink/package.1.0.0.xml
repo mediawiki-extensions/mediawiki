@@ -1,24 +1,41 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<package version="1.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.11" version="2.0" 
+		xmlns="http://pear.php.net/dtd/package-2.0" 
+		xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 
+			http://pear.php.net/dtd/tasks-1.0.xsd 
+			http://pear.php.net/dtd/package-2.0 
+			http://pear.php.net/dtd/package-2.0.xsd">
   <name>ImageLink</name>
   <summary>summary in package.1.0.0.xml</summary>
   <description>description in package.1.0.0.xml</description>
-  <maintainers>
-    <maintainer>
+  <lead>
       <user>jldupont</user>
       <name>Jean-Lou Dupont</name>
       <email>mediawiki@jldupont.com</email>
-      <role>lead</role>
-    </maintainer>
-  </maintainers>
-  <release>
-    <version>1.0.0</version>
-    <date></date>
-    <license></license>
-    <state>stable</state>
-    <notes>notes in package.1.0.0.xml.</notes>
-    <filelist>
-      <file role="php" baseinstalldir="Extensions" md5sum="b5d39fa8c47c327558e1a8deabacad4a" name="ImageLink.php"/>
-    </filelist>
-  </release>
+  </lead>
+
+
+	<date></date>
+	<time></time>
+	<version>
+	  <release>1.0.0</release>
+	  <api>1.0.0</api>
+	</version>
+	 <stability>
+	  <release>stable</release>
+	  <api>stable</api>
+	 </stability>
+
+ <license uri="http://www.php.net/license">PHP License</license>
+
+	<notes></notes>
+
+	<contents>
+	 <dir baseinstalldir="MediaWiki" name="/">
+		<file baseinstalldir="MediaWiki" md5sum="" name="ImageLink.php" role="php" />
+	 </dir>
+	</contents>
+
 </package>

@@ -2,8 +2,8 @@
 <c xmlns="http://pear.php.net/dtd/rest.category"
     xsi:schemaLocation="http://pear.php.net/dtd/rest.category
     http://pear.php.net/dtd/rest.category.xsd">
- <n>Extensions</n>
+ <n>ParserFunctions</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>Extensions</a>
- <d>Jean-Lou Dupont's MediaWiki Extensions</d>
+ <a>ParserFunctions</a>
+ <d>Parser Function related extensions</d>
 </c>

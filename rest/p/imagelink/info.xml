@@ -7,5 +7,5 @@
  <l></l>
  <s>info.xml summary here</s>
  <d>info.xml description here</d>
- <r xlink:href="/rest/r/ImageLink"/>
+ <r xlink:href="/rest/r/imagelink"/>
 </p>

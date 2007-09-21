@@ -8,7 +8,6 @@
  <servers>
   <primary>
    <rest>
-    <baseurl type="REST1.0">http://mediawiki.googlecode.com/svn/rest/</baseurl>
     <baseurl type="REST1.1">http://mediawiki.googlecode.com/svn/rest/</baseurl>
     <baseurl type="REST1.3">http://mediawiki.googlecode.com/svn/rest/</baseurl>
     <baseurl type="category">http://mediawiki.googlecode.com/svn/rest/c</baseurl>

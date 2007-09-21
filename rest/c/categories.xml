@@ -2,6 +2,6 @@
 <a xmlns="http://pear.php.net/dtd/rest.allcategories"
     xsi:schemaLocation="http://pear.php.net/dtd/rest.allcategories
     http://pear.php.net/dtd/rest.allcategories.xsd">
-<ch>mediawiki.googlecode.com/svn</ch>
- <c xlink:href="/rest/c/ParserFunctions/info.xml">Parser Functions</c>
+<ch>mediawiki.googlecode.com/svn</ch> <!-- not read by list-all command -->
+ <c xlink:href="/rest/c/ParserFunctions/info.xml">ParserFunctions</c>
 </a>

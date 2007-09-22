@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://pear.php.net/dtd/channel-1.0 http://pear.php.net/dtd/channel-1.0.xsd">
  <name>mediawiki.googlecode.com/svn</name>
  <summary>Jean-Lou Dupont's MediaWiki Extensions</summary>
- <suggestedalias>mediawiki</suggestedalias>
+ <suggestedalias>mw</suggestedalias>
  <servers>
   <primary>
    <rest>

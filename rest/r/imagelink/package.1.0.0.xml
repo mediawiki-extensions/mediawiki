@@ -7,6 +7,7 @@
 			http://pear.php.net/dtd/tasks-1.0.xsd 
 			http://pear.php.net/dtd/package-2.0 
 			http://pear.php.net/dtd/package-2.0.xsd">
+
   <name>ImageLink</name>
   <summary>summary in package.1.0.0.xml</summary>
   <description>description in package.1.0.0.xml</description>
@@ -19,16 +20,18 @@
 
 	<date></date>
 	<time></time>
+
 	<version>
 	  <release>1.0.0</release>
 	  <api>1.0.0</api>
 	</version>
+	
 	 <stability>
 	  <release>stable</release>
 	  <api>stable</api>
 	 </stability>
 
- <license uri="http://www.php.net/license">PHP License</license>
+	<license uri="http://www.php.net/license">PHP License</license>
 
 	<notes></notes>
 

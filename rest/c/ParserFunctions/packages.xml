@@ -39,9 +39,6 @@ http://pear.php.net/dtd/package-2.0.xsd">
     <dir name="ImageLink">
      <file name="ImageLink.php" role="php" />
     </dir> <!-- /MediaWiki/ImageLink -->
-    <file name="Dependency2.php" role="php">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info"/>
-    </file>
    </dir> <!-- /PEAR -->
   </dir> <!-- / -->
 </contents>

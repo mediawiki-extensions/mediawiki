@@ -1,8 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<l xmlns="http://pear.php.net/dtd/rest.categorypackages"
+<?xml version="1.0"?>
+<package version="2.0" xmlns="http://pear.php.net/dtd/package-2.0"
+    xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackages
-    http://pear.php.net/dtd/rest.categorypackages.xsd">
- <p xlink:href="/rest/p/imagelink">ImageLink</p>
-</l>
+    xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+http://pear.php.net/dtd/tasks-1.0.xsd
+http://pear.php.net/dtd/package-2.0
+http://pear.php.net/dtd/package-2.0.xsd">
+
+<name>ImageLink</name>
+<channel>mediawiki.googlecode.com/svn</channel>
+<summary>ImageLink summary</summary>
+ <description>ImageLink description</description>
+ <lead>
+  <name>Jean-Lou Dupont</name>
+  <user>jldupont</user>
+  <email>mediawiki@jldupont.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2007-09-21</date>
+ <time></time> <-- note: <time> is optional -->
+
+<version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+ release notes here.
+ </notes>
+
+<contents>
+  <dir name="/">
+   <dir name="MediaWiki">
+    <dir name="ImageLink">
+     <file name="ImageLink.php" role="php" />
+    </dir> <!-- /MediaWiki/ImageLink -->
+    <file name="Dependency2.php" role="php">
+     <tasks:replace from="@PEAR-VER@" to="version" type="package-info"/>
+    </file>
+   </dir> <!-- /PEAR -->
+  </dir> <!-- / -->
+</contents>
+
+</package>

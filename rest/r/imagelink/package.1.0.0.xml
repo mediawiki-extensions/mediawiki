@@ -9,6 +9,7 @@
 			http://pear.php.net/dtd/package-2.0.xsd">
 
   <name>ImageLink</name>
+  <channel>mediawiki.googlecode.com/svn</channel>
   <summary>summary in package.1.0.0.xml</summary>
   <description>description in package.1.0.0.xml</description>
   <lead>

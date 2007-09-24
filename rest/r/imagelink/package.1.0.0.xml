@@ -19,7 +19,7 @@
   </lead>
 
 
-	<date></date>
+	<date>2007-09-21</date>
 	<time></time>
 
 	<version>
@@ -34,12 +34,20 @@
 
 	<license uri="http://www.php.net/license">PHP License</license>
 
-	<notes></notes>
+	<notes>Some notes here.</notes>
 
 	<contents>
 	 <dir baseinstalldir="MediaWiki" name="/">
 		<file baseinstalldir="MediaWiki" md5sum="" name="ImageLink.php" role="php" />
 	 </dir>
 	</contents>
+
+	<dependencies>
+		<required>
+			<php>
+				<min>5.1.0</min>
+			</php>
+		<required>
+	</dependencies>
 
 </package>

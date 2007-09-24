@@ -47,7 +47,7 @@
 			<php>
 				<min>5.1.0</min>
 			</php>
-		<required>
+		</required>
 	</dependencies>
 
 </package>

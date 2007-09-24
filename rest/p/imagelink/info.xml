@@ -6,7 +6,7 @@
  <n>ImageLink</n>
  <c>mediawiki.googlecode.com/svn</c>
  <ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
- <l></l>
+ <l>BSD License</l>
  <s>info.xml summary here</s>
  <d>info.xml description here</d>
  <r xlink:href="/rest/r/imagelink"/>

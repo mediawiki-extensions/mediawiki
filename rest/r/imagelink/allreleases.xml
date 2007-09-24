@@ -5,6 +5,6 @@
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
     http://pear.php.net/dtd/rest.allreleases.xsd">
  <p>ImageLink</p>
- <c>mediawiki.googlecode.com</c>
+ <c>mediawiki.googlecode.com/svn</c>
  <r><v>1.0.0</v><s>stable</s><m>1.0.0</m></r>
 </a>

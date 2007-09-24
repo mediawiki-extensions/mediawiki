@@ -1,21 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<r xmlns="http://pear.php.net/dtd/rest.release"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xsi:schemaLocation="http://pear.php.net/dtd/rest.release
-    http://pear.php.net/dtd/rest.release.xsd">
- <p xlink:href="/rest/p/imagelink">ImageLink</p>
- <c>mediawiki.googlecode.com/svn</c>
- <v>1.0.0</v>
- <st>stable</st>
- <l>BSD License</l>
- <m>jldupont</m>
- <s>summary.</s>
- <d>description.</d>
- <da>2006-08-19 20:12:24</da>
- <n>first release</n>
- <f>007</f>
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.11" version="2.0" 
+		xmlns="http://pear.php.net/dtd/package-2.0" 
+		xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 
+			http://pear.php.net/dtd/tasks-1.0.xsd 
+			http://pear.php.net/dtd/package-2.0 
+			http://pear.php.net/dtd/package-2.0.xsd">
 
- <g>/tags/ParserFunctions/ImageLink/package-1.0.0</g>
- <x xlink:href="package.1.0.0.xml"/>
-</r>
+  <name>ImageLink</name>
+  <channel>mediawiki.googlecode.com/svn</channel>
+  <summary>summary in package.1.0.0.xml</summary>
+  <description>description in package.1.0.0.xml</description>
+  <lead>
+      <user>jldupont</user>
+      <name>Jean-Lou Dupont</name>
+      <email>mediawiki@jldupont.com</email>
+  </lead>
+
+
+	<date>2007-09-21</date>
+	<time></time>
+
+	<version>
+	  <release>1.0.0</release>
+	  <api>1.0.0</api>
+	</version>
+	
+	 <stability>
+	  <release>stable</release>
+	  <api>stable</api>
+	 </stability>
+
+	<license uri="http://www.php.net/license">PHP License</license>
+
+	<notes>Some notes here.</notes>
+
+</package>

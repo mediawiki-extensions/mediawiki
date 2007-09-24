@@ -8,14 +8,13 @@
  <c>mediawiki.googlecode.com/svn</c>
  <v>1.0.0</v>
  <st>stable</st>
- <l></l>
-
+ <l>BSD License</l>
  <m>jldupont</m>
- <s></s>
- <d></d>
- <da></da>
- <n> </n>
- <f></f>
+ <s>summary.</s>
+ <d>description.</d>
+ <da>2006-08-19 20:12:24</da>
+ <n>first release</n>
+ <f>007</f>
 
  <g>http://mediawiki.googlecode.com/svn/tags/ParserFunctions/ImageLink/package-1.0.0</g>
  <x xlink:href="package.1.0.0.xml"/>

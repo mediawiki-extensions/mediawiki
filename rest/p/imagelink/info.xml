@@ -8,6 +8,6 @@
 <c>mediawiki.googlecode.com/svn</c>
 <s>ImageLink summary</s>
 <d>ImageLink description here</d>
-<ca xlink:hred="/rest/c/imagelink">ImageLink</ca>
+<ca xlink:href="/rest/c/imagelink">ImageLink</ca>
 <r xlink:href="/rest/r/imagelink" />
 </p>

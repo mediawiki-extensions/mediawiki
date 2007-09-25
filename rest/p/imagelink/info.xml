@@ -1,14 +1,13 @@
-<?xml version="1.0"?>
-<package version="2.0" xmlns="http://pear.php.net/dtd/package-2.0"
-    xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-http://pear.php.net/dtd/tasks-1.0.xsd
-http://pear.php.net/dtd/package-2.0
-http://pear.php.net/dtd/package-2.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<p xmlns="http://pear.php.net/dtd/rest.package"    
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xlink="http://www.w3.org/1999/xlink"    
+	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
 
-<name>ImageLink</name>
-<channel>mediawiki.googlecode.com/svn</channel>
-<summary>ImageLink summary</summary>
+<n>ImageLink</n>
+<c>mediawiki.googlecode.com/svn</c>
+<s>ImageLink summary</s>
+<d>ImageLink description here</d>
+<ca xlink:hred="/rest/c/imagelink">ImageLink</ca>
 <r xlink:href="/rest/r/imagelink" />
-</package>
+</p>

@@ -18,69 +18,14 @@
   <active>yes</active>
  </lead>
 
- <date>2007-09-29</date>
- <time>13:22:11</time>
+ <date>2007-10-02</date>
+ <time>23-57-04</time>
 
- <version>
-  <release>1.0.0</release>
-  <api>1.0.0</api>
- </version>
-
- <stability>
-  <release>stable</release>
-  <api>stable</api>
- </stability>
-
- <license uri="http://www.php.net/license">PHP License</license>
-
- <!-- release notes -->
- <notes></notes>
-
- <!-- package contents -->
- <contents>
-  <dir name="/">
-
-   <file baseinstalldir="/" md5sum="6356b5beefa80d0bbfd234d222873c7d" name="scripts/peclcmd.php" role="php"></file>
-   <file md5sum="671e6690634062ee521d2027a9971f22" name="INSTALL" role="doc" />
-
-  </dir>
- </contents>
-
- <dependencies>
-  <required>
-   <php>
-    <min>5.0.0</min>
-   </php>
-
-   <pearinstaller>
-    <min>1.4.3</min>
-   </pearinstaller>
-
-   <extension>
-    <name>xml</name>
-   </extension>
-
-   <extension>
-    <name>pcre</name>
-   </extension>
-  </required>
-
- </dependencies>
-
- <changelog>
-  <release>
-   <version>
-    <release>1.0.0</release>
-    <api>1.0.0</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2007-09-29</date>
+<changelog>
+ <release>
    <license uri="http://www.php.net/license">PHP License</license>
    <notes></notes>
   </release>
- </changelog>
+</changelog>
 
 </package>

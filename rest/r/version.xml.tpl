@@ -4,18 +4,24 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xsi:schemaLocation="http://pear.php.net/dtd/rest.release
     http://pear.php.net/dtd/rest.release.xsd">
- <p xlink:href="/rest/p/stubmanager">StubManager</p>
- <c>mediawiki.googlecode.com/svn</c>
- <v>1.0.0</v>
- <st>stable</st>
- <l>PHP License</l>
- <m>jldupont</m>
- <s>/rest/r/$summary</s>
- <d>/rest/r/$description</d>
- <da></da>
- <n>Release Notes:</n>
- <f></f>
 
- <g>http://mediawiki.googlecode.com/svn/tags/Stubmanager/StubManager-1.0.0</g>
- <x xlink:href="package.1.0.0.xml"/>
+ <!-- customize here -->
+ <c>mediawiki.googlecode.com/svn</c>
+ 
+ <p xlink:href="/rest/p/$package">$package</p>
+
+ <v>$version</v>
+ <st>$stability</st>
+ <l>PHP License</l>
+
+ <m>$maintainer</m>
+ <s>$summary</s>
+ <d>$description</d>
+ <da>$date</da>
+ <n>$notes</n>
+ <f>$size</f>
+
+ <!-- download URI -->
+ <g>http://mediawiki.googlecode.com/svn/tags/$package-$version</g>
+ <x xlink:href="package.$version.xml"/>
 </r>

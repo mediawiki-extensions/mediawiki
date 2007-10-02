@@ -8,6 +8,7 @@
  <ca xlink:href="/rest/c/StubManager">StubManager</ca>
  <l>PHP License</l>
  <s>MediaWiki Extension: provides stubbing and management facility for extensions.</s>
- <d>$package description.</d>
+ <d>This extension provides stubbing capability (i.e. an extension is only loaded when really required) 
+	as well as extension management (i.e. registers all the installed extensions).</d>
  <r xlink:href="/rest/r/stubmanager"/>
 </p>

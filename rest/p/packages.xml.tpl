@@ -6,8 +6,6 @@
     http://pear.php.net/dtd/rest.allpackages.xsd">
 
 <!-- do not touch from here -->    
-<c>mediawiki.googlecode.com/svn</c>
-<p>imagelink</p>
-<p>stubmanager</p>
-
+<c>$uri</c>
+$contents
 </a>

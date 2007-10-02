@@ -7,7 +7,7 @@
  <c>mediawiki.googlecode.com/svn</c>
  <ca xlink:href="/rest/c/StubManager">StubManager</ca>
  <l>PHP License</l>
- <s>summary.</s>
- <d>description.</d>
+ <s>MediaWiki Extension: provides stubbing and management facility for extensions.</s>
+ <d>$package description.</d>
  <r xlink:href="/rest/r/stubmanager"/>
 </p>

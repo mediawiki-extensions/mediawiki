@@ -7,8 +7,6 @@
     http://pear.php.net/dtd/rest.allcategories.xsd">
 
 <!-- DO NOT EDIT BELOW HERE -->
-<ch>mediawiki.googlecode.com/svn</ch> <!-- not read by list-all command -->
-<c xlink:href="/rest/c/ParserFunctions/info.xml">ParserFunctions</c>
-<c xlink:href="/rest/c/StubManager/info.xml">StubManager</c>
-
+<ch>$uri</ch> <!-- not read by list-all command -->
+$contents
 </a>

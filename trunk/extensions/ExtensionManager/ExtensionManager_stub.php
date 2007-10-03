@@ -25,7 +25,7 @@ require_once $IP.'/includes/ObjectCache.php';
 
 class ExtensionLoader
 {
-	static $expiryPeriod;
+	static $expiryPeriod = 86400; //24*60*60 == 1day
 	static $realCache = true; // assume we get a real cache.
 	static $cache;
 	static $edir;			// extensions directory 

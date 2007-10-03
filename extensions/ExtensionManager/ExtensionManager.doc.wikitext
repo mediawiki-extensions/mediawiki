@@ -1,0 +1,44 @@
+{{Extension
+|name        = ExtensionManager
+|status      = beta
+|type        = parser
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 
+|update      =
+|mediawiki   = 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags SVN]
+|readme      =
+|changelog   = See SVN ($Id: Extension.php 686 2007-08-18 00:43:59Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides a means of easily installing 'extensions' to MediaWiki.
+
+== Features ==
+
+== Theory of Operation ==
+
+== Usage ==
+* Use real caching e.g. PHP/pecl APC
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+== Installation ==
+* First, install [[Extension:StubManager]] extension.
+* Second, there are two ways to install this extension:
+# Through the 'pear' installer (preferred method)
+# Through downloading the archive
+
+=== Method: pear ===
+<code>pear install mediawiki/ExtensionManager</code>
+ The latest [[Extension:StubManager]] implements an automatic discovery of [[Extension:ExtensionManager]]
+ so no further steps are required.
+
+== History ==
+
+== See Also ==

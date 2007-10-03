@@ -6,26 +6,17 @@
 |type        = other
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = See SVN ($Id$)
+|version     = 1.0.0
 |update      =
 |mediawiki   = tested on 1.10 but probably works with a earlier versions
 |download    = [http://bizzwiki.googlecode.com/svn/trunk/BizzWiki/extensions/ SVN]
 |readme      =
-|changelog   =
+|changelog   = See SVN ($Id$)
 |description = 
 |parameters  =
 |rights      =
 |example     =
 }}
-
-<!--@@
-{{#autoredirect: Extension|{{#noext:{{SUBPAGENAME}}}} }}
-== File Status ==
-This section is only valid when viewing the page in a BizzWiki environment.
-<code>(($#extractmtime|@@mtime@@$))  (($#extractfile|@@file@@$))</code>
-
-Status: (($#comparemtime|<b>File system copy is newer - [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=reload}} Reload] </b>|Up to date$))
-@@-->
 
 == Purpose==
 This extension is meant to address 'rare events' handling through class object 'stubs'. For infrequent events 
@@ -86,9 +77,11 @@ require('extensions/StubManager.php');
 * Added automatic linking to page on MediaWiki.org for each extension
 * Added 'isExtensionRegistered' method
 * Added 'configureExtension' method
-* Added 'getVersion' method
+* Added 'version' method
 * Moved to MediaWiki project on GoogleCode
 ** Added to PEAR channel
+* Added 'auto-discovery' of [[Extension:ExtensionManager]]
+* Added 'getRevision' method.
 
 == See also ==
 This extension is part of the [[Extension:BizzWiki|BizzWiki platform]].
@@ -97,14 +90,20 @@ This extension is part of the [[Extension:BizzWiki|BizzWiki platform]].
 //<source lang=php>
 $wgExtensionCredits[StubManager::thisType][] = array( 
 	'name'    		=> StubManager::thisName,
-	'version' 		=> StubManager::getRevisionId('$Id$'),
+	'version' 		=> '1.0.0',
 	'author'  		=> 'Jean-Lou Dupont',
 	'description'	=> 'Provides stubbing facility for extensions handling rare events. Extensions registered: ', 
 	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
 );
 
+// Perform auto-discovery of [[Extension:ExtensionManager]]
+@include realpath(dirname(__FILE__).'/../ExtensionManager/ExtensionManager_stub.php');
+
 class StubManager
 {
+	// This version number must match that of 
+	// the corresponding PEAR package.
+	const version = '1.0.0';
 	
 	const MWbaseURI = 'http://www.mediawiki.org/wiki';
 	
@@ -237,7 +236,11 @@ class StubManager
 					
 		return false;
 	}
-	public static function getVersion()
+	public static function version()
+	{
+		return self::version;
+	}
+	public static function getRevision()
 	{
 		return self::getRevisionId( self::thisVersion );	
 	}

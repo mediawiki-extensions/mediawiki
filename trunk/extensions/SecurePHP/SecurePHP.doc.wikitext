@@ -1,0 +1,46 @@
+{{Extension
+|name        = SecurePHP
+|status      = stable
+|type        = other
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags SVN]
+|readme      =
+|changelog   = See SVN ($Id: SecurePHP.php 782 2007-09-16 01:22:37Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides secure execution of PHP code embedded in 'runphp' tagged section.
+
+== Features ==
+* Security: page must either
+** Be protected on 'edit'
+** Current user editing the page must have the 'coding' right
+** Or, lastly, the last contributor to the page has the 'coding' right
+
+== Usage ==
+<nowiki><runphp> php code here </runphp></nowiki>
+
+== Security Note ==
+* It is advisable to use 'cascading protection'
+* When page protection is not relied on to provide protection 
+and consequently only the last contributor's right acts as protection measure, it is advised to use
+considerable care when using templates on the same page.
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+== Installation ==
+* Install [[Extension:StubManager]] extension
+* Use <code>pear install mediawiki/SecurePHP</code>
+
+== History ==
+* Moved to MediaWiki on GoogleCode project
+
+== See Also ==

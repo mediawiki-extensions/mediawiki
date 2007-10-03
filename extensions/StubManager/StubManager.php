@@ -1,92 +1,8 @@
 <?php
-/*<!--<wikitext>-->
-{{Extension
-|name        = StubManager
-|status      = stable
-|type        = other
-|author      = [[user:jldupont|Jean-Lou Dupont]]
-|image       =
-|version     = 1.0.0
-|update      =
-|mediawiki   = tested on 1.10 but probably works with a earlier versions
-|download    = [http://bizzwiki.googlecode.com/svn/trunk/BizzWiki/extensions/ SVN]
-|readme      =
-|changelog   = See SVN ($Id$)
-|description = 
-|parameters  =
-|rights      =
-|example     =
-}}
-
-== Purpose==
-This extension is meant to address 'rare events' handling through class object 'stubs'. For infrequent events 
-(of course this is relative!), use this extension to instantiate a 'stub object' for the required hooks.
-The net effect is lower transaction times thereby speeding up MediaWiki based sites.
-
-== Features ==
-* Handles 'hook' registration
-* Handles 'parser function' registration
-* Handles 'parser magic word' registration
-* Handles 'parser tag' registration
-* Handles extensions which implement logging functionality
-* Handles 'namespace triggering': reduces even further the load time per transaction
-
-== Audience ==
-This extension is meant for 'extension writers'.
-
-== Usage ==
-To create a stub, use: 
-<source lang=php>
-StubManager::createStub(  'class name', 
-                          'full path filename of class file',
-                          'full path filename of i18n file',						  
-                          array of hooks,
-						  $logging, // true if the extension requires logging support
-                          array of tags,
-                          array of parser function magic words,
-                          array of parser magic words,
-						  array of namespaces that trigger the extension
-                        );
-</source>
-in <code>LocalSettings.php</code> after the require line <code>require( ...'StubManager.php' );</code> 
-
-== Examples ==
-See [[Extension:EmailLog|Email Log extension]].
-
-== Dependancy ==
-None.
-
-== Installation ==
-To install independantly from BizzWiki:
-* Download the extension file 'StubManager.php' and place in the '/extensions' directory
-* Apply the following changes to 'LocalSettings.php'
-<source lang=php>
-require('extensions/StubManager.php');
-</source>
-
-== History ==
-* Added one more parameter to '__call' method to accomodate hooks such as ArticleSave.
-* Added registration functionality for:
-** 'tag' handlers (XML style section)
-** 'mg' (i.e. parser functions)
-** 'MW' (i.e. parser Magic Words)
-* fixed annoying warning about undefined offset.
-* added namespace triggering functionality
-** Only load an extension when the extension's target namespace(s) are in focus.
-* Added support for non-BizzWiki environments
-* Added automatic linking to page on MediaWiki.org for each extension
-* Added 'isExtensionRegistered' method
-* Added 'configureExtension' method
-* Added 'version' method
-* Moved to MediaWiki project on GoogleCode
-** Added to PEAR channel
-* Added 'auto-discovery' of [[Extension:ExtensionManager]]
-* Added 'getRevision' method.
-
-== See also ==
-This extension is part of the [[Extension:BizzWiki|BizzWiki platform]].
-
-<!--</wikitext>-->*/
+/**
+ * @author Jean-Lou Dupont
+ * @package StubManager
+ */
 //<source lang=php>
 $wgExtensionCredits[StubManager::thisType][] = array( 
 	'name'    		=> StubManager::thisName,
@@ -96,14 +12,13 @@ $wgExtensionCredits[StubManager::thisType][] = array(
 	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
 );
 
-// Perform auto-discovery of [[Extension:ExtensionManager]]
-include realpath(dirname(__FILE__).'/../ExtensionManager/ExtensionManager_stub.php');
-
 class StubManager
 {
 	// This version number must match that of 
 	// the corresponding PEAR package.
 	const version = '1.0.0';
+
+	static $cdir = null;
 	
 	const MWbaseURI = 'http://www.mediawiki.org/wiki';
 	
@@ -712,4 +627,10 @@ class Stub
 	}
 
 } // end class Stub
+
+// Perform auto-discovery of [[Extension:ExtensionManager]]
+StubManager::$cdir = realpath(dirname(__FILE__) );
+if (file_exists( StubManager::$cdir.'/../ExtensionManager/ExtensionManager_stub.php'))
+	include realpath(dirname(__FILE__).'/../ExtensionManager/ExtensionManager_stub.php');
+
 // </source>

@@ -6,6 +6,8 @@
  */
 
 $svn_trunk = 'http://mediawiki.googlecode.com/svn/trunk/extensions';
+$mw_root = @$_ENV['MW_INSTALL_PATH'];
+$extension = @$argv[1];
 
 @require "PEAR/XMLParser.php";
 @require 'HTTP/Request.php';
@@ -20,14 +22,13 @@ if (!class_exists('HTTP_Request'))
 	echo 'getTrunk: requires library HTTP/Request. Get it through PEAR.';
 	die(0);
 }
- 
-$extension = $argv[1];
+
 if (empty( $extension ))
 {
 	echo 'getTrunk: expects extension directory as parameter.'; 
 	die(0);
 }
-
+/*
 $current_dir = @realpath( dirname( __FILE__ ));
 
 $cdir = DirHelper::get( $current_dir );
@@ -46,11 +47,19 @@ if ( $cdir !== 'extensions' )
 		die(0);
 	}
 }
-
+*/
+if (empty( $mw_root ))
+{
+	echo "getTrunk: expecting environment variable 'MW_INSTALL_PATH' to be set. E.g. use 'export MW_INSTALL_PATH=dir'\n";
+	die(0);	
+}
+echo "getTrunk: assuming installation directory root: ".$mw_root."\n";
+	
 // we'll use this directory for storing the files we 'wget'
-$useDir = $current_dir.'/'.$extension.'/';
+$useDir = $mw_root.'/extension/'.$extension.'/';
 
 echo "getTrunk: using target directory: ".$useDir."\n";
+die(1);
 
 /*
 if (($type = @filetype($current_dir.'/'.$extension )) === false)

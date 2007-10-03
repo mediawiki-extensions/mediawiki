@@ -40,7 +40,7 @@ $p_date = '/\<'.'date\>'.'.*'.'\<\/date\>'.'/siU';
 $p_time = '/\<'.'time\>'.'.*'.'\<\/time\>'.'/siU';
 
 $date = '<'.'date'.'>'.gmdate("Y-m-d").'</date'.'>';
-$time = '<'.'time'.'>'.gmdate("H-i-s").'</time'.'>';
+$time = '<'.'time'.'>'.gmdate("H:i:s").'</time'.'>';
 
 $file_contents = preg_replace( $p_date, $date, $file_contents );
 $file_contents = preg_replace( $p_time, $time, $file_contents );

@@ -18,8 +18,8 @@
   <active>yes</active>
  </lead>
 
- <date>2007-10-02</date>
- <time>23-57-04</time>
+ <date>2007-10-03</date>
+ <time>01:01:08</time>
 
 <changelog>
  <release>
@@ -27,5 +27,31 @@
    <notes></notes>
   </release>
 </changelog>
+
+ <contents>
+  <dir name="/">
+
+	<!-- file list begin {{ -->
+	<!-- baseinstalldir: the target directory on the target machine -->
+   <file baseinstalldir="MediaWiki" name="StubManager.php" role="php" />
+    <!-- }} -->
+
+  </dir>
+ </contents>
+ 
+ <dependencies>
+  <required>
+
+   <php>
+    <min>5.0.0</min>
+    <max>6.0.0</max>
+   </php>
+
+   <pearinstaller>
+    <min>1.4.0a2</min>
+   </pearinstaller>
+   
+  </required>
+ </dependencies>
 
 </package>

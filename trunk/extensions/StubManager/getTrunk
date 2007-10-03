@@ -1,1 +1,1 @@
-#!/usr/bin/php getTrunk
+#!/usr/bin/php getTrunk $1

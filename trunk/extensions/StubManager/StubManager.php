@@ -87,6 +87,8 @@ require('extensions/StubManager.php');
 * Added 'isExtensionRegistered' method
 * Added 'configureExtension' method
 * Added 'getVersion' method
+* Moved to MediaWiki project on GoogleCode
+** Added to PEAR channel
 
 == See also ==
 This extension is part of the [[Extension:BizzWiki|BizzWiki platform]].
@@ -100,10 +102,6 @@ $wgExtensionCredits[StubManager::thisType][] = array(
 	'description'	=> 'Provides stubbing facility for extensions handling rare events. Extensions registered: ', 
 	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
 );
-
-if (!defined('BIZZWIKI'))
-	if (!isset($bwExtPath))
-		$bwExtPath = $IP.'/extensions';
 
 class StubManager
 {
@@ -435,7 +433,7 @@ class StubManager
 	private static function formatParam( &$key, &$value, &$template )
 	{
 		$format = self::getFormat( $key, $template );
-		if ($format !==null )
+		if ($format !== null )
 		{
 			switch ($format)
 			{
@@ -680,8 +678,6 @@ class Stub
 		if (!$this->checkNss( $method, $args ))
 			return true;
 			
-#		echo ' classe:'.$this->classe.' method:'.$method."<br/> \n";
-		
 		if ( $this->obj === null )
 			$obj = $this->obj = new $this->classe( $this->params );  // un-stub
 		else

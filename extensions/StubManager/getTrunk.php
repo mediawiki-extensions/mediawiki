@@ -27,8 +27,32 @@ if (empty( $extension ))
 	echo 'getTrunk: expects extension directory as parameter.'; 
 	die(0);
 }
+
+$current_dir = @realpath( dirname( __FILE__ ));
+
+$cdir = DirHelper::get( $current_dir );
+
+if ( $cdir !== 'extensions' )
+{
+	echo "getTrunk: current directory isn't '/extensions' (directory: $cdir) \n";
+	
+	// try going up one level.
+	$current_dir = @realpath( dirname( dirname( __FILE__ ) ) );	
+	$cdir = DirHelper::get( $current_dir );
+	
+	if ( $cdir !== 'extensions' )	
+	{
+		echo "getTrunk: tried going up one directory level without success\n";	
+		die(0);
+	}
+}
+
+// we'll use this directory for storing the files we 'wget'
+$useDir = $current_dir.'/'.$extension.'/';
+
+echo "getTrunk: using target directory: ".$useDir."\n";
+
 /*
-$current_dir = realpath( dirname( __FILE__ ));
 if (($type = @filetype($current_dir.'/'.$extension )) === false)
 {
 	echo 'getTrunk: expects a valid directory as parameter.';
@@ -46,7 +70,7 @@ if ('dir' !== $type)
 echo 'getTrunk: using base uri: '.$svn_trunk."\n";
 
 $manifest_file = $svn_trunk.'/'.$extension.'/META-INF/manifest.xml';
-echo 'getTrunk: fetching manifest file: '.$manifest_file." ...";
+echo 'getTrunk: fetching manifest file ... ';
 $code = getTrunk::get( $manifest_file, $manifest_data );
 echo ($code==200) ? "success!\n":"failure! code=".$code."\n";
 if ( $code !== 200)
@@ -78,7 +102,7 @@ foreach( $files as $fileEntry )
 	else
 		echo "getTrunk: success for file: ".$file."\n";
 	
-	$bytes_written = @file_put_contents( $file, $contents );
+	$bytes_written = @file_put_contents( $useDir.$file, $contents );
 	if ( $bytes_written !== strlen( $contents ))
 		echo "getTrunk: error writing file: ".$file."\n";
 	
@@ -138,5 +162,19 @@ class getTrunk
 		}
 		
 		return $files;
+	}
+}
+class DirHelper
+{
+	static function get( $cdirpath )
+	{
+		// make this work on both Windows & *nix
+		$cdirpath = str_replace("\\", "/", $cdirpath );
+
+		$parts = explode( '/', $cdirpath );
+		
+		$cdir = $parts[count( $parts ) -1 ];
+
+		return $cdir;
 	}
 }

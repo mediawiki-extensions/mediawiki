@@ -11,6 +11,7 @@
  <channel>mediawiki.googlecode.com/svn</channel>
  <summary>Summary...</summary>
  <description>Description...</description>
+
  <lead>
   <name>Jean-Lou Dupont</name>
   <user>jldupont</user>
@@ -21,12 +22,19 @@
  <date>2007-10-03</date>
  <time>01:01:08</time>
 
-<changelog>
- <release>
-   <license uri="http://www.php.net/license">PHP License</license>
-   <notes></notes>
-  </release>
-</changelog>
+ <version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ 
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+
+ <license uri="http://www.php.net/license">PHP License</license>
+
+ <notes>$notes</notes>
 
  <contents>
   <dir name="/">
@@ -53,5 +61,20 @@
    
   </required>
  </dependencies>
+
+ <phprelease>
+  <installconditions>
+   <os>
+    <name>*</name>
+   </os>
+  </installconditions>
+ </phprelease>
+
+<changelog>
+ <release>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes></notes>
+  </release>
+</changelog>
 
 </package>

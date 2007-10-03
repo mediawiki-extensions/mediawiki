@@ -40,6 +40,9 @@ if ('dir' !== $type)
 	die(0);
 }
 */
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 echo 'getTrunk: using base uri: '.$svn_trunk."\n";
 
 $manifest_file = $svn_trunk.'/'.$extension.'/META-INF/manifest.xml';
@@ -48,10 +51,43 @@ $code = getTrunk::get( $manifest_file, $manifest_data );
 echo ($code==200) ? "success!\n":"failure! code=".$code."\n";
 if ( $code !== 200)
 {
-	echo "Response Headers: ";
-	var_dump( getTrunk::$responseHeaders );
+	#echo "Response Headers: ";
+	#var_dump( getTrunk::$responseHeaders );
 	die(0);
 }
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+$files = getTrunk::extractFiles( $manifest_data );
+
+if (empty( $files ))
+{
+	echo "getTrunk: nothing to do!\n";
+	die(0);
+}
+foreach( $files as $fileEntry )
+{
+	$file = $fileEntry['file'];
+	$uri = $svn_trunk.'/'.$extension.'/'.$file;
+	$code = getTrunk::get( $uri, $contents );
+	if ( 200 !== $code )
+	{
+		echo "getTrunk: error fetching file: ".$file."\n";
+		continue;
+	}
+	else
+		echo "getTrunk: success for file: ".$file."\n";
+	
+	$bytes_written = @file_put_contents( $file, $contents );
+	if ( $bytes_written !== strlen( $contents ))
+		echo "getTrunk: error writing file: ".$file."\n";
+	
+}
+echo "getTrunk: completed.\n";
+die(1);
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 class getTrunk
 {
 	static $responseHeaders = null;
@@ -61,7 +97,7 @@ class getTrunk
 	{
 		$request =& new HTTP_Request( $uri );
 		
-		$request->setMethod( $verb );
+		$request->setMethod( "GET" );
 
 		$request->sendRequest();
 
@@ -71,5 +107,36 @@ class getTrunk
 		self::$responseCode = $code = $request->getResponseCode();
 	
 		return $code;
+	}
+	/**
+		Extracts the files from the manifest file
+	 */
+	static function extractFiles( &$m ) 
+	{
+		$parser = new PEAR_XMLParser;
+		$result = $parser->parse( $m );
+		if (!$result)
+			return false;
+		$data = $parser->getData();
+
+		#var_dump( $data );
+		if (empty( $data ))
+			return null;
+
+		$entries = $data['manifest:file-entry'];
+		if (empty( $entries ))
+			return null;
+		
+		$files = array();
+		foreach( $entries as &$e )
+		{
+			$a = $e['attribs'];
+			$mime = $a['manifest:media-type'];
+			$file = $a['manifest:full-path'];
+			
+			$files[] = array( 'file'=> $file, 'mime'=> $mime );
+		}
+		
+		return $files;
 	}
 }

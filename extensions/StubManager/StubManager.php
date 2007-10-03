@@ -97,7 +97,7 @@ $wgExtensionCredits[StubManager::thisType][] = array(
 );
 
 // Perform auto-discovery of [[Extension:ExtensionManager]]
-@include realpath(dirname(__FILE__).'/../ExtensionManager/ExtensionManager_stub.php');
+include realpath(dirname(__FILE__).'/../ExtensionManager/ExtensionManager_stub.php');
 
 class StubManager
 {

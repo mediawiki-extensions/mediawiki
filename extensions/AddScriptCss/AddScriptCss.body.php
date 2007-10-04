@@ -140,8 +140,8 @@ class AddScriptCss
 	private function checkURI( $uri, $type )
 	{
 		// uri must resolved to a local file in the $base directory.
-		global $IP, $wgScriptPath;
-		$spath = $IP.$wgScriptPath.self::$base.$uri.'.'.$type;
+		global $IP;
+		$spath = $IP.self::$base.$uri.'.'.$type;
 		return file_exists( $spath );
 	} 
 	private function errMessage( $errCode )  // FIXME

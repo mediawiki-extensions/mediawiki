@@ -5,7 +5,7 @@
 |type2       = user rights
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.10 1.11
 |download    = see Installation
@@ -44,19 +44,23 @@ considerable care when using templates on the same page.
 ** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
 * Install extension through PEAR:
 ** <code>pear install mediawiki/securephp</code>
-* Modification to <code>LocalSettings.php</code>
-<source lang=php>
-require 'MediaWiki/SecurePHP_stub.php';
-</source>
+* Modify <code>LocalSettings.php</code>
 === SVN ===
 * Install [[Extension:StubManager]]
 * Download archive: [http://mediawiki.googlecode.com/svn/tags/SecurePHP/ SVN]
 * Place extension files in /extensions
-* Modification to <code>LocalSettings.php</code>
+* Modify <code>LocalSettings.php</code>
+=== LocalSettings.php ===
+* Modification (if not using [[Extension:ExtensionManager]]
 <source lang=php>
-require 'extensions/SecurePHP/SecurePHP_stub.php';
+require 'extensions/SecurePHP/SecurePHP.php';
 </source>
+
+=== Extension Manager ===
+If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
 
 == History ==
 * Moved to MediaWiki on GoogleCode project
+* Standardized entry point; now, always SecurePHP.php whatever installation method.
+
 [[Category:Script embedding extensions]]

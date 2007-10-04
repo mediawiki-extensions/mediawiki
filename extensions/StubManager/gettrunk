@@ -69,16 +69,17 @@ if (empty( $files ))
 }
 foreach( $files as $fileEntry )
 {
+	echo "getTrunk: fetching file: ".$file." ... ";
 	$file = $fileEntry['file'];
 	$uri = $svn_trunk.'/'.$extension.'/'.$file;
 	$code = getTrunk::get( $uri, $contents );
 	if ( 200 !== $code )
 	{
-		echo "getTrunk: error fetching file: ".$file."\n";
+		echo "error!\n";
 		continue;
 	}
 	else
-		echo "getTrunk: success fetching file: ".$file."\n";
+		echo "success!\n";
 	
 	echo "getTrunk: writing file: ".$useDir.$file." ... ";	
 	

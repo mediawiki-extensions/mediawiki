@@ -52,8 +52,6 @@ if (!class_exists('HTTP_Request'))
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 echo 'getTrunk: using base uri: '.$svn_trunk."\n";
 
 if (empty( $extension ))
@@ -103,11 +101,14 @@ foreach( $files as $fileEntry )
 	else
 		echo "success!\n";
 }
-if ($errors ===0)
+if ($errors === 0)
+{
 	echo "getTrunk: completed.\n";
+	die(1);
+}
 else
-	echo "getTrunk: errors!\n"
-die(1);
+	echo "getTrunk: errors!\n";
+die(0);
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

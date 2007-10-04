@@ -1,13 +1,14 @@
 {{Extension
 |name        = SecurePHP
 |status      = stable
-|type        = other
+|type1       = tag
+|type2       = user rights
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0
 |update      =
 |mediawiki   = 1.10 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags SVN]
+|download    = see Installation
 |readme      =
 |changelog   = See SVN ($Id: SecurePHP.php 782 2007-09-16 01:22:37Z jeanlou.dupont $)
 |description = 
@@ -35,12 +36,16 @@ considerable care when using templates on the same page.
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
+** Automatically resolved if using PEAR
 
 == Installation ==
-* Install [[Extension:StubManager]] extension
-* Use <code>pear install mediawiki/SecurePHP</code>
+=== PEAR ===
+* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
+** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+* Install extension through PEAR:
+** <code>pear install mediawiki/securephp</code>
+=== SVN ===
+Download archive: [http://mediawiki.googlecode.com/svn/tags/SecurePHP/ SVN]
 
 == History ==
 * Moved to MediaWiki on GoogleCode project
-
-== See Also ==

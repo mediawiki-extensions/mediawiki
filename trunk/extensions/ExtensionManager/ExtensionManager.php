@@ -12,7 +12,7 @@ elseif (version_compare( StubManager::version(), '1.0.0','<' ))
 else
 {
 	StubManager::createStub2(	array(	'class' 		=> 'ExtensionManager', 
-										'classfilename'	=> dirname(__FILE__).'/ExtensionManager.php',
+										'classfilename'	=> dirname(__FILE__).'/ExtensionManager.body.php',
 										'hooks'			=> array( ),
 										'mgs'			=> array( )
 									)

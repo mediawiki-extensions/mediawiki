@@ -10,6 +10,7 @@
 <ch>mediawiki.googlecode.com/svn</ch> <!-- not read by list-all command -->
 <c xlink:href="/rest/c/ExtensionManager/info.xml">ExtensionManager</c>
 <c xlink:href="/rest/c/ParserFunctions/info.xml">ParserFunctions</c>
+<c xlink:href="/rest/c/SecureHTML/info.xml">SecureHTML</c>
 <c xlink:href="/rest/c/SecurePHP/info.xml">SecurePHP</c>
 <c xlink:href="/rest/c/StubManager/info.xml">StubManager</c>
 

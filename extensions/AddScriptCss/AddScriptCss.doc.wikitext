@@ -5,12 +5,12 @@
 |type2       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = See SVN ($Id: AddScriptCss.php 822 2007-09-30 13:28:36Z jeanlou.dupont $)
+|version     = 1.0.0
 |update      =
-|mediawiki   = tested on 1.10 but probably works with a earlier versions
-|download    = [http://bizzwiki.googlecode.com/svn/trunk/BizzWiki/extensions/AddScriptCss/ SVN]
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/AddScriptCss/ SVN]
 |readme      =
-|changelog   =
+|changelog   = See SVN ($Id: AddScriptCss.php 822 2007-09-30 13:28:36Z jeanlou.dupont $)
 |description = 
 |parameters  =
 |rights      =
@@ -102,3 +102,8 @@ If using [[Extension:ExtensionManager]], then skip the modification to <code>Loc
 == TODO ==
 * internationalize
 * Support for customization of scripts directory without touching LocalSettings.php
+
+=== See also ===
+*[[Extension:CSS]] ''- a similar extension allowing stylesheets residing in other articles to be added to the page''
+
+[[category:Script embedding extensions]]

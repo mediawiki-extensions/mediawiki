@@ -7,7 +7,7 @@
 |version     = 
 |update      =
 |mediawiki   = 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags SVN]
+|download    = see installation section
 |readme      =
 |changelog   = See SVN ($Id: Extension.php 686 2007-08-18 00:43:59Z jeanlou.dupont $)
 |description = 
@@ -19,11 +19,14 @@
 Provides a means of easily installing 'extensions' to MediaWiki.
 
 == Features ==
+* Once installed, other extensions retrieved through Jean-Lou Dupont's PEAR channel do not have
+to be explicitly added to <code>LocalSettings.php</code>
 
 == Theory of Operation ==
 
 == Usage ==
 * Use real caching e.g. PHP/pecl APC
+** Else, the extension directories will be rescanned on each request
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]

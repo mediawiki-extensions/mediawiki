@@ -48,12 +48,17 @@ considerable care when using templates on the same page.
 === SVN ===
 * Install [[Extension:StubManager]]
 * Download archive: [http://mediawiki.googlecode.com/svn/tags/SecurePHP/ SVN]
-* Place extension files in /extensions
+* Place extension files in MW /extensions directory
 * Modify <code>LocalSettings.php</code>
 === LocalSettings.php ===
-* Modification (if not using [[Extension:ExtensionManager]]
+Modifications to <code>LocalSettings.php</code> is only necessary if not using [[Extension:ExtensionManager]]
+* Modification if extension is located in MW installation directory:
 <source lang=php>
 require 'extensions/SecurePHP/SecurePHP.php';
+</source>
+* Modification if extension is installed through PEAR:
+<source lang=php>
+require 'MediaWiki/SecurePHP/SecurePHP.php';
 </source>
 
 === Extension Manager ===

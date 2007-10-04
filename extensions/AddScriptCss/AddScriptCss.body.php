@@ -29,8 +29,7 @@ class AddScriptCss
 
 	function __construct( )
 	{
-		global $IP;
-		self::$base = $IP.self::baseScriptDirectory;
+		self::$base = self::baseScriptDirectory;
 		
 		// take on the global setting if found.
 		global $bwScriptsDirectory;
@@ -100,7 +99,9 @@ class AddScriptCss
 		if (!$this->checkURI( $src, $type ))
 			return $this->errMessage( self::error_uri ); 
 
-		$p = self::$base.$src.'.'.$type;
+
+		global $wgScriptPath;
+		$p = $wgScriptPath.self::$base.$src.'.'.$type;
 
 		// Which type of script does the user want?
 		switch( $type )
@@ -139,7 +140,8 @@ class AddScriptCss
 	private function checkURI( $uri, $type )
 	{
 		// uri must resolved to a local file in the $base directory.
-		$spath = self::$base.$uri.'.'.$type;
+		global $IP, $wgScriptPath;
+		$spath = $IP.$wgScriptPath.self::$base.$uri.'.'.$type;
 		return file_exists( $spath );
 	} 
 	private function errMessage( $errCode )  // FIXME

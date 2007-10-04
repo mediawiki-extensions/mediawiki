@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<p xmlns="http://pear.php.net/dtd/rest.package"    
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xlink="http://www.w3.org/1999/xlink"    
+	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
+ <n>AddScriptCss</n>
+ <c>mediawiki.googlecode.com/svn</c>
+ <ca xlink:href="/rest/c/AddScriptCss">AddScriptCss</ca>
+ <l>PHP License</l>
+ <s>Provides the means of adding scripts and css files to a page in a secure manner.</s>
+ <d></d>
+ <r xlink:href="/rest/r/addscriptcss"/>
+</p>

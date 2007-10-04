@@ -22,6 +22,7 @@ else
  *	
  */
 require_once $IP.'/includes/ObjectCache.php';
+require_once $IP.'/inclues/BagOStuff.php';
 
 class ExtensionLoader
 {

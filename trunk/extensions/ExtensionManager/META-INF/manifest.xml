@@ -2,7 +2,7 @@
 <!DOCTYPE manifest:manifest PUBLIC "-//mediawiki.googlecode.com/svn//DTD Manifest 1.0//EN" "Manifest.dtd">
 
 <manifest:manifest xmlns:manifest="http://mediawiki.googlecode.com/svn/2007/manifest">
- <manifest:file-entry manifest:media-type="application/php"	manifest:full-path="ExtensionManager_stub.php"/>
+ <manifest:file-entry manifest:media-type="application/php"	manifest:full-path="ExtensionManager.body.php"/>
  <manifest:file-entry manifest:media-type="application/php"	manifest:full-path="ExtensionManager.php"/>
  <manifest:file-entry manifest:media-type="text/wikitext"	manifest:full-path="ExtensionManager.doc.wikitext"/>
 </manifest:manifest>

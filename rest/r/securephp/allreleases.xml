@@ -11,6 +11,9 @@
  <c>mediawiki.googlecode.com/svn</c>    
  <p>SecurePHP</p>
 
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
 	<r>
 		<v>1.0.1</v>
 		<s>stable</s>

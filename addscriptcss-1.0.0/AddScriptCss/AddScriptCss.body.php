@@ -29,8 +29,7 @@ class AddScriptCss
 
 	function __construct( )
 	{
-		global $IP;
-		self::$base = $IP.self::baseScriptDirectory;
+		self::$base = self::baseScriptDirectory;
 		
 		// take on the global setting if found.
 		global $bwScriptsDirectory;
@@ -139,7 +138,8 @@ class AddScriptCss
 	private function checkURI( $uri, $type )
 	{
 		// uri must resolved to a local file in the $base directory.
-		$spath = self::$base.$uri.'.'.$type;
+		global $IP;		
+		$spath = $IP.self::$base.$uri.'.'.$type;
 		return file_exists( $spath );
 	} 
 	private function errMessage( $errCode )  // FIXME

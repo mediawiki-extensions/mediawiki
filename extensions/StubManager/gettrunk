@@ -30,6 +30,15 @@ $useDir = $mw_root.'extensions/'.$extension.'/';
 
 echo "getTrunk: using target directory: ".$useDir."\n";
 
+if (!is_dir( $useDir ))
+{
+	echo "getTrunk: target does not exists ... trying to create ... ";
+	$r = @mkdir( $useDir );
+	echo $r ? "success!\n":"failure!\n";
+	if (!$r)
+		die(0);
+}
+
 if (!class_exists('PEAR_XMLParser'))
 {
 	echo 'getTrunk: requires library PEAR/XMLParser. Get it through PEAR.';
@@ -40,6 +49,8 @@ if (!class_exists('HTTP_Request'))
 	echo 'getTrunk: requires library HTTP/Request. Get it through PEAR.';
 	die(0);
 }
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -69,8 +80,9 @@ if (empty( $files ))
 }
 foreach( $files as $fileEntry )
 {
-	echo "getTrunk: fetching file: ".$file." ... ";
 	$file = $fileEntry['file'];
+	echo "getTrunk: fetching file: ".$file." ... ";
+	
 	$uri = $svn_trunk.'/'.$extension.'/'.$file;
 	$code = getTrunk::get( $uri, $contents );
 	if ( 200 !== $code )

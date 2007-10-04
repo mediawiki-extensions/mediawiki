@@ -6,7 +6,7 @@
 //<source lang=php>
 $wgExtensionCredits[StubManager::thisType][] = array( 
 	'name'    		=> StubManager::thisName,
-	'version' 		=> '1.0.0',
+	'version' 		=> '1.0.1',
 	'author'  		=> 'Jean-Lou Dupont',
 	'description'	=> 'Provides stubbing facility for extensions handling rare events. Extensions registered: ', 
 	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
@@ -16,9 +16,11 @@ class StubManager
 {
 	// This version number must match that of 
 	// the corresponding PEAR package.
-	const version = '1.0.0';
+	const version = '1.0.1';
 
-	static $cdir = null;
+	// pointer to extensions directory
+	// whether be in a PEAR context or MW root installation
+	static $edir = null;
 	
 	const MWbaseURI = 'http://www.mediawiki.org/wiki';
 	
@@ -629,8 +631,8 @@ class Stub
 } // end class Stub
 
 // Perform auto-discovery of [[Extension:ExtensionManager]]
-StubManager::$cdir = realpath(dirname(__FILE__) );
-if (file_exists( StubManager::$cdir.'/../ExtensionManager/ExtensionManager_stub.php'))
-	include realpath(dirname(__FILE__).'/../ExtensionManager/ExtensionManager_stub.php');
+StubManager::$edir = realpath( dirname( dirname(__FILE__) ) );
+if (file_exists( StubManager::$edir.'/ExtensionManager/ExtensionManager.php'))
+	include StubManager::$edir.'/ExtensionManager/ExtensionManager.php';
 
 // </source>

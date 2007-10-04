@@ -5,4 +5,5 @@
     xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackages
     http://pear.php.net/dtd/rest.categorypackages.xsd">
  <p xlink:href="/rest/p/imagelink">ImageLink</p>
+ <p xlink:href="/rest/p/parserphase2">ParserPhase2</p>
 </l>

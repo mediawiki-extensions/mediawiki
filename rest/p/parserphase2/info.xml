@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<p xmlns="http://pear.php.net/dtd/rest.package"    
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xlink="http://www.w3.org/1999/xlink"    
+	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
+
+<n>ParserPhase2</n>
+<c>mediawiki.googlecode.com/svn</c>
+<s>Provides 'parser cache friendly' page manipulation.</s>
+<d>This extensions allows for manipulating a page in different ways whilst still preserving 'parser cache' integrity.</d>
+<ca xlink:href="/rest/c/parserfunctions">Parser Functions</ca>
+<r xlink:href="/rest/r/parserphase2" />
+</p>

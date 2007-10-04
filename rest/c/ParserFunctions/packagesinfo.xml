@@ -21,4 +21,24 @@
 			</r>
 		</a>
 	</pi>
+
+	<pi>
+		<p>
+		 <n>ParserPhase2</n>
+		 <c>mediawiki.googlecode.com/svn</c>
+		 <ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+		 <l></l>
+		 <s>Provides 'parser cache friendly' page manipulation.</s>
+		 <d>description...</d>
+		 <r xlink:href="/rest/r/parserphase2"/>
+		</p>
+		<a>
+			<r>
+				<v>1.0.0</v> 
+				<s>stable</s>
+			</r>
+		</a>
+	</pi>
+
+
 </f>

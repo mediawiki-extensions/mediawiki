@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/user/bin/php
 <?php
 /**
 	Gets the current trunk revision of an extension

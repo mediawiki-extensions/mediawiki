@@ -1,13 +1,13 @@
 {{Extension
 |name        = StubManager
 |status      = stable
-|type        = other
+|type        = framework
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0
 |update      =
 |mediawiki   = 1.10 1.11
-|download    = [http://bizzwiki.googlecode.com/svn/trunk/BizzWiki/extensions/ SVN]
+|download    = pear install mediawiki/stubmanager
 |readme      =
 |changelog   = See SVN ($Id: StubManager.php 368 2007-10-03 17:10:25Z jeanlou.dupont $)
 |description = 
@@ -55,12 +55,13 @@ See [[Extension:EmailLog|Email Log extension]].
 None.
 
 == Installation ==
-To install independantly from BizzWiki:
-* Download the extension file 'StubManager.php' and place in the '/extensions' directory
-* Apply the following changes to 'LocalSettings.php'
-<source lang=php>
-require('extensions/StubManager.php');
-</source>
+=== PEAR ===
+* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
+** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+* Install extension through PEAR:
+** <code>pear install mediawiki/stubmanager</code>
+=== SVN ===
+Download archive: [http://mediawiki.googlecode.com/svn/tags/StubManager/ SVN]
 
 == History ==
 * Added one more parameter to '__call' method to accomodate hooks such as ArticleSave.
@@ -80,5 +81,3 @@ require('extensions/StubManager.php');
 ** Added to PEAR channel
 * Added 'auto-discovery' of [[Extension:ExtensionManager]]
 * Added 'getRevision' method.
-
-== See also ==

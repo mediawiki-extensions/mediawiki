@@ -13,6 +13,23 @@ $extension	= @$argv[1];
 @require "PEAR/XMLParser.php";
 @require 'HTTP/Request.php';
 
+if (empty( $mw_root ))
+{
+	echo "getTrunk: expecting environment variable 'MW_INSTALL_PATH' to be set. E.g. use 'export MW_INSTALL_PATH=dir'\n";
+	die(0);	
+}
+$mw_root = str_replace("\\", '/', $mw_root );
+$mw_root = trim( $mw_root );
+if (substr( $mw_root, -1) !== '/' )
+	$mw_root .= '/';
+
+echo "getTrunk: assuming installation directory root: ".$mw_root."\n";
+
+// we'll use this directory for storing the files we 'wget'
+$useDir = $mw_root.'extensions/'.$extension.'/';
+
+echo "getTrunk: using target directory: ".$useDir."\n";
+
 if (!class_exists('PEAR_XMLParser'))
 {
 	echo 'getTrunk: requires library PEAR/XMLParser. Get it through PEAR.';
@@ -24,27 +41,15 @@ if (!class_exists('HTTP_Request'))
 	die(0);
 }
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+echo 'getTrunk: using base uri: '.$svn_trunk."\n";
+
 if (empty( $extension ))
 {
 	echo "getTrunk: expects extension directory as parameter.\n"; 
 	die(0);
 }
-if (empty( $mw_root ))
-{
-	echo "getTrunk: expecting environment variable 'MW_INSTALL_PATH' to be set. E.g. use 'export MW_INSTALL_PATH=dir'\n";
-	die(0);	
-}
-echo "getTrunk: assuming installation directory root: ".$mw_root."\n";
-	
-// we'll use this directory for storing the files we 'wget'
-$useDir = $mw_root.'/extension/'.$extension.'/';
-
-echo "getTrunk: using target directory: ".$useDir."\n";
-die(1);
-
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-echo 'getTrunk: using base uri: '.$svn_trunk."\n";
 
 $manifest_file = $svn_trunk.'/'.$extension.'/META-INF/manifest.xml';
 echo 'getTrunk: fetching manifest file ... ';
@@ -73,12 +78,15 @@ foreach( $files as $fileEntry )
 		continue;
 	}
 	else
-		echo "getTrunk: success for file: ".$file."\n";
+		echo "getTrunk: success fetching file: ".$file."\n";
+	
+	echo "getTrunk: writing file: ".$useDir.$file." ... ";	
 	
 	$bytes_written = @file_put_contents( $useDir.$file, $contents );
 	if ( $bytes_written !== strlen( $contents ))
-		echo "getTrunk: error writing file: ".$file."\n";
-	
+		echo "error writing file!\n";
+	else
+		echo "success!\n";
 }
 echo "getTrunk: completed.\n";
 die(1);

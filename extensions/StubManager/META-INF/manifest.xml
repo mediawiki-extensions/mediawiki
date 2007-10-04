@@ -3,6 +3,6 @@
 
 <manifest:manifest xmlns:manifest="http://mediawiki.googlecode.com/svn/2007/manifest">
  <manifest:file-entry manifest:media-type="application/php"		manifest:full-path="StubManager.php"/>
- <manifest:file-entry manifest:media-type="application/x-sh"	manifest:full-path="getTrunk"/>
+ <manifest:file-entry manifest:media-type="application/x-sh"	manifest:full-path="gettrunk"/>
  <manifest:file-entry manifest:media-type="text/wikitext"		manifest:full-path="StubManager.doc.wikitext"/>
 </manifest:manifest>

@@ -60,8 +60,19 @@ None.
 ** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
 * Install extension through PEAR:
 ** <code>pear install mediawiki/stubmanager</code>
+* Modification to <code>LocalSettings.php</code>
+<source lang=php>
+require 'MediaWiki/StubManager.php';
+</source>
+
 === SVN ===
-Download archive: [http://mediawiki.googlecode.com/svn/tags/StubManager/ SVN]
+* Download archive: [http://mediawiki.googlecode.com/svn/tags/StubManager/ SVN]
+* Place extension files in /extensions
+* Modification to <code>LocalSettings.php</code>
+<source lang=php>
+require 'extensions/StubManager/StubManager.php';
+</source>
+
 
 == History ==
 * Added one more parameter to '__call' method to accomodate hooks such as ArticleSave.

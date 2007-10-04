@@ -44,8 +44,19 @@ considerable care when using templates on the same page.
 ** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
 * Install extension through PEAR:
 ** <code>pear install mediawiki/securephp</code>
+* Modification to <code>LocalSettings.php</code>
+<source lang=php>
+require 'MediaWiki/SecurePHP_stub.php';
+</source>
 === SVN ===
-Download archive: [http://mediawiki.googlecode.com/svn/tags/SecurePHP/ SVN]
+* Install [[Extension:StubManager]]
+* Download archive: [http://mediawiki.googlecode.com/svn/tags/SecurePHP/ SVN]
+* Place extension files in /extensions
+* Modification to <code>LocalSettings.php</code>
+<source lang=php>
+require 'extensions/SecurePHP/SecurePHP_stub.php';
+</source>
 
 == History ==
 * Moved to MediaWiki on GoogleCode project
+[[Category:Script embedding extensions]]

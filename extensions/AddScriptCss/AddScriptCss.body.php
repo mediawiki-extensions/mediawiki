@@ -100,8 +100,7 @@ class AddScriptCss
 		if (!$this->checkURI( $src, $type ))
 			return $this->errMessage( self::error_uri ); 
 
-		global $IP;
-		$p = $IP.'/'.self::$base.$src.'.'.$type;
+		$p = self::$base.$src.'.'.$type;
 
 		// Which type of script does the user want?
 		switch( $type )
@@ -141,10 +140,7 @@ class AddScriptCss
 	{
 		// uri must resolved to a local file in the $base directory.
 		$spath = self::$base.$uri.'.'.$type;
-		
-		global $IP;
-	
-		return file_exists( $IP."/{$spath}" );
+		return file_exists( $spath );
 	} 
 	private function errMessage( $errCode )  // FIXME
 	{

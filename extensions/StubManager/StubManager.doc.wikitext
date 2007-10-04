@@ -4,7 +4,7 @@
 |type        = framework
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.10 1.11
 |download    = pear install mediawiki/stubmanager
@@ -62,7 +62,7 @@ None.
 ** <code>pear install mediawiki/stubmanager</code>
 * Modification to <code>LocalSettings.php</code>
 <source lang=php>
-require 'MediaWiki/StubManager.php';
+require 'MediaWiki/StubManager/StubManager.php';
 </source>
 
 === SVN ===
@@ -72,7 +72,6 @@ require 'MediaWiki/StubManager.php';
 <source lang=php>
 require 'extensions/StubManager/StubManager.php';
 </source>
-
 
 == History ==
 * Added one more parameter to '__call' method to accomodate hooks such as ArticleSave.
@@ -92,3 +91,5 @@ require 'extensions/StubManager/StubManager.php';
 ** Added to PEAR channel
 * Added 'auto-discovery' of [[Extension:ExtensionManager]]
 * Added 'getRevision' method.
+=== 1.0.1 ===
+* Adjusted for newest version of [[Extension:ExtensionManager]]

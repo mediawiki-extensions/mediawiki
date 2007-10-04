@@ -6,8 +6,9 @@
 
 <n>ImageLink</n>
 <c>mediawiki.googlecode.com/svn</c>
-<s>ImageLink summary</s>
-<d>ImageLink description here</d>
-<ca xlink:href="/rest/c/imagelink">ImageLink</ca>
+<s>Provides a clickable image which allows directing to a page.</s>
+<d>The usual behavior of clicking on an image brings up the page corresponding to the image in question.
+This extension provides a means of specifying a page to link to instead.</d>
+<ca xlink:href="/rest/c/parserfunctions">Parser Functions</ca>
 <r xlink:href="/rest/r/imagelink" />
 </p>

@@ -179,7 +179,7 @@ class ExtensionLoader
 		if (!self::$realCache)
 			return false;
 		
-		$s = self::$realCache->get( $key );
+		$s = self::$cache->get( $key );
 		$us = @unserialize( $s );
 		
 		return $us;

@@ -93,6 +93,18 @@ class HNP
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	/**
 	 */
+	protected function readPermissions()
+	{
+		// try the cache first!
+		$result = $this->readPermissionsFromCache();
+		if ($result === true)	
+			return true;
+		
+		// else, let's parse the registry page...
+	}
+
+	/**
+	 */
 	protected function updatePermissions()
 	{
 		$p = array( 'groups' => self::$new_permissions,
@@ -102,7 +114,7 @@ class HNP
 	
 		self::writeToCache( $s );		
 	}
-	protected function readPermissions()
+	protected function readPermissionsFromCache()
 	{
 		$s = self::readFromCache();
 		if ($s === false)
@@ -224,6 +236,33 @@ class HNP
 		$contents = @file_get_contents( $filePath );
 		return $contents;
 	}
+	
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	protected function parseRegistryPage( &$article )
+	{
+		$text = $this->getRegistryPageContents();
+		if (empty( $text ))
+			return false;
+			
+		global $wgParser, $wgUser;
+		$popts = new ParserOptions( $wgUser );
+		$parserOutput = $wgParser->parse(	$text, 
+											$article->mTitle, 
+											$popts, 
+											true, true, 
+											$article->mRevision );
+		return true;
+	}
+	protected function getRegistryPageContents()
+	{
+		$contents = null;
+		$title = Title::newFromText( self::mPage );
+		$rev = Revision::newFromTitle( $title );
+		if( $rev )
+		    $content = $rev->getText();		
+			
+		return $contents;
+	}	
 	
 } // end class definition.
 //</source>

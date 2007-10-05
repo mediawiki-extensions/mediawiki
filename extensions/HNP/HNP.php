@@ -19,7 +19,7 @@ if (class_exists('StubManager'))
 																	'SpecialVersionExtensionTypes',
 																	'EditFormPreloadText'
 															),
-										'mgs'			=> array( 'hnp', 'hnp_r' )
+										'mgs'			=> array( 'hnp', 'hnp_r', 'hnp_h' )
 									)
 							);
 

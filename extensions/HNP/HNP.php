@@ -4,24 +4,29 @@
  * @package HNP
  */
 //<source lang=php>
-require 'HNP.i18n.php';
+#require 'HNP.i18n.php';
+require_once $IP.'/includes/ObjectCache.php';
+require_once $IP.'/includes/BagOStuff.php';
 
 if (class_exists('StubManager'))
 {
 	StubManager::createStub2(	array(	'class' 		=> 'HNP', 
 										'classfilename'	=> dirname(__FILE__).'/HNP.body.php',
-										'hooks'			=> array(	'userCan', 
-																	'UserIsAllowed',
+										'hooks'			=> array(	
+																	#'userCan', 
+																	#'UserIsAllowed',
 																	'ArticleSave',
+																	'SpecialVersionExtensionTypes',
 																	'EditFormPreloadText'
 															),
 										'mgs'			=> array( 'hnp', 'hnp_r' )
 									)
 							);
 
-	$wgExtensionCredits['hook'][] = array( 
+	global $wgExtensionCredits;
+	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'HNP',
-		'version'		=> StubManager::getRevisionId('$Id$'),
+		'version'		=> '1.0.0',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:HierarchicalNamespacePermissions2',	
 		'description' 	=> "Provides enhancements to the permission management sub-system.", 

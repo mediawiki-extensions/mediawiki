@@ -4,12 +4,12 @@
  * @package HNP
  */
 //<source lang=php>
-require 'HNP.i18n.php';
+#require 'HNP.i18n.php';
 
 class HNP
 {
 	const thisName = 'HNP';
-	const thisType = 'hook';
+	const thisType = 'other';
 
 	const rRead    = "read";
 	const rEdit    = "edit";
@@ -22,12 +22,12 @@ class HNP
 	static $permissionsLoadedFromCache = false;
 
 	// PERMISSIONS en-force currently
-	static $permissions = null;
-	static $groupRights = null;
+	static $permissions = array();
+	static $groupRights = array();
 	
 	// PERMISSIONS being defined on the current page.
-	static $new_permissions = null;
-	static $new_groupRights = null;
+	static $new_permissions = array();
+	static $new_groupRights = array();
 
 	// TABLE FORMATTING related
 	static $columnSeparator = "||";
@@ -45,7 +45,7 @@ class HNP
 
 	/**
 	 */
-	public static function __construct()
+	public function __construct()
 	{
 		self::$thisDir = dirname( __FILE__ );
 		self::initCacheSupport();
@@ -60,9 +60,13 @@ class HNP
 													'title' => $title,
 													'right' => $right
 											);	
-		return self::$rowStart.$group.$columnSeparator.
-				$ns.$columnSeparator.
-				$right."\n".self::$rowEnd."\n";
+		// Format a nice wikitext line
+		return	self::$rowStart.
+				$group.self::$columnSeparator.
+				$ns.self::$columnSeparator.
+				$title.self::$columnSeparator.				
+				$right."\r\n".
+				self::$rowEnd."\r\n";
 	}
 	/**
 		{{#hnp_r: right | type }}
@@ -71,8 +75,11 @@ class HNP
 	{
 		self::$new_groupRights[$right] = $type;
 		
-		return self::$rowStart.$right.$columnSeparator.
-				$type."\n".self::$rowEnd."\n";
+		// Format a nice wikitext line		
+		return	self::$rowStart.
+				$right.self::$columnSeparator.
+				$type."\r\n".
+				self::$rowEnd."\r\n";
 	}
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
@@ -105,9 +112,14 @@ class HNP
 		if ($result === true)	
 			return true;
 		
+
 		// else, let's parse the registry page...
+		/*
 		$result = $this->processRegistryPage();
 		self::$permissionsLoadedFromRegistryPage = $result;
+		*/
+		
+		return false;
 	}
 
 	/**
@@ -117,18 +129,15 @@ class HNP
 		$p = array( 'groups' => self::$new_permissions,
 					'rights' => self::$new_groupRights
 				 );	
-		$s = serialize( $p );
-	
-		self::writeToCache( $s );		
+				 
+		self::writeToCache( $p );		
 	}
 	protected function readPermissionsFromCache()
 	{
-		$s = self::readFromCache();
-		if ($s === false)
+		$us = self::readFromCache();
+		if ($us === false)
 			return false;
 			
-		$us = unserialize( $s );
-		
 		self::$permissions = $us['groups'];
 		self::$groupRights = $us['rights'];
 		
@@ -153,7 +162,7 @@ class HNP
 			
 		$key = self::getKey();
 			
-		$s = serialize( $exts );
+		$s = serialize( $data );
 		self::$cache->set( $key, $s, self::$expiryPeriod );
 	}
 	/**
@@ -205,7 +214,7 @@ class HNP
 		$result = $this->updatePermissions();
 
 		// 
-		#$summary = $result;
+		$summary = count(self::$new_permissions);
 		
 		return true; // continue hook-chain.
 	}
@@ -236,18 +245,18 @@ class HNP
 		global $wgExtensionCredits;
 
 		$result1 = ' Using caching: ';
-		$result1 .= self::$realCache ? 'true.':'<b>false</b>.';
+		$result1 .= self::$realCache ? 'true.':"<b>false</b>.";
 		
 		$result2 = ' Permissions loaded from cache: ';
-		$result2 .= self::$permissionsLoadedFromCache ? 'true.':'<b>false</b>.';
+		$result2 .= self::$permissionsLoadedFromCache ? 'true.':"<b>false</b>.";
 
-		$result3 = ' Permissions loaded from registry: ';
-		$result3 .= self::$permissionsLoadedFromRegistryPage ? 'true.':'<b>false</b>.';
+#		$result3 = ' Permissions loaded from registry: ';
+#		$result3 .= self::$permissionsLoadedFromRegistryPage ? 'true.':"<b>false</b>.";
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		
-				if ($el['name']==self::thisName)
-					$el['description'] .= $result1.$result2.$result3;
+				if ($el['name'] == self::thisName)
+					$el['description'] .= $result1.$result2;//.$result3;
 				
 		return true; // continue hook-chain.
 	}
@@ -279,14 +288,19 @@ class HNP
 											true, true, 
 											null );
 	}
+/*	
 	protected function processRegistryPage( )
 	{
-		$text = $this->getRegistryPageContents( &$title );
+		$text = $this->getRegistryPageContents( $title );
 		if (empty( $text ))
 			return false;
 		
-		$this->parse( $title, $text );
-		
+		$sd = $this->extractSerializedData( $text );
+	
+		$a = @unserialize( $sd );
+	
+		//FIXME ...
+	
 		$result = false;
 		
 		// after parsing the page, the permissions
@@ -301,6 +315,11 @@ class HNP
 		
 		return $result;
 	}
+	protected function extractSerializedData( &$text )
+	{
+		
+	}
+	
 	protected function getRegistryPageContents( &$title )
 	{
 		$contents = null;
@@ -311,6 +330,6 @@ class HNP
 			
 		return $contents;
 	}	
-	
+*/	
 } // end class definition.
 //</source>

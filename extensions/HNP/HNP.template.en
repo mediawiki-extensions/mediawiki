@@ -1,0 +1,21 @@
+== Namespace Independant Rights ==
+{| border = 1
+! Right !! Type
+|-
+{{#hnp_r: | I }}
+|}
+
+== Namespace Dependant Rights ==
+{| border = 1
+! Right !! Type
+|-
+{{#hnp_r: | D }}
+|}
+
+== Group Rights ==
+
+{| border = 1
+! Group !! Namespace !! Title !! Right
+|-
+{{#hnp: | | | }}
+|}

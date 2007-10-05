@@ -10,7 +10,11 @@ if (class_exists('StubManager'))
 {
 	StubManager::createStub2(	array(	'class' 		=> 'HNP', 
 										'classfilename'	=> dirname(__FILE__).'/HNP.body.php',
-										'hooks'			=> array( 'userCan', 'UserIsAllowed' ),
+										'hooks'			=> array(	'userCan', 
+																	'UserIsAllowed',
+																	'ArticleSave',
+																	'EditFormPreloadText'
+															),
 										'mgs'			=> array( 'hnp', 'hnp_r' )
 									)
 							);

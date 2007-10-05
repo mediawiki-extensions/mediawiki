@@ -19,7 +19,7 @@ class HNP
 
 	// STATUS related
 	static $LoadedFromRegistryPage = false;
-	static $permissionsLoadedFromFileCache = false;
+	static $LoadedFromFileCache = false;
 	static $LoadedFromCache = false;
 
 	// PERMISSIONS en-force currently (raw form)
@@ -235,14 +235,11 @@ class HNP
 	 */
 	protected function userCanInternal( &$user, $ns, $pt, $a )
 	{
-		
 		// Always allow login/logout!
 		if ( (($pt == 'Userlogin') || ($pt=='Userlogout')) && 
 				($ns==NS_SPECIAL) && ($a=='read') )
-		{	
-			$r = true;
-			return false;
-		}
+			return true;
+
 		// Also always allow the sysop in !
 		if ($this->isUserPartOfGroup( $user, 'sysop') && ($a != 'bot' ))
 			return true;		
@@ -386,7 +383,7 @@ class HNP
 
 		// else, let's parse the file cache...
 		$result = $this->readFromFileCache();
-		self::$permissionsLoadedFromFileCache = $result;
+		self::$LoadedFromFileCache = $result;
 		
 		return false;
 	}
@@ -552,13 +549,13 @@ class HNP
 		$result3 = ' File cache writable: ';
 		$result3 .= self::isFileCacheWritable() ? 'true.':"<b>false</b>.";
 
-#		$result3 = ' Permissions loaded from registry: ';
-#		$result3 .= self::$LoadedFromRegistryPage ? 'true.':"<b>false</b>.";
+		$result4 = ' Permissions loaded from file cache: ';
+		$result4 .= self::$LoadedFromFileCache ? 'true.':"<b>false</b>.";
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		
 				if ($el['name'] == self::thisName)
-					$el['description'] .= $result1.$result2.$result3;
+					$el['description'] .= $result1.$result2.$result4.$result3;
 				
 		return true; // continue hook-chain.
 	}

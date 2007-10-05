@@ -19,6 +19,7 @@ class HNP
 
 	// STATUS related
 	static $LoadedFromRegistryPage = false;
+	static $permissionsLoadedFromFileCache = false;
 	static $LoadedFromCache = false;
 
 	// PERMISSIONS en-force currently (raw form)
@@ -27,7 +28,8 @@ class HNP
 	static $groupHier   = array();	
 
 	// PERMISSIONS en-force currently (processed form)
-	static $perms  = array();
+	static $perms  = array(); // without wildcards
+	static $permsW = array(); // with wildcards
 	static $rights = array();
 	static $ghier  = array();
 	
@@ -52,12 +54,16 @@ class HNP
 	static $expiryPeriod = 86400;	//24*60*60 == 1day
 	static $realCache = true; 		// assume we get a real cache.
 	static $cache;
+	static $fileCacheName = null;
+	const  fileCacheFileName = 'hnp_cache.serialized';
 
 	/**
 	 */
 	public function __construct()
 	{
 		self::$thisDir = dirname( __FILE__ );
+		self::$fileCacheName = self::$thisDir.'/'.self::fileCacheFileName;
+		
 		self::initCacheSupport();
 		self::readPermissions();
 		self::processPermissions();
@@ -65,7 +71,7 @@ class HNP
 	/**
 		{{#hnp:group|namespace|title|right}}
 	 */
-	public function mg_hnp( &$parser, $group, $ns, $title, $right )
+	public function mg_hnp( &$parser, $group, $ns, $title, $right, $notes = null)
 	{
 		self::$new_permissions[$group][] = array(	'ns' 	=> $ns,
 													'title' => $title,
@@ -76,13 +82,14 @@ class HNP
 				$group.self::$columnSeparator.
 				$ns.self::$columnSeparator.
 				$title.self::$columnSeparator.				
-				$right."\r\n".
+				$right.self::$columnSeparator.				
+				$notes."\r\n".
 				self::$rowEnd."\r\n";
 	}
 	/**
 		{{#hnp_r: right | type }}
 	 */
-	public function mg_hnp_r( &$parser, $right, $type )
+	public function mg_hnp_r( &$parser, $right, $type, $notes = null )
 	{
 		$type = strtoupper( $type );
 		
@@ -95,7 +102,8 @@ class HNP
 		// Format a nice wikitext line		
 		return	self::$rowStart.
 				$right.self::$columnSeparator.
-				$type."\r\n".
+				$type.self::$columnSeparator.
+				$notes."\r\n".
 				self::$rowEnd."\r\n";
 	}
 	/**
@@ -117,23 +125,172 @@ class HNP
 	}
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+// MAIN HOOKS
 
 	/**
 		This is a hook that must be installed in 'User.php'.
 	 */
 	function hUserIsAllowed( &$user, $ns=null, $titre=null, $action, &$result )
 	{
+		 // disallow by default.
+		$result = false;
+		if ($action == '') return false;
 		
+		// some translation required.
+		if ($action == 'view' ) $action = 'read';
+		
+		// Namespace independant right ??
+		if ( in_array( $action, self::$rightsNsI ) )
+		{
+			$result = $this->userCanInternal( $user, '~', '~' , $action );
+			return false;	
+		}
+
+		// debugging...
+		if (! in_array( $action, self::$rightsNsD) )
+		{
+			echo "HNP: action <b>$action</b> not found in namespace dependant array. \n";
+			return false;	
+		}
+
+		// Namespace dependant right:
+		// Two cases:
+		// 1) the request comes from a stock Mediawiki method that does not know about HNP
+		//    * request might come from a SpecialPage context.
+		//
+		// 2) the request comes from an HNP aware method somewhere.
+		
+		// are we asked to check for a specific action in a specific namespace??
+
+		global $wgTitle;
+		if (!is_object( $wgTitle ))
+			return false;
+			
+		$cns = $wgTitle->getNamespace();
+		$cti = $wgTitle->mDbkeyform;
+
+		// Does the request come from NS_SPECIAL and namespace dependant??		
+		if ( ($cns == NS_SPECIAL) && ($ns === null) )
+		{
+			echo "HNP: action <b>$action</b> namespace dependent but called from NS_SPECIAL. <br/>\n";
+#			var_dump( debug_backtrace() );
+			return false;	
+		}
+
+		// Finally, the request comes from a valid namespace & with a valid namespace dependent action
+		if ( $ns === null )    $ns = $cns;
+		if ( $titre === null ) $titre = $cti;
+
+		// Deal with page level restrictions
+		if (!$this->checkRestrictions( $user, $wgTitle, $ns, $titre, $action ))
+		{
+			$result = false;
+			return false;	
+		}
+
+#		echo 'user='.$user->getName().'ns= '.$ns.' titre='.$titre.' action='.$action.'<br/>';
+
+		$result = $this->userCanInternal( $user, $ns, $titre , $action );
+	
+		// stop hook chain.
+		return false;
 	}
 	/**
 		This is the stock MediaWiki 'userCan' hook.
 		
 		t-> title, u-> user, a-> action, r-> result
 	 */
-	function userCan( &$t, &$u, $a, &$r )
+	function huserCan( &$t, &$u, $a, &$r )
+	{
+		// disallow by default.
+		$r = false;
+		
+		// some translation required.
+		if ($a == 'view' ) $a = 'read';
+		
+		// Can the user perform a read operation?
+		$ns = $t->getNamespace();
+		$pt = $t->mDbkeyform;
+
+#		echo " page: ".$pt." ns: ".$ns." action: ".$a."\n";
+
+		// Deal with page level restrictions
+		if (!$this->checkRestrictions( $u, $t, $ns, $pt, $a ) )
+			return false;	
+
+		// Normal processing path.
+		$r = $this->userCanInternal( $u, $ns, $pt, $a );
+		
+		// don't let other extensions override this result.			
+		return false; 
+	}
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	/**
+	 */
+	public static function buildPermissionKey( $ns, $pt, $a )
+	{
+		return "/^$ns\|$pt\|$a".'$/siU';
+	}	
+	/**
+	 */
+	protected function userCanInternal( &$user, $ns, $pt, $a )
 	{
 		
+		// Always allow login/logout!
+		if ( (($pt == 'Userlogin') || ($pt=='Userlogout')) && 
+				($ns==NS_SPECIAL) && ($a=='read') )
+		{	
+			$r = true;
+			return false;
+		}
+		// Also always allow the sysop in !
+		if ($this->isUserPartOfGroup( $user, 'sysop') && ($a != 'bot' ))
+			return true;		
+		
+		// NOTE: the term "group" is somewhat confusing.
+		//       Use the following semantic to interpret:
+		//       " User X is part of Group Y if X can
+		//        perform Action A on the Page T of
+		//        Namespace NS "
+		// A User with Rights in the sub-space X\Y\* (as example)
+		// is entitled *only* (assuming no other superset group is
+		// defined for this User) to this sub-space i.e.
+		// User can not have access to higher level pages e.g. X\*
+		//
+		
+		// disallow by default.
+		$r = false;
+		
+		foreach ( self::$groupHier as $index => $group )
+		{
+			// is the user part of the group?
+			if ( !self::isUserPartOfGroup( $user, $group ) ) 
+				continue;
+			
+			$groupa = array( $group );
+			$grights = $user->getGroupPermissions( $groupa ); 
+
+			// FIRST GROUP OF TESTS
+			//   EXCLUDE ACTION tests
+			$eqs = self::buildPermissionKey( $ns, $pt, "!${a}" );		
+			$r = self::testRightsWildcard( $eqs, self::$perms[$group] /* without wildcards */ );
+			if ($r) return false;		
+		
+			// SECOND GROUP OF TESTS
+			// ---------------------
+			// Go through all the group membership and
+			// extract the rights looking for the ones
+			// dynamically created (e.g. by this extension i.e. createGroups)
+			// which are compatible with this extension.
+			$qs = self::buildPermissionKey( $ns, $pt, $a );
+			$r = self::testRightsWildcard( $qs, self::$permsW[$group] );
+			if ($r) return true;		
+		}
+
+		// If all tests fail, then conclude the user does not have the required right.
+		return $r;
 	}
+
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	/**
@@ -141,17 +298,14 @@ class HNP
 	protected function processPermissions()
 	{
 		// Permissions
-		/*
-		static $perms  = array();
-		$permissions = array(	'group_x' => array(),
-								'group_y' => array(),
-							);
-		{{#hnp:group|namespace|title|right}}	
-		*/
 		if (!empty(self::$permissions))
-			foreach (self::$permissions as $group => &$p )
+			foreach (self::$permissions as $group => &$entries )
 			{
-				
+					$with_wildcards = null;
+					$without_wildcards = null;
+					$this->formatEntries( $entries, $with_wildcards, $without_wildcards );
+					self::$permsW[$group] = $with_wildcards;
+					self::$perms[$group] = $without_wildcards;					
 			}
 			
 		// Rights
@@ -165,6 +319,52 @@ class HNP
 			}
 		// Hierarchy
 		// ** already formatted correctly.
+	}
+	protected function formatEntries( &$entriesForGroup, &$with, &$without )
+	{
+		foreach ( $entriesForGroup as $index => &$entry )
+		{
+			$foundWildcard = false;
+			
+			// 1- Namespace
+			// First, check if we have a 'wildcard'
+			$ns_name = trim( $entry['ns'] );			
+			if ( $ns_name === '~' )
+				$nsField = "(.*)";
+			else
+			{
+				$nsIndex = $this->getNsIndex( $entry['ns'] );
+				$nsField = $nsIndex;
+			}
+			// 2- Title
+			// First, check if we have a 'wildcard'
+			$title_name = preg_quote( trim( $entry['title'] ) );
+			$titleField = str_replace('/', '\/', $title_name );
+			$titleField = str_replace("~", "(.*)", $titleField );
+			
+			// 3- Action
+			// Can be a list e.g. read, edit, browse
+			$right_name = preg_quote( trim( $entry['right'] ));
+			
+			// We are not supposed to find '/' but just make sure
+			// we don't break.
+			$rightField = str_replace('/','\/',$right_name);
+			
+			$foundWilcard = strpos( $right_name, '~' );
+			
+			$rightField = str_replace("~", "(.*)", $rightField);
+			
+			$rights = explode(",", $rightField);
+			$linePiece = '/^'.$nsField.'\|'.$titleField.'\|';
+			foreach($rights as $r)
+			{
+				$line = $linePiece.$r.'$/siU';
+				if ($foundWilcard === false)
+					$without[] = $line;
+				$with[] = $line;
+			}
+		}
+		
 	}
 	protected function getNsIndex( $name )
 	{
@@ -184,15 +384,29 @@ class HNP
 			return true;
 		
 
-		// else, let's parse the registry page...
-		/*
-		$result = $this->processRegistryPage();
-		self::$permissionsLoadedFromRegistryPage = $result;
-		*/
+		// else, let's parse the file cache...
+		$result = $this->readFromFileCache();
+		self::$permissionsLoadedFromFileCache = $result;
 		
 		return false;
 	}
-
+	protected function readFromFileCache()
+	{
+		$contents = @file_get_contents( self::$fileCacheName );
+		$us = @unserialize( $contents );
+		if ($us === false)
+			return false;
+		$this->formatFromUnserialized( $us );
+		return true;
+		
+	}
+	/**
+	 */
+	protected static function writeToFileCache( &$data )
+	{
+		$s = serialize( $data );
+		$bytes_written = @file_put_contents( self::$fileCacheName, $s );
+	}
 	/**
 		Words in pair with 'readPermissionFromCache'
 	 */
@@ -203,7 +417,8 @@ class HNP
 					'hier'   => self::$new_groupHier
 				 );	
 				 
-		self::writeToCache( $p );		
+		self::writeToCache( $p );
+		self::writeToFileCache( $p );	
 	}
 	/**
 		Works in pair with 'updatePermissions'
@@ -214,11 +429,15 @@ class HNP
 		if ($us === false)
 			return false;
 			
+		$this->formatFromUnserialized( $us );
+		
+		return true;
+	}
+	protected function formatFromUnserialized( &$us )
+	{
 		self::$permissions = $us['groups'];
 		self::$groupRights = $us['rights'];
 		self::$groupHier   = $us['hier'];		
-		
-		return true;
 	}
 	/**
 	 */
@@ -270,7 +489,10 @@ class HNP
 		$state = self::$realCache;
 		return (self::$realCache ? 'true':'false');
 	}
-	
+	static function isFileCacheWritable()
+	{
+		return is_writable( self::$fileCacheName );	
+	}
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 // HOOKS
 	/**
@@ -327,13 +549,16 @@ class HNP
 		$result2 = ' Permissions loaded from cache: ';
 		$result2 .= self::$LoadedFromCache ? 'true.':"<b>false</b>.";
 
+		$result3 = ' File cache writable: ';
+		$result3 .= self::isFileCacheWritable() ? 'true.':"<b>false</b>.";
+
 #		$result3 = ' Permissions loaded from registry: ';
 #		$result3 .= self::$LoadedFromRegistryPage ? 'true.':"<b>false</b>.";
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		
 				if ($el['name'] == self::thisName)
-					$el['description'] .= $result1.$result2;//.$result3;
+					$el['description'] .= $result1.$result2.$result3;
 				
 		return true; // continue hook-chain.
 	}
@@ -423,29 +648,22 @@ class HNP
 	{	
 		if (empty($rights))
 			return false;
-			
+		
 		// Go through each right
 		// and look if the query matches with it
 		// In reality, the array $rights is (should be!) already
 		// formatted for use with the matching function, acting as
 		// the pattern in question.
 		foreach ($rights as $pattern)
-			if ( preg_match( $pattern, $q ) > 0 )
+		{
+			$result = preg_match( $pattern, $q );
+#			echo __METHOD__." pattern: ".$pattern." ... q: ".$q." result: $result \n";			
+			if ($result === 1)
 				return true;	
-		
+		}
 		return false;		
 	}
 
-	/**
-	 * Is the user posted a form that requires
-	 * creation/updating a wiki page?
- 	 */
-	static function isRequestToSubmit()
-	{
-		global    $wgRequest;
-		$action = $wgRequest->getVal( 'wpSave', 'view' );
-		return    ($action == "submit" ? true:false);
-	}
 	/**
 	 */
 	public static function isUserPartOfGroup( &$user, $group )
@@ -453,6 +671,25 @@ class HNP
 		if (empty( $group )) return false;
 		
 		return in_array( $group, $user->getEffectiveGroups() );
+	}
+	/**
+	 */
+	private function checkRestrictions( &$user, &$title, &$ns, &$titre, &$action )
+	{
+		if ( !is_object( $title ) )
+			return true;
+
+		// Load Page level restrictions
+		$restrictions = $title->getRestrictions($action);
+		if (empty($restrictions))
+			return true;
+			
+		foreach( $restrictions as $group )
+			if (self::isUserPartOfGroup( $user, $group ))
+				return true;
+		
+		// didn't find any restrictions that weren't met with the proper right.
+		return true;
 	}
 
 

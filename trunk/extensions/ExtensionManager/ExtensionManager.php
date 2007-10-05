@@ -23,6 +23,7 @@ else
  *	Loads all the installed extensions.
  *	
  */
+global $IP;
 require_once $IP.'/includes/ObjectCache.php';
 require_once $IP.'/includes/BagOStuff.php';
 

@@ -8,14 +8,18 @@ require 'HNP.i18n.php';
 
 class HNP
 {
-	const thisName = 'InterWikiLinkManager';
-	const thisType = 'other';
+	const thisName = 'HNP';
+	const thisType = 'hook';
 
 	const rRead    = "read";
 	const rEdit    = "edit";
 	
 	static $msg;
 	const mPage    = "MediaWiki:Registry/HNP";	
+
+	// STATUS related
+	static $permissionsLoadedFromRegistryPage = false;
+	static $permissionsLoadedFromCache = false;
 
 	// PERMISSIONS en-force currently
 	static $permissions = null;
@@ -45,7 +49,7 @@ class HNP
 	{
 		self::$thisDir = dirname( __FILE__ );
 		self::initCacheSupport();
-		self::loadPermissions();
+		self::readPermissions();
 	}
 	/**
 		{{#hnp:group|namespace|title|right}}
@@ -97,10 +101,13 @@ class HNP
 	{
 		// try the cache first!
 		$result = $this->readPermissionsFromCache();
+		self::$permissionsLoadedFromCache = $result;
 		if ($result === true)	
 			return true;
 		
 		// else, let's parse the registry page...
+		$result = $this->processRegistryPage();
+		self::$permissionsLoadedFromRegistryPage = $result;
 	}
 
 	/**
@@ -193,13 +200,7 @@ class HNP
 
 		// Invoke the parser in order to retrieve the interwiki link data
 		// composed through the magic word 'iwl'
-		global $wgParser, $wgUser;
-		$popts = new ParserOptions( $wgUser );
-		$parserOutput = $wgParser->parse(	$text, 
-											$article->mTitle, 
-											$popts, 
-											true, true, 
-											$article->mRevision );
+		$this->parse( $article->mTitle, $text );
 											
 		$result = $this->updatePermissions();
 
@@ -228,6 +229,32 @@ class HNP
 		return false;
 	}
 	/**
+	 */
+	public function hSpecialVersionExtensionTypes( &$sp, &$extensionTypes )
+	// setup of this hook occurs in 'ExtensionClass' base class.
+	{
+		global $wgExtensionCredits;
+
+		$result1 = ' Using caching: ';
+		$result1 .= self::$realCache ? 'true.':'<b>false</b>.';
+		
+		$result2 = ' Permissions loaded from cache: ';
+		$result2 .= self::$permissionsLoadedFromCache ? 'true.':'<b>false</b>.';
+
+		$result3 = ' Permissions loaded from registry: ';
+		$result3 .= self::$permissionsLoadedFromRegistryPage ? 'true.':'<b>false</b>.';
+		
+		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
+			if (isset($el['name']))		
+				if ($el['name']==self::thisName)
+					$el['description'] .= $result1.$result2.$result3;
+				
+		return true; // continue hook-chain.
+	}
+	
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	/**
 		For now, only one template is supported.
 	*/
 	protected function getTemplate()
@@ -237,29 +264,50 @@ class HNP
 		return $contents;
 	}
 	
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-	protected function parseRegistryPage( &$article )
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	/**
+	
+	 */
+	protected function parse( &$title, &$text )	
 	{
-		$text = $this->getRegistryPageContents();
-		if (empty( $text ))
-			return false;
-			
 		global $wgParser, $wgUser;
 		$popts = new ParserOptions( $wgUser );
 		$parserOutput = $wgParser->parse(	$text, 
-											$article->mTitle, 
+											$title, 
 											$popts, 
 											true, true, 
-											$article->mRevision );
-		return true;
+											null );
 	}
-	protected function getRegistryPageContents()
+	protected function processRegistryPage( )
+	{
+		$text = $this->getRegistryPageContents( &$title );
+		if (empty( $text ))
+			return false;
+		
+		$this->parse( $title, $text );
+		
+		$result = false;
+		
+		// after parsing the page, the permissions
+		// should be in the class variables
+		if (!empty( self::$new_permissions) || 
+			!empty( self::$new_groupRights) )
+		{
+			$result = true;
+			self::$permissions = self::$new_permissions;
+			self::$groupRights = self::$groupRights;
+		}
+		
+		return $result;
+	}
+	protected function getRegistryPageContents( &$title )
 	{
 		$contents = null;
 		$title = Title::newFromText( self::mPage );
 		$rev = Revision::newFromTitle( $title );
 		if( $rev )
-		    $content = $rev->getText();		
+		    $contents = $rev->getText();		
 			
 		return $contents;
 	}	

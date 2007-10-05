@@ -18,16 +18,26 @@ class HNP
 	const mPage    = "MediaWiki:Registry/HNP";	
 
 	// STATUS related
-	static $permissionsLoadedFromRegistryPage = false;
-	static $permissionsLoadedFromCache = false;
+	static $LoadedFromRegistryPage = false;
+	static $LoadedFromCache = false;
 
-	// PERMISSIONS en-force currently
+	// PERMISSIONS en-force currently (raw form)
 	static $permissions = array();
 	static $groupRights = array();
+	static $groupHier   = array();	
+
+	// PERMISSIONS en-force currently (processed form)
+	static $perms  = array();
+	static $rights = array();
+	static $ghier  = array();
+	
+	static $rightsNsI = array(); // namespace independant
+	static $rightsNsD = array(); // namespace dependant
 	
 	// PERMISSIONS being defined on the current page.
 	static $new_permissions = array();
 	static $new_groupRights = array();
+	static $new_groupHier   = array();		
 
 	// TABLE FORMATTING related
 	static $columnSeparator = "||";
@@ -50,6 +60,7 @@ class HNP
 		self::$thisDir = dirname( __FILE__ );
 		self::initCacheSupport();
 		self::readPermissions();
+		self::processPermissions();
 	}
 	/**
 		{{#hnp:group|namespace|title|right}}
@@ -73,13 +84,36 @@ class HNP
 	 */
 	public function mg_hnp_r( &$parser, $right, $type )
 	{
-		self::$new_groupRights[$right] = $type;
+		$type = strtoupper( $type );
+		
+		// basic checks
+		if ( ($type !== 'D' ) && ($type !== 'I' ))
+			$type = '??';
+		else
+			self::$new_groupRights[$right] = $type;
 		
 		// Format a nice wikitext line		
 		return	self::$rowStart.
 				$right.self::$columnSeparator.
 				$type."\r\n".
 				self::$rowEnd."\r\n";
+	}
+	/**
+		{{#hnp_h: groupx, groupy, ... }}
+	 */
+	public function mg_hnp_h( &$parser, $groupList )
+	{
+		if (empty( $groupList ))
+			return '';
+		
+		$liste = explode( ',', $groupList );
+		
+		self::$new_groupHier = $liste;
+		
+		// Format a nice wikitext line
+		$fliste = implode( ',', $liste );
+				
+		return $fliste;
 	}
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
@@ -104,11 +138,48 @@ class HNP
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	/**
 	 */
+	protected function processPermissions()
+	{
+		// Permissions
+		/*
+		static $perms  = array();
+		$permissions = array(	'group_x' => array(),
+								'group_y' => array(),
+							);
+		{{#hnp:group|namespace|title|right}}	
+		*/
+		if (!empty(self::$permissions))
+			foreach (self::$permissions as $group => &$p )
+			{
+				
+			}
+			
+		// Rights
+		if (!empty(self::$groupRights))
+			foreach (self::$groupRights as $right => &$type )
+			{
+				if ( $type === 'D' )
+					self::$rightsNsD[] = $right;
+				else
+					self::$rightsNsI[] = $right;				
+			}
+		// Hierarchy
+		// ** already formatted correctly.
+	}
+	protected function getNsIndex( $name )
+	{
+		$name = strtolower( $name );
+		if ( ($name ==='') || ($name === 'main'))
+			return 0;
+		return Namespace::getCanonicalIndex( $name );
+	}
+	/**
+	 */
 	protected function readPermissions()
 	{
 		// try the cache first!
 		$result = $this->readPermissionsFromCache();
-		self::$permissionsLoadedFromCache = $result;
+		self::$LoadedFromCache = $result;
 		if ($result === true)	
 			return true;
 		
@@ -123,15 +194,20 @@ class HNP
 	}
 
 	/**
+		Words in pair with 'readPermissionFromCache'
 	 */
 	protected function updatePermissions()
 	{
 		$p = array( 'groups' => self::$new_permissions,
-					'rights' => self::$new_groupRights
+					'rights' => self::$new_groupRights,
+					'hier'   => self::$new_groupHier
 				 );	
 				 
 		self::writeToCache( $p );		
 	}
+	/**
+		Works in pair with 'updatePermissions'
+	 */
 	protected function readPermissionsFromCache()
 	{
 		$us = self::readFromCache();
@@ -140,6 +216,7 @@ class HNP
 			
 		self::$permissions = $us['groups'];
 		self::$groupRights = $us['rights'];
+		self::$groupHier   = $us['hier'];		
 		
 		return true;
 	}
@@ -163,6 +240,7 @@ class HNP
 		$key = self::getKey();
 			
 		$s = serialize( $data );
+		
 		self::$cache->set( $key, $s, self::$expiryPeriod );
 	}
 	/**
@@ -175,11 +253,11 @@ class HNP
 		$key = self::getKey();
 				
 		$s = self::$cache->get( $key );
-		$us = @unserialize( $s );
-		
-		return $us;
+
+		return @unserialize( $s );
 	}
 	/**
+		Formats a unique key for the cache.
 	 */
 	static function getKey( )
 	{
@@ -213,8 +291,7 @@ class HNP
 											
 		$result = $this->updatePermissions();
 
-		// 
-		$summary = count(self::$new_permissions);
+		#$summary = count(self::$new_permissions);
 		
 		return true; // continue hook-chain.
 	}
@@ -231,7 +308,7 @@ class HNP
 		// verified adequately.
 		if (! $title->userCan(self::rEdit) ) return true;		
 
-		// start by reading the table from the database
+		// start the user with a nice template.
 		$text = $this->getTemplate();
 	
 		// stop hook chain.
@@ -248,10 +325,10 @@ class HNP
 		$result1 .= self::$realCache ? 'true.':"<b>false</b>.";
 		
 		$result2 = ' Permissions loaded from cache: ';
-		$result2 .= self::$permissionsLoadedFromCache ? 'true.':"<b>false</b>.";
+		$result2 .= self::$LoadedFromCache ? 'true.':"<b>false</b>.";
 
 #		$result3 = ' Permissions loaded from registry: ';
-#		$result3 .= self::$permissionsLoadedFromRegistryPage ? 'true.':"<b>false</b>.";
+#		$result3 .= self::$LoadedFromRegistryPage ? 'true.':"<b>false</b>.";
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		
@@ -276,7 +353,10 @@ class HNP
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	/**
-	
+		Parses a page.
+		
+		This method does the dirty work of extracting
+		the configuration from the wikitext.	
 	 */
 	protected function parse( &$title, &$text )	
 	{
@@ -331,5 +411,50 @@ class HNP
 		return $contents;
 	}	
 */	
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	/**
+	 */
+	static function testRightsWildcard( $q, $rights )
+	{	
+		if (empty($rights))
+			return false;
+			
+		// Go through each right
+		// and look if the query matches with it
+		// In reality, the array $rights is (should be!) already
+		// formatted for use with the matching function, acting as
+		// the pattern in question.
+		foreach ($rights as $pattern)
+			if ( preg_match( $pattern, $q ) > 0 )
+				return true;	
+		
+		return false;		
+	}
+
+	/**
+	 * Is the user posted a form that requires
+	 * creation/updating a wiki page?
+ 	 */
+	static function isRequestToSubmit()
+	{
+		global    $wgRequest;
+		$action = $wgRequest->getVal( 'wpSave', 'view' );
+		return    ($action == "submit" ? true:false);
+	}
+	/**
+	 */
+	public static function isUserPartOfGroup( &$user, $group )
+	{
+		if (empty( $group )) return false;
+		
+		return in_array( $group, $user->getEffectiveGroups() );
+	}
+
+
 } // end class definition.
 //</source>

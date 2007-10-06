@@ -18,6 +18,7 @@ class HNP
 	const mPage    = "MediaWiki:Registry/HNP";	
 
 	// STATUS related
+	static $loading = false;
 	static $LoadedFromRegistryPage = false;
 	static $LoadedFromFileCache = false;
 	static $LoadedFromCache = false;
@@ -65,8 +66,6 @@ class HNP
 		self::$fileCacheName = self::$thisDir.'/'.self::fileCacheFileName;
 		
 		self::initCacheSupport();
-		self::readPermissions();
-		self::processPermissions();
 	}
 	/**
 		{{#hnp:group|namespace|title|right}}
@@ -142,6 +141,12 @@ class HNP
 	 */
 	function hUserIsAllowed( &$user, $ns=null, $titre=null, $action, &$result )
 	{
+		if (self::$loading == true)
+		{ $r = true; return false; }
+		
+		if (!$this->isLoaded())
+			$this->loadPermissions();
+			
 		 // disallow by default.
 		$result = false;
 		if ($action == '') return false;
@@ -212,6 +217,12 @@ class HNP
 	 */
 	function huserCan( &$t, &$u, $a, &$r )
 	{
+		if (self::$loading == true)
+		{ $r = true; return false; }
+		
+		if (!$this->isLoaded())
+			$this->loadPermissions();
+		
 		// disallow by default.
 		$r = false;
 		
@@ -235,6 +246,15 @@ class HNP
 		return false; 
 	}
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	/**
+	 */
+	protected function loadPermissions()
+	{
+		self::$loading = true;
+		$this->readPermissions();
+		$this->processPermissions();	
+		self::$loading = false;
+	}
 	/**
 	 */
 	public static function buildPermissionKey( $ns, $pt, $a )
@@ -374,7 +394,6 @@ class HNP
 				$with[] = $line;
 			}
 		}
-		
 	}
 	protected function getNsIndex( $name )
 	{
@@ -395,15 +414,22 @@ class HNP
 		self::$LoadedFromCache = $result;
 		if ($result === true)	
 			return true;
-		
 
 		// else, let's parse the file cache...
-		$result = $this->readFromFileCache();
+		$result = $this->readPermissionsFromFileCache();
 		self::$LoadedFromFileCache = $result;
+		if ($result === true)	
+			return true;
+
+		// Last resort, try to parse the registry page.
+		$result = $this->readPermissionsFromRegistry();
+		self::$LoadedFromRegistryPage = $result;		
+		if ($result === true)	
+			return true;
 		
 		return false;
 	}
-	protected function readFromFileCache()
+	protected function readPermissionsFromFileCache()
 	{
 		$contents = @file_get_contents( self::$fileCacheName );
 		$us = @unserialize( $contents );
@@ -411,7 +437,6 @@ class HNP
 			return false;
 		$this->formatFromUnserialized( $us );
 		return true;
-		
 	}
 	/**
 	 */
@@ -419,6 +444,7 @@ class HNP
 	{
 		$s = serialize( $data );
 		$bytes_written = @file_put_contents( self::$fileCacheName, $s );
+		return $bytes_written;
 	}
 	/**
 		Words in pair with 'readPermissionFromCache'
@@ -431,7 +457,7 @@ class HNP
 				 );	
 				 
 		self::writeToCache( $p );
-		self::writeToFileCache( $p );	
+		self::writeToFileCache( $p );
 	}
 	/**
 		Works in pair with 'updatePermissions'
@@ -506,6 +532,14 @@ class HNP
 	{
 		return is_writable( self::$fileCacheName );	
 	}
+	static function isLoaded()
+	{
+		return (	self::$LoadedFromRegistryPage || 
+					self::$LoadedFromCache ||
+					self::$LoadedFromFileCache
+				);	
+	}
+	
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 // HOOKS
 	/**
@@ -526,7 +560,7 @@ class HNP
 											
 		$result = $this->updatePermissions();
 
-		#$summary = count(self::$new_permissions);
+		$summary = count(self::$new_permissions);
 		
 		return true; // continue hook-chain.
 	}
@@ -567,11 +601,14 @@ class HNP
 
 		$result4 = ' Permissions loaded from file cache: ';
 		$result4 .= self::$LoadedFromFileCache ? 'true.':"<b>false</b>.";
+
+		$result5 = ' Permissions loaded from registry page: ';
+		$result5 .= self::$LoadedFromRegistryPage ? 'true.':"<b>false</b>.";
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		
 				if ($el['name'] == self::thisName)
-					$el['description'] .= $result1.$result2.$result4.$result3;
+					$el['description'] .= $result1.$result2.$result4.$result3.$result5;
 				
 		return true; // continue hook-chain.
 	}
@@ -589,6 +626,20 @@ class HNP
 	}
 	
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	/**
+	 */
+	protected function readPermissionsFromRegistry()
+	{
+		$us = $this->processRegistryPage();
+
+		self::$permissions = self::$new_permissions;
+		self::$groupRights = self::$new_groupRights;
+		self::$groupHier   = self::$new_groupHier;
+	
+		self::$LoadedFromRegistryPage = true;
+	
+		return true;
+	}
 
 	/**
 		Parses a page.
@@ -599,45 +650,30 @@ class HNP
 	protected function parse( &$title, &$text )	
 	{
 		global $wgParser, $wgUser;
+		
+		$parser = clone $wgParser;
+		
 		$popts = new ParserOptions( $wgUser );
-		$parserOutput = $wgParser->parse(	$text, 
-											$title, 
-											$popts, 
-											true, true, 
-											null );
+		$parserOutput = $parser->parse(	$text, 
+										$title, 
+										$popts, 
+										true, true, 
+										null );
 	}
-/*	
+	/**
+	 */	
 	protected function processRegistryPage( )
 	{
+		$title = null;
+
 		$text = $this->getRegistryPageContents( $title );
 		if (empty( $text ))
 			return false;
 		
-		$sd = $this->extractSerializedData( $text );
-	
-		$a = @unserialize( $sd );
-	
-		//FIXME ...
-	
-		$result = false;
-		
-		// after parsing the page, the permissions
-		// should be in the class variables
-		if (!empty( self::$new_permissions) || 
-			!empty( self::$new_groupRights) )
-		{
-			$result = true;
-			self::$permissions = self::$new_permissions;
-			self::$groupRights = self::$groupRights;
-		}
-		
-		return $result;
+		$this->parse( $title, $text );
+
+		return true;
 	}
-	protected function extractSerializedData( &$text )
-	{
-		
-	}
-	
 	protected function getRegistryPageContents( &$title )
 	{
 		$contents = null;
@@ -645,10 +681,10 @@ class HNP
 		$rev = Revision::newFromTitle( $title );
 		if( $rev )
 		    $contents = $rev->getText();		
-			
+
 		return $contents;
 	}	
-*/	
+	
 
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -682,15 +718,10 @@ class HNP
 	public static function isUserPartOfGroup( &$user, $group )
 	{
 		$group = trim( $group );
-		if (empty( $group )) return false;
-
+		if (empty( $group )) 
+			return false;
 		$groups = $user->getEffectiveGroups();
-		
-		$result = in_array( $group, $groups );
-
-#		echo __METHOD__." group: ".$group." result: $result\n";
-		
-		return $result;
+		return in_array( $group, $groups );
 	}
 	/**
 	 */

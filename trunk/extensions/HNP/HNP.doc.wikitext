@@ -61,7 +61,33 @@ require 'MediaWiki/HNP/HNP.php';
 If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
 
 == User.php patch ==
+=== Original file ===
 <source lang=php>
+	function isAllowed($action='') {
+		if ( $action === '' )
+			// In the spirit of DWIM
+			return true;
+
+		return in_array( $action, $this->getRights() );
+	}
+</source>
+=== Patched file ===
+<source lang=php>
+	function isAllowed($action='', $ns = null /* addition */, $title = null /* addition */ ) 
+	{
+		if ( $action === '' )
+			// In the spirit of DWIM
+			return true;
+
+		//  PATCH begin{{
+		$result = null;
+		wfRunHooks('UserIsAllowed', array( &$this, $ns, $title, &$action, &$result ) );
+		if ( $result !== null )
+			return $result;
+		// PATCH end }}
+
+		return in_array( $action, $this->getRights() );
+	}
 </source>
 
 [[Category:Namespace extensions]]

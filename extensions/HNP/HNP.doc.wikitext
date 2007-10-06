@@ -1,11 +1,11 @@
 {{extension
 |name   = HNP
 |image  =
-|type   = user rights
-|hook1  = userCan
-|status = stable
-|mediawiki = 1.11
-|version = 1.0.0
+|type   =		user rights
+|hook1  =		userCan
+|status =		stable
+|mediawiki =	1.11
+|version =		1.0.0
 |update = 
 |download = 
 |changelog = See [http://mediawiki.googlecode.com/svn/trunk/extensions/HNP/ SVN]
@@ -14,16 +14,16 @@
 }}
 == Features ==
 * Permission management through simple edition of a page
+** <code>MediaWiki:Registry/HNP</code>
 * Sysop has always all rights regardless of state of registry page
 ** Enables easier 'human error' management
-** <code>MediaWiki:Registry/HNP</code>
-* Prefix based namespace access with wildcard
+* Prefix based namespace access with wildcards
 ** E.g. 'sysop group has access to all namespaces'
 * Namespace dependant & Namespace Independant rights management
 * No additional database tables nor changes to schema
 * No mandatory patches
 ** Namespace dependant rights management: no patches necessary
-** Namespace independant rights management: if needed, requires a patch:
+** Namespace independant rights management: if wanted, requires a patch:
 *** 'includes/User.php'
 * Post-installation information always available through [[Special:Version]] page.
 

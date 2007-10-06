@@ -73,14 +73,20 @@ class HNP
 	 */
 	public function mg_hnp( &$parser, $group, $ns, $title, $right, $notes = null)
 	{
-		self::$new_permissions[$group][] = array(	'ns' 	=> $ns,
-													'title' => $title,
-													'right' => $right
+		self::$new_permissions[$group][] = array(	'ns' 	=> trim( $ns ),
+													'title' => trim( $title ),
+													'right' => trim( $right )
 											);	
+		$nsindex = $this->getNsIndex( $ns );
+		if (is_numeric( $nsindex ))
+			$ns_string = "($nsindex)";
+		else
+			$ns_string = null;
+			
 		// Format a nice wikitext line
 		return	self::$rowStart.
 				$group.self::$columnSeparator.
-				$ns.self::$columnSeparator.
+				$ns.$ns_string.self::$columnSeparator.
 				$title.self::$columnSeparator.				
 				$right.self::$columnSeparator.				
 				$notes."\r\n".
@@ -91,7 +97,8 @@ class HNP
 	 */
 	public function mg_hnp_r( &$parser, $right, $type, $notes = null )
 	{
-		$type = strtoupper( $type );
+		$right = trim( $right );
+		$type = strtoupper( trim( $type ) );
 		
 		// basic checks
 		if ( ($type !== 'D' ) && ($type !== 'I' ))
@@ -116,7 +123,10 @@ class HNP
 		
 		$liste = explode( ',', $groupList );
 		
-		self::$new_groupHier = $liste;
+		$trimmed_liste = array_map( create_function('$e','return trim($e);' ),
+									$liste );
+		
+		self::$new_groupHier = $trimmed_liste;
 		
 		// Format a nice wikitext line
 		$fliste = implode( ',', $liste );
@@ -229,7 +239,7 @@ class HNP
 	 */
 	public static function buildPermissionKey( $ns, $pt, $a )
 	{
-		return "/^$ns\|$pt\|$a".'$/siU';
+		return "$ns|$pt|$a";
 	}	
 	/**
 	 */
@@ -263,6 +273,8 @@ class HNP
 			// is the user part of the group?
 			if ( !self::isUserPartOfGroup( $user, $group ) ) 
 				continue;
+
+#			echo __METHOD__." group: ".$group."\n";
 			
 			$groupa = array( $group );
 			$grights = $user->getGroupPermissions( $groupa ); 
@@ -355,6 +367,7 @@ class HNP
 			$linePiece = '/^'.$nsField.'\|'.$titleField.'\|';
 			foreach($rights as $r)
 			{
+				$r = trim( $r );
 				$line = $linePiece.$r.'$/siU';
 				if ($foundWilcard === false)
 					$without[] = $line;
@@ -366,8 +379,11 @@ class HNP
 	protected function getNsIndex( $name )
 	{
 		$name = strtolower( $name );
-		if ( ($name ==='') || ($name === 'main'))
+		if ( ($name == '') || ($name == 'main'))
 			return 0;
+		if ( $name == 'talk' )
+			return 1;
+			
 		return Namespace::getCanonicalIndex( $name );
 	}
 	/**
@@ -665,9 +681,16 @@ class HNP
 	 */
 	public static function isUserPartOfGroup( &$user, $group )
 	{
+		$group = trim( $group );
 		if (empty( $group )) return false;
+
+		$groups = $user->getEffectiveGroups();
 		
-		return in_array( $group, $user->getEffectiveGroups() );
+		$result = in_array( $group, $groups );
+
+#		echo __METHOD__." group: ".$group." result: $result\n";
+		
+		return $result;
 	}
 	/**
 	 */

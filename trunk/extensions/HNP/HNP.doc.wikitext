@@ -14,13 +14,18 @@
 }}
 == Features ==
 * Permission management through simple edition of a page
+* Sysop has always all rights regardless of state of registry page
+** Enables easier 'human error' management
 ** <code>MediaWiki:Registry/HNP</code>
 * Prefix based namespace access with wildcard
 ** E.g. 'sysop group has access to all namespaces'
 * Namespace dependant & Namespace Independant rights management
-* No additional database tables
+* No additional database tables nor changes to schema
 * No mandatory patches
-** Without patch to 'includes/User.php', not all rights can be managed
+** Namespace dependant rights management: no patches necessary
+** Namespace independant rights management: if needed, requires a patch:
+*** 'includes/User.php'
+* Post-installation information always available through [[Special:Version]] page.
 
 == Usage ==
 Please see example configuration page [[{{FULLPAGENAME}}/Example|Example]].
@@ -54,6 +59,10 @@ require 'MediaWiki/HNP/HNP.php';
 
 === Extension Manager ===
 If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
+
+== User.php patch ==
+<source lang=php>
+</source>
 
 [[Category:Namespace extensions]]
 [[Category:Edit extensions]]

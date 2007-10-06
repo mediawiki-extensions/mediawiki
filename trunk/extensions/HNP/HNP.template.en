@@ -65,7 +65,7 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 
 {{#hnp: * | ~             | ~ | createaccount                 }}
 {{#hnp: * | Main          | ~ | read, browse, raw, viewsource }}
-{{#hnp: * | Main_talk     | ~ | read, browse, raw, viewsource }}
+{{#hnp: * | Talk          | ~ | read, browse, raw, viewsource }}
 {{#hnp: * | Special       | ~ | read, browse, raw, viewsource }}
 {{#hnp: * | Project       | ~ | read, browse, raw, viewsource }}
 {{#hnp: * | Project_talk  | ~ | read, browse, raw, viewsource }}
@@ -84,7 +84,7 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 
 <!-- BizzWiki related {{ -->
 {{#hnp: * | Main          | ~ | browse,seach  }} 
-{{#hnp: * | Main_talk     | ~ | browse,seach  }} 
+{{#hnp: * | Talk          | ~ | browse,seach  }} 
 {{#hnp: * | Special       | ~ | browse,seach  }} 
 {{#hnp: * | Project       | ~ | browse,seach  }} 
 {{#hnp: * | Project_talk  | ~ | browse,seach  }} 
@@ -107,12 +107,12 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 
 <!-- user related -->
 <!-- users get more rights -->
-{{#hnp: user | Main_talk     | ~ | edit, create }} 
-{{#hnp: user | Project_talk  | ~ | edit, create }} 
-{{#hnp: user | Category_talk | ~ | edit, create }} 
-{{#hnp: user | Help_talk     | ~ | edit, create }} 
-{{#hnp: user | Image_talk    | ~ | edit, create }} 
-{{#hnp: user | User_talk     | ~ | edit, create }} 
+{{#hnp: user | Talk          | ~ | edit, create, createpage }} 
+{{#hnp: user | Project_talk  | ~ | edit, create, createpage }} 
+{{#hnp: user | Category_talk | ~ | edit, create, createpage }} 
+{{#hnp: user | Help_talk     | ~ | edit, create, createpage }} 
+{{#hnp: user | Image_talk    | ~ | edit, create, createpage }} 
+{{#hnp: user | User_talk     | ~ | edit, create, createpage }} 
 
 {{#hnp: user | Template      | ~ | read, browse, search, watch, unwatch }} 
 {{#hnp: user | Template_talk | ~ | read, browse, search, watch, unwatch }}

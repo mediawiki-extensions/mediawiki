@@ -255,6 +255,11 @@ class HNP
 		$this->readPermissions();
 		$this->processPermissions();	
 		self::$loading = false;
+		
+		// make sure we get the message in the cache
+		// on the first occasion we get.
+		if (self::$LoadedFromRegistryPage == true )
+			$this->updatePermissions();			
 	}
 	/**
 	 */

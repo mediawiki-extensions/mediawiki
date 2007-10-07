@@ -5,14 +5,6 @@
  */
 //<source lang=php>
 
-$wgExtensionCredits[InterWikiLinkManager::thisType][] = array( 
-	'name'        => InterWikiLinkManager::thisName, 
-	'version'     => StubManager::getRevisionId( '$Id$' ),
-	'author'      => 'Jean-Lou Dupont', 
-	'description' => 'Manages the InterWiki links table. Namespace for extension is ',
-	'url' 		=> 'http://mediawiki.org/wiki/Extension:InterWikiLinkManager'		
-);
-
 class InterWikiLinkManager
 {
 	// constants.

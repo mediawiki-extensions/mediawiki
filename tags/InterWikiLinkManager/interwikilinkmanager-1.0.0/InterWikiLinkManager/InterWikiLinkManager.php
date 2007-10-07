@@ -4,6 +4,14 @@
  * @package InterWikiLinkManager
  */
 //<source lang=php>*/
+$wgExtensionCredits['other'][] = array( 
+	'name'        => 'InterWikiLinkManager', 
+	'version'     => StubManager::getRevisionId( '$Id$' ),
+	'author'      => 'Jean-Lou Dupont', 
+	'description' => 'Manages the InterWiki links table. Namespace for extension is ',
+	'url' 		=> 'http://mediawiki.org/wiki/Extension:InterWikiLinkManager'		
+);
+
 StubManager::createStub(	'InterWikiLinkManager', 
 							dirname(__FILE__).'/InterWikiLinkManager.body.php',
 							null,

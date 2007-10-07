@@ -5,6 +5,7 @@
  */
 //<source lang=php>
 #require 'HNP.i18n.php';
+global $IP;
 require_once $IP.'/includes/ObjectCache.php';
 require_once $IP.'/includes/BagOStuff.php';
 

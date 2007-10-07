@@ -7,7 +7,7 @@
 		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd 
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
- <name>ImageLink</name>
+ <name>InterWikiLinkManager</name>
  <channel>mediawiki.googlecode.com/svn</channel>
  <summary>Summary...</summary>
  <description>Description...</description>
@@ -20,7 +20,7 @@
  </lead>
 
  <date>2007-10-07</date>
- <time>00:21:13</time>
+ <time>00:21:59</time>
 
  <version>
   <release>1.0.0</release>
@@ -40,8 +40,8 @@
   <dir name="/">
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki" name="ImageLink/ImageLink.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="ImageLink/ImageLink.body.php" role="php" />
+   <file baseinstalldir="MediaWiki" name="InterWikiLinkManager/InterWikiLinkManager.php" role="php" />
+   <file baseinstalldir="MediaWiki" name="InterWikiLinkManager/InterWikiLinkManager.body.php" role="php" />
     <!-- }} -->
 
   </dir>

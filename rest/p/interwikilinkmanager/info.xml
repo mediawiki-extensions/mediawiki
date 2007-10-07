@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<p xmlns="http://pear.php.net/dtd/rest.package"    
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xlink="http://www.w3.org/1999/xlink"    
+	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
+
+<n>InterWikiLinkManager</n>
+<c>mediawiki.googlecode.com/svn</c>
+<s>Provides management of the InterWiki link table.</s>
+<d>Provides management of the InterWiki link table through a standard wiki page.</d>
+<ca xlink:href="/rest/c/interwikilinkmanager">InterWikiLinkManager</ca>
+</p>

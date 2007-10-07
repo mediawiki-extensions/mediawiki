@@ -4,6 +4,14 @@
  * @package SecureHTML
  */
 //<source lang=php>*/
+$wgExtensionCredits['other'][] = array( 
+	'name'        => 'SecureHTML', 
+	'version'     => StubManager::getRevisionId( '$Id$' ),
+	'author'      => 'Jean-Lou Dupont', 
+	'description' => 'Enables secure HTML code on protected pages',
+	'url' 		=> 'http://mediawiki.org/wiki/Extension:SecureHTML',			
+);
+
 StubManager::createStub(	'SecureHTML', 
 							dirname(__FILE__).'/SecureHTML.body.php',
 							null,

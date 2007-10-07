@@ -56,14 +56,15 @@ class HNP
 	static $realCache = true; 		// assume we get a real cache.
 	static $cache;
 	static $fileCacheName = null;
-	const  fileCacheFileName = 'hnp_cache.serialized';
+	const  fileCacheFileName = '/hnp_cache.serialized';
 
 	/**
 	 */
 	public function __construct()
 	{
 		self::$thisDir = dirname( __FILE__ );
-		self::$fileCacheName = self::$thisDir.'/'.self::fileCacheFileName;
+		global $IP;
+		self::$fileCacheName = $IP.self::fileCacheFileName;
 		
 		self::initCacheSupport();
 	}
@@ -608,7 +609,7 @@ class HNP
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		
 				if ($el['name'] == self::thisName)
-					$el['description'] .= $result1.$result2.$result4.$result3.$result5;
+					$el['description'] .= $result1.$result2.'<br/>'.$result4.$result3.'<br/>'.$result5;
 				
 		return true; // continue hook-chain.
 	}
@@ -651,6 +652,8 @@ class HNP
 	{
 		global $wgParser, $wgUser;
 		
+		// clone the standard parser just to
+		// make sure we don't break something.
 		$parser = clone $wgParser;
 		
 		$popts = new ParserOptions( $wgUser );
@@ -690,6 +693,7 @@ class HNP
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 	/**
 	 */

@@ -27,7 +27,7 @@
 		 <c>mediawiki.googlecode.com/svn</c>
 		 <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
 		 <l></l>
-		 <s></s>
+		 <s>MediaWiki Extension: provides permission management for 'action=raw'.</s>
 		 <d></d>
 		 <r xlink:href="/rest/r/rawright"/>
 		</p>

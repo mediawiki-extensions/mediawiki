@@ -1,7 +1,8 @@
 {{Extension
 |name        = RawRight
 |status      = stable
-|type        = other
+|type        = user rights
+|hook1       = RawPageViewBeforeOutput
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0
@@ -28,13 +29,30 @@ This extension adds a 'raw' right. Only the users with the 'raw' permission can 
 * MW >= 1.10 (or patched earlier version)
 
 == Installation ==
-To install independantly from BizzWiki:
-* Download & Install [[Extension:StubManager]] extension
-* Dowload all this extension's files and place in the desired directory
-* Apply the following changes to 'LocalSettings.php' after the statements of [[Extension:StubManager]]:
+=== PEAR ===
+* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
+** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+* Install extension through PEAR:
+** <code>pear install mediawiki/rawright</code>
+* Modify <code>LocalSettings.php</code>
+=== SVN ===
+* Install [[Extension:StubManager]]
+* Download archive: [http://mediawiki.googlecode.com/svn/tags/RawRight/ SVN]
+* Place extension files in MW /extensions directory
+* Modify <code>LocalSettings.php</code>
+=== LocalSettings.php ===
+Modifications to <code>LocalSettings.php</code> is only necessary if not using [[Extension:ExtensionManager]]
+* Modification if extension is located in MW installation directory:
 <source lang=php>
-require('extensions/RawRight/RawRight_stub.php');
+require 'extensions/RawRight/RawRight.php';
 </source>
+* Modification if extension is installed through PEAR:
+<source lang=php>
+require 'MediaWiki/RawRight/RawRight.php';
+</source>
+
+=== Extension Manager ===
+If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
 
 == HISTORY ==
 * Removed dependency on ExtensionClass
@@ -46,3 +64,5 @@ require('extensions/RawRight/RawRight_stub.php');
 
 == TODO ==
 * Internationalization: add messages to cache i18n file
+
+[[Category:View page extensions]]

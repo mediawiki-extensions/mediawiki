@@ -17,10 +17,10 @@ class ViewsourceRight
 	{
 		global $wgExtensionCredits;
 
-		if (class_exists('hnpClass'))
+		if (class_exists('HNP'))
 			$result = '<b>operational</b>';
 		else
-			$result = '<b>not operational: missing Hierarchical Namespace Permissions extension </b>';
+			$result = '<b>not operational: missing HNP extension </b>';
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		

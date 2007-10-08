@@ -6,7 +6,7 @@
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = tested on 1.10 but probably works with a earlier versions
+|mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ViewsourceRight/ SVN]
 |readme      =
 |changelog   = See SVN ($Id: ViewsourceRight.php 782 2007-09-16 01:22:37Z jeanlou.dupont $)

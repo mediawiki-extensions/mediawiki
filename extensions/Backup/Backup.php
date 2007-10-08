@@ -7,7 +7,7 @@
 global $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array( 
 	'name'    		=> 'Backup',
-	'version'		=> StubManager::getRevisionId('$Id$'),
+	'version'		=> '1.0.0',
 	'author'		=> 'Jean-Lou Dupont',
 	'url'			=> 'http://www.mediawiki.org/wiki/Extension:Backup',	
 	'description' 	=> "Provides the 'backup' hook.", 

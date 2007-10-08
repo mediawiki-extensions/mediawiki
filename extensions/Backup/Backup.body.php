@@ -247,14 +247,12 @@ class backup_operation
 	var $deferralRequired;
 
 	// parameters	
-	var $id;
-	var $timestamp;
-	
-	var $action;
-	var $ns;
-	var $titre;
-	var $revId;
-
+	var $action;		// internal to this extension.
+	var $id;			// rc_id
+	var $timestamp;		// rc_timestamp
+	var $ns;			// rc_namespace
+	var $titre;			// rc_title
+	var $revId;			// revision ID of page.
 	var $sourceTitle;	// for move action
 		
 	// Object references

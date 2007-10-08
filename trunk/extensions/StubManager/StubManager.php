@@ -6,7 +6,7 @@
 //<source lang=php>
 $wgExtensionCredits[StubManager::thisType][] = array( 
 	'name'    		=> StubManager::thisName,
-	'version' 		=> '1.0.1',
+	'version' 		=> '1.0.2',
 	'author'  		=> 'Jean-Lou Dupont',
 	'description'	=> 'Provides stubbing facility for extensions handling rare events. Extensions registered: ', 
 	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
@@ -16,7 +16,7 @@ class StubManager
 {
 	// This version number must match that of 
 	// the corresponding PEAR package.
-	const version = '1.0.1';
+	const version = '1.0.2';
 
 	// pointer to extensions directory
 	// whether be in a PEAR context or MW root installation
@@ -623,8 +623,10 @@ class Stub
 				return $obj->$method( $args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6] );
 			case 8:
 				return $obj->$method( $args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6], $args[7] );			
+			case 9:
+				return $obj->$method( $args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6], $args[7], $args[8] );			
+				
 		}
-		
 		throw new MWException( __CLASS__.": too many arguments to method called in ".__METHOD__ );
 	}
 

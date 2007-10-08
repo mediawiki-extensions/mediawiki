@@ -38,5 +38,22 @@
 			</r>
 		</a>
 	</pi>
+	<pi>
+		<p>
+		 <n>ViewsourceRight</n>
+		 <c>mediawiki.googlecode.com/svn</c>
+		 <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+		 <l></l>
+		 <s>MediaWiki Extension: provides permission management for 'action=edit' when the user does not have the 'edit' right.</s>
+		 <d>Provides a finer granular control over 'action=edit'.</d>
+		 <r xlink:href="/rest/r/viewsourceright"/>
+		</p>
+		<a>
+			<r>
+				<v>1.0.0</v> 
+				<s>stable</s>
+			</r>
+		</a>
+	</pi>
 
 </f>

@@ -24,8 +24,8 @@ This extension adds a 'raw' right. Only the users with the 'raw' permission can 
 
 == DEPENDANCIES ==
 * [[Extension:StubManager|StubManager extension]]
-* [[Extension:HNP]] extension
-* MW > 1.10 (or patched earlier version)
+* [[Extension:HNP|HNP extension]]
+* MW >= 1.10 (or patched earlier version)
 
 == Installation ==
 To install independantly from BizzWiki:
@@ -40,6 +40,9 @@ require('extensions/RawRight/RawRight_stub.php');
 * Removed dependency on ExtensionClass
 * Added 'stub'-enabled capability (usage of StubManager)
 * Added some protection against !isset indexes in '$wgExtensionCredits'
+
+=== 1.0.0 ===
+* Moved to MediaWiki repository on GoogleCode, PEAR installer
 
 == TODO ==
 * Internationalization: add messages to cache i18n file

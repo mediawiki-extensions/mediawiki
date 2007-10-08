@@ -36,7 +36,7 @@ global $bwManagedNamespaces;
 global $bwManagedNamespacesDefines;
 	
 // Now include the managed namespaces in question
-@include( 'ManageNamespaces.namespaces.php' );
+include( 'ManageNamespaces.namespaces.php' );
 
 // Is the Namespace class defined yet?
 if (!class_exists('Namespace') && !empty( $bwManagedNamespaces ))

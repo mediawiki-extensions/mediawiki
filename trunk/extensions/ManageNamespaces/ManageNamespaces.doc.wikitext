@@ -66,5 +66,7 @@ require 'MediaWiki/ManageNamespaces/ManageNamespaces.php';
 If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
 
 == Notes ==
+* Make sure that the extension's directory is readable by the HTTP server
+* Make sure that the file 'ManageNamespaces.namespaces.php' is readable & writable by the HTTP server
 
 == History ==

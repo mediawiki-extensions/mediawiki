@@ -93,3 +93,5 @@ require 'extensions/StubManager/StubManager.php';
 * Added 'getRevision' method.
 === 1.0.1 ===
 * Adjusted for newest version of [[Extension:ExtensionManager]]
+=== 1.0.2 ===
+* Updated to account for extra parameter to 'ArticleSaveComplete' hook introduced in MW1.11

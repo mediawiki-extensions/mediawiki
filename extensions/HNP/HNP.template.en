@@ -32,6 +32,8 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 |-
 {{#hnp_r: read | D }}
 {{#hnp_r: edit | D }}
+{{#hnp_r: browse | D }}
+{{#hnp_r: search | D }}
 {{#hnp_r: minoredit | D }}
 {{#hnp_r: create | D }}
 {{#hnp_r: delete | D }}
@@ -46,6 +48,7 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {{#hnp_r: purge | D }}
 {{#hnp_r: upload | D }}
 {{#hnp_r: reupload | D }}
+{{#hnp_r: reupload-own | D }}  <!-- MW 1.11 -->
 {{#hnp_r: reupload-shared | D }}
 {{#hnp_r: upload_by_url | D }}
 |}

@@ -16,14 +16,6 @@
 |rights      =
 |example     =
 }}
-<!--@@
-{{#autoredirect: Extension|{{#noext:{{SUBPAGENAME}} }} }}
-== File Status ==
-This section is only valid when viewing the page in a BizzWiki environment.
-<code>(($#extractmtime|@@mtime@@$))  (($#extractfile|@@file@@$))</code>
-
-Status: (($#comparemtime|<b>File system copy is newer - [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=reload}} Reload] </b>|Up to date$))
-@@-->
 == Purpose== 
 Inserts <script> & <link> (i.e. CSS) scripts at the bottom of the page's head or within the page's body. 
 Securily insert arbitrary code to the page's head using <addtohead>.

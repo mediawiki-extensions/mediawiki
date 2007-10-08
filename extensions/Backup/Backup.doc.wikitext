@@ -1,0 +1,117 @@
+{{Extension
+|name        = Backup
+|status      = beta
+|type        = hook
+|hook1       = RecentChange_save
+|hook2       = ArticleSaveComplete
+|hook3       = ArticleDeleteComplete
+|hook4       = ArticleDelete
+|hook5       = SpecialMovepageAfterMove
+|hook6       = ArticleProtectComplete
+|hook7       = ImagePageEx/ImageDoDeleteBegin
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://bizzwiki.googlecode.com/svn/trunk/extensions/Backup/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: Backup.doc.wikitext 786 2007-09-16 19:34:52Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+Defines a new hook 'backup' as a service to backup extensions.
+
+== Features ==
+* Page
+** Creation   (done)
+** Update     (done)
+** Delete     (done)
+** Move       (done)
+** Protection (done)
+* File
+** Upload     (done)
+** Re-upload  (done) (same as upload)
+** Delete     (done)
+** Move       (not allowed - hence, nothing to implement)
+* Log         (done)
+
+== Usage ==
+This extension is meant to serve other extensions. It is not meant to be used 'standalone'.
+
+== Theory Of Operation ==
+Page change events are trapped and the corresponding 'Recent Change Identifier' (i.e. rc_id) field is attached
+to a 'backup_operation' object. Trapping is done through the 'RecentChange_save' hook.
+The 'revision' information is the critical information: every page change is associated with a unique 'revision id'.
+ 
+When a complete 'backup_operation' is ready, the event 'backup' is fired (i.e. the hook 'backup' is called).
+
+== Dependancies ==
+* [[Extension:StubManager|StubManager extension]]
+* (optional) patched Article.php
+* (optional but strongly recommended) [[Extension:ImagePageEx]]
+
+== Installation ==
+=== PEAR ===
+* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
+** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+* Install extension through PEAR:
+** <code>pear install mediawiki/backup</code>
+* Modify <code>LocalSettings.php</code>
+=== SVN ===
+* Install [[Extension:StubManager]]
+* Download archive: [http://mediawiki.googlecode.com/svn/tags/Backup/ SVN]
+* Place extension files in MW /extensions directory
+* Modify <code>LocalSettings.php</code>
+=== LocalSettings.php ===
+Modifications to <code>LocalSettings.php</code> is only necessary if not using [[Extension:ExtensionManager]]
+* Modification if extension is located in MW installation directory:
+<source lang=php>
+require 'extensions/Backup/Backup.php';
+</source>
+* Modification if extension is installed through PEAR:
+<source lang=php>
+require 'MediaWiki/Backup/Backup.php';
+</source>
+
+=== Extension Manager ===
+If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
+
+
+
+
+* If desired, an updated 'includes/Article.php' file can be installed. See [[{{FULLPAGENAME}}#Article.php patch]].
+* If desired but strongly recommended, [[Extension:ImagePageEx]] should be installed in order to properly
+process deletion in the NS_IMAGE namespace.
+
+== Article.php patch ==
+MediaWiki by default purges the 'recent changes' table for entries related to a delete article/image.
+This behavior introduces some rather annoying side effects to this extension. A patched copy of Article.php
+can be downloaded from BizzWiki's repository.
+
+== Notes ==
+=== Image ===
+Upon deletion:
+* no 'ArticleDelete' event is fired.
+* recent changes table is cleared of any related entries
+* log entry is created
+
+=== Revision Identifier ===
+Verify that the 'revision id' information is safely trapped:
+* Page
+** Creation   || ArticleSave              || rev_id OK
+** Update     || ArticleSave              || rev_id OK
+** Delete     || ArticleDeleteComplete    || rev_id OK
+** Move       || SpecialMovepageAfterMove || rev_id OK (set to latest ID of source title)
+** Protection || ArticleProtectComplete   || rev_id OK
+* Log         || RecentChange_save        || rev_id *NOT NEEDED*
+* File
+** Upload     || FileUpload               || rev_id OK
+** Delete     || ImageDoDeleteBegin       || rev_id OK
+** Re-upload  || FileUpload               || (done) (same as upload)
+** Move       (OK as it is not allowed anyway)
+
+== History ==

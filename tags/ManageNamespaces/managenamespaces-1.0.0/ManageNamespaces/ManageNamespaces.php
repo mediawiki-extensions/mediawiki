@@ -28,6 +28,12 @@ if (class_exists('StubManager'))
 }
 else
 	echo "Extension:ManageNamespaces <b>requires</b> Extension:StubManager\n";
+
+global $wgCanonicalNamespaceNames;
+global $wgExtraNamespaces;
+global $wgNamespacesWithSubpages;
+global $bwManagedNamespaces;
+global $bwManagedNamespacesDefines;
 	
 // Now include the managed namespaces in question
 @include( 'ManageNamespaces.namespaces.php' );

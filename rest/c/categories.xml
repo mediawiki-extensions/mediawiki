@@ -9,6 +9,7 @@
 <!-- DO NOT EDIT BELOW HERE -->
 <ch>mediawiki.googlecode.com/svn</ch> <!-- not read by list-all command -->
 <c xlink:href="/rest/c/AddScriptCss/info.xml">AddScriptCss</c>
+<c xlink:href="/rest/c/Backup/info.xml">Backup</c>
 <c xlink:href="/rest/c/Enhancements/info.xml">Enhancements</c>
 <c xlink:href="/rest/c/ExtensionManager/info.xml">ExtensionManager</c>
 <c xlink:href="/rest/c/InterWikiLinkManager/info.xml">InterWikiLinkManager</c>

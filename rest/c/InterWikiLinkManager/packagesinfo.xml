@@ -10,7 +10,7 @@
  <c>mediawiki.googlecode.com/svn</c>
  <ca xlink:href="/rest/c/InterWikiLinkManager">InterWikiLinkManager</ca>
  <l>PHP License</l>
- <s>summary</s>
+ <s>Provides management of the InterWiki link table through a wiki page.</s>
  <d>description</d>
  <r xlink:href="/rest/r/interwikilinkmanager"/>
 </p>

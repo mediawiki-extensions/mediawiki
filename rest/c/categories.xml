@@ -11,6 +11,7 @@
 <c xlink:href="/rest/c/AddScriptCss/info.xml">AddScriptCss</c>
 <c xlink:href="/rest/c/ExtensionManager/info.xml">ExtensionManager</c>
 <c xlink:href="/rest/c/InterWikiLinkManager/info.xml">InterWikiLinkManager</c>
+<c xlink:href="/rest/c/ManageNamespaces/info.xml">ManageNamespaces</c>
 <c xlink:href="/rest/c/ParserFunctions/info.xml">ParserFunctions</c>
 <c xlink:href="/rest/c/PermissionManagement/info.xml">PermissionManagement</c>
 <c xlink:href="/rest/c/SecureHTML/info.xml">SecureHTML</c>

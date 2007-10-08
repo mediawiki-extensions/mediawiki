@@ -6,13 +6,13 @@
     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 <pi>
 <p>
- <n>AddScriptCss</n>
+ <n>ManageNamespaces</n>
  <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/AddScriptCss">AddScriptCss</ca>
+ <ca xlink:href="/rest/c/ManageNamespaces">ManageNamespaces</ca>
  <l>PHP License</l>
- <s>Provides a secure means of adding Javascript and CSS to a page.</s>
- <d>description</d>
- <r xlink:href="/rest/r/addscriptcss"/>
+ <s>Provides management of a MediWiki's namespaces through a wiki page.</s>
+ <d>Usually, the namespaces are managed through the LocalSettings.php file.</d>
+ <r xlink:href="/rest/r/managenamespaces"/>
 </p>
 <a>
  <r>

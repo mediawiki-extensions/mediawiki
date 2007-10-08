@@ -1,0 +1,70 @@
+{{Extension
+|name        = ManageNamespaces
+|status      = beta
+|type        = parser
+|hook1       = ParserAfterTidy
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ManageNamespaces/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: ManageNamespaces.doc.wikitext 791 2007-09-18 13:52:50Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+This extension allows for managing the namespaces. This process is usually handled through settings <code>LocalSettings.php</code>.
+
+== Features ==
+* No patches
+* Secure: the registry page is located in NS_MEDIAWIKI namespace
+* Safe: the 'immutable' namespaces can not be changed (the ones defined in <code>LocalSettings.php</code>)
+** Only the ones managed through this extension can be changed
+* Relies on a parser function <code>#mns</code> to perform the work
+* Definition errors appear inline with the registry page
+* Logging
+
+== Usage ==
+* Edit the page <code>MediaWiki:Registry/Namespaces</code>
+* Use the parser function <code>#mns</code> to populate the namespace definition
+* Save the page
+
+== Example ==
+An example registry page can be found [[{{FULLPAGENAME}}/Example]]
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+== Installation ==
+=== PEAR ===
+* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
+** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+* Install extension through PEAR:
+** <code>pear install mediawiki/ManageNamespaces</code>
+* Modify <code>LocalSettings.php</code>
+=== SVN ===
+* Install [[Extension:StubManager]]
+* Download archive: [http://mediawiki.googlecode.com/svn/tags/ManageNamespaces/ SVN]
+* Place extension files in MW /extensions directory
+* Modify <code>LocalSettings.php</code>
+=== LocalSettings.php ===
+Modifications to <code>LocalSettings.php</code> is only necessary if not using [[Extension:ExtensionManager]]
+* Modification if extension is located in MW installation directory:
+<source lang=php>
+require 'extensions/ManageNamespaces/ManageNamespaces.php';
+</source>
+* Modification if extension is installed through PEAR:
+<source lang=php>
+require 'MediaWiki/ManageNamespaces/ManageNamespaces.php';
+</source>
+
+=== Extension Manager ===
+If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
+
+== Notes ==
+
+== History ==

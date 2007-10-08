@@ -8,7 +8,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'        => 'InterWikiLinkManager', 
 	'version'     => StubManager::getRevisionId( '$Id$' ),
 	'author'      => 'Jean-Lou Dupont', 
-	'description' => 'Manages the InterWiki links table. Namespace for extension is ',
+	'description' => 'Manages the InterWiki links table.',
 	'url' 		=> 'http://mediawiki.org/wiki/Extension:InterWikiLinkManager'		
 );
 

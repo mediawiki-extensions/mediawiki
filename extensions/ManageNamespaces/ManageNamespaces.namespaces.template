@@ -5,6 +5,8 @@
  * @version $Id$
  */
 //<source lang=php>
+global $bwManagedNamespaces;
+global $bwManagedNamespacesDefines;
 // IMPORTANT NOTE:
 // ===============
 // DO NOT MODIFY ANYTHING BETWEEN THE <namespaces> SECTION

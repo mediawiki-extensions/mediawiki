@@ -6,7 +6,7 @@
 //<source lang=php>
 $wgExtensionCredits['other'][] = array( 
 	'name'		=> 'ImagePageEx',
-	'version'	=> '$Id$',
+	'version'	=> '1.0.0',
 	'author'	=> 'Jean-Lou Dupont',
 	'url'		=> 'http://www.mediawiki.org/wiki/Extension:ImagePageEx',
 	'description' => "Provides the hooks 'ImageDoDeleteBegin' & 'ImageDoDeleteEnd'.", 
@@ -14,6 +14,7 @@ $wgExtensionCredits['other'][] = array(
 
 global $IP;
 global $wgExtensionFunctions;
+require_once( $IP.'/includes/Article.php' );
 require_once( $IP.'/includes/ImagePage.php' );
 require( dirname(__FILE__).'/ImagePageEx.body.php' );	
 $wgExtensionFunctions[] = create_function('', 'return ImagePageEx::setup();');

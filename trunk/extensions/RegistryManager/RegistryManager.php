@@ -18,7 +18,7 @@ StubManager::createStub2(	array(	'class' 		=> 'RegistryManager',
 																'SpecialVersionExtensionTypes',
 															),
 									// exclude the following namespaces
-									'nss'			=> NS_MEDIAWIKI // only acts in this namespace
+									'nss'			=> array( NS_MEDIAWIKI ) // only acts in this namespace
 								)
 						);
 //</source>

@@ -240,7 +240,9 @@ class backup_operation
 		// image related
 	const action_imagedelete = 9;
 	
-	static $deferred = array( action_protect, action_imagedelete, action_delete );
+	static $deferred = array(	self::action_protect, 
+								self::action_imagedelete, 
+								self::action_delete );
 	
 	// Commit Operation parameters
 	var $includeRevision;

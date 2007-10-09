@@ -281,7 +281,9 @@ class backup_operation
 		// get the critical information.		
 		$this->getNsTitleRevision( $object, $this->ns, $this->titre, $this->revision, $this->title );
 	
-		$this->revId = $this->revision->getId();
+		if ($this->revision instanceof Revision)
+			$this->revId = $this->revision->getId();
+	
 		$this->deferralRequired = $this->getDeferralState( );
 
 		// an 'rc' object comes in when the transaction
@@ -310,7 +312,7 @@ class backup_operation
 		if ( $object instanceof Article )
 		{
 			$title = $object->mTitle;
-			$rev =$object->mRevision;
+			$rev = $object->mRevision;
 		}
 			
 		// cases: page move

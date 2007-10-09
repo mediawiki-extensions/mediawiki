@@ -295,7 +295,7 @@ class ManageNamespaces
 		
 		$len = strlen( $code );
 		$put_len = file_put_contents( self::$mnName , $code, LOCK_EX );	
-		chmod( self::$mnName, 0755 );
+		chmod( self::$mnName, 0644 );
 		if ( $put_len !== $len )
 		{ 
 			$action = 'updtfail2';

@@ -8,6 +8,13 @@
 */
 // <source lang=php>
 
+$wgExtensionCredits['other'][] = array( 
+	'name'    		=> 'BackupS3',
+	'version'		=> StubManager::getRevisionId('$Id$'),
+	'author'		=> 'Jean-Lou Dupont',
+	'url'			=> 'http://www.mediawiki.org/wiki/Extension:BackupS3',	
+	'description' 	=> "Provides replication to Amazon S3.", 
+);
 
 if (class_exists('StubManager'))
 {
@@ -19,11 +26,17 @@ if (class_exists('StubManager'))
 							);
 							
 	// load the configuration class.
-	require('BackupS3.config.php');
+	require( dirname(__FILE__).'/BackupS3.config.php');
 	
 	// Register the 'special page'
-	$wgAutoloadClasses['BackupS3SP'] = dirname(__FILE__).'/BackupS3.specialpage.php';
-	$wgSpecialPages['BackupS3'] = 'BackupS3SP';
+	#$wgAutoloadClasses['BackupS3SP'] = dirname(__FILE__).'/BackupS3.specialpage.php';
+	#$wgSpecialPages['BackupS3'] = 'BackupS3SP';
+	
+	global $wgJobClasses;
+	global $wgAutoloadClasses;
+	$wgJobClasses['BackupS3'] = 'BackupS3Job';
+	$wgAutoloadClasses['BackupS3Job'] = dirname(__FILE__).'/BackupS3.job.php';
+	$wgAutoloadClasses['BackupS3Operation'] = dirname(__FILE__).'/BackupS3.operation.php';
 	
 	try
 	{
@@ -32,7 +45,7 @@ if (class_exists('StubManager'))
 		
 	} catch(Exception $e)
 	{
-		echo "Extension:Backup requires Extension:StubManager of version >= 757";
+		echo "Extension:Backup requires a recent version of Extension:StubManager.";
 	}
 }
 else

@@ -10,16 +10,6 @@
 */
 // <source lang=php>
 
-$wgExtensionCredits[BackupS3::thisType][] = array( 
-	'name'    		=> BackupS3::thisName,
-	'version'		=> StubManager::getRevisionId('$Id$'),
-	'author'		=> 'Jean-Lou Dupont',
-	'url'			=> 'http://www.mediawiki.org/wiki/Extension:BackupS3',	
-	'description' 	=> "Provides replication to Amazon S3.", 
-);
-
-require('BackupS3.job.php');
-
 class BackupS3
 {
 	const thisType = 'other';
@@ -27,9 +17,8 @@ class BackupS3
 	
 	/**
 	 */
-	public function __construct() 
-	{
-	}
+	public function __construct() {}
+
 	/**
 		This hook is used to provide useful information to the sysop
 		in the 'Special:Version' page.
@@ -38,7 +27,6 @@ class BackupS3
 	{
 		global $wgExtensionCredits;
 
-		// TODO
 		$msg = $this->getDebugMessage();
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
@@ -49,10 +37,11 @@ class BackupS3
 		return true; // continue hook-chain.
 	}
 	/**
+	 * TODO
 	 */
 	private function getDebugMessage()
 	{
-		
+		return null;	
 	}
 	/**
 		Main hook: this method is called when the event 'Backup'
@@ -60,11 +49,21 @@ class BackupS3
 	 */
 	public function hBackup( &$op )
 	{
+		$msg = null;
 
+		// we are receiving the parameters from [[Extension:Backup]]:
+		// We need to adapt to the task at hand here.
+		$params = BackupS3Operation::translateParams( $op );
+	
+		$bop = new BackupS3Operation( $params );
 
+		// If the backup operation fails,
+		// it will be scheduled for a re-try		
+		$result = $bop->run( $msg );
+			
 		return true;
 	}
 	
-} // end class
+} // end class BackupS3
 
 //</source>

@@ -13,6 +13,9 @@ $wgExtensionCredits['other'][] = array(
 	'description' 	=> "Provides the 'backup' hook.", 
 );
 
+global $wgAutoloadClasses;
+$wgAutoloadClasses['backup_operation'] = dirname(__FILE__).'/Backup.operation.php';
+
 if (class_exists('StubManager'))
 {
 $backupExt = array();

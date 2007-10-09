@@ -33,9 +33,6 @@ class Backup
 											$dontcare1, $dontcare2, &$flags,
 											 &$revision = null /* MW1.11 */)
 	{
-		var_dump( $this->rc );
-		die;
-		
 		$this->op = new backup_operation(backup_operation::action_edit,
 										$article,
 										true,	// include last revision text
@@ -254,6 +251,7 @@ class backup_operation
 
 	// parameters	
 	var $action;		// internal to this extension.
+	var $object;		// mainly for debugging
 	var $id;			// rc_id
 	var $timestamp;		// rc_timestamp
 	var $ns;			// rc_namespace
@@ -271,6 +269,10 @@ class backup_operation
 	
 	public function __construct( $action, &$object, $includeRevisionText = false, $id=null, $ts=null )
 	{
+		$this->action = $action;
+		$this->object = & $object;
+		
+		$this->includeRevisionText = $includeRevisionText;
 		$this->revision = null;
 		$this->title = null;		
 		// for page move.
@@ -279,9 +281,9 @@ class backup_operation
 		// get the critical information.		
 		$this->getNsTitleRevision( $object, $this->ns, $this->titre, $this->revision, $this->title );
 	
+		var_dump( $this );
+	
 		$this->revId = $this->revision->getId();
-		$this->action = $action;
-		$this->includeRevisionText = $includeRevisionText;
 		$this->deferralRequired = $this->getDeferralState( );
 
 		// an 'rc' object comes in when the transaction

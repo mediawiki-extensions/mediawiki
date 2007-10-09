@@ -16,6 +16,10 @@ StubManager::createStub2(	array(	'class' 		=> 'RegistryManager',
 									'hooks'			=> array(	'ArticleSave',
 																'ArticleSaveComplete',
 																'SpecialVersionExtensionTypes',
+																// Created by this extension:
+																'RegistryPageGet',
+																'RegistryPageSet',
+																'RegistryPageChanged'
 															),
 									// exclude the following namespaces
 									'nss'			=> array( NS_MEDIAWIKI ) // only acts in this namespace

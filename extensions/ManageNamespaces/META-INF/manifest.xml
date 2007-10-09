@@ -9,7 +9,7 @@
  <manifest:file-entry manifest:media-type="application/php" manifest:full-path="ManageNamespaces.namespaces.php"/>
 
  <manifest:file-entry manifest:media-type="text/wikitext" manifest:full-path="ManageNamespaces.doc.wikitext"/>
- <manifest:file-entry manifest:media-type="text/wikitext" manifest:full-path="ManageNamespaces.specialpage.wikitext"/>
+ <manifest:file-entry manifest:media-type="text/wikitext" manifest:full-path="ManageNamespaces.namespaces.template"/>
  <manifest:file-entry manifest:media-type="text/wikitext" manifest:full-path="ManageNamespaces.sample.wikitext"/>
 
 </manifest:manifest>

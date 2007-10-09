@@ -113,7 +113,7 @@ class InterWikiLinkManager
 
 		$result = $db->query("SELECT iw_prefix,iw_url,iw_local,iw_trans FROM  $tbl");
 		
-		while ( $row = mysql_fetch_array($result) ) 
+		while ( $row = $db->fetchRow($result) ) 
 			$this->iwl[ $row[0] ] = array(	'uri'   => $row[1], 
 											'local' => $row[2], 
 											'trans' => $row[3] );

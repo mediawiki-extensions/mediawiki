@@ -5,14 +5,6 @@
  */
 //<source lang=php>
 
-$wgExtensionCredits[InterWikiLinkManager::thisType][] = array( 
-	'name'        => InterWikiLinkManager::thisName, 
-	'version'     => StubManager::getRevisionId( '$Id$' ),
-	'author'      => 'Jean-Lou Dupont', 
-	'description' => 'Manages the InterWiki links table. Namespace for extension is ',
-	'url' 		=> 'http://mediawiki.org/wiki/Extension:InterWikiLinkManager'		
-);
-
 class InterWikiLinkManager
 {
 	// constants.
@@ -121,7 +113,7 @@ class InterWikiLinkManager
 
 		$result = $db->query("SELECT iw_prefix,iw_url,iw_local,iw_trans FROM  $tbl");
 		
-		while ( $row = mysql_fetch_array($result) ) 
+		while ( $row = $db->fetchRow($result) ) 
 			$this->iwl[ $row[0] ] = array(	'uri'   => $row[1], 
 											'local' => $row[2], 
 											'trans' => $row[3] );

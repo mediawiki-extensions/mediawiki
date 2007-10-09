@@ -42,6 +42,7 @@
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki" name="InterWikiLinkManager/InterWikiLinkManager.php" role="php" />
    <file baseinstalldir="MediaWiki" name="InterWikiLinkManager/InterWikiLinkManager.body.php" role="php" />
+   <file baseinstalldir="MediaWiki" name="InterWikiLinkManager/InterWikiLinkManager.doc.wikitext" role="doc" />
     <!-- }} -->
 
   </dir>

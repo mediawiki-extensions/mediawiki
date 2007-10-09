@@ -30,8 +30,12 @@ class Backup
 		they are handled both as 'edit'.
 	 */	
 	public function hArticleSaveComplete( &$article, &$user, &$text, &$summary, $minor, 
-											$dontcare1, $dontcare2, &$flags )
+											$dontcare1, $dontcare2, &$flags, 
+											&$revision = null /* MW1.11 */)
 	{
+		var_dump( $this->rc );
+		die;
+		
 		$this->op = new backup_operation(backup_operation::action_edit,
 										$article,
 										true,	// include last revision text

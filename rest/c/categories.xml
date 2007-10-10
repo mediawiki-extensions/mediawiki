@@ -22,6 +22,7 @@
 <c xlink:href="/rest/c/SecureProperties/info.xml">SecureProperties</c>
 <c xlink:href="/rest/c/SecureTransclusion/info.xml">SecureTransclusion</c>
 <c xlink:href="/rest/c/StubManager/info.xml">StubManager</c>
+<c xlink:href="/rest/c/TagToTemplate/info.xml">TagToTemplate</c>
 <c xlink:href="/rest/c/geshi/info.xml">geshi</c>
 
 </a>

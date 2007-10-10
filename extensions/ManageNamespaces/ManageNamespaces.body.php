@@ -46,7 +46,7 @@ class ManageNamespaces
 		
 		// help the user a bit by making sure
 		// the file is writable when it comes to update it.
-		@chmod( self::$mnName, 700 );
+		@chmod( self::$mnName, 0644 );
 		
 		$this->nsMap = array();
 		

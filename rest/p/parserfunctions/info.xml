@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<p xmlns="http://pear.php.net/dtd/rest.package"    
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xlink="http://www.w3.org/1999/xlink"    
+	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
+
+<n>ParserFunctions</n>
+<c>mediawiki.googlecode.com/svn</c>
+<s>Tim Starling's Parser Functions on MediaWiki.org</s>
+<d>See MediaWiki.org for more information.</d>
+<ca xlink:href="/rest/c/parserfunctions">Parser Functions</ca>
+<r xlink:href="/rest/r/parserfunctions" />
+</p>

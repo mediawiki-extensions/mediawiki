@@ -40,5 +40,23 @@
 		</a>
 	</pi>
 
+	<pi>
+		<p>
+		 <n>ParserFunctions</n>
+		 <c>mediawiki.googlecode.com/svn</c>
+		 <ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+		 <l></l>
+		 <s></s>
+		 <d></d>
+		 <r xlink:href="/rest/r/parserfunctions"/>
+		</p>
+		<a>
+			<r>
+				<v>1.0.0</v> 
+				<s>stable</s>
+			</r>
+		</a>
+	</pi>
+
 
 </f>

@@ -35,7 +35,7 @@ class SecureTransclusion
 		#$marker = str_replace( '%index', $index, self::$marker );
 		#$this->liste[] = array('iw' => $iw, 'page' => $page );
 		
-		return "uri: ".$uri." --> ".$text;
+		return $text;
 	}
 	/**
 	 */

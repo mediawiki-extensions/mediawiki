@@ -21,5 +21,6 @@
 <c xlink:href="/rest/c/SecurePHP/info.xml">SecurePHP</c>
 <c xlink:href="/rest/c/SecureTransclusion/info.xml">SecureTransclusion</c>
 <c xlink:href="/rest/c/StubManager/info.xml">StubManager</c>
+<c xlink:href="/rest/c/geshi/info.xml">geshi</c>
 
 </a>

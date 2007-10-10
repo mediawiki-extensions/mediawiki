@@ -12,6 +12,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'description' => 'Enhance parser with logical functions',
 );
 
+global $wgHooks; // JLD: required by [[Extension:ExtensionManager]]
 $wgHooks['LanguageGetMagic'][]       = 'wfParserFunctionsLanguageGetMagic';
 
 class ExtParserFunctions {

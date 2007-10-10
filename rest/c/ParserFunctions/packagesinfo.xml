@@ -46,8 +46,8 @@
 		 <c>mediawiki.googlecode.com/svn</c>
 		 <ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
 		 <l></l>
-		 <s></s>
-		 <d></d>
+		 <s>Tim Starling's MediaWiki Parser Functions.</s>
+		 <d>See [http://MediaWiki.org] for more details.</d>
 		 <r xlink:href="/rest/r/parserfunctions"/>
 		</p>
 		<a>

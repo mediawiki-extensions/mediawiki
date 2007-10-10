@@ -13,7 +13,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' 			=> 'http://mediawiki.org/wiki/Extension:Geshi',			
 );
 StubManager::createStub(	'geshiClass', 
-							dirname(__FILE__).'/geshi.php',
+							dirname(__FILE__).'/geshi.body.php',
 							null,
 							array( 'SyntaxHighlight' ),
 							false,	// no need for logging support

@@ -42,7 +42,7 @@
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki" name="SecureProperties/SecureProperties.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="SecureProperties/SecureProperties.php" role="php" />
+   <file baseinstalldir="MediaWiki" name="SecureProperties/SecureProperties.body.php" role="php" />
    <file baseinstalldir="MediaWiki" name="SecureProperties/SecureProperties.doc.wikitext" role="doc" />
     <!-- }} -->
 

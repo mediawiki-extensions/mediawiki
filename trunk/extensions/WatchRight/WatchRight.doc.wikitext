@@ -1,7 +1,10 @@
 {{Extension
 |name        = WatchRight
 |status      = beta
-|type        = other
+|type        = user rights
+|hook1       = WatchArticle
+|hook2       = UnwatchArticle
+|hook3       = SkinTemplateTabs
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0

@@ -1,7 +1,7 @@
 {{Extension
 |name        = WatchLog
 |status      = stable
-|type        = interface
+|type        = user activity
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0

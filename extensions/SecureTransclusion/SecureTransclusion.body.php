@@ -9,15 +9,7 @@ class SecureTransclusion
 	const thisType = 'other';
 	const thisName = 'SecureTransclusion';
 	
-	#static $marker  = "\xfc__%index__\xfd";
-	#static $pattern = "/\xfc__(.*)__\xfd/si";
-	
-	#var $liste;
-	
-	public function __construct() 
-	{
-		#$this->liste = array();
-	}
+	public function __construct() {}
 	
 	public function mg_strans( &$parser, $iwpage )
 	{
@@ -31,15 +23,8 @@ class SecureTransclusion
 		$uri = $title->getFullUrl();
 		$text = Http::get( $uri );
 			
-		#$index = count( $this->liste );
-		#$marker = str_replace( '%index', $index, self::$marker );
-		#$this->liste[] = array('iw' => $iw, 'page' => $page );
-		
 		return $text;
 	}
-	/**
-	 */
-	#public function hParserAfterTidy( &$parser, &$text ){}	
 	/**
 		1- IF the page is protected for 'edit' THEN allow execution
 		2- IF the page's last contributor had the 'strans' right THEN allow execution
@@ -47,11 +32,11 @@ class SecureTransclusion
 	 */
 	private static function checkExecuteRight( &$title )
 	{
-		if ($title->isProtected('edit'))
-			return true;
-		
 		global $wgUser;
 		if ($wgUser->isAllowed('strans'))
+			return true;
+		
+		if ($title->isProtected('edit'))
 			return true;
 		
 		// Last resort; check the last contributor.

@@ -1,0 +1,71 @@
+{{Extension
+|name        = SecurePHP
+|status      = stable
+|type1       = tag
+|type2       = user rights
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.1
+|update      =
+|mediawiki   = 1.10 1.11
+|download    = see Installation
+|readme      =
+|changelog   = See SVN ($Id: SecurePHP.php 782 2007-09-16 01:22:37Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides secure execution of PHP code embedded in 'runphp' tagged section.
+
+== Features ==
+* Security: page must either
+** Be protected on 'edit'
+** Current user editing the page must have the 'coding' right
+** Or, lastly, the last contributor to the page has the 'coding' right
+
+== Usage ==
+<nowiki><runphp> php code here </runphp></nowiki>
+
+== Security Note ==
+* It is advisable to use 'cascading protection'
+* When page protection is not relied on to provide protection 
+and consequently only the last contributor's right acts as protection measure, it is advised to use
+considerable care when using templates on the same page.
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+** Automatically resolved if using PEAR
+
+== Installation ==
+=== PEAR ===
+* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
+** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+* Install extension through PEAR:
+** <code>pear install mediawiki/securephp</code>
+* Modify <code>LocalSettings.php</code>
+=== SVN ===
+* Install [[Extension:StubManager]]
+* Download archive: [http://mediawiki.googlecode.com/svn/tags/SecurePHP/ SVN]
+* Place extension files in MW /extensions directory
+* Modify <code>LocalSettings.php</code>
+=== LocalSettings.php ===
+Modifications to <code>LocalSettings.php</code> is only necessary if not using [[Extension:ExtensionManager]]
+* Modification if extension is located in MW installation directory:
+<source lang=php>
+require 'extensions/SecurePHP/SecurePHP.php';
+</source>
+* Modification if extension is installed through PEAR:
+<source lang=php>
+require 'MediaWiki/SecurePHP/SecurePHP.php';
+</source>
+
+=== Extension Manager ===
+If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
+
+== History ==
+* Moved to MediaWiki on GoogleCode project
+* Standardized entry point; now, always SecurePHP.php whatever installation method.
+
+[[Category:Script embedding extensions]]

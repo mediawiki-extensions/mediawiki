@@ -1,12 +1,13 @@
-<?php
+﻿<?php
 /**
  * Internationalisation file for Newuserlog extension.
  *
  * @addtogroup Extensions
 */
-
+global $wgNewuserlogMessages; //JLD
 $wgNewuserlogMessages = array();
 
+global $wgNewuserlogMessages; //JLD
 $wgNewuserlogMessages['en'] = array(
 	'newuserlogpage'           => 'User creation log',
 	'newuserlogpagetext'       => 'This is a log of user creations',

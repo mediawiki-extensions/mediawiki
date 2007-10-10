@@ -1,7 +1,7 @@
 {{Extension
 |name        = NewUserEmailNotification
 |status      = beta
-|type        = hook
+|type        = notify
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0

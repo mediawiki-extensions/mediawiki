@@ -25,7 +25,7 @@ Provides logging of user settings changes.
 == Installation ==
 === PEAR ===
 * Install PEAR channel 'http://mediawiki.googlecode.com/svn'
-** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+** <code>pear channel-discover mediawiki.googlecode.com/svn</code>
 * Install extension through PEAR:
 ** <code>pear install mediawiki/UserSettingsChangedLog</code>
 * Modify <code>LocalSettings.php</code>

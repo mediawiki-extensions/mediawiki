@@ -31,7 +31,7 @@ This extension adds a 'raw' right. Only the users with the 'raw' permission can 
 == Installation ==
 === PEAR ===
 * Install PEAR channel 'http://mediawiki.googlecode.com/svn'
-** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+** <code>pear channel-discover mediawiki.googlecode.com/svn</code>
 * Install extension through PEAR:
 ** <code>pear install mediawiki/rawright</code>
 * Modify <code>LocalSettings.php</code>

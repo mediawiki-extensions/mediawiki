@@ -37,7 +37,7 @@ An example of [[MediaWiki:Registry/InterWikiLinks]] using the magic word '#iwl' 
 == Installation ==
 === PEAR ===
 * Install PEAR channel 'http://mediawiki.googlecode.com/svn'
-** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+** <code>pear channel-discover mediawiki.googlecode.com/svn</code>
 * Install extension through PEAR:
 ** <code>pear install mediawiki/InterWikiLinkManager</code>
 * Modify <code>LocalSettings.php</code>

@@ -25,31 +25,7 @@ This extension adds a 'viewsource' right. Only the users with the 'viewsource' p
 * [[Extension:StubManager|StubManager extension]]
 * [[Extension:HNP|HNP extension]]
 
-== Installation ==
-=== PEAR ===
-* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
-** <code>pear channel-discover mediawiki.googlecode.com/svn</code>
-* Install extension through PEAR:
-** <code>pear install mediawiki/viewsource</code>
-* Modify <code>LocalSettings.php</code>
-=== SVN ===
-* Install [[Extension:StubManager]]
-* Download archive: [http://mediawiki.googlecode.com/svn/tags/ViewsourceRight/ SVN]
-* Place extension files in MW /extensions directory
-* Modify <code>LocalSettings.php</code>
-=== LocalSettings.php ===
-Modifications to <code>LocalSettings.php</code> is only necessary if not using [[Extension:ExtensionManager]]
-* Modification if extension is located in MW installation directory:
-<source lang=php>
-require 'extensions/ViewsourceRight/ViewsourceRight.php';
-</source>
-* Modification if extension is installed through PEAR:
-<source lang=php>
-require 'MediaWiki/ViewsourceRight/ViewsourceRight.php';
-</source>
-
-=== Extension Manager ===
-If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
+{{Pear|ViewsourceRight}}
 
 == HISTORY ==
 * Corrected missing 'return true' statement in hook.

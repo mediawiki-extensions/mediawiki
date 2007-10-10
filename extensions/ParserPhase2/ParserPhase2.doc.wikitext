@@ -72,7 +72,7 @@ Recursive invocation is supported; example:
 == Installation ==
 === PEAR ===
 * Install PEAR channel 'http://mediawiki.googlecode.com/svn'
-** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
+** <code>pear channel-discover mediawiki.googlecode.com/svn</code>
 * Install extension through PEAR:
 ** <code>pear install mediawiki/parserphase2</code>
 * Modify <code>LocalSettings.php</code>

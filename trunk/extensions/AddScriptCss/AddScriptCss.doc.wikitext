@@ -65,7 +65,7 @@ If no 'pos' field is present, then the extension assumes 'body'
 === 1.0.0 ===
 * Moved to PEAR repository
 
-{{pear:AddScriptCss}}
+{{pear|AddScriptCss}}
 
 == TODO ==
 * internationalize

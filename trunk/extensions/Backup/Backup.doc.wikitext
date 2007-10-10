@@ -54,34 +54,7 @@ When a complete 'backup_operation' is ready, the event 'backup' is fired (i.e. t
 * (optional) patched Article.php
 * (optional but strongly recommended) [[Extension:ImagePageEx]]
 
-== Installation ==
-=== PEAR ===
-* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
-** <code>pear channel-discover http://mediawiki.googlecode.com/svn</code>
-* Install extension through PEAR:
-** <code>pear install mediawiki/backup</code>
-* Modify <code>LocalSettings.php</code>
-=== SVN ===
-* Install [[Extension:StubManager]]
-* Download archive: [http://mediawiki.googlecode.com/svn/tags/Backup/ SVN]
-* Place extension files in MW /extensions directory
-* Modify <code>LocalSettings.php</code>
-=== LocalSettings.php ===
-Modifications to <code>LocalSettings.php</code> is only necessary if not using [[Extension:ExtensionManager]]
-* Modification if extension is located in MW installation directory:
-<source lang=php>
-require 'extensions/Backup/Backup.php';
-</source>
-* Modification if extension is installed through PEAR:
-<source lang=php>
-require 'MediaWiki/Backup/Backup.php';
-</source>
-
-=== Extension Manager ===
-If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
-
-
-
+{{Pear|Backup}}
 
 * If desired, an updated 'includes/Article.php' file can be installed. See [[{{FULLPAGENAME}}#Article.php patch]].
 * If desired but strongly recommended, [[Extension:ImagePageEx]] should be installed in order to properly

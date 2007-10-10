@@ -28,19 +28,7 @@ Example:
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
 
-== Installation ==
-=== PEAR ===
-* The PEAR channel is located here [http://mediawiki.googlecode.com/svn]
-** Install the channel if not already done e.g. <code>pear channel-discover URI OF CHANNEL HERE</code>
-* Perform <code>pear install mediawiki/imagelink</code>
-* If [[Extension:ExtensionManager]] is installed, then no further steps are required.
-=== SVN ===
-* Install [[Extension:StubManager]] extension
-* Dowload all this extension's files and place in the desired directory
-* Apply the following changes to 'LocalSettings.php' after the statements of [[Extension:StubManager]]:
-<source lang=php>
-require('extensions/ImageLink/ImageLink_stub.php');
-</source>
+{{Pear|ImageLink}}
 
 == History ==
 * Removed dependency on ExtensionClass

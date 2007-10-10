@@ -34,31 +34,7 @@ An example of [[MediaWiki:Registry/InterWikiLinks]] using the magic word '#iwl' 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
 
-== Installation ==
-=== PEAR ===
-* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
-** <code>pear channel-discover mediawiki.googlecode.com/svn</code>
-* Install extension through PEAR:
-** <code>pear install mediawiki/InterWikiLinkManager</code>
-* Modify <code>LocalSettings.php</code>
-=== SVN ===
-* Install [[Extension:StubManager]]
-* Download archive: [http://mediawiki.googlecode.com/svn/tags/InterWikiLinkManager/ SVN]
-* Place extension files in MW /extensions directory
-* Modify <code>LocalSettings.php</code>
-=== LocalSettings.php ===
-Modifications to <code>LocalSettings.php</code> is only necessary if not using [[Extension:ExtensionManager]]
-* Modification if extension is located in MW installation directory:
-<source lang=php>
-require 'extensions/InterWikiLinkManager/InterWikiLinkManager.php';
-</source>
-* Modification if extension is installed through PEAR:
-<source lang=php>
-require 'MediaWiki/InterWikiLinkManager/InterWikiLinkManager.php';
-</source>
-
-=== Extension Manager ===
-If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
+{{Pear|InterWikiLinkManager}}
 
 == History ==
 * Removed dependency on ExtensionClass

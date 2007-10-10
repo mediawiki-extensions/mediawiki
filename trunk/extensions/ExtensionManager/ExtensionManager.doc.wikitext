@@ -28,19 +28,7 @@ to be explicitly added to <code>LocalSettings.php</code>
 * Use real caching e.g. PHP/pecl APC
 ** Else, the extension directories will be rescanned on each request
 
-== Dependancy ==
-* [[Extension:StubManager|StubManager extension]]
-
-== Installation ==
-* First, install [[Extension:StubManager]] extension.
-* Second, there are two ways to install this extension:
-# Through the 'pear' installer (preferred method)
-# Through downloading the archive
-
-=== Method: pear ===
-<code>pear install mediawiki/ExtensionManager</code>
- The latest [[Extension:StubManager]] implements an automatic discovery of [[Extension:ExtensionManager]]
- so no further steps are required.
+{{Pear|ExtensionManager}}
 
 == History ==
 

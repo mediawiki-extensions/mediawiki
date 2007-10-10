@@ -31,31 +31,7 @@ Provides a facility for extensions to store/retrieve configuration parameters.
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
 
-== Installation ==
-=== PEAR ===
-* Install PEAR channel 'http://mediawiki.googlecode.com/svn'
-** <code>pear channel-discover mediawiki.googlecode.com/svn</code>
-* Install extension through PEAR:
-** <code>pear install mediawiki/RegistryManager</code>
-* Modify <code>LocalSettings.php</code>
-=== SVN ===
-* Install [[Extension:StubManager]]
-* Download archive: [http://mediawiki.googlecode.com/svn/tags/RegistryManager/ SVN]
-* Place extension files in MW /extensions directory
-* Modify <code>LocalSettings.php</code>
-=== LocalSettings.php ===
-Modifications to <code>LocalSettings.php</code> is only necessary if not using [[Extension:ExtensionManager]]
-* Modification if extension is located in MW installation directory:
-<source lang=php>
-require 'extensions/RegistryManager/RegistryManager.php';
-</source>
-* Modification if extension is installed through PEAR:
-<source lang=php>
-require 'MediaWiki/RegistryManager/RegistryManager.php';
-</source>
-
-=== Extension Manager ===
-If using [[Extension:ExtensionManager]], then skip the modification to <code>LocalSettings.php</code>.
+{{Pear|RegistryManager}}
 
 == History ==
 

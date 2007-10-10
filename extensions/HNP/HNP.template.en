@@ -45,6 +45,7 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {{#hnp_r: rollback | D }}
 {{#hnp_r: protect | D }}
 {{#hnp_r: patrol | D }}
+{{#hnp_r: patrolmarks | D }} <!-- introduced in MW1.11 -->
 {{#hnp_r: autopatrol | D }}
 {{#hnp_r: purge | D }}
 {{#hnp_r: upload | D }}

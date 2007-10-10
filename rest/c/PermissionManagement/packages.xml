@@ -6,4 +6,5 @@
     http://pear.php.net/dtd/rest.categorypackages.xsd">
  <p xlink:href="/rest/p/hnp">HNP</p>
  <p xlink:href="/rest/p/rawright">RawRight</p>
+ <p xlink:href="/rest/p/watchright">WatchRight</p>
 </l>

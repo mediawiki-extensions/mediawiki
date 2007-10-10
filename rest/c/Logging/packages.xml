@@ -5,4 +5,5 @@
     xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackages
     http://pear.php.net/dtd/rest.categorypackages.xsd">
  <p xlink:href="/rest/p/usersettingschangedlog">UserSettingsChangedLog</p>
+ <p xlink:href="/rest/p/watchlog">WatchLog</p>
 </l>

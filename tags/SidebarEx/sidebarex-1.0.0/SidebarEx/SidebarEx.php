@@ -9,6 +9,7 @@ if (!class_exists('StubManager'))
 	echo '[[Extension:SidebarEx]] <b>requires</b> [[Extension:StubManager]]'."\n";
 else
 {
+	global $wgExtensionCredits;
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'SidebarEx',
 		'version'		=> '1.0.0',

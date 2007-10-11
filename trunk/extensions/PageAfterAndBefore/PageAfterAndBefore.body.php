@@ -91,7 +91,10 @@ class PageAfterAndBefore
 	{
 		global $wgTitle;
 		$ns_num = $wgTitle->getNamespace();
-		$ns     = Namespace::getCanonicalName( $ns_num );
+		if ($ns_num !== NS_MAIN)
+			$ns = Namespace::getCanonicalName( $ns_num );
+		else
+			$ns = '';
 		$title  = $wgTitle->getDBkey();
 		
 		return $ns.":".$title;
@@ -120,7 +123,7 @@ class PageAfterAndBefore
 			$ns        = $title->getNamespace();
 			$key       = $title->getDBkey();
 			
-			if ($ns !== 0)
+			if ($ns !== NS_MAIN)
 				$namespace = Namespace::getCanonicalName( $ns );
 			else 
 				$namespace ='';
@@ -145,7 +148,7 @@ class PageAfterAndBefore
 		$results = $dbr->query( $query );
 		$count   = $dbr->numRows( $results );
 		
-		if ($ns !== 0)
+		if ($ns !== NS_MAIN)
 			$namespace = Namespace::getCanonicalName( $ns );
 		else 
 			$namespace ='';

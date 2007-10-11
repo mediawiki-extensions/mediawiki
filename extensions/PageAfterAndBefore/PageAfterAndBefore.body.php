@@ -153,9 +153,12 @@ class PageAfterAndBefore
 		else 
 			$namespace ='';
 		
+		if (!empty( $namespace ))
+			$namespace .= ':';
+		
 		if ($count>=1)
 			while( $row = $dbr->fetchObject( $results ) )
-				$pages[] = $namespace.':'.$row->page_title;
+				$pages[] = $namespace.$row->page_title;
 
 		$dbr->freeResult( $results );
 		return $pages;

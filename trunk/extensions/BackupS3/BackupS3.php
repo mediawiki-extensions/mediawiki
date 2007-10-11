@@ -1,16 +1,14 @@
 <?php
-/*
-<file>
-	<name>BackupS3.php</name>
-	<id>$Id$</id>
-	<package>Extension.BackupS3</package>
-</file>
-*/
-// <source lang=php>
-
+/**
+ * @author Jean-Lou Dupont
+ * @package BackupS3
+ * @version $Id$
+ */
+//<source lang=php>
+global $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array( 
 	'name'    		=> 'BackupS3',
-	'version'		=> StubManager::getRevisionId('$Id$'),
+	'version'		=> '1.0.0',
 	'author'		=> 'Jean-Lou Dupont',
 	'url'			=> 'http://www.mediawiki.org/wiki/Extension:BackupS3',	
 	'description' 	=> "Provides replication to Amazon S3.", 
@@ -21,7 +19,8 @@ if (class_exists('StubManager'))
 	StubManager::createStub2(	array(	'class' 		=> 'BackupS3',
 										'i18n'			=> dirname(__FILE__).'/BackupS3.i18n.php',
 										'classfilename'	=> dirname(__FILE__).'/BackupS3.body.php',
-										'hooks'			=> array( 'Backup', 'SpecialVersionExtensionTypes' ),
+										'hooks'			=> array( 'Backup', 
+																'SpecialVersionExtensionTypes' ),
 									)
 							);
 							

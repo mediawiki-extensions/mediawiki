@@ -16,14 +16,6 @@
 |rights      =
 |example     =
 }}
-<!--@@
-{{#autoredirect: Extension|{{#noext:{{SUBPAGENAME}} }} }}
-== File Status ==
-This section is only valid when viewing the page in a BizzWiki environment.
-<code>(($#extractmtime|@@mtime@@$))  (($#extractfile|@@file@@$))</code>
-
-Status: (($#comparemtime|<b>File system copy is newer - [{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=reload}} Reload] </b>|Up to date$))
-@@-->
 == Purpose ==
 Provides replication functionality to Amazon S3.
 
@@ -54,7 +46,6 @@ is running currently on a replication partner machine.
 * [[Extension:Backup|Backup extension]]
 
 == Installation ==
-To install independantly from BizzWiki:
 * Download & Install [[Extension:StubManager]] extension
 * Download & Install [[Extension:Backup]] extension
 * Dowload all this extension's files and place in the desired directory
@@ -68,6 +59,3 @@ BackupS3Config::secret_key  = 'your_s3_secret_key';
 == Notes ==
 
 == History ==
-
-== See Also ==
-This extension is part of the [[Extension:BizzWiki|BizzWiki Platform]].

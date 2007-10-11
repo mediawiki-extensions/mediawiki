@@ -1,15 +1,10 @@
 <?php
-/*
-<!--<wikitext>-->
- <file>
-  <name>BackupS3.body.php</name>
-  <version>$Id$</version>
-  <package>Extension.BackupS3</package>
- </file>
-<!--</wikitext>-->
-*/
-// <source lang=php>
-
+/**
+ * @author Jean-Lou Dupont
+ * @package BackupS3
+ * @version $Id$
+ */
+//<source lang=php>
 class BackupS3
 {
 	const thisType = 'other';

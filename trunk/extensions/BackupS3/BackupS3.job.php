@@ -1,9 +1,10 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package Backup
+ * @package BackupS3
+ * @version $Id$
  */
-// <source lang=php>
+//<source lang=php>
 class BackupS3Job extends Job 
 {
 	var $title;

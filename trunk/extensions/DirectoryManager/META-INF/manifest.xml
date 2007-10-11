@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE manifest:manifest PUBLIC "-//mediawiki.googlecode.com/svn//DTD Manifest 1.0//EN" "Manifest.dtd">
+
+<manifest:manifest xmlns:manifest="http://mediawiki.googlecode.com/svn/2007/manifest">
+ <manifest:file-entry manifest:media-type="application/php"		manifest:full-path="DirectoryManager.php"/>
+ <manifest:file-entry manifest:media-type="application/php"		manifest:full-path="DirectoryManager.body.php"/>
+ <manifest:file-entry manifest:media-type="application/php"		manifest:full-path="DirectoryManager.i18n.php"/>
+ <manifest:file-entry manifest:media-type="text/wikitext"		manifest:full-path="DirectoryManager.doc.wikitext"/>
+</manifest:manifest>

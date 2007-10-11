@@ -1,12 +1,12 @@
 {{Extension
 |name        = SidebarEx
 |status      = stable
-|type        = hook
+|type        = mywiki
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = 1.10, 1.11
+|mediawiki   = 1.82, 1.93, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
@@ -80,6 +80,8 @@ Examples:
 * MediaWiki:Sidebar/Ns/Main
 * MediaWiki:Sidebar/Ns/Category
 * ...
+
+{{Pear|SidebarEx}}
 
 == History ==
 * Corrected bug with article validity checking (e.g. affects BizzWiki fresh installs)

@@ -1,10 +1,10 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package Backup
+ * @package BackupS3
+ * @version $Id$
  */
-// <source lang=php>
-
+//<source lang=php>
 /**
  * The actual hard-work happens here.
  */

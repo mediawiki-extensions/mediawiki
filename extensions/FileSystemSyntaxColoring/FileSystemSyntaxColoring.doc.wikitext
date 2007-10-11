@@ -1,0 +1,45 @@
+{{Extension
+|name        = FileSystemSyntaxColoring
+|status      = beta
+|type        = hook
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+This extension 'colors' a page in the NS_FILESYSTEM namespace based on its syntax.
+
+== Features ==
+* Can be used independantly of BizzWiki environment 
+* No mediawiki installation source level changes
+* For parser cache integration outside BizzWiki, use ParserCacheControl extension
+* Uses the hook 'SyntaxHighlighting' or defaults to PHP's highlight
+
+== Dependancy ==
+* [[Extension:StubManager]]
+
+{{Pear|FileSystemSyntaxColoring}}
+
+== History ==
+* Added 'wiki text' section support
+* Added support for hook based syntax highlighting
+* Moved singleton invocation to end of file to accomodate some PHP versions
+* Removed dependency on ExtensionClass
+* Added stubbing capability through 'StubManager'
+* Added namespace trigger
+* Added additional checks to speed-up detection of NS_FILESYSTEM namespace
+* Added the pattern '< !--@@ wikitext @@-- >' to hide wikitext when 'copy and paste' operation is used 
+to save document in a non-BizzWiki wiki.
+* Major simplification - requires less hooks
+
+== Todo ==
+* Handle multiple < !--@@ wikitext @@-- > sections

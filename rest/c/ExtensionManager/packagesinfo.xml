@@ -4,21 +4,21 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo
     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
-<pi>
-<p>
- <n>ExtensionManager</n>
- <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/ExtensionManager">ExtensionManager</ca>
- <l>PHP License</l>
- <s>Provides MediaWiki extension management facilities</s>
- <d>description</d>
- <r xlink:href="/rest/r/extensionmanager"/>
-</p>
-<a>
- <r>
-	<v>1.0.0</v>
-	<s>stable</s>
-</r>
-</a>
-</pi>
+	<pi>
+	<p>
+	 <n>ExtensionManager</n>
+	 <c>mediawiki.googlecode.com/svn</c>
+	 <ca xlink:href="/rest/c/ExtensionManager">ExtensionManager</ca>
+	 <l>PHP License</l>
+	 <s>Provides MediaWiki extension management facilities</s>
+	 <d>description</d>
+	 <r xlink:href="/rest/r/extensionmanager"/>
+	</p>
+	<a>
+	 <r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	</a>
+	</pi>
 </f>

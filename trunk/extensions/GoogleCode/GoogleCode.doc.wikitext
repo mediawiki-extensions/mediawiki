@@ -31,6 +31,9 @@ Provides secure syntax highlighting of source code found on GoogleCode SVN.
 === Getting Raw Code ===
 <nowiki>{{#gcode:project=PROJECT NAME|file=FILENAME}}</nowiki>
 
+=== Example ===
+<code><gcode project=mediawiki file=trunk/extensions/AddScriptCss/AddScriptCss.php lang=php /></code>
+
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
 * [[Extension:Geshi|geshi extension]]

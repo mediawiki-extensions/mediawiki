@@ -1,11 +1,10 @@
 <?php
-$wgExtensionCredits[PageAfterAndBefore::thisType][] = array( 
-	'version'     => StubManager::getRevisionId( '$Id$' ),
-	'author'      => 'Jean-Lou Dupont', 
-	'description' => "Provides a 'magic word' interface to retrieve 'preceeding' and 'succeeding' pages relative to a given page title.",
-	'url' 		=> 'http://mediawiki.org/wiki/Extension:PageAfterAndBefore',						
-);
-
+/**
+ * @author Jean-Lou Dupont
+ * @package PageAfterAndBefore
+ * @version $Id$
+*/
+//<source lang=php>
 class PageAfterAndBefore
 {
 	const thisName = 'PageAfterAndBefore';

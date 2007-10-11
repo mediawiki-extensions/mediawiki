@@ -30,9 +30,11 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {| border = 1
 ! Right !! Type !! Notes
 |-
-{{#hnp_r: strans | D }}  <!-- Specific to [[Extension:SecureTransclusion]] -->
-{{#hnp_r: read | D }}
-{{#hnp_r: edit | D }}
+{{#hnp_r: strans  | D }}  <!-- Specific to [[Extension:SecureTransclusion]] -->
+{{#hnp_r: watch   | D }}  <!-- Specific to [[Extension:WatchRight]] -->
+{{#hnp_r: unwatch | D }}  <!-- Specific to [[Extension:WatchRight]] -->
+{{#hnp_r: read    | D }}
+{{#hnp_r: edit    | D }}
 {{#hnp_r: browse | D }}  <!-- BizzWiki specific -->
 {{#hnp_r: search | D }}  <!-- BizzWiki specific -->
 {{#hnp_r: minoredit | D }}

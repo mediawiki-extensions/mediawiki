@@ -12,6 +12,7 @@
 <c xlink:href="/rest/c/Backup/info.xml">Backup</c>
 <c xlink:href="/rest/c/Enhancements/info.xml">Enhancements</c>
 <c xlink:href="/rest/c/ExtensionManager/info.xml">ExtensionManager</c>
+<c xlink:href="/rest/c/Google/info.xml">Google</c>
 <c xlink:href="/rest/c/InterWikiLinkManager/info.xml">InterWikiLinkManager</c>
 <c xlink:href="/rest/c/Logging/info.xml">Logging</c>
 <c xlink:href="/rest/c/ManageNamespaces/info.xml">ManageNamespaces</c>

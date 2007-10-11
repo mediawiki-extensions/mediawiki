@@ -34,8 +34,6 @@ class SidebarExClass
 		$this->Search = isset($bwSidebarSearch)==true ? $bwSidebarSearch: self::$baseSearch;				
 		
 	}
-	public function setup() { parent::setup(); } // nothing special to do in this case.
-
 	public function hSkinTemplateOutputPageBeforeExec( &$skin, &$tpl )
 	{
 		$gbar = $this->doGroupSidebar();
@@ -59,7 +57,7 @@ class SidebarExClass
 		
 		// paranoia.
 		if (!($wgTitle instanceof Title))
-			return;
+			return array();
 			
 		$ns = $wgTitle->getNamespace();
 		

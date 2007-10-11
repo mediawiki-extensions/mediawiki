@@ -204,6 +204,14 @@ class ExtensionLoader
 		return (self::$realCache ? 'true':'false');
 	}
 	/**
+	 * Loads the active extensions.
+	 *
+	 * Note that this function loads the extension whilst
+	 * not using the 'global scope' i.e. the 'require' statement
+	 * isn't located in the global scope.
+	 * Some extensions may break because of this, specifically
+	 * the ones not relying on the 'global' statement to declare
+	 * variable scope explicitly.
 	 */
 	static function run()
 	{
@@ -224,13 +232,36 @@ class ExtensionLoader
 				}
 			}
 	} // run
+	/**
+	 * Returns the list of extensions to load
+	 * This list does not include the ones disabled.
+	 */
+	static function getList()
+	{
+		self::init();
+		
+		self::$exts = self::getExtensions();
+		
+		$liste = array();
+		
+		if (!empty( self::$exts ))
+			foreach( self::$exts as $ext => &$e)
+				if (!$e['disabled'])
+					$liste[ $ext ] = $e['file'];
+		return $liste;
+	} // getList
 }
-ExtensionLoader::run();
+// This procedure loads the extensions in the global scope.
+// (fix for the ::run function)
+$extListe = ExtensionLoader::getList();
+if (!empty( $extListe ))
+	foreach( $extListe as $extName => $extFileName )
+		require( $extFileName);
 
 // Update some fields in [[Special:Version]] page.
 $wgExtensionCredits['other'][] = array( 
 	'name'    		=> 'Extension Manager',
-	'version'		=> '1.0.0',
+	'version'		=> '1.1.0',
 	'author'		=> 'Jean-Lou Dupont',
 	'url'			=> 'http://www.mediawiki.org/wiki/Extension:ExtensionManager',	
 	'description' 	=> "Provides management of MediaWiki extensions.".

@@ -4,7 +4,7 @@
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.11
 |download    = see installation section
@@ -31,5 +31,5 @@ to be explicitly added to <code>LocalSettings.php</code>
 {{Pear|ExtensionManager}}
 
 == History ==
-
-== See Also ==
+=== 1.1.0 ===
+* Enhancement to help extensions which rely on being 'required' in the global scope.

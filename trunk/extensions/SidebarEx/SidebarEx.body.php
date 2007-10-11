@@ -5,7 +5,7 @@
  * @version $Id$
  */
 //<source lang=php>
-class SidebarExClass
+class SidebarEx
 {
 	// constants.
 	const thisName = 'SidebarEx';
@@ -17,11 +17,13 @@ class SidebarExClass
 	static $basePage = 'Sidebar';     	// default base page
 	static $baseSearch   = array(	'sysop',
 									'user',
-									'*'
-						 		);
+									'*' );
 
 	// variables.
 	var $foundPage;
+	var $Ns;
+	var $Page;
+	var $Search;
 
 	function __construct()
 	{
@@ -71,7 +73,7 @@ class SidebarExClass
 		$title = Title::makeTitle( $this->Ns, $this->Page.'/Ns/'.$nsname );
 		$a     = new Article( $title );
 		
-		if (($a==null) || ($a->getID()==0))		
+		if (($a===null) || ($a->getID()===0))		
 			return array();
 			
 		$text = $a->getContent();
@@ -92,7 +94,7 @@ class SidebarExClass
 		$a     = new Article( $title );
 		
 		// does 'username/Sidebar' page exist?
-		if (($a==null) || ($a->getID()==0))		
+		if (($a===null) || ($a->getID()===0))		
 			return array();
 			
 		$text = $a->getContent();
@@ -127,7 +129,7 @@ class SidebarExClass
 		$a     = new Article( $title );		
 		
 		// is the corresponding page found?
-		if (($a==null) || ($a->getID()==0))
+		if (($a===null) || ($a->getID()===0))
 			return array();
 		
 		$text = $a->getContent();

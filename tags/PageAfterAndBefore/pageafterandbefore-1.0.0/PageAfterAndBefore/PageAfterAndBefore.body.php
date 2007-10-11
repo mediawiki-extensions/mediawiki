@@ -120,7 +120,11 @@ class PageAfterAndBefore
 			$ns        = $title->getNamespace();
 			$key       = $title->getDBkey();
 			
-			$namespace = Namespace::getCanonicalName( $ns );
+			if ($ns !== 0)
+				$namespace = Namespace::getCanonicalName( $ns );
+			else 
+				$namespace ='';
+				
 			$where = "AND STRCMP({$page}.page_title,'{$key}')={$cmpDir}";
 		}
 		else
@@ -141,7 +145,10 @@ class PageAfterAndBefore
 		$results = $dbr->query( $query );
 		$count   = $dbr->numRows( $results );
 		
-		$namespace = Namespace::getCanonicalName($ns);
+		if ($ns !== 0)
+			$namespace = Namespace::getCanonicalName( $ns );
+		else 
+			$namespace ='';
 		
 		if ($count>=1)
 			while( $row = $dbr->fetchObject( $results ) )

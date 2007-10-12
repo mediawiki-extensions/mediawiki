@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 
 StubManager::createStub(	'PageRestrictions', 
 							dirname(__FILE__).'/PageRestrictions.body.php',
-							null,					// i18n file			
+							dirname(__FILE__).'/PageRestrictions.i18n.php',
 							array('ArticleViewHeader'),					// hooks
 							false, 					// no need for logging support
 							null,					// tags

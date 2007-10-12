@@ -5,7 +5,7 @@
  * @version $Id$
 */
 //<source lang=php>
-PageRestrictions::$msg['en'] = array(
+PageRestrictionsSetup::$msg['en'] = array(
 'restriction-read'		=>    'Read',
 'restriction-raw' 		=>    'Raw',
 'restriction-viewsource'=>    'Viewsource',

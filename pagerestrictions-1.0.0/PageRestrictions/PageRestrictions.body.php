@@ -12,18 +12,9 @@ class PageRestrictions
 	const thisType = 'other';
 	const id       = '$Id$';	
 
-	static $msg = array();
-
-	function __construct( )
-	{
-		self::loadMessages();
-	}
-	private static function loadMessages()
-	{
-		global $wgMessageCache;
-		foreach( self::$msg as $key => $value )
-			$wgMessageCache->addMessages( self::$msg[$key], $key );		
-	}
+	function __construct( ) {}
+	/**
+	 */
 	public static function addRestrictionLevels( &$l = null )
 	{
 		global $wgRestrictionLevels;
@@ -35,12 +26,18 @@ class PageRestrictions
 			foreach( $l as $index => $rest )
 				$wgRestrictionLevels[] = $rest;
 	}
-
+	/**
+	 * Main Hook
+	 */
 	public function hArticleViewHeader( &$a )
 	{
 		global $wgUser;
 		global $action;
-		
+
+		// some rewrite required...
+		if ($action == 'view')		
+			$action = 'read';
+			
 		if ( !$wgUser->isAllowed( $action ) )
 			self::accessError(); // dies here.
 		
@@ -54,8 +51,5 @@ class PageRestrictions
 		$wgOut->output();
 		exit();
 	}
-
 } // end class declaration
-require('PageRestrictions.i18n.php');	
-
 //</source>

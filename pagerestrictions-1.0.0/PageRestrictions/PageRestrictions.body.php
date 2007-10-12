@@ -13,20 +13,10 @@ class PageRestrictions
 	const id       = '$Id$';	
 
 	static $msg = array();
-	static $rList  = array(	
-							'read',			// This right is enforced by this extension
-							'raw',			// This right is enforced by another extension
-							'viewsource',	// This right is enforced by another extension
-						);
 
 	function __construct( )
 	{
-		global $wgRestrictionTypes, $wgHooks ;
-		
 		self::loadMessages();
-
-		foreach( self::$rList as $index => $rest )
-			$wgRestrictionTypes[] = $rest;
 	}
 	private static function loadMessages()
 	{

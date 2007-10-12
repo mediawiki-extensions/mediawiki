@@ -129,7 +129,7 @@ class ManageNamespaces
 		// just perform the update upon page view.
 		// Can't anyhow do this on page save.
 		global $action;
-		if (($action !== 'view' ) || ($action !== 'read'))
+		if (($action !== 'view' ) && ($action !== 'read'))
 			return true;
 			
 		// just trap events related to the registry page in question here

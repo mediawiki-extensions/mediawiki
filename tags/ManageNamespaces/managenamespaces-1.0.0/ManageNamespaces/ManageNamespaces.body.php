@@ -129,7 +129,7 @@ class ManageNamespaces
 		// just perform the update upon page view.
 		// Can't anyhow do this on page save.
 		global $action;
-		if ($action !== 'view' )
+		if (($action !== 'view' ) && ($action !== 'read'))
 			return true;
 			
 		// just trap events related to the registry page in question here
@@ -270,6 +270,13 @@ class ManageNamespaces
 
 	private function updateFile( &$action, &$contents )
 	{
+		// check first if the target file is writable
+		if (!is_writable( self::$mnName ))
+		{
+			$action = 'updtfail4'; 
+			return false; 
+		}
+		
 		// read the 'template' file
 		$template = $this->readFile( self::$templatePageName );
 		if ($template === false)

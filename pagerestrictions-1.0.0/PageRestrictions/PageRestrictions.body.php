@@ -5,7 +5,7 @@
  * @version $Id$
 */
 //<source lang=php>
-class PageRestrictionsClass
+class PageRestrictions
 {
 	// constants.
 	const thisName = 'PageRestrictions';

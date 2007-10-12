@@ -1,0 +1,33 @@
+{{Extension
+|name        = PageRestrictions
+|status      = stable
+|type        = other
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Adds page level restrictions. The setting of these restrictions is granted to a user with the 'protect' right.
+
+== Features ==
+
+== Notes ==
+* Currently, the only 'right' enforced directly by this extension is 'read'. From an implementation point of view, 
+a request comes in with either 'action=view' or no 'action' field. This must be translated to 'read'; this function
+occurs centrally in 'HierarchicalNamespacePermissions' extension.
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager]]
+
+{{Pear|PageRestrictions}}
+
+== History ==

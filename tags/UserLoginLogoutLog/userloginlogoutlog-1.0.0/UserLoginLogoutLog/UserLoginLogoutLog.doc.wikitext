@@ -1,0 +1,36 @@
+{{Extension
+|name        = UserLoginLogoutLog
+|status      = beta
+|type        = hook
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+
+== Purpose==
+Provides logging of user login/logout activities.
+
+== Features ==
+* Uses 'WikiAgent' to log 'login error' events
+** Displays a debug message in 'Special:Version' if the said user does not exist
+* Handles 'login', 'logout' and 'login error' events
+** Login Error events are logged probabilistically
+
+== Usage ==
+The user 'WikiAgent' should be created in order to handle 'login error' events.
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+{{Pear|UserLoginLogoutLog}}
+
+== History ==

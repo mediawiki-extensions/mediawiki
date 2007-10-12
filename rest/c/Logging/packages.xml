@@ -7,4 +7,5 @@
  <p xlink:href="/rest/p/usersettingschangedlog">UserSettingsChangedLog</p>
  <p xlink:href="/rest/p/watchlog">WatchLog</p>
  <p xlink:href="/rest/p/newuserlog">NewUserLog</p>
+ <p xlink:href="/rest/p/userloginlogoutlog">UserLoginLogoutLog</p>
 </l>

@@ -58,4 +58,22 @@
 		</a>
 	</pi>
 
+	<pi>
+		<p>
+		 <n>UserLoginLogoutLog</n>
+		 <c>mediawiki.googlecode.com/svn</c>
+		 <ca xlink:href="/rest/c/Logging">Logging</ca>
+		 <l></l>
+		 <s>Provides logging of users' login and logout events.</s>
+		 <d>See [http://mediawiki.org/wiki/Extension:UserLoginLogoutLog].</d>
+		 <r xlink:href="/rest/r/userloginlogoutlog"/>
+		</p>
+		<a>
+			<r>
+				<v>1.0.0</v> 
+				<s>stable</s>
+			</r>
+		</a>
+	</pi>
+
 </f>

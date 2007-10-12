@@ -22,11 +22,13 @@ $msgManageNamespaces['en'] = array(
 'mngns'.'-updtfail1-entry'	=> "Update Failure",
 'mngns'.'-updtfail2-entry'	=> "Update Failure",
 'mngns'.'-updtfail3-entry'	=> "Update OK",
+'mngns'.'-updtfail4-entry'	=> "Update Failure",
 
 'mngns'.'-updtok-text'		=> "The namespace definition file was successfully updated.",
 'mngns'.'-updtfail1-text'	=> "The template file couldn't be loaded.",
 'mngns'.'-updtfail2-text'	=> "The namespace definition file couldn't be written.",
 'mngns'.'-updtfail3-text'	=> "Nothing to update.",
+'mngns'.'-updtfail4-text'	=> "Namespace file not writable",
 
 'managenamespaces'.'-incorrect-page' 	=> 'The parser function <b>#mns</b> can not be used on this page.<br/>',
 'managenamespaces'.'-insufficient-right'=> 'Insufficient right to execute the parser function <b>#mns</b>.<br/>',

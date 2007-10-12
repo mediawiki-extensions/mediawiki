@@ -15,11 +15,31 @@ $wgExtensionCredits['other'][] = array(
 
 StubManager::createStub(	'PageRestrictions', 
 							dirname(__FILE__).'/PageRestrictions.body.php',
-							dirname(__FILE__).'/PageRestrictions.i18n.php',
+							null,
 							array('ArticleViewHeader'),					// hooks
 							false, 					// no need for logging support
 							null,					// tags
 							null,
 							null
 						 );
+class PageRestrictionsSetup
+{
+	static $rList  = array(	
+						'read',			// This right is enforced by this extension
+						'raw',			// This right is enforced by [[Extension:RawRight]]
+						'viewsource',	// This right is enforced by [[Extension:ViewsourceRight]]
+						);
+	
+	public static function setup()
+	{
+		global $wgRestrictionTypes;
+		
+		foreach( self::$rList as $index => $rest )
+			$wgRestrictionTypes[] = $rest;
+	}
+	
+} // end class
+
+PageRestrictionsSetup::setup();
+
 //</source>

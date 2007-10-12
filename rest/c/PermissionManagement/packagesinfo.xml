@@ -75,4 +75,22 @@
 		</a>
 	</pi>
 
+	<pi>
+		<p>
+		 <n>ReCaptcha</n>
+		 <c>mediawiki.googlecode.com/svn</c>
+		 <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+		 <l></l>
+		 <s>Provides captcha based user management.</s>
+		 <d>See [http://recaptcha.net/plugins/mediawiki] for more details.</d>
+		 <r xlink:href="/rest/r/recaptcha"/>
+		</p>
+		<a>
+			<r>
+				<v>1.0.0</v> 
+				<s>stable</s>
+			</r>
+		</a>
+	</pi>
+
 </f>

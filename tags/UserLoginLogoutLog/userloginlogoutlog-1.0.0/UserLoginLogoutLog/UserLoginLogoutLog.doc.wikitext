@@ -1,7 +1,12 @@
 {{Extension
 |name        = UserLoginLogoutLog
-|status      = beta
-|type        = hook
+|status      = stable
+|type        = user activity
+|hook1       = UserLoginForm
+|hook2       = UserLoginComplete
+|hook3       = UserLogout
+|hook4       = UserLogoutComplete
+|hook5       = SpecialVersionExtensionTypes
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0

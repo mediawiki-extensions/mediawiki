@@ -11,6 +11,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'     => '1.0.0',
 	'author'      => 'Jean-Lou Dupont', 
 	'description' => "Adds page level restrictions definitions & enforcement.",
+	'url'		=> 'http://mediawiki.org/wiki/Extension:PageRestrictions'
 );
 
 StubManager::createStub(	'PageRestrictions', 

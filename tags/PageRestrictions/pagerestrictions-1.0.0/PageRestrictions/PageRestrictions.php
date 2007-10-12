@@ -24,6 +24,7 @@ StubManager::createStub(	'PageRestrictions',
 						 );
 class PageRestrictionsSetup
 {
+	static $msg = array();
 	static $rList  = array(	
 						'read',			// This right is enforced by this extension
 						'raw',			// This right is enforced by [[Extension:RawRight]]
@@ -32,6 +33,10 @@ class PageRestrictionsSetup
 	
 	public static function setup()
 	{
+		global $wgMessageCache;
+		foreach( self::$msg as $key => $value )
+			$wgMessageCache->addMessages( self::$msg[$key], $key );		
+		
 		global $wgRestrictionTypes;
 		
 		foreach( self::$rList as $index => $rest )
@@ -39,7 +44,7 @@ class PageRestrictionsSetup
 	}
 	
 } // end class
-
+require('PageRestrictions.i18n.php');	
 PageRestrictionsSetup::setup();
 
 //</source>

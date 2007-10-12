@@ -9,7 +9,7 @@ if (class_exists('StubManager'))
 {
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'ManageNamespaces',
-		'version'		=> StubManager::getRevisionId( '$Id$' ),
+		'version'		=> '1.0.0',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:ManageNamespaces',	
 		'description' 	=> "Provides a special page to add/remove namespaces. "

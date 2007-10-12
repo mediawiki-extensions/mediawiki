@@ -2,6 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package ViewsourceRight
+ * @version $Id$
  */
 //<source lang=php>*/
 class ViewsourceRight

@@ -2,8 +2,10 @@
 /**
  * @author Jean-Lou Dupont
  * @package ViewsourceRight
+ * @version $Id$
  */
 //<source lang=php>*/
+global $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array( 
 	'name'    		=> 'ViewsourceRight', 
 	'version'		=> StubManager::getRevisionId( '$Id$' ),

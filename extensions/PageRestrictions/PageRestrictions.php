@@ -39,7 +39,7 @@ class PageRestrictionsSetup
 			$wgRestrictionTypes[] = $rest;
 			
 		global $wgExtensionFunctions;
-		$wgExtensionFunctions[] = __CLASS__.'::loadMessages';
+		$wgExtensionFunctions[] = create_function('',"return PageRestrictionsSetup::loadMessages();");
 	}
 	public static function loadMessages()
 	{

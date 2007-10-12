@@ -33,14 +33,19 @@ class PageRestrictionsSetup
 	
 	public static function setup()
 	{
-		global $wgMessageCache;
-		foreach( self::$msg as $key => $value )
-			$wgMessageCache->addMessages( self::$msg[$key], $key );		
-		
 		global $wgRestrictionTypes;
 		
 		foreach( self::$rList as $index => $rest )
 			$wgRestrictionTypes[] = $rest;
+			
+		global $wgExtensionFunctions;
+		$wgExtensionFunctions[] = __CLASS__.'::loadMessages';
+	}
+	public static function loadMessages()
+	{
+		global $wgMessageCache;
+		foreach( self::$msg as $key => $value )
+			$wgMessageCache->addMessages( self::$msg[$key], $key );		
 	}
 	
 } // end class

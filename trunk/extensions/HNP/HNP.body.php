@@ -20,7 +20,7 @@ class HNP
 	// STATUS related
 	static $loading = false;
 	static $LoadedFromRegistryPage = false;
-	static $LoadedFromFileCache = false;
+#	static $LoadedFromFileCache = false;
 	static $LoadedFromCache = false;
 
 	// PERMISSIONS en-force currently (raw form)
@@ -55,8 +55,8 @@ class HNP
 	static $expiryPeriod = 86400;	//24*60*60 == 1day
 	static $realCache = true; 		// assume we get a real cache.
 	static $cache;
-	static $fileCacheName = null;
-	const  fileCacheFileName = '/hnp_cache.serialized';
+#	static $fileCacheName = null;
+#	const  fileCacheFileName = '/hnp_cache.serialized';
 
 	/**
 	 */
@@ -143,7 +143,7 @@ class HNP
 	function hUserIsAllowed( &$user, $ns=null, $titre=null, $action, &$result )
 	{
 		if (self::$loading == true)
-		{ $r = true; return false; }
+		{ $result = true; return false; }
 		
 		if (!$this->isLoaded())
 			$this->loadPermissions();
@@ -422,10 +422,10 @@ class HNP
 			return true;
 
 		// else, let's parse the file cache...
-		$result = $this->readPermissionsFromFileCache();
-		self::$LoadedFromFileCache = $result;
-		if ($result === true)	
-			return true;
+#		$result = $this->readPermissionsFromFileCache();
+#		self::$LoadedFromFileCache = $result;
+#		if ($result === true)	
+#			return true;
 
 		// Last resort, try to parse the registry page.
 		$result = $this->readPermissionsFromRegistry();
@@ -435,6 +435,7 @@ class HNP
 		
 		return false;
 	}
+/*
 	protected function readPermissionsFromFileCache()
 	{
 		$contents = @file_get_contents( self::$fileCacheName );
@@ -444,14 +445,18 @@ class HNP
 		$this->formatFromUnserialized( $us );
 		return true;
 	}
+*/
+
 	/**
 	 */
+/*
 	protected static function writeToFileCache( &$data )
 	{
 		$s = serialize( $data );
 		$bytes_written = @file_put_contents( self::$fileCacheName, $s );
 		return $bytes_written;
 	}
+*/
 	/**
 		Words in pair with 'readPermissionFromCache'
 	 */
@@ -463,7 +468,7 @@ class HNP
 				 );	
 				 
 		self::writeToCache( $p );
-		self::writeToFileCache( $p );
+#		self::writeToFileCache( $p );
 	}
 	/**
 		Works in pair with 'updatePermissions'
@@ -540,9 +545,9 @@ class HNP
 	}
 	static function isLoaded()
 	{
-		return (	self::$LoadedFromRegistryPage || 
-					self::$LoadedFromCache ||
-					self::$LoadedFromFileCache
+		return (	self::$LoadedFromRegistryPage
+					|| self::$LoadedFromCache
+#					|| self::$LoadedFromFileCache
 				);	
 	}
 	
@@ -605,8 +610,9 @@ class HNP
 		$result3 = ' File cache writable: ';
 		$result3 .= self::isFileCacheWritable() ? 'true.':"<b>false</b>.";
 
-		$result4 = ' Permissions loaded from file cache: ';
-		$result4 .= self::$LoadedFromFileCache ? 'true.':"<b>false</b>.";
+		$result4 = '';
+#		$result4 = ' Permissions loaded from file cache: ';
+#		$result4 .= self::$LoadedFromFileCache ? 'true.':"<b>false</b>.";
 
 		$result5 = ' Permissions loaded from registry page: ';
 		$result5 .= self::$LoadedFromRegistryPage ? 'true.':"<b>false</b>.";

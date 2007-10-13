@@ -5,6 +5,14 @@
  */
 //<source lang=php>
 
+$wgExtensionCredits['other'][] = array( 
+	'name'        	=> 'ExtensionManager', 
+	'version'     	=> '1.1.1',
+	'author'      	=> 'Jean-Lou Dupont', 
+	'description' 	=> 'Provides automatic extension registration and loading',
+	'url' 			=> 'http://mediawiki.org/wiki/Extension:ExtensionManager',			
+);
+
 if (!class_exists('StubManager'))
 	echo '[[Extension:ExtensionManager]] <b>requires</b> [[Extension:StubManager]]'."\n";
 elseif (version_compare( StubManager::version(), '1.0.0','<' ))

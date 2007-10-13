@@ -41,6 +41,8 @@ class ExtensionLoader
 	 */
 	static function init()
 	{
+		clearstatcache();
+		
 		self::$cache = & wfGetMainCache();	
 
 		if (self::$cache instanceof FakeMemCachedClient)

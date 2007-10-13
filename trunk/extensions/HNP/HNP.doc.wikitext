@@ -5,7 +5,7 @@
 |hook1  =		userCan
 |status =		stable
 |mediawiki =	1.11
-|version =		1.0.0
+|version =		1.0.1
 |update = 
 |download = 
 |changelog = See [http://mediawiki.googlecode.com/svn/trunk/extensions/HNP/ SVN]
@@ -65,6 +65,11 @@ Please see example configuration page [[{{FULLPAGENAME}}/Example|Example]].
 		return in_array( $action, $this->getRights() );
 	}
 </source>
+
+== History ==
+=== 1.0.1 ===
+* Removed file caching (causing more troubles than adding value)
+* Fixed debug messages as to not stop normal processing flow.
 
 [[Category:Namespace extensions]]
 [[Category:Edit extensions]]

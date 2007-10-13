@@ -63,8 +63,8 @@ class HNP
 	public function __construct()
 	{
 		self::$thisDir = dirname( __FILE__ );
-		global $IP;
-		self::$fileCacheName = $IP.self::fileCacheFileName;
+#		global $IP;
+#		self::$fileCacheName = $IP.self::fileCacheFileName;
 		
 		self::initCacheSupport();
 	}

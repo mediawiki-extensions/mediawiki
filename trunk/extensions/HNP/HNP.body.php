@@ -532,10 +532,12 @@ class HNP
 		$state = self::$realCache;
 		return (self::$realCache ? 'true':'false');
 	}
+/*	
 	static function isFileCacheWritable()
 	{
 		return is_writable( self::$fileCacheName );	
 	}
+*/	
 	static function isLoaded()
 	{
 		return (	self::$LoadedFromRegistryPage
@@ -600,8 +602,8 @@ class HNP
 		$result2 = ' Permissions loaded from cache: ';
 		$result2 .= self::$LoadedFromCache ? 'true.':"<b>false</b>.";
 
-		$result3 = ' File cache writable: ';
-		$result3 .= self::isFileCacheWritable() ? 'true.':"<b>false</b>.";
+#		$result3 = ' File cache writable: ';
+#		$result3 .= self::isFileCacheWritable() ? 'true.':"<b>false</b>.";
 
 #		$result4 = ' Permissions loaded from file cache: ';
 #		$result4 .= self::$LoadedFromFileCache ? 'true.':"<b>false</b>.";
@@ -612,7 +614,7 @@ class HNP
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		
 				if ($el['name'] == self::thisName)
-					$el['description'] .= $result1.$result2.'<br/>'.$result3.'<br/>'.$result5;
+					$el['description'] .= $result1.$result2.'<br/>'.$result5;
 				
 		return true; // continue hook-chain.
 	}

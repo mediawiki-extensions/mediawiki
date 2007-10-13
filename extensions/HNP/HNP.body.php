@@ -164,10 +164,7 @@ class HNP
 
 		// debugging...
 		if (! in_array( $action, self::$rightsNsD) )
-		{
 			echo "HNP: action <b>$action</b> not found in namespace dependant array. \n";
-			return false;	
-		}
 
 		// Namespace dependant right:
 		// Two cases:
@@ -187,11 +184,7 @@ class HNP
 
 		// Does the request come from NS_SPECIAL and namespace dependant??		
 		if ( ($cns == NS_SPECIAL) && ($ns === null) )
-		{
 			echo "HNP: action <b>$action</b> namespace dependent but called from NS_SPECIAL. <br/>\n";
-#			var_dump( debug_backtrace() );
-			return false;	
-		}
 
 		// Finally, the request comes from a valid namespace & with a valid namespace dependent action
 		if ( $ns === null )    $ns = $cns;
@@ -610,7 +603,6 @@ class HNP
 		$result3 = ' File cache writable: ';
 		$result3 .= self::isFileCacheWritable() ? 'true.':"<b>false</b>.";
 
-		$result4 = '';
 #		$result4 = ' Permissions loaded from file cache: ';
 #		$result4 .= self::$LoadedFromFileCache ? 'true.':"<b>false</b>.";
 
@@ -620,7 +612,7 @@ class HNP
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		
 				if ($el['name'] == self::thisName)
-					$el['description'] .= $result1.$result2.'<br/>'.$result4.$result3.'<br/>'.$result5;
+					$el['description'] .= $result1.$result2.'<br/>'.$result3.'<br/>'.$result5;
 				
 		return true; // continue hook-chain.
 	}

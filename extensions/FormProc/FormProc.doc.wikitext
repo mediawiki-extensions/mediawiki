@@ -1,0 +1,50 @@
+{{Extension
+|name        = FormProc
+|status      = stable
+|type        = hook
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+This extension offers the ability to process posted pages/forms through the 'action=formsubmit' action. 
+The processing code resides in the database. The code can be 'syntax highlighted' through a 
+<nowiki><php></nowiki> tag.
+
+== Features ==
+* Handles 'action=formsubmit' action
+* Follows 'redirects'
+* Executes PHP code stored in a standard Mediawiki page
+* Supports code extraction when enclosed in 'PHP' tags
+* Supports the definition of a class in the processor page ( $page.'Class' )
+** If a method 'submit' is present in the said class, it will be called upon formsubmit action (see example)
+
+== Example ==
+=== Form Processing Page 'MyFormProc' ===
+<pre> <!-- remove pre section -->
+<php>
+  class MyFormProcClass
+  {
+  	 function submit() { implement your handler here }
+  }
+</php>
+</pre>
+== Dependancies ==
+* [[Extension:StubManager]] extension
+* [[Extension:RunPHP Class]] extension
+
+{{Pear|FormProc}}
+
+== History ==
+* added functionality to define a class for handling form processing
+* removed dependency on ExtensionClass
+* added stubbing capability through StubManager

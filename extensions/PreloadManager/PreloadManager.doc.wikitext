@@ -1,0 +1,41 @@
+{{Extension
+|name        = PreloadManager
+|status      = beta
+|type        = parser
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.11
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/PreloadManager/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==   
+Provides page text preloading facility services to extensions.
+
+== Features ==
+* Regex based pattern matching
+
+== USAGE NOTES ==
+An extension has to register a preload pattern in its 'extension setup phase' (i.e. when the function registered through $wgExtensionFunction is called):
+<source lang=php>
+ PreloadRegistry::add( array(
+ 	'pattern'  => '/regex pattern here/',
+ 	'filename' => 'fully qualified filename'
+ ) );
+
+</source>
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+{{Pear|PreloadManager}}
+
+== History ==
+
+== TODO ==

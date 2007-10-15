@@ -15,6 +15,7 @@ $wgExtensionCredits['other'][] = array(
 StubManager::createStub2(	array(	'class' 		=> 'UserAccountManager', 
 									'classfilename'	=> dirname(__FILE__).'/UserAccountManager.body.php',
 									'hooks'			=> array(	'AddNewAccount',
+																'UserSettingsChanged',
 															),
 								)
 						);

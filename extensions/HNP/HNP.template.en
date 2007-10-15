@@ -5,6 +5,7 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {| border = 1
 ! Right !! Type !! Notes
 |-
+{{#hnp_r:autopatrol      | I }}
 {{#hnp_r:createaccount   | I }}
 {{#hnp_r:ipblock-exempt  | I }}
 {{#hnp_r:hideuser        | I }}
@@ -94,15 +95,15 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {{#hnp: * | Filesystem    | AdminSettings.php | !read, !raw, !viewsource }} 
 
 <!-- BizzWiki related {{ -->
-{{#hnp: * | Main          | ~ | browse,seach  }} 
-{{#hnp: * | Talk          | ~ | browse,seach  }} 
-{{#hnp: * | Special       | ~ | browse,seach  }} 
-{{#hnp: * | Project       | ~ | browse,seach  }} 
-{{#hnp: * | Project_talk  | ~ | browse,seach  }} 
-{{#hnp: * | Category      | ~ | browse,seach  }} 
-{{#hnp: * | Category_talk | ~ | browse,seach  }} 
-{{#hnp: * | Help          | ~ | browse,seach  }} 
-{{#hnp: * | Help_talk     | ~ | browse,seach  }} 
+{{#hnp: * | Main          | ~ | browse,search  }} 
+{{#hnp: * | Talk          | ~ | browse,search  }} 
+{{#hnp: * | Special       | ~ | browse,search  }} 
+{{#hnp: * | Project       | ~ | browse,search  }} 
+{{#hnp: * | Project_talk  | ~ | browse,search  }} 
+{{#hnp: * | Category      | ~ | browse,search  }} 
+{{#hnp: * | Category_talk | ~ | browse,search  }} 
+{{#hnp: * | Help          | ~ | browse,search  }} 
+{{#hnp: * | Help_talk     | ~ | browse,search  }} 
 
 {{#hnp: * | Special | Log/newusers  | !browse }} 
 {{#hnp: * | Special | Log/commitfil | !browse }} 
@@ -114,6 +115,7 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {{#hnp: * | Special | Log/watchlog  | !browse }} 
 {{#hnp: * | Special | Log/usrloglog | !browse }} 
 
+{{#hnp: * | User    | ~.metada      | !read, !browse, !search, !raw, !viewsource, !edit, !create  }} 
 <!-- }} -->
 
 <!-- user related -->
@@ -131,5 +133,4 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {{#hnp: user | Image_talk    | ~ | read, browse, search, watch, unwatch }} 
 {{#hnp: user | User          | ~ | read, browse, search, watch, unwatch }} 
 {{#hnp: user | User_talk     | ~ | read, browse, search, watch, unwatch }} 
-
 |}

@@ -44,7 +44,7 @@
    <file baseinstalldir="MediaWiki" name="HNP/HNP.php" role="php" />
    <file baseinstalldir="MediaWiki" name="HNP/HNP.body.php" role="php" />
    <file baseinstalldir="MediaWiki" name="HNP/HNP.doc.wikitext" role="doc" />
-   <file baseinstalldir="MediaWiki" name="HNP/HNP.template.en" role="doc" />
+   <file baseinstalldir="MediaWiki" name="HNP/HNP.template.en" role="php" />
     <!-- }} -->
 
   </dir>

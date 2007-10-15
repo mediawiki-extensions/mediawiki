@@ -44,7 +44,7 @@
    <file baseinstalldir="MediaWiki" name="ManageNamespaces/ManageNamespaces.body.php" role="php" />
    <file baseinstalldir="MediaWiki" name="ManageNamespaces/ManageNamespaces.i18n.php" role="php" />
    <file baseinstalldir="MediaWiki" name="ManageNamespaces/ManageNamespaces.namespaces.template" role="php" />
-   <file baseinstalldir="MediaWiki" name="ManageNamespaces/ManageNamespaces.sample.wikitext" role="doc" />
+   <file baseinstalldir="MediaWiki" name="ManageNamespaces/ManageNamespaces.sample.wikitext" role="php" />
     <!-- }} -->
 
   </dir>

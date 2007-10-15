@@ -1,0 +1,17 @@
+<user>
+	<id>$id</id>
+	<name>$name</name>
+	<real_name>$real_name</real_name>
+	<password>$password</password>
+	<email>$email</email>
+	<email_authenticated>$email_authenticated</email_authenticated>
+	<new_password>$new_password</new_password>
+	<new_password_time>$new_password_time</new_password_time>
+	<touched>$touched</touched>
+	<token>$token</token>
+	<token_email_expires>$token_email_expires</token_email_expires>
+	<registration>$registration</registration>
+	<edit_count>$edit_count</edit_count>
+
+	<options>$options</options>
+</user>

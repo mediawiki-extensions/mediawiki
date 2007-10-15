@@ -1,0 +1,41 @@
+{{Extension
+|name        = UserAccountManager
+|status      = beta
+|type        = 
+|hook1       = AddNewAccount
+|hook2		 = UserSettingsChanged
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+Provides saving users' metadata (i.e. the data found in the user database table + preferences) in a normal wikitext page.
+This extension is especially useful in situation where XML database dumping is used in place of a complete MySQL database backup.
+
+== Features ==
+* User metadata stored in 'User:$user.metadata'
+* Optionally integration with [[Extension:BizzWiki]]
+** Saving user preferences through BizzWiki specific hook 'UserSettingsChanged'
+* Customizable template (file 'UserAccountManager.template.wikitext' in distribution)
+
+== IMPORTANT PRIVACY NOTE ==
+This extension *can* expose confidential information if not used with an appropriate permission management sub-system such as [[Extension:HNP]].
+Of course, the said sub-system must also be properly configured to restrict access to all pages following the pattern 'User:$user.metadata'.
+
+== Dependancies ==
+* [[Extension:StubManager|StubManager extension]]
+* Optional but highly recommended [[Extension:HNP]]
+* Optional [[Extension:BizzWiki]]
+
+{{Pear|UserAccountManager}}
+
+== History ==

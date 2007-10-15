@@ -9,24 +9,24 @@ class UserAccountManager
 {
 	const tPage = 'UserAccountManager.template.wikitext';
 	static $tfile = null;
-	
+	static $cdir = null;
 	const metaDataPage = '';
-	
+
+	// IMPORTANT: the order is important for the replace function!
 	static $map = array(
 		'mId'					=> 'id',
+		'mRealName'				=> 'real_name',	
 		'mName'					=> 'name',
-		'mRealName'				=> 'real_name',
 		'mPassword'				=> 'password',
-		'mEmail'				=> 'email',
 		'mEmailAuthenticated'	=> 'email_authenticated',
+		'mEmail'				=> 'email',
+		'mNewpassTime'			=> 'new_password_time',		
 		'mNewpassword'			=> 'new_password',
-		'mNewpassTime'			=> 'new_password_time',
 		'mTouched'				=> 'touched',
-		'mToken'				=> 'token',
-		'mEmailToken'			=> 'token_email',
 		'mEmailTokenExpires'	=> 'token_email_expires',
+		'mEmailToken'			=> 'token_email',
+		'mToken'				=> 'token',
 		'mRegistration'			=> 'registration',
-		'mEditCount'			=> 'edit_count',
 	);
 	
 	public function __construct() 
@@ -36,14 +36,50 @@ class UserAccountManager
 	}
 	
 	/**
+	 * New user account creation hook
 	 */
 	public function hAddNewAccount( &$user )
+	{
+		$this->doUpdate( $user );		
+		return true;
+	}
+	/**
+	 * Specific hook from [[Extension:BizzWiki]]
+	 */
+	public function hUserSettingsChanged( &$user )
+	{
+		// case 1: new account creation
+		// Just bail out.
+		global $wgUser;
+		if ( $wgUser->getID() == 0 )
+			return true;
+
+		// Case 2:
+		// we need some protection against multiple saves per transaction.
+		// SpecialPreferences.php does multiple saves regularly...
+		static $firstTimePassed = false;
+		
+		if ($firstTimePassed === false)
+		{
+			$firstTimePassed = true;
+			return true;
+		}
+		
+		$this->doUpdate( $user, false );
+		return true;
+	}
+	
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	/**
+	 */
+	protected function doUpdate( &$user, $new = true )
 	{
 		$template = $this->loadTemplate();
 		
 		$this->fillTemplate( $user, $template );
 		
-		$this->saveUserMetaData( $user, $template );
+		$this->saveUserMetaData( $user, $template, $new );
 	}
 	/**
 	 */
@@ -55,7 +91,7 @@ class UserAccountManager
 	 */
 	protected function fillTemplate( &$user, &$template )	
 	{
-		foreach( $user->mCacheVars as $var )
+		foreach( User::$mCacheVars as $var )
 		{
 			if (isset( self::$map[ $var ]))
 				$map = self::$map[ $var ];	
@@ -66,10 +102,10 @@ class UserAccountManager
 			$value = $user->$var;
 			
 			// fill in the template
-			$template = str_replace( '$'.$map, $value, $template );
+			$template = str_replace( '$'.$map.'$', $value, $template );
 		}
 		
-		$this->fillOptions( &$user, &$template );
+		$this->fillOptions( $user, $template );
 	}
 	/**
 	 */
@@ -83,16 +119,43 @@ class UserAccountManager
 		$liste = '';
 		
 		// prepare the tag section
-		foreach( $o as $key => &$value )
-			$liste .= '<'."$key".">$value<".'/'."$key>";	
+		foreach( $o as $option )
+		{
+			$parts = explode('=', $option );
+			$key = $parts[0];
+			if (isset( $parts[1]))
+				$value = ' value="'.$parts[1].'"';
+			else 
+				$value = null;
+			$liste .= "\t\t".'<'."$key".$value."><".'/'."$key>\n";
+		}
 		// insert it in the template
-		$template = str_replace('$options', $liste, $template );
+		$template = str_replace('$options$', $liste, $template );
 	}
 	/**
+	 * Save the metadata on page: [[User:$name.metadata]]
 	 */		
-	protected function saveUserMetaData( &$user, &$data )
+	protected function saveUserMetaData( &$user, &$data, $new = true )
 	{
-		$result = file_put_contents( self::$cdir.'/'.'UserAccountManager.export.xml', $data );	
+		$pageTitle = $user->getName().'.metadata';
+		$title = Title::newFromText( $pageTitle, NS_USER );
+		
+		$a = new Article( $title );
+		if ( is_null($a) )
+		{
+			// this shouldn't happen anyways.
+			throw new MWException( __METHOD__ );
+		}
+		else
+		{
+			if ($new)
+				$flags = EDIT_NEW | EDIT_DEFER_UPDATES;
+			else
+				$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES;
+			$a->doEdit( $data, ' ', $flags );			
+		}
+		// DEBUG only.
+		//$result = file_put_contents( self::$cdir.'/'.'UserAccountManager.export.xml', $data );	
 	}
 } // end class
 //</source>

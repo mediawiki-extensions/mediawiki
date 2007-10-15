@@ -43,7 +43,7 @@
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki" name="UserAccountManager/UserAccountManager.php" role="php" />
    <file baseinstalldir="MediaWiki" name="UserAccountManager/UserAccountManager.body.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="UserAccountManager/UserAccountManager.template.wikitext" role="doc" />
+   <file baseinstalldir="MediaWiki" name="UserAccountManager/UserAccountManager.template.wikitext" role="php" />
    <file baseinstalldir="MediaWiki" name="UserAccountManager/UserAccountManager.doc.wikitext" role="doc" />
     <!-- }} -->
 

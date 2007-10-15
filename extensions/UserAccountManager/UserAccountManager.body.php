@@ -65,7 +65,7 @@ class UserAccountManager
 			return true;
 		}
 		
-		$this->doUpdate( $user, false );
+		$this->doUpdate( $user );
 		return true;
 	}
 	
@@ -73,13 +73,13 @@ class UserAccountManager
 	
 	/**
 	 */
-	protected function doUpdate( &$user, $new = true )
+	protected function doUpdate( &$user )
 	{
 		$template = $this->loadTemplate();
 		
 		$this->fillTemplate( $user, $template );
 		
-		$this->saveUserMetaData( $user, $template, $new );
+		$this->saveUserMetaData( $user, $template );
 	}
 	/**
 	 */
@@ -135,12 +135,14 @@ class UserAccountManager
 	/**
 	 * Save the metadata on page: [[User:$name.metadata]]
 	 */		
-	protected function saveUserMetaData( &$user, &$data, $new = true )
+	protected function saveUserMetaData( &$user, &$data )
 	{
 		$pageTitle = $user->getName().'.metadata';
 		$title = Title::newFromText( $pageTitle, NS_USER );
 		
 		$a = new Article( $title );
+		$new = ($a->getId()==0) ? true:false;
+		
 		if ( is_null($a) )
 		{
 			// this shouldn't happen anyways.

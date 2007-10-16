@@ -7,7 +7,7 @@
 class RegistryManager
 {
 	const base = 'Registry/';
-	static $pattern_base = '/^Registry\/(.*)/siU';
+	static $pattern_base = '/^Registry\/(.*)/si';
 	static $thisType = 'other';
 	static $thisName = 'RegistryManager';
 	

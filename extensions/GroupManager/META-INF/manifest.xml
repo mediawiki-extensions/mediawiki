@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE manifest:manifest PUBLIC "-//mediawiki.googlecode.com/svn//DTD Manifest 1.0//EN" "Manifest.dtd">
+
+<manifest:manifest xmlns:manifest="http://mediawiki.googlecode.com/svn/2007/manifest">
+ <manifest:file-entry manifest:media-type="application/php"	manifest:full-path="GroupManager.body.php"/>
+ <manifest:file-entry manifest:media-type="application/php"	manifest:full-path="GroupManager.php"/>
+ <manifest:file-entry manifest:media-type="text/x-wiki"		manifest:full-path="GroupManager.template.wikitext"/>
+ <manifest:file-entry manifest:media-type="text/x-wiki"		manifest:full-path="GroupManager.doc.wikitext"/>
+</manifest:manifest>

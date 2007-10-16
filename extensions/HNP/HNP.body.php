@@ -2,6 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package HNP
+ * @version $Id$
  */
 //<source lang=php>
 #require 'HNP.i18n.php';

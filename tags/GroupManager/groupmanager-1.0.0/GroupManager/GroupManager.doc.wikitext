@@ -24,12 +24,12 @@ Provides management of 'groups' through a wikitext page.
 
 == Example ==
 Here is an example of 'MediaWiki:Registry/Groups' page:
-<code>
+<pre>
  {| border = 1
  {{#wggroup: groupnamehere1 | notes here }}
  {{#wggroup: groupnamehere2 | notes here }}
  {| 
-</code>
+</pre>
 
 == Dependancies ==
 * [[Extension:StubManager|StubManager extension]]

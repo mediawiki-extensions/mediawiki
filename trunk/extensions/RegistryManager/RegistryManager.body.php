@@ -37,6 +37,14 @@ class RegistryManager
 		// bail out if we are not in the right sub-namespace
 		if ($result === false)
 			return true;
+
+		// state variable to properly trigger
+		// the 'RegistryPageChanged' event.
+		$this->saving = true;
+		
+		// start collecting what we need to save
+		// on a clean slate.
+		$this->params = null;
 		
 		// Invoking the parser should get all the parameters
 		// set on the page (through parser functions) collected
@@ -45,8 +53,6 @@ class RegistryManager
 		
 		// and finally write to cache.
 		$this->writeToCache( $page, $this->params[$page] );
-		
-		$this->saving = true;		
 		
 		return true;	
 	}								
@@ -83,6 +89,13 @@ class RegistryManager
 	 */
 	public function hRegistryPageSet( &$page, &$key, &$value )
 	{
+		global $action;
+		
+		// only start recording when we are updating
+		// the registry page.
+		if ($action !== 'submit')
+			return true;
+			
 		$this->params[$page][] = array( $key => $value );
 		return true;
 	}

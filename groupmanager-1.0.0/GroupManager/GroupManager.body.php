@@ -37,8 +37,10 @@ class GroupManager
 	 */
 	public function hUserEffectiveGroups( &$user, &$groups )
 	{
+		$params = null;
 		wfRunHooks( self::rpage, $params );
-		$groups[] = $params;
+		if (!empty( $params ))
+			$groups = array_merge( $groups, $params);
 		return true;
 	}
 
@@ -47,7 +49,7 @@ class GroupManager
 	{
 		global $wgExtensionCredits;
 
-		$result1 =  "[http://mediawiki.org/wiki/Extension:RegistryManager] is ";
+		$result1 =  "[http://mediawiki.org/wiki/Extension:RegistryManager RegistryManager] is ";
 		$result1 .= (class_exists('RegistryManager')) ? 'present.':'absent.';
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )

@@ -2,6 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package RegistryManager
+ * @version $Id$
  */
 //<source lang=php>
 class RegistryManager
@@ -31,6 +32,11 @@ class RegistryManager
 									&$summary, $minor,
 									$dc1, $dc2, &$flags )	
 	{
+		// make sure we are in the right namespace
+		$ns = $article->mTitle->getNamespace();
+		if ($ns !== NS_MEDIAWIKI)
+			return true;
+			
 		$full_titre = $article->mTitle->getDBkey();
 		$result = $page = $this->extractPage( $full_titre );
 		
@@ -76,6 +82,7 @@ class RegistryManager
 		return true;	
 	}
 	/**
+	 * Extract the page sub-name.
 	 */
 	protected function extractPage( &$titre )
 	{
@@ -96,10 +103,11 @@ class RegistryManager
 		if ($action !== 'submit')
 			return true;
 			
-		$this->params[$page][] = array( $key => $value );
+		$this->params[$page][$key] = $value;
 		return true;
 	}
 	/**
+	 * This hook too should be called from an extension.
 	 */
 	public function hRegistryPageGet( &$page, &$params )
 	{
@@ -124,7 +132,6 @@ class RegistryManager
 // ##########################################################################	
 	
 	/**
-	
 	 */
 	protected function loadAndParse( $page )
 	{

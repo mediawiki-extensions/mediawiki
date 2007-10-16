@@ -31,5 +31,4 @@ if (class_exists('StubManager'))
 else
 	echo 'Extension:GroupManager <b>requires</b> [[Extension:StubManager]]'."\n";
 
-
 //</source>

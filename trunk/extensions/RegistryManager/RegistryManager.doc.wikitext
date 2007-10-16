@@ -9,7 +9,7 @@
 |mediawiki   = 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/RegistryManager/ SVN]
 |readme      =
-|changelog   = See SVN ($Id: InterWikiLinkManager.php 793 2007-09-18 16:01:55Z jeanlou.dupont $)
+|changelog   = See SVN ($Id$)
 |description = 
 |parameters  =
 |rights      =

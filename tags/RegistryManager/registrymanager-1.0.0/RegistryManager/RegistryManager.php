@@ -2,6 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package RegistryManager
+ * @version $Id$
  */
 //<source lang=php>
 $wgExtensionCredits['other'][] = array( 
@@ -21,8 +22,6 @@ StubManager::createStub2(	array(	'class' 		=> 'RegistryManager',
 																'RegistryPageSet',
 																'RegistryPageChanged'
 															),
-									// exclude the following namespaces
-									'nss'			=> array( NS_MEDIAWIKI ) // only acts in this namespace
 								)
 						);
 //</source>

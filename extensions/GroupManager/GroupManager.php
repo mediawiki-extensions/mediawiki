@@ -11,7 +11,6 @@ if (class_exists('StubManager'))
 		array(	'class' 		=> 'GroupManager', 
 				'classfilename'	=> dirname(__FILE__).'/GroupManager.body.php',
 				'hooks'			=> array(	
-											'ArticleSave',
 											'SpecialVersionExtensionTypes',
 											'UserEffectiveGroups',
 											//'EditFormPreloadText'

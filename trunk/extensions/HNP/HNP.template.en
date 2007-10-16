@@ -53,7 +53,6 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {{#hnp_r: protect         | D }}
 {{#hnp_r: patrol          | D }}
 {{#hnp_r: patrolmarks     | D }} <!-- introduced in MW1.11 -->
-{{#hnp_r: autopatrol      | D }}
 {{#hnp_r: purge           | D }}
 {{#hnp_r: upload          | D }}
 {{#hnp_r: reupload        | D }}
@@ -104,18 +103,8 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {{#hnp: * | Category_talk | ~ | browse,search  }} 
 {{#hnp: * | Help          | ~ | browse,search  }} 
 {{#hnp: * | Help_talk     | ~ | browse,search  }} 
-
-{{#hnp: * | Special | Log/newusers  | !browse }} 
-{{#hnp: * | Special | Log/commitfil | !browse }} 
-{{#hnp: * | Special | Log/upload    | !browse }} 
-{{#hnp: * | Special | Log/delete    | !browse }} 
-{{#hnp: * | Special | Log/rights    | !browse }} 
-{{#hnp: * | Special | Log/emaillog  | !browse }} 
-{{#hnp: * | Special | Log/usetchglog| !browse }} 
-{{#hnp: * | Special | Log/watchlog  | !browse }} 
-{{#hnp: * | Special | Log/usrloglog | !browse }} 
-
-{{#hnp: * | User    | ~.metada      | !read, !browse, !search, !raw, !viewsource, !edit, !create  }} 
+{{#hnp: * | Special       | Log/~         | !browse, !read, !raw, !viewsource, !search }}
+{{#hnp: * | User          | ~.metadats    | !read, !browse, !search, !raw, !viewsource, !edit, !create  }} 
 <!-- }} -->
 
 <!-- user related -->
@@ -133,4 +122,5 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {{#hnp: user | Image_talk    | ~ | read, browse, search, watch, unwatch }} 
 {{#hnp: user | User          | ~ | read, browse, search, watch, unwatch }} 
 {{#hnp: user | User_talk     | ~ | read, browse, search, watch, unwatch }} 
+{{#hnp: user | User          | ~.metadata      | !read, !browse, !search, !raw, !viewsource, !edit, !create  }} 
 |}

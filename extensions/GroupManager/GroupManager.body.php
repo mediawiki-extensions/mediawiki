@@ -24,7 +24,7 @@ class GroupManager
 	{
 		static $index = 0;
 		//	public function hRegistrySetPage( &$page, &$key, &$value )
-		wfRunHooks( 'RegistrySetPage', self::rpage, $index++, $groupname );
+		wfRunHooks( 'RegistryPageSet', self::rpage, $index++, $groupname );
 		
 		// Format a nice wikitext line
 		return	self::$rowStart.
@@ -38,7 +38,7 @@ class GroupManager
 	public function hUserEffectiveGroups( &$user, &$groups )
 	{
 		$params = null;
-		wfRunHooks( self::rpage, $params );
+		wfRunHooks( 'RegistryPageGet', self::rpage, $params );
 		if (!empty( $params ))
 			$groups = array_merge( $groups, $params);
 		return true;

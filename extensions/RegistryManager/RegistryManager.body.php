@@ -81,13 +81,14 @@ class RegistryManager
 	/**
 	 * This hooks should be called from an extension.
 	 */
-	public function hRegistrySetPage( &$page, &$key, &$value )
+	public function hRegistryPageSet( &$page, &$key, &$value )
 	{
 		$this->params[$page][] = array( $key => $value );
+		return true;
 	}
 	/**
 	 */
-	public function hRegistryGetPage( &$page, &$params )
+	public function hRegistryPageGet( &$page, &$params )
 	{
 		$params = null;
 		
@@ -180,7 +181,7 @@ class RegistryManager
 		if (!self::$realCache)
 			return false;
 			
-		$key = self::getKey( $page );
+		$key = self::getKey( 'Registry/'.$page );
 			
 		$s = serialize( $data );
 		
@@ -193,7 +194,7 @@ class RegistryManager
 		if (!self::$realCache)
 			return false;
 
-		$key = self::getKey( $page );
+		$key = self::getKey( 'Registry/'.$page );
 				
 		$s = self::$cache->get( $key );
 

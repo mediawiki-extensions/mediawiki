@@ -29,7 +29,7 @@ if (class_exists('StubManager'))
 		'name'    		=> 'HNP',
 		'version'		=> '1.0.1',
 		'author'		=> 'Jean-Lou Dupont',
-		'url'			=> 'http://www.mediawiki.org/wiki/Extension:HierarchicalNamespacePermissions2',	
+		'url'			=> 'http://www.mediawiki.org/wiki/Extension:HNP',	
 		'description' 	=> "Provides enhancements to the permission management sub-system.", 
 	);
 }

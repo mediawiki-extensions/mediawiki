@@ -1,2 +1,0 @@
-== HNP ==
-* changed documentation => do minor release

@@ -66,10 +66,29 @@ Please see example configuration page [[{{FULLPAGENAME}}/Example|Example]].
 	}
 </source>
 
+== MEDIAWIKI NOTES ==
+1) Only the forward slash is interpreted (when enabled) as an
+   indicator of "sub-page". Thus, only the forward slash and ~ are
+   considered here to be part of the hierarchical functionality.
+ 
+2) The allowed characters in a title are defined in "DefaultSettings.php".
+   $wgLegalTitleChars = " %!\"$&'()*,\\-.\\/0-9:;=?@A-Z\\\\^_`a-z~\\x80-\\xFF+";
+   NOTE that #{}[]| are not part of this list.
+  
+3) Special command characters for preg_match do not include the following:
+   #`'~,@
+   Those were tested with preg_quote
+
+4) Be careful not to choose namespace name identifiers too long as the 
+   standard limit in Mediawiki is 16characters long.  
+
 == History ==
 === 1.0.1 ===
 * Removed file caching (causing more troubles than adding value)
 * Fixed debug messages as to not stop normal processing flow.
+=== 1.1.0 ===
+* Added Magic Words support
+** '#username#' magic word for implementing functionality akin to 'KeepYourHandsToYourself' 
 
 [[Category:Namespace extensions]]
 [[Category:Edit extensions]]

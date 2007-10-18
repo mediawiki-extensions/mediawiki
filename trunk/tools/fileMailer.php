@@ -9,13 +9,13 @@ $msg = MPmsg::build( 'application/gzip', $argv[1], $contents );
 $headers = 'From: wiki_admin@jldupont.com' . "\r\n" .
 'Reply-To: wiki_admin@jldupont.com'. "\r\n" .
 'X-Mailer: PHP/' . phpversion() . "\r\n" .
-'Content-Type: multipart/mixed;'. "\r\n" .
+'Content-Type: multipart/mixed;' .
 ' boundary="' . MPmsg::getBoundary() . '"' . "\r\n";
 
 echo "Sending ... ";
 $result = mail(	'wiki_backup@jldupont.com', 
 				'jldupont.com backup', 
-				$message,
+				$msg,
 				$headers);
 
 echo ($result) ? "successful":"failed!";
@@ -27,12 +27,13 @@ class MPmsg
 	
 	public function getBoundary()
 	{
-		return self::$boundary;
+		return self::setBoundary();
 	}
 	public static function setBoundary()
 	{
 		if (self::$boundary === null)
 			self::$boundary = '==_MessageBoundary_'.md5(uniqid()).'_==';
+		return self::$boundary;
 	}
 	
 	public static function build( $mime_type, $name, &$data )

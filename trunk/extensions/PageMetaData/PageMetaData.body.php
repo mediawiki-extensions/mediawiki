@@ -23,16 +23,16 @@ class PageMetaData
 	 */
 	public function hArticleProtectComplete( &$article, &$user, $limit, $reason )
 	{
-		$this->doUpdate( $article );	
+		$this->doUpdate( $article, $limit );	
 		return true;
 	}
 	/**
 	 */
-	protected function doUpdate( &$a )
+	protected function doUpdate( &$a, $limit )
 	{
 		$template = $this->loadTemplate();
 		
-		$data = $this->fillTemplate( $template, $a );
+		$data = $this->fillTemplate( $template, $a, $limit );
 		
 		$this->updatePage( $a, $data );		
 	}
@@ -71,34 +71,25 @@ class PageMetaData
 	}	 
 	/**
 	 */
-	protected function fillTemplate( &$template, &$article )	
+	protected function fillTemplate( &$template, &$article, $limit )	
 	{
-		$data = $this->getRestrictions( $article->mTitle );
+		$data = $this->getRestrictions( $limit );
 		$data = str_replace( self::rsection, $data, $template );
 		return $data;
 	}
 	/**
 	 */
-	protected function getRestrictions( &$title )
+	protected function getRestrictions( &$limit )
 	{
-		$data = null;
-		$title->loadRestrictions();
-		if (!empty( $title->mRestrictions ))
-			$data = $this->getRestrictionsSection(	$title->mRestrictions, 
-													$title->mRestrictionsExpiry,
-													$title->mCascadeRestriction
-													 );
-		return $data;													 
-	}
-	/**
-	 */
-	function getRestrictionsSection( &$restrictions, $expiry, $cascading )
-	{
-		$result = '';
-		foreach( $restrictions as $restrictionType => &$levels )
-			foreach( $levels as $level)
-				$result .= "    <restriction type='".$restrictionType."' level='".$level.
-							"' expiry='".$expiry."' cascading='".$cascading."' />\n";
+		$result = null;
+
+		if (empty( $limit ))
+			return null;
+
+		foreach( $limit as $action => &$restrictions )
+			$result .= "    <restriction type='".$action.
+						"' level='".$restrictions."' />\n";
+//						"' expiry='".$expiry."' cascading='".$cascading."' />\n";
 
 		return $result;
 	}

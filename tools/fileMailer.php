@@ -50,7 +50,7 @@ class MPmsg
 		
 		$message .= '--'.self::$boundary."\r\n";
 		
-		$message .= 'Content-Type: '.$mime_type.';' . "\r\n" .' name="'.$name.'"' .
+		$message .= 'Content-Type: '.$mime_type.';' . "\r\n" .' name="'.$name.'"' . "\r\n".
 					'Content-Transfer-Encoding: base64' . "\r\n" .
 					"Content-Disposition: attachment;\r\n" . 
 					" filename=\"".$name."\"\r\n\r\n" .

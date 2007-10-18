@@ -6,11 +6,12 @@ $contents = @file_get_contents( $argv[1] );
 
 $msg = MPmsg::build( 'application/gzip', $argv[1], $contents );
 
-$headers = 'From: wiki_admin@jldupont.com' . "\r\n" .
-'Reply-To: wiki_admin@jldupont.com'. "\r\n" .
-'X-Mailer: PHP/' . phpversion() . "\r\n" .
+$headers = 'From: wiki_admin@jldupont.com' . "\n" .
+'Reply-To: wiki_admin@jldupont.com'. "\n" .
+'MIME-Version: 1.0'. "\n" .
+'X-Mailer: PHP/' . phpversion() . "\n" .
 'Content-Type: multipart/mixed;' .
-' boundary="' . MPmsg::getBoundary() . '"' . "\r\n";
+' boundary="' . MPmsg::getBoundary() . '"' . "\n";
 
 echo "Sending ... ";
 $result = mail(	'wiki_backup@jldupont.com', 
@@ -41,21 +42,21 @@ class MPmsg
 		self::setBoundary();
 		$att_data = self::encode( $data );
 		
-		$message = "This is a multi-part message in MIME format.\r\n\r\n".
-	            "--".self::$boundary."\r\n".
-	            "Content-Type: text/plain; charset=\"iso-8859-1\"\r\n".
-				"Content-Disposition: inline\r\n" .
-	            "Content-Transfer-Encoding: 7bit\r\n".
-	            "Here is the backup file: "."\r\n\r\n";
+		$message = "This is a multi-part message in MIME format.\n\n".
+	            "--".self::$boundary."\n".
+	            "Content-Type: text/plain; charset=\"iso-8859-1\"\n".
+				"Content-Disposition: inline\n" .
+	            "Content-Transfer-Encoding: 7bit\n".
+	            "Here is the backup file: "."\n\n";
 		
 		$message .= '--'.self::$boundary."\r\n";
 		
-		$message .= 'Content-Type: '.$mime_type.';' . "\r\n" .' name="'.$name.'"' . "\r\n".
-					'Content-Transfer-Encoding: base64' . "\r\n" .
-					"Content-Disposition: attachment;\r\n" . 
-					" filename=\"".$name."\"\r\n\r\n" .
-					$att_data."\r\n" .
-		             "--".self::$boundary."\r\n";
+		$message .= 'Content-Type: '.$mime_type.';' . "\n" .' name="'.$name.'"' . "\n".
+					'Content-Transfer-Encoding: base64' . "\n" .
+					"Content-Disposition: attachment;\n" . 
+					" filename=\"".$name."\"\n\n" .
+					$att_data."\n" .
+		             "--".self::$boundary."\n";
 		return $message;
 	}
 	public static function encode( &$data )

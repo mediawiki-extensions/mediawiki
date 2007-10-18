@@ -10,6 +10,7 @@ class PageMetaData
 	const template_file_name = 'PageMetaData.template.wikitext';
 	static $tfile = null;
 	const rsection = '$restrictions$';
+	static $cdir = null;
 
 	public function __construct()
 	{
@@ -20,7 +21,7 @@ class PageMetaData
 	/**
 	 * Main Hook
 	 */
-	public function hArticleProtect( &$article, &$user, $limit, $reason )
+	public function hArticleProtectComplete( &$article, &$user, $limit, $reason )
 	{
 		$this->doUpdate( $article );	
 		return true;

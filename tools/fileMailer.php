@@ -18,7 +18,7 @@ $result = mail(	'wiki_backup@jldupont.com',
 				$msg,
 				$headers);
 
-echo ($result) ? "successful":"failed!";
+echo ($result) ? "successful\n":"failed!\n";
 die( $result );
 
 class MPmsg

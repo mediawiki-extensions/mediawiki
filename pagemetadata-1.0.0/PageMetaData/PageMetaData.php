@@ -14,7 +14,7 @@ $wgExtensionCredits['other'][] = array(
 );
 StubManager::createStub2(	array(	'class' 		=> 'PageMetaData', 
 									'classfilename'	=> dirname(__FILE__).'/PageMetaData.body.php',
-									'hooks'			=> array(	'ArticleProtect' ),
+									'hooks'			=> array(	'ArticleProtectComplete' ),
 								)
 						);
 //</source>

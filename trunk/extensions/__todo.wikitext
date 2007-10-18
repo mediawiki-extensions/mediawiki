@@ -1,2 +1,3 @@
 == HNP ==
 * changed documentation => do minor release
+* Add '$username$' magic word to implement 'KeepYourHandsToYourself'

@@ -18,6 +18,7 @@
 <c xlink:href="/rest/c/Logging/info.xml">Logging</c>
 <c xlink:href="/rest/c/ManageNamespaces/info.xml">ManageNamespaces</c>
 <c xlink:href="/rest/c/Notification/info.xml">Notification</c>
+<c xlink:href="/rest/c/PageMetaData/info.xml">PageMetaData</c>
 <c xlink:href="/rest/c/ParserFunctions/info.xml">ParserFunctions</c>
 <c xlink:href="/rest/c/PermissionManagement/info.xml">PermissionManagement</c>
 <c xlink:href="/rest/c/RegistryManager/info.xml">RegistryManager</c>

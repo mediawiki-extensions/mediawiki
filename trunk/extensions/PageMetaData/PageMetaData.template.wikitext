@@ -1,0 +1,4 @@
+<restrictions>
+
+ $restrictions$
+</restrictions>

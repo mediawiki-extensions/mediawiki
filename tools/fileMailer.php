@@ -46,11 +46,9 @@ class MPmsg
 	            "Content-Type: text/plain; charset=\"iso-8859-1\"\r\n".
 				"Content-Disposition: inline\r\n" .
 	            "Content-Transfer-Encoding: 7bit\r\n".
-	            "Here is the back file: "."\r\n\r\n".
-	            "--".self::$boundary."\r\n";
-		$message .= 'Email body follows:'."\r\n\r\n";
+	            "Here is the backup file: "."\r\n\r\n";
 		
-		$message .= self::$boundary."\r\n";
+		$message .= '--'.self::$boundary."\r\n";
 		
 		$message .= 'Content-Type: '.$mime_type.';' . "\r\n" .' name="'.$name.'"' .
 					'Content-Transfer-Encoding: base64' . "\r\n" .

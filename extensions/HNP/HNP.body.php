@@ -5,8 +5,6 @@
  * @version $Id$
  */
 //<source lang=php>
-#require 'HNP.i18n.php';
-
 class HNP
 {
 	const thisName = 'HNP';
@@ -21,7 +19,6 @@ class HNP
 	// STATUS related
 	static $loading = false;
 	static $LoadedFromRegistryPage = false;
-#	static $LoadedFromFileCache = false;
 	static $LoadedFromCache = false;
 
 	// PERMISSIONS en-force currently (raw form)
@@ -56,16 +53,17 @@ class HNP
 	static $expiryPeriod = 86400;	//24*60*60 == 1day
 	static $realCache = true; 		// assume we get a real cache.
 	static $cache;
-#	static $fileCacheName = null;
-#	const  fileCacheFileName = '/hnp_cache.serialized';
+
+	// MAGIC WORDS
+	static $mgList = array(
+		'#username#'	=>	'mw_username',
+	);
 
 	/**
 	 */
 	public function __construct()
 	{
 		self::$thisDir = dirname( __FILE__ );
-#		global $IP;
-#		self::$fileCacheName = $IP.self::fileCacheFileName;
 		
 		self::initCacheSupport();
 	}
@@ -197,18 +195,15 @@ class HNP
 			$result = false;
 			return false;	
 		}
-
-#		echo 'user='.$user->getName().'ns= '.$ns.' titre='.$titre.' action='.$action.'<br/>';
-
 		$result = $this->userCanInternal( $user, $ns, $titre , $action );
 	
 		// stop hook chain.
 		return false;
 	}
 	/**
-		This is the stock MediaWiki 'userCan' hook.
-		
-		t-> title, u-> user, a-> action, r-> result
+	 *	This is the stock MediaWiki 'userCan' hook.
+	 *	
+	 *	t-> title, u-> user, a-> action, r-> result
 	 */
 	function huserCan( &$t, &$u, $a, &$r )
 	{
@@ -227,8 +222,6 @@ class HNP
 		// Can the user perform a read operation?
 		$ns = $t->getNamespace();
 		$pt = $t->mDbkeyform;
-
-#		echo " page: ".$pt." ns: ".$ns." action: ".$a."\n";
 
 		// Deal with page level restrictions
 		if (!$this->checkRestrictions( $u, $t, $ns, $pt, $a ) )
@@ -294,8 +287,6 @@ class HNP
 			if ( !self::isUserPartOfGroup( $user, $group ) ) 
 				continue;
 
-#			echo __METHOD__." group: ".$group."\n";
-			
 			$groupa = array( $group );
 			$grights = $user->getGroupPermissions( $groupa ); 
 
@@ -322,6 +313,7 @@ class HNP
 
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
 	/**
 	 */
 	protected function processPermissions()
@@ -354,10 +346,17 @@ class HNP
 		foreach ( $entriesForGroup as $index => &$entry )
 		{
 			$foundWildcard = false;
-			
+
+			// Prepare the current variables
+			$ns_name = trim( $entry['ns'] );			
+			$title_name = preg_quote( trim( $entry['title'] ) );
+			$right_name = preg_quote( trim( $entry['right'] ));
+									
+			// 0- Magic Words
+			$this->replaceMagicWords( $title_name );
+									
 			// 1- Namespace
 			// First, check if we have a 'wildcard'
-			$ns_name = trim( $entry['ns'] );			
 			if ( $ns_name === '~' )
 				$nsField = "(.*)";
 			else
@@ -367,13 +366,11 @@ class HNP
 			}
 			// 2- Title
 			// First, check if we have a 'wildcard'
-			$title_name = preg_quote( trim( $entry['title'] ) );
 			$titleField = str_replace('/', '\/', $title_name );
 			$titleField = str_replace("~", "(.*)", $titleField );
 			
 			// 3- Action
 			// Can be a list e.g. read, edit, browse
-			$right_name = preg_quote( trim( $entry['right'] ));
 			
 			// We are not supposed to find '/' but just make sure
 			// we don't break.
@@ -395,6 +392,25 @@ class HNP
 			}
 		}
 	}
+	/**
+	 */
+	protected function replaceMagicWords( &$input )
+	{
+		foreach( self::$mgList as $mgword => $method )
+			if ( is_integer( str_pos( $input, $mgword )))
+				$this->$method( $mgword, $input );
+	}
+	/**
+	 * Replaces #username# for the current user name
+	 */
+	protected function mw_username( $mgword, &$input )
+	{
+		global $wgUser;
+		$uname = $wgUser->getName();
+		$input = str_replace( $mgword, $uname, $input );
+	}
+	/**
+	 */
 	protected function getNsIndex( $name )
 	{
 		$name = strtolower( $name );
@@ -415,12 +431,6 @@ class HNP
 		if ($result === true)	
 			return true;
 
-		// else, let's parse the file cache...
-#		$result = $this->readPermissionsFromFileCache();
-#		self::$LoadedFromFileCache = $result;
-#		if ($result === true)	
-#			return true;
-
 		// Last resort, try to parse the registry page.
 		$result = $this->readPermissionsFromRegistry();
 		self::$LoadedFromRegistryPage = $result;		
@@ -429,28 +439,6 @@ class HNP
 		
 		return false;
 	}
-/*
-	protected function readPermissionsFromFileCache()
-	{
-		$contents = @file_get_contents( self::$fileCacheName );
-		$us = @unserialize( $contents );
-		if ($us === false)
-			return false;
-		$this->formatFromUnserialized( $us );
-		return true;
-	}
-*/
-
-	/**
-	 */
-/*
-	protected static function writeToFileCache( &$data )
-	{
-		$s = serialize( $data );
-		$bytes_written = @file_put_contents( self::$fileCacheName, $s );
-		return $bytes_written;
-	}
-*/
 	/**
 		Words in pair with 'readPermissionFromCache'
 	 */
@@ -462,7 +450,6 @@ class HNP
 				 );	
 				 
 		self::writeToCache( $p );
-#		self::writeToFileCache( $p );
 	}
 	/**
 		Works in pair with 'updatePermissions'
@@ -533,17 +520,12 @@ class HNP
 		$state = self::$realCache;
 		return (self::$realCache ? 'true':'false');
 	}
-/*	
-	static function isFileCacheWritable()
-	{
-		return is_writable( self::$fileCacheName );	
-	}
-*/	
+	/**
+	 */
 	static function isLoaded()
 	{
 		return (	self::$LoadedFromRegistryPage
 					|| self::$LoadedFromCache
-#					|| self::$LoadedFromFileCache
 				);	
 	}
 	
@@ -593,7 +575,6 @@ class HNP
 	/**
 	 */
 	public function hSpecialVersionExtensionTypes( &$sp, &$extensionTypes )
-	// setup of this hook occurs in 'ExtensionClass' base class.
 	{
 		global $wgExtensionCredits;
 
@@ -602,12 +583,6 @@ class HNP
 		
 		$result2 = ' Permissions loaded from cache: ';
 		$result2 .= self::$LoadedFromCache ? 'true.':"<b>false</b>.";
-
-#		$result3 = ' File cache writable: ';
-#		$result3 .= self::isFileCacheWritable() ? 'true.':"<b>false</b>.";
-
-#		$result4 = ' Permissions loaded from file cache: ';
-#		$result4 .= self::$LoadedFromFileCache ? 'true.':"<b>false</b>.";
 
 		$result5 = ' Permissions loaded from registry page: ';
 		$result5 .= self::$LoadedFromRegistryPage ? 'true.':"<b>false</b>.";
@@ -716,7 +691,6 @@ class HNP
 		foreach ($rights as $pattern)
 		{
 			$result = preg_match( $pattern, $q );
-#			echo __METHOD__." pattern: ".$pattern." ... q: ".$q." result: $result \n";			
 			if ($result === 1)
 				return true;	
 		}
@@ -752,7 +726,6 @@ class HNP
 		// didn't find any restrictions that weren't met with the proper right.
 		return true;
 	}
-
 
 } // end class definition.
 //</source>

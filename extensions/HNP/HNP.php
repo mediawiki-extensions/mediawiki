@@ -2,9 +2,9 @@
 /**
  * @author Jean-Lou Dupont
  * @package HNP
+ * @version $Id$
  */
 //<source lang=php>
-#require 'HNP.i18n.php';
 global $IP;
 require_once $IP.'/includes/ObjectCache.php';
 require_once $IP.'/includes/BagOStuff.php';
@@ -27,7 +27,7 @@ if (class_exists('StubManager'))
 	global $wgExtensionCredits;
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'HNP',
-		'version'		=> '1.0.1',
+		'version'		=> '1.1.0',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:HNP',	
 		'description' 	=> "Provides enhancements to the permission management sub-system.", 

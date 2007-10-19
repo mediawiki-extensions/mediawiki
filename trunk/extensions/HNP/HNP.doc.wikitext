@@ -5,7 +5,7 @@
 |hook1  =		userCan
 |status =		stable
 |mediawiki =	1.11
-|version =		1.0.1
+|version =		1.1.0
 |update = 
 |download = 
 |changelog = See [http://mediawiki.googlecode.com/svn/trunk/extensions/HNP/ SVN]
@@ -26,6 +26,9 @@
 ** Namespace independant rights management: if wanted, requires a patch:
 *** 'includes/User.php'
 * Post-installation information always available through [[Special:Version]] page.
+* Magic Words:
+** ' #username# ' magic word can be used to substitute the current user's name in the title field
+*** Useful for implementing functionality akin to 'KeepYourHandsToYourself' whereas only the owner of a userpage can edit his own
 
 == Usage ==
 Please see example configuration page [[{{FULLPAGENAME}}/Example|Example]].

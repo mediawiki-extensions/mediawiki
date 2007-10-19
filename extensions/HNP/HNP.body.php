@@ -397,7 +397,7 @@ class HNP
 	protected function replaceMagicWords( &$input )
 	{
 		foreach( self::$mgList as $mgword => $method )
-			if ( is_integer( str_pos( $input, $mgword )))
+			if ( is_integer( strpos( $input, $mgword )))
 				$this->$method( $mgword, $input );
 	}
 	/**

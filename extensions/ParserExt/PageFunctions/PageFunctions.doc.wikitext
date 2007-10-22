@@ -4,7 +4,7 @@
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
@@ -67,3 +67,5 @@ Of course, the same magic words can be used in the context of 'ParserCache2' i.e
 * Added hook 'PageVarSet'
 * Added 'noclientcaching' magic word
 * Added 'noext' magic word
+=== 1.1.0 ===
+* Added functionality to enable proper page title clearing

@@ -2,6 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package PageFunctions
+ * @version $Id$ 
  */
 //<source lang=php>*/
 class PageFunctions
@@ -9,12 +10,15 @@ class PageFunctions
 	const thisName = 'PageFunctions';
 	const thisType = 'other';
 
+	var $pageTitle;
+	
 	var $pageVars;
 
 	// Our class defines magic words: tell it to our helper class.
 	public function __construct()
 	{	
 		$this->pageVars = array();
+		$this->pageTitle = null;
 	}
 
 	// ===============================================================
@@ -25,8 +29,9 @@ class PageFunctions
 	}
 	private function setTitle( &$title )
 	{
-		global $wgOut;
-		$wgOut->setPageTitle( $title );
+		$this->pageTitle = $title;
+		#global $wgOut;
+		#$wgOut->setPageTitle( $title );
 	}
 
 	// ===============================================================
@@ -59,6 +64,18 @@ class PageFunctions
 	}
 
 	// ===============================================================
+	/**
+	 * Required in order to make sure that when a page title is cleared
+	 * it stays cleared. This functionality offsets what is done
+	 * in Article.php when a page title is cleared.
+	 */
+	function hOutputPageBeforeHTML( &$op, &$text )
+	{
+		if ($this->pageTitle !== null)
+			$op->setPageTitle( $this->pageTitle );
+			
+		return true;
+	}
 	/**
 		Hook based Page Variable 'get'
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

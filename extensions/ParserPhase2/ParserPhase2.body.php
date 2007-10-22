@@ -2,16 +2,9 @@
 /**
  * @author Jean-Lou Dupont
  * @package ParserPhase2
+ * @version $Id$
  */
 //<source lang=php>*/
-$wgExtensionCredits[ParserPhase2::thisType][] = array( 
-	'name'        => ParserPhase2::thisName, 
-	'version'     => StubManager::getRevisionId( '$Id$' ),
-	'author'      => 'Jean-Lou Dupont', 
-	'description' => "Enables performing a 'second pass' parsing over an already cached page for replacing dynamic variables",
-	'url' 		=> 'http://mediawiki.org/wiki/Extension:ParserPhase2',			
-);
-
 class ParserPhase2
 {
 	// constants.
@@ -217,7 +210,6 @@ class ParserPhase2
 		else 
 		{
 			# Case insensitive functions
-			$function = strtolower( $action );
 			if ( isset( $wgParser->mFunctionSynonyms[0][$var] ) ) 
 				$function = $wgParser->mFunctionSynonyms[0][$var];
 			else

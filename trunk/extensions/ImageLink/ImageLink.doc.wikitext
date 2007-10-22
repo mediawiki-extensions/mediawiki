@@ -35,7 +35,7 @@ Example:
 * Added 'stubbing' capability though StubManager
 * Added non-existing link (i.e. red link) when image page does not exist
 * Moved to PEAR distribution repository.
-* Added better interwiki link support.
+* Added support for interwiki image.
 
 [[Category:Image map extensions]]
 [[Category:Link extensions]]

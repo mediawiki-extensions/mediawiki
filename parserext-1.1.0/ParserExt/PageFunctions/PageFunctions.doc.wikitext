@@ -69,4 +69,3 @@ Of course, the same magic words can be used in the context of 'ParserCache2' i.e
 * Added 'noext' magic word
 === 1.1.0 ===
 * Added functionality to enable proper page title clearing
-* Added new hook 'setPageTitle': functionality required when other extensions might change the page title after this one e.g. ParserPhase2

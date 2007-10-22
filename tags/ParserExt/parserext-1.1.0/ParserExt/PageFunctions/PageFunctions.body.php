@@ -75,7 +75,10 @@ class PageFunctions
 	function hBeforePageDisplay( &$op )
 	{
 		if ($this->pageTitle !== null)
+		{
+			$op->setPageTitle( $this->pageTitle );			
 			$op->setHTMLTitle( $this->pageTitleHTML );
+		}
 			
 		return true;
 	}

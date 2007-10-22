@@ -8,7 +8,7 @@
 global $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array( 
 	'name'    		=> 'ViewsourceRight', 
-	'version'		=> StubManager::getRevisionId( '$Id$' ),
+	'version'		=> '1.1.0',
 	'author'		=> 'Jean-Lou Dupont', 
 	'description'	=> "Enforces 'viewsource' right. Status: ",
 	'url'			=> 'http://mediawiki.org/wiki/Extension:ViewsourceRight',			
@@ -17,7 +17,9 @@ $wgExtensionCredits['other'][] = array(
 StubManager::createStub(	'ViewsourceRight', 
 							dirname(__FILE__).'/ViewsourceRight.body.php',
 							null,
-							array( 'SpecialVersionExtensionTypes','AlternateEdit', 'SkinTemplateTabs' ),
+							array( 'SpecialVersionExtensionTypes','AlternateEdit', 
+									'SkinTemplateTabs', 'clearSkinTabActions'
+								),
 							false,	// no need for logging support
 							null,	// tags
 							null,	// no parser functions

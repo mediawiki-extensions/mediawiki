@@ -5,7 +5,7 @@
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
@@ -35,3 +35,5 @@ This extension is really meant to be used with [[Extension:ParserPhase2]].
 {{Pear|ParserExt}}
 
 == History ==
+=== 1.1.0 ===
+* added hook 'clearSkinTabActions'

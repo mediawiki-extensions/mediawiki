@@ -17,30 +17,30 @@
 |example     =
 }}
 == Purpose== 
-Inserts <script> & <link> (i.e. CSS) scripts at the bottom of the page's head or within the page's body. 
+Inserts < script > & < link > (i.e. CSS) scripts at the bottom of the page's head or within the page's body. 
 Securily insert arbitrary code to the page's head using <addtohead>.
 
 == Features ==
 * Security: local files (URI) only
 ** Files must be located in wiki installation home directory/scripts
-* <code><addtohead>some html code here></addtohead></code>
+* <code>< addtohead >some html code here></ addtohead ></code>
 * Security:
 ** Only 'edit' restricted pages can access 'addtohead' functionality.
 * Use global variable '$bwScriptsDirectory' to customize scripts directory
 
 == Examples ==
 <pre><addscript src='local URL' /></pre>
-* (R1) e.g. <addscript src=/sarissa/sarissa type=js />
-* (R2) e.g. {{#addscript: src=/styleinfo|pos=head|type=css}}
+* (R1) e.g. < addscript src=/sarissa/sarissa type=js />
+* (R2) e.g. {{ #addscript: src=/styleinfo|pos=head|type=css }}
 
 :R1) Results in <code>/home/scripts/sarissa/sarissa.js</code> being added to the page's body section provided the said file exists.
 
 :R2) The CSS file <code>/home/scripts/styleinfo.css</code> will be added to the page's HEAD section (provided it exists).
 
 == Syntax ==
-Form 1: <addscript src=filename [type={js|css}] [pos={head|body}] />
+Form 1: < addscript src=filename [type={js|css}] [pos={head|body}] />
 
-Form 2: {{#addscript:src=filename [|type={js|css} [|pos={head|body}] }}
+Form 2: {{ #addscript:src=filename [|type={js|css} [|pos={head|body}] }}
 
 If no 'type' field is present, then the extension assumes 'js'.
 

@@ -4,7 +4,7 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/extensions/ImageLink/ SVN]
@@ -35,6 +35,7 @@ Example:
 * Added 'stubbing' capability though StubManager
 * Added non-existing link (i.e. red link) when image page does not exist
 * Moved to PEAR distribution repository.
+* Added better interwiki link support.
 
 [[Category:Image map extensions]]
 [[Category:Link extensions]]

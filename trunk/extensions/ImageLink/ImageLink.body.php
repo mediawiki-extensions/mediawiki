@@ -32,19 +32,23 @@ class ImageLink
 	 * {{#imagelink:New Clock.gif|Admin:Show Time|alternate text}}
 	 */
 	{
-		$image = Image::newFromName( $img );
-		if (!$image->exists()) return '[[Image:'.$img.']]';
-		
-		if (empty($page)) return;
-			
-		$title = Title::newFromText( $page );
+		$title = Title::newFromText( $img );
+
+		// this really shouldn't happen... not much we can do here.		
 		if (!is_object($title)) return;
-		
-		$iURL = $image->getURL();
-		
-		// distinguish between local and interwiki URI
-		if ($title->isLocal())
+
+		// check if we are dealing with an InterWiki link
+		if ( $title->isLocal() )
 		{
+			$image = Image::newFromName( $img );
+			if (!$image->exists()) 
+				return '[[Image:'.$img.']]';
+			
+			if (empty($page)) 
+				return 'ImageLink: missing page reference ';
+		
+			$iURL = $image->getURL();
+
 			$tURL = $title->getLocalUrl();
 			$aClass=''; 			
 		}
@@ -53,6 +57,7 @@ class ImageLink
 			$tURL = $title->getFullURL();
 			$aClass = 'class="extiw"';
 		}		
+		
 		// Optional parameters
 		if ($alt    !== null)	$alt    = "alt='${alt}'"; 		else $alt='';
 		if ($width  !== null)	$width  = "width='${width}'"; 	else $width='';

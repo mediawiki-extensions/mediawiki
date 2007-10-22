@@ -76,6 +76,7 @@ class ParserPhase2
 	{
 		$this->pageTitle = $title;
 		$this->pageTitleHTML = $htmlTitle;	
+		return true;
 	}	 
 	/**
 		ParserPhase2 core function: gets a list of replacement to be done,

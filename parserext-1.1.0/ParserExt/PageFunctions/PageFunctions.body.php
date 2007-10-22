@@ -11,6 +11,7 @@ class PageFunctions
 	const thisType = 'other';
 
 	var $pageTitle;
+	var $pageTitleHTML;
 	
 	var $pageVars;
 
@@ -19,6 +20,7 @@ class PageFunctions
 	{	
 		$this->pageVars = array();
 		$this->pageTitle = null;
+		$this->pageTitleHTML = null;
 	}
 
 	// ===============================================================
@@ -29,9 +31,10 @@ class PageFunctions
 	}
 	private function setTitle( &$title )
 	{
-		$this->pageTitle = $title;
-		#global $wgOut;
-		#$wgOut->setPageTitle( $title );
+		$this->pageTitle = trim( $title );
+		global $wgOut;
+		$wgOut->setPageTitle( $title );
+		$this->pageTitleHTML = $wgOut->getHTMLTitle();
 	}
 
 	// ===============================================================
@@ -72,7 +75,14 @@ class PageFunctions
 	function hOutputPageBeforeHTML( &$op, &$text )
 	{
 		if ($this->pageTitle !== null)
-			$op->setPageTitle( $this->pageTitle );
+		{
+			// fool MW a bit...
+			// because of annoying little 'feature' in Article.php...
+			if ( empty( $this->pageTitle ) )
+				$op->setPageTitle('Main_Page');
+				
+			$op->setHTMLTitle( $this->pageTitleHTML );
+		}
 			
 		return true;
 	}

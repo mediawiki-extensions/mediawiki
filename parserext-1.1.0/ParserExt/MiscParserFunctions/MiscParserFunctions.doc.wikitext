@@ -1,0 +1,33 @@
+{{Extension
+|name        = MiscParserFunctions
+|status      = beta
+|type        = other
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides miscellaneous parser functions (e.g. #trim, #nowikitext).
+
+== Features ==
+* <nowiki>{{#trim: input string}}</nowiki>
+* <nowiki>{{#nowikitext: input string}}</nowiki>
+* <nowiki>{{#gettagsection: tag | article page name }}</nowiki>
+** Secure: requires the page to be protected for 'edit'
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+{{Pear|ParserExt}}
+
+== History ==
+* Adapted to StubManager's stubbing facility

@@ -32,29 +32,37 @@ class ImageLink
 	 * {{#imagelink:New Clock.gif|Admin:Show Time|alternate text}}
 	 */
 	{
-		$title = Title::newFromText( $img );
+		$ititle = Title::newFromText( $img );
 
 		// this really shouldn't happen... not much we can do here.		
-		if (!is_object($title)) return;
+		if (!is_object($ititle)) 
+			return;
 
 		// check if we are dealing with an InterWiki link
-		if ( $title->isLocal() )
+		if ( $ititle->isLocal() )
 		{
 			$image = Image::newFromName( $img );
 			if (!$image->exists()) 
 				return '[[Image:'.$img.']]';
-			
-			if (empty($page)) 
-				return 'ImageLink: missing page reference ';
-		
+	
 			$iURL = $image->getURL();
+		}
+		else
+			$iURL = $ititle->getFullURL();
+			
+		if (empty($page)) 
+			return 'ImageLink: missing page reference ';
 
-			$tURL = $title->getLocalUrl();
+		$ptitle = Title::newFromText( $page );
+				
+		if ( $ptitle->isLocal() )
+		{
+			$tURL = $ptitle->getLocalUrl();
 			$aClass=''; 			
 		}
 		else
 		{
-			$tURL = $title->getFullURL();
+			$tURL = $ptitle->getFullURL();
 			$aClass = 'class="extiw"';
 		}		
 		

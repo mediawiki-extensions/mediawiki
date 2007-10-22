@@ -2,12 +2,13 @@
 /**
  * @author Jean-Lou Dupont
  * @package SkinTools
+ * @version $Id$
  */
 //<source lang=php>
 global $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array( 
 	'name'        => 'SkinTools', 
-	'version'     => '1.0.0',
+	'version'     => '1.1.0',
 	'author'      => 'Jean-Lou Dupont', 
 	'description' => 'Provides skin level functions',
 	'url' 		=> 'http://mediawiki.org/wiki/Extension:SkinTools',						

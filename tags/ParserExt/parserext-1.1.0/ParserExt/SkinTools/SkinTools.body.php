@@ -2,6 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package SkinTools
+ * @version $Id$
  */
 //<source lang=php>
 class SkinTools
@@ -23,6 +24,7 @@ class SkinTools
 	public function mg_clearactions( &$parser )
 	{
 		$this->actions = false;
+		wfRunHooks( 'clearSkinTabActions', array(/*no parameters*/) );
 	}
 	/**
 		List of actions to remove from the current page.

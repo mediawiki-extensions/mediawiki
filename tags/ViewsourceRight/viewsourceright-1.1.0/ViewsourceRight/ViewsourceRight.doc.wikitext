@@ -1,0 +1,42 @@
+{{Extension
+|name        = ViewsourceRight
+|status      = stable
+|type        = user rights
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.1.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ViewsourceRight/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+This extension adds a 'viewsource' right. Only the users with the 'viewsource' permission can 'view' an article's source wikitext.
+
+== FEATURES ==
+* No mediawiki installation source level changes
+
+== DEPENDANCIES ==
+* [[Extension:StubManager|StubManager extension]]
+* [[Extension:HNP|HNP extension]]
+
+{{Pear|ViewsourceRight}}
+
+== HISTORY ==
+* Corrected missing 'return true' statement in hook.
+* Removed 'view source' tab when permission is not granted to user.
+* Moved Singleton invocation to end of file to accomodate some PHP versions
+* Removed dependency on ExtensionClass
+* Made 'stub'-enabled
+* Added some protection against !isset indexes in '$wgExtensionCredits'
+=== 1.0.0 ===
+* Moved to PEAR repository
+=== 1.1.0 ===
+* Added support for 'clearSkinTabActions' event.
+
+[[Category:View page extensions]]

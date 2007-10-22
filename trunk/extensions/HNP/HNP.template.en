@@ -93,6 +93,8 @@ Hierarchy: {{#hnp_h: sysop, user, * }}
 {{#hnp: * | Filesystem    | LocalSettings.php | !read, !raw, !viewsource }} 
 {{#hnp: * | Filesystem    | AdminSettings.php | !read, !raw, !viewsource }} 
 
+{{#hnp: * | Extension     | ~ | read, raw, viewsource }}
+
 <!-- BizzWiki related {{ -->
 {{#hnp: * | Main          | ~ | browse,search  }} 
 {{#hnp: * | Talk          | ~ | browse,search  }} 

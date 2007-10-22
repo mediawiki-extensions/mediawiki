@@ -35,8 +35,6 @@ class PageFunctions
 		global $wgOut;
 		$wgOut->setPageTitle( $title );
 		$this->pageTitleHTML = $wgOut->getHTMLTitle();
-		
-		wfRunHooks( 'setPageTitle', array( $this->pageTitle, $this->pageTitleHTML) );
 	}
 
 	// ===============================================================
@@ -74,17 +72,10 @@ class PageFunctions
 	 * it stays cleared. This functionality offsets what is done
 	 * in Article.php when a page title is cleared.
 	 */
-	function hOutputPageBeforeHTML( &$op, &$text )
+	function hBeforePageDisplay( &$op )
 	{
 		if ($this->pageTitle !== null)
-		{
-			// fool MW a bit...
-			// because of annoying little 'feature' in Article.php...
-			if ( empty( $this->pageTitle ) )
-				$op->setPageTitle('Main_Page');
-				
 			$op->setHTMLTitle( $this->pageTitleHTML );
-		}
 			
 		return true;
 	}

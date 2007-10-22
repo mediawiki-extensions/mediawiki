@@ -17,7 +17,7 @@ StubManager::createStub(	'PageFunctions',
 							dirname(__FILE__).'/PageFunctions.body.php',
 							null,
 							array( 'PageVarGet', 'PageVarSet', 
-									'OutputPageBeforeHTML' #for page title clear functionality
+									'BeforePageDisplay' #for page title clear functionality
 									),
 							false, // no need for logging support
 							null,	// tags

@@ -35,6 +35,8 @@ class PageFunctions
 		global $wgOut;
 		$wgOut->setPageTitle( $title );
 		$this->pageTitleHTML = $wgOut->getHTMLTitle();
+		
+		wfRunHooks( 'setPageTitle', array( $this->pageTitle, $this->pageTitleHTML) );
 	}
 
 	// ===============================================================

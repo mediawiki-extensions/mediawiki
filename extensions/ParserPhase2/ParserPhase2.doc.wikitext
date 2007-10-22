@@ -91,6 +91,8 @@ Recursive invocation is supported; example:
 * Moved to PEAR repository
 === 1.0.1 ===
 * Removed unused variable in order to avoid unecessary PHP notice
+=== 1.1.1 ===
+* Added support for hook 'setPageTitle'
 
 == TODO ==
 * possibly fix to allow mixing up (($..$)) and ((..)) patterns on the same page (TBD)

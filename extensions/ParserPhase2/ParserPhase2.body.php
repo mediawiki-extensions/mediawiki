@@ -33,7 +33,14 @@ class ParserPhase2
 	
 	static $masterPattern = "/\xfe(((?>[^\xfe\xff]+)|(?R))*)\xff/si";
 	
-	function __construct( ) {}
+	var $pageTitle;
+	var $pageTitleHTML;	
+	
+	function __construct( ) 
+	{
+		$this->pageTitle = null;
+		$this->pageTitleHTML = null;	
+	}
 
 	/**
 		The parser functions enclosed in ((@ ... @)) are executed
@@ -62,13 +69,30 @@ class ParserPhase2
 	}
 
 	/**
+	 *
+	 */
+	//wfRunHooks( 'setPageTitle', array( $this->pageTitle, $this->pageTitleHTML) );
+	public function hsetPageTitle( $title, $htmlTitle )
+	{
+		$this->pageTitle = $title;
+		$this->pageTitleHTML = $htmlTitle;	
+	}	 
+	/**
 		ParserPhase2 core function: gets a list of replacement to be done,
 		executes the referenced functions and replaces the text in of the page. 
 	 */
 	function hOutputPageBeforeHTML( &$op, &$text )
 	{
 		$this->execute( $text, 'BeforeOutput', $found );
-			
+		
+		// support for hook 'setPageTitle'
+		if ($this->pageTitle !== null)
+		{
+			if ( empty( $this->pageTitle ) )
+				$op->setPageTitle('Main Page');
+				
+			$op->setHTMLTitle( $this->pageTitleHTML );
+		}	
 		// we found some dynamic variables, disable client side caching.
 		// parser caching is not affected.
 		if ( $found )

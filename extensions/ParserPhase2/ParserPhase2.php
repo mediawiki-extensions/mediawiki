@@ -7,7 +7,7 @@
 //<source lang=php>*/
 $wgExtensionCredits['other'][] = array( 
 	'name'        => 'ParserPhase2', 
-	'version'     => '1.0.1',
+	'version'     => '1.1.1',
 	'author'      => 'Jean-Lou Dupont', 
 	'description' => "Enables performing a 'second pass' parsing over an already cached page for replacing dynamic variables",
 	'url' 		=> 'http://mediawiki.org/wiki/Extension:ParserPhase2',			
@@ -16,7 +16,9 @@ $wgExtensionCredits['other'][] = array(
 StubManager::createStub(	'ParserPhase2', 
 							dirname(__FILE__).'/ParserPhase2.body.php',
 							null,
-							array( 'OutputPageBeforeHTML','ParserAfterTidy','ParserBeforeStrip' ),
+							array( 'OutputPageBeforeHTML','ParserAfterTidy','ParserBeforeStrip',
+									'setPageTitle'
+								),
 							false,	// no need for logging support
 							null,	// tags
 							null,	// no parser functions

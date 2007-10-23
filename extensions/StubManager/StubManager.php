@@ -9,7 +9,7 @@ $wgExtensionCredits[StubManager::thisType][] = array(
 	'name'    		=> StubManager::thisName,
 	'version' 		=> StubManager::version,
 	'author'  		=> 'Jean-Lou Dupont',
-	'description'	=> 'Provides stubbing facility for extensions handling rare events. Extensions registered: ', 
+	'description'	=> 'Provides stubbing facility for extensions handling rare events. Extensions registered:<br/>', 
 	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
 );
 
@@ -259,7 +259,7 @@ class StubManager
 			foreach( self::$stubList as $index => $obj )
 			{
 				$result .= '['.self::MWbaseURI.'/Extension:'.$obj['class'].' '.$obj['class']."],  ";
-				if ( $index % 2 == 0 )
+				if ( $index % 4 == 0 )
 					$result .= "<br/>";
 			}
 				

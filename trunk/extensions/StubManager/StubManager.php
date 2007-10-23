@@ -2,11 +2,12 @@
 /**
  * @author Jean-Lou Dupont
  * @package StubManager
+ * @version $Id$
  */
 //<source lang=php>
 $wgExtensionCredits[StubManager::thisType][] = array( 
 	'name'    		=> StubManager::thisName,
-	'version' 		=> '1.0.2',
+	'version' 		=> StubManager::version,
 	'author'  		=> 'Jean-Lou Dupont',
 	'description'	=> 'Provides stubbing facility for extensions handling rare events. Extensions registered: ', 
 	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
@@ -16,7 +17,7 @@ class StubManager
 {
 	// This version number must match that of 
 	// the corresponding PEAR package.
-	const version = '1.0.2';
+	const version = '1.0.3';
 
 	// pointer to extensions directory
 	// whether be in a PEAR context or MW root installation
@@ -256,7 +257,11 @@ class StubManager
 		
 		if (!empty( self::$stubList ))
 			foreach( self::$stubList as $index => $obj )
-				$result .= '['.self::MWbaseURI.'/Extension:'.$obj['class'].' '.$obj['class']."]<br/>\n";
+			{
+				$result .= '['.self::MWbaseURI.'/Extension:'.$obj['class'].' '.$obj['class']."],  ";
+				if ( $index % 2 == 0 )
+					$result .= "<br/>";
+			}
 				
 		$result=trim($result);
 		
@@ -277,7 +282,9 @@ class StubManager
 		$data = explode( ' ', $svnId );
 		return $data[2];
 	}
-
+	/**
+	 * DEPRECATED.
+	 */
 	static function getFullUrl( $filename )
 	{ return 'http://www.bizzwiki.org/index.php?title=Filesystem:'.self::getRelativePath( $filename );	}
 
@@ -311,7 +318,7 @@ class StubManager
 			if (!isset($t[1])) 
 				continue;
 			$result[ "{$t[0]}" ] = $t[1];
-			unset( $list[$index] );
+			unset( $liste[$index] );
 		}
 		if (empty($result)) 
 			return $liste;
@@ -637,4 +644,4 @@ StubManager::$edir = realpath( dirname( dirname(__FILE__) ) );
 if (file_exists( StubManager::$edir.'/ExtensionManager/ExtensionManager.php'))
 	include StubManager::$edir.'/ExtensionManager/ExtensionManager.php';
 
-// </source>
+//</source>

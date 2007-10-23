@@ -72,7 +72,7 @@ class TagToTemplate
 			// this will populate the 'map' variable
 			// assuming of course that the page was edited with
 			// {{#tag_to_template| ... }} instructions.
-			$parser->recursiveTagParse( $tablePage );
+			$parser->parse( $tablePage, $title, new ParserOptions );
 		}
 		
 		$this->loaded = true;

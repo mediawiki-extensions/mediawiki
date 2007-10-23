@@ -4,9 +4,9 @@
 |type        = framework
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.1
+|version     = 1.0.3
 |update      =
-|mediawiki   = 1.10 1.11
+|mediawiki   = 1.10, 1.11
 |download    = pear install mediawiki/stubmanager
 |readme      =
 |changelog   = See SVN ($Id: StubManager.php 368 2007-10-03 17:10:25Z jeanlou.dupont $)
@@ -95,3 +95,5 @@ require 'extensions/StubManager/StubManager.php';
 * Adjusted for newest version of [[Extension:ExtensionManager]]
 === 1.0.2 ===
 * Updated to account for extra parameter to 'ArticleSaveComplete' hook introduced in MW1.11
+=== 1.0.3 ===
+* Corrected minor bug in 'processArgList' which caused some erratic behavior in [[Extension:PageAfterAndBefore]]

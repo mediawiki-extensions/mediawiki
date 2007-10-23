@@ -1,11 +1,11 @@
-(($disable$))((%disable%))((@disable@))
+(($parserphase2off$))((%parserphase2off%))((@parserphase2off@))
 {{Extension
 |name        = ParserPhase2
 |status      = stable
 |type        = Parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.1
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ParserPhase2/ SVN]
@@ -53,6 +53,10 @@ See [[Extension:ParserPhase2/Flow Summary]] for more details.
 ** ((% ... %))
 * Handles one invocation for the 'parser before strip' functionality:
 ** ((@ ... @))
+* Master Off functionality
+** ((%parserphase2off%)) for turning off all 'parser after tidy' processing on the page
+** ((@parserphase2off@)) for turning off all 'parser before strip' processing on the page
+** (($parserphase2off$)) for turning off all 'output before HTML' processing on the page
 
 == Usage ==
 === ParserPhase2 functionality ===
@@ -92,6 +96,8 @@ Recursive invocation is supported; example:
 * Moved to PEAR repository
 === 1.0.1 ===
 * Removed unused variable in order to avoid unecessary PHP notice
+=== 1.1.0 ===
+* Added 'master off' functionality
 
 == TODO ==
 * possibly fix to allow mixing up (($..$)) and ((..)) patterns on the same page (TBD)

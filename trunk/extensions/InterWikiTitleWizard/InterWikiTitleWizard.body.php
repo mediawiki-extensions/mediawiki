@@ -12,7 +12,7 @@ class InterWikiTitleWizard
 	public function hGetFullURL( &$title, &$url, $query )
 	{
 		// we are only interested by inter-wiki titles
-		if ( $title->isLocal() )
+		if ( !$title->isExternal() )
 			return true;
 		
 		$url = urldecode( $url );

@@ -16,6 +16,9 @@
 |example     =
 }}
 == Purpose==
+Provides allowing for special HTML character entities in inter-wiki titles. 
+This extension 'decodes' all the inter-wiki titles allowing for characters such as ' ? ' and ' = ' to be valid title characters.
+This facilitates building redirect pages to external web sites such as Google Presentation.
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]

@@ -19,7 +19,7 @@ class InterWikiTitleWizard
 		
 		// get rid of the 'rdfrom' query string because it messes up
 		// most of the external web sites I am interested in.
-		$rdfrom = strpos($url, 'rdfrom');
+		$rdfrom = strpos($url, '?rdfrom');
 		if ($rdfrom === false)
 			return true;
 		$url = substr( $url, 0, $rdfrom );

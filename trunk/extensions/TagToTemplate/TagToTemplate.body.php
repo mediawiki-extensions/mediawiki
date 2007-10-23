@@ -2,13 +2,11 @@
 /**
  * @author Jean-Lou Dupont
  * @package TagToTemplate
+ * @version $Id$
  */
 // <source lang=php>
 class TagToTemplate
 {
-	const thisType = 'tag';
-	const thisName = 'Etag';
-	
 	// 
 	static $tablePageName = 'MediaWiki:Registry/TagToTemplate';
 	static $open_pattern =  '/\<$tag(.*)\>/siU';
@@ -66,8 +64,10 @@ class TagToTemplate
 			$tablePage = $tablePageRev->getText();
 			
 			// use the global parser to parse the page in question.
-			global $wgParser;
-			$parser = clone $wgParser;
+			//global $wgParser;
+			//$parser = clone $wgParser;
+			$parser = new Parser;
+			$parser->setFunctionHook( 'tag_to_template', array( $this, 'mg_tag_to_template' ) );
 			
 			// this will populate the 'map' variable
 			// assuming of course that the page was edited with

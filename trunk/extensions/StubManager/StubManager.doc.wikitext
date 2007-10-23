@@ -97,3 +97,4 @@ require 'extensions/StubManager/StubManager.php';
 * Updated to account for extra parameter to 'ArticleSaveComplete' hook introduced in MW1.11
 === 1.0.3 ===
 * Corrected minor bug in 'processArgList' which caused some erratic behavior in [[Extension:PageAfterAndBefore]]
+* Minor enhancement to the presentation in [[Special:Version]]

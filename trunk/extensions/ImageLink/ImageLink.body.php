@@ -47,6 +47,10 @@ class ImageLink
 			return 'ImageLink: missing page reference ';
 
 		$ptitle = Title::newFromText( $page );
+		
+		// this might happen in templates...
+		if (!is_object( $ptitle ))
+			return 'ImageLink: invalid title name.';
 				
 		if ( $ptitle->isLocal() )
 		{

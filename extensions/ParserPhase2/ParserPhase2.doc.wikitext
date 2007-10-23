@@ -1,3 +1,4 @@
+(($disable$))((%disable%))((@disable@))
 {{Extension
 |name        = ParserPhase2
 |status      = stable

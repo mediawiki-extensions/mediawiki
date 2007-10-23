@@ -117,7 +117,7 @@ class ParserPhase2
 			{
 				$disable = true;
 				// get rid of artifacts...
-				$text = str_replace( $p, '', $text, 1 );
+				$text = str_replace( $p, '', $text );
 				break;
 			}
 		}

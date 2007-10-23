@@ -22,6 +22,8 @@ class InterWikiTitleWizard
 		$rdfrom = strpos($url, '?rdfrom');
 		if ($rdfrom === false)
 			return true;
+			
+		// chop it off!
 		$url = substr( $url, 0, $rdfrom );
 		
 		return true;

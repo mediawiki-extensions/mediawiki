@@ -1,4 +1,4 @@
-((@parserphase2off@))(($parserphase2off$))((%parserphase2off%))
+<!--((@parserphase2off@))(($parserphase2off$))((%parserphase2off%))-->
 {{Extension
 |name        = ParserPhase2
 |status      = stable

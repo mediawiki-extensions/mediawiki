@@ -30,8 +30,21 @@ class ParserPhase2
 				'((@' => "\xff",			
 				)
 	);
-	
+	static $quickPatterns =  array(
+	'BeforeOutput' => array(
+				'(($<$1>$))',
+				'((<$1>))'
+				),
+	'AfterTidy' => array(
+				'((%<$1>%))'
+				),
+	'BeforeStrip' => array(
+				'((@<$1>@))'
+				)
+	);	
 	static $masterPattern = "/\xfe(((?>[^\xfe\xff]+)|(?R))*)\xff/si";
+	
+	const masterOff = 'parserphase2off';
 	
 	function __construct( ) 
 	{}
@@ -42,7 +55,9 @@ class ParserPhase2
 	 */
 	public function hParserBeforeStrip( &$parser, &$text, &$mStripState )
 	{
-		$this->execute( $text, 'BeforeStrip', $found );
+		$disable = $this->checkDisableState( $text, 'BeforeStrip' );
+		if (!$disable)
+			$this->execute( $text, 'BeforeStrip', $found );
 				
 		return true; // be nice with other extensions.
 	}
@@ -57,7 +72,9 @@ class ParserPhase2
 	 */
 	public function hParserAfterTidy( &$parser, &$text )
 	{
-		$this->execute( $text, 'AfterTidy', $found );
+		$disable = $this->checkDisableState( $text, 'AfterTidy' );
+		if (!$disable)
+			$this->execute( $text, 'AfterTidy', $found );
 
 		return true; // be nice with other extensions.
 	}
@@ -68,7 +85,9 @@ class ParserPhase2
 	 */
 	function hOutputPageBeforeHTML( &$op, &$text )
 	{
-		$this->execute( $text, 'BeforeOutput', $found );
+		$disable = $this->checkDisableState( $text, 'BeforeOutput' );
+		if (!$disable)
+			$this->execute( $text, 'BeforeOutput', $found );
 		
 		// we found some dynamic variables, disable client side caching.
 		// parser caching is not affected.
@@ -81,6 +100,24 @@ class ParserPhase2
 		wfRunHooks('EndParserPhase2', array( &$op, &$text ) );
 
 		return true; // be nice with other extensions.
+	}
+	/**
+	 */
+	public function checkDisableState( $text, $phase )	 
+	{
+		$disable = false;
+		
+		$patterns = self::$quickPatterns[ $phase ];
+
+		foreach( $patterns as $pattern )
+		{
+			$p= str_replace( '<$1>', self::masterOff, $pattern );
+			$disable = strpos( $text, $p );
+			if ($disable)
+				break;
+		}
+		
+		return $disable;
 	}
 	/**
 		Multiplex method.

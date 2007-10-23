@@ -112,9 +112,10 @@ class ParserPhase2
 		foreach( $patterns as $pattern )
 		{
 			$p= str_replace( '<$1>', self::masterOff, $pattern );
-			$disable = strpos( $text, $p );
-			if ($disable)
+			$result = strpos( $text, $p );
+			if ($result !== false)
 			{
+				$disable = true;
 				// get rid of artifacts...
 				$text = str_replace( $p, '', $text );
 				break;

@@ -23,6 +23,8 @@ class TagToTemplate
 		$this->loaded = false;
 		$this->loading = false;
 		
+		$this->loadTable();		
+		
 		$this->map = array();
 	}
 	/**

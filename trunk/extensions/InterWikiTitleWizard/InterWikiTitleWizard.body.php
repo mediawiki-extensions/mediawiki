@@ -17,9 +17,12 @@ class InterWikiTitleWizard
 		
 		$url = urldecode( $url );
 		
-		// get rid of the query string because it messes up
+		// get rid of the 'rdfrom' query string because it messes up
 		// most of the external web sites I am interested in.
-		$query = '';
+		$rdfrom = strpos($url, 'rdfrom');
+		if ($rdfrom === false)
+			return true;
+		$url = substr( $url, 0, $rdfrom );
 		
 		return true;
 	}	

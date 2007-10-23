@@ -4,12 +4,12 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.1
+|version     = 1.0.2
 |update      =
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/extensions/ImageLink/ SVN]
 |readme      =
-|changelog   = See SVN ($Id: ImageLink_stub.php 781 2007-09-15 19:54:24Z jeanlou.dupont $)
+|changelog   = See SVN ($Id$)
 |description = 
 |parameters  =
 |rights      =
@@ -39,6 +39,8 @@ Example:
 * Added non-existing link (i.e. red link) when image page does not exist
 * Moved to PEAR distribution repository.
 * Added support for interwiki image.
+=== 1.0.2 ===
+* Fixed minor issue when page title isn't valid; this situation can occur in templates (for example).
 
 [[Category:Image map extensions]]
 [[Category:Link extensions]]

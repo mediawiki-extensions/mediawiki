@@ -16,12 +16,15 @@ class TagToTemplate
 	static $open_replace = '{{$tag|$params|';
 	static $close_replace = '}}';
 	var $loaded;
-
+	var $loading;
+	
 	var $map;
 	
 	public function __construct() 
 	{ 
 		$this->loaded = false;
+		$this->loading = false;
+		
 		$this->map = array();
 	}
 	/**
@@ -39,6 +42,9 @@ class TagToTemplate
 	 */
 	public function hParserBeforeStrip( &$parser, &$text, &$strip_state )
 	{
+		if ($this->loading)
+			return true;
+			
 		if (!$this->loaded)
 			$this->loadTable();
 	
@@ -50,8 +56,8 @@ class TagToTemplate
 	 */
 	private function loadTable()
 	{
-		$this->loaded = true;
-		
+		$this->loading = true;		
+				
 		$title = Title::newFromText( self::$tablePageName );
 		$tablePageRev = Revision::newFromTitle( $title );
 		
@@ -68,6 +74,9 @@ class TagToTemplate
 		// assuming of course that the page was edited with
 		// {{#tag_to_template| ... }} instructions.
 		$parser->recursiveTagParse( $tablePage );
+
+		$this->loaded = true;
+		$this->loading = false;		
 	}
 	private function substitute( &$text )
 	{

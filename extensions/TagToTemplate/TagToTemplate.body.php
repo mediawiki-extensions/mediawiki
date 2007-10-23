@@ -45,8 +45,8 @@ class TagToTemplate
 		if ($this->loading)
 			return true;
 			
-		if (!$this->loaded)
-			$this->loadTable();
+#		if (!$this->loaded)
+#			$this->loadTable();
 	
 		$this->substitute( $text );
 		

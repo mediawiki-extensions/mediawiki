@@ -25,4 +25,7 @@ This facilitates building redirect pages to external web sites such as Google Pr
 
 {{Pear|InterWikiTitleWizard}}
 
+== TODO ==
+* Add configuration for the query string on a per-interwiki prefix basis.
+
 == History ==

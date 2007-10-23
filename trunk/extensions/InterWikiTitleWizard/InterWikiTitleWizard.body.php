@@ -16,7 +16,11 @@ class InterWikiTitleWizard
 			return true;
 		
 		$url = urldecode( $url );
-			
+		
+		// get rid of the query string because it messes up
+		// most of the external web sites I am interested in.
+		$query = '';
+		
 		return true;
 	}	
 }

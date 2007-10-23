@@ -7,7 +7,7 @@
 //<source lang=php>
 $wgExtensionCredits['other'][] = array( 
 	'name'        	=> 'ImageLink', 
-	'version'     	=> '1.0.1',
+	'version'     	=> '1.0.2',
 	'author'      	=> 'Jean-Lou Dupont', 
 	'description' 	=> 'Provides a clickable image link',
 	'url' 			=> 'http://mediawiki.org/wiki/Extension:ImageLink',			

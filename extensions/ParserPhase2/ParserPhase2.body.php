@@ -55,8 +55,7 @@ class ParserPhase2
 	 */
 	public function hParserBeforeStrip( &$parser, &$text, &$mStripState )
 	{
-		$disable = $this->checkDisableState( $text, 'BeforeStrip' );
-		if (!$disable)
+		if (!$this->checkDisableState( $text, 'BeforeStrip' ))
 			$this->execute( $text, 'BeforeStrip', $found );
 				
 		return true; // be nice with other extensions.
@@ -72,8 +71,7 @@ class ParserPhase2
 	 */
 	public function hParserAfterTidy( &$parser, &$text )
 	{
-		$disable = $this->checkDisableState( $text, 'AfterTidy' );
-		if (!$disable)
+		if (!$this->checkDisableState( $text, 'AfterTidy' ))
 			$this->execute( $text, 'AfterTidy', $found );
 
 		return true; // be nice with other extensions.
@@ -85,9 +83,10 @@ class ParserPhase2
 	 */
 	function hOutputPageBeforeHTML( &$op, &$text )
 	{
-		$disable = $this->checkDisableState( $text, 'BeforeOutput' );
-		if (!$disable)
-			$this->execute( $text, 'BeforeOutput', $found );
+		if ( $this->checkDisableState( $text, 'BeforeOutput' ))
+			return true;
+
+		$this->execute( $text, 'BeforeOutput', $found );
 		
 		// we found some dynamic variables, disable client side caching.
 		// parser caching is not affected.
@@ -102,6 +101,7 @@ class ParserPhase2
 		return true; // be nice with other extensions.
 	}
 	/**
+	 * Per-page Master Off
 	 */
 	public function checkDisableState( $text, $phase )	 
 	{
@@ -114,7 +114,11 @@ class ParserPhase2
 			$p= str_replace( '<$1>', self::masterOff, $pattern );
 			$disable = strpos( $text, $p );
 			if ($disable)
+			{
+				// get rid of artifacts...
+				$text = str_replace( $p, '', $text );
 				break;
+			}
 		}
 		
 		return $disable;

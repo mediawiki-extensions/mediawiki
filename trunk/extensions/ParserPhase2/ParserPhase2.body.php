@@ -103,7 +103,7 @@ class ParserPhase2
 	/**
 	 * Per-page Master Off
 	 */
-	public function checkDisableState( $text, $phase )	 
+	public function checkDisableState( &$text, $phase )	 
 	{
 		$disable = false;
 		

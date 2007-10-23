@@ -57,6 +57,7 @@ See [[Extension:ParserPhase2/Flow Summary]] for more details.
 ** ((%parserphase2off%)) for turning off all 'parser after tidy' processing on the page
 ** ((@parserphase2off@)) for turning off all 'parser before strip' processing on the page
 ** (($parserphase2off$)) for turning off all 'output before HTML' processing on the page
+** Remove the space between the keyword 'parserphase2off' and the enclosing delimiters for proper usage.
 
 == Usage ==
 === ParserPhase2 functionality ===

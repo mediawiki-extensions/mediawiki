@@ -31,16 +31,16 @@ class ParserPhase2
 				)
 	);
 	static $quickPatterns =  array(
-	'BeforeOutput' => array(
-				'(($<$1>$))',
-				'((<$1>))'
-				),
-	'AfterTidy' => array(
-				'((%<$1>%))'
-				),
-	'BeforeStrip' => array(
-				'((@<$1>@))'
-				)
+	'BeforeOutput' =>	array(
+							'(($<$1>$))',
+							'((<$1>))'
+						),
+	'AfterTidy' =>		array(
+							'((%<$1>%))'
+						),
+	'BeforeStrip' =>	array(
+							'((@<$1>@))'
+						)
 	);	
 	static $masterPattern = "/\xfe(((?>[^\xfe\xff]+)|(?R))*)\xff/si";
 	
@@ -117,7 +117,7 @@ class ParserPhase2
 			{
 				$disable = true;
 				// get rid of artifacts...
-				$text = str_replace( $p, '', $text );
+				$text = str_replace( $p, '', $text, 1 );
 				break;
 			}
 		}

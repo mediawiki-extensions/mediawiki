@@ -61,20 +61,20 @@ class TagToTemplate
 		$title = Title::newFromText( self::$tablePageName );
 		$tablePageRev = Revision::newFromTitle( $title );
 		
-		if (!is_object( $tablePageRev ))
-			return;
+		if (is_object( $tablePageRev ))
+		{
+			$tablePage = $tablePageRev->getText();
 			
-		$tablePage = $tablePageRev->getText();
+			// use the global parser to parse the page in question.
+			global $wgParser;
+			$parser = clone $wgParser;
+			
+			// this will populate the 'map' variable
+			// assuming of course that the page was edited with
+			// {{#tag_to_template| ... }} instructions.
+			$parser->recursiveTagParse( $tablePage );
+		}
 		
-		// use the global parser to parse the page in question.
-		global $wgParser;
-		$parser = clone $wgParser;
-		
-		// this will populate the 'map' variable
-		// assuming of course that the page was edited with
-		// {{#tag_to_template| ... }} instructions.
-		$parser->recursiveTagParse( $tablePage );
-
 		$this->loaded = true;
 		$this->loading = false;		
 	}

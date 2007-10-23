@@ -66,13 +66,14 @@ class TagToTemplate
 			// use the global parser to parse the page in question.
 			//global $wgParser;
 			//$parser = clone $wgParser;
+			global $wgUser;
 			$parser = new Parser;
 			$parser->setFunctionHook( 'tag_to_template', array( $this, 'mg_tag_to_template' ) );
 			
 			// this will populate the 'map' variable
 			// assuming of course that the page was edited with
 			// {{#tag_to_template| ... }} instructions.
-			$parser->parse( $tablePage, $title, new ParserOptions );
+			$parser->parse( $tablePage, $title, new ParserOptions( $wgUser) );
 		}
 		
 		$this->loaded = true;

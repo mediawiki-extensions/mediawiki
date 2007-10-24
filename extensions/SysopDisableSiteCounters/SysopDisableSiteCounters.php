@@ -15,7 +15,8 @@ $wgExtensionCredits['other'][] = array(
 );
 
 global $wgExtensionFunctions;
-$wgExtensionFunctions[] = create_function('','
+$wgExtensionFunctions[] = create_function('',
+'
 	global $wgUser, $wgDisableCounters;
 	if (in_array( "sysop", $wgUser->getEffectiveGroups() ))
 		$wgDisableCounters = true;

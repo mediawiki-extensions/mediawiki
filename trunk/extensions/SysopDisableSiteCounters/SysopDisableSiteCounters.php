@@ -14,7 +14,11 @@ $wgExtensionCredits['hook'][] = array(
 	'description' 	=> "Provides disabling the site statistic counters when pages are viewed by users of the sysop group.", 
 );
 
-global $wgUser, $wgDisableCounters;
-if (in_array( 'sysop', $wgUser->getEffectiveGroups() ))
-	$wgDisableCounters = true;
+global $wgExtensionFunctions;
+$wgExtensionFunctions[] = create_function('','
+	global $wgUser, $wgDisableCounters;
+	if (in_array( "sysop", $wgUser->getEffectiveGroups() ))
+		$wgDisableCounters = true;
+	return;
+');
 //</source>

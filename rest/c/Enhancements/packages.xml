@@ -6,4 +6,5 @@
     http://pear.php.net/dtd/rest.categorypackages.xsd">
  <p xlink:href="/rest/p/imagepageex">ImagePageEx</p>
  <p xlink:href="/rest/p/useraccountmanager">UserAccountManager</p>
+ <p xlink:href="/rest/p/sysopdisablesitecounters">SysopDisableSiteCounters</p>
 </l>

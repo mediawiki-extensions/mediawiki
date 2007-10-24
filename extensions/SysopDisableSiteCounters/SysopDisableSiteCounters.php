@@ -6,7 +6,7 @@
  */
 // <source lang=php>
 global $wgExtensionCredits;
-$wgExtensionCredits['hook'][] = array( 
+$wgExtensionCredits['other'][] = array( 
 	'name'    		=> 'SysopDisableSiteCounters',
 	'version'		=> '1.0.0',
 	'author'		=> 'Jean-Lou Dupont',

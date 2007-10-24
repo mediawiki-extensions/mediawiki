@@ -1,0 +1,26 @@
+{{Extension
+|name        = SysopDisableSiteCounters
+|status      = beta
+|type        = 
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/SysopDisableSiteCounters SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+Provides disabling the site statistic counters when pages are viewed by users of the sysop group.
+
+== Dependancy ==
+* None.
+
+{{Pear|SysopDisableSiteCounters}}
+
+== History ==

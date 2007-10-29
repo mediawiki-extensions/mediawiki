@@ -2,6 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package SecureHTML
+ * @version $Id$
  */
 //<source lang=php>
 class SecureHTML
@@ -23,6 +24,8 @@ class SecureHTML
 
 	function __construct( )
 	{
+		self::$exemptNamespaces[] = NS_MEDIAWIKI;
+		
 		// default exempt namespaces from the BizzWiki platform.
 		// won't affect installs of the extension outside the BizzWiki platform.
 		if (defined('NS_BIZZWIKI'))   self::$exemptNamespaces[] = NS_BIZZWIKI;

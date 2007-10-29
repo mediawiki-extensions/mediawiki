@@ -12,6 +12,9 @@ class HeadScripts
 	const thisName = 'HeadScripts';
 	const rpage = 'HeadScripts';
 
+	const scBegin = '<script type="text/javascript" src="';
+	const scEnd   = '"></script>';	
+
 	// TABLE FORMATTING related
 	static $columnSeparator = "||";
 	static $rowStart = "|";
@@ -44,7 +47,7 @@ class HeadScripts
 			return true;
 		
 		foreach( $params as $scriptURI )
-			$op->addScript( $scriptURI );
+			$op->addScript( self::scBegin.$scriptURI.self::scEnd );
 		
 		return true;
 	}

@@ -41,11 +41,11 @@ class ToolboxExtender
 		// no... that's too bad; go the long way then.
 		$rev = Revision::newFromTitle( $titleObject );
 		if (is_object( $rev ))
-			return $this->parse( $rev->getText() );
+			return $this->parse( $titleObject, $rev->getText() );
 		
 		return null;
 	}
-	protected function parse( &$wikitext )
+	protected function parse( &$title, &$text )
 	{
 		global $wgParser, $wgUser;
 		

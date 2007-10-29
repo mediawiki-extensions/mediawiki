@@ -7,7 +7,7 @@
 //<source lang=php>
 $wgExtensionCredits['other'][] = array( 
 	'name'        	=> 'ImageLink', 
-	'version'     	=> '1.0.2',
+	'version'     	=> '1.1.0',
 	'author'      	=> 'Jean-Lou Dupont', 
 	'description' 	=> 'Provides a clickable image link',
 	'url' 			=> 'http://mediawiki.org/wiki/Extension:ImageLink',			
@@ -19,7 +19,7 @@ if (class_exists('StubManager'))
 								array('ParserAfterTidy'),	// hooks
 								false, 						// no need for logging support
 								null,						// tags
-								array('imagelink'),			// parser Functions
+								array('imagelink', 'imagelink_raw' ),	// parser Functions
 								null
 							 );
 else

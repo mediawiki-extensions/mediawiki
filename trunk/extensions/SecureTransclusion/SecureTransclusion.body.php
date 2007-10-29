@@ -1,7 +1,8 @@
 <?php
 /**
-	@author Jean-Lou Dupont
-	@package SecureTransclusion	
+ * @author Jean-Lou Dupont
+ * @package SecureTransclusion	
+ * @version $Id$
  */
 //<source lang=php>
 class SecureTransclusion

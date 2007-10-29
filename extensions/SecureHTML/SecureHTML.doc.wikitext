@@ -5,7 +5,7 @@
 |type2       = user rights
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/SecureHTML/ SVN]
@@ -45,6 +45,8 @@ protected in order to use 'html' tags
 * Removed dependency on ExtensionClass
 * Enabled for 'StubManager'
 * Added 'addExemptNamespaces' function
+=== 1.1.0 ===
+* Added, by default, NS_MEDIAWIKI namespace to the exemptNamespaces 
 
 == Todo ==
 * Fix for allowing more customization of 'exempt' namespaces even when using StubManager

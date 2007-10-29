@@ -51,7 +51,12 @@ class ToolboxExtender
 	}
 	protected function parse( &$title, &$text )
 	{
-		global $wgParser, $wgUser;
+		global $wgParser, $wgUser, $wgRawHtml;
+		
+		// we probably need 'raw html' to parse the page
+		// but we do not want to mess up the site config...
+		$state = $wgRawHtml;
+		$wgRawHtml = true;
 		
 		// clone the standard parser just to
 		// make sure we don't break something.
@@ -63,6 +68,8 @@ class ToolboxExtender
 										$popts, 
 										true, true, 
 										null );
+		$wgRawHtml = $state;
+		
 		return $parserOutput->getText();
 	}
 } // end class

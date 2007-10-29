@@ -12,7 +12,7 @@ class ToolboxExtender
 	public function hMonoBookTemplateToolboxEnd( &$tpl )
 	{
 		global $wgTitle;
-		if ( $wgTitle->getNamespace() == NS_MEDIAWIKI )
+		if ( $wgTitle->getNamespace() == NS_SPECIAL )
 			return true;
 			
 		// wrap the extended toolbox correctly.

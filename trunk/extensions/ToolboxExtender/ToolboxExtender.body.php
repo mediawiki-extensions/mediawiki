@@ -11,6 +11,10 @@ class ToolboxExtender
 	
 	public function hMonoBookTemplateToolboxEnd( &$tpl )
 	{
+		global $wgTitle;
+		if ( $wgTitle->getNamespace() == NS_MEDIAWIKI )
+			return true;
+			
 		// wrap the extended toolbox correctly.
 		echo "\n".'</ul></div></div>'."\n";
 		echo '<div class="portlet" id="toolbox_extended">'."\n";

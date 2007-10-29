@@ -33,7 +33,7 @@ bookmarks
 * {{#imagelink:{{DeliciousImage}}|delicious:post?url=$titleURI$&title=$title$}}
 
  <!-- below is the javascript required to 'fix' the magic words in the URI above -->
- <!-- relevant page level variables defined by MediaWiki are: wgArticlePath, wgTitle, wgServer -->
+ <!-- relevant page level variables defined by MediaWiki are: wgArticlePath, wgTitle, wgServer, wgCanonicalNamespace  -->
 
 <html><script>
 /* jQuery based
@@ -54,14 +54,24 @@ function fixMagicWords()
   });
 
 };
-function fixTitleMagicWord( href)
+function fixTitleMagicWord( href )
 {
- return href.replace( /\$title\$/g, wgTitle );
+ title = getValidTitle();
+ return href.replace( /\$title\$/g,  title );
 };
 function fixTitleUriMagicWord( href )
 {
- path = wgArticlePath.replace( /\$1/g, wgTitle );
+ title = getValidTitle();
+ path = wgArticlePath.replace( /\$1/g, title );
  return href.replace( /\$titleURI\$/g, wgServer + path );
+};
+function getValidTitle()
+{
+ title = wgTitle.replace( / /g, '_' );
+ if (wgCanonicalNamespace.length == 0)
+  return title;
+ else
+  return wgCanonicalNamespace + ':' + title;
 };
 </script></html>
 </pre>

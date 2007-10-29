@@ -11,13 +11,6 @@ class ToolboxExtender
 	
 	public function hMonoBookTemplateToolboxEnd( &$tpl )
 	{
-		global $wgTitle;
-		$ns = $wgTitle->getNamespace();
-		
-		// can't bookmark in NS_SPECIAL namespace
-		if ( NS_SPECIAL === $ns )
-			return true;
-		
 		// wrap the extended toolbox correctly.
 		echo '</ul></div></div>'."\n";
 		echo '<div class="portlet" id="toolbox_extended">'."\n";
@@ -26,8 +19,7 @@ class ToolboxExtender
 		
 		return true;
 	}
-	protected function getText( $title,
-								$ns		/* future use */ )
+	protected function getText( $title )
 	{
 		$titleObject = Title::newFromText( $title );
 		

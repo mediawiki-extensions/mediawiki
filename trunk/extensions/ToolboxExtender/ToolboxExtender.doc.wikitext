@@ -1,0 +1,30 @@
+{{Extension
+|name        = ToolboxExtender
+|status      = stable
+|type        = hook
+|hook1		 = MonoBookTemplateToolboxEnd
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = only tested on 1.11 but should work on previous versions
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ToolboxExtender/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides the capability to add arbitrary wikitext to the toolbox on the Monobook skin.
+
+== Usage ==
+Edit the page <code>MediaWiki:Registry/ToolboxExtender</code> with the desired wikitext. 
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+{{Pear|ToolboxExtender}}
+
+== History ==

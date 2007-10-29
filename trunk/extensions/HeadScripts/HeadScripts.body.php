@@ -12,6 +12,7 @@ class HeadScripts
 	const thisName = 'HeadScripts';
 	const rpage = 'HeadScripts';
 
+	// Javascript related
 	const scBegin = '<script type="text/javascript" src="';
 	const scEnd   = '"></script>';	
 
@@ -59,6 +60,7 @@ class HeadScripts
 
 		$result1 =  "[http://mediawiki.org/wiki/Extension:RegistryManager RegistryManager] is ";
 		$result1 .= (class_exists('RegistryManager')) ? 'present.':'absent.';
+		$result1 .= ' Configuration registry page available [[MediaWiki:Registry/'.self::rpage.']].';
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		

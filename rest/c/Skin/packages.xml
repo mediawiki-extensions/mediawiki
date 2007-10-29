@@ -5,4 +5,5 @@
     xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackages
     http://pear.php.net/dtd/rest.categorypackages.xsd">
  <p xlink:href="/rest/p/sidebarex">SidebarEx</p>
+ <p xlink:href="/rest/p/toolboxextender">ToolboxExtender</p>
 </l>

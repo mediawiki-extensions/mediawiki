@@ -4,21 +4,40 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo
     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
-<pi>
-<p>
- <n>SidebarEx</n>
- <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/Skin">Skin</ca>
- <l>PHP License</l>
- <s>Provides customization of the sidebar.</s>
- <d>See [http://mediawiki.org/wiki/Extension:SidebarEx]</d>
- <r xlink:href="/rest/r/sidebarex"/>
-</p>
-<a>
- <r>
-	<v>1.0.0</v>
-	<s>stable</s>
-</r>
-</a>
-</pi>
+	<pi>
+	<p>
+	 <n>SidebarEx</n>
+	 <c>mediawiki.googlecode.com/svn</c>
+	 <ca xlink:href="/rest/c/Skin">Skin</ca>
+	 <l>PHP License</l>
+	 <s>Provides customization of the sidebar.</s>
+	 <d>See [http://mediawiki.org/wiki/Extension:SidebarEx]</d>
+	 <r xlink:href="/rest/r/sidebarex"/>
+	</p>
+	<a>
+	 <r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+	</a>
+	</pi>
+
+	<pi>
+	<p>
+	 <n>ToolboxExtender</n>
+	 <c>mediawiki.googlecode.com/svn</c>
+	 <ca xlink:href="/rest/c/Skin">Skin</ca>
+	 <l>PHP License</l>
+	 <s>Provides customization of the toolbox on the Monobook skin.</s>
+	 <d>See [http://mediawiki.org/wiki/Extension:ToolboxExtender]</d>
+	 <r xlink:href="/rest/r/toolboxextender"/>
+	</p>
+	<a>
+	 <r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+	</a>
+	</pi>
+
 </f>

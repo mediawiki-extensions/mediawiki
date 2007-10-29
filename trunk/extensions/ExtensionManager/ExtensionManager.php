@@ -191,6 +191,22 @@ class ExtensionLoader
 	}
 	/**
 	 */
+	static function flushCache()
+	{
+		static $flushed = false;
+		if ( $flushed )
+			return true;
+			
+		if (!self::$realCache)
+			return false;
+			
+		self::$cache->delete( self::getKey() );		
+		
+		$flushed = true;
+		return true;
+	}
+	/**
+	 */
 	static function getKey( )
 	{
 		return '~#ExtensionManager#~';
@@ -258,12 +274,18 @@ class ExtensionLoader
 $extListe = ExtensionLoader::getList();
 if (!empty( $extListe ))
 	foreach( $extListe as $extName => $extFileName )
-		require( $extFileName);
+	{
+		$status = include $extFileName;
+		
+		// help flush uninstalled extensions in a somewhat nice way.
+		if ( false === $status )
+			ExtensionLoader::flushCache();
+	}
 
 // Update some fields in [[Special:Version]] page.
 $wgExtensionCredits['other'][] = array( 
 	'name'    		=> 'Extension Manager',
-	'version'		=> '1.1.1',
+	'version'		=> '1.1.2',
 	'author'		=> 'Jean-Lou Dupont',
 	'url'			=> 'http://www.mediawiki.org/wiki/Extension:ExtensionManager',	
 	'description' 	=> "Provides management of MediaWiki extensions.".

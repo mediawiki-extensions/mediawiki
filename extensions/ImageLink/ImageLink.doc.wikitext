@@ -7,7 +7,7 @@
 |version     = 1.1.0
 |update      =
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/extensions/ImageLink/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ImageLink/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 

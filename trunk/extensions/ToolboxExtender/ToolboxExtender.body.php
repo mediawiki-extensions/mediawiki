@@ -12,10 +12,10 @@ class ToolboxExtender
 	public function hMonoBookTemplateToolboxEnd( &$tpl )
 	{
 		// wrap the extended toolbox correctly.
-		echo '</ul></div></div>'."\n";
+		echo "\n".'</ul></div></div>'."\n";
 		echo '<div class="portlet" id="toolbox_extended">'."\n";
-		echo $this->getText( self::$tbPageTitle, $ns );
 		echo '<div class="pBody"><ul>'."\n";
+		echo $this->getText( self::$tbPageTitle, $ns );
 		
 		return true;
 	}

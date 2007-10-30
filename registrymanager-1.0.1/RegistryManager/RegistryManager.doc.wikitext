@@ -1,0 +1,40 @@
+{{Extension
+|name        = RegistryManager
+|status      = beta
+|type        = parser
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.1
+|update      =
+|mediawiki   = 1.11
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/RegistryManager/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==   
+Provides a facility for extensions to store/retrieve configuration parameters.
+
+== Features ==
+* Accessible through a wiki page in the MediaWiki namespace under the 'Registry' sub-namespace
+** MediaWiki:Registry/$page
+* Fires event 'RegistryPageChanged' hook
+* Listens for 'RegistryPageGet' and 'RegistryPageSet' events
+
+== USAGE NOTES ==
+
+== Example ==
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+{{Pear|RegistryManager}}
+
+== History ==
+=== 1.0.1 ===
+* Fixed caching issue
+
+== TODO ==

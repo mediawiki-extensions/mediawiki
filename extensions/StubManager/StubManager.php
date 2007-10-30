@@ -17,7 +17,7 @@ class StubManager
 {
 	// This version number must match that of 
 	// the corresponding PEAR package.
-	const version = '1.0.3';
+	const version = '1.0.4';
 
 	// pointer to extensions directory
 	// whether be in a PEAR context or MW root installation
@@ -245,9 +245,9 @@ class StubManager
 		$wgHooks['SpecialVersionExtensionTypes'][] = 'StubManager::hUpdateExtensionCredits';
 		
 		// load all the extensions so they get a change to show their credits
-		foreach( self::$stubList as $index => $e )
+		#foreach( self::$stubList as $index => $e )
 			#echo $e['classfilename'].' ';
-			require_once( $e['classfilename'] );
+		#	require_once( $e['classfilename'] );
 	}
 	public function hUpdateExtensionCredits( &$sp, &$ext )
 	{

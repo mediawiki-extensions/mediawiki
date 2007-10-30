@@ -4,7 +4,7 @@
 |type        = framework
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.3
+|version     = 1.0.4
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = pear install mediawiki/stubmanager
@@ -98,3 +98,5 @@ require 'extensions/StubManager/StubManager.php';
 === 1.0.3 ===
 * Corrected minor bug in 'processArgList' which caused some erratic behavior in [[Extension:PageAfterAndBefore]]
 * Minor enhancement to the presentation in [[Special:Version]]
+=== 1.0.4 ===
+* Small patch for even greater performance

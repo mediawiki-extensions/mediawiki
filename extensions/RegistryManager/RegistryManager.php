@@ -7,7 +7,7 @@
 //<source lang=php>
 $wgExtensionCredits['other'][] = array( 
 	'name'        => 'RegistryManager', 
-	'version'     => '1.0.0',
+	'version'     => '1.0.1',
 	'author'      => 'Jean-Lou Dupont', 
 	'description' => "Manages a registry for extensions' usage",
 	'url'		=> 'http://mediawiki.org/wiki/Extension:RegistryManager',

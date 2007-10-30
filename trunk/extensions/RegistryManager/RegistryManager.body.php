@@ -100,8 +100,8 @@ class RegistryManager
 		
 		// only start recording when we are updating
 		// the registry page.
-		if ($action !== 'submit')
-			return true;
+		#if ($action !== 'submit')
+		#	return true;
 			
 		$this->params[$page][$key] = $value;
 		return true;
@@ -122,7 +122,10 @@ class RegistryManager
 		{
 			$result = $this->loadAndParse( $page );
 			if ($result)
-				$params = $this->params[$page];				
+			{
+				$params = $this->params[$page];
+				$this->writeToCache( $page, $this->params[$page] );				
+			}
 		}
 			
 		return true;			
@@ -217,6 +220,10 @@ class RegistryManager
 		$key = self::getKey( 'Registry/'.$page );
 				
 		$s = self::$cache->get( $key );
+		
+		// make sure we are returning the right status...
+		if ( $s === false )
+			return null;
 
 		return @unserialize( $s );
 	}

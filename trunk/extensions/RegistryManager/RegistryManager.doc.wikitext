@@ -4,7 +4,7 @@
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/RegistryManager/ SVN]
@@ -34,5 +34,7 @@ Provides a facility for extensions to store/retrieve configuration parameters.
 {{Pear|RegistryManager}}
 
 == History ==
+=== 1.0.1 ===
+* Fixed caching issue
 
 == TODO ==

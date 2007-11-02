@@ -43,12 +43,14 @@ class PageAfterAndBefore
 		$this->setupParams($params);
 		
 		$res = $this->getPages( $params['namespace'], '' , 'asc', $params['category'] );
+
+		if (!isset($res[0]))
+			return null;
+
 		// filter out if requested and currentpage==firstpage
 		$currentpage = $this->getCurrentPage( $ns, $title );
 		if ( ($params['filtercurrent']=='yes') && ( $res[0]== $currentpage))
 			return '';
-		if (!isset($res[0]))
-			return null;
 		return $res[0];
 	}
 	public function mg_lastpage( &$parser )
@@ -58,12 +60,15 @@ class PageAfterAndBefore
 		$this->setupParams($params);
 
 		$res = $this->getPages( $params['namespace'], '' , 'desc', $params['category'] );		
+
+		if (!isset($res[0]))
+			return null;
+
 		// filter out if requested and currentpage==lastpage
 		$currentpage = $this->getCurrentPage( $ns, $title );
 		if ( ($params['filtercurrent']=='yes') && ( $res[0]== $currentpage))
 			return '';
-		if (!isset($res[0]))
-			return null;
+
 		return $res[0];
 	}
 

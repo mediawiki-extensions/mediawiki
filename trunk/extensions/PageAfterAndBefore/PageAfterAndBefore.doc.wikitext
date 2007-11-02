@@ -4,10 +4,10 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.82, 1.93, 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/PageAfterAndBefore SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 
@@ -37,3 +37,5 @@ Where:
 {{Pear|PageAfterAndBefore}}
 
 == HISTORY ==
+=== 1.0.1 ===
+* Fixed minor in 'firstpage' and 'lastpage' causing some PHP notice

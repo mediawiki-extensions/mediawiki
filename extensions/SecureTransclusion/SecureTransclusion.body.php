@@ -12,7 +12,7 @@ class SecureTransclusion
 	
 	public function __construct() {}
 	
-	public function mg_strans( &$parser, $iwpage )
+	public function mg_strans( &$parser, $iwpage, $errorMessage = null )
 	{
 		if (!self::checkExecuteRight( $parser->mTitle ))
 			return 'SecureTransclusion: '.wfMsg('badaccess');
@@ -23,6 +23,14 @@ class SecureTransclusion
 		
 		$uri = $title->getFullUrl();
 		$text = Http::get( $uri );
+		
+		// if we didn't get succeed, turn off parser caching
+		// hoping to get lucky next time around.
+		if (false === $text)
+		{
+			$parser->disableCache();
+			return $errorMessage;
+		}
 			
 		return $text;
 	}

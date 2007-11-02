@@ -4,7 +4,7 @@
 |type1       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.11
 |download    = see Installation
@@ -25,14 +25,14 @@ Provides secure transcluding of interwiki wikitext pages accessible without the 
 ** Or, lastly, the last contributor to the page has the 'strans' right
 
 == Usage ==
-<nowiki>{{#strans: interwiki link }}</nowiki>
+<nowiki>{{#strans: interwiki link | [error message] }}</nowiki>
 
 === Setting InterWiki Links ===
 See [[Extension:InterWikiLinkManager|InterWikiLinkManager extension]] for more details.
 
 == Example ==
 Assuming the interwiki link 'mwgc' points to [http://mediawiki.googlecode.com/svn/trunk PEAR Channel]:
-<nowiki>{{#strans: mwgc:extensions/AddScriptCss/AddScriptCss.doc.wikitext }}</nowiki> would fetch the page 
+<nowiki>{{#strans: mwgc:extensions/AddScriptCss/AddScriptCss.doc.wikitext | Page unavailable! }}</nowiki> would fetch the page 
 [http://mediawiki.googlecode.com/svn/trunk/extensions/AddScriptCss/AddScriptCss.doc.wikitext] and parse it.
 
 == Security Note ==
@@ -45,6 +45,11 @@ considerable care when using templates on the same page.
 * [[Extension:StubManager|StubManager extension]]
 ** Automatically resolved if using PEAR
 
+== Notes ==
+* This extension relies on the global parameter <code>$wgHTTPTimeout</code> which is used in the <code>Http::get</code> method.
+
 {{Pear|SecureTransclusion}}
 
 == History ==
+=== 1.0.1 ===
+* Added better error handling in case of Http::get method failing to retrieve a page.

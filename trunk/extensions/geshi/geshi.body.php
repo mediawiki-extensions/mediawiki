@@ -80,7 +80,7 @@ class geshiClass
 	}
 	private function highlight( &$text, $lang='php', $lines=false )
 	{
-        $geshi = new GeSHi($text, $lang );	
+        $geshi = new GeSHi( trim( $text, "\r\n" ), $lang );	
 
         $geshi->enable_classes(); 
         $geshi->set_header_type(GESHI_HEADER_PRE); 

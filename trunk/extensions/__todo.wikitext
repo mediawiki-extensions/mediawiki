@@ -4,3 +4,6 @@
 
 == TagToTemplate ==
 * FIX!!!
+
+=== geshi ===
+* did a minor patch -> issue a minor release

@@ -4,7 +4,7 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.1.0
+|version     = 1.1.1
 |update      =
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ImageLink/ SVN]
@@ -43,6 +43,8 @@ Example:
 * Fixed minor issue when page title isn't valid; this situation can occur in templates (for example).
 === 1.1.0 ===
 * Added '#imagelink_raw' parser function
+=== 1.1.1 ===
+* Adjusted to return '' when $page parameter is empty; helps with templating with [[Extension:PageAfterAndBefore]]
 
 [[Category:Image map extensions]]
 [[Category:Link extensions]]

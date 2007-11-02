@@ -81,7 +81,7 @@ class ImageLink
 			$iURL = $ititle->getFullURL();
 			
 		if (empty($page)) 
-			return 'ImageLink: missing page reference ';
+			return '';
 
 		$ptitle = Title::newFromText( $page );
 		

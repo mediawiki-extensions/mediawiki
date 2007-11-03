@@ -6,7 +6,7 @@
 |hook2		 = BeforePageDisplay
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
@@ -18,7 +18,7 @@
 |example     =
 }}
 == Purpose ==   
-Provides adding scripts to the site's HEAD. 
+Provides adding scripts & css links to the site's HEAD. 
 
 == Features ==
 * Secure: only users allowed to access the namespace ''MediaWiki''
@@ -29,6 +29,7 @@ Provides adding scripts to the site's HEAD.
 Here is an example of 'MediaWiki:Registry/HeadScripts' page:
 <pre>
 	{| border=1
+	{{#headcss:http://some_uri.css|some_css }}	
 	{{#headscript:http://code.jquery.com/jquery-latest.min.js|jQuery}}
 	|}
 </pre>

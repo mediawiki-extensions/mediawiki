@@ -21,7 +21,7 @@ if (class_exists('StubManager'))
 	global $wgExtensionCredits;
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'HeadScripts',
-		'version'		=> '1.0.0',
+		'version'		=> '1.1.0',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:HeadScripts',	
 		'description' 	=> "Provides the facility to add HEAD scripts from a secure page.", 

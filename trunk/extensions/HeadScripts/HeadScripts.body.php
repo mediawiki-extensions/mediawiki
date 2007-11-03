@@ -14,7 +14,9 @@ class HeadScripts
 
 	// Javascript related
 	const scBegin = '<script type="text/javascript" src="';
-	const scEnd   = '"></script>';	
+	const scEnd   = '"></script>';
+	const cssBegin= '<link rel="stylesheet" type="text/css" href="';
+	const cssEnd  = '" />';
 
 	// TABLE FORMATTING related
 	static $columnSeparator = "||";
@@ -27,15 +29,37 @@ class HeadScripts
 	public function mg_headscript( &$parser, $uri, $notes = null )
 	{
 		static $index = 0;
+		
 		$page = self::rpage;
-		wfRunHooks( 'RegistryPageSet', array( $page, $index++, $uri ));
+		wfRunHooks( 'RegistryPageSet',	array( $page, $index++, 
+											array( 'type' => 'js', 'uri' => $uri ) ));
 		
 		// Format a nice wikitext line
 		return	self::$rowStart.
+				'js'.self::$columnSeparator.	
+				'script ['.$uri.']'.self::$columnSeparator.
+				$notes."\r\n".
+				self::$rowEnd."\r\n";
+	}
+	/**
+		{{#headcss: uri [| notes] }}
+	 */
+	public function mg_headcss( &$parser, $uri, $notes = null )
+	{
+		static $index = 0;
+		
+		$page = self::rpage;
+		wfRunHooks( 'RegistryPageSet',	array( $page, $index++, 
+											array( 'type' => 'css', 'uri' => $uri ) ));
+		
+		// Format a nice wikitext line
+		return	self::$rowStart.
+				'css'.self::$columnSeparator.
 				'['.$uri.']'.self::$columnSeparator.
 				$notes."\r\n".
 				self::$rowEnd."\r\n";
 	}
+
 	/**
 	 *
 	 */
@@ -43,12 +67,23 @@ class HeadScripts
 	{
 		$params = null;
 		$page = self::rpage;
+		
 		wfRunHooks( 'RegistryPageGet', array( $page, &$params) );
+		
 		if (empty( $params ) )
 			return true;
 		
-		foreach( $params as $scriptURI )
-			$op->addScript( self::scBegin.$scriptURI.self::scEnd );
+		foreach( $params as &$e )
+			switch( $e['type'])
+			{
+				case 'js': 
+					$op->addScript( self::scBegin.$e['uri'].self::scEnd );
+					break;
+				case 'css': 
+					$op->addScript( self::cssBegin.$e['uri'].self::cssEnd );
+					break;
+			}
+
 		
 		return true;
 	}

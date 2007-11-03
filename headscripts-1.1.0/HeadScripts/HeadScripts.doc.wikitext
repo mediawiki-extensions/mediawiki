@@ -1,0 +1,45 @@
+{{Extension
+|name        = HeadScripts
+|status      = beta
+|type        = parser
+|hook1		 = SpecialVersionExtensionTypes
+|hook2		 = BeforePageDisplay
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.1.0
+|update      =
+|mediawiki   = 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==   
+Provides adding scripts & css links to the site's HEAD. 
+
+== Features ==
+* Secure: only users allowed to access the namespace ''MediaWiki''
+* Accessible through a wiki page in the MediaWiki namespace under the 'Registry' sub-namespace
+** MediaWiki:Registry/HeadScripts
+
+== Example ==
+Here is an example of 'MediaWiki:Registry/HeadScripts' page:
+<pre>
+	{| border=1
+	{{#headcss:http://some_uri.css|some_css }}	
+	{{#headscript:http://code.jquery.com/jquery-latest.min.js|jQuery}}
+	|}
+</pre>
+
+== Dependancies ==
+* [[Extension:StubManager|StubManager extension]]
+* [[Extension:RegistryManager|RegistryManager extension]]
+
+{{Pear|HeadScripts}}
+
+== History ==
+
+== TODO ==

@@ -37,7 +37,7 @@ class HeadScripts
 		// Format a nice wikitext line
 		return	self::$rowStart.
 				'js'.self::$columnSeparator.	
-				'script ['.$uri.']'.self::$columnSeparator.
+				'['.$uri.']'.self::$columnSeparator.
 				$notes."\r\n".
 				self::$rowEnd."\r\n";
 	}

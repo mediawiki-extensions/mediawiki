@@ -14,7 +14,7 @@ if (class_exists('StubManager'))
 											'SpecialVersionExtensionTypes',
 											'BeforePageDisplay',
 										),
-				'mgs'			=> array( 'headscript' )
+				'mgs'			=> array( 'headscript', 'headcss' )
 				)
 	);
 

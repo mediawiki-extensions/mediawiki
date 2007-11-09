@@ -18,6 +18,11 @@
 
 	<!--$release:SecureTransclusion$-->
 			<r>
+				<v>1.0.3</v>
+				<s>stable</s>
+			</r>
+
+			<r>
 				<v>1.0.2</v>
 				<s>stable</s>
 			</r>

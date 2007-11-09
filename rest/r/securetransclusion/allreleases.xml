@@ -14,6 +14,13 @@
 <!-- THE ORDER IS IMPORTANT HERE 
      ELSE THE UPGRADE PROCESS WON'T WORK -->
 
+	<!--$release:SecureTransclusion$-->
+			<r>
+				<v>1.0.3</v>
+				<s>stable</s>
+			</r>
+
+
 	<r>
 		<v>1.0.2</v>
 		<s>stable</s>

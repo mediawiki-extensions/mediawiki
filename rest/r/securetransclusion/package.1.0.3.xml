@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2007-10-10</date>
- <time>02:44:41</time>
+ <date>2007-11-09</date>
+ <time>15:13:11</time>
 
  <version>
-  <release>1.0.0</release>
+  <release>1.0.3</release>
   <api>1.0.0</api>
  </version>
  
@@ -41,9 +41,9 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki" name="SecureTransclusion/SecureTransclusion.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="SecureTransclusion/SecureTransclusion.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="SecureTransclusion/SecureTransclusion.doc.wikitext" role="doc" />
+   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.php" role="php" />
+   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.php" role="php" />
+   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.doc.wikitext" role="doc" />
     <!-- }} -->
 
   </dir>
@@ -58,7 +58,7 @@
    </php>
 
    <pearinstaller>
-    <min>1.4.0a2</min>
+    <min>1.6.2</min>
    </pearinstaller>
  
 	<package>

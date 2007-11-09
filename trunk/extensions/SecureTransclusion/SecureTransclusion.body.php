@@ -12,7 +12,7 @@ class SecureTransclusion
 	
 	public function __construct() {}
 	
-	public function mg_strans( &$parser, $iwpage, $errorMessage = null )
+	public function mg_strans( &$parser, $iwpage, $errorMessage = null, $timeout = 5 )
 	{
 		if (!self::checkExecuteRight( $parser->mTitle ))
 			return 'SecureTransclusion: '.wfMsg('badaccess');
@@ -22,7 +22,7 @@ class SecureTransclusion
 			return 'SecureTransclusion: '.wfMsg("importbadinterwiki");
 		
 		$uri = $title->getFullUrl();
-		$text = Http::get( $uri );
+		$text = Http::get( $uri, $timeout );
 		
 		// if we didn't get succeed, turn off parser caching
 		// hoping to get lucky next time around.

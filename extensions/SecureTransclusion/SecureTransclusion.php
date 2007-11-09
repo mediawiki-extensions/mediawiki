@@ -11,7 +11,7 @@ else
 {
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'SecureTransclusion',
-		'version'		=> '1.0.1',
+		'version'		=> '1.0.2',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:SecureTransclusion',	
 		'description' 	=> "Provides secure interwiki transclusion.", 

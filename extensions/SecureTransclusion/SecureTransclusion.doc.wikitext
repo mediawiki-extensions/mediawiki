@@ -4,7 +4,7 @@
 |type1       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.1
+|version     = 1.0.3
 |update      =
 |mediawiki   = 1.11
 |download    = see Installation
@@ -53,3 +53,5 @@ considerable care when using templates on the same page.
 == History ==
 === 1.0.1 ===
 * Added better error handling in case of Http::get method failing to retrieve a page.
+=== 1.0.3 ===
+* Added 'timeout' parameter

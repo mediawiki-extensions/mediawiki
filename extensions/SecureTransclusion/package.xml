@@ -41,7 +41,7 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.php" role="php" />
+   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.body.php" role="php" />
    <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.php" role="php" />
    <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.doc.wikitext" role="doc" />
     <!-- }} -->

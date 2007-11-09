@@ -28,6 +28,7 @@
 <c xlink:href="/rest/c/SecurePHP/info.xml">SecurePHP</c>
 <c xlink:href="/rest/c/SecureProperties/info.xml">SecureProperties</c>
 <c xlink:href="/rest/c/SecureTransclusion/info.xml">SecureTransclusion</c>
+<c xlink:href="/rest/c/SimpleScript/info.xml">SimpleScript</c>
 <c xlink:href="/rest/c/Skin/info.xml">Skin</c>
 <c xlink:href="/rest/c/StubManager/info.xml">StubManager</c>
 <c xlink:href="/rest/c/TagToTemplate/info.xml">TagToTemplate</c>

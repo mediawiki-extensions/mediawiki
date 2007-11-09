@@ -16,12 +16,13 @@
 |example     =
 }}
 == Purpose==
-
-
-== Features ==
+Provides a simple and controlled way of including javascript <code><script></code> tags on a wiki page using sysop defined interwiki links.
+This capability allows, for example, the inclusion of <code>gadgets</code> e.g. Google Gadgets.
 
 == Usage ==
-<nowiki>{{#sscript: interwiki link | desired uri | [error message to show upon bad interwiki prefix] }}</nowiki>
+For proper operation, this extension requires [[Extension:ParserPhase2]] since the generated HTML markup is usually 'sanitized' by MediaWiki.
+In order to get around this limitation, [[Extension:ParserPhase2 ParserPhase2]] can be used to invoke the parser function *after* the sanitization process (i.e. tidy) is executed on the wiki page.
+<nowiki>((%#sscript: interwiki link | desired uri | [error message to show upon bad interwiki prefix] %))</nowiki>
 
 === Setting InterWiki Links ===
 See [[Extension:InterWikiLinkManager|InterWikiLinkManager extension]] for more details.
@@ -38,6 +39,7 @@ considerable care when using templates on the same page.
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
+* [[Extension:ParserPhase2|ParserPhase2 extension]]
 ** Automatically resolved if using PEAR
 
 {{Pear|SimpleScript}}

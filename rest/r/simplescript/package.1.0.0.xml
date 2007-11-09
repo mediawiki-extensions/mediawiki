@@ -20,7 +20,7 @@
  </lead>
 
  <date>2007-11-09</date>
- <time>19:36:19</time>
+ <time>19:51:57</time>
 
  <version>
   <release>1.0.0</release>
@@ -41,9 +41,9 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SimpleScript.body.php" role="php" />
-   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SimpleScript.php" role="php" />
-   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SimpleScript.doc.wikitext" role="doc" />
+   <file baseinstalldir="MediaWiki/SimpleScript" name="SimpleScript.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/SimpleScript" name="SimpleScript.php" role="php" />
+   <file baseinstalldir="MediaWiki/SimpleScript" name="SimpleScript.doc.wikitext" role="doc" />
     <!-- }} -->
 
   </dir>
@@ -65,6 +65,12 @@
 		<name>StubManager</name>
 		<channel>mediawiki.googlecode.com/svn</channel>
 		<min>1.0.0</min>
+	</package>
+
+	<package>
+		<name>ParserPhase2</name>
+		<channel>mediawiki.googlecode.com/svn</channel>
+		<min>1.1.0</min>
 	</package>
   
   </required>

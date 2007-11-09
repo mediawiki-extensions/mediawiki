@@ -41,9 +41,9 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SimpleScript.body.php" role="php" />
-   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SimpleScript.php" role="php" />
-   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SimpleScript.doc.wikitext" role="doc" />
+   <file baseinstalldir="MediaWiki/SimpleScript" name="SimpleScript.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/SimpleScript" name="SimpleScript.php" role="php" />
+   <file baseinstalldir="MediaWiki/SimpleScript" name="SimpleScript.doc.wikitext" role="doc" />
     <!-- }} -->
 
   </dir>

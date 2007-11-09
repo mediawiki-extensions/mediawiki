@@ -5,20 +5,28 @@
     xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo
     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 <pi>
-<p>
- <n>SecureTransclusion</n>
- <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/SecureTransclusion">SecureTransclusion</ca>
- <l>PHP License</l>
- <s>Provides secure interwiki transclusion of wikitext page that can't be accessed with 'action=raw'</s>
- <d>See [http://mediawiki.org/wiki/Extension:SecureTransclusion] for more details.</d>
- <r xlink:href="/rest/r/securetransclusion"/>
-</p>
-<a>
- <r>
-	<v>1.0.1</v>
-	<s>stable</s>
-</r>
-</a>
+	<p>
+		<n>SecureTransclusion</n>
+		<c>mediawiki.googlecode.com/svn</c>
+		<ca xlink:href="/rest/c/SecureTransclusion">SecureTransclusion</ca>
+		<l>PHP License</l>
+		<s>Provides secure interwiki transclusion of wikitext page that can't be accessed with 'action=raw'</s>
+		<d>See [http://mediawiki.org/wiki/Extension:SecureTransclusion] for more details.</d>
+		<r xlink:href="/rest/r/securetransclusion"/>
+	</p>
+	<a>
+
+	<!--$release:SecureTransclusion$-->
+			<r>
+				<v>1.0.2</v>
+				<s>stable</s>
+			</r>
+
+
+		<r>
+			<v>1.0.1</v>
+			<s>stable</s>
+		</r>
+	</a>
 </pi>
 </f>

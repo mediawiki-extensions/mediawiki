@@ -1,3 +1,4 @@
+(($parserphase2off$))((%parserphase2off%))
 {{Extension
 |name        = SimpleScript
 |status      = beta
@@ -21,15 +22,15 @@ This capability allows, for example, the inclusion of <code>gadgets</code> e.g. 
 
 == Usage ==
 For proper operation, this extension requires [[Extension:ParserPhase2]] since the generated HTML markup is usually 'sanitized' by MediaWiki.
-In order to get around this limitation, [[Extension:ParserPhase2 ParserPhase2]] can be used to invoke the parser function *after* the sanitization process (i.e. tidy) is executed on the wiki page.
-<nowiki>((%#sscript: interwiki link | desired uri | [error message to show upon bad interwiki prefix] %))</nowiki>
+In order to get around this limitation, [[Extension:ParserPhase2|ParserPhase2]] can be used to invoke the parser function *after* the sanitization process (i.e. tidy) is executed on the wiki page.
+<nowiki>((%#sscript| interwiki link | desired uri | [error message to show upon bad interwiki prefix] %))</nowiki>
 
 === Setting InterWiki Links ===
 See [[Extension:InterWikiLinkManager|InterWikiLinkManager extension]] for more details.
 
 == Example ==
 Assuming the interwiki link 'gmodule' points to [http://gmodules.com/ig/ifr Google Gadget Modules] (i.e. the interwiki link prefix would look like <code>http://gmodules.com/ig/ifr?$1</code>:
-<nowiki>{{#sscript: gmodule | title=Mareas+en+Bilbao&amp;border=http%3A%2F%2Fgmodules.com%2Fig%2Fimages%2F&amp;synd=open&amp;up_Port=401&amp;up_UTC=0&amp;type=googlegadget&amp;url=http%3A%2F%2Fhorloge.maree.frbateaux.net%2Fgh.xml&amp;output=js&amp;w=320&amp;h=222| wrong interwiki prefix! }}</nowiki> 
+<nowiki>((%#sscript| gmodule | title=Mareas+en+Bilbao&amp;border=http%3A%2F%2Fgmodules.com%2Fig%2Fimages%2F&amp;synd=open&amp;up_Port=401&amp;up_UTC=0&amp;type=googlegadget&amp;url=http%3A%2F%2Fhorloge.maree.frbateaux.net%2Fgh.xml&amp;output=js&amp;w=320&amp;h=222| wrong interwiki prefix! %))</nowiki> 
 
 == Security Note ==
 * It is advisable to use 'cascading protection'

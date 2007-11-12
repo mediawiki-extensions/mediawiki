@@ -5,5 +5,8 @@
 == TagToTemplate ==
 * FIX!!!
 
-=== geshi ===
+== geshi ==
 * did a minor patch -> issue a minor release
+
+== GroupManager ==
+* Broken with [[Special:Userrights]]

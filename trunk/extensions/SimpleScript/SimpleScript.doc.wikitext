@@ -4,7 +4,7 @@
 |status      = beta
 |type1       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
-|image       =
+|image       = ExtensionSimpleScript.png
 |version     = 1.0.0
 |update      =
 |mediawiki   = 1.11
@@ -29,14 +29,17 @@ In order to get around this limitation, [[Extension:ParserPhase2|ParserPhase2]] 
 See [[Extension:InterWikiLinkManager|InterWikiLinkManager extension]] for more details.
 
 == Example ==
-Assuming the interwiki link 'gmodule' points to [http://gmodules.com/ig/ifr Google Gadget Modules] (i.e. the interwiki link prefix would look like <code>http://gmodules.com/ig/ifr?$1</code>:
-<nowiki>((%#sscript| gmodule | title=Mareas+en+Bilbao&amp;border=http%3A%2F%2Fgmodules.com%2Fig%2Fimages%2F&amp;synd=open&amp;up_Port=401&amp;up_UTC=0&amp;type=googlegadget&amp;url=http%3A%2F%2Fhorloge.maree.frbateaux.net%2Fgh.xml&amp;output=js&amp;w=320&amp;h=222| wrong interwiki prefix! %))</nowiki> 
+Assuming the interwiki link 'gmodule' points to [http://gmodules.com/ig/ifr Google Gadget Modules] (i.e. the interwiki link prefix would look like <code>http://gmodules.com/ig/ifr?$1</code>):
+ <nowiki>((%#sscript| gmodule | title=Mareas+en+Bilbao&amp;border=http%3A%2F%2Fgmodules.com%2Fig%2Fimages%2F&amp;synd=open&amp;up_Port=401&amp;up_UTC=0&amp;type=googlegadget&amp;url=http%3A%2F%2Fhorloge.maree.frbateaux.net%2Fgh.xml&amp;output=js&amp;w=320&amp;h=222| wrong interwiki prefix! %))</nowiki> 
 
 == Security Note ==
 * It is advisable to use 'cascading protection'
 * When page protection is not relied on to provide protection 
 and consequently only the last contributor's right acts as protection measure, it is advised to use
 considerable care when using templates on the same page.
+
+== Google Gadgets ==
+For a list of Google Gadgets and the instructions for embedding those, please see [http://www.google.com/ig/directory?synd=open&source=gghx GoogleGadgets].
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]

@@ -8,30 +8,30 @@
 
 <!-- DO NOT EDIT BELOW HERE -->
 <ch>mediawiki.googlecode.com/svn</ch> <!-- not read by list-all command -->
-<c xlink:href="/rest/c/AddScriptCss/info.xml">AddScriptCss</c>
-<c xlink:href="/rest/c/Backup/info.xml">Backup</c>
-<c xlink:href="/rest/c/Enhancements/info.xml">Enhancements</c>
-<c xlink:href="/rest/c/ExtensionManager/info.xml">ExtensionManager</c>
-<c xlink:href="/rest/c/Google/info.xml">Google</c>
-<c xlink:href="/rest/c/GroupManager/info.xml">GroupManager</c>
-<c xlink:href="/rest/c/HeadScripts/info.xml">HeadScripts</c>
-<c xlink:href="/rest/c/InterWikiLinkManager/info.xml">InterWikiLinkManager</c>
-<c xlink:href="/rest/c/InterWikiTitleWizard/info.xml">InterWikiTitleWizard</c>
-<c xlink:href="/rest/c/Logging/info.xml">Logging</c>
-<c xlink:href="/rest/c/ManageNamespaces/info.xml">ManageNamespaces</c>
-<c xlink:href="/rest/c/Notification/info.xml">Notification</c>
-<c xlink:href="/rest/c/PageMetaData/info.xml">PageMetaData</c>
-<c xlink:href="/rest/c/ParserFunctions/info.xml">ParserFunctions</c>
-<c xlink:href="/rest/c/PermissionManagement/info.xml">PermissionManagement</c>
-<c xlink:href="/rest/c/RegistryManager/info.xml">RegistryManager</c>
-<c xlink:href="/rest/c/SecureHTML/info.xml">SecureHTML</c>
-<c xlink:href="/rest/c/SecurePHP/info.xml">SecurePHP</c>
-<c xlink:href="/rest/c/SecureProperties/info.xml">SecureProperties</c>
-<c xlink:href="/rest/c/SecureTransclusion/info.xml">SecureTransclusion</c>
-<c xlink:href="/rest/c/SimpleScript/info.xml">SimpleScript</c>
-<c xlink:href="/rest/c/Skin/info.xml">Skin</c>
-<c xlink:href="/rest/c/StubManager/info.xml">StubManager</c>
-<c xlink:href="/rest/c/TagToTemplate/info.xml">TagToTemplate</c>
-<c xlink:href="/rest/c/geshi/info.xml">geshi</c>
+	<c xlink:href="/rest/c/AddScriptCss/info.xml">AddScriptCss</c>
+	<c xlink:href="/rest/c/Backup/info.xml">Backup</c>
+	<c xlink:href="/rest/c/Enhancements/info.xml">Enhancements</c>
+	<c xlink:href="/rest/c/ExtensionManager/info.xml">ExtensionManager</c>
+	<c xlink:href="/rest/c/Google/info.xml">Google</c>
+	<c xlink:href="/rest/c/GroupManager/info.xml">GroupManager</c>
+	<c xlink:href="/rest/c/HeadScripts/info.xml">HeadScripts</c>
+	<c xlink:href="/rest/c/InterWikiLinkManager/info.xml">InterWikiLinkManager</c>
+	<c xlink:href="/rest/c/InterWikiTitleWizard/info.xml">InterWikiTitleWizard</c>
+	<c xlink:href="/rest/c/Logging/info.xml">Logging</c>
+	<c xlink:href="/rest/c/ManageNamespaces/info.xml">ManageNamespaces</c>
+	<c xlink:href="/rest/c/Notification/info.xml">Notification</c>
+	<c xlink:href="/rest/c/PageMetaData/info.xml">PageMetaData</c>
+	<c xlink:href="/rest/c/ParserFunctions/info.xml">ParserFunctions</c>
+	<c xlink:href="/rest/c/PermissionManagement/info.xml">PermissionManagement</c>
+	<c xlink:href="/rest/c/RegistryManager/info.xml">RegistryManager</c>
+	<c xlink:href="/rest/c/SecureHTML/info.xml">SecureHTML</c>
+	<c xlink:href="/rest/c/SecurePHP/info.xml">SecurePHP</c>
+	<c xlink:href="/rest/c/SecureProperties/info.xml">SecureProperties</c>
+	<c xlink:href="/rest/c/SecureTransclusion/info.xml">SecureTransclusion</c>
+	<c xlink:href="/rest/c/SimpleScript/info.xml">SimpleScript</c>
+	<c xlink:href="/rest/c/Skin/info.xml">Skin</c>
+	<c xlink:href="/rest/c/StubManager/info.xml">StubManager</c>
+	<c xlink:href="/rest/c/TagToTemplate/info.xml">TagToTemplate</c>
+	<c xlink:href="/rest/c/geshi/info.xml">geshi</c>
 
 </a>

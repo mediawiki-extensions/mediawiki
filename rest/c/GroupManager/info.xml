@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>GroupManager</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>GroupManager</a>
- <d>none</d>
+ <a>GroupManager</a> <!-- alias? -->
+ <d>$description$</d>
 </c>

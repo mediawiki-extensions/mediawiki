@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
  <n>GroupManager</n>
  <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/groupmanager">GroupManager</ca>
- <l>PHP License</l>
- <s>Provides group definition management</s>
- <d>See [http://mediawiki.org/wiki/Extension:GroupManager] for more details.</d>
+ <ca xlink:href="/rest/GroupManager">GroupManager</ca>
+ <l>$license$</l>
+ <s>$summary$</s>
+ <d>$description$</d>
  <r xlink:href="/rest/r/groupmanager"/>
 </p>

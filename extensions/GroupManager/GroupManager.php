@@ -22,7 +22,7 @@ if (class_exists('StubManager'))
 	global $wgExtensionCredits;
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'GroupManager',
-		'version'		=> '1.0.0',
+		'version'		=> '1.0.1',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:GroupManager',	
 		'description' 	=> "Provides group definition management.", 

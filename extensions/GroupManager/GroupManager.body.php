@@ -18,31 +18,61 @@ class GroupManager
 	static $rowEnd   = "|-";
 
 	/**
-		{{#wggroup: group [| notes] }}
+	 * Parser Function
+	 * {{#wggroup: group [ | rights | notes] }}
 	 */
-	public function mg_wggroup( &$parser, $groupname, $notes = null )
+	public function mg_wggroup( &$parser, $groupname, $rights = null, $notes = null )
 	{
+		// parse the list and present the formatted version 
+		$liste = $this->parseList( $rights, $bits );
+
 		static $index = 0;
 		//	public function hRegistrySetPage( &$page, &$key, &$value )
 		$page = self::rpage;
-		wfRunHooks( 'RegistryPageSet', array( $page, $index++, $groupname ));
 		
+		// The RegistryManager can only store one serialized PHP variable per key...
+		wfRunHooks( 'RegistryPageSet', 
+			array( $page, $index++, array( $groupname => $rights ) ));
+		
+	
 		// Format a nice wikitext line
 		return	self::$rowStart.
 				$groupname.self::$columnSeparator.
+				$liste.self::$columnSeparator.
 				$notes."\r\n".
 				self::$rowEnd."\r\n";
 	}
 	/**
-	 *
+	 * Parses the rights list to return a version of the said list
+	 * formatted according to how it is going to be interpreted.
+	 */
+	public function parseList( &$liste, &$bits )
+	{
+		$bits = explode( ',', $liste );
+		return implode( ',', $bits );
+	}
+	/**
+	 * This hook is used to 'inject' the defined groups
+	 * right before being needed e.g. Special:Userrights.
+	 * We are not touching the current user's groups but
+	 * only modifying the global $wgGroupPermissions array.
 	 */
 	public function hUserEffectiveGroups( &$user, &$groups )
 	{
+		global $wgGroupPermissions;
+		
 		$params = null;
 		$page = self::rpage;
 		wfRunHooks( 'RegistryPageGet', array( $page, &$params) );
+		
 		if (!empty( $params ))
-			$groups = array_merge( $groups, $params);
+			foreach( $params as $groupName => &$rightsString )
+			{
+				$this->parseList( $rightsString, $rightsArray );
+				if (!empty( $rightsArray ))
+					foreach( $rightsArray as $right )
+						$wgGroupPermissions[ $groupName ][ $right ] = true;
+			}
 		return true;
 	}
 
@@ -52,7 +82,7 @@ class GroupManager
 		global $wgExtensionCredits;
 
 		$result1 =  "[http://mediawiki.org/wiki/Extension:RegistryManager RegistryManager] is ";
-		$result1 .= (class_exists('RegistryManager')) ? 'present.':'absent.';
+		$result1 .= (class_exists('RegistryManager')) ? 'present.':'absent: extension will not work.';
 		
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		

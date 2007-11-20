@@ -24,7 +24,7 @@ class GroupManager
 	public function mg_wggroup( &$parser, $groupname, $rights = null, $notes = null )
 	{
 		// parse the list and present the formatted version 
-		$liste = $this->parseList( $rights, $bits );
+		$liste = $this->parseList( $rights, $rightsArray );
 
 		static $index = 0;
 		//	public function hRegistrySetPage( &$page, &$key, &$value )
@@ -32,7 +32,7 @@ class GroupManager
 		
 		// The RegistryManager can only store one serialized PHP variable per key...
 		wfRunHooks( 'RegistryPageSet', 
-			array( $page, $index++, array( $groupname => $rights ) ));
+			array( $page, $index++, array( 'g' => $groupname,  'r' => $rightsArray ) ));
 		
 	
 		// Format a nice wikitext line
@@ -66,9 +66,11 @@ class GroupManager
 		wfRunHooks( 'RegistryPageGet', array( $page, &$params) );
 		
 		if (!empty( $params ))
-			foreach( $params as $groupName => &$rightsString )
+			foreach( $params as $entry )
 			{
-				$this->parseList( $rightsString, $rightsArray );
+				$groupName = $entry['g'];
+				$rightsArray = $entry['r'];
+				
 				if (!empty( $rightsArray ))
 					foreach( $rightsArray as $right )
 						$wgGroupPermissions[ $groupName ][ $right ] = true;

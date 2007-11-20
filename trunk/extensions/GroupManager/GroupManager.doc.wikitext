@@ -4,7 +4,7 @@
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.1
+|version     = 1.0.2
 |update      =
 |mediawiki   = tested on 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
@@ -39,7 +39,7 @@ The rights list must be comma-delimited. The rendered page will show the rights 
 {{Pear|GroupManager}}
 
 == History ==
-===1.0.1===
+===1.0.2===
 * Added better support for $wgGroupPermission global variable thereby enabling functionality outside of BizzWiki.
 
 == TODO ==

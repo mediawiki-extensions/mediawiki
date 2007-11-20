@@ -4,7 +4,7 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.1
+|version     = 1.0.2
 |update      =
 |mediawiki   = 1.82, 1.93, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/PageAfterAndBefore SVN]
@@ -39,3 +39,5 @@ Where:
 == HISTORY ==
 === 1.0.1 ===
 * Fixed minor in 'firstpage' and 'lastpage' causing some PHP notice
+=== 1.0.2 ===
+* Fixed bug with apostrophes in title text causing MySQL errors

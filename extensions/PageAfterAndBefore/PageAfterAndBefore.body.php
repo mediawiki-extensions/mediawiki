@@ -86,12 +86,6 @@ class PageAfterAndBefore
 		);
 		StubManager::initParams( $params, $template );
 	}
-/*
-	public function mg_xyz( &$parser, $params )
-	{
-	}
-*/
-	// ===============================================================
 	public function getCurrentPage( &$ns, &$title )
 	{
 		global $wgTitle;
@@ -125,8 +119,11 @@ class PageAfterAndBefore
 			if (!is_object($title))
 				return null;
 				
-			$ns        = $title->getNamespace();
-			$key       = $title->getDBkey();
+			$ns = $title->getNamespace();
+			$unescaped_key = $title->getDBkey();
+			
+			// fix for apostrophes in title generating database access error
+			$key = $dbr->strencode( $unescaped_key );
 			
 			if ($ns !== NS_MAIN)
 				$namespace = Namespace::getCanonicalName( $ns );
@@ -145,6 +142,9 @@ class PageAfterAndBefore
 		// If a category is specified.
 		if (!empty($category))
 		{
+			// fix for apostrophes in title generating database access error			
+			$category = $dbr->strencode( $category );
+			
 			$where .= " AND {$catlinks}.cl_to = '{$category}' AND {$catlinks}.cl_from = page_id";
 			$cat = ", {$catlinks}";
 		}

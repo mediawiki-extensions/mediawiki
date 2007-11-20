@@ -8,7 +8,7 @@
 global $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array( 
 	'name'		=> 'PageAfterAndBefore',
-	'version'     => '1.0.1',
+	'version'     => '1.0.2',
 	'author'      => 'Jean-Lou Dupont', 
 	'description' => "Provides a 'magic word' interface to retrieve 'preceeding' and 'succeeding' pages relative to a given page title.",
 	'url' 		=> 'http://mediawiki.org/wiki/Extension:PageAfterAndBefore',						

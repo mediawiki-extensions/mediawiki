@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
  <n>HNP</n>
  <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
- <l>PHP License</l>
- <s>Provides enhanced permission management.</s>
- <d>Provides hierarchical and wildcard based namespace dependant and independant permission management.</d>
+ <ca xlink:href="/rest/PermissionManagement">PermissionManagement</ca>
+ <l>$license$</l>
+ <s></s>
+ <d></d>
  <r xlink:href="/rest/r/hnp"/>
 </p>

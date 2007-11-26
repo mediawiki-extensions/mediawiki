@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package HNP
- * @version $Id$
+ * @version @@package-version@@
+ * @id $Id$
  */
 //<source lang=php>
 global $IP;
@@ -20,14 +21,14 @@ if (class_exists('StubManager'))
 																	'SpecialVersionExtensionTypes',
 																	'EditFormPreloadText'
 															),
-										'mgs'			=> array( 'hnp', 'hnp_r', 'hnp_h' )
+										'mgs'			=> array( 'hnp', 'hnp_r','hnpr', 'hnp_h','hnph' )
 									)
 							);
 
 	global $wgExtensionCredits;
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'HNP',
-		'version'		=> '1.1.0',
+		'version'		=> '@@package-version@@',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:HNP',	
 		'description' 	=> "Provides enhancements to the permission management sub-system.", 

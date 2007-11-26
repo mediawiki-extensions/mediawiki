@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>PermissionManagement</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>PermissionManagement</a>
- <d>none</d>
+ <a>PermissionManagement</a> <!-- alias? -->
+ <d>Description...</d>
 </c>

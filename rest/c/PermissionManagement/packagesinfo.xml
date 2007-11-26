@@ -1,114 +1,112 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xlink="http://www.w3.org/1999/xlink" 
-	xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo 
-	http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
-	<pi>
-		<p>
-		 <n>HNP</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
-		 <l></l>
-		 <s>Provides enhanced permission management</s>
-		 <d>Provides hierarchical and wildcard based namespace dependant and independant permission management.</d>
-		 <r xlink:href="/rest/r/hnp"/>
-		</p>
-		<a>
-			<r>
-				<v>1.1.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
-	<pi>
-		<p>
-		 <n>RawRight</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
-		 <l></l>
-		 <s>MediaWiki Extension: provides permission management for 'action=raw'.</s>
-		 <d></d>
-		 <r xlink:href="/rest/r/rawright"/>
-		</p>
-		<a>
-			<r>
-				<v>1.0.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
 
-	<pi>
-		<p>
-		 <n>ViewsourceRight</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
-		 <l></l>
-		 <s>MediaWiki Extension: provides permission management for 'action=edit' when the user does not have the 'edit' right.</s>
-		 <d>Provides a finer granular control over 'action=edit'.</d>
-		 <r xlink:href="/rest/r/viewsourceright"/>
-		</p>
-		<a>
-			<r>
-				<v>1.1.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
-
-	<pi>
-		<p>
-		 <n>WatchRight</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
-		 <l></l>
-		 <s>Provides permission management watch and unwatch actions.</s>
-		 <d>See [http://mediawiki.org/wiki/Extension:WatchRight] for more details.</d>
-		 <r xlink:href="/rest/r/watchright"/>
-		</p>
-		<a>
-			<r>
-				<v>1.0.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
-
-	<pi>
-		<p>
-		 <n>ReCaptcha</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
-		 <l></l>
-		 <s>Provides captcha based user management.</s>
-		 <d>See [http://recaptcha.net/plugins/mediawiki] for more details.</d>
-		 <r xlink:href="/rest/r/recaptcha"/>
-		</p>
-		<a>
-			<r>
-				<v>1.0.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
-
-	<pi>
-		<p>
-		 <n>PageRestrictions</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
-		 <l></l>
-		 <s>Provides 'read' level page restrictions.</s>
-		 <d>See [http://mediawiki.org/wiki/Extension:PageRestrictions] for more details.</d>
-		 <r xlink:href="/rest/r/pagerestrictions"/>
-		</p>
-		<a>
-			<r>
-				<v>1.0.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
-
+<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo   http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
+		<pi>
+			<p>
+				<n>HNP</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+				<l>$license$</l>
+				<s>Provides enhanced permission management</s>
+				<d>Provides hierarchical and wildcard based namespace dependant and independant permission management.</d>
+				<r xlink:href="/rest/r/HNP">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.1.1</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>RawRight</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+				<l></l>
+				<s>MediaWiki Extension: provides permission management for 'action=raw'.</s>
+				<d></d>
+				<r xlink:href="/rest/r/rawright">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>ViewsourceRight</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+				<l></l>
+				<s>MediaWiki Extension: provides permission management for 'action=edit' when the user does not have the 'edit' right.</s>
+				<d>Provides a finer granular control over 'action=edit'.</d>
+				<r xlink:href="/rest/r/viewsourceright">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.1.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>WatchRight</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+				<l></l>
+				<s>Provides permission management watch and unwatch actions.</s>
+				<d>See [http://mediawiki.org/wiki/Extension:WatchRight] for more details.</d>
+				<r xlink:href="/rest/r/watchright">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>ReCaptcha</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+				<l></l>
+				<s>Provides captcha based user management.</s>
+				<d>See [http://recaptcha.net/plugins/mediawiki] for more details.</d>
+				<r xlink:href="/rest/r/recaptcha">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>PageRestrictions</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+				<l></l>
+				<s>Provides 'read' level page restrictions.</s>
+				<d>See [http://mediawiki.org/wiki/Extension:PageRestrictions] for more details.</d>
+				<r xlink:href="/rest/r/pagerestrictions">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
 </f>

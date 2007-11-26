@@ -5,7 +5,7 @@
 |hook1  =		userCan
 |status =		stable
 |mediawiki =	1.11
-|version =		1.1.0
+|version =		1.1.1
 |update = 
 |download = 
 |changelog = See [http://mediawiki.googlecode.com/svn/trunk/extensions/HNP/ SVN]
@@ -92,6 +92,8 @@ Please see example configuration page [[{{FULLPAGENAME}}/Example|Example]].
 === 1.1.0 ===
 * Added Magic Words support
 ** '#username#' magic word for implementing functionality akin to 'KeepYourHandsToYourself' 
+=== 1.1.1 ===
+* Attempt at fixing the parser functions '#hnp_r' and '#hnp_h' that do not work on some setup.
 
 [[Category:Namespace extensions]]
 [[Category:Edit extensions]]

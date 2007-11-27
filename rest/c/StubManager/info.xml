@@ -7,5 +7,5 @@
  <n>StubManager</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>StubManager</a> <!-- alias? -->
- <d></d>
+ <d>Base extension class</d>
 </c>

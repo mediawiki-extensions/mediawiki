@@ -10,7 +10,7 @@
  <name>StubManager</name>
  <channel>mediawiki.googlecode.com/svn</channel>
  <summary>Base class for most extension of this channel</summary>
- <description></description>
+ <description>Base extension class</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -20,7 +20,7 @@
  </lead>
 
  <date>2007-11-27</date>
- <time>18:52:57</time>
+ <time>18:59:12</time>
 
  <version>
   <release>1.0.5</release>

@@ -21,6 +21,24 @@
 		</pi>
 		<pi>
 			<p>
+				<n>ToolboxExtender</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Skin">Skin</ca>
+				<l>$license$</l>
+				<s>Toolbox enhancement through wikitext</s>
+				<d>Extension which adds the capability to include unrestricted wikitext in the toolbox area</d>
+				<r xlink:href="/rest/r/ToolboxExtender">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.1</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>SidebarEx</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/Skin">Skin</ca>

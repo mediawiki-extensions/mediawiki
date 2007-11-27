@@ -41,9 +41,9 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki" name="ToolboxExtender/ToolboxExtender.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="ToolboxExtender/ToolboxExtender.body.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="ToolboxExtender/ToolboxExtender.doc.wikitext" role="doc" />
+   <file baseinstalldir="MediaWiki/ToolboxExtender" name="ToolboxExtender.php" role="php" />
+   <file baseinstalldir="MediaWiki/ToolboxExtender" name="ToolboxExtender.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/ToolboxExtender" name="ToolboxExtender.doc.wikitext" role="doc" />
     <!-- }} -->
 
   </dir>

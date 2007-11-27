@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package ToolboxExtender
  * @version 1.0.1
- * @Id $Id: ToolboxExtender.php 651 2007-10-29 13:31:06Z jeanlou.dupont $
+ * @Id $Id: ToolboxExtender.body.php 697 2007-11-27 12:25:53Z jeanlou.dupont $
  */
 //<source lang=php>
 class ToolboxExtender

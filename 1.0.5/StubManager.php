@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package StubManager
  * @version 1.0.5
- * @Id $Id: StubManager.php 671 2007-10-30 02:19:18Z jeanlou.dupont $
+ * @Id $Id: StubManager.php 699 2007-11-27 18:54:40Z jeanlou.dupont $
  */
 //<source lang=php>
 $wgExtensionCredits[StubManager::thisType][] = array( 
@@ -29,7 +29,7 @@ class StubManager
 	static $stubList;
 	const thisType = 'other';
 	const thisName = 'StubManager';
-	const thisVersion = '$Id: StubManager.php 671 2007-10-30 02:19:18Z jeanlou.dupont $';
+	const thisVersion = '$Id: StubManager.php 699 2007-11-27 18:54:40Z jeanlou.dupont $';
 	static $logTable;
 	
 	static $paramsList = array(	'class',		// mandatory
@@ -279,7 +279,7 @@ class StubManager
 		if ( $svnId === null || $svnId == ('$'.'Id'.'$' /* fool SVN */) )
 			return null;
 			
-		// e.g. $Id: StubManager.php 671 2007-10-30 02:19:18Z jeanlou.dupont $
+		// e.g. $Id: StubManager.php 699 2007-11-27 18:54:40Z jeanlou.dupont $
 		$data = explode( ' ', $svnId );
 		return $data[2];
 	}

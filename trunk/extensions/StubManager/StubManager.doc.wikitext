@@ -4,7 +4,7 @@
 |type        = framework
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.4
+|version     = 1.0.5
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = pear install mediawiki/stubmanager
@@ -136,3 +136,6 @@ require 'extensions/StubManager/StubManager.php';
 * Minor enhancement to the presentation in [[Special:Version]]
 === 1.0.4 ===
 * Small patch for even greater performance
+=== 1.0.5 ===
+* Fix for bug in PHP v5.1.2 which caused [[Extension:HNP]] to misconfigure most of its parser functions
+

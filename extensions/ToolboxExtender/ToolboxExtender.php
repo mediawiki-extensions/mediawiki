@@ -1,8 +1,9 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package ToolboxExtender	
- * @version $Id$
+ * @package ToolboxExtender
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 if (!class_exists('StubManager'))
@@ -11,9 +12,9 @@ else
 {
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'ToolboxExtender',
-		'version'		=> '1.0.0',
+		'version'		=> '@@package-version@@',
 		'author'		=> 'Jean-Lou Dupont',
-		'url'			=> 'http://www.mediawiki.org/wiki/Extension:ShareIt',	
+		'url'			=> 'http://www.mediawiki.org/wiki/Extension:ToolboxExtender',	
 		'description' 	=> "Provides adding arbitrary wikitext to the toolbox area. ToolboxExtender page is [[MediaWiki:Registry/ToolboxExtender]].", 
 	);
 	

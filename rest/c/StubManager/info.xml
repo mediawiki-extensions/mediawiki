@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>StubManager</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>StubManager</a>
- <d>none</d>
+ <a>StubManager</a> <!-- alias? -->
+ <d></d>
 </c>

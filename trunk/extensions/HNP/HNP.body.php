@@ -93,13 +93,6 @@ class HNP
 				self::$rowEnd."\r\n";
 	}
 	/**
-	 * {{#hnpr: right | type }}
-	 */
-	public function mg_hnpr( &$parser, $right, $type, $notes = null )
-	{
-		return $this->mg_hnp_r( $parser, $right, $type, $notes );
-	}
-	/**
 	 * {{#hnp_r: right | type }}
 	 */
 	public function mg_hnp_r( &$parser, $right, $type, $notes = null )
@@ -119,13 +112,6 @@ class HNP
 				$type.self::$columnSeparator.
 				$notes."\r\n".
 				self::$rowEnd."\r\n";
-	}
-	/**
-	 * {{#hnph: groupx, groupy, ... }}
-	 */
-	public function mg_hnph( &$parser, $groupList )
-	{
-		return $this->mg_hnp_h( $parser, $groupList );
 	}
 	/**
 	 * {{#hnp_h: groupx, groupy, ... }}

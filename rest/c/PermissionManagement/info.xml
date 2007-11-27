@@ -7,5 +7,5 @@
  <n>PermissionManagement</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>PermissionManagement</a> <!-- alias? -->
- <d>Description...</d>
+ <d>Provides hierarchical and wildcard based namespace dependant and independant permission management.</d>
 </c>

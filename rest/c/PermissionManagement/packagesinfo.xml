@@ -14,6 +14,24 @@
 			</p>
 			<a>
 				<r>
+					<v>1.1.2</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>HNP</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+				<l>$license$</l>
+				<s>Provides enhanced permission management</s>
+				<d>Provides hierarchical and wildcard based namespace dependant and independant permission management.</d>
+				<r xlink:href="/rest/r/HNP">
+				</r>
+			</p>
+			<a>
+				<r>
 					<v>1.1.1</v>
 					<s>stable</s>
 				</r>

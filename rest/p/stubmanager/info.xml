@@ -5,10 +5,9 @@
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
  <n>StubManager</n>
  <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/StubManager">StubManager</ca>
- <l>PHP License</l>
- <s>MediaWiki Extension: provides stubbing and management facility for extensions.</s>
- <d>This extension provides stubbing capability (i.e. an extension is only loaded when really required) 
-	as well as extension management (i.e. registers all the installed extensions).</d>
+ <ca xlink:href="/rest/StubManager">StubManager</ca>
+ <l>$license$</l>
+ <s></s>
+ <d></d>
  <r xlink:href="/rest/r/stubmanager"/>
 </p>

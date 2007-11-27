@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>Skin</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>Skin</a>
- <d>none</d>
+ <a>Skin</a> <!-- alias? -->
+ <d>Extension which adds the capability to include unrestricted wikitext in the toolbox area</d>
 </c>

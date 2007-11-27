@@ -1,8 +1,9 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package ToolboxExtender	
- * @version $Id$
+ * @package ToolboxExtender
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 class ToolboxExtender

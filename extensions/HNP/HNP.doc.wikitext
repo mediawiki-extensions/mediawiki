@@ -5,7 +5,7 @@
 |hook1  =		userCan
 |status =		stable
 |mediawiki =	1.11
-|version =		1.1.1
+|version =		1.1.2
 |update = 
 |download = 
 |changelog = See [http://mediawiki.googlecode.com/svn/trunk/extensions/HNP/ SVN]
@@ -94,6 +94,9 @@ Please see example configuration page [[{{FULLPAGENAME}}/Example|Example]].
 ** '#username#' magic word for implementing functionality akin to 'KeepYourHandsToYourself' 
 === 1.1.1 ===
 * Attempt at fixing the parser functions '#hnp_r' and '#hnp_h' that do not work on some setup.
+=== 1.1.2 ===
+* Reverted 'fix' of version 1.1.1
+* Adjusted dependency to [[Extension:StubManager]] v1.0.5 (fix for PHP bug with version 5.1.2)
 
 [[Category:Namespace extensions]]
 [[Category:Edit extensions]]

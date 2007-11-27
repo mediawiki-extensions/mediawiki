@@ -7,10 +7,10 @@
 		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd 
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
- <name>HNP</name>
+ <name>StubManager</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Provides enhanced permission management</summary>
- <description>Provides hierarchical and wildcard based namespace dependant and independant permission management.</description>
+ <summary>Base class for most extension of this channel</summary>
+ <description></description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -20,11 +20,11 @@
  </lead>
 
  <date>2007-11-27</date>
- <time>18:54:57</time>
+ <time>18:52:57</time>
 
  <version>
-  <release>1.1.2</release>
-  <api>1.1.0</api>
+  <release>1.0.5</release>
+  <api>1.0.0</api>
  </version>
  
  <stability>
@@ -41,10 +41,7 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/HNP" name="HNP.php" role="php" />
-   <file baseinstalldir="MediaWiki/HNP" name="HNP.body.php" role="php" />
-   <file baseinstalldir="MediaWiki/HNP" name="HNP.doc.wikitext" role="doc" />
-   <file baseinstalldir="MediaWiki/HNP" name="HNP.template.en" role="php" />
+   <file baseinstalldir="MediaWiki/StubManager" name="StubManager.php" role="php" />
     <!-- }} -->
 
   </dir>
@@ -61,13 +58,7 @@
    <pearinstaller>
     <min>1.6.2</min>
    </pearinstaller>
- 
-	<package>
-		<name>StubManager</name>
-		<channel>mediawiki.googlecode.com/svn</channel>
-		<min>1.0.5</min>
-	</package>
-  
+   
   </required>
  </dependencies>
 
@@ -80,12 +71,12 @@
  </phprelease>
 
 <changelog>
-	<release>
-		<license uri="http://www.php.net/license">PHP License</license>
-		<notes>
-			* upgraded minimum requirement for [[Extension:StubManager]] in order to go around PHP bug with version 5.1.2 (or maybe others)
-		</notes>
-	</release>
+ <release>
+   <license uri="http://www.php.net/license">PHP License</license>
+<notes>
+* Fix for bug in PHP v1.5.2 which causes errors in [[Extension:HNP]]
+</notes>
+  </release>
 </changelog>
 
 </package>

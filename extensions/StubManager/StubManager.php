@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package StubManager
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 $wgExtensionCredits[StubManager::thisType][] = array( 
@@ -17,7 +18,7 @@ class StubManager
 {
 	// This version number must match that of 
 	// the corresponding PEAR package.
-	const version = '1.0.4';
+	const version = '@@package-version@@';
 
 	// pointer to extensions directory
 	// whether be in a PEAR context or MW root installation
@@ -475,7 +476,7 @@ class Stub
 		$this->setupMWs( $this->mws );
 	}
 
-	private function setupHooks( &$hooks )
+	private function setupHooks( /*&*/$hooks )
 	{
 		if (empty( $hooks ))
 			return;
@@ -491,7 +492,7 @@ class Stub
 		foreach( $hooks as $hook )
 			$wgHooks[ $hook ][] = array( &$this, self::$hook_prefix.$hook );
 	}
-	private function setupTags( &$tags )
+	private function setupTags( /*&*/ $tags )
 	{
 		if (empty( $tags ))
 			return;
@@ -500,7 +501,7 @@ class Stub
 		foreach($tags as $index => $key)
 			$wgParser->setHook( "$key", array( $this, self::$tag_prefix.$key ) );
 	}
-	private function setupMGs( &$mgs )
+	private function setupMGs( /*&*/ $mgs )
 	{
 		if (empty( $mgs ))
 			return;
@@ -509,7 +510,7 @@ class Stub
 		foreach($mgs as $index => $key)
 			$wgParser->setFunctionHook( "$key", array( $this, self::$mg_prefix.$key ) );			
 	}
-	private function setupMWs( &$mws )
+	private function setupMWs( /*&*/ $mws )
 	{
 		if (empty( $mws ))
 			return;

@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>SecureTransclusion - 1.1.2</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Performance enhancement through parser-caching support
+			</description>
+			<pubDate>Tue, 27 Nov 07 23:39:06 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>ToolboxExtender - 1.0.1</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

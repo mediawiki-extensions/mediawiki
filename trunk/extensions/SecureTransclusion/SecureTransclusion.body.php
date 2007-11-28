@@ -61,38 +61,36 @@ class SecureTransclusion
 		return false;
 	}
 	/**
-	 * 
+	 * Gets from the cache
 	 */
 	protected function getFromCache( $uri )
 	{
-		// prepare the parser cache for action.
 		$parserCache =& ParserCache::singleton();
-
 		return $parserCache->mMemc->get( $uri );
 	}
 	/**
-	 *
+	 * Saves in the cache
 	 */
 	protected function saveInCache( $uri, &$text )
 	{
-		// prepare the parser cache for action.
 		$parserCache =& ParserCache::singleton();
-
 		$parserCache->mMemc->set( $uri, $text, 86400 /*1day*/ );
 	}
 	/**
-	 *
+	 *  Fetches an external page from either the parser cache or external uri
 	 */	
 	protected function fetch( $uri, $timeout )
 	{
-		$uri = urlencode( $uri );
+		// just encode the string to make sure
+		// we don't break anything downstream.
+		$euri = urlencode( $uri );
 		
 		// try to fetch from cache
-		$text = $this->getFromCache( $uri );
+		$text = $this->getFromCache( $euri );
 		if ( $text === false)
 		{
 			$text = Http::get( $uri, $timeout );
-			$this->saveInCache( $uri, $text );
+			$this->saveInCache( $euri, $text );
 		}
 		
 		return $text;

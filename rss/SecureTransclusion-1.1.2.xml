@@ -6,12 +6,12 @@
 		<link>${rss.link}</link>
 		<description>${rss.description}</description>
 		<item>
-			<title>SecureTransclusion - 1.1.1</title>
+			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
 * Performance enhancement through parser-caching support
 			</description>
-			<pubDate>Tue, 27 Nov 07 23:25:22 -0500</pubDate>
+			<pubDate>Tue, 27 Nov 07 23:39:06 -0500</pubDate>
 		</item>
 	</channel>
 </rss>

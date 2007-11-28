@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
  <n>SecureTransclusion</n>
  <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/SecureTransclusion">SecureTransclusion</ca>
- <l>PHP License</l>
- <s>Provides secure interwiki wikitext page transclusion.</s>
- <d>This extension enhances MediaWiki by providing a means of transcluding wikitext page that are not accessible throught the usual 'action=raw' method.</d>
+ <ca xlink:href="/rest/SecureTransclusion">SecureTransclusion</ca>
+ <l>$license$</l>
+ <s></s>
+ <d></d>
  <r xlink:href="/rest/r/securetransclusion"/>
 </p>

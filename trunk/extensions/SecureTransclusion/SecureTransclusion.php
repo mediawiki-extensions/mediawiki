@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package SecureTransclusion
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 if (!class_exists('StubManager'))
@@ -11,7 +12,7 @@ else
 {
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'SecureTransclusion',
-		'version'		=> '1.0.3',
+		'version'		=> '@@package-version@@',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:SecureTransclusion',	
 		'description' 	=> "Provides secure interwiki transclusion.", 
@@ -19,7 +20,6 @@ else
 	
 	StubManager::createStub2(	array(	'class' 		=> 'SecureTransclusion', 
 										'classfilename'	=> dirname(__FILE__).'/SecureTransclusion.body.php',
-										#'hooks'			=> array( 'ParserAfterTidy' ),
 										'mgs'			=> array( 'strans' )
 									)
 							);

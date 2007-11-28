@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>SecureTransclusion</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>SecureTransclusion</a>
- <d>none</d>
+ <a>SecureTransclusion</a> <!-- alias? -->
+ <d>This extension enables the transclusion of external (outside the target wiki) accessible HTTP uri.</d>
 </c>

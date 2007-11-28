@@ -1,8 +1,9 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package SecureTransclusion	
- * @version $Id$
+ * @package SecureTransclusion
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 class SecureTransclusion
@@ -22,7 +23,7 @@ class SecureTransclusion
 			return 'SecureTransclusion: '.wfMsg("importbadinterwiki");
 		
 		$uri = $title->getFullUrl();
-		$text = Http::get( $uri, $timeout );
+		$text = $this->fetch( $uri, $timeout );
 		
 		// if we didn't get succeed, turn off parser caching
 		// hoping to get lucky next time around.
@@ -59,6 +60,64 @@ class SecureTransclusion
 		
 		return false;
 	}
+	/**
+	 * 
+	 */
+	protected function getFromCache( &$uri )
+	{
+		// prepare the parser cache for action.
+		$parserCache =& ParserCache::singleton();
+
+		global $wgUser;
+		$parserOutput = $parserCache->get( $uri, $wgUser );
+
+		// did we find it in the parser cache?
+		if ( $parserOutput !== false )
+			return $parserOutput->getText();
+
+		return null;
+	}
+	/**
+	 *
+	 */
+	protected function parse( &$uri, &$text )
+	{
+		global $wgParser, $wgUser, $wgRawHtml;
 		
+		// we probably need 'raw html' to parse the page
+		// but we do not want to mess up the site config...
+		$state = $wgRawHtml;
+		$wgRawHtml = true;
+		
+		// clone the standard parser just to
+		// make sure we don't break something.
+		$parser = clone $wgParser;
+		
+		$popts = new ParserOptions( $wgUser );
+		$parserOutput = $parser->parse(	$text, 
+										$uri, 
+										$popts, 
+										true, true, 
+										null );
+		$wgRawHtml = $state;
+		
+		return $parserOutput->getText();
+	}
+	/**
+	 *
+	 */	
+	protected function fetch( &$uri, $timeout )
+	{
+		// try to fetch from cache
+		$text = $this->getFromCache( $uri );
+		if ( $text === null)
+		{
+			$text = Http::get( $uri, $timeout );
+			$result = $this->parse( $uri, $text );
+		}
+		
+		return $text;
+	}
+	
 } // end class
 //</source>

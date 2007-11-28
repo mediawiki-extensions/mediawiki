@@ -63,45 +63,36 @@ class SecureTransclusion
 	/**
 	 * 
 	 */
-	protected function getFromCache( &$uri )
+	protected function getFromCache( $uri )
 	{
 		// prepare the parser cache for action.
 		$parserCache =& ParserCache::singleton();
 
-		global $wgUser;
-		$parserOutput = $parserCache->get( $uri, $wgUser );
-
-		// did we find it in the parser cache?
-		if ( $parserOutput !== false )
-			return $parserOutput->getText();
-
-		return null;
+		return $parserCache->mMemc->get( $uri );
 	}
 	/**
 	 *
 	 */
-	protected function saveInCache( &$uri, &$text )
+	protected function saveInCache( $uri, &$text )
 	{
-		global $wgUser;
-		
-		$popts = new ParserOptions( $wgUser );
-
 		// prepare the parser cache for action.
 		$parserCache =& ParserCache::singleton();
 
-		$parserCache->save( );
+		$parserCache->mMemc->set( $uri, $text, 86400 /*1day*/ );
 	}
 	/**
 	 *
 	 */	
-	protected function fetch( &$uri, $timeout )
+	protected function fetch( $uri, $timeout )
 	{
+		$uri = urlencode( $uri );
+		
 		// try to fetch from cache
 		$text = $this->getFromCache( $uri );
-		if ( $text === null)
+		if ( $text === false)
 		{
 			$text = Http::get( $uri, $timeout );
-			$text = $this->saveInCache( $uri, $text );
+			$this->saveInCache( $uri, $text );
 		}
 		
 		return $text;

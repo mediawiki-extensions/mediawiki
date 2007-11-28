@@ -11,12 +11,20 @@
 
 	<property file="./build.properties" />
 
-	<target name='all'>
+	<target name='DoPackage'>
 		<echo>Calling package build file</echo>
 		<phing phingfile="../../../.build/build.package.xml" 
 				inheritRefs="true" 
 				inheritAll="true"
 				target="all" />
 	</target>
+
+	<target name='DoRss' depends="DoPackage">
+		<phing phingfile="../../../.build/build.rss.xml" 
+				inheritRefs="true" 
+				inheritAll="true" />
+	</target>
+
+	<target name='all' depends='DoPackage, DoRss' />
 
 </project>

@@ -80,28 +80,16 @@ class SecureTransclusion
 	/**
 	 *
 	 */
-	protected function parse( &$uri, &$text )
+	protected function saveInCache( &$uri, &$text )
 	{
-		global $wgParser, $wgUser, $wgRawHtml;
-		
-		// we probably need 'raw html' to parse the page
-		// but we do not want to mess up the site config...
-		$state = $wgRawHtml;
-		$wgRawHtml = true;
-		
-		// clone the standard parser just to
-		// make sure we don't break something.
-		$parser = clone $wgParser;
+		global $wgUser;
 		
 		$popts = new ParserOptions( $wgUser );
-		$parserOutput = $parser->parse(	$text, 
-										$uri, 
-										$popts, 
-										true, true, 
-										null );
-		$wgRawHtml = $state;
-		
-		return $parserOutput->getText();
+
+		// prepare the parser cache for action.
+		$parserCache =& ParserCache::singleton();
+
+		$parserCache->save( );
 	}
 	/**
 	 *
@@ -113,7 +101,7 @@ class SecureTransclusion
 		if ( $text === null)
 		{
 			$text = Http::get( $uri, $timeout );
-			$result = $this->parse( $uri, $text );
+			$text = $this->saveInCache( $uri, $text );
 		}
 		
 		return $text;

@@ -9,8 +9,8 @@
 
  <name>SecureTransclusion</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Summary...</summary>
- <description>Description...</description>
+ <summary>Secure transclusion of external http accessible uri.</summary>
+ <description>This extension enables the transclusion of external (outside the target wiki) accessible HTTP uri.</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2007-11-09</date>
- <time>15:13:11</time>
+ <date>2007-11-28</date>
+ <time>02:15:15</time>
 
  <version>
-  <release>1.0.3</release>
+  <release>1.1.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -64,7 +64,7 @@
 	<package>
 		<name>StubManager</name>
 		<channel>mediawiki.googlecode.com/svn</channel>
-		<min>1.0.0</min>
+		<min>1.0.5</min>
 	</package>
   
   </required>
@@ -79,10 +79,12 @@
  </phprelease>
 
 <changelog>
- <release>
-   <license uri="http://www.php.net/license">PHP License</license>
-   <notes></notes>
-  </release>
+<release>
+<license uri="http://www.php.net/license">PHP License</license>
+<notes>
+* Performance enhancement through parser-caching support
+</notes>
+</release>
 </changelog>
 
 </package>

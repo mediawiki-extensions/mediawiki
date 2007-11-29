@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package ManageNamespaces
  * @version 1.0.1
- * @Id $Id: ManageNamespaces.body.php 544 2007-10-12 14:05:08Z jeanlou.dupont $
+ * @Id $Id: ManageNamespaces.body.php 708 2007-11-29 01:19:40Z jeanlou.dupont $
  */
 //<source lang=php>
 require_once('ManageNamespaces.i18n.php');

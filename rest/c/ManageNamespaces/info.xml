@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>ManageNamespaces</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>ManageNamespaces</a>
- <d>none</d>
+ <a>ManageNamespaces</a> <!-- alias? -->
+ <d>This extension allows for managing the namespaces. This process is usually handled through settings LocalSettings.php.</d>
 </c>

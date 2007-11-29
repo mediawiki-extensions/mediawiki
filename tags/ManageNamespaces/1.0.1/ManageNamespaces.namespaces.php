@@ -2,7 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package ManageNamespaces
- * @version @@package-version@@
+ * @version 1.0.1
  * @Id $Id: ManageNamespaces.body.php 544 2007-10-12 14:05:08Z jeanlou.dupont $
  */
 //<source lang=php>
@@ -14,6 +14,6 @@ global $bwManagedNamespacesDefines;
 // The global variable $bwManagedNamespaces gets initialized there
 
 //<namespaces>
-$contents$
+
 //</namespaces>
 //</source>

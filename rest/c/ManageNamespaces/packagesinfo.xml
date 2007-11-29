@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo
-    http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
-<pi>
-<p>
- <n>ManageNamespaces</n>
- <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/ManageNamespaces">ManageNamespaces</ca>
- <l>PHP License</l>
- <s>Provides management of a MediWiki's namespaces through a wiki page.</s>
- <d>Usually, the namespaces are managed through the LocalSettings.php file.</d>
- <r xlink:href="/rest/r/managenamespaces"/>
-</p>
-<a>
- <r>
-	<v>1.0.0</v>
-	<s>stable</s>
-</r>
-</a>
-</pi>
+
+<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
+		<pi>
+			<p>
+				<n>ManageNamespaces</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ManageNamespaces">ManageNamespaces</ca>
+				<l>PHP License</l>
+				<s>Provides management of a MediWiki's namespaces through a wiki page.</s>
+				<d>Usually, the namespaces are managed through the LocalSettings.php file.</d>
+				<r xlink:href="/rest/r/managenamespaces">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.1</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
 </f>

@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>ManageNamespaces - 1.0.1</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Fixed PHP warning when 'ManageNamespaces.namespaces.php' isn't present at first use after installation
+			</description>
+			<pubDate>Wed, 28 Nov 07 20:17:47 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

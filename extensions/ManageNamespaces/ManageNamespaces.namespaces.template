@@ -1,8 +1,9 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package ManageNamespaces.body.php
- * @version $Id$
+ * @package ManageNamespaces
+ * @version @@package-version@@
+ * @Id $Id: ManageNamespaces.body.php 544 2007-10-12 14:05:08Z jeanlou.dupont $
  */
 //<source lang=php>
 global $bwManagedNamespaces;

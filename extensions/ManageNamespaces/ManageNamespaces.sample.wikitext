@@ -1,3 +1,9 @@
+<!--
+	@author Jean-Lou Dupont
+	@package ManageNamespaces
+	@version @@package-version@@
+	@Id $Id: ManageNamespaces.body.php 544 2007-10-12 14:05:08Z jeanlou.dupont $
+-->
 <!-- class and border attributes are not mandatory -->
 <!-- nor is the table format -->
 {| class="mns" border='1'

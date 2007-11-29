@@ -5,7 +5,7 @@
 |hook1       = ParserAfterTidy
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ManageNamespaces/ SVN]
@@ -46,3 +46,5 @@ An example registry page can be found [[{{FULLPAGENAME}}/Example]]
 * Make sure that the file 'ManageNamespaces.namespaces.php' is readable & writable by the HTTP server
 
 == History ==
+=== 1.0.1 ===
+* Fixed PHP warning when 'ManageNamespaces.namespaces.php' isn't present at first use after installation

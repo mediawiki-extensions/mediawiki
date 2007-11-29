@@ -1,8 +1,9 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package ManageNamespaces.body.php
- * @version $Id$
+ * @package ManageNamespaces
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 require_once('ManageNamespaces.i18n.php');

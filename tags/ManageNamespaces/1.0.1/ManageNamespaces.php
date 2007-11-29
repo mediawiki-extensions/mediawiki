@@ -3,14 +3,14 @@
  * @author Jean-Lou Dupont
  * @package ManageNamespaces
  * @version 1.0.1
- * @Id $Id: ManageNamespaces.body.php 544 2007-10-12 14:05:08Z jeanlou.dupont $
+ * @Id $Id: ManageNamespaces.php 708 2007-11-29 01:19:40Z jeanlou.dupont $
  */
 // <source lang=php>
 if (class_exists('StubManager'))
 {
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'ManageNamespaces',
-		'version'		=> '1.0.0',
+		'version'		=> '1.0.1',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:ManageNamespaces',	
 		'description' 	=> "Provides a special page to add/remove namespaces. "

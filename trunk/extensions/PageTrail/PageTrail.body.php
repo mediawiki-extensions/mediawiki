@@ -48,16 +48,17 @@ class PageTrail
 	{
 		if ( $this->enable )
 		{
-			$style = '<style type="text/css"><![CDATA[
-					#PageTrail {
-					        font-size:0.8em;
-					        background-color: #FFFFCC;
-					        position:absolute;
-					        left: 2px;
-					        bottom:0;
-					        width:99%;
-					}]]></style>';
-					
+			$style = "\n".
+'<style type="text/css">
+	#PageTrail {
+    font-size:0.8em;
+    background-color: #FFFFCC;
+    position:absolute;
+    left: 2px;
+    bottom:0;
+    width:99%;
+</style>';
+		
 			$op->addScript( $style );
 		}		
 		return true;
@@ -74,15 +75,12 @@ class PageTrail
 		if ( $serialized_data !== null )
 			$trail = unserialize( $serialized_data );
 
-	    # cache index of last element:
-	    $count = count( $trail ) - 1;
-
 	    #if returning to a page we've already visited, reduce the array
 		if (!empty( $trail ))
 		{
 		    $loc = array_search( $title, $trail );
 		    if ($loc !== false)
-				$trail = array_slice($trail, 0, ($loc + 1));
+				$trail = array_slice($trail, 0, $loc );
  		}
 	    # if we've got too many entries, reduce the array:
 	    if( count( $trail ) > self::$max_count) 
@@ -103,7 +101,7 @@ class PageTrail
 			foreach( $trail as $index => &$e )
 			{
 				$line .= $m_skin->makeLink( $e );
-		  		if ( $index < $count )
+		  		if ( $index < ($count-1) )
 				  	$line .= self::$delimiter;
 	    	}
 			

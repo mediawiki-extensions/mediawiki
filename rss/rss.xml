@@ -68,7 +68,18 @@ Initial release.
 			<description>Changelog:
 * Corrected issue with empty array
 			</description>
-			<pubDate>Mon, 03 Dec 07 14:52:44 -0500</pubDate>
+			<pubDate>Mon, 03 Dec 07 15:09:11 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>PageTrail - 1.0.5</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* More minor fixes
+			</description>
+			<pubDate>Mon, 03 Dec 07 15:27:22 -0500</pubDate>
 		</item>
 
 

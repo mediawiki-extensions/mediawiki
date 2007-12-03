@@ -8,17 +8,6 @@
 
 	
 	<item>
-			<title>ManageNamespaces - 1.0.1</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-* Fixed PHP warning when 'ManageNamespaces.namespaces.php' isn't present at first use after installation
-			</description>
-			<pubDate>Wed, 28 Nov 07 20:31:30 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
 			<title>PageTrail - 1.0.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
@@ -103,6 +92,17 @@ Initial release.
 			</description>
 			<pubDate>Tue, 27 Nov 07 07:30:33 -0500</pubDate>
 			<guid>ToolboxExtender-1.0.1</guid>
+		</item>
+
+
+	
+	<item>
+			<title>ManageNamespaces - 1.0.1</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Fixed PHP warning when 'ManageNamespaces.namespaces.php' isn't present at first use after installation
+			</description>
+			<pubDate>Wed, 28 Nov 07 20:31:30 -0500</pubDate>
 		</item>
 
 

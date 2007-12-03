@@ -20,10 +20,10 @@
  </lead>
 
  <date>2007-12-03</date>
- <time>17:21:40</time>
+ <time>17:26:41</time>
 
  <version>
-  <release>1.0.0</release>
+  <release>1.0.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -43,6 +43,7 @@
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki/PageTrail" name="PageTrail.php" role="php" />
    <file baseinstalldir="MediaWiki/PageTrail" name="PageTrail.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/PageTrail" name="PageTrail.i18n.php" role="php" />
     <!-- }} -->
 
   </dir>
@@ -81,7 +82,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Initial release.
+* Fixed missing i18n file in archive.
 </notes>
   </release>
 </changelog>

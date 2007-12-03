@@ -67,33 +67,28 @@ class PageTrail
 		global $wgTitle, $wgUser;
 		
 		$title = $wgTitle->getPrefixedText();
-		$trail = '';
+		$trail = array();
 		
-	    //If a session doesn't already exist, create one
-	    if( isset( $_SESSION['pagetrail'] ) )
-	      $trail = $_SESSION['pagetrail'];
-	    else 
-		{
+		if ( ($trail = $this->getCookie()) === null )
 	      if( !isset( $_SESSION ) )
-	        session_start();
-	      $_SESSION['pagetrail'] = array();
-	    }
+				session_start();
+
 	    # cache index of last element:
 	    $count = count( $trail ) - 1;
  
 	    # if we've got too many entries, reduce the array:
 	    if( count( $trail ) > 0 && $trail[ $count ] != $title ) 
-	      $trail = array_slice( $trail, ( 1 - self::$max_count ) );
+			$trail = array_slice( $trail, ( 1 - self::$max_count ) );
 		
 		array_push( $trail, $title );
  
 	    #if returning to a page we've already visited, reduce the array
 	    $loc = array_search( $title, $trail );
-	    if(($loc >= 0))
-	      $trail = array_slice($trail, 0, ($loc + 1));
+	    if ($loc >= 0)
+			$trail = array_slice($trail, 0, ($loc + 1));
  
 	    # serialize data from array to session:
-	    $_SESSION['pagetrail'] = $trail;
+	    $this->setCookie($trail);
 	    # update cache:
 	    $count = count( $trail ) - 1;
  
@@ -112,6 +107,22 @@ class PageTrail
 	
 		return $line;
 	}	
+	function setCookie( &$value ) 
+	{
+		global $wgCookieExpiration, $wgCookiePath, $wgCookieDomain, $wgCookieSecure, $wgCookiePrefix;
+
+		$exp = time() + $wgCookieExpiration;
+
+		$_SESSION['pagetrail'] = $value;
+		setcookie( $wgCookiePrefix.'pagetrail', $value, $exp, $wgCookiePath, $wgCookieDomain, $wgCookieSecure );
+	}
+	function getCookie()
+	{
+		if (isset( $_SESSION['pagetrail']))
+			return $_SESSION['pagetrail'];
+			
+		return null;		
+	}
 	
 }//end class
 //</source>

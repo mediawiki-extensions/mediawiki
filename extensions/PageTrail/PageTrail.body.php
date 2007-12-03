@@ -69,40 +69,42 @@ class PageTrail
 		$title = $wgTitle->getPrefixedText();
 		$trail = array();
 		
-		if ( ($trail = $this->getCookie()) === null )
-	      if( !isset( $_SESSION ) )
-				session_start();
+		$serialized_data = $this->getCookie();
+		
+		if ( $serialized_data !== null )
+			$trail = unserialize( $serialized_data );
 
 	    # cache index of last element:
 	    $count = count( $trail ) - 1;
- 
-	    # if we've got too many entries, reduce the array:
-	    if( count( $trail ) > 0 && $trail[ $count ] != $title ) 
-			$trail = array_slice( $trail, ( 1 - self::$max_count ) );
-		
-		array_push( $trail, $title );
- 
+
 	    #if returning to a page we've already visited, reduce the array
 	    $loc = array_search( $title, $trail );
-	    if ($loc >= 0)
+	    if ($loc !== false)
 			$trail = array_slice($trail, 0, ($loc + 1));
  
+	    # if we've got too many entries, reduce the array:
+	    if( count( $trail ) > self::$max_count) 
+			array_shift( $trail );
+		
+		array_push( $trail, $title );
+
 	    # serialize data from array to session:
-	    $this->setCookie($trail);
-	    # update cache:
-	    $count = count( $trail ) - 1;
+	    $this->setCookie( serialize( $trail ) );
+		
+	    $count = count( $trail );
  
 	    $m_skin =& $wgUser->getSkin();
 
 	    $line = "<div id='PageTrail'>&nbsp;<i>Page Trail:</i> ";
-		
-	    for( $i = 0; $i <= $count; $i++ ) 
-		{
-	      $line .= $m_skin->makeLink( $trail[$i] );
-		  
-	      if( $i < $count ) 
-		  	$line .= self::$delimiter;
-	    }
+
+		if ( !empty( $trail ))
+			foreach( $trail as $index => &$e )
+			{
+				$line .= $m_skin->makeLink( $e );
+		  		if ( $index < $count )
+				  	$line .= self::$delimiter;
+	    	}
+			
 	    $line .= '&nbsp;</div>';
 	
 		return $line;

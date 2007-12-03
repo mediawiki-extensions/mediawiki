@@ -30,6 +30,17 @@ Initial release.
 
 	
 	<item>
+			<title>PageTrail - 1.0.1</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Fixed missing i18n file in archive.
+			</description>
+			<pubDate>Mon, 03 Dec 07 12:26:43 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

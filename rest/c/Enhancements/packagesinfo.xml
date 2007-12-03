@@ -32,6 +32,24 @@
 			</p>
 			<a>
 				<r>
+					<v>1.0.4</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>PageTrail</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Enhancements">Enhancements</ca>
+				<l>$license$</l>
+				<s>Provides a page trail list</s>
+				<d>Provides a list of recently visited pages</d>
+				<r xlink:href="/rest/r/PageTrail">
+				</r>
+			</p>
+			<a>
+				<r>
 					<v>1.0.3</v>
 					<s>stable</s>
 				</r>

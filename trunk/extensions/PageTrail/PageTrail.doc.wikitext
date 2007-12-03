@@ -1,0 +1,37 @@
+{{Extension
+|name        = PageTrail
+|status      = beta
+|type1       = parser function
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.5
+|update      =
+|mediawiki   = tested on 1.11
+|download    = see Installation
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides a trail for recently visited pages.
+
+== Features ==
+* Parser-cache friendly
+** Local Browser caching limitations still apply.
+* Configurable on a per-user basis (see [[Special:Preferences]] under 'Misc' tab)
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+** Automatically resolved if using PEAR
+
+{{Pear|PageTrail}}
+
+== Notes ==
+This extension is heavily influenced by the 'Breadcrumbs' extension found on MediaWiki.org. [[Extension:PageTrail]] resolves parser-caching issues found in the original extension listed here.
+
+== History ==
+=== 1.0.5 ===
+* Initial public availability

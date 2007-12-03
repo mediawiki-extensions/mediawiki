@@ -78,10 +78,12 @@ class PageTrail
 	    $count = count( $trail ) - 1;
 
 	    #if returning to a page we've already visited, reduce the array
-	    $loc = array_search( $title, $trail );
-	    if ($loc !== false)
-			$trail = array_slice($trail, 0, ($loc + 1));
- 
+		if (!empty( $trail ))
+		{
+		    $loc = array_search( $title, $trail );
+		    if ($loc !== false)
+				$trail = array_slice($trail, 0, ($loc + 1));
+ 		}
 	    # if we've got too many entries, reduce the array:
 	    if( count( $trail ) > self::$max_count) 
 			array_shift( $trail );

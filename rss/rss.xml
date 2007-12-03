@@ -63,6 +63,17 @@ Initial release.
 
 	
 	<item>
+			<title>PageTrail - 1.0.4</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Corrected issue with empty array
+			</description>
+			<pubDate>Mon, 03 Dec 07 14:52:44 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

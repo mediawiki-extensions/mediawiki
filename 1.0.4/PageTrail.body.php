@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package PageTrail
  * @version 1.0.4
- * @Id $Id: PageTrail.body.php 713 2007-12-03 19:47:10Z jeanlou.dupont $
+ * @Id $Id: PageTrail.body.php 714 2007-12-03 19:53:48Z jeanlou.dupont $
  */
 //<source lang=php>
 require 'PageTrail.i18n.php';

@@ -52,6 +52,17 @@ Initial release.
 
 	
 	<item>
+			<title>PageTrail - 1.0.3</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Try yet another fix for session cookie
+			</description>
+			<pubDate>Mon, 03 Dec 07 14:46:14 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

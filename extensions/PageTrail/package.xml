@@ -20,10 +20,10 @@
  </lead>
 
  <date>2007-12-03</date>
- <time>19:46:12</time>
+ <time>19:52:43</time>
 
  <version>
-  <release>1.0.3</release>
+  <release>1.0.4</release>
   <api>1.0.0</api>
  </version>
  
@@ -82,7 +82,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-* Try yet another fix for session cookie
+* Corrected issue with empty array
 </notes>
   </release>
 </changelog>

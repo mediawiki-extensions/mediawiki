@@ -13,7 +13,18 @@
 			<description>Changelog:
 * Fixed PHP warning when 'ManageNamespaces.namespaces.php' isn't present at first use after installation
 			</description>
-			<pubDate>Wed, 28 Nov 07 20:17:47 -0500</pubDate>
+			<pubDate>Wed, 28 Nov 07 20:31:30 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>PageTrail - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+Initial release.
+			</description>
+			<pubDate>Mon, 03 Dec 07 12:21:41 -0500</pubDate>
 		</item>
 
 

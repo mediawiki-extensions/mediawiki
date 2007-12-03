@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>Enhancements</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>Enhancements</a>
- <d>none</d>
+ <a>Enhancements</a> <!-- alias? -->
+ <d>Provides a list of recently visited pages</d>
 </c>

@@ -1,14 +1,16 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package PageFunctions
- * @version $Id$
+ * @package ParserExt
+ * @subpackage PageFunctions
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>*/
 global $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array( 
 	'name'        => 'PageFunctions', 
-	'version'     => '1.1.0',
+	'version'     => '1.2.0',
 	'author'      => 'Jean-Lou Dupont', 
 	'description' => 'Provides page scope functions',
 	'url' 		=> 'http://mediawiki.org/wiki/Extension:PageFunctions',						
@@ -26,7 +28,8 @@ StubManager::createStub(	'PageFunctions',
 									'varaset', 'varaget',
 									'varcapset',
 									'cshow',
-									'noext'
+									'noext',
+									'imgviewurl'		// new in 1.2.0
 									 ),  				//of parser function magic words,
 							array( 'noclientcaching' )	// magic words
 						 );

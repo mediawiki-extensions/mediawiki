@@ -1,7 +1,10 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package NamespaceFunctions
+ * @package ParserExt
+ * @subpackage NamespaceFunctions
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 global $wgExtensionCredits;

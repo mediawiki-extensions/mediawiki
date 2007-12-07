@@ -1,7 +1,10 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package ForeachFunction
+ * @package ParserExt
+ * @subpackage ForeachFunction
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 class ForeachFunction

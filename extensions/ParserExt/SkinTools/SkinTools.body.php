@@ -1,8 +1,10 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package SkinTools
- * @version $Id$
+ * @package ParserExt
+ * @subpackage SkinTools
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 class SkinTools

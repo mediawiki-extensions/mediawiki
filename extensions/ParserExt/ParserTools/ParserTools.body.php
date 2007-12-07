@@ -1,7 +1,10 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package ParserTools
+ * @package ParserExt
+ * @subpackage ParserTools
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>*/
 class ParserTools

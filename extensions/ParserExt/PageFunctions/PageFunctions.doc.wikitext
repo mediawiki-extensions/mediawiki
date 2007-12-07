@@ -4,7 +4,7 @@
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.1.0
+|version     = 1.2.0
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
@@ -28,6 +28,7 @@ Provides a 'magic word' interface to retrieve useful page level information.
 * Wikitext conditional 'show'
 * Hook based variable get and set
 * Client side page caching control
+* Return the url required to view an image ''imgviewurl''
 
 == Usage ==
 
@@ -40,6 +41,7 @@ Provides a 'magic word' interface to retrieve useful page level information.
 * <nowiki>{{#varaget:variable name|array key}}</nowiki>
 * <nowiki>{{#varcapset:variable name|value}}</nowiki>
 * <nowiki>{{#cshow:group|text}}</nowiki>
+* <nowiki>{{#imgviewurl:image page name}}</nowiki> (no dot add the prefix ''Image:'')
 ** Where 'group' is the user's group membership check to perform
 
 (($disable$))
@@ -69,3 +71,5 @@ Of course, the same magic words can be used in the context of 'ParserCache2' i.e
 * Added 'noext' magic word
 === 1.1.0 ===
 * Added functionality to enable proper page title clearing
+=== 1.2.0 ===
+* Added 'imgviewurl' parser function

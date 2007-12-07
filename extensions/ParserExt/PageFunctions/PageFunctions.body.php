@@ -1,8 +1,10 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package PageFunctions
- * @version $Id$ 
+ * @package ParserExt
+ * @subpackage PageFunctions
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>*/
 class PageFunctions
@@ -178,6 +180,20 @@ class PageFunctions
 			return null;
 		return substr( $pagename, 0, strpos( $pagename, '.' ) );	
 	}
+	/**
+	 * Returns the url for viewing a specified page from the NS_IMAGE namespace
+	 */
+	public function mg_imgviewurl( &$parser, $pagename )
+	{
+		$imageTitle = Title::makeTitleSafe("Image", $pagename );
+		if( !is_object( $imageTitle))
+			return wfMsg('badtitle');
 
+		$img = Image::newFromTitle( $imageTitle );
+		if( $img->exists() != true)
+			return wfMsg('badtitle');
+
+		return $img->getViewURL(false);
+	}
 } // end class	
 //</source>

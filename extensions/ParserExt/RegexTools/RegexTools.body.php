@@ -1,7 +1,10 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package RegexTools
+ * @package ParserExt
+ * @subpackage PermissionFunctions
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 class RegexTools

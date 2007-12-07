@@ -6,15 +6,6 @@
 		<link>http://mediawiki.googlecode.com/svn/index.html</link>
 		<description>Jean-Lou Dupont's personal MediaWiki PEAR channel</description>
 
-	<item>
-			<title>SecureHTML - 2.0.0</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-* Added {{#html}} parser function
-			</description>
-			<pubDate>Fri, 07 Dec 07 10:37:44 -0500</pubDate>
-		</item>
-
 	
 	<item>
 			<title>PageTrail - 1.0.0</title>
@@ -80,6 +71,30 @@ Initial release.
 			<pubDate>Mon, 03 Dec 07 15:27:22 -0500</pubDate>
 		</item>
 
+
+	
+	<item>
+			<title>SecureHTML - 2.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added {{#html}} parser function
+			</description>
+			<pubDate>Fri, 07 Dec 07 10:37:44 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ParserExt - 1.2.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added parser function 'imgviewurl' to Extension:PageFunctions
+			</description>
+			<pubDate>Fri, 07 Dec 07 15:18:03 -0500</pubDate>
+		</item>
+
+
+	
 	<item>
 			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>

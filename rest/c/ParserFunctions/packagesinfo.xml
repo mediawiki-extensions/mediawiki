@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo   http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
-	<pi>
+		<pi>
+			<p>
+				<n>ParserExt</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+				<l>$license$</l>
+				<s>Collection of parser functions</s>
+				<d>Collection of parser functions</d>
+				<r xlink:href="/rest/r/ParserExt">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.2.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
 			<p>
 				<n>ImageLink</n>
 				<c>mediawiki.googlecode.com/svn</c>
@@ -18,8 +36,8 @@
 					<s>stable</s>
 				</r>
 			</a>
-	</pi>
-	<pi>
+		</pi>
+		<pi>
 			<p>
 				<n>ParserPhase2</n>
 				<c>mediawiki.googlecode.com/svn</c>
@@ -36,8 +54,8 @@
 					<s>stable</s>
 				</r>
 			</a>
-	</pi>
-	<pi>
+		</pi>
+		<pi>
 			<p>
 				<n>ParserFunctions</n>
 				<c>mediawiki.googlecode.com/svn</c>
@@ -54,26 +72,8 @@
 					<s>stable</s>
 				</r>
 			</a>
-	</pi>
-	<pi>
-			<p>
-				<n>ParserExt</n>
-				<c>mediawiki.googlecode.com/svn</c>
-				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
-				<l></l>
-				<s>Collection of parser functions</s>
-				<d>See .doc.wikitext files for more information</d>
-				<r xlink:href="/rest/r/parserext">
-				</r>
-			</p>
-			<a>
-				<r>
-					<v>1.1.0</v>
-					<s>stable</s>
-				</r>
-			</a>
-	</pi>
-	<pi>
+		</pi>
+		<pi>
 			<p>
 				<n>PageAfterAndBefore</n>
 				<c>mediawiki.googlecode.com/svn</c>
@@ -90,5 +90,5 @@
 					<s>stable</s>
 				</r>
 			</a>
-	</pi>
+		</pi>
 </f>

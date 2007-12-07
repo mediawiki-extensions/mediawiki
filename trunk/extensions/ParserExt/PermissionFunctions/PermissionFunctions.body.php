@@ -1,7 +1,10 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package PermissionFunctions
+ * @package ParserExt
+ * @subpackage PermissionFunctions
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 class PermissionFunctions

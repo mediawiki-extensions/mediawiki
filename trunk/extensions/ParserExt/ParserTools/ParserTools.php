@@ -1,4 +1,11 @@
 <?php
+/**
+ * @author Jean-Lou Dupont
+ * @package ParserExt
+ * @subpackage ParserTools
+ * @version @@package-version@@
+ * @Id $Id$
+ */
 //<source lang=php>*/
 global $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array( 

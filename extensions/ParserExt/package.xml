@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2007-10-22</date>
- <time>14:24:07</time>
+ <date>2007-12-07</date>
+ <time>20:18:00</time>
 
  <version>
-  <release>1.1.0</release>
+  <release>1.2.0</release>
   <api>1.0.0</api>
  </version>
  

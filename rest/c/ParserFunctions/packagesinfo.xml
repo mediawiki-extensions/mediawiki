@@ -18,6 +18,8 @@
 					<s>stable</s>
 				</r>
 			</a>
+	</pi>
+	<pi>
 			<p>
 				<n>ParserPhase2</n>
 				<c>mediawiki.googlecode.com/svn</c>
@@ -34,6 +36,8 @@
 					<s>stable</s>
 				</r>
 			</a>
+	</pi>
+	<pi>
 			<p>
 				<n>ParserFunctions</n>
 				<c>mediawiki.googlecode.com/svn</c>
@@ -50,6 +54,8 @@
 					<s>stable</s>
 				</r>
 			</a>
+	</pi>
+	<pi>
 			<p>
 				<n>ParserExt</n>
 				<c>mediawiki.googlecode.com/svn</c>
@@ -66,6 +72,8 @@
 					<s>stable</s>
 				</r>
 			</a>
+	</pi>
+	<pi>
 			<p>
 				<n>PageAfterAndBefore</n>
 				<c>mediawiki.googlecode.com/svn</c>

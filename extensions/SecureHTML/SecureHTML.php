@@ -2,12 +2,13 @@
 /**
  * @author Jean-Lou Dupont
  * @package SecureHTML
- * @version $Id$ 
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>*/
 $wgExtensionCredits['other'][] = array( 
 	'name'        => 'SecureHTML', 
-	'version'     => '1.1.0',
+	'version'     => '@@package-version@@',
 	'author'      => 'Jean-Lou Dupont', 
 	'description' => 'Enables secure HTML code on protected pages',
 	'url' 		=> 'http://mediawiki.org/wiki/Extension:SecureHTML',			
@@ -19,7 +20,7 @@ StubManager::createStub(	'SecureHTML',
 							array( 'ArticleSave', 'ArticleViewHeader' ),
 							false,	// no need for logging support
 							null,	// tags
-							null,	// no parser functions
+							array( 'html' ),
 							null,	// no magic words
 							null	// no namespace triggering
 						 );

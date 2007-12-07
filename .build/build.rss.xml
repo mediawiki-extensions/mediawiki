@@ -101,8 +101,8 @@ ${package.changelog}
 	</channel>
 </rss>]]></echo>
 
-		<svn_add path='"${channel.root}/rss/${package.name}-${package.version}.xml"' />
-		<svn_propset path='"${channel.root}/rss/${package.name}-${package.version}.xml"' 
+		<svn_add path='"${channel.root}/rss/${DSTAMP}-${TSTAMP}-${package.name}-${package.version}.xml"' />
+		<svn_propset path='"${channel.root}/rss/${DSTAMP}-${TSTAMP}-${package.name}-${package.version}.xml"' 
 		           	propname="svn:mime-type" 
 		           	propval="application/xml" />
 	</target>

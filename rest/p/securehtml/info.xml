@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
  <n>SecureHTML</n>
  <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/SecureHTML">SecureHTML</ca>
- <l>PHP License</l>
- <s>MediaWiki Extension: provides secure unrestricted HTML.</s>
- <d>This extension provides a secure means of including unrestricted HTML on a page.</d>
+ <ca xlink:href="/rest/SecureHTML">SecureHTML</ca>
+ <l>$license$</l>
+ <s></s>
+ <d></d>
  <r xlink:href="/rest/r/securehtml"/>
 </p>

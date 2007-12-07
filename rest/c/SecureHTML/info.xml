@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>SecureHTML</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>SecureHTML</a>
- <d>none</d>
+ <a>SecureHTML</a> <!-- alias? -->
+ <d>This extension provides a way for users having the 'protect' right to add raw HTML to pages.</d>
 </c>

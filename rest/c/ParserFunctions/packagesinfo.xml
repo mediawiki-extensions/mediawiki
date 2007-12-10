@@ -3,6 +3,60 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo   http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
 			<p>
+				<n>EmbedObject</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+				<l>$license$</l>
+				<s>Provides object embedding functionality (e.g. flash)</s>
+				<d>Provides object embedding functionality (e.g. flash)</d>
+				<r xlink:href="/rest/r/EmbedObject">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>ParserFunctionsHelper</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+				<l>$license$</l>
+				<s>Provides services to parser function extensions which require inserting content after the parsing phase.</s>
+				<d>Provides services to parser function extensions which require inserting content after the parsing phase.</d>
+				<r xlink:href="/rest/r/ParserFunctionsHelper">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>ParserFunctionsHelper</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+				<l>$license$</l>
+				<s>Provides services to parser function extensions which require inserting content after the parsing phase.</s>
+				<d>Provides services to parser function extensions which require inserting content after the parsing phase.</d>
+				<r xlink:href="/rest/r/ParserFunctionsHelper">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>ParserExt</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>

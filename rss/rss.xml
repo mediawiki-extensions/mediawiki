@@ -129,6 +129,61 @@ Initial release.
 
 	
 	<item>
+			<title>AlternateRawPage - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Initial public release
+			</description>
+			<pubDate>Sun, 09 Dec 07 22:31:26 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ParserFunctionsHelper - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Initial Release
+			</description>
+			<pubDate>Mon, 10 Dec 07 06:56:23 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ParserFunctionsHelper - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Initial Release
+			</description>
+			<pubDate>Mon, 10 Dec 07 08:39:04 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>StubManager - 1.0.6</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added capability to accept 3more parameters when calling target methods
+			</description>
+			<pubDate>Mon, 10 Dec 07 10:16:51 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>EmbedObject - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Initial public release
+			</description>
+			<pubDate>Mon, 10 Dec 07 10:28:37 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

@@ -10,6 +10,7 @@
 	<p>addscriptcss</p>
 	<p>alternaterawpage</p>
 	<p>backup</p>
+	<p>embedobject</p>
 	<p>extensionmanager</p>
 	<p>geshi</p>
 	<p>googlecharts</p>
@@ -30,6 +31,7 @@
 	<p>pagetrail</p>
 	<p>parserext</p>
 	<p>parserfunctions</p>
+	<p>parserfunctionshelper</p>
 	<p>parserphase2</p>
 	<p>rawright</p>
 	<p>recaptcha</p>

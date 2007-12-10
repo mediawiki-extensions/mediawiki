@@ -7,10 +7,10 @@
 		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd 
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
- <name>StubManager</name>
+ <name>EmbedObject</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Base class for most extension of this channel</summary>
- <description>Base extension class</description>
+ <summary>Provides object embedding functionality (e.g. flash)</summary>
+ <description>Provides object embedding functionality (e.g. flash)</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -20,10 +20,10 @@
  </lead>
 
  <date>2007-12-10</date>
- <time>15:16:49</time>
+ <time>15:28:36</time>
 
  <version>
-  <release>1.0.6</release>
+  <release>1.0.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -38,10 +38,10 @@
 
  <contents>
   <dir name="/">
-
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/StubManager" name="StubManager.php" role="php" />
+   <file baseinstalldir="MediaWiki/EmbedObject" name="EmbedObject.php" role="php" />
+   <file baseinstalldir="MediaWiki/EmbedObject" name="EmbedObject.body.php" role="php" />
     <!-- }} -->
 
   </dir>
@@ -58,7 +58,19 @@
    <pearinstaller>
     <min>1.6.2</min>
    </pearinstaller>
-   
+ 
+	<package>
+		<name>StubManager</name>
+		<channel>mediawiki.googlecode.com/svn</channel>
+		<min>1.0.6</min>
+	</package>
+
+	<package>
+		<name>ParserFunctionsHelper</name>
+		<channel>mediawiki.googlecode.com/svn</channel>
+		<min>1.0.0</min>
+	</package>
+
   </required>
  </dependencies>
 
@@ -71,12 +83,12 @@
  </phprelease>
 
 <changelog>
- <release>
-   <license uri="http://www.php.net/license">PHP License</license>
+<release>
+<license uri="http://www.php.net/license">PHP License</license>
 <notes>
-* Added capability to accept 3more parameters when calling target methods
+* Initial public release
 </notes>
-  </release>
+</release>
 </changelog>
 
 </package>

@@ -4,7 +4,7 @@
 |type1       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/GoogleCharts SVN]
@@ -55,6 +55,8 @@ The official source of information for GoogleCharts can be found [http://code.go
 ! Release !! Notes
 |-
 | 1.0.0 || Initial public release
+|-
+| 1.0.1 || Added input parameters sanitization
 |}
 
 == TODO ==

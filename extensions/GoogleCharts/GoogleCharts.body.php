@@ -54,8 +54,11 @@ class GoogleCharts
 	 */
 	public function mg_gcharts( &$parser, $params, $altText = 'chart' )
 	{
+		// sanitize the input
+		$sanitized_params = htmlspecialchars( $params );
+		
 		// format the img tag.
-		$element = '<img src="'.self::$url.$params.'" alt="'.$altText.'" />';
+		$element = '<img src="'.self::$url.$sanitized_params.'" alt="'.$altText.'" />';
 		
 		// Hides the information from the parser or else it gets mangled.
 		$this->charts[] = $element;

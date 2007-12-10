@@ -118,6 +118,17 @@ Initial release.
 
 	
 	<item>
+			<title>AlternateRawPage - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Initial public release
+			</description>
+			<pubDate>Sun, 09 Dec 07 22:27:36 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

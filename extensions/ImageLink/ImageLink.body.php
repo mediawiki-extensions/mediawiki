@@ -84,9 +84,6 @@ class ImageLink
 		else
 			$iURL = $ititle->getFullURL();
 			
-		if (empty($page)) 
-			return '';
-
 		// prepare for 'link-less' case
 		$anchor_open = '';
 		$anchor_close = '';

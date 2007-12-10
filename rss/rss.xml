@@ -96,6 +96,17 @@ Initial release.
 
 	
 	<item>
+			<title>GoogleCharts - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* First public release
+			</description>
+			<pubDate>Sun, 09 Dec 07 20:18:46 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

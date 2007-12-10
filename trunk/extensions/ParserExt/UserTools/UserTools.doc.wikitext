@@ -2,7 +2,7 @@
 {{Extension
 |name        = UserTools
 |status      = beta
-|type        = parser
+|type        = extended syntax
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0

@@ -9,7 +9,7 @@
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ImageLink/ SVN]
 |readme      =
-|changelog   = See SVN ($Id$)
+|changelog   = See SVN ($Id: ImageLink.doc.wikitext 742 2007-12-10 20:49:40Z jeanlou.dupont $)
 |description = 
 |parameters  =
 |rights      =

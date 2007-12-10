@@ -110,7 +110,13 @@ class ImageLink
 			
 			$anchor_open = "<a ".$aClass." href='${tURL}'>";
 			$anchor_close = "</a>";
-		}		
+		}
+		// sanitize the input
+		$alt    = htmlspecialchars( $alt );
+		$width  = htmlspecialchars( $width );
+		$height = htmlspecialchars( $height );
+		$border = htmlspecialchars( $border );
+								
 		// Optional parameters
 		if ($alt    !== null)	$alt    = "alt='${alt}'"; 		else $alt='';
 		if ($width  !== null)	$width  = "width='${width}'"; 	else $width='';

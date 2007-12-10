@@ -25,7 +25,7 @@ class SecureTransclusion
 		$uri = $title->getFullUrl();
 		$text = $this->fetch( $uri, $timeout );
 		
-		// if we didn't get succeed, turn off parser caching
+		// if we didn't succeed, turn off parser caching
 		// hoping to get lucky next time around.
 		if (false === $text)
 		{

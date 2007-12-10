@@ -3,6 +3,24 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo   http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
 			<p>
+				<n>ImageLink</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+				<l>$license$</l>
+				<s>Provides link/link-free image anchors</s>
+				<d>Provides link/link-free image anchors</d>
+				<r xlink:href="/rest/r/ImageLink">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.2.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>EmbedObject</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
@@ -10,24 +28,6 @@
 				<s>Provides object embedding functionality (e.g. flash)</s>
 				<d>Provides object embedding functionality (e.g. flash)</d>
 				<r xlink:href="/rest/r/EmbedObject">
-				</r>
-			</p>
-			<a>
-				<r>
-					<v>1.0.0</v>
-					<s>stable</s>
-				</r>
-			</a>
-		</pi>
-		<pi>
-			<p>
-				<n>ParserFunctionsHelper</n>
-				<c>mediawiki.googlecode.com/svn</c>
-				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
-				<l>$license$</l>
-				<s>Provides services to parser function extensions which require inserting content after the parsing phase.</s>
-				<d>Provides services to parser function extensions which require inserting content after the parsing phase.</d>
-				<r xlink:href="/rest/r/ParserFunctionsHelper">
 				</r>
 			</p>
 			<a>
@@ -69,24 +69,6 @@
 			<a>
 				<r>
 					<v>1.2.0</v>
-					<s>stable</s>
-				</r>
-			</a>
-		</pi>
-		<pi>
-			<p>
-				<n>ImageLink</n>
-				<c>mediawiki.googlecode.com/svn</c>
-				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
-				<l></l>
-				<s>Provides configurable image anchors</s>
-				<d>Provides a clickable image link using an image from NS_IMAGE namespace.</d>
-				<r xlink:href="/rest/r/imagelink">
-				</r>
-			</p>
-			<a>
-				<r>
-					<v>1.1.1</v>
 					<s>stable</s>
 				</r>
 			</a>

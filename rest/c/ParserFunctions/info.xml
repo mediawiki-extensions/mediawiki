@@ -7,5 +7,5 @@
  <n>ParserFunctions</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>ParserFunctions</a> <!-- alias? -->
- <d>Provides object embedding functionality (e.g. flash)</d>
+ <d>Provides link/link-free image anchors</d>
 </c>

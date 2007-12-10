@@ -3,12 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xlink="http://www.w3.org/1999/xlink"    
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
-
-<n>ImageLink</n>
-<c>mediawiki.googlecode.com/svn</c>
-<s>Provides a clickable image which allows directing to a page.</s>
-<d>The usual behavior of clicking on an image brings up the page corresponding to the image in question.
-This extension provides a means of specifying a page to link to instead.</d>
-<ca xlink:href="/rest/c/parserfunctions">Parser Functions</ca>
-<r xlink:href="/rest/r/imagelink" />
+ <n>ImageLink</n>
+ <c>mediawiki.googlecode.com/svn</c>
+ <ca xlink:href="/rest/ParserFunctions">ParserFunctions</ca>
+ <l>$license$</l>
+ <s></s>
+ <d></d>
+ <r xlink:href="/rest/r/imagelink"/>
 </p>

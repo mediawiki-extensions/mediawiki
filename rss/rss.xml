@@ -145,17 +145,6 @@ Initial release.
 			<description>Changelog:
 * Initial Release
 			</description>
-			<pubDate>Mon, 10 Dec 07 06:56:23 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>ParserFunctionsHelper - 1.0.0</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-* Initial Release
-			</description>
 			<pubDate>Mon, 10 Dec 07 08:39:04 -0500</pubDate>
 		</item>
 
@@ -179,6 +168,17 @@ Initial release.
 * Initial public release
 			</description>
 			<pubDate>Mon, 10 Dec 07 10:28:37 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ImageLink - 1.2.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added 'linkless' image support
+			</description>
+			<pubDate>Mon, 10 Dec 07 15:48:02 -0500</pubDate>
 		</item>
 
 

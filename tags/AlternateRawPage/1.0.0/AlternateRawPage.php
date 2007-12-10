@@ -49,7 +49,7 @@ function AlternateRawPage_ArticleFromTitle( &$title, &$article )
 	// need to send the parameter by reference...
 	$by_ref = 'raw';
 	
-	$mediaWiki->setVal( "action", 'raw' );
+	$mediaWiki->setVal( "action", $by_ref );
 	
 	// play nice.
 	return true;

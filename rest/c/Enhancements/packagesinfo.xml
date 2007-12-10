@@ -21,6 +21,24 @@
 		</pi>
 		<pi>
 			<p>
+				<n>AlternateRawPage</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Enhancements">Enhancements</ca>
+				<l>$license$</l>
+				<s>Provides an alternative way of retrieving pages in 'raw' format</s>
+				<d>Provides an alternative way of retrieving pages in 'raw' format</d>
+				<r xlink:href="/rest/r/AlternateRawPage">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>PageTrail</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/Enhancements">Enhancements</ca>

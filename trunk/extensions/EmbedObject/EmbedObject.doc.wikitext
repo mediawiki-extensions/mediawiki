@@ -1,5 +1,5 @@
 {{Extension
-|name        = EmbebObject
+|name        = EmbedObject
 |status      = beta
 |type1       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]

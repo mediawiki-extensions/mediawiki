@@ -6,7 +6,7 @@
 |version     = 1.0.0
 |update      =
 |mediawiki   = 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags/EmbebObject SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/EmbedObject SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 

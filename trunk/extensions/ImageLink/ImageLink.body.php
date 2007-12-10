@@ -17,7 +17,7 @@ class ImageLink
 	
 	public function __construct() {}
 	
-	public function mg_imagelink( &$parser, $img, $page,  							// mandatory parameters  
+	public function mg_imagelink( &$parser, $img, $page='',  							// mandatory parameters  
 								$alt=null, $width=null, $height=null, $border=null )// optional parameters
 	/**
 	 *  $img  = image reference i.e. a valid image name e.g. "New Clock.gif" 
@@ -38,7 +38,7 @@ class ImageLink
 	/**
 	 * Can be used with [[Extension:ParserPhase2]]
 	 */
-	public function mg_imagelink_raw( &$parser, $img, $page,  							// mandatory parameters  
+	public function mg_imagelink_raw( &$parser, $img, $page='',  							// mandatory parameters  
 								$alt=null, $width=null, $height=null, $border=null )// optional parameters
 	{
 		return $this->buildHTML( $img, $page, $alt, $width, $height, $border );

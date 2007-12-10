@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package ImageLink
  * @version 1.2.0
- * @Id $Id: ImageLink.body.php 742 2007-12-10 20:49:40Z jeanlou.dupont $
+ * @Id $Id: ImageLink.body.php 743 2007-12-10 20:53:22Z jeanlou.dupont $
  */
 //<source lang=php>*/
 
@@ -84,9 +84,6 @@ class ImageLink
 		else
 			$iURL = $ititle->getFullURL();
 			
-		if (empty($page)) 
-			return '';
-
 		// prepare for 'link-less' case
 		$anchor_open = '';
 		$anchor_close = '';

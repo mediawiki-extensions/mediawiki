@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package ImageLink
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>*/
 
@@ -34,6 +35,9 @@ class ImageLink
 
 		return $t;
 	}
+	/**
+	 * Can be used with [[Extension:ParserPhase2]]
+	 */
 	public function mg_imagelink_raw( &$parser, $img, $page,  							// mandatory parameters  
 								$alt=null, $width=null, $height=null, $border=null )// optional parameters
 	{
@@ -83,23 +87,33 @@ class ImageLink
 		if (empty($page)) 
 			return '';
 
-		$ptitle = Title::newFromText( $page );
+		// prepare for 'link-less' case
+		$anchor_open = '';
+		$anchor_close = '';
 		
-		// this might happen in templates...
-		if (!is_object( $ptitle ))
-			return 'ImageLink: invalid title name.';
-				
-		if ( $ptitle->isLocal() )
+		// check if we are asked to render a 'link-less' element
+		if (!empty( $page ))
 		{
-			$tURL = $ptitle->getLocalUrl();
-			$aClass=''; 			
-		}
-		else
-		{
-			$tURL = $ptitle->getFullURL();
-			$aClass = 'class="extiw"';
+			$ptitle = Title::newFromText( $page );
+			
+			// this might happen in templates...
+			if (!is_object( $ptitle ))
+				return 'ImageLink: invalid title name.';
+					
+			if ( $ptitle->isLocal() )
+			{
+				$tURL = $ptitle->getLocalUrl();
+				$aClass=''; 			
+			}
+			else
+			{
+				$tURL = $ptitle->getFullURL();
+				$aClass = 'class="extiw"';
+			}
+			
+			$anchor_open = "<a ".$aClass." href='${tURL}'>";
+			$anchor_close = "</a>";
 		}		
-		
 		// Optional parameters
 		if ($alt    !== null)	$alt    = "alt='${alt}'"; 		else $alt='';
 		if ($width  !== null)	$width  = "width='${width}'"; 	else $width='';
@@ -107,7 +121,7 @@ class ImageLink
 		if ($border !== null)	$border = "border='${border}'";	else $border='';
 
 		// let's put an easy marker that we can 'safely' find once we need to render the HTML
-		return "<a ".$aClass." href='${tURL}'><img src='${iURL}' $alt $width $height $border /></a>";
+		return $anchor_open."<img src='${iURL}' $alt $width $height $border />".$anchor_close;
 	}
 	
 } // end class definition.

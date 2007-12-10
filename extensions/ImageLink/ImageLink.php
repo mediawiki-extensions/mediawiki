@@ -2,12 +2,13 @@
 /**
  * @author Jean-Lou Dupont
  * @package ImageLink
- * @version $Id$ 
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 $wgExtensionCredits['other'][] = array( 
 	'name'        	=> 'ImageLink', 
-	'version'     	=> '1.1.1',
+	'version'     	=> '@@package-version@@',
 	'author'      	=> 'Jean-Lou Dupont', 
 	'description' 	=> 'Provides a clickable image link',
 	'url' 			=> 'http://mediawiki.org/wiki/Extension:ImageLink',			

@@ -1,0 +1,63 @@
+{{Extension
+|name        = GoogleCharts
+|status      = beta
+|type1       = parser function
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.1
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/GoogleCharts SVN]
+|readme      =
+|changelog   = See SVN ($Id: GoogleCharts.doc.wikitext 731 2007-12-10 01:20:52Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides a simple interface for embedding GoogleCharts.
+
+== Usage ==
+=== gchart parser function ===
+* <nowiki>{{#gcharts: param1&param2&...[|alternate text]}}</nowiki>
+** each parameter must be separated by an ''&''
+** ''alternate text'' is the text displayed if the chart can not be loaded
+=== gchart_pipe parser function ===
+Many optional parameters of the GoogleCharts must be separated with the pipe ''|'' character. This character bears syntaxical meaning in MediaWiki and thus must be accounted for in a special way. The use of the parser function ''gcharts_pipe'' solves this issue.
+
+* <nowiki>{{#gcharts_pipe: param1,param2, ...}}</nowiki>
+** Each parameter must be coma separated and the produced output parameter list will be pipe ''|'' separated.
+
+=== gchart_senc parser function ===
+Chart data can be encoded three ways:
+* Simple Encoding
+* Text Encoding
+* Extended Encoding
+The parser function ''gcharts_senc'' implements the ''Simple Encoding'' function:
+* <nowiki>{{#gcharts_senc: params | maxvalue}}</nowiki>
+** ''params'' is a coma separated parameter list
+** ''maxvalue'' corresponds to the maximum value found in the data set
+
+== Example ==
+{{#gcharts:cht=p3&chd=s:hW&chs=250x100&chl={{#gcharts_pipe:Hello,World}}}}
+
+== Documentation ==
+The official source of information for GoogleCharts can be found [http://code.google.com/apis/chart/ here].
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+{{Pear|GoogleCharts}}
+
+== History ==
+{|border=1
+! Release !! Notes
+|-
+| 1.0.0 || Initial public release
+|-
+| 1.0.1 || Added input parameters sanitization
+|}
+
+== TODO ==
+* Implement a parser function to simplify the ''Extended Encoding'' format

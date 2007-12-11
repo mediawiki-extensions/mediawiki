@@ -97,6 +97,41 @@ class SecureHTML
 		array_shift( $params ); // get rid of $parser
 		array_shift( $params );	// get rid of $page_name
 		
+		$text = $this->getAndProcessPage( $page_name, $params, $text );
+		
+		// Let MediaWiki do the heavy lifting.
+		return $text;
+	}
+	/**
+	 * Secure version of '#html' parser function
+	 * The page where the parser function is used does not need to be protected,
+	 * only the target page_name must be.
+	 */
+	public function mg_shtml( &$parser, $page_name /* optional params */ )
+	{
+		$params = func_get_args();
+		array_shift( $params ); // get rid of $parser
+		array_shift( $params );	// get rid of $page_name
+		
+		$text = $this->getAndProcessPage( $page_name, $params, $text );
+
+		// prepare for the call to [[Extension:ParserFunctionsHelper]]
+		// public function hParserFunctionsHelperSet( $key, &$value, &$index, &$anchor )		
+		$anchor = null;
+		$index = null;
+		wfRunHooks( 'ParserFunctionsHelperSet',
+					array( 'shtml', &$text, &$index, &$anchor ) );
+		
+		if ( $anchor === null)
+			return '[http://www.mediawiki.org/wiki/Extension:ParserFunctionsHelper Extension:ParserFunctionHelper] missing.';
+		
+		return $anchor;		
+	}
+	/**
+	 *
+	 */
+	protected function getAndProcessPage( &$page_name, &$params )
+	{
 		// get a title object from the page_name given
 		$title = null;
 		$result = $this->getAndCheckTitle( $page_name, $title );
@@ -110,10 +145,9 @@ class SecureHTML
 		$processed_params = $this->processParams( $params );
 		
 		$this->replaceVariables( $text, $processed_params );
-		
-		// Let MediaWiki do the heavy lifting.
+
 		return $text;
-	}
+	}	 
 	/**
 	 * Verifies if the target page is protected for 'edit'
 	 */

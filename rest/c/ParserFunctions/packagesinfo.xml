@@ -21,60 +21,6 @@
 		</pi>
 		<pi>
 			<p>
-				<n>ImageLink</n>
-				<c>mediawiki.googlecode.com/svn</c>
-				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
-				<l>$license$</l>
-				<s>Provides link/link-free image anchors</s>
-				<d>Provides link/link-free image anchors</d>
-				<r xlink:href="/rest/r/ImageLink">
-				</r>
-			</p>
-			<a>
-				<r>
-					<v>1.2.0</v>
-					<s>stable</s>
-				</r>
-			</a>
-		</pi>
-		<pi>
-			<p>
-				<n>ImageLink</n>
-				<c>mediawiki.googlecode.com/svn</c>
-				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
-				<l>$license$</l>
-				<s>Provides link/link-free image anchors</s>
-				<d>Provides link/link-free image anchors</d>
-				<r xlink:href="/rest/r/ImageLink">
-				</r>
-			</p>
-			<a>
-				<r>
-					<v>1.2.0</v>
-					<s>stable</s>
-				</r>
-			</a>
-		</pi>
-		<pi>
-			<p>
-				<n>ImageLink</n>
-				<c>mediawiki.googlecode.com/svn</c>
-				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
-				<l>$license$</l>
-				<s>Provides link/link-free image anchors</s>
-				<d>Provides link/link-free image anchors</d>
-				<r xlink:href="/rest/r/ImageLink">
-				</r>
-			</p>
-			<a>
-				<r>
-					<v>1.2.0</v>
-					<s>stable</s>
-				</r>
-			</a>
-		</pi>
-		<pi>
-			<p>
 				<n>EmbedObject</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>

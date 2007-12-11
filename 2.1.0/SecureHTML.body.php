@@ -113,7 +113,7 @@ class SecureHTML
 		array_shift( $params ); // get rid of $parser
 		array_shift( $params );	// get rid of $page_name
 		
-		$text = $this->getAndProcessPage( $page_name, $params, $text );
+		$text = $this->getAndProcessPage( $page_name, $params );
 
 		// prepare for the call to [[Extension:ParserFunctionsHelper]]
 		// public function hParserFunctionsHelperSet( $key, &$value, &$index, &$anchor )		

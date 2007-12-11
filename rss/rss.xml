@@ -184,6 +184,28 @@ Initial release.
 
 	
 	<item>
+			<title>ImageLink - 1.2.1</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added input sanitization for security
+			</description>
+			<pubDate>Mon, 10 Dec 07 16:55:32 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>SecureHTML - 2.1.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added {{#shtml}} parser function
+			</description>
+			<pubDate>Tue, 11 Dec 07 12:15:46 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

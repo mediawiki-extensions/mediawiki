@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package SecureTransclusion
  * @version 1.2.0
- * @Id $Id: SecureTransclusion.body.php 736 2007-12-10 15:30:44Z jeanlou.dupont $
+ * @Id $Id: SecureTransclusion.body.php 752 2007-12-11 18:28:42Z jeanlou.dupont $
  */
 //<source lang=php>
 class SecureTransclusion
@@ -23,7 +23,7 @@ class SecureTransclusion
 			return 'SecureTransclusion: '.wfMsg('badtitle');
 		
 		if ( $title->isTrans() )
-			return $this->getRemotePage( $title, $errorMessage );
+			return $this->getRemotePage( $title, $errorMessage, $timeout );
 		
 		return $this->getLocalPage( $title, $errorMessage );
 	}
@@ -41,7 +41,7 @@ class SecureTransclusion
 	/**
 	 * Retrieves a page located on a remote server.
 	 */
-	protected function getRemotePage( &$title, &$error_msg )
+	protected function getRemotePage( &$title, &$error_msg, $timeout )
 	{
 		$uri = $title->getFullUrl();
 		$text = $this->fetch( $uri, $timeout );

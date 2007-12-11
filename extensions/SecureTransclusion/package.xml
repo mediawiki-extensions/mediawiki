@@ -10,7 +10,7 @@
  <name>SecureTransclusion</name>
  <channel>mediawiki.googlecode.com/svn</channel>
  <summary>Secure transclusion of external http accessible uri.</summary>
- <description>This extension enables the transclusion of external (outside the target wiki) accessible HTTP uri.</description>
+ <description>This extension enables the transclusion of local or external (outside the target wiki) accessible HTTP uri.</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2007-11-28</date>
- <time>04:39:04</time>
+ <date>2007-12-11</date>
+ <time>18:27:42</time>
 
  <version>
-  <release>1.1.2</release>
+  <release>1.2.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -43,7 +43,6 @@
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.body.php" role="php" />
    <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.php" role="php" />
-   <file baseinstalldir="MediaWiki/SecureTransclusion" name="SecureTransclusion.doc.wikitext" role="doc" />
     <!-- }} -->
 
   </dir>
@@ -82,7 +81,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-* Performance enhancement through parser-caching support
+* Retrieval of local pages now supported
 </notes>
 </release>
 </changelog>

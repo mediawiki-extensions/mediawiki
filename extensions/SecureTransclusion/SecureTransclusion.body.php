@@ -13,15 +13,36 @@ class SecureTransclusion
 	
 	public function __construct() {}
 	
-	public function mg_strans( &$parser, $iwpage, $errorMessage = null, $timeout = 5 )
+	public function mg_strans( &$parser, $page, $errorMessage = null, $timeout = 5 )
 	{
 		if (!self::checkExecuteRight( $parser->mTitle ))
 			return 'SecureTransclusion: '.wfMsg('badaccess');
 		
-		$title = Title::newFromText( $iwpage );
-		if (is_null( $title ) || (!$title->isTrans()))
-			return 'SecureTransclusion: '.wfMsg("importbadinterwiki");
+		$title = Title::newFromText( $page );
+		if (!is_object( $title ))
+			return 'SecureTransclusion: '.wfMsg('badtitle');
 		
+		if ( $title->isTrans() )
+			return $this->getRemotePage( $title, $errorMessage );
+		
+		return $this->getLocalPage( $title, $errorMessage );
+	}
+	/**
+	 * Retrieves a local page.
+	 */
+	protected function getLocalPage( &$title, $error_msg )
+	{
+		$contents = $error_msg;
+		$rev = Revision::newFromTitle( $title );
+		if( is_object( $rev ) )
+		    $contents = $rev->getText();		
+		return $contents;		
+	}
+	/**
+	 * Retrieves a page located on a remote server.
+	 */
+	protected function getRemotePage( &$title, &$error_msg )
+	{
 		$uri = $title->getFullUrl();
 		$text = $this->fetch( $uri, $timeout );
 		
@@ -30,11 +51,11 @@ class SecureTransclusion
 		if (false === $text)
 		{
 			$parser->disableCache();
-			return $errorMessage;
+			$text = $error_msg;
 		}
 			
 		return $text;
-	}
+	}	 
 	/**
 		1- IF the page is protected for 'edit' THEN allow execution
 		2- IF the page's last contributor had the 'strans' right THEN allow execution

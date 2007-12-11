@@ -4,7 +4,7 @@
 |type1       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.1.2
+|version     = 1.2.0
 |update      =
 |mediawiki   = 1.11
 |download    = see Installation
@@ -23,9 +23,10 @@ Provides secure transcluding of interwiki wikitext pages accessible without the 
 ** Be protected on 'edit'
 ** Current user editing the page must have the 'strans' right
 ** Or, lastly, the last contributor to the page has the 'strans' right
+* Local or remote pages
 
 == Usage ==
-<nowiki>{{#strans: interwiki link | [error message] }}</nowiki>
+<nowiki>{{#strans: interwiki-link OR local-page-name | [error message] }}</nowiki>
 
 === Setting InterWiki Links ===
 See [[Extension:InterWikiLinkManager|InterWikiLinkManager extension]] for more details.
@@ -57,3 +58,5 @@ considerable care when using templates on the same page.
 * Added 'timeout' parameter
 === 1.1.2 ===
 * Enhanced performance through the use of parser caching
+=== 1.2.0 ===
+* Local pages now supported

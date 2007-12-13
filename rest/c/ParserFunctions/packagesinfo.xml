@@ -21,6 +21,24 @@
 		</pi>
 		<pi>
 			<p>
+				<n>ConditionalContent</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+				<l>$license$</l>
+				<s>Provides a parser function for conditionally including content</s>
+				<d>Provides a parser function for conditionally including content</d>
+				<r xlink:href="/rest/r/ConditionalContent">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>ImageLink</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>

@@ -7,8 +7,8 @@
  */
 //<source lang=php>*/
 ConditionalContent::$msg['en'] = array(
- 'ConditionalContent_ReadRestriction'	=> 'ConditionalContent: "read" restriction in place',
- 'ConditionalContent_InvalidPageTitle'	=> 'ConditionalContent: invalid page title',
+ 'conditionalcontent_readrestriction'	=> 'ConditionalContent: "read" restriction in place',
+ 'conditionalcontent_invalidpagetitle'	=> 'ConditionalContent: invalid page title',
 );
 
 //</source>

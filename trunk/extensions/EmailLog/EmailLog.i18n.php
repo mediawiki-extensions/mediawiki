@@ -27,5 +27,3 @@ $msgEmailLog['en'] = array(
 	'emaillog-sent-text'		=> 'from user $1 to user $2',
 	#'' => '',
 );
-
-?>

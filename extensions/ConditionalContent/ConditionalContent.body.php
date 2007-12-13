@@ -75,10 +75,10 @@ class ConditionalContent
 		global $wgUser;		
 		$permission = $this->checkPermission( $wgUser, $page, &$title );
 		if ( $permission === false )
-			return wfMsg( 'ConditionalContent_ReadRestriction' );
+			return wfMsg( 'conditionalcontent_readrestriction' );
 			
 		if ( $permission === null )
-			return wfMsg( 'ConditionalContent_InvalidPageTitle' );
+			return wfMsg( 'conditionalcontent_invalidpagetitle' );
 			
 		return $title;
 	}

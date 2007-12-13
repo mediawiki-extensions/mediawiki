@@ -7,7 +7,7 @@
 		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd 
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
- <name>ConditionContent</name>
+ <name>ConditionalContent</name>
  <channel>mediawiki.googlecode.com/svn</channel>
  <summary>Provides a parser function for conditionally including content</summary>
  <description>Provides a parser function for conditionally including content</description>
@@ -19,8 +19,8 @@
   <active>yes</active>
  </lead>
 
- <date>2007-12-11</date>
- <time>17:22:05</time>
+ <date>2007-12-13</date>
+ <time>22:40:13</time>
 
  <version>
   <release>1.0.0</release>
@@ -41,9 +41,9 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/ConditionContent" name="ConditionContent.php" role="php" />
-   <file baseinstalldir="MediaWiki/ConditionContent" name="ConditionContent.body.php" role="php" />
-   <file baseinstalldir="MediaWiki/ConditionContent" name="ConditionContent.i18n.php" role="php" />
+   <file baseinstalldir="MediaWiki/ConditionalContent" name="ConditionalContent.php" role="php" />
+   <file baseinstalldir="MediaWiki/ConditionalContent" name="ConditionalContent.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/ConditionalContent" name="ConditionalContent.i18n.php" role="php" />
     <!-- }} -->
 
   </dir>

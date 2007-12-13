@@ -18,6 +18,8 @@
 == Purpose==
 Provides a simple interface for embedding GoogleCharts.
 
+One notable feature of this extension comes from the fact that the native GoogleCharts formatting ''language'' is almost entirely untouched and transparent; this allows for very easy forward compatibility.
+
 == Usage ==
 === gchart parser function ===
 * <nowiki>{{#gcharts: param1&param2&...[|alternate text]}}</nowiki>

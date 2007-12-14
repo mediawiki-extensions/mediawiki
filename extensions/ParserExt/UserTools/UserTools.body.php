@@ -46,10 +46,8 @@ class UserTools
 								'watchlistdays'	=> self::UNRESTRICTED,
 							);
 
-	public function __construct() {}
-	
 	/**
-	
+	 * {{#cusergetoption:which-option|default-if-not-found}}	
 	 */
 	public function mg_cusergetoption( &$parser, $whichOption, $default = null )
 	{
@@ -59,11 +57,12 @@ class UserTools
 		// the current user has the right to access the requested 'option'
 		if ($this->isRestricted( $option ))
 			if (!$wgUser->isAllowed('userdetails'))	
-				return null;
+				return 'UserTools: '.wfMsg('badaccess');
 
 		return $this->getOption( $wgUser, $whichOption, $default );
 	}
 	/**
+	 * {{#usergetoption:user-name-OR-id|which-option|default-if-not-found}}
 	 */
 	public function mg_usergetoption( &$parser, $user, $whichOption, $default = null )
 	{
@@ -73,27 +72,14 @@ class UserTools
 		// the current user has the right to access the requested 'option'
 		if ($this->isRestricted( $option ))
 			if (!$wgUser->isAllowed('userdetails'))	
-				return null;
+				return 'UserTools: '.wfMsg('badaccess');
 
-		if (is_numeric( $user ))
-		{
-			$userObj = User::newFromId( $user );
-			if (!is_object( $userObj ))
-				return null;
-			if ($userObj->getID() == 0)
-				$userObj = User::newFromName( $user, true /* validate */);
-		}
-		else
-			$userObj = User::newFromName( $user, true /* validate */);
-
-		if (!is_object( $userObj ))
-			return null;
+		$userObj = $this->getUserObject( $user );
 		
 		return $this->getOption( $userObj, $whichOption, $default );
 	}
-
 	/**
-		Returns 'true' (restricted) if the option is not found.
+	 * Returns 'true' (restricted) if the option is not found.
 	 */
 	private function isRestricted( &$option )
 	{
@@ -104,6 +90,9 @@ class UserTools
 			
 		return ($r == self::RESTRICTED) ? true:false;
 	}
+	/**
+	 * Returns the value of the specified option and $default if not found.
+	 */
 	public function getOption( &$user, &$option, $default = null )
 	{
 		switch( $option )
@@ -122,6 +111,84 @@ class UserTools
 
 		return null; // calms PHP			
 	}
+	/**
+	 * {{#cuserfromgroup: groupname-to-look-for|value-to-return-when-found|value-to-return-when-not-found}}
+	 *
+	 * @param string $group Group name to look for
+	 * @param mixed $trueValue Value to return in case current user is part of $group
+	 * @param mixed $falseValue Value to return in case current user is not part of $group	 
+	 */
+	public function mg_cuserfromgroup(	&$parser, 
+										$group, 
+										$trueValue = true, 
+										$falseValue = false )
+	{
+		global $wgUser;
+
+		return $this->doGroupLookup( $wgUser, $group, $trueValue, $falseValue );
+	}
+	/**
+	 * {{#userfromgroup: username-OR-user-id|groupname-to-look-for|value-to-return-when-found|value-to-return-when-not-found}}
+	 *
+	 * @param string $user Username OR user id
+	 * @param string $group Group name to look for
+	 * @param mixed $trueValue Value to return in case current user is part of $group
+	 * @param mixed $falseValue Value to return in case current user is not part of $group	 
+	 */
+	public function mg_userfromgroup(	&$parser, 
+										$user,
+										$group, 
+										$trueValue = true, 
+										$falseValue = false )
+	{
+		// If the current user isn't allowed to viewing another user's group membership details.
+		global $wgUser;
+		if (!$wgUser->isAllowed('userdetails'))	
+			return 'UserTools: '.wfMsg('badaccess');
+		
+		$userObj = $this->getUserObject( $user );
+
+		return $this->doGroupLookup( $userObj, $group, $trueValue, $falseValue );
+	}
+	/**
+	 *
+	 */
+	protected function doGroupLookup( &$user, &$group, $trueValue, $falseValue )
+	{
+		if ( !is_object( $user ))
+			return $falseValue;
+			
+		$ugroups = $user->getEffectiveGroups();
+		$result  = array_search( $group, $ugroups );
+		
+		return ( $result ) ? $trueValue:$falseValue;
+	}
 	
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	/**
+	 * @param mixed $user Either a string username or a user's ID
+	 */
+	protected function getUserObject( &$user )
+	{
+		if (is_numeric( $user ))
+		{
+			$userObj = User::newFromId( $user );
+			if (!is_object( $userObj ))
+				return null;
+			if ($userObj->getID() == 0)
+				$userObj = User::newFromName( $user, true /* validate */);
+		}
+		else
+			$userObj = User::newFromName( $user, true /* validate */);
+
+		if (!is_object( $userObj ))
+			return null;
+
+		return $userObj;		
+	}	 
+
+		
 } // end class
 //</source>

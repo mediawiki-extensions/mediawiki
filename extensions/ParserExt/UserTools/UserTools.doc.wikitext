@@ -5,10 +5,10 @@
 |type        = extended syntax
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/ParserExt/UserTools SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 
@@ -17,18 +17,30 @@
 |example     =
 }}
 == Purpose==
-Provides a secure magic word 'usergetoption' to retrieve user options.
+Provides secure parser functions to retrieve user related information.
 
 == Usage ==
 This extension is really meant to be used with [[Extension:ParserPhase2]].
+
+=== User options ===
 * E.g. <code>(($#cusergetoption|email|default$))</code>
 ** Get the current user's email option
 * E.g. <code>(($#usergetoption|user id or name|email|default$))</code>
 ** Get the specified user's email option IFF the current has the 'userdetails' right
 
+=== User Group Membership ===
+* <nowiki>{{#cuserfromgroup:group-to-look-for|trueValue|falseValue}}</nowiki>
+** ''trueValue'' is returned if current user is part of ''group''
+** ''falseValue'' is returned if current user is '''not''' part of ''group''
+
+Similar to ''#cuserfromgroup'':
+* <nowiki>{{#userfromgroup:username-OR-user-id|group-to-look-for|trueValue|falseValue}}</nowiki>
+** Either a ''username'' or ''user id'' must be supplied
+
 == Features ==
 * Options are categorized as either 'RESTRICTED' or 'UNRESTRICTED' for privacy reasons
-** User must have the 'userdetails' right to access 'RESTRICTED' options
+** User must have the ''userdetails'' right to access 'RESTRICTED' options
+** Also, the current user must have the ''userdetails'' to view some other user's group membership
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
@@ -36,3 +48,8 @@ This extension is really meant to be used with [[Extension:ParserPhase2]].
 {{Pear|ParserExt}}
 
 == History ==
+{|border=1
+! Release !! Notes
+|-
+| 1.1.0 || Addition of ''#cuserfromgroup'' and ''#userfromgroup''
+|}

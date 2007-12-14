@@ -2,6 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package ParserExt
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 require 'ForeachFunction/ForeachFunction.php';

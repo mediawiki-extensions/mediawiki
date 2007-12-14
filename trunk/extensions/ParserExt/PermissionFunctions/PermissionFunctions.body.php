@@ -23,6 +23,10 @@ class PermissionFunctions
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // Functions which are meant to be accessed through 'ParserPhase2' functionality
 
+	/**
+	 * Meant to be user through [[Extension:ParserPhase2]]
+	 *  (($#checkpermission|required right$))
+	 */
 	public function mg_checkpermission( &$parser, $requiredRight = 'read' )
 	// (($ #checkpermission|required right $))
 	// redirects to the standard 'Permission Error' page if the user lacks the $requiredRight
@@ -43,6 +47,7 @@ class PermissionFunctions
 		}
 	}
 	/**
+	 *
 	 */
 	public function hEndParserPhase2( &$op, &$text )
 	{
@@ -50,16 +55,17 @@ class PermissionFunctions
 			$text = null;
 		return true;
 	}
-	
+	/** FIXME
+	 * This parser function is meant to be used in conjuction 
+	 * with 'Hierarchical Namespace Permission' extension.
+	 * E.g. (($#foreachx|bwPermissionFunctions|getpermissionline| ... $))
+	 */	
 	public static function getpermissionline( $group, $namespace )
-	// This function is meant to be used in conjuction with 'Hierarchical Namespace Permission' extension.
-	// E.g. (($#foreachx|bwPermissionFunctions|getpermissionline| ... $))
 	{
 		if (!class_exists('HNP'))
 			return "<b>PermissionFunctions:</b> ".wfMsg('error')." <i>Hierarchical Namespace Permission Extension</i>";		
-		return hnpClass::getPermissionGroupNamespace( $group, $namespace );
+		return HNP::getPermissionGroupNamespace( $group, $namespace );
 	}
-
 	public static function usercan( &$user, &$ns, &$pt, &$action )
 	{
 		if (!class_exists('HNP')) 

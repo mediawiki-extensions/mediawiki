@@ -4,7 +4,7 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.2.1
+|version     = 1.3.0
 |update      =
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ImageLink/ SVN]
@@ -22,17 +22,21 @@ The extension also supports the ''link-less'' mode thereby enabling a ''one-stop
 
 == Usage ==
 === Local Image ===
-* <nowiki>{{#imagelink: image page name | page name |alternate text | width | height | border }}</nowiki>
+* <nowiki>{{#imagelink: image-page-name | page name |alternate text | width | height | border }}</nowiki>
+* <nowiki>{{#img: image=image-page-name [|page=page-to-link-to] [|alt=alternate-text] [|height=height-parameter] [|width=width-parameter] [|border=border-parameter] [|title=title-parameter] }}</nowiki>
+
 See [http://www.w3schools.com/tags/tag_img.asp W3Schools on IMG tag] for more details.
 
 === Link-Less option ===
 If no ''page name'' is given, then no anchor (i.e. HTML <code>< a></code> element) will be generated.
 
 === InterWiki accessible Image ===
-* <nowiki>{{#imagelink: interwiki_prefix:image page name | page name |alternate text | width | height | border }}</nowiki>
+* <nowiki>{{#imagelink: interwiki_prefix:image-page-name | page name | alternate text | width | height | border }}</nowiki>
+* <nowiki>{{#img: image=interwiki_prefix:image-page-name ... }}</nowiki>
 
-Example:
+== Examples ==
 * <nowiki>{{#imagelink: New Clock.gif | Admin:Show Time | Current Time | 32 | 32 | 2 }}</nowiki>
+* <nowiki>{{#img: image=Star.png | page=Starred Page | height=100% | title=Some starred page }}</nowiki>
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
@@ -55,6 +59,12 @@ Example:
 * Added 'link-less' functionality
 === 1.2.1 ===
 * Added input sanitization for increased security
+
+{|border=1
+! Release !! Notes
+|-
+| 1.3.0 || Addition of parser function ''#img'' & addition of ''title'' parameter for tooltips
+|}
 
 [[Category:Image map extensions]]
 [[Category:Link extensions]]

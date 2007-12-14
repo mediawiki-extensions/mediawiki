@@ -20,7 +20,7 @@ if (class_exists('StubManager'))
 								array('ParserAfterTidy'),	// hooks
 								false, 						// no need for logging support
 								null,						// tags
-								array('imagelink', 'imagelink_raw' ),	// parser Functions
+								array('imagelink', 'imagelink_raw', 'img' ),	// parser Functions
 								null
 							 );
 else

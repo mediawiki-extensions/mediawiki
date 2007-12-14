@@ -23,7 +23,7 @@
  <time>20:18:00</time>
 
  <version>
-  <release>1.2.0</release>
+  <release>1.3.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -119,7 +119,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-* Added parser function 'imgviewurl' to Extension:PageFunctions
+Added parser functions 'userfromgroup' and 'cuserfromgroup' in UserTools
 </notes>
 </release>
 </changelog>

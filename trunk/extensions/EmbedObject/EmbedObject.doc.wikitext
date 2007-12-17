@@ -23,7 +23,7 @@ Many similar extensions exist albeit with a notable shortcoming: the implementat
 This extensions solves this shortcoming through the use of a ''parser function''.
 
 == Usage ==
-<code>{{#embed: MIME-type | local-or-interwiki-link [|param1=value1 ...]}}</code>
+<nowiki>{{#embed: MIME-type | local-or-interwiki-link [|param1=value1 ...]}}</nowiki>
 
 == Example ==
 The following enables viewing FreeMind diagrams through an interwiki link ''mwgcr'' (note that interwiki links can be managed through [[Extension:InterWikiLinkManager]]).

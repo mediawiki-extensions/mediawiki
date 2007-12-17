@@ -28,12 +28,12 @@ This extensions solves this shortcoming through the use of a ''parser function''
 == Example ==
 The following enables viewing FreeMind diagrams through an interwiki link ''mwgcr'' (note that interwiki links can be managed through [[Extension:InterWikiLinkManager]]).
 
-{{#embed: application/x-shockwave-flash| mwgcr:scripts/visorFreemind.swf
+{{#embed: application/x-shockwave-flash| mwgcr:scripts/mm/visorFreemind.swf
 |id=visorFreeMind
 |name=visorFreeMind
 |bgcolor=#a0a0f0
 |quality=high
-|flashvars='openUrl=_blank&amp;startCollapsedToLevel=3&amp;maxNodeWidth=200&amp;mainNodeShape=elipse&amp;justMap=false&amp;initLoadFile=http://mediawiki.googlecode.com/svn/scripts/freeMindFlashBrowser.mm&amp;defaultToolTipWordWrap=200&amp;offsetX=left&amp;offsetY=top&amp;buttonsPos=top&amp;min_alpha_buttons=20&amp;max_alpha_buttons=100&amp;scaleTooltips=false'
+|flashvars='openUrl=_blank&amp;startCollapsedToLevel=3&amp;maxNodeWidth=200&amp;mainNodeShape=elipse&amp;justMap=false&amp;initLoadFile=http://mediawiki.googlecode.com/svn/scripts/mm/freeMindFlashBrowser.mm&amp;defaultToolTipWordWrap=200&amp;offsetX=left&amp;offsetY=top&amp;buttonsPos=top&amp;min_alpha_buttons=20&amp;max_alpha_buttons=100&amp;scaleTooltips=false'
 |height=500
 |width=100%
 }}

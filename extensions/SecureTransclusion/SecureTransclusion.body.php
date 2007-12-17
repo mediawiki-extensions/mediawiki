@@ -23,7 +23,7 @@ class SecureTransclusion
 			return 'SecureTransclusion: '.wfMsg('badtitle');
 		
 		if ( $title->isTrans() )
-			return $this->getRemotePage( $title, $errorMessage, $timeout );
+			return $this->getRemotePage( $parser, $title, $errorMessage, $timeout );
 		
 		return $this->getLocalPage( $title, $errorMessage );
 	}
@@ -41,7 +41,7 @@ class SecureTransclusion
 	/**
 	 * Retrieves a page located on a remote server.
 	 */
-	protected function getRemotePage( &$title, &$error_msg, $timeout )
+	protected function getRemotePage( &$parser, &$title, &$error_msg, $timeout )
 	{
 		$uri = $title->getFullUrl();
 		$text = $this->fetch( $uri, $timeout );

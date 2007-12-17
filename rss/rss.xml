@@ -8,78 +8,23 @@
 
 	
 	<item>
-			<title>PageTrail - 1.0.0</title>
+			<title>ConditionalContent - 1.0.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-Initial release.
+Initial release
 			</description>
-			<pubDate>Mon, 03 Dec 07 12:21:41 -0500</pubDate>
+			<pubDate>Mon, 17 Dec 07 11:11:52 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
-			<title>PageTrail - 1.0.1</title>
+			<title>SecureTransclusion - 1.1.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Fixed missing i18n file in archive.
+* Performance enhancement through parser-caching support
 			</description>
-			<pubDate>Mon, 03 Dec 07 12:26:43 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>PageTrail - 1.0.2</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-* Try another fix for session cookie
-			</description>
-			<pubDate>Mon, 03 Dec 07 12:55:59 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>PageTrail - 1.0.3</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-* Try yet another fix for session cookie
-			</description>
-			<pubDate>Mon, 03 Dec 07 14:46:14 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>PageTrail - 1.0.4</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-* Corrected issue with empty array
-			</description>
-			<pubDate>Mon, 03 Dec 07 15:09:11 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>PageTrail - 1.0.5</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-* More minor fixes
-			</description>
-			<pubDate>Mon, 03 Dec 07 15:27:22 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>SecureHTML - 2.0.0</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-* Added {{#html}} parser function
-			</description>
-			<pubDate>Fri, 07 Dec 07 10:37:44 -0500</pubDate>
+			<pubDate>Tue, 27 Nov 07 23:39:06 -0500</pubDate>
 		</item>
 
 
@@ -96,89 +41,89 @@ Initial release.
 
 	
 	<item>
-			<title>GoogleCharts - 1.0.0</title>
+			<title>SecureHTML - 2.0.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* First public release
+* Added {{#html}} parser function
 			</description>
-			<pubDate>Sun, 09 Dec 07 20:18:46 -0500</pubDate>
+			<pubDate>Fri, 07 Dec 07 10:37:44 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
-			<title>GoogleCharts - 1.0.1</title>
+			<title>PageTrail - 1.0.5</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Added input parameters sanitization (i.e. potential security breach)
+* More minor fixes
 			</description>
-			<pubDate>Sun, 09 Dec 07 21:10:34 -0500</pubDate>
+			<pubDate>Mon, 03 Dec 07 15:27:22 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
-			<title>AlternateRawPage - 1.0.0</title>
+			<title>PageTrail - 1.0.4</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Initial public release
+* Corrected issue with empty array
 			</description>
-			<pubDate>Sun, 09 Dec 07 22:27:36 -0500</pubDate>
+			<pubDate>Mon, 03 Dec 07 15:09:11 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
-			<title>AlternateRawPage - 1.0.0</title>
+			<title>PageTrail - 1.0.3</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Initial public release
+* Try yet another fix for session cookie
 			</description>
-			<pubDate>Sun, 09 Dec 07 22:31:26 -0500</pubDate>
+			<pubDate>Mon, 03 Dec 07 14:46:14 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
-			<title>ParserFunctionsHelper - 1.0.0</title>
+			<title>PageTrail - 1.0.2</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Initial Release
+* Try another fix for session cookie
 			</description>
-			<pubDate>Mon, 10 Dec 07 08:39:04 -0500</pubDate>
+			<pubDate>Mon, 03 Dec 07 12:55:59 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
-			<title>StubManager - 1.0.6</title>
+			<title>PageTrail - 1.0.1</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Added capability to accept 3more parameters when calling target methods
+* Fixed missing i18n file in archive.
 			</description>
-			<pubDate>Mon, 10 Dec 07 10:16:51 -0500</pubDate>
+			<pubDate>Mon, 03 Dec 07 12:26:43 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
-			<title>EmbedObject - 1.0.0</title>
+			<title>PageTrail - 1.0.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Initial public release
+Initial release.
 			</description>
-			<pubDate>Mon, 10 Dec 07 10:28:37 -0500</pubDate>
+			<pubDate>Mon, 03 Dec 07 12:21:41 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
-			<title>ImageLink - 1.2.0</title>
+			<title>ImageLink - 1.3.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Added 'linkless' image support
+Addition of ''#img'' parser function + tooltip support
 			</description>
-			<pubDate>Mon, 10 Dec 07 15:48:02 -0500</pubDate>
+			<pubDate>Fri, 14 Dec 07 15:24:39 -0500</pubDate>
 		</item>
 
 
@@ -189,18 +134,18 @@ Initial release.
 			<description>Changelog:
 * Added input sanitization for security
 			</description>
-			<pubDate>Mon, 10 Dec 07 16:55:32 -0500</pubDate>
+			<pubDate>Fri, 14 Dec 07 15:24:09 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
-			<title>SecureHTML - 2.1.0</title>
+			<title>ConditionalContent - 1.0.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Added {{#shtml}} parser function
+Initial release
 			</description>
-			<pubDate>Tue, 11 Dec 07 12:15:46 -0500</pubDate>
+			<pubDate>Thu, 13 Dec 07 17:42:22 -0500</pubDate>
 		</item>
 
 
@@ -217,12 +162,111 @@ Initial release.
 
 	
 	<item>
-			<title>SecureTransclusion - 1.1.2</title>
+			<title>SecureHTML - 2.1.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
-* Performance enhancement through parser-caching support
+* Added {{#shtml}} parser function
 			</description>
-			<pubDate>Tue, 27 Nov 07 23:39:06 -0500</pubDate>
+			<pubDate>Tue, 11 Dec 07 12:15:46 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ImageLink - 1.2.1</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added input sanitization for security
+			</description>
+			<pubDate>Mon, 10 Dec 07 16:55:32 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ImageLink - 1.2.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added 'linkless' image support
+			</description>
+			<pubDate>Mon, 10 Dec 07 15:48:02 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>EmbedObject - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Initial public release
+			</description>
+			<pubDate>Mon, 10 Dec 07 10:28:37 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>StubManager - 1.0.6</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added capability to accept 3more parameters when calling target methods
+			</description>
+			<pubDate>Mon, 10 Dec 07 10:16:51 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ParserFunctionsHelper - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Initial Release
+			</description>
+			<pubDate>Mon, 10 Dec 07 08:39:04 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>AlternateRawPage - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Initial public release
+			</description>
+			<pubDate>Sun, 09 Dec 07 22:31:26 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>AlternateRawPage - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Initial public release
+			</description>
+			<pubDate>Sun, 09 Dec 07 22:27:36 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>GoogleCharts - 1.0.1</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* Added input parameters sanitization (i.e. potential security breach)
+			</description>
+			<pubDate>Sun, 09 Dec 07 21:10:34 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>GoogleCharts - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+* First public release
+			</description>
+			<pubDate>Sun, 09 Dec 07 20:18:46 -0500</pubDate>
 		</item>
 
 

@@ -12,14 +12,19 @@
 	<taskdef classname='JLD.PhingTools.SvnStatusTask' name='svn_status' />
 	<taskdef classname='JLD.PhingTools.SvnAddTask' name='svn_add' />
 	<taskdef classname='JLD.PhingTools.SvnPropsetTask' name='svn_propset' />
-	<taskdef classname='JLD.PhingTools.DateTask' name='date' />
-
-	<date propertyname="rss.date" />
+	<taskdef classname='JLD.PhingTools.SortTask' name='sort' />
 
 	<resolvepath propertyName="rss.path" file="${project.basedir}/../" />
 
 	<target name='all'>
 		<echo>Building 'rss.xml'</echo>
+
+		<fileset dir="${rss.path}/" id='allfiles' >
+			<include name="*.xml" />
+			<exclude name="rss.xml" />
+		</fileset>
+	
+		<sort sid='allfiles' key='mtime' dir='d' tid='sortedfiles' />
 
 		<!-- 
 			T1- Delete target file 'rss.xml'
@@ -36,13 +41,19 @@
 		<delete file="${rss.path}/rss.xml" />
 
 		<!-- T2 --><!-- T3 -->
+		<echo>Copying template</echo>
 		<copy file= 'rss.template.xml' tofile="${rss.path}/rss.xml" overwrite="true" />
-
+		
+		<echo>Appending entries</echo>
 		<append destFile="${rss.path}/rss.xml">
+<!--
 			<fileset dir="${rss.path}/" >
 				<include name="*.xml" />
 				<exclude name="rss.xml" />
 			</fileset>
+-->
+			<fileset refid='sortedfiles' />
+
 			<filterchain>
 			    <xsltfilter style="rss.xsl">
 			    </xsltfilter>

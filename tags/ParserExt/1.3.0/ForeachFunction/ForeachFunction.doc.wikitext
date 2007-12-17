@@ -1,0 +1,64 @@
+{{Extension
+|name        = ForeachFunction
+|status      = beta
+|type        = parser
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags SVN]
+|readme      =
+|changelog   = See SVN ($Id: ForeachFunction.doc.wikitext 492 2007-10-10 16:27:42Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+This extension provides 'looping' functionality (e.g. 'foreach') for iterating through arrays.
+
+== Feature ==
+* Security: only pages with protection on 'edit' can use the keywords provided by this extension
+
+== Usage ==
+=== Simple Array ===
+* <nowiki>{{#foreachx:global object name|property|pattern}}</nowiki>
+** The global object's property will be retrieved; the property should be an 'array'
+* <nowiki>{{#foreachx:global object name|method|pattern}}</nowiki>
+** The global object's method will be called: an array is expected as return value
+* <nowiki>{{#foreachx:global array variable|key|pattern}}</nowiki>
+** The global array variable will be referenced using 'key' as key
+* <nowiki>{{#foreachx:global array variable||pattern}}</nowiki>
+** The global array variable will be referenced (as a whole)
+* <nowiki>{{#foreachx:class name|static property|pattern}}</nowiki>
+** The static property of class name will be referenced (as a whole)
+=== Simple Array with Conditional ===
+*  <nowiki>{{#foreachc: X | Y |pattern|match value|match value replacement}}</nowiki> where {X:Y} can be:
+** { Global Object Name: Property }
+** { Global Object Name: Method }
+** { Global Array Variable: Key }
+** { Class Name: Static Property }
+'match value' is represented by $match$ in the pattern field. When the 'value' of the current array entry
+matches the 'match' variable provided, then $match$ is replaced with 'match value'.
+
+=== Array of Arrays ===
+* <nowiki>{{#foreachy:global object name|property|pattern}}</nowiki>
+** The global object's property will be retrieved; the property should be an 'array'
+* <nowiki>{{#foreachy:global object name|method|pattern}}</nowiki>
+** The global object's method will be called: an array is expected as return value
+* <nowiki>{{#foreachy:global array variable|key|pattern}}</nowiki>
+** The global array variable will be referenced using 'key' as key
+* <nowiki>{{#foreachy:global array variable||pattern}}</nowiki>
+** The global array variable will be referenced (as a whole)
+
+== Dependancies ==
+* [[Extension:StubManager]]
+* [[Extension:ParserPhase2]] extension
+
+{{Pear|ParserExt}}
+
+== History ==
+* Added 'CLASS NAME::STATIC PROPERTY' support
+* Added 'addExemptNamespaces' function
+* Added '#foreachc' parser function

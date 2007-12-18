@@ -16,20 +16,13 @@
 |example     =
 }}
 == Purpose ==   
-Provides page text preloading facility services to extensions.
+Provides per-namespace specific text preloading upon page creation.
 
-== Features ==
-* Regex based pattern matching
+== Usage ==
+Place the ''preload'' text on a per-namespace basis in the page following the pattern <code>MediaWiki:PreloadManager/$namespace$</code> where ''$namespace$'' is the canonical name of the desired namespace.
 
-== USAGE NOTES ==
-An extension has to register a preload pattern in its 'extension setup phase' (i.e. when the function registered through $wgExtensionFunction is called):
-<source lang=php>
- PreloadRegistry::add( array(
- 	'pattern'  => '/regex pattern here/',
- 	'filename' => 'fully qualified filename'
- ) );
-
-</source>
+== Example ==
+To configure ''preload'' text for the NS_TEMPLATE namespace (aka ''Template''), place the ''preload'' text in the page '''MediaWiki:PreloadManager/Template'''.
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
@@ -37,5 +30,8 @@ An extension has to register a preload pattern in its 'extension setup phase' (i
 {{Pear|PreloadManager}}
 
 == History ==
-
-== TODO ==
+{|border=1
+! Release !! Notes
+|-
+| 1.0.0 || Initial release
+|}

@@ -13,6 +13,8 @@
 	<taskdef classname='JLD.PhingTools.SvnAddTask' name='svn_add' />
 	<taskdef classname='JLD.PhingTools.SvnPropsetTask' name='svn_propset' />
 	<taskdef classname='JLD.PhingTools.FileSet2PropertyTask' name='fs2prop' />
+	<taskdef classname='JLD.PhingTools.Text2PngTask' name='txt2png' />
+	<taskdef classname='JLD.PhingTools.ReadFileTask' name='readfile' />
 
 	<resolvepath propertyName="r.path" file="${project.basedir}/../" />
 
@@ -114,7 +116,11 @@
 		<!-- move file to /r/$package -->
 		<foreach list="${liste}" param="base_name" target="moveOne" />
 
-		<!-- add to svn IFF not already in -->
+		<delete includeemptydirs="true">
+			<fileset dir="${r.path}/_all">
+				<include name="**/**" />
+			</fileset>
+		</delete>
 
 	</target>
 
@@ -130,6 +136,25 @@
 				<svn_propset path='"${r.path}/${base_name}/latest.txt"' 
 				           	propname="svn:mime-type" 
 				           	propval="text/plain" />
+			</then>
+		</if>
+
+		<readfile file="${r.path}/${base_name}/latest.txt" property="release" />
+		<txt2png	text="${release}" 
+					file="${r.path}/${base_name}/latest.png" 
+					font="3" 
+					bg="255,255,255" color="0,0,0"
+					/>
+
+		<svn_status path='"${r.path}/${base_name}/latest.png"' 
+					result="file.png.svn" />
+		<if>
+			<contains substring="?" string="${file.png.svn}" />
+			<then>
+				<svn_add path='"${r.path}/${base_name}/latest.png"' />
+				<svn_propset path='"${r.path}/${base_name}/latest.png"' 
+				           	propname="svn:mime-type" 
+				           	propval="image/png" />
 			</then>
 		</if>
 

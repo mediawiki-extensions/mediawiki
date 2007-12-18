@@ -7,15 +7,11 @@
 //<source lang=php>
 class PreloadManager
 {
-	const thisType = 'other';
-	const thisName = 'PreloadManager';
+	const basePage = 'PreloadManager/';
 	
 	/**
+	 * Preload hook.
 	 */
-	public function __construct() {}
-	/**
-	 */
-	//wfRunHooks( 'EditFormPreloadText', array( &$this->textbox1, &$this->mTitle ) );
 	public function hEditFormPreloadText( &$text, &$title )
 	{
 		$text = $this->loadTemplate( $title );
@@ -23,53 +19,33 @@ class PreloadManager
 		return true;
 	}
 	/**
+	 * Loads a 'template' based on the title's namespace
 	 */
 	protected function loadTemplate( &$title )
 	{
-		$full_name = $title->getPrefixedText();
+		$ns = $title->getNsText();
 		
-		$match_index = $this->findMatch( $full_name );
-		if ($match_index === null)
-			return null;
+		$tpl_page = self::basePage.$ns;
 		
-		$filename = PreloadRegistry::$map[ $match_index ]['filename'];
-		
-		return @file_get_contents( $filename );
+		return $this->getPageContents( NS_MEDIAWIKI, $tpl_page );
 	}
 	/**
+	 *
 	 */
-	protected function findMatch( &$name )
+	protected function getPageContents( $ns, $page )
 	{
-		$match = null;
-		if (empty( PreloadRegistry::$map ))
+		$title = Title::newFromText( $page, $ns );
+		if (!is_object( $title ))		
 			return null;
-		foreach( PreloadRegistry::$map as $index =>&$e )
-		{
-			$r = preg_match( $e['pattern'], $name );
-			if ($r===1)
-			{
-				$match = $index;
-				break;	
-			}
-		}
-		return $match;
+			
+		$contents = null;
+
+		$rev = Revision::newFromTitle( $title );
+		if( is_object( $rev ) )
+		    $contents = $rev->getText();		
+			
+		return $contents;		
 	}	
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-/*	 
-	public function hSpecialVersionExtensionTypes( &$sp, &$extensionTypes )
-	{
-		global $wgExtensionCredits;
-
-		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
-			if (isset($el['name']))		
-				if ($el['name'] == self::thisName)
-					$el['description'] .= $result1;
-				
-		return true; // continue hook-chain.
-	}
-*/
 
 } // end class
 //</source>

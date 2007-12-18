@@ -23,6 +23,7 @@
 	<c xlink:href="/rest/c/PageMetaData/info.xml">PageMetaData</c>
 	<c xlink:href="/rest/c/ParserFunctions/info.xml">ParserFunctions</c>
 	<c xlink:href="/rest/c/PermissionManagement/info.xml">PermissionManagement</c>
+	<c xlink:href="/rest/c/PreloadManager/info.xml">PreloadManager</c>
 	<c xlink:href="/rest/c/RegistryManager/info.xml">RegistryManager</c>
 	<c xlink:href="/rest/c/SecureHTML/info.xml">SecureHTML</c>
 	<c xlink:href="/rest/c/SecurePHP/info.xml">SecurePHP</c>

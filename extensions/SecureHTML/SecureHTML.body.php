@@ -115,6 +115,8 @@ class SecureHTML
 		array_shift( $params );	// get rid of $page_name
 		
 		$text = $this->getAndProcessPage( $page_name, $params );
+		if ( $text === null)
+			return "SecureHTML: [[${page_name}]]";
 
 		// prepare for the call to [[Extension:ParserFunctionsHelper]]
 		// public function hParserFunctionsHelperSet( $key, &$value, &$index, &$anchor )		
@@ -141,6 +143,9 @@ class SecureHTML
 		if ($result === false)
 			return 'SecureHTML: '.wfMsg('badaccess');
 			
+		if ($result === null)
+			return null;
+			
 		$text = $this->getPageText( $title );
 		
 		$processed_params = $this->processParams( $params );
@@ -158,6 +163,11 @@ class SecureHTML
 		if (!is_object( $title ))
 			return false;
 		
+		// if the title does not exist,
+		// then the caller will probably generate a broken link
+		if ( !$title->exists() )
+			return null;
+		
 		return $title->isProtected( 'edit' );
 	}
 	/**
@@ -168,7 +178,7 @@ class SecureHTML
 		// no... that's too bad; go the long way then.
 		$rev = Revision::newFromTitle( $title );
 		if (!is_object( $rev ))
-			return null;
+			return '';
 
 		$text = $rev->getText();
 		

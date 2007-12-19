@@ -5,7 +5,7 @@
 |type2       = user rights
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 2.2.0
+|version     = 2.3.0
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/SecureHTML/ SVN]
@@ -80,6 +80,8 @@ protected in order to use 'html' tags
 | 2.1.1 || Minor change in order to get rid of PHP notice about variable $text
 |-
 | 2.2.0 || Added support for ''includeonly'' and ''noinclude'' tags (integration with Template namespace)
+|-
+| 2.3.0 || Added ''broken link'' functionality when the target page for #shtml does not exist
 |}
 
 == Todo ==

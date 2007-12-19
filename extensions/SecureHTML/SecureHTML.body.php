@@ -97,6 +97,7 @@ class SecureHTML
 		array_shift( $params ); // get rid of $parser
 		array_shift( $params );	// get rid of $page_name
 		
+		$text = null;
 		$text = $this->getAndProcessPage( $page_name, $params, $text );
 		
 		// Let MediaWiki do the heavy lifting.

@@ -23,7 +23,7 @@
  <time>19:01:12</time>
 
  <version>
-  <release>2.2.0</release>
+  <release>2.3.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -81,7 +81,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Added support for ''includeonly'' and ''noinclude'' tags (integration with Template namespace)
+Added ''broken link'' functionality when the target page for #shtml does not exist
 </notes>
 </release>
 </changelog>

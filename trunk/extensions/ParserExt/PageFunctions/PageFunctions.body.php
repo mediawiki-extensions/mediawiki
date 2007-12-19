@@ -118,7 +118,7 @@ class PageFunctions
 		Useful when building complex HTML pages.
 		
 		{{#varcapset: variable name|value }}
-		((#varcapset: variable name|value )) 
+		((#varcapset| variable name|value )) 
 	 */
 	public function mg_varcapset( &$parser )
 	{

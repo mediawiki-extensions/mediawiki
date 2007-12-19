@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>SecureHTML - 2.1.1</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+Minor change to get rid of PHP notice
+			</description>
+			<pubDate>Tue, 18 Dec 07 20:20:47 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>PreloadManager - 1.0.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

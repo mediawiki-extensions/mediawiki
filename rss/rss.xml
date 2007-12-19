@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>SecureHTML - 2.2.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+Added support for ''includeonly'' and ''noinclude'' tags (integration with Template namespace)
+			</description>
+			<pubDate>Wed, 19 Dec 07 14:01:15 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureHTML - 2.1.1</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

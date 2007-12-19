@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>SecureHTML - 2.3.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+Added ''broken link'' functionality when the target page for #shtml does not exist
+			</description>
+			<pubDate>Wed, 19 Dec 07 15:49:35 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureHTML - 2.2.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

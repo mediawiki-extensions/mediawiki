@@ -5,7 +5,7 @@
 |type2       = user rights
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 2.1.1
+|version     = 2.2.0
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/SecureHTML/ SVN]
@@ -27,6 +27,8 @@ as if they could.
 * Parser cache friendliness: 
 ** The extension must be enabled to continue the support of the inserted content
 * Support for the parser function <nowiki>{{#html}}</nowiki>
+* Support for the ''includeonly'' and ''noinclude'' tags
+** Integration with '''Template''' namespace
 
 == Motivation for the {{ #html}} parser function ==
 It is sometimes useful to include, in a secure fashion, a template containing 'raw html' in another page. This enables, for example, the construction of ''gadgets''.
@@ -76,6 +78,8 @@ protected in order to use 'html' tags
 ! Release !! Notes
 |-
 | 2.1.1 || Minor change in order to get rid of PHP notice about variable $text
+|-
+| 2.2.0 || Added support for ''includeonly'' and ''noinclude'' tags (integration with Template namespace)
 |}
 
 == Todo ==

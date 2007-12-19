@@ -170,8 +170,24 @@ class SecureHTML
 		if (!is_object( $rev ))
 			return null;
 
-		return $rev->getText();
-	}	
+		$text = $rev->getText();
+		
+		return $this->extractText( $text );
+	}
+	/**
+	 * Extracts only the wikitext enclosed in the ''includeonly'' tags
+	 * and all other wikitext not enclosed in ''noinclude'' tags.
+	 */	
+	protected function extractText( &$text )
+	{
+		//1- get rid of ''noinclude'' tagged sections
+		$text = preg_replace( '/\<noinclude\>(.*)\<\/noinclude\>/si', '', $text );
+		
+		//2- get rid of the tags ''includeonly'' (but not the enclosed sections!)
+		$text = preg_replace( '/\<?includeonly\>/si', '', $text );		
+		
+		return $text;
+	}	 
 	/**
 	 * The parameters will be coming in an array of the form:
 	 * k1 = v1 , k2 = v2 etc.

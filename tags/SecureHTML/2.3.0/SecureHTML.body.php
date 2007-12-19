@@ -99,6 +99,8 @@ class SecureHTML
 		
 		$text = null;
 		$text = $this->getAndProcessPage( $page_name, $params, $text );
+		if ( $text === null)
+			return "SecureHTML: [[${page_name}]]";
 		
 		// Let MediaWiki do the heavy lifting.
 		return $text;

@@ -23,7 +23,7 @@
  <time>17:22:05</time>
 
  <version>
-  <release>2.1.0</release>
+  <release>2.1.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -81,7 +81,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-* Added {{#shtml}} parser function
+Minor change to get rid of PHP notice
 </notes>
 </release>
 </changelog>

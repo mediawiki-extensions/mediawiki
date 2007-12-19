@@ -5,7 +5,7 @@
 |type2       = user rights
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 2.1.0
+|version     = 2.1.1
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/SecureHTML/ SVN]
@@ -72,6 +72,11 @@ protected in order to use 'html' tags
 * Addition of the parser function <code>{{ #html}}</code>
 === 2.1.0 ===
 * Addition of the parser function ''#shtml'' (requires [[Extension:ParserFunctionsHelper]])
+{|border=1
+! Release !! Notes
+|-
+| 2.1.1 || Minor change in order to get rid of PHP notice about variable $text
+|}
 
 == Todo ==
 * Fix for allowing more customization of 'exempt' namespaces even when using StubManager

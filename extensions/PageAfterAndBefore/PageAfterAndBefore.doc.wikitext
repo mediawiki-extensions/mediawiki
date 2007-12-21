@@ -30,6 +30,7 @@ Where:
 * 'title'         denotes the 'prefixedDBkey' (i.e. title name with underscores) 
 * 'category'      denotes the category name used for filtering titles
 * 'filtercurrent' if the current title == last/first page, filter if 'yes'
+** i.e. if the page where the parser function is used also happens to be the last AND/OR first of the set, then it will be filtered OUT (not returned). If one wishes to have for return value the title in question anyways, then one must set ''filtercurrent'' to ''no''.
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]
@@ -37,7 +38,10 @@ Where:
 {{Pear|PageAfterAndBefore}}
 
 == HISTORY ==
-=== 1.0.1 ===
-* Fixed minor in 'firstpage' and 'lastpage' causing some PHP notice
-=== 1.0.2 ===
-* Fixed bug with apostrophes in title text causing MySQL errors
+{|border=1
+! Release !! Notes
+|-
+| 1.0.1 | Fixed minor in 'firstpage' and 'lastpage' causing some PHP notice
+|-
+| 1.0.2 | Fixed bug with apostrophes in title text causing MySQL errors
+|}

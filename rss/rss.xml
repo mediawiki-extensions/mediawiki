@@ -8,17 +8,6 @@
 
 	
 	<item>
-			<title>PageAfterAndBefore - 1.0.3</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-Fixed string escaping issue + ''filtercurrent'' issue
-			</description>
-			<pubDate>Fri, 21 Dec 07 19:39:22 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
 			<title>SecureHTML - 2.3.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

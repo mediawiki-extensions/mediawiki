@@ -143,7 +143,7 @@ class PageAfterAndBefore
 			else 
 				$namespace ='';
 				
-			$where = 'AND STRCMP("{$page}.page_title","{$key}")="{$cmpDir}"';
+			$where = "AND STRCMP({$page}.page_title,".'"'.$key.'"'."={$cmpDir}";
 		}
 		else
 		{
@@ -158,7 +158,7 @@ class PageAfterAndBefore
 			// fix for apostrophes in title generating database access error			
 			$category = $dbr->strencode( $category );
 			
-			$where .= ' AND {$catlinks}.cl_to = "{$category}" AND {$catlinks}.cl_from = page_id';
+			$where .= " AND {$catlinks}.cl_to = ".'"'.$category.'"'." AND {$catlinks}.cl_from = page_id";
 			$cat = ", {$catlinks}";
 		}
 				

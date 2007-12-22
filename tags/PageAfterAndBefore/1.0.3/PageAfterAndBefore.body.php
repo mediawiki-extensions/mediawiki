@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package PageAfterAndBefore
  * @version 1.0.3
- * @Id $Id: PageAfterAndBefore.body.php 784 2007-12-22 00:39:11Z jeanlou.dupont $
+ * @Id $Id: PageAfterAndBefore.body.php 786 2007-12-22 01:02:22Z jeanlou.dupont $
 */
 //<source lang=php>
 class PageAfterAndBefore
@@ -109,6 +109,8 @@ class PageAfterAndBefore
 			$ns = '';
 		$title  = $wgTitle->getText();
 		
+		echo __METHOD__." title: ".$ns.":".$title;
+		
 		return $ns.":".$title;
 	}
 	public function getPages( $namespace, $titlename, $dir='asc', $category = null, $limit=2 )
@@ -143,7 +145,7 @@ class PageAfterAndBefore
 			else 
 				$namespace ='';
 				
-			$where = "AND STRCMP({$page}.page_title,".'"'.$key.'"'."={$cmpDir}";
+			$where = "AND STRCMP({$page}.page_title,'{$key}')={$cmpDir}";
 		}
 		else
 		{
@@ -158,7 +160,7 @@ class PageAfterAndBefore
 			// fix for apostrophes in title generating database access error			
 			$category = $dbr->strencode( $category );
 			
-			$where .= " AND {$catlinks}.cl_to = ".'"'.$category.'"'." AND {$catlinks}.cl_from = page_id";
+			$where .= " AND {$catlinks}.cl_to = '{$category}' AND {$catlinks}.cl_from = page_id";
 			$cat = ", {$catlinks}";
 		}
 				

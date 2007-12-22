@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package PageAfterAndBefore
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$
 */
 //<source lang=php>
 class PageAfterAndBefore
@@ -49,8 +50,9 @@ class PageAfterAndBefore
 
 		// filter out if requested and currentpage==firstpage
 		$currentpage = $this->getCurrentPage( $ns, $title );
-		if ( ($params['filtercurrent']=='yes') && ( $res[0]== $currentpage))
+		if ( ($this->filterCurrent( $params )) && ( $res[0]== $currentpage))
 			return '';
+			
 		return $res[0];
 	}
 	public function mg_lastpage( &$parser )
@@ -66,12 +68,23 @@ class PageAfterAndBefore
 
 		// filter out if requested and currentpage==lastpage
 		$currentpage = $this->getCurrentPage( $ns, $title );
-		if ( ($params['filtercurrent']=='yes') && ( $res[0]== $currentpage))
+		if ( ($this->filterCurrent( $params )) && ( $res[0]== $currentpage))
 			return '';
 
 		return $res[0];
 	}
-
+	/**
+	 * Verifies the 'filtercurrent' parameter
+	 */
+	protected function filterCurrent( &$params )
+	{
+		// true by default.
+		if ( !isset( $params['filtercurrent'] ))
+			return true;
+			
+		$f = strtolower( $params['filtercurrent'] );
+		return ( ($f=='y') || ($f=='yes') || ($f=='1')) ? true:false;
+	}
 	private function setupParams( &$params )
 	{
 		$this->getCurrentPage( $d_ns_name, $d_title );
@@ -94,7 +107,7 @@ class PageAfterAndBefore
 			$ns = Namespace::getCanonicalName( $ns_num );
 		else
 			$ns = '';
-		$title  = $wgTitle->getDBkey();
+		$title  = $wgTitle->getText();
 		
 		return $ns.":".$title;
 	}
@@ -130,7 +143,7 @@ class PageAfterAndBefore
 			else 
 				$namespace ='';
 				
-			$where = "AND STRCMP({$page}.page_title,'{$key}')={$cmpDir}";
+			$where = 'AND STRCMP("{$page}.page_title","{$key}")="{$cmpDir}"';
 		}
 		else
 		{
@@ -145,7 +158,7 @@ class PageAfterAndBefore
 			// fix for apostrophes in title generating database access error			
 			$category = $dbr->strencode( $category );
 			
-			$where .= " AND {$catlinks}.cl_to = '{$category}' AND {$catlinks}.cl_from = page_id";
+			$where .= ' AND {$catlinks}.cl_to = "{$category}" AND {$catlinks}.cl_from = page_id';
 			$cat = ", {$catlinks}";
 		}
 				

@@ -4,7 +4,7 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.2
+|version     = 1.0.3
 |update      =
 |mediawiki   = 1.82, 1.93, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/PageAfterAndBefore SVN]
@@ -16,7 +16,7 @@
 |example     =
 }}
 == Purpose ==
-Provides a 'magic word' interface to retrieve 'preceeding' and 'succeeding' pages relative to a given page title.           
+Provides parser functions to retrieve 'preceeding' and 'succeeding' pages relative to a given page title.
 
 == Features ==
 * <nowiki>{{#pagebefore: [context]|[namespace]|[title]|[category] }}</nowiki>
@@ -29,7 +29,7 @@ Where:
 * 'namespace'     denotes the canonical name of the namespace one wishes to act on
 * 'title'         denotes the 'prefixedDBkey' (i.e. title name with underscores) 
 * 'category'      denotes the category name used for filtering titles
-* 'filtercurrent' if the current title == last/first page, filter if 'yes'
+* 'filtercurrent' if the current title == last/first page, filter if ''yes'' (''yes'' | ''y'' | ''1'')
 ** i.e. if the page where the parser function is used also happens to be the last AND/OR first of the set, then it will be filtered OUT (not returned). If one wishes to have for return value the title in question anyways, then one must set ''filtercurrent'' to ''no''.
 
 == Dependancy ==
@@ -44,4 +44,6 @@ Where:
 | 1.0.1 | Fixed minor in 'firstpage' and 'lastpage' causing some PHP notice
 |-
 | 1.0.2 | Fixed bug with apostrophes in title text causing MySQL errors
+|-
+| 1.0.3 | Fixed string escaping issue + ''filtercurrent'' issue
 |}

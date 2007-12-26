@@ -109,8 +109,6 @@ class PageAfterAndBefore
 			$ns = '';
 		$title  = $wgTitle->getText();
 		
-		echo __METHOD__." title: ".$ns.":".$title;
-		
 		return $ns.":".$title;
 	}
 	public function getPages( $namespace, $titlename, $dir='asc', $category = null, $limit=2 )

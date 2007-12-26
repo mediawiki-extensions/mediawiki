@@ -39,6 +39,9 @@ class ManageNamespaces
 	// update flag
 	var $canUpdateFile;
 
+	var $started = false;
+	var $done = false;
+
 	public function __construct() 
 	{ 
 		self::$spFilename = dirname(__FILE__).'/ManageNamespaces.specialpage.wikitext';
@@ -86,6 +89,8 @@ class ManageNamespaces
 							$identifier = null, 	// text
 							$separator = '||' )
 	{
+		$this->started = true;
+		
 		// Make sure that this parser function is only used
 		// on the allowed registry page
 		if (!$this->checkRegistryPage( $parser->mTitle))
@@ -94,29 +99,34 @@ class ManageNamespaces
 		// Also make sure that the user has the appropriate right
 		if (!$this->checkRight())
 			{ return wfMsg('managenamespaces'.'-insufficient-right'); $error = true; }
-		
-		// Perform validations
-		// relative to the Immutable Namespaces
-		if (!$this->validateIndex( $index, $msg ))
-			{ $index = $msg; $this->canUpdateFile = false; }
-			
-		if (!$this->validateName( $name, $msg ))
-			{ $name = $msg;  $this->canUpdateFile = false; }
 
-		if (!$this->validateIdentifier( $identifier, $msg ))
-			{ $identifier = $msg;  $this->canUpdateFile = false; }
-
-		// Perform validations
-		// relative to the defined ones on this page
-		if (!$this->validateIndexDefined( $index, $msg ))
-			{ $index = $msg; $this->canUpdateFile = false; }
-			
-		if (!$this->validateNameDefined( $name, $msg ))
-			{ $name = $msg;  $this->canUpdateFile = false; }
-
-		if (!$this->validateIdentifierDefined( $identifier, $msg ))
-			{ $identifier = $msg;  $this->canUpdateFile = false; }
-		
+		// perform validations only once because
+		// in some configurations, the parser is called multiple times		
+		if (!$this->done)		
+		{
+			// Perform validations
+			// relative to the Immutable Namespaces
+			if (!$this->validateIndex( $index, $msg ))
+				{ $index = $msg; $this->canUpdateFile = false; }
+				
+			if (!$this->validateName( $name, $msg ))
+				{ $name = $msg;  $this->canUpdateFile = false; }
+	
+			if (!$this->validateIdentifier( $identifier, $msg ))
+				{ $identifier = $msg;  $this->canUpdateFile = false; }
+	
+			// Perform validations
+			// relative to the defined ones on this page
+			if (!$this->validateIndexDefined( $index, $msg ))
+				{ $index = $msg; $this->canUpdateFile = false; }
+				
+			if (!$this->validateNameDefined( $name, $msg ))
+				{ $name = $msg;  $this->canUpdateFile = false; }
+	
+			if (!$this->validateIdentifierDefined( $identifier, $msg ))
+				{ $identifier = $msg;  $this->canUpdateFile = false; }
+		}
+				
 		// at this point, just accumulate the requested changes	
 		if ($this->canUpdateFile)
 			$this->nsMap[$index] = array( 'name' => $name, 'identifier' => $identifier );
@@ -129,7 +139,9 @@ class ManageNamespaces
 	 */
 	public function hParserBeforeStrip( &$parser, &$text, &$state)
 	{
-		$this->nsMap = array();
+		if ($this->started)
+			$this->done = true;
+			
 		return true;
 	}
 	/**

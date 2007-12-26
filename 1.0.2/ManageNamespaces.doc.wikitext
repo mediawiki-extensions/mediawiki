@@ -1,0 +1,50 @@
+{{Extension
+|name        = ManageNamespaces
+|status      = beta
+|type        = parser
+|hook1       = ParserAfterTidy
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.1
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ManageNamespaces/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: ManageNamespaces.doc.wikitext 791 2007-09-18 13:52:50Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+This extension allows for managing the namespaces. This process is usually handled through settings <code>LocalSettings.php</code>.
+
+== Features ==
+* No patches
+* Secure: the registry page is located in NS_MEDIAWIKI namespace
+* Safe: the 'immutable' namespaces can not be changed (the ones defined in <code>LocalSettings.php</code>)
+** Only the ones managed through this extension can be changed
+* Relies on a parser function <code>#mns</code> to perform the work
+* Definition errors appear inline with the registry page
+* Logging
+
+== Usage ==
+* Edit the page <code>MediaWiki:Registry/Namespaces</code>
+* Use the parser function <code>#mns</code> to populate the namespace definition
+* Save the page
+
+== Example ==
+An example registry page can be found [[{{FULLPAGENAME}}/Example]]
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+
+{{Pear|ManageNamespaces}}
+
+== Notes ==
+* Make sure that the extension's directory is readable by the HTTP server
+* Make sure that the file 'ManageNamespaces.namespaces.php' is readable & writable by the HTTP server
+
+== History ==
+=== 1.0.1 ===
+* Fixed PHP warning when 'ManageNamespaces.namespaces.php' isn't present at first use after installation

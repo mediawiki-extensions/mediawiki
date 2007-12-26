@@ -38,7 +38,7 @@ class ManageNamespaces
 	
 	// update flag
 	var $canUpdateFile;
-	
+
 	public function __construct() 
 	{ 
 		self::$spFilename = dirname(__FILE__).'/ManageNamespaces.specialpage.wikitext';
@@ -64,6 +64,7 @@ class ManageNamespaces
 		$wgLogActions['mngns/updtfail1']  = 'mngns'.'-updtfail1-entry';		
 		$wgLogActions['mngns/updtfail2']  = 'mngns'.'-updtfail2-entry';				
 		$wgLogActions['mngns/updtfail3']  = 'mngns'.'-updtfail3-entry';
+		$wgLogActions['mngns/updtfail4']  = 'mngns'.'-updtfail4-entry';		
 		
 		// Messages.
 		global $wgMessageCache;
@@ -117,10 +118,19 @@ class ManageNamespaces
 			{ $identifier = $msg;  $this->canUpdateFile = false; }
 		
 		// at this point, just accumulate the requested changes	
-		$this->nsMap[$index] = array( 'name' => $name, 'identifier' => $identifier );
+		if ($this->canUpdateFile)
+			$this->nsMap[$index] = array( 'name' => $name, 'identifier' => $identifier );
 		
 		// return the wikitext line
 		return $index.$separator.$name.$separator.$identifier;
+	}
+	/**
+	 * Start from a known blank slate.
+	 */
+	public function hParserBeforeStrip( &$parser, &$text, &$state)
+	{
+		$this->nsMap = array();
+		return true;
 	}
 	/**
 		This method serves as 'trap' for the file update process.

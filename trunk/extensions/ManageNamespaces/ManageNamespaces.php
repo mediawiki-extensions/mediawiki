@@ -20,7 +20,7 @@ if (class_exists('StubManager'))
 										'classfilename'	=> dirname(__FILE__).'/ManageNamespaces.body.php',
 										'i18nfilename'	=> dirname(__FILE__).'/ManageNamespaces.i18n.php',
 										'logging'		=> true, 
-										'hooks'			=> array( 'ParserAfterTidy' ),
+										'hooks'			=> array( 'ParserAfterTidy', 'ParserBeforeStrip' ),
 										'nss'			=> array( NS_MEDIAWIKI ),
 										'mgs'			=> array( 'mns' )
 									)

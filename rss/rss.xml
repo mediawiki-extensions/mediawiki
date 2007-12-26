@@ -7,16 +7,6 @@
 		<description>Jean-Lou Dupont's personal MediaWiki PEAR channel</description>
 
 	
-	<item>
-			<title>ManageNamespaces - 1.0.2</title>
-			<link>http://mediawiki.googlecode.com/svn</link>
-			<description>Changelog:
-* Fixed issue with some configurations of MediaWiki that would falsely report that the the identifiers were already defined.
-			</description>
-			<pubDate>Wed, 26 Dec 07 15:00:00 -0500</pubDate>
-		</item>
-
-
 	
 	<item>
 			<title>SecureHTML - 2.3.0</title>

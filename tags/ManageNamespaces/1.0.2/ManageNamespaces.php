@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package ManageNamespaces
  * @version 1.0.2
- * @Id $Id: ManageNamespaces.php 790 2007-12-26 19:59:43Z jeanlou.dupont $
+ * @Id $Id: ManageNamespaces.php 794 2007-12-27 00:47:16Z jeanlou.dupont $
  */
 // <source lang=php>
 if (class_exists('StubManager'))
@@ -20,7 +20,7 @@ if (class_exists('StubManager'))
 										'classfilename'	=> dirname(__FILE__).'/ManageNamespaces.body.php',
 										'i18nfilename'	=> dirname(__FILE__).'/ManageNamespaces.i18n.php',
 										'logging'		=> true, 
-										'hooks'			=> array( 'ParserAfterTidy', 'ParserBeforeStrip' ),
+										'hooks'			=> array( 'ParserAfterTidy' ),
 										'nss'			=> array( NS_MEDIAWIKI ),
 										'mgs'			=> array( 'mns' )
 									)

@@ -11,7 +11,7 @@
 			<description>Changelog:
 * Fixed issue with some configurations of MediaWiki that would falsely report that the the identifiers were already defined.
 			</description>
-			<pubDate>Wed, 26 Dec 07 15:12:00 -0500</pubDate>
+			<pubDate>Wed, 26 Dec 07 19:48:15 -0500</pubDate>
 		</item>
 	</channel>
 </rss>

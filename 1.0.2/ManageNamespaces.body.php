@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package ManageNamespaces
  * @version 1.0.2
- * @Id $Id: ManageNamespaces.body.php 790 2007-12-26 19:59:43Z jeanlou.dupont $
+ * @Id $Id: ManageNamespaces.body.php 794 2007-12-27 00:47:16Z jeanlou.dupont $
  */
 //<source lang=php>
 require_once('ManageNamespaces.i18n.php');
@@ -94,11 +94,11 @@ class ManageNamespaces
 		// Make sure that this parser function is only used
 		// on the allowed registry page
 		if (!$this->checkRegistryPage( $parser->mTitle))
-			{ return wfMsg('managenamespaces'.'-incorrect-page'); $error = true; }
+			{ return wfMsg('managenamespaces'.'-incorrect-page'); }
 		
 		// Also make sure that the user has the appropriate right
 		if (!$this->checkRight())
-			{ return wfMsg('managenamespaces'.'-insufficient-right'); $error = true; }
+			{ return wfMsg('managenamespaces'.'-insufficient-right'); }
 
 		// perform validations only once because
 		// in some configurations, the parser is called multiple times		
@@ -125,34 +125,21 @@ class ManageNamespaces
 	
 			if (!$this->validateIdentifierDefined( $identifier, $msg ))
 				{ $identifier = $msg;  $this->canUpdateFile = false; }
+
+			// at this point, just accumulate the requested changes	
+			if ($this->canUpdateFile)
+				$this->nsMap[$index] = array( 'name' => $name, 'identifier' => $identifier );
 		}
-				
-		// at this point, just accumulate the requested changes	
-		if ($this->canUpdateFile)
-			$this->nsMap[$index] = array( 'name' => $name, 'identifier' => $identifier );
 		
 		// return the wikitext line
 		return $index.$separator.$name.$separator.$identifier;
-	}
-	/**
-	 * Start from a known blank slate.
-	 */
-	public function hParserBeforeStrip( &$parser, &$text, &$state)
-	{
-		if ($this->started)
-			$this->done = true;
-			
-		return true;
 	}
 	/**
 		This method serves as 'trap' for the file update process.
 	 */
 	public function hParserAfterTidy( &$parser, &$text )
 	{
-		// just perform the update upon page view.
-		// Can't anyhow do this on page save.
-		global $action;
-		if (($action !== 'view' ) && ($action !== 'read'))
+		if ($this->done)
 			return true;
 			
 		// just trap events related to the registry page in question here
@@ -163,6 +150,11 @@ class ManageNamespaces
 		if (!$this->checkRight())
 			return true;
 
+		if ($this->started)
+			$this->done = true;
+		else
+			return true;
+			
 		if (!$this->canUpdateFile())
 			$action = 'updtfail3';
 		else
@@ -198,8 +190,8 @@ class ManageNamespaces
 		return in_array( self::$reqGroup, $wgUser->getEffectiveGroups());
 	}
 	
-	/*
-		Checks related to the immutable entries.
+	/**
+	 * Checks related to the immutable entries.
 	 */
 	protected function validateIndex( $index, &$msg )
 	{
@@ -238,9 +230,9 @@ class ManageNamespaces
 			
 		return $r;
 	}
-	/*
-		Checks related to the entries being defined at the moment on this page.
-	*/
+	/**
+	 * Checks related to the entries being defined at the moment on this page.
+	 */
 	protected function validateIndexDefined( $index, &$msg )
 	{
 		$r = (!isset( $this->nsMap[$index] ));
@@ -274,10 +266,9 @@ class ManageNamespaces
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	/**
-		The 'immutable' list contains the namespaces that cannot be
-		managed through this extension.
-		
-		The list in question is ($wgCanonicalNamespaceNames - $bwManagedNamespaces)
+	 * The 'immutable' list contains the namespaces that cannot be
+	 * managed through this extension.
+	 * The list in question is ($wgCanonicalNamespaceNames - $bwManagedNamespaces)
 	 */
 	protected function getImmutableNamespaceList()
 	{

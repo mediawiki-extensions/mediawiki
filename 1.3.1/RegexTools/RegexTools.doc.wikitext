@@ -1,0 +1,38 @@
+{{Extension
+|name        = RegexTools
+|status      = stable
+|type        = parser
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: RegexTools.doc.wikitext 492 2007-10-10 16:27:42Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides 'magic words' performing regular expression pattern ( aka 'regex' )matching.
+
+== Features ==
+* Magic Word '#regx' 
+* Magic Word '#regx_vars'
+
+== Usage ==
+* <nowiki>{{#regx:regex pattern string|input}}</nowiki> 
+** returns '1' if match found
+* <nowiki>{{#regx_vars:pattern array name|input}}</nowiki> 
+** returns the index in the pattern array if match found
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager]]
+* [[Extension:PageFunctions|Page Functions extension]]
+** Required for 'regx_vars' magic word function
+
+{{Pear|ParserExt}}
+
+== History ==

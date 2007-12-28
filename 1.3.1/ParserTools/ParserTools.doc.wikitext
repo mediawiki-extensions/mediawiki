@@ -1,0 +1,27 @@
+{{Extension
+|name        = ParserTools
+|status      = beta
+|type        = other
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: ParserTools.doc.wikitext 492 2007-10-10 16:27:42Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+This extension allows for disabling 'parser caching' on a per-page basis through the
+tag <nowiki><noparsercaching/></nowiki>.
+
+== Dependancy ==
+* [[Extension:StubManager]] extension
+
+{{Pear|ParserExt}}
+
+== History ==

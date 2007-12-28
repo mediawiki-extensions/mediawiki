@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2007-12-17</date>
- <time>16:15:45</time>
+ <date>2007-12-28</date>
+ <time>21:04:42</time>
 
  <version>
-  <release>1.3.0</release>
+  <release>1.3.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -119,7 +119,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Added parser functions 'userfromgroup' and 'cuserfromgroup' in UserTools
+Fixed issue with parser function ''cuserfromgroup'' in [[Extension:UserTools]]
 </notes>
 </release>
 </changelog>

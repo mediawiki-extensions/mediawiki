@@ -158,7 +158,7 @@ class UserTools
 		if ( !is_object( $user ))
 			return $falseValue;
 			
-		$ugroups = $user->getEffectiveGroups();
+		$ugroups = $user->getEffectiveGroups( true /* recache */ );
 		$result  = array_search( $group, $ugroups );
 		
 		return ( $result ) ? $trueValue:$falseValue;

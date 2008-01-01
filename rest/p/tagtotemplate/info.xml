@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
  <n>TagToTemplate</n>
  <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/TagToTemplate">TagToTemplate</ca>
- <l>PHP License</l>
- <s>See [http://mediawiki.org/wiki/Extension:TagToTemplate]</s>
- <d>See [http://mediawiki.org/wiki/Extension:TagToTemplate]</d>
+ <ca xlink:href="/rest/TagToTemplate">TagToTemplate</ca>
+ <l>$license$</l>
+ <s></s>
+ <d></d>
  <r xlink:href="/rest/r/tagtotemplate"/>
 </p>

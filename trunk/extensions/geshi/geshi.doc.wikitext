@@ -7,7 +7,7 @@
 |version     = 1.0.0
 |update      =
 |mediawiki   = 1.10, 1.11
-|download    = [http://bizzwiki.googlecode.com/svn/trunk/BizzWiki/extensions/Geshi/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/geshi/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 

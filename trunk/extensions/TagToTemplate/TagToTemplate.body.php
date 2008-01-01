@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package TagToTemplate
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$ 
  */
 // <source lang=php>
 class TagToTemplate
@@ -13,51 +14,39 @@ class TagToTemplate
 	static $close_pattern = '</$tag>';
 	static $open_replace = '{{$tag|$params|';
 	static $close_replace = '}}';
-	var $loaded;
-	var $loading;
 	
 	var $map;
 	
 	public function __construct() 
 	{ 
-		$this->loaded = false;
-		$this->loading = false;
-		
-		$this->loadTable();		
 		
 		$this->map = array();
+
+		$this->loadTable();		
 	}
 	/**
-		Helper function that helps us populate the 'map' table.
-		This parser function should be used in the 'Table' page
-		referenced through self::$tablePageName
+	 * Helper function that helps us populate the 'map' table.
+	 * This parser function should be used in the 'Table' page
+	 * referenced through self::$tablePageName
 	 */
 	public function mg_tag_to_template( &$parser, $tag, $template )
 	{
 		$this->map[ $tag ] = $template;
 	}
 	/**
-		Do the substitute before MediaWiki's parser as a chance
-		to parse the actual text.
+	 * Do the substitute before MediaWiki's parser as a chance
+	 * to parse the actual text.
 	 */
 	public function hParserBeforeStrip( &$parser, &$text, &$strip_state )
 	{
-		if ($this->loading)
-			return true;
-			
-#		if (!$this->loaded)
-#			$this->loadTable();
-	
 		$this->substitute( $text );
-		
 		return true;		
 	}
 	/**
+	 * Loads the mapping table.
 	 */
 	private function loadTable()
 	{
-		$this->loading = true;		
-				
 		$title = Title::newFromText( self::$tablePageName );
 		$tablePageRev = Revision::newFromTitle( $title );
 		
@@ -77,10 +66,10 @@ class TagToTemplate
 			// {{#tag_to_template| ... }} instructions.
 			$parser->parse( $tablePage, $title, new ParserOptions( $wgUser) );
 		}
-		
-		$this->loaded = true;
-		$this->loading = false;		
 	}
+	/**
+	 * Performs the 'tag to template' substitution.
+	 */
 	private function substitute( &$text )
 	{
 		if (empty( $this->map ) || empty( $text ) )	
@@ -93,8 +82,8 @@ class TagToTemplate
 		}
 	}
 	/**
-		Replaces all the 'open' tags e.g. < taghere paramshere >
-		The parameters are passed as {{{1}}} variable in the resulting template.
+	 * Replaces all the 'open' tags e.g. < taghere paramshere >
+	 * The parameters are passed as {{{1}}} variable in the resulting template.
 	 */
 	private function replaceOpen( &$tag, &$template, &$text )	
 	{
@@ -119,7 +108,7 @@ class TagToTemplate
 		}
 	}
 	/**
-		Replaces all the 'close' tags e.g. < /taghere >
+	 * Replaces all the 'close' tags e.g. < /taghere >
 	 */
 	private function replaceClose( &$tag, &$text )
 	{

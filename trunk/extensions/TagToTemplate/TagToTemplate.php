@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package TagToTemplate
- * @version $Id$ 
+ * @version @@package-version@@
+ * @Id $Id$ 
  */
 // <source lang=php>
 if (class_exists('StubManager'))
@@ -16,7 +17,7 @@ if (class_exists('StubManager'))
 	global $wgExtensionCredits;
 	$wgExtensionCredits['hook'][] = array( 
 		'name'    		=> 'TagToTemplate',
-		'version'		=> '1.0.1',
+		'version'		=> '@@package-version@@',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:TagToTemplate',	
 		'description' 	=> "Provides tag markup substitution for a configured template.", 

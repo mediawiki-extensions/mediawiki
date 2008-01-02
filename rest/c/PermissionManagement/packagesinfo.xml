@@ -3,18 +3,18 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo   http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
 			<p>
-				<n>HNP</n>
+				<n>PageRestrictions</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
 				<l>$license$</l>
-				<s>Provides enhanced permission management</s>
-				<d>Provides hierarchical and wildcard based namespace dependant and independant permission management.</d>
-				<r xlink:href="/rest/r/HNP">
+				<s>Adds page level restrictions. The setting of these restrictions is granted to a user with the 'protect' right.</s>
+				<d>Adds page level restrictions. The setting of these restrictions is granted to a user with the 'protect' right.</d>
+				<r xlink:href="/rest/r/PageRestrictions">
 				</r>
 			</p>
 			<a>
 				<r>
-					<v>1.1.2</v>
+					<v>1.0.1</v>
 					<s>stable</s>
 				</r>
 			</a>
@@ -32,7 +32,7 @@
 			</p>
 			<a>
 				<r>
-					<v>1.1.1</v>
+					<v>1.1.2</v>
 					<s>stable</s>
 				</r>
 			</a>

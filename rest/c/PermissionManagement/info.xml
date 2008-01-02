@@ -7,5 +7,5 @@
  <n>PermissionManagement</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>PermissionManagement</a> <!-- alias? -->
- <d>Provides hierarchical and wildcard based namespace dependant and independant permission management.</d>
+ <d>Adds page level restrictions. The setting of these restrictions is granted to a user with the 'protect' right.</d>
 </c>

@@ -136,11 +136,8 @@ class PageAfterAndBefore
 			if (!is_object($title))
 				return null;
 				
-			$ns = $title->getNamespace();
-			$key = $title->getDBkey();
-			
-			// fix for apostrophes in title generating database access error
-			//$key = $dbr->strencode( $unescaped_key );
+			$ns        = $title->getNamespace();
+			$key       = $title->getDBkey();
 			
 			if ($ns !== NS_MAIN)
 				$namespace = Namespace::getCanonicalName( $ns );
@@ -159,9 +156,6 @@ class PageAfterAndBefore
 		// If a category is specified.
 		if (!empty($category))
 		{
-			// fix for apostrophes in title generating database access error			
-			$category = $dbr->strencode( $category );
-			
 			$where .= " AND {$catlinks}.cl_to = '{$category}' AND {$catlinks}.cl_from = page_id";
 			$cat = ", {$catlinks}";
 		}

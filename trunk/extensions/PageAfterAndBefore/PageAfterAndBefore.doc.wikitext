@@ -4,7 +4,7 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.3
+|version     = 1.0.4
 |update      =
 |mediawiki   = 1.82, 1.93, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/PageAfterAndBefore SVN]
@@ -45,5 +45,5 @@ Where:
 |-
 | 1.0.2 | Fixed bug with apostrophes in title text causing MySQL errors
 |-
-| 1.0.3 | Fixed string escaping issue + ''filtercurrent'' issue
+| 1.0.4 | Fixed string escaping issue + ''filtercurrent'' issue
 |}

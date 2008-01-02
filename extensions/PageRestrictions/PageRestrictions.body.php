@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package PageRestrictions
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$
 */
 //<source lang=php>
 class PageRestrictions

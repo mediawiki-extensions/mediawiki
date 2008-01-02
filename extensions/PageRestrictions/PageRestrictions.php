@@ -2,55 +2,59 @@
 /**
  * @author Jean-Lou Dupont
  * @package PageRestrictions
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$
 */
 //<source lang=php>
-global $wgExtensionCredits;
-$wgExtensionCredits['other'][] = array( 
-	'name'		=> 'PageRestrictions',
-	'version'     => '1.0.0',
-	'author'      => 'Jean-Lou Dupont', 
-	'description' => "Adds page level restrictions definitions & enforcement.",
-	'url'		=> 'http://mediawiki.org/wiki/Extension:PageRestrictions'
-);
-
-StubManager::createStub(	'PageRestrictions', 
-							dirname(__FILE__).'/PageRestrictions.body.php',
-							null,
-							array('ArticleViewHeader'),					// hooks
-							false, 					// no need for logging support
-							null,					// tags
-							null,
-							null
-						 );
-class PageRestrictionsSetup
+if (class_exists('StubManager'))
 {
-	static $msg = array();
-	static $rList  = array(	
-						'read',			// This right is enforced by this extension
-						'raw',			// This right is enforced by [[Extension:RawRight]]
-						'viewsource',	// This right is enforced by [[Extension:ViewsourceRight]]
-						);
+	$wgExtensionCredits['other'][] = array( 
+		'name'		=> 'PageRestrictions',
+		'version'     => '@@package-version@@',
+		'author'      => 'Jean-Lou Dupont', 
+		'description' => "Adds page level restrictions definitions & enforcement.",
+		'url'		=> 'http://mediawiki.org/wiki/Extension:PageRestrictions'
+	);
 	
-	public static function setup()
+	StubManager::createStub(	'PageRestrictions', 
+								dirname(__FILE__).'/PageRestrictions.body.php',
+								null,
+								array('ArticleViewHeader'),					// hooks
+								false, 					// no need for logging support
+								null,					// tags
+								null,
+								null
+							 );
+	class PageRestrictionsSetup
 	{
-		global $wgRestrictionTypes;
+		static $msg = array();
+		static $rList  = array(	
+							'read',			// This right is enforced by this extension
+							'raw',			// This right is enforced by [[Extension:RawRight]]
+							'viewsource',	// This right is enforced by [[Extension:ViewsourceRight]]
+							);
 		
-		foreach( self::$rList as $index => $rest )
-			$wgRestrictionTypes[] = $rest;
+		public static function setup()
+		{
+			global $wgRestrictionTypes;
 			
-		global $wgExtensionFunctions;
-		$wgExtensionFunctions[] = create_function('',"return PageRestrictionsSetup::loadMessages();");
-	}
-	public static function loadMessages()
-	{
-		global $wgMessageCache;
-		foreach( self::$msg as $key => $value )
-			$wgMessageCache->addMessages( self::$msg[$key], $key );		
-	}
-	
-} // end class
-require('PageRestrictions.i18n.php');	
-PageRestrictionsSetup::setup();
-
+			foreach( self::$rList as $index => $rest )
+				$wgRestrictionTypes[] = $rest;
+				
+			global $wgExtensionFunctions;
+			$wgExtensionFunctions[] = create_function('',"return PageRestrictionsSetup::loadMessages();");
+		}
+		public static function loadMessages()
+		{
+			global $wgMessageCache;
+			foreach( self::$msg as $key => $value )
+				$wgMessageCache->addMessages( self::$msg[$key], $key );		
+		}
+		
+	} // end class
+	require('PageRestrictions.i18n.php');	
+	PageRestrictionsSetup::setup();
+}
+else
+	echo 'Extension:PageRestrictions requires Extension:StubManager';
 //</source>

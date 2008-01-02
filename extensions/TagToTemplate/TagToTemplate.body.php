@@ -16,6 +16,7 @@ class TagToTemplate
 	static $close_replace = '}}';
 	
 	var $loaded = false;
+	var $initPhase = false;
 	var $map = array();
 	
 	public function __construct() {}
@@ -35,6 +36,9 @@ class TagToTemplate
 	 */
 	public function hParserBeforeStrip( &$parser, &$text, &$strip_state )
 	{
+		if ( $this->initPhase )
+			return true;
+			
 		$this->loadTable();		
 		$this->substitute( $text );
 		return true;		
@@ -60,9 +64,6 @@ class TagToTemplate
 		{
 			$tablePage = $tablePageRev->getText();
 			
-			// use the global parser to parse the page in question.
-			//global $wgParser;
-			//$parser = clone $wgParser;
 			global $wgUser;
 			$parser = new Parser;
 			$parser->setFunctionHook( 'tag_to_template', array( $this, 'mg_tag_to_template' ) );
@@ -70,7 +71,9 @@ class TagToTemplate
 			// this will populate the 'map' variable
 			// assuming of course that the page was edited with
 			// {{#tag_to_template| ... }} instructions.
+			$this->initPhase = true;
 			$parser->parse( $tablePage, $title, new ParserOptions( $wgUser) );
+			$this->initPhase = false;			
 		}
 	}
 	/**

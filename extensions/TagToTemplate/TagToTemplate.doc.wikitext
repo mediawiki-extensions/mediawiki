@@ -1,11 +1,11 @@
 {{Extension
 |name        = TagToTemplate
-|status      = beta
+|status      = experimental
 |type        = extended syntax
 |hook1       = ParserBeforeStrip
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.2
+|version     = 1.0.3
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/TagToTemplate SVN]

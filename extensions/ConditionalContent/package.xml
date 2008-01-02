@@ -23,7 +23,7 @@
  <time>23:00:18</time>
 
  <version>
-  <release>1.0.0</release>
+  <release>1.0.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -82,7 +82,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Initial release
+Fixed PHP warning
 </notes>
 </release>
 </changelog>

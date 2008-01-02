@@ -3,6 +3,24 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo   http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
 			<p>
+				<n>PageAfterAndBefore</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+				<l>$license$</l>
+				<s>Provides parser functions to retrieve 'preceeding' and 'succeeding' pages relative to a given page title</s>
+				<d>Provides parser functions to retrieve 'preceeding' and 'succeeding' pages relative to a given page title</d>
+				<r xlink:href="/rest/r/PageAfterAndBefore">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.5</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>ConditionalContent</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>

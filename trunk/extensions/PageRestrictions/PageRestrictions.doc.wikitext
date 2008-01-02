@@ -4,10 +4,10 @@
 |type        = other
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/PageRestrictions SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 
@@ -31,3 +31,8 @@ occurs centrally in 'HierarchicalNamespacePermissions' extension.
 {{Pear|PageRestrictions}}
 
 == History ==
+{|border=1
+! Release !! Notes
+|-
+| 1.0.1 || Minor changes (no functional changes)
+|}

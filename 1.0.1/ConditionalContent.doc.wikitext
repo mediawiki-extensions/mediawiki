@@ -1,0 +1,62 @@
+{{Extension
+|name        = ConditionalContent
+|status      = beta
+|type        = Parser
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.1
+|update      =
+|mediawiki   = 1.11
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ConditionalContent SVN]
+|readme      =
+|changelog   = See SVN ($Id: ConditionalContent.doc.wikitext 807 2008-01-02 20:30:46Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides parser functions ''#cc'' and ''#ccd'' for controlling the conditional inclusion of pages. 
+
+== Features ==
+* Secure: 
+** The user must have the ''read'' right to the target pages (i.e. ''page_true'' and ''page_false'')
+* Dynamic
+** Integration with [[Extension:ParserPhase2]]
+* Flexible comparaison mechanism
+
+== Usage ==
+=== #cc ===
+* <nowiki>{{#cc:page_true|condition|comparator|page_false}}</nowiki>
+** Where ''page_true'' corresponds the to the page to include when ''condition==comparator''
+** Where ''page_false'' corresponds the to the page to include when ''condition!=comparator''
+
+=== #ccd ===
+The following parser-function is really meant to be used in conjunction with [[Extension:ParserPhase2]]. The same parameters as ''#cc'' apply to ''#ccd''.
+The use of ParserPhase2 enables the dynamic inclusion of page content whilst still preserving the virtues of parser-caching for both the ''source'' and ''target'' pages.
+
+<nowiki>(($#ccd|page_true|condition|comparator|page_false$))</nowiki>
+
+== Examples ==
+* Assuming that the page [[Extension:ConditionalContent_testpage_true]] contains the text ''true''
+* Assuming that the page [[Extension:ConditionalContent_testpage_false]] contains the text ''false''
+
+=== Example1 ===
+The text following the semicolon should read ''true'' : {{#cc:Extension:ConditionalContent_testpage_true|1|1|Extension:ConditionalContent_testpage_false}}
+=== Example2 ===
+The text following the semicolon should read ''false'' : {{#cc:Extension:ConditionalContent_testpage_true|0|1|Extension:ConditionalContent_testpage_false}}
+
+== Dependancies ==
+* [[Extension:StubManager|StubManager extension]]
+* [[Extension:ParserPhase2|ParserPhase2]] is only required for ''#ccd''. 
+
+{{Pear|ConditionalContent}}
+
+== History ==
+{|border=1
+! Release !! Notes
+|-
+| 1.0.0 || Initial Release
+|-
+| 1.0.1 || Fixed PHP warning
+|}

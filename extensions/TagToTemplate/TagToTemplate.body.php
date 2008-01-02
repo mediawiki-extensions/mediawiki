@@ -15,15 +15,11 @@ class TagToTemplate
 	static $open_replace = '{{$tag|$params|';
 	static $close_replace = '}}';
 	
-	var $map;
+	var $loaded = false;
+	var $map = array();
 	
-	public function __construct() 
-	{ 
-		
-		$this->map = array();
-
-		$this->loadTable();		
-	}
+	public function __construct() {}
+	
 	/**
 	 * Helper function that helps us populate the 'map' table.
 	 * This parser function should be used in the 'Table' page
@@ -39,6 +35,7 @@ class TagToTemplate
 	 */
 	public function hParserBeforeStrip( &$parser, &$text, &$strip_state )
 	{
+		$this->loadTable();		
 		$this->substitute( $text );
 		return true;		
 	}
@@ -47,7 +44,16 @@ class TagToTemplate
 	 */
 	private function loadTable()
 	{
+		// no need to load multiple times.
+		if ($this->loaded)
+			return;
+		
+		$this->loaded = true;
+					
 		$title = Title::newFromText( self::$tablePageName );
+		if ( !$title->exists() )
+			return;
+			
 		$tablePageRev = Revision::newFromTitle( $title );
 		
 		if (is_object( $tablePageRev ))

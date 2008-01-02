@@ -7,5 +7,5 @@
  <n>ParserFunctions</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>ParserFunctions</a> <!-- alias? -->
- <d>Provides parser functions to retrieve 'preceeding' and 'succeeding' pages relative to a given page title</d>
+ <d>Provides a parser function for conditionally including content</d>
 </c>

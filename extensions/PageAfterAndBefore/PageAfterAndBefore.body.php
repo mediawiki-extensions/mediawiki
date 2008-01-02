@@ -23,9 +23,8 @@ class PageAfterAndBefore
 		$this->setupParams($params);
 
 		$res = $this->getPages( $params['namespace'], $params['title'], 'desc',$params['category'] );
-		if (!isset($res[0]))
-			return null;
-		return $res[0];
+
+		return (isset($res[0])) ? $res[0]:null;
 	}
 	public function mg_pageafter( &$parser )
 	{
@@ -33,9 +32,8 @@ class PageAfterAndBefore
 		$this->setupParams($params);
 
 		$res = $this->getPages( $params['namespace'], $params['title'], 'asc',$params['category'] );		
-		if (!isset($res[0]))
-			return null;
-		return $res[0];
+
+		return (isset($res[0])) ? $res[0]:null;
 	}
 	public function mg_firstpage( &$parser )
 	// If 'namespace' is not supplied, defaults to current page's namespace
@@ -50,7 +48,7 @@ class PageAfterAndBefore
 
 		// filter out if requested and currentpage==firstpage
 		$currentpage = $this->getCurrentPage( $ns, $title );
-		if ( ($this->filterCurrent( $params )) && ( $res[0]== $currentpage))
+		if ( ($this->filterCurrent( $params )) && ( $res[0] == $currentpage))
 			return '';
 			
 		return $res[0];
@@ -68,7 +66,7 @@ class PageAfterAndBefore
 
 		// filter out if requested and currentpage==lastpage
 		$currentpage = $this->getCurrentPage( $ns, $title );
-		if ( ($this->filterCurrent( $params )) && ( $res[0]== $currentpage))
+		if ( ($this->filterCurrent( $params )) && ( $res[0] == $currentpage))
 			return '';
 
 		return $res[0];
@@ -99,17 +97,23 @@ class PageAfterAndBefore
 		);
 		StubManager::initParams( $params, $template );
 	}
+	/**
+	 * Returns the current title name in database format.
+	 */
 	public function getCurrentPage( &$ns, &$title )
 	{
 		global $wgTitle;
+		
 		$ns_num = $wgTitle->getNamespace();
+		
 		if ($ns_num !== NS_MAIN)
-			$ns = Namespace::getCanonicalName( $ns_num );
+			$ns = Namespace::getCanonicalName( $ns_num ).':';
 		else
 			$ns = '';
-		$title  = $wgTitle->getText();
 		
-		return $ns.":".$title;
+		$title  = $wgTitle->getDBkey();
+		
+		return $ns.$title;
 	}
 	public function getPages( $namespace, $titlename, $dir='asc', $category = null, $limit=2 )
 	{
@@ -133,10 +137,10 @@ class PageAfterAndBefore
 				return null;
 				
 			$ns = $title->getNamespace();
-			$unescaped_key = $title->getDBkey();
+			$key = $title->getDBkey();
 			
 			// fix for apostrophes in title generating database access error
-			$key = $dbr->strencode( $unescaped_key );
+			//$key = $dbr->strencode( $unescaped_key );
 			
 			if ($ns !== NS_MAIN)
 				$namespace = Namespace::getCanonicalName( $ns );

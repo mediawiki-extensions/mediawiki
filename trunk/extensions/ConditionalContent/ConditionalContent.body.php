@@ -73,7 +73,7 @@ class ConditionalContent
 		// make sure that the requesting user has the proper right
 		// to include either the 'page_true' or 'page_false' page ...
 		global $wgUser;		
-		$permission = $this->checkPermission( $wgUser, $page, &$title );
+		$permission = $this->checkPermission( $wgUser, $page, $title );
 		if ( $permission === false )
 			return wfMsg( 'conditionalcontent_readrestriction' );
 			

@@ -15,6 +15,7 @@
 	<c xlink:href="/rest/c/Google/info.xml">Google</c>
 	<c xlink:href="/rest/c/GroupManager/info.xml">GroupManager</c>
 	<c xlink:href="/rest/c/HeadScripts/info.xml">HeadScripts</c>
+	<c xlink:href="/rest/c/HeaderFooter/info.xml">HeaderFooter</c>
 	<c xlink:href="/rest/c/InterWikiLinkManager/info.xml">InterWikiLinkManager</c>
 	<c xlink:href="/rest/c/InterWikiTitleWizard/info.xml">InterWikiTitleWizard</c>
 	<c xlink:href="/rest/c/Logging/info.xml">Logging</c>

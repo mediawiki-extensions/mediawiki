@@ -7,10 +7,10 @@
 		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd 
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
- <name>HeaderFooter</name>
+ <name>SettingsManager</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Provides per-page/per-namespace headers and footers</summary>
- <description>Provides per-page/per-namespace headers and footers</description>
+ <summary>Provides a way to manage the parameters normally found in LocalSettings.php through a wikitext page</summary>
+ <description>Provides a way to manage the parameters normally found in LocalSettings.php through a wikitext page</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2008-01-03</date>
- <time>19:04:24</time>
+ <date>2007-12-19</date>
+ <time>20:52:33</time>
 
  <version>
-  <release>2.0.0</release>
+  <release>1.0.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -41,8 +41,9 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/HeaderFooter" name="HeaderFooter.php" role="php" />
-   <file baseinstalldir="MediaWiki/HeaderFooter" name="HeaderFooter.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/SettingsManager" name="SettingsManager.php" role="php" />
+   <file baseinstalldir="MediaWiki/SettingsManager" name="SettingsManager.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/SettingsManager" name="SettingsManager.i18n.php" role="php" />
     <!-- }} -->
 
   </dir>
@@ -81,7 +82,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-New version
+Added ''broken link'' functionality when the target page for #shtml does not exist
 </notes>
 </release>
 </changelog>

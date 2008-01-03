@@ -12,9 +12,22 @@ class HeaderFooter
 	{
 		global $wgTitle;
 		
+		$thisTitle     = $parser->getTitle();
+		$thisTitleNs   = null;
+		$thisTitleName = null;
+
+		if (is_object( $thisTitle ) && ( $thisTitle instanceof Title) )
+		{
+			$thisTitleNs   = $thisTitle->getNamespace();
+			$thisTitleName = $thisTitle->getPrefixedDBKey();
+		}
 		$ns = $wgTitle->getNsText();
 		$name = $wgTitle->getPrefixedDBKey();
 		$protect = $wgTitle->isProtected( 'edit' );
+	
+		// make sure we are only including the headers/footers to the main article!
+		if (( $thisTitleNs === $ns) && ($thisTitleName === $name ) )
+			return true;
 		
 		$nsheader = wfMsg( "hf-nsheader-$ns" );
 		$nsfooter = wfMsg( "hf-nsfooter-$ns" );		

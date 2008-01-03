@@ -31,7 +31,7 @@ class HeaderFooter
 		return true;
 	}
 
-	protected function conditionalInclude( &$disableWord, &$content, $protect )
+	protected function conditionalInclude( $disableWord, &$content, $protect )
 	{
 		// don't need to bother if there is no content.
 		if (empty( $content ))

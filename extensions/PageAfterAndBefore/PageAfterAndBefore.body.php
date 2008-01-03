@@ -99,15 +99,11 @@ class PageAfterAndBefore
 		global $wgTitle;
 		
 		$ns_num = $wgTitle->getNamespace();
-		
-		if ($ns_num !== NS_MAIN)
-			$ns = Namespace::getCanonicalName( $ns_num ).':';
-		else
-			$ns = '';
-		
+
+		$ns = ( $ns_num == NS_MAIN ) ? '':Namespace::getCanonicalName( $ns_num );
 		$title  = $wgTitle->getDBkey();
 		
-		return $ns.$title;
+		return (empty( $ns )) ? $title:$ns.':'.$title ;
 	}
 	public function getPages( $namespace, $titlename, $dir='asc', $category = null, $limit=2 )
 	{

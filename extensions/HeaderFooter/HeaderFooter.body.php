@@ -18,7 +18,7 @@ class HeaderFooter
 
 		if (is_object( $thisTitle ) && ( $thisTitle instanceof Title) )
 		{
-			$thisTitleNs   = $thisTitle->getNamespace();
+			$thisTitleNs   = $thisTitle->getNsText();
 			$thisTitleName = $thisTitle->getPrefixedDBKey();
 		}
 		$ns = $wgTitle->getNsText();
@@ -26,14 +26,14 @@ class HeaderFooter
 		$protect = $wgTitle->isProtected( 'edit' );
 	
 		// make sure we are only including the headers/footers to the main article!
-		if (( $thisTitleNs === $ns) && ($thisTitleName === $name ) )
+		if ($thisTitleName !== $name )
 			return true;
 		
-		$nsheader = wfMsg( "hf-nsheader-$ns" );
-		$nsfooter = wfMsg( "hf-nsfooter-$ns" );		
+		$nsheader = $this->getMsg( "hf-nsheader-$ns" );
+		$nsfooter = $this->getMsg( "hf-nsfooter-$ns" );		
 
-		$header = wfMsg( "hf-header-$name" );
-		$footer = wfMsg( "hf-footer-$name" );		
+		$header = $this->getMsg( "hf-header-$name" );
+		$footer = $this->getMsg( "hf-footer-$name" );		
 
 		$text = '<div class="hf-header">'.$this->conditionalInclude( '__NOHEADER__', $header, $protect ).'</div>'.$text;
 		$text = '<div class="hf-nsheader">'.$this->conditionalInclude( '__NONSHEADER__', $nsheader, $protect ).'</div>'.$text;
@@ -43,11 +43,20 @@ class HeaderFooter
 				
 		return true;
 	}
-
+	/**
+	 *
+	 */
+	protected function & getMsg( $msgId )
+	{
+		$msgText = wfMsg( $msgId );
+		if ( !wfEmptyMsg( $msgId, $msgText ))
+			return $msgText;
+		return null;
+	}	 
 	protected function conditionalInclude( $disableWord, &$content, $protect )
 	{
 		// don't need to bother if there is no content.
-		if (empty( $content ))
+		if (empty( $content ) || !wfEmptyMsg( $content, '' ) )
 			return null;
 		
 		// is there a disable command lurking around?

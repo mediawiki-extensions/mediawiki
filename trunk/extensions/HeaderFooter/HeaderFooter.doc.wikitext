@@ -21,6 +21,7 @@ Provides per-namespace and per-page header + footer inclusion.
 * Speed: integrated with parser caching
 * Secure: header and footer articles are located in the NS_MEDIAWIKI namespace
 * Controllable: headers and/or footers can be disabled on pages which are ''edit'' protected
+* Customizable: headers and footers are wrapped in <nowiki><div></nowiki> elements
 
 == Usage ==
 === Per-Namespace Header and Footer ===
@@ -37,6 +38,11 @@ On ''edit'' protected pages, one can add
 * <code>__NOFOOTER__</code> to suppress the page level footer
 * <code>__NONSHEADER__</code> to suppress the namespace level header
 * <code>__NONSFOOTER__</code> to suppress the namespace level footer
+=== CSS ===
+* Page Level Header: <nowiki><div class="hf-header"></nowiki>
+* Namespace Level Header: <nowiki><div class="hf-nsheader"></nowiki>
+* Page Level Footer: <nowiki><div class="hf-footer"></nowiki>
+* Namespace Level Footer: <nowiki><div class="hf-nsfooter"></nowiki>
 
 == Examples ==
 # Page [[MediaWiki:hf-nsheader-Extension]] would contain the wikitext to be included as header for all pages of the ''Extension'' namespace.
@@ -52,3 +58,6 @@ On ''edit'' protected pages, one can add
 |-
 | 2.0.0 || Complete redesign
 |}
+
+== See also ==
+[[Category:View page extensions]]

@@ -8,12 +8,23 @@
 
 	
 	<item>
+			<title>VersaComment - 1.0.0</title>
+			<link>http://mediawiki.googlecode.com/svn</link>
+			<description>Changelog:
+Initial release.
+			</description>
+			<pubDate>Fri, 04 Jan 08 08:52:00 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>HeaderFooter - 2.0.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
 New version
 			</description>
-			<pubDate>Thu, 03 Jan 08 22:10:56 -0500</pubDate>
+			<pubDate>Thu, 03 Jan 08 22:21:53 -0500</pubDate>
 		</item>
 
 

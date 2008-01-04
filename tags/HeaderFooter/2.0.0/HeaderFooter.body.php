@@ -5,7 +5,7 @@
  * @version 2.0.0
  * @Id $Id$
  */
-
+//<source lang='php'>
 class HeaderFooter
 {
 	var $done = false;
@@ -14,8 +14,8 @@ class HeaderFooter
 	{
 		global $wgTitle, $action;
 		
-		// nothing to do on page edit.		
-		if ( $action == 'edit' )
+		// nothing to do if not on page view
+		if ( $action != 'view' )
 			return true;
 		
 		$thisTitle     = $parser->getTitle();
@@ -55,18 +55,42 @@ class HeaderFooter
 				
 		return true;
 	}
-	public function hOutputPageBeforeHTML( &$op, &$text )	
-	{
-		// if we get here, then we have nothing more to do.
-		$this->done = true;
-		return true;
-	}
 	/**
 	 *
 	 */
-	protected function & getMsg( $msgId )
+	public function hOutputPageParserOutput( &$op, &$parserOutput )
+	{
+		global $wgTitle;
+		
+		$ns = $wgTitle->getNsText();
+		$name = $wgTitle->getPrefixedDBKey();
+		$protect = $wgTitle->isProtected( 'edit' );
+		
+		$text = $parserOutput->getText();
+		
+		$nsheader = $this->getMsg( "hf-nsheader-$ns" );
+		$nsfooter = $this->getMsg( "hf-nsfooter-$ns" );		
+
+		$header = $this->getMsg( "hf-header-$name" );
+		$footer = $this->getMsg( "hf-footer-$name" );		
+
+		$text = '<div class="hf-header">'.$this->conditionalInclude( '__NOHEADER__', $header, $protect ).'</div>'.$text;
+		$text = '<div class="hf-nsheader">'.$this->conditionalInclude( '__NONSHEADER__', $nsheader, $protect ).'</div>'.$text;
+
+		$text .= '<div class="hf-footer">'.$this->conditionalInclude( '__NOFOOTER__', $footer, $protect ).'</div>';
+		$text .= '<div class="hf-nsfooter">'.$this->conditionalInclude( '__NONSFOOTER__', $nsfooter, $protect ).'</div>';
+		
+		$parserOutput->setText( $text );
+		
+		return true;
+	}	 
+	/**
+	 * Gets a message from the NS_MEDIAWIKI namespace
+	 */
+	protected function getMsg( $msgId )
 	{
 		$msgText = wfMsg( $msgId );
+		
 		if ( wfEmptyMsg( $msgId, $msgText ))
 			return null;
 			
@@ -89,8 +113,11 @@ class HeaderFooter
 		if ($disable && $protect)
 			return null;
 		
+		// remove the 'noinclude' sections
+		$content = preg_replace( '/<noinclude>.*<\/noinclude>/si', '', $content );
+		
 		return $content;
 	}
 		
 } // END CLASS DEFINITION
-?>
+//</source>

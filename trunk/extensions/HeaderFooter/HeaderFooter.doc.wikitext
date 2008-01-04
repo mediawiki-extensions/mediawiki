@@ -1,46 +1,57 @@
- * HeaderFooter.php
- * 
- * MediaWiki extension
- * @author: Jean-Lou Dupont (http://www.bluecortex.com)
- * $Id$
- * $LastChangedRevision: 233 $
- * Purpose: insert an header and/or footer to an article
- *          upon a 'view' action.
- *
- * Features:
- * *********
- * - Recursive (bottom-up) search for "Header" and "Footer" subpages
- * - <noinclude> section support   
- * - Configurable per-namespace recursive level depth
- * - Configurable per-namespace enable/disable flag (all disable per default)
- *
- * DEPENDANCIES:
- * - ArticleCacheClass  (for recursive search function)
- *
- *
- * Tested Compatibility:  MW 1.8.2, 1.9.3
- * 
- * TODO:
- *  1) Suggestion from a user:
- *     // Look for the header and footer in the Template: namespace
- *     $name = "Template:".($ns==0 ? "Main" : Namespace::getCanonicalName($ns))."/".$name;
- *
- * HISTORY:
- * -- Version 1.1:	added support for <noheader/> and <nofooter/>
- * -- Version 1.11: changed interface to ArticleCacheClass: using singleton
- * -- Version 1.12: added check to ensure that the process is only performed once
- *                  i.e. the article requested in the transaction (and not other
- *                  articles fetched during the rendering process)
- *                  (helps with some other extensions that do fetch multiple pages
- *                   before returning the final render requested page).
- * -- Version 1.13: - Added support for '__NOHEADER__' and '__NOFOOTER__' magic words         
- * -- Version 1.14: - Added support for better parser cache integration
- *                    i.e. the normal MW behavior is to save an updated/created article
- *                    in the parser cache BEFORE this extension has the chance to execute.
- *                    This extension update disables this behavior but don't worry, the article will
- *                    be saved by MW the next time the article is viewed. 
- * -- Version 1.15: - Integration with 'ParserCacheControl' extension.
- * -- Version 1.16: - Added missing 'return true' in function handler.
- *                  - Added check for 'ParserCacheControl' in hook creation.
- *
- 
+{{Extension
+|name        = HeaderFooter
+|status      = beta
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 2.0.0
+|update      =
+|mediawiki   = 1.11 (should work on other versions)
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/HeaderFooter/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+Provides per-namespace and per-page header + footer inclusion.
+
+== Features ==
+* Speed: integrated with parser caching
+* Secure: header and footer articles are located in the NS_MEDIAWIKI namespace
+* Controllable: headers and/or footers can be disabled on pages which are ''edit'' protected
+* Documentable: ''noinclude'' sections can be added to header/footer pages
+
+== Usage ==
+=== Per-Namespace Header and Footer ===
+Edit the pages:
+* <code>MediaWiki:hf-nsheader-''namespace name'' </code>
+* <code>MediaWiki:hf-nsfooter-''namespace name'' </code>
+=== Per-Page Header and Footer ===
+Edit the pages:
+* <code>MediaWiki:hf-header-''page name'' </code>
+* <code>MediaWiki:hf-footer-''page name'' </code>
+=== Disable commands ===
+On ''edit'' protected pages, one can add
+* <code>__NOHEADER__</code> to suppress the page level header
+* <code>__NOFOOTER__</code> to suppress the page level footer
+* <code>__NONSHEADER__</code> to suppress the namespace level header
+* <code>__NONSFOOTER__</code> to suppress the namespace level footer
+=== Documentation ===
+The header and footer pages can contain <nowiki><noinclude>wikitext here</noinclude></nowiki> sections similar to the Template namespace.
+
+== Examples ==
+# Page [[MediaWiki:hf-nsheader-Extension]] would contain the wikitext to be included as header for all pages of the ''Extension'' namespace.
+# Page [[MediaWiki:hf-footer-Extension:HeaderFooter]] would contain the wikitext to be included as footer for the page [[Extension:HeaderFooter]].
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+{{Pear|HeaderFooter}}
+
+== History ==
+{|border=1
+! Release !! Notes
+|-
+| 2.0.0 || Complete redesign
+|}

@@ -21,7 +21,7 @@ Provides a means of including wikitext content which is ''visible'' on one site 
 Suppose one has an extension which provides extended parser functionality. The extension's description must be published on [http://mediawiki.org MediaWiki] '''and''' on the target site (i.e. the site where the extension is used); it is quite possible that MediaWiki won't provide the said extension so including some ''live'' examples on the description page would prove difficult. The said ''live'' examples can thus be enclosed with the special markers provided by this extension whilst providing transparent support on MediaWiki.org.
 
 == Usage ==
-Just include the comments to be displayed between the <nowiki><--{{</nowiki> <nowiki>}}--></nowiki> markers.
+Just include the comments to be displayed between the <nowiki><-- {{</nowiki> <nowiki>}} --></nowiki> markers.
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension]]

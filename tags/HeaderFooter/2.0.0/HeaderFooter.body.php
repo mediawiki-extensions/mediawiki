@@ -53,12 +53,11 @@ class HeaderFooter
 			
 		return $msgText;			
 	}	 
+	/**
+	 * Verifies & Strips ''disable command'', returns $content if all OK.
+	 */
 	protected function conditionalInclude( &$text, $disableWord, &$content, $protect )
 	{
-		// don't need to bother if there is no content.
-		if (empty( $content ))
-			return null;
-		
 		// is there a disable command lurking around?
 		$disable = strpos( $content, $disableWord ) !== false ;
 		
@@ -66,6 +65,10 @@ class HeaderFooter
 		// make sure that the disableWord does not break the REGEX below!
 		$text = preg_replace('/'.$disableWord.'/si', '', $text );
 
+		// don't need to bother if there is no content.
+		if (empty( $content ))
+			return null;
+		
 		// if there is a disable command, then obey IFF the page is protected on 'edit'
 		if ($disable && $protect)
 			return null;

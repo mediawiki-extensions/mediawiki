@@ -11,7 +11,7 @@ class JSKitRating
 	const thisType = 'other';
 	const thisName = 'JSKitRating';
 	
-	public function mw_JSKITRATING( &$parser, &$varcache, &$ret )
+	public function mg_jskitrating( &$parser )
 	{
 		global $wgTitle;
 		

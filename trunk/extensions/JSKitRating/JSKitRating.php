@@ -20,7 +20,7 @@ else
 	
 	StubManager::createStub2(	array(	'class' 		=> 'JSKitRating', 
 										'classfilename'	=> dirname(__FILE__).'/JSKitRating.body.php',
-										'mws'			=> array( 'JSKITRATING' )
+										'mgs'			=> array( 'jskitrating' )
 									)
 							);
 }

@@ -23,7 +23,7 @@ class MetaTags
 		$cont = $this->process( 'content', $contentAtt );
 		$name = $this->process( 'name', $nameAtt );
 
-		$parser->mOutput->addHeadItem("<meta{$http}{$content}{$name}>\n");
+		$parser->mOutput->addHeadItem("<meta{$http}{$cont}{$name}>\n");
 	}
 	/**
 	 * 

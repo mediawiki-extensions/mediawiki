@@ -73,9 +73,6 @@ class HeaderFooter
 		if ($disable && $protect)
 			return null;
 		
-		// remove the 'noinclude' sections
-		$content = preg_replace( '/<noinclude>.*<\/noinclude>/si', '', $content );
-		
 		return $content;
 	}
 		

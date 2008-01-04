@@ -18,7 +18,7 @@ if (class_exists( 'StubManager' ))
 
 	StubManager::createStub2(	array(	'class' 		=> 'HeaderFooter', 
 										'classfilename'	=> dirname(__FILE__).'/HeaderFooter.body.php',
-										'hooks'			=> array( 'ParserBeforeStrip' )
+										'hooks'			=> array( 'ParserBeforeStrip', 'OutputPageBeforeHTML' )
 									)
 							);
 }

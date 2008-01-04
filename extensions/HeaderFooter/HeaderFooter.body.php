@@ -8,9 +8,15 @@
 
 class HeaderFooter
 {
+	var $done = false;
+	
 	public function hParserBeforeStrip( &$parser, &$text, &$mStripState )
 	{
-		global $wgTitle;
+		global $wgTitle, $action;
+		
+		// nothing to do on page edit.		
+		if ( $action == 'edit' )
+			return true;
 		
 		$thisTitle     = $parser->getTitle();
 		$thisTitleNs   = null;
@@ -28,6 +34,12 @@ class HeaderFooter
 		// make sure we are only including the headers/footers to the main article!
 		if ($thisTitleName !== $name )
 			return true;
+	
+		// set trap in order to make sure
+		// we only parse the main page text.
+		if ($this->done)
+			return true;
+		$this->done = true;
 		
 		$nsheader = $this->getMsg( "hf-nsheader-$ns" );
 		$nsfooter = $this->getMsg( "hf-nsfooter-$ns" );		
@@ -38,9 +50,15 @@ class HeaderFooter
 		$text = '<div class="hf-header">'.$this->conditionalInclude( '__NOHEADER__', $header, $protect ).'</div>'.$text;
 		$text = '<div class="hf-nsheader">'.$this->conditionalInclude( '__NONSHEADER__', $nsheader, $protect ).'</div>'.$text;
 
-		$text .= '<div class="hf-footer">'.$this->conditionalInclude( '__NOFOOTER__', $header, $protect ).'</div>';
-		$text .= '<div class="hf-nsfooter">'.$this->conditionalInclude( '__NONSFOOTER__', $nsheader, $protect ).'</div>';
+		$text .= '<div class="hf-footer">'.$this->conditionalInclude( '__NOFOOTER__', $footer, $protect ).'</div>';
+		$text .= '<div class="hf-nsfooter">'.$this->conditionalInclude( '__NONSFOOTER__', $nsfooter, $protect ).'</div>';
 				
+		return true;
+	}
+	public function hOutputPageBeforeHTML( &$op, &$text )	
+	{
+		// if we get here, then we have nothing more to do.
+		$this->done = true;
 		return true;
 	}
 	/**
@@ -49,14 +67,15 @@ class HeaderFooter
 	protected function & getMsg( $msgId )
 	{
 		$msgText = wfMsg( $msgId );
-		if ( !wfEmptyMsg( $msgId, $msgText ))
-			return $msgText;
-		return null;
+		if ( wfEmptyMsg( $msgId, $msgText ))
+			return null;
+			
+		return $msgText;			
 	}	 
 	protected function conditionalInclude( $disableWord, &$content, $protect )
 	{
 		// don't need to bother if there is no content.
-		if (empty( $content ) || !wfEmptyMsg( $content, '' ) )
+		if (empty( $content ))
 			return null;
 		
 		// is there a disable command lurking around?

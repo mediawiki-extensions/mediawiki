@@ -5,7 +5,7 @@
  * @version @@package-version@@
  * @Id $Id$
  */
-//<source lang=php>*/
+//<source lang=php>
 if (class_exists( 'StubManager' ))
 {
 	$wgExtensionCredits['other'][] = array( 
@@ -18,7 +18,7 @@ if (class_exists( 'StubManager' ))
 
 	StubManager::createStub2(	array(	'class' 		=> 'HeaderFooter', 
 										'classfilename'	=> dirname(__FILE__).'/HeaderFooter.body.php',
-										'hooks'			=> array( 'ParserBeforeStrip', 'OutputPageBeforeHTML' )
+										'hooks'			=> array( 'OutputPageParserOutput' )
 									)
 							);
 }

@@ -20,7 +20,7 @@ Provides integration with [http://js-kit.com/ratings/ JS-Kit Ratings], an AJAX b
 == Usage ==
 Just use the following parser function <nowiki>{{#jskitrating:}}</nowiki> on the desired wiki page.
 
-<--{{
+<!--{{
 == Example ==
 {{#jskitrating:}}
 }}-->

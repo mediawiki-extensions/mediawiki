@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo
-    http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 
+<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
-		<p>
-			 <n>VersaComment</n>
-			 <c>mediawiki.googlecode.com/svn</c>
-			 <ca xlink:href="/rest/c/VersaComment">VersaComment</ca>
-			 <l>$license$</l>
-			 <s>Provides versatile HTML comments</s>
-			 <d>Provides versatile HTML comments</d>
-			 <r xlink:href="/rest/r/VersaComment"/>
-		</p>
-		<a>
-			<!-- 
-				not all releases need to appear here!
-				only the latest one!
-			-->
-					<r>
-			<v>1.0.0</v>
-			<s>stable</s>
-		</r>
-
-		</a>
-	</pi>
-
-	
+			<p>
+				<n>VersaComment</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/VersaComment">VersaComment</ca>
+				<l>$license$</l>
+				<s>Provides versatile HTML comments</s>
+				<d>Provides versatile HTML comments</d>
+				<r xlink:href="/rest/r/VersaComment">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
 </f>

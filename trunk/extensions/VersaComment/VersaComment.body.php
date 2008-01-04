@@ -9,11 +9,11 @@
 class VersaComment
 {
 	/**
-	 * Removes <--{{  and  }}-->  terms
+	 * Removes <!--{{  and  }}-->  terms
 	 */
 	public function hParserBeforeStrip( &$parser, &$text, &$mStripState )
 	{
-		$text = str_replace( '<--{{', '', $text );
+		$text = str_replace( '<!--{{', '', $text );
 		$text = str_replace( '}}-->', '', $text );		
 		return true;
 	}

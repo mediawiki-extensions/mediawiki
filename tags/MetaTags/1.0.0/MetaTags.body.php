@@ -14,21 +14,29 @@ class MetaTags
 	/**
 	 * {{#meta: HTTP-EQUIV | CONTENT [| NAME] }}
 	 */
-	public function mg_meta( &$parser, $httpEquiv, $content, $name='' )
+	public function mg_meta( &$parser, $httpAtt, $contentAtt, $nameAtt='' )
 	{
 		if (!self::checkExecuteRight( $parser->mTitle ))
 			return 'MetaTags: '.wfMsg('badaccess');
 		
-		$httpEquiv = trim( htmlspecialchars( $httpEquiv ) );
-		$content = trim( htmlspecialchars( $content ) );
-		
-		if (!empty( $name ))
-		{
-			$name = trim( htmlspecialchars( $name ) );
-			$nameAtt = "name=\"$name\"";
-		}
-		$parser->mOutput->addHeadItem("<meta http-equiv=\"$httpEquiv\" content=\"$content\" $nameAtt >\n");
+		$http = $this->process( 'http-equiv', $httpAtt );
+		$cont = $this->process( 'content', $contentAtt );
+		$name = $this->process( 'name', $nameAtt );
+
+		$parser->mOutput->addHeadItem("<meta{$http}{$content}{$name}>\n");
 	}
+	/**
+	 * 
+	 */
+	protected function process( $att, $input )
+	{
+		$out = trim( htmlspecialchars( $input ) );
+		
+		if (empty( $out ))
+			return '';
+			
+		return " $att=\"$out\"";
+	}	 
 	/**
 	 *	1- IF the page is protected for 'edit' THEN allow execution
 	 *	2- IF the page's last contributor had the 'meta' right THEN allow execution

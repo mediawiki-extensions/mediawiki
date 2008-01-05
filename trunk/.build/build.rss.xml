@@ -90,7 +90,7 @@
 		<description>${rss.description}</description>
 		<item>
 			<title>${package.name} - ${package.version}</title>
-			<link>http://${channel.name}</link>
+			<link>http://jldupont.com/Extension:${package.name}</link>
 			<description>Changelog:
 ${package.changelog}
 			</description>

@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>EmailLog - 1.0.0</title>
+			<link>http://jldupont.com/Extension:EmailLog</link>
+			<description>Changelog:
+* Initial release on PEAR channel
+			</description>
+			<pubDate>Fri, 04 Jan 08 21:02:53 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>MetaTags - 1.0.0</title>
 			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:

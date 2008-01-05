@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>Logging</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>Logging</a>
- <d>none</d>
+ <a>Logging</a> <!-- alias? -->
+ <d>Provides logging of user-to-user emailing activities.</d>
 </c>

@@ -1,79 +1,94 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xlink="http://www.w3.org/1999/xlink" 
-	xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo 
-	http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
-	<pi>
-		<p>
-		 <n>UserSettingsChangedLog</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/Logging">Logging</ca>
-		 <l></l>
-		 <s>Provides logging of user settings changes.</s>
-		 <d>Provides the ability to log any user settings changes.</d>
-		 <r xlink:href="/rest/r/usersettingschangedlog"/>
-		</p>
-		<a>
-			<r>
-				<v>1.0.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
 
-	<pi>
-		<p>
-		 <n>WatchLog</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/Logging">Logging</ca>
-		 <l></l>
-		 <s>Provides logging of user watch and unwatch activities.</s>
-		 <d>See [http://mediawiki.org/wiki/Extension:WatchLog].</d>
-		 <r xlink:href="/rest/r/watchlog"/>
-		</p>
-		<a>
-			<r>
-				<v>1.0.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
-
-	<pi>
-		<p>
-		 <n>NewUserLog</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/Logging">Logging</ca>
-		 <l></l>
-		 <s>Provides logging of new account creation.</s>
-		 <d>See [http://mediawiki.org/wiki/Extension:NewUserLog].</d>
-		 <r xlink:href="/rest/r/newuserlog"/>
-		</p>
-		<a>
-			<r>
-				<v>1.0.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
-
-	<pi>
-		<p>
-		 <n>UserLoginLogoutLog</n>
-		 <c>mediawiki.googlecode.com/svn</c>
-		 <ca xlink:href="/rest/c/Logging">Logging</ca>
-		 <l></l>
-		 <s>Provides logging of users' login and logout events.</s>
-		 <d>See [http://mediawiki.org/wiki/Extension:UserLoginLogoutLog].</d>
-		 <r xlink:href="/rest/r/userloginlogoutlog"/>
-		</p>
-		<a>
-			<r>
-				<v>1.0.0</v> 
-				<s>stable</s>
-			</r>
-		</a>
-	</pi>
-
+<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo   http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
+		<pi>
+			<p>
+				<n>EmailLog</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Logging">Logging</ca>
+				<l>$license$</l>
+				<s>Provides logging of user-to-user emailing activities.</s>
+				<d>Provides logging of user-to-user emailing activities.</d>
+				<r xlink:href="/rest/r/EmailLog">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>UserSettingsChangedLog</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Logging">Logging</ca>
+				<l></l>
+				<s>Provides logging of user settings changes.</s>
+				<d>Provides the ability to log any user settings changes.</d>
+				<r xlink:href="/rest/r/usersettingschangedlog">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>WatchLog</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Logging">Logging</ca>
+				<l></l>
+				<s>Provides logging of user watch and unwatch activities.</s>
+				<d>See [http://mediawiki.org/wiki/Extension:WatchLog].</d>
+				<r xlink:href="/rest/r/watchlog">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>NewUserLog</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Logging">Logging</ca>
+				<l></l>
+				<s>Provides logging of new account creation.</s>
+				<d>See [http://mediawiki.org/wiki/Extension:NewUserLog].</d>
+				<r xlink:href="/rest/r/newuserlog">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>UserLoginLogoutLog</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Logging">Logging</ca>
+				<l></l>
+				<s>Provides logging of users' login and logout events.</s>
+				<d>See [http://mediawiki.org/wiki/Extension:UserLoginLogoutLog].</d>
+				<r xlink:href="/rest/r/userloginlogoutlog">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
 </f>

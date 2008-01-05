@@ -10,6 +10,7 @@
 
 	<taskdef classname='JLD.PhingTools.SvnAddTask' name='svn_add' />
 	<taskdef classname='JLD.PhingTools.SvnPropsetTask' name='svn_propset' />
+	<taskdef classname='JLD.PhingTools.SvnStatusTask' name='svn_status' />
 
 	<!--
 		The package is located 1 level 'down' from the original build file.
@@ -99,10 +100,23 @@ ${package.changelog}
 	</channel>
 </rss>]]></echo>
 
-		<svn_add path='"${channel.root}/rss/${package.name}-${package.version}.xml"' />
-		<svn_propset path='"${channel.root}/rss/${package.name}-${package.version}.xml"' 
-		           	propname="svn:mime-type" 
-		           	propval="application/xml" />
+		<svn_status path='"${channel.root}/rss/${package.name}-${package.version}.xml"' 
+					result="rss.exists" />
+		<if>
+			<contains substring="?" string="${rss.exists}" />
+			<then>
+				<echo>Adding RSS entry to SVN</echo>
+				<svn_add path='"${channel.root}/rss/${package.name}-${package.version}.xml"' />
+				<svn_propset path='"${channel.root}/rss/${package.name}-${package.version}.xml"' 
+				           	propname="svn:mime-type" 
+				           	propval="application/xml" />
+			</then>
+			<else>
+				<echo>RSS entry already in SVN</echo>
+			</else>
+		</if>
+
+
 	</target>
 
 </project>

@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package ShowRedirectPageText
  * @version 1.0.0
- * @Id $Id: SecureHTML.body.php 782 2007-12-19 20:53:31Z jeanlou.dupont $
+ * @Id $Id: ShowRedirectPageText.php 840 2008-01-05 02:31:00Z jeanlou.dupont $
  */
 //<source lang=php>*/
 if (class_exists( 'StubManager' ))
@@ -17,7 +17,7 @@ if (class_exists( 'StubManager' ))
 	);
 	
 	StubManager::createStub(	'ShowRedirectPageText', 
-								dirname(__FILE__).'/ShowRedirectPageText.php',
+								dirname(__FILE__).'/ShowRedirectPageText.body.php',
 								null,
 								array( 'ArticleViewHeader', 'OutputPageParserOutput' ),
 								false,	// no need for logging support

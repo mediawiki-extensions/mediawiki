@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>ShowRedirectPageText - 1.0.0</title>
+			<link>http://jldupont.com/Extension:ShowRedirectPageText</link>
+			<description>Changelog:
+Initial release on PEAR channel
+			</description>
+			<pubDate>Fri, 04 Jan 08 21:28:10 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>EmailLog - 1.0.0</title>
 			<link>http://jldupont.com/Extension:EmailLog</link>
 			<description>Changelog:

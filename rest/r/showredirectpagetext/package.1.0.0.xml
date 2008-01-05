@@ -7,10 +7,10 @@
 		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd 
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
- <name>SimpleScript</name>
+ <name>ShowRedirectPageText</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Provides a simple and controlled way of including javascript tags on a wiki page using sysop defined interwiki links.</summary>
- <description>Provides a simple and controlled way of including javascript tags on a wiki page using sysop defined interwiki links.</description>
+ <summary>This extension enables the display of the text included in a 'redirect' page.</summary>
+ <description>This extension enables the display of the text included in a 'redirect' page.</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -19,8 +19,8 @@
   <active>yes</active>
  </lead>
 
- <date>2007-11-09</date>
- <time>19:51:57</time>
+ <date>2008-01-05</date>
+ <time>02:28:08</time>
 
  <version>
   <release>1.0.0</release>
@@ -41,8 +41,8 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/SimpleScript" name="SimpleScript.body.php" role="php" />
-   <file baseinstalldir="MediaWiki/SimpleScript" name="SimpleScript.php" role="php" />
+   <file baseinstalldir="MediaWiki/ShowRedirectPageText" name="ShowRedirectPageText.php" role="php" />
+   <file baseinstalldir="MediaWiki/ShowRedirectPageText" name="ShowRedirectPageText.body.php" role="php" />
     <!-- }} -->
 
   </dir>
@@ -65,12 +65,6 @@
 		<channel>mediawiki.googlecode.com/svn</channel>
 		<min>1.0.5</min>
 	</package>
-
-	<package>
-		<name>ParserPhase2</name>
-		<channel>mediawiki.googlecode.com/svn</channel>
-		<min>1.1.0</min>
-	</package>
   
   </required>
  </dependencies>
@@ -84,12 +78,12 @@
  </phprelease>
 
 <changelog>
- <release>
-   <license uri="http://www.php.net/license">PHP License</license>
+<release>
+<license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Initial Release
+Initial release on PEAR channel
 </notes>
-  </release>
+</release>
 </changelog>
 
 </package>

@@ -17,7 +17,7 @@ if (class_exists( 'StubManager' ))
 	);
 	
 	StubManager::createStub(	'ShowRedirectPageText', 
-								dirname(__FILE__).'/ShowRedirectPageText.php',
+								dirname(__FILE__).'/ShowRedirectPageText.body.php',
 								null,
 								array( 'ArticleViewHeader', 'OutputPageParserOutput' ),
 								false,	// no need for logging support

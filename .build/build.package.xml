@@ -131,6 +131,7 @@
 		<echo>Package release status: ${package.releasestatus}</echo>
 	</target>
 
+<!--
 	<target name='ValidatePackage' depends="ReadPackageXML">
 		<if>
 			<equals arg1="1" arg2="${package.releasestatus}" />
@@ -140,6 +141,30 @@
 			</then>
 		</if>
 	</target>
+-->
+	<target name='ValidatePackage' depends="ReadPackageXML">
+		<if>
+			<equals arg1="1" arg2="${package.releasestatus}" />
+			<then>
+				<property name='package.exists' value='1' />			
+			</then>
+		</if>
+		<if>
+			<equals arg1="1" arg2="${package.exists}" />
+			<then>
+				<input propertyname='package.reissue' validargs='y,n' defaultValue='y'>
+					Reissue release?
+				</input>
+			</then>
+		</if>
+		<if>
+			<equals arg1="n" arg2="${package.reissue}" />
+			<then>
+				<fail message="This REST structure already contains a release of the requested version!" />
+			</then>
+		</if>
+	</target>
+
 
 	<!--
 		Package level processing.

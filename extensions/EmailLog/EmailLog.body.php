@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package EmailLog
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 require_once('EmailLog.i18n.php');

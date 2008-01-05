@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package EmailLog
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 // Format for global variables is:
@@ -27,3 +28,4 @@ $msgEmailLog['en'] = array(
 	'emaillog-sent-text'		=> 'from user $1 to user $2',
 	#'' => '',
 );
+//</source>

@@ -24,7 +24,7 @@
  <time>19:29:33</time>
 
  <version>
-  <release>1.0.0</release>
+  <release>1.1.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -82,7 +82,7 @@
 	<release>
 		<license uri="http://www.php.net/license">PHP License</license>
 		<notes>
-			Initial Release
+			Support for ''includeonly'' section
 		</notes>
 	</release>
 </changelog>

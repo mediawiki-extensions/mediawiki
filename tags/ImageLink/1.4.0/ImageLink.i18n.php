@@ -12,6 +12,9 @@ ImageLink::$msg['en'] = array(
 	'imagelink'.ImageLink::codeArticleNotExist		=> 'ImageLink: target page does not exist',
 	'imagelink'.ImageLink::codeLinkLess				=> 'ImageLink: target page not specified',
 	'imagelink'.ImageLink::codeMissingParameter		=> 'ImageLink: invalid or missing parameter (%1)',
+	'imagelink'.ImageLink::codeDefaultNotProvided	=> 'ImageLink: default image page not specified',
+	'imagelink'.ImageLink::codeImageNotExist		=> 'ImageLink: image page does not exist',	
+	'imagelink'.ImageLink::codeEmptyList			=> 'ImageLink: parameter list empty',		
 	#'' => '',
 );
 //</source>

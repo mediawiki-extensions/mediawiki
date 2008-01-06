@@ -42,6 +42,7 @@
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki/ImageLink" name="ImageLink.php" role="php" />
    <file baseinstalldir="MediaWiki/ImageLink" name="ImageLink.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/ImageLink" name="ImageLink.i18n.php" role="php" />
     <!-- }} -->
 
   </dir>

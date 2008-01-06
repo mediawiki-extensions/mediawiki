@@ -23,7 +23,11 @@ class ImageLink
 	const codeInvalidTitleLink  = 1;
 	const codeArticleNotExist   = 2;
 	const codeLinkLess          = 3;
-
+	const codeImageNotExist		= 4;
+	const codeDefaultNotProvided= 5;
+	const codeMissingParameter  = 6;
+	const codeEmptyList  		= 7;	
+	
 	/*
 	 * m: mandatory parameter
 	 * s: sanitization required
@@ -42,6 +46,16 @@ class ImageLink
 		'border'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null  )
 	);
 	/**
+	 * Initialize the messages
+	 */
+	public function __construct()
+	{
+		global $wgMessageCache;
+
+		foreach( self::$msg as $key => $value )
+			$wgMessageCache->addMessages( self::$msg[$key], $key );		
+	}	 
+	/**
 	 * legacy parser function... please use #img instead
 	 */
 	public function mg_imagelink( &$parser, $img, $page='',  							// mandatory parameters  
@@ -55,7 +69,7 @@ class ImageLink
 	{
 		$html = $this->buildHTML( $img, $page, $alt, $width, $height, $border, $title );
 		if ($this->isError( $html ))
-			return $this->getErrorMsg();
+			return $this->getErrorMsg( $html );
 		return array( $html, 'noparse' => true, 'isHTML' => true );		
 	}
 	/**
@@ -66,7 +80,7 @@ class ImageLink
 	{
 		$html = $this->buildHTML( $img, $page, $alt, $width, $height, $border, $title );
 		if ($this->isError( $html ))
-			return $this->getErrorMsg();
+			return $this->getErrorMsg( $html );
 		return $html;
 	}
 	/**
@@ -76,17 +90,16 @@ class ImageLink
 								$alt=null, $width=null, $height=null, $border=null, $title = null )
 	{
 		$iURL = $this->getImageURL( $img );
-		if ( ( $iURL === null ) || ( $iURL === false) )
-			return 'ImageLink: invalid image page title.';
-
-
+		if ($this->isError( $iURL ))
+			return $iURL;
+		
 		// prepare for 'link-less' case ... if required.
 		$anchor_open = '';
 		$anchor_close = '';
 		
 		$ret = $this->getLinkToPageAnchor( $page, $anchor_open, $anchor_close );
-		if ( $ret === false )
-			return 'ImageLink: invalid image page title.';
+		if ($this->isError( $ret ))
+			return $ret;
 		
 		// sanitize the input
 		$alt    = htmlspecialchars( $alt );
@@ -108,10 +121,6 @@ class ImageLink
 	/**
 	 * Returns the URL of the specified Image page
 	 * Reverts to default Image page IFF the title isn't an interwiki one
-	 *
-	 * @return string Valid URL
-	 * @return null for invalid image page title
-	 * @return false for inexisting image page
 	 */
 	protected function getImageURL( &$img, &$default = null )
 	{
@@ -119,10 +128,10 @@ class ImageLink
 		
 		// try out the specified image page name and
 		// revert to default if it does not exists
-		if ( ($iURL===false) || ($iURL===null) )
+		if ( ($iURL===self::codeInvalidTitleImage) || ($iURL===self::codeImageNotExist) )
 		{
 			if ( $default === null )
-				return null;
+				return self::codeDefaultNotProvided;
 				
 			// if this one fails, not much we can do...
 			$iURL = $this->getImageURLreal( $default );
@@ -139,14 +148,14 @@ class ImageLink
 
 		// this really shouldn't happen... not much we can do here.		
 		if (!is_object($ititle)) 
-			return null;
+			return self::codeInvalidTitleImage;
 
 		// check if we are dealing with an InterWiki link
 		if ( $ititle->isLocal() )
 		{
 			$image = Image::newFromName( $img );
-			if (!$image->exists()) 
-				return false;
+			if ( !$image->exists() ) 
+				return self::codeImageNotExist;
 	
 			$iURL = $image->getURL();
 		}
@@ -162,19 +171,19 @@ class ImageLink
 	{
 		// check if we are asked to render a 'link-less' element
 		if (empty( $page ))
-			return null;
+			return self::codeLinkLess;
 			
 		$ptitle = Title::newFromText( $page );
 		
 		// this might happen in templates...
 		if (!is_object( $ptitle ))
-			return false;
+			return self::codeInvalidTitleLink;
 				
 		if ( $ptitle->isLocal() )
 		{
 			// check if the local article exists
 			if ( !$ptitle->exists() )
-				return -1;
+				return self::codeArticleNotExist;
 				
 			$tURL = $ptitle->getLocalUrl();
 			$aClass=''; 			
@@ -211,13 +220,13 @@ class ImageLink
 		
 		$sliste= $this->doListSanitization( $liste, self::$parameters );
 		if (!is_array( $sliste ))
-			return "ImageLink: invalid or missing parameter ($sliste)";
+			return wfMsgForContent( self::codeMissingParameter, $sliste);
 		
 		$this->doSanitization( $sliste, self::$parameters );
 		
 		$html = $this->buildHTMLfromList( $sliste, self::$parameters );		
-		if ( $html === false )
-			return 'ImageLink: invalid image page title.';
+		if ($this->isError( $html ))
+			return $this->getErrorMsg( $html );
 					
 		return array( $html, 'noparse' => true, 'isHTML' => true );			
 	}
@@ -229,9 +238,9 @@ class ImageLink
 	protected function buildHTMLfromList( &$liste, &$ref_liste )
 	{
 		$img_url = $this->getImageURL( $liste['image'], $liste['default'] );
-		if ( ( $img_url === false ) || ( $img_url === null ) )
-			return false;
-			
+		if ($this->isError( $img_url ))
+			return $img_url;
+		
 		$page = $liste['page'];
 		
 		// prepare for 'link-less' case ... if required.
@@ -239,10 +248,7 @@ class ImageLink
 		$anchor_close = '';
 		
 		$r = $this->getLinkToPageAnchor( $page, $anchor_open, $anchor_close );
-		// -1:    local target article does not exist
-		// false: invalid title name
-		// null: link-less element (i.e. just show image)
-		if ( ($r===-1) || ($r===false) )
+		if ( $this->isError( $r ) && ( $r !== self::codeLinkLess) )
 			return $r;
 
 		$params = $this->buildList( $liste, $ref_liste );
@@ -256,7 +262,7 @@ class ImageLink
 	protected function buildList( &$liste, &$ref_liste )	
 	{
 		if (empty( $liste ))
-			return null;
+			return self::codeEmptyList;
 			
 		$result = '';
 		// only pick the key:value pairs that have been
@@ -303,7 +309,7 @@ class ImageLink
 	protected function doSanitization( &$liste, &$ref_liste )
 	{
 		if (empty( $liste ))
-			return;
+			return self::codeEmptyList;
 			
 		foreach( $liste as $key => &$value )
 		{
@@ -323,7 +329,7 @@ class ImageLink
 	 */
 	protected function getErrorMsg( $code )
 	{
-		
+		return wfMsg( 'imagelink'.$code );	
 	}
 } // end class definition.
 //</source>

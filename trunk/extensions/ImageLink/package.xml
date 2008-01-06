@@ -23,7 +23,7 @@
  <time>01:12:10</time>
 
  <version>
-  <release>1.4.0</release>
+  <release>1.4.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -81,8 +81,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-* Simplified operation (removal of ParserAfterTidy hook)
-* Added default image functionality
+Minor bug fix
 </notes>
 </release>
 </changelog>

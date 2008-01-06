@@ -99,7 +99,7 @@ class ImageLink
 		$anchor_close = '';
 		
 		$ret = $this->getLinkToPageAnchor( $page, $anchor_open, $anchor_close );
-		if ($this->isError( $ret ))
+		if ($this->isError( $ret ) && ( $ret !== self::codeLinkLess))
 			return $ret;
 		
 		// sanitize the input

@@ -6,6 +6,7 @@
  * @Id $Id$
  */
 //<source lang=php>*/
+require 'ImageLink.i18n.php';
 
 class ImageLink
 {

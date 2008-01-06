@@ -7,7 +7,7 @@
  */
 //<source lang=php>
 if (!class_exists('StubManager'))
-	echo '[[Extension:JSKitRating]] <b>requires</b> [[Extension:StubManager]]'."\n";
+	echo '[[Extension:JSKitRating]] <b>requires</b> [[Extension:StubManager]] version >= 1.1.0'."\n";
 else
 {
 	$wgExtensionCredits['other'][] = array( 

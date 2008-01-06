@@ -318,11 +318,12 @@ class StubManager
 			$t = explode("=", $el);
 			if (!isset($t[1])) 
 				continue;
-			$result[ "{$t[0]}" ] = $t[1];
+			$result[ "{$t[0]}" ] = trim( $t[1] );
 			unset( $liste[$index] );
 		}
 		if (empty($result)) 
 			return $liste;
+			
 		return array_merge( $result, $liste );	
 	}
 	public static function getParam( &$alist, $key, $index, $default )
@@ -673,8 +674,9 @@ class ExtHelper
 		// explictly marked using the 'l' key in the
 		// reference list.
 		foreach( $liste as $key => &$value )
-			if ( $ref_liste[ $key ]['l'] === true )
-				$result .= " $key='$value'";
+			if ( isset( $ref_liste[ $key ] ) )
+				if ( $ref_liste[ $key ]['l'] === true )
+					$result .= " $key='$value'";
 
 		return $result;		
 	}
@@ -717,8 +719,9 @@ class ExtHelper
 			
 		foreach( $liste as $key => &$value )
 		{
-			if ( $ref_liste[ $key ]['s'] === true )
-				$value = htmlspecialchars( $value );
+			if (isset( $ref_liste[ $key ] ))			
+				if ( $ref_liste[ $key ]['s'] === true )
+					$value = htmlspecialchars( $value );
 		}
 	}
 

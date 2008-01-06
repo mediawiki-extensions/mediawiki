@@ -23,7 +23,7 @@
  <time>01:29:02</time>
 
  <version>
-  <release>1.1.0</release>
+  <release>1.1.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -74,7 +74,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-* Added ''ExtHelper'' class - no change to basic functionality (backward compatibility)
+Minor bug fix
 </notes>
   </release>
 </changelog>

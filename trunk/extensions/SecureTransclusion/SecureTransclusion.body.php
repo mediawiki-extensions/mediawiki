@@ -63,14 +63,16 @@ class SecureTransclusion
 	 */
 	private static function checkExecuteRight( &$title )
 	{
+		/*
 		global $wgUser;
 		if ($wgUser->isAllowed('strans'))
 			return true;
-		
+		*/
 		if ($title->isProtected('edit'))
 			return true;
 		
 		// Last resort; check the last contributor.
+		/*
 		$rev    = Revision::newFromTitle( $title );
 		
 		$user = User::newFromId( $rev->mUser );
@@ -78,7 +80,7 @@ class SecureTransclusion
 		
 		if ($user->isAllowed( 'strans' ))
 			return true;
-		
+		*/
 		return false;
 	}
 	/**
@@ -111,7 +113,8 @@ class SecureTransclusion
 		if ( $text === false)
 		{
 			$text = Http::get( $uri, $timeout );
-			$this->saveInCache( $euri, $text );
+			if ( $text !== false )
+				$this->saveInCache( $euri, $text );
 		}
 		
 		return $text;

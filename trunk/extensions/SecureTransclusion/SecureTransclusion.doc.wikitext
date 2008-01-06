@@ -4,7 +4,7 @@
 |type1       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.2.1
+|version     = 1.2.2
 |update      =
 |mediawiki   = 1.11
 |download    = see Installation
@@ -19,10 +19,7 @@
 Provides secure transcluding of interwiki wikitext pages accessible without the 'action=raw' parameter.
 
 == Features ==
-* Security: page must either
-** Be protected on 'edit'
-** Current user editing the page must have the 'strans' right
-** Or, lastly, the last contributor to the page has the 'strans' right
+* Security: page must be protected for ''edit''
 * Local or remote pages
 
 == Usage ==
@@ -62,3 +59,5 @@ considerable care when using templates on the same page.
 * Local pages now supported
 === 1.2.1 ===
 * Fixed critical bug
+=== 1.2.2 ===
+* Removed ''strans'' right enforcement

@@ -221,7 +221,7 @@ class ImageLink
 		
 		$sliste= $this->doListSanitization( $liste, self::$parameters );
 		if (!is_array( $sliste ))
-			return wfMsgForContent( self::codeMissingParameter, $sliste);
+			return wfMsgForContent( 'imagelink'.self::codeMissingParameter, $sliste);
 		
 		$this->doSanitization( $sliste, self::$parameters );
 		

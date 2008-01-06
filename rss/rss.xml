@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>SecureTransclusion - 1.2.2</title>
+			<link>http://jldupont.com/Extension:SecureTransclusion</link>
+			<description>Changelog:
+* Removed ''strans'' right enforcement
+			</description>
+			<pubDate>Sun, 06 Jan 08 15:26:27 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>PreloadManager - 1.1.0</title>
 			<link>http://jldupont.com/Extension:PreloadManager</link>
 			<description>Changelog:

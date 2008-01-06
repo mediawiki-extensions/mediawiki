@@ -1,0 +1,63 @@
+{{Extension
+|name        = SecureTransclusion
+|status      = beta
+|type1       = parser function
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.2.2
+|update      =
+|mediawiki   = 1.11
+|download    = see Installation
+|readme      =
+|changelog   = See SVN ($Id: SecureTransclusion.doc.wikitext 861 2008-01-06 20:25:52Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides secure transcluding of interwiki wikitext pages accessible without the 'action=raw' parameter.
+
+== Features ==
+* Security: page must be protected for ''edit''
+* Local or remote pages
+
+== Usage ==
+<nowiki>{{#strans: interwiki-link OR local-page-name [|error-message] [|timeout-in-seconds]}}</nowiki>
+
+=== Setting InterWiki Links ===
+See [[Extension:InterWikiLinkManager|InterWikiLinkManager extension]] for more details.
+
+== Example ==
+Assuming the interwiki link 'mwgc' points to [http://mediawiki.googlecode.com/svn/trunk PEAR Channel]:
+<nowiki>{{#strans: mwgc:extensions/AddScriptCss/AddScriptCss.doc.wikitext | Page unavailable! }}</nowiki> would fetch the page 
+[http://mediawiki.googlecode.com/svn/trunk/extensions/AddScriptCss/AddScriptCss.doc.wikitext] and parse it.
+
+== Security Note ==
+* It is advisable to use 'cascading protection'
+* When page protection is not relied on to provide protection 
+and consequently only the last contributor's right acts as protection measure, it is advised to use
+considerable care when using templates on the same page.
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+** Automatically resolved if using PEAR
+
+== Notes ==
+* This extension relies on the global parameter <code>$wgHTTPTimeout</code> which is used in the <code>Http::get</code> method.
+
+{{Pear|SecureTransclusion}}
+
+== History ==
+=== 1.0.1 ===
+* Added better error handling in case of Http::get method failing to retrieve a page.
+=== 1.0.3 ===
+* Added 'timeout' parameter
+=== 1.1.2 ===
+* Enhanced performance through the use of parser caching
+=== 1.2.0 ===
+* Local pages now supported
+=== 1.2.1 ===
+* Fixed critical bug
+=== 1.2.2 ===
+* Removed ''strans'' right enforcement

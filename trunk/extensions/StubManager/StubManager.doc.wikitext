@@ -142,3 +142,5 @@ require 'extensions/StubManager/StubManager.php';
 * Added more allowable parameters to method ''__call'': this is to account for more parameter hungry extensions such as [[Extension:EmbedObject]]
 === 1.1.0 ===
 * Added ''ExtHelper'' class - no change to basic functionality (backward compatibility)
+=== 1.1.1 ===
+* Minor bug fix

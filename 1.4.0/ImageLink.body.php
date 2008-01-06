@@ -6,6 +6,7 @@
  * @Id $Id: ImageLink.body.php 844 2008-01-06 00:38:28Z jeanlou.dupont $
  */
 //<source lang=php>*/
+require 'ImageLink.i18n.php';
 
 class ImageLink
 {

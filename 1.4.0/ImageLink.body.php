@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package ImageLink
  * @version 1.4.0
- * @Id $Id: ImageLink.body.php 844 2008-01-06 00:38:28Z jeanlou.dupont $
+ * @Id $Id: ImageLink.body.php 847 2008-01-06 01:11:31Z jeanlou.dupont $
  */
 //<source lang=php>*/
 require 'ImageLink.i18n.php';
@@ -221,7 +221,7 @@ class ImageLink
 		
 		$sliste= $this->doListSanitization( $liste, self::$parameters );
 		if (!is_array( $sliste ))
-			return wfMsgForContent( self::codeMissingParameter, $sliste);
+			return wfMsgForContent( 'imagelink'.self::codeMissingParameter, $sliste);
 		
 		$this->doSanitization( $sliste, self::$parameters );
 		

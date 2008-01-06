@@ -10,7 +10,14 @@ class JSKitRating
 {
 	const thisType = 'other';
 	const thisName = 'JSKitRating';
-	
+	/**
+	 * Parameters:
+	 * imageurl
+	 * imagesize
+	 * path
+	 * starColor
+	 * view
+	 */
 	public function mg_jskitrating( &$parser )
 	{
 		global $wgTitle;

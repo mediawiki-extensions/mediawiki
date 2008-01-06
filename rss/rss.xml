@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>StubManager - 1.1.0</title>
+			<link>http://jldupont.com/Extension:StubManager</link>
+			<description>Changelog:
+* Added ''ExtHelper'' class - no change to basic functionality (backward compatibility)
+			</description>
+			<pubDate>Sat, 05 Jan 08 20:29:03 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>ImageLink - 1.4.0</title>
 			<link>http://jldupont.com/Extension:ImageLink</link>
 			<description>Changelog:

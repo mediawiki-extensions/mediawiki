@@ -650,4 +650,78 @@ StubManager::$edir = realpath( dirname( dirname(__FILE__) ) );
 if (file_exists( StubManager::$edir.'/ExtensionManager/ExtensionManager.php'))
 	include StubManager::$edir.'/ExtensionManager/ExtensionManager.php';
 
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+/**
+ * Some helper functions for extensions
+ */
+class ExtHelper
+{
+	/**
+	 * Retrieves the specified list of parameters from the list.
+	 * Uses the ''l'' parameter from the reference list.
+	 */
+	public static function buildList( &$liste, &$ref_liste )	
+	{
+		if (empty( $liste ))
+			return null;
+			
+		$result = '';
+		// only pick the key:value pairs that have been
+		// explictly marked using the 'l' key in the
+		// reference list.
+		foreach( $liste as $key => &$value )
+			if ( $ref_liste[ $key ]['l'] === true )
+				$result .= " $key='$value'";
+
+		return $result;		
+	}
+	/**
+	 * Sanitize the parameters list. 
+	 * Just keeps the parameters defined in the reference list.
+	 */
+	public static function doListSanitization( &$liste, &$ref_liste )
+	{
+		if (empty( $liste ))
+			return array();
+
+		// first, let's make sure we only have valid parameters
+		$new_liste = array();
+		foreach( $liste as $key => &$value )
+			if (isset( $ref_liste[ $key ] ))
+				$new_liste[ $key ] = $value;
+				
+		// then make sure we have all mandatory parameters
+		foreach( $ref_liste as $key => &$instructions )
+			if ( $instructions['m'] === true )
+				if ( !isset( $liste[ $key ] ))
+					return $key;
+					
+		// finally, initialize to default values the missing parameters
+		foreach( $ref_liste as $key => &$instructions )
+			if ( $instructions['d'] !== null )
+				if ( !isset( $new_liste[ $key ] ))
+					$new_liste[ $key ] = $instructions['d'];
+				
+		return $new_liste;
+	}
+	/**
+	 * Only valid parameters should end-up here.
+	 */
+	public static function doSanitization( &$liste, &$ref_liste )
+	{
+		if (empty( $liste ))
+			return null;
+			
+		foreach( $liste as $key => &$value )
+		{
+			if ( $ref_liste[ $key ]['s'] === true )
+				$value = htmlspecialchars( $value );
+		}
+	}
+
+}// end class ExtHelpers
+
 //</source>

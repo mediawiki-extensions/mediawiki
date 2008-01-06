@@ -9,7 +9,7 @@
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ImageLink/ SVN]
 |readme      =
-|changelog   = See SVN ($Id: ImageLink.doc.wikitext 843 2008-01-05 22:43:01Z JeanLou.dupont $)
+|changelog   = See SVN ($Id: ImageLink.doc.wikitext 847 2008-01-06 01:11:31Z jeanlou.dupont $)
 |description = 
 |parameters  =
 |rights      =
@@ -23,12 +23,15 @@ The extension also supports the ''link-less'' mode thereby enabling a ''one-stop
 == Usage ==
 === Local Image ===
 * <nowiki>{{#imagelink: image-page-name | page name |alternate text | width | height | border }}</nowiki>
-* <nowiki>{{#img: image=image-page-name [|page=page-to-link-to] [|alt=alternate-text] [|height=height-parameter] [|width=width-parameter] [|border=border-parameter] [|title=title-parameter] }}</nowiki>
+* <nowiki>{{#img: image=image-page-name [|page=page-to-link-to] [|alt=alternate-text] [|height=height-parameter] [|width=width-parameter] [|border=border-parameter] [|title=title-parameter] [|default-image]}}</nowiki>
 
 See [http://www.w3schools.com/tags/tag_img.asp W3Schools on IMG tag] for more details.
 
 === Link-Less option ===
 If no ''page name'' is given, then no anchor (i.e. HTML <code>< a></code> element) will be generated.
+
+=== Default Image ===
+When the parameter ''image'' points to a non-existing image page, then ''default'' parameter (if specified) is used as image page. Note that for interwiki link, this option is not supported.
 
 === InterWiki accessible Image ===
 * <nowiki>{{#imagelink: interwiki_prefix:image-page-name | page name | alternate text | width | height | border }}</nowiki>
@@ -45,26 +48,10 @@ If no ''page name'' is given, then no anchor (i.e. HTML <code>< a></code> elemen
 
 <!--requires [[Extension:VersaComment]] -->
 <!--{{
-{{Test:ImageLink Extension}}
+[[{{FULLPAGENAMEE}}/Tests]]
 }}-->
 
 == History ==
-* Removed dependency on ExtensionClass
-* Added 'stubbing' capability though StubManager
-* Added non-existing link (i.e. red link) when image page does not exist
-* Moved to PEAR distribution repository.
-* Added support for interwiki image.
-=== 1.0.2 ===
-* Fixed minor issue when page title isn't valid; this situation can occur in templates (for example).
-=== 1.1.0 ===
-* Added '#imagelink_raw' parser function
-=== 1.1.1 ===
-* Adjusted to return '' when $page parameter is empty; helps with templating with [[Extension:PageAfterAndBefore]]
-=== 1.2.0 ===
-* Added 'link-less' functionality
-=== 1.2.1 ===
-* Added input sanitization for increased security
-
 {|border=1
 ! Release !! Notes
 |-

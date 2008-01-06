@@ -8,23 +8,13 @@
 
 	
 	<item>
-			<title>ShowRedirectPageText - 1.0.0</title>
-			<link>http://jldupont.com/Extension:ShowRedirectPageText</link>
+			<title>ImageLink - 1.4.0</title>
+			<link>http://jldupont.com/Extension:ImageLink</link>
 			<description>Changelog:
-Initial release on PEAR channel
+* Simplified operation (removal of ParserAfterTidy hook)
+* Added default image functionality
 			</description>
-			<pubDate>Fri, 04 Jan 08 21:28:10 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>EmailLog - 1.0.0</title>
-			<link>http://jldupont.com/Extension:EmailLog</link>
-			<description>Changelog:
-* Initial release on PEAR channel
-			</description>
-			<pubDate>Fri, 04 Jan 08 21:02:53 -0500</pubDate>
+			<pubDate>Sat, 05 Jan 08 20:12:11 -0500</pubDate>
 		</item>
 
 
@@ -36,6 +26,28 @@ Initial release on PEAR channel
 Initial Release
 			</description>
 			<pubDate>Fri, 04 Jan 08 12:07:24 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ShowRedirectPageText - 1.0.0</title>
+			<link>http://jldupont.com/Extension:ShowRedirectPageText</link>
+			<description>Changelog:
+Initial release on PEAR channel
+			</description>
+			<pubDate>Fri, 04 Jan 08 21:36:06 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>EmailLog - 1.0.0</title>
+			<link>http://jldupont.com/Extension:EmailLog</link>
+			<description>Changelog:
+* Initial release on PEAR channel
+			</description>
+			<pubDate>Fri, 04 Jan 08 21:02:53 -0500</pubDate>
 		</item>
 
 

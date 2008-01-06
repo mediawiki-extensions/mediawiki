@@ -26,10 +26,15 @@ For a complete description, please see [http://js-kit.com/ratings/custom.html JS
 ! Parameter !! Description
 |-
 | imageurl  || You can replace starlet images with your own art
+|-
 | imagesize || Complement to ''imageurl''
+|-
 | path      || You can rate multiple items on the same page
+|-
 | starColor || Affects the color of the community rating
+|-
 | userColor || Sets the color of the particular user's rating
+|-
 | view      || Change the display mode between split and combo
 |}
 

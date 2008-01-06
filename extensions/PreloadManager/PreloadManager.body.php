@@ -43,9 +43,21 @@ class PreloadManager
 		$rev = Revision::newFromTitle( $title );
 		if( is_object( $rev ) )
 		    $contents = $rev->getText();		
-			
-		return $contents;		
+		
+		$toinclude = $this->getIncludeOnly( $contents );
+		
+		return $toinclude;		
 	}	
-
+	/**
+	 * Only 1 includeonly section supported.
+	 */
+	protected function getIncludeOnly( &$contents )	 
+	{
+		$result = preg_match( '/<includeonly>(.*)<\/includeonly>/si', $contents, $matches );
+		if ( $result !== 1 )
+			return null;
+		return $matches[0];
+	}
+	
 } // end class
 //</source>

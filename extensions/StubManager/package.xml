@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2007-12-10</date>
- <time>15:16:49</time>
+ <date>2008-01-06</date>
+ <time>01:29:02</time>
 
  <version>
-  <release>1.0.6</release>
+  <release>1.1.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -74,7 +74,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-* Added capability to accept 3more parameters when calling target methods
+* Added ''ExtHelper'' class - no change to basic functionality (backward compatibility)
 </notes>
   </release>
 </changelog>

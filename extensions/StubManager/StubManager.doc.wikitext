@@ -4,7 +4,7 @@
 |type        = framework
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.6
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = pear install mediawiki/stubmanager
@@ -140,3 +140,5 @@ require 'extensions/StubManager/StubManager.php';
 * Fix for bug in PHP v5.1.2 which caused [[Extension:HNP]] to misconfigure most of its parser functions
 === 1.0.6 ===
 * Added more allowable parameters to method ''__call'': this is to account for more parameter hungry extensions such as [[Extension:EmbedObject]]
+=== 1.1.0 ===
+* Added ''ExtHelper'' class - no change to basic functionality (backward compatibility)

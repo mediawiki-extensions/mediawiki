@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>PreloadManager - 1.1.0</title>
+			<link>http://jldupont.com/Extension:PreloadManager</link>
+			<description>Changelog:
+Support for ''includeonly'' section
+			</description>
+			<pubDate>Sun, 06 Jan 08 15:17:54 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>ImageLink - 1.4.1</title>
 			<link>http://jldupont.com/Extension:ImageLink</link>
 			<description>Changelog:

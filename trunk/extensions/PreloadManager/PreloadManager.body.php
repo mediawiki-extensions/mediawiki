@@ -56,7 +56,7 @@ class PreloadManager
 		$result = preg_match( '/<includeonly>(.*)<\/includeonly>/si', $contents, $matches );
 		if ( $result !== 1 )
 			return null;
-		return $matches[0];
+		return $matches[1];
 	}
 	
 } // end class

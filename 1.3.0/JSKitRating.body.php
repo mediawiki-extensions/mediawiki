@@ -62,7 +62,7 @@ class JSKitRating
 	
 				$output .= <<<EOT
 	<script src="http://js-kit.com/ratings.js"></script>
-	EOT;
+EOT;
 			}
 
 		return array( $output, 'noparse' => true, 'isHTML' => true );

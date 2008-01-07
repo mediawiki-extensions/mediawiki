@@ -3,7 +3,7 @@
 |status      = beta
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.1.0
+|version     = 1.2.0
 |update      =
 |mediawiki   = 1.11 (should work on other versions)
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/JSKitRating/ SVN]
@@ -54,4 +54,6 @@ For a complete description, please see [http://js-kit.com/ratings/custom.html JS
 | 1.0.0 || Initial Release
 |-
 | 1.1.0 || Added support for optional parameters
+|-
+| 1.2.0 || Removed hardcoded parameters ''title'' and ''permalink''
 |}

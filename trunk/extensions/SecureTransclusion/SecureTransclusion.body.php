@@ -11,8 +11,6 @@ class SecureTransclusion
 	const thisType = 'other';
 	const thisName = 'SecureTransclusion';
 	
-	public function __construct() {}
-	
 	public function mg_strans( &$parser, $page, $errorMessage = null, $timeout = 5 )
 	{
 		if (!self::checkExecuteRight( $parser->mTitle ))
@@ -94,10 +92,13 @@ class SecureTransclusion
 	/**
 	 * Saves in the cache
 	 */
-	protected function saveInCache( $uri, &$text )
+	protected function saveInCache( $uri, &$text, $timeout )
 	{
 		$parserCache =& ParserCache::singleton();
-		$parserCache->mMemc->set( $uri, $text, 86400 /*1day*/ );
+		
+		// keep in cache a little longer to give time to the HEAD lookup 
+		// to determine if the source page has really changed
+		return $parserCache->mMemc->set( $uri, $text, $timeout );
 	}
 	/**
 	 *  Fetches an external page from either the parser cache or external uri
@@ -114,11 +115,51 @@ class SecureTransclusion
 		{
 			$text = Http::get( $uri, $timeout );
 			if ( $text !== false )
-				$this->saveInCache( $euri, $text );
+				$this->saveInCache( $euri, $text, $timeout + 86400 /*1day*/  );
 		}
 		
 		return $text;
 	}
-	
+	/**
+	 *
+	 */
+	protected function processFetch()
+	{
+		
+	}	 
+	/**
+	 * Get E-tag
+	 * Requires pecl module ''pecl_http''
+	 *
+	 */
+	protected function getEtag( &$uri )
+	{
+		if (!function_exists('http_head'))
+			return null;
+
+		$head = @http_head( $uri );
+		if ( $head === false )
+			return false;
+			
+		$r = preg_match( "/Etag:.\"(.*)\"\n/i", $head, $match );
+		if ( ( $r === false ) || ($r === 0) )
+			return false;
+			
+		return $match[1];
+	}
+	/**
+	 * Save Etag in cache
+	 */
+	protected function saveEtagInCache( &$uri, &$etag )
+	{
+		return $this->saveInCache( $uri.'-etag', $etag, 86400 /*1day*/ );
+	}
+	/**
+	 * Get Etag from the cache
+	 */
+	protected function getEtagFromCache( &$uri )
+	{
+		return $this->getFromCache( $uri.'-etag' );
+	}	 
 } // end class
 //</source>

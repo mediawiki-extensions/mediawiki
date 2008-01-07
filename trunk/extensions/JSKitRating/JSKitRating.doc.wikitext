@@ -20,10 +20,13 @@ Provides integration with [http://js-kit.com/ratings/ JS-Kit Ratings], an AJAX b
 == Usage ==
 Just use the following parser function <nowiki>{{#jskitrating: [optional parameters] }}</nowiki> on the desired wiki page.
 
+Use the ''noscript'' parameter to control when the JS script should be included. Useful when putting together ''aggregate ratings'' page with the ''path'' parameter.
 == Parameters ==
 For a complete description, please see [http://js-kit.com/ratings/custom.html JS-Kit Ratings Customization].
 {|border=1 class='sortable'
 ! Parameter !! Description
+|-
+| noscript || Set to ''true'' or ''1'' if the JS script should be omitted
 |-
 | imageurl  || You can replace starlet images with your own art
 |-
@@ -57,5 +60,5 @@ For a complete description, please see [http://js-kit.com/ratings/custom.html JS
 |-
 | 1.2.0 || Removed hardcoded parameters ''title'' and ''permalink''
 |-
-| 1.3.0 || Added check for only including the script once per page.
+| 1.3.0 || Added check for only including the script once per page, Added ''noscript'' parameter
 |}

@@ -24,6 +24,9 @@ class JSKitRating
 	 * d: default value
 	 */
 	static $parameters = array(
+		// not part of JS-Kit parameters
+		'noscript'	=>array( 'm' => false, 's' => false, 'l' => false, 'd' => false ),
+		// JS-Kit parameters:
 		'title'		=>array( 'm' => false, 's' => true, 'l' => true, 'd' => null ),		
 		'permalink'	=>array( 'm' => false, 's' => true, 'l' => true, 'd' => null ),				
 		'imageurl'	=>array( 'm' => false, 's' => true, 'l' => true, 'd' => null ),		
@@ -39,9 +42,36 @@ class JSKitRating
 	public function mg_jskitrating( &$parser )
 	{
 		$params = func_get_args();
+		$liste = StubManager::processArgList( $params, true );		
 		
-		$liste = StubManager::processArgList( $params, true );
+		// check for ''noscript'' parameter
+		$noscript = false;
+		if ( isset( $liste['noscript'] ) )
+		{
+			$r = strtolower( $liste['noscript'] );
+			if ( ($r == '1') || ($r=='true') )
+				$noscript = true;
+		}
+		
+		$output = $this->renderEntry( $liste );
+
+		if ( !$noscript )
+			if (!$this->scriptIncluded)
+			{
+				$this->scriptIncluded = true;
 	
+				$output .= <<<EOT
+	<script src="http://js-kit.com/ratings.js"></script>
+	EOT;
+			}
+
+		return array( $output, 'noparse' => true, 'isHTML' => true );
+	}
+	/**
+	 * Returns 1 fully rendered DIV section
+	 */
+	protected function renderEntry( &$liste )
+	{
 		// all parameters are optional	
 		$sliste= ExtHelper::doListSanitization( $liste, self::$parameters );
 		$attrListe = null;
@@ -54,18 +84,7 @@ class JSKitRating
 		$output = <<<EOT
 <div class="js-kit-rating" {$attrListe}></div>
 EOT;
-
-		if (!$this->scriptIncluded)
-		{
-			$this->scriptIncluded = true;
-
-			$output .= <<<EOT
-<script src="http://js-kit.com/ratings.js"></script>
-EOT;
-		}
-
-		return array( $output, 'noparse' => true, 'isHTML' => true );
+		return $output;
 	}
-
 } // end class
 //</source>

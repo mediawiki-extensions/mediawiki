@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>JSKitRating - 1.2.0</title>
+			<link>http://jldupont.com/Extension:JSKitRating</link>
+			<description>Changelog:
+Removed hardcoded parameters ''title'' and ''permalink''
+			</description>
+			<pubDate>Mon, 07 Jan 08 12:01:12 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>AutoRedirect - 1.0.0</title>
 			<link>http://jldupont.com/Extension:AutoRedirect</link>
 			<description>Changelog:

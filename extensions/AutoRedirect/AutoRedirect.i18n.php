@@ -1,9 +1,9 @@
 <?php
 /**
- * Internationalisation file for AutoRedirect extension.
- *
- * $Id$
- * 
+ * @author Jean-Lou Dupont
+ * @package AutoRedirect
+ * @version @@package-version@@
+ * @Id $Id$
 */
 
 AutoRedirect::$msg = array();
@@ -17,4 +17,3 @@ AutoRedirect::$msg['en'] = array(
 'autoredirect-this-page'			=> 'this page',
 #'' => '',
 );
-?>

@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>JSKitRating - 1.3.0</title>
+			<link>http://jldupont.com/Extension:JSKitRating</link>
+			<description>Changelog:
+Added check for only including the script once per page.
+			</description>
+			<pubDate>Mon, 07 Jan 08 12:21:14 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>JSKitRating - 1.2.0</title>
 			<link>http://jldupont.com/Extension:JSKitRating</link>
 			<description>Changelog:

@@ -2,7 +2,8 @@
 /**
  * @author Jean-Lou Dupont
  * @package AutoRedirect
- * @version $Id$
+ * @version @@package-version@@
+ * @Id $Id$
  */
 //<source lang=php>
 class AutoRedirect
@@ -37,8 +38,7 @@ class AutoRedirect
 	
 		// if the source page already exists, bail out silently.
 		$title   = Title::makeTitle( $ns, $page );
-		$article = new Article( $title );
-		if ( $article->getID() !=0 )
+		if ( $title->exists() )
 			return null;
 			
 		// the source page where the redirect should be created

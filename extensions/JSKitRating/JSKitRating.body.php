@@ -21,6 +21,8 @@ class JSKitRating
 	 * d: default value
 	 */
 	static $parameters = array(
+		'title'		=>array( 'm' => false, 's' => true, 'l' => true, 'd' => null ),		
+		'permalink'	=>array( 'm' => false, 's' => true, 'l' => true, 'd' => null ),				
 		'imageurl'	=>array( 'm' => false, 's' => true, 'l' => true, 'd' => null ),		
 		'imagesize'	=>array( 'm' => false, 's' => true, 'l' => true, 'd' => null ),		
 		'path'		=>array( 'm' => false, 's' => true, 'l' => true, 'd' => null ),		
@@ -45,13 +47,9 @@ class JSKitRating
 			$r = ExtHelper::doSanitization( $sliste, self::$parameters );
 			$attrListe = ExtHelper::buildList( $liste, self::$parameters );
 		}
-		
-		global $wgTitle;
-		
-		$title = $wgTitle->getPrefixedDBkey();
-		
+
 		$output = <<<EOT
-<div class="js-kit-rating" title="$title" permalink="$title" {$attrListe}></div>
+<div class="js-kit-rating" {$attrListe}></div>
 <script src="http://js-kit.com/ratings.js"></script>
 EOT;
 

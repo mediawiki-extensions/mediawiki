@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo
+    http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
+
+		<pi>
+		<p>
+			 <n>AutoRedirect</n>
+			 <c>mediawiki.googlecode.com/svn</c>
+			 <ca xlink:href="/rest/c/AutoRedirect">AutoRedirect</ca>
+			 <l>$license$</l>
+			 <s>Provides a magic word to automatically create redirect pages</s>
+			 <d>Provides a magic word to automatically create redirect pages</d>
+			 <r xlink:href="/rest/r/AutoRedirect"/>
+		</p>
+		<a>
+			<!-- 
+				not all releases need to appear here!
+				only the latest one!
+			-->
+					<r>
+			<v>1.0.0</v>
+			<s>stable</s>
+		</r>
+
+		</a>
+	</pi>
+
+	
+</f>

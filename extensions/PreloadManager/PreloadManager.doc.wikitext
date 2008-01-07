@@ -21,7 +21,7 @@ Provides per-namespace specific text preloading upon page creation.
 == Usage ==
 Place the ''preload'' text on a per-namespace basis in the page following the pattern <code>MediaWiki:PreloadManager/$namespace$</code> where ''$namespace$'' is the canonical name of the desired namespace.
 
-The text to be included must be enclosed in a <nowiki><includeonly></nowiki> tag section.
+The text to be included must be enclosed in a <nowiki><includeonly></nowiki> tag section. Additional text can be included outside the said section for, as example, documentation purpose.
 
 == Example ==
 To configure ''preload'' text for the NS_TEMPLATE namespace (aka ''Template''), place the ''preload'' text in the page '''MediaWiki:PreloadManager/Template'''.

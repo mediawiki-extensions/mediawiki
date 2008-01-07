@@ -14,6 +14,9 @@ class JSKitRating
 	// for i18n messages
 	static $msg = array();
 	
+	// make sure we only include the script once per page!
+	var $scriptIncluded = false;
+	
 	/*
 	 * m: mandatory parameter
 	 * s: sanitization required
@@ -50,8 +53,16 @@ class JSKitRating
 
 		$output = <<<EOT
 <div class="js-kit-rating" {$attrListe}></div>
+EOT;
+
+		if (!$this->scriptIncluded)
+		{
+			$this->scriptIncluded = true;
+
+			$output .= <<<EOT
 <script src="http://js-kit.com/ratings.js"></script>
 EOT;
+		}
 
 		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}

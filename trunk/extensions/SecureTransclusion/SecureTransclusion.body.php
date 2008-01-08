@@ -202,6 +202,9 @@ class SecureTransclusion
 		$rEtag = $this->getRemoteEtag( $uri );
 		$lEtag = $this->getEtagFromCache( $uri );
 		
+		if (!is_string( $rEtag ) || !is_string( $lEtag))
+			return null;
+		
 		if ( $rEtag === null ) return null;
 		return ( $rEtag === $lEtag );
 	}

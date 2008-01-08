@@ -11,6 +11,9 @@ class SecureTransclusion
 	const thisType = 'other';
 	const thisName = 'SecureTransclusion';
 	
+	const pageCacheTimeout = 172800; // 2days
+	const pageEtagTimeout  = 86400;  // 1day
+	
 	public function mg_strans( &$parser, $page, $errorMessage = null, $timeout = 5 )
 	{
 		if (!self::checkExecuteRight( $parser->mTitle ))
@@ -94,13 +97,13 @@ class SecureTransclusion
 	/**
 	 * Saves in the cache
 	 */
-	protected function saveInCache( $uri, &$text, $timeout )
+	protected function saveInCache( &$uri, &$text )
 	{
 		$parserCache =& ParserCache::singleton();
 		
 		// keep in cache a little longer to give time to the HEAD lookup 
 		// to determine if the source page has really changed
-		return $parserCache->mMemc->set( $uri, $text, $timeout );
+		return $parserCache->mMemc->set( $uri, $text, self::pageCacheTimeout );
 	}
 	/**
 	 *  Fetches an external page from either the parser cache or external uri
@@ -126,6 +129,7 @@ class SecureTransclusion
 		$rEtag = null;
 		$lEtag = null;
 		 
+		// compareEtags method will fill in the etags variables		 
 		$r = $this->compareEtags( $uri, $rEtag, $lEtag );
 		switch ( $r )
 		{
@@ -136,7 +140,7 @@ class SecureTransclusion
 			case null:
 				break;
 		}		
-			return $this->doCase3( $uri, $rEtag, $lEtag, $timeout );
+			return $this->doCase3( $uri );
 	}
 	/**
 	 * Etag remote === Etag local
@@ -152,7 +156,7 @@ class SecureTransclusion
 		// refresh Etag in cache
 		$this->saveEtagInCache( $uri, $etag );
 		
-		return $this->saveInCache( $uri, $text, $timeout );
+		return $this->saveInCache( $uri, $text, self::pageCacheTimeout );
 	}
 	/**
 	 * Etag remote !== Etag local
@@ -168,37 +172,14 @@ class SecureTransclusion
 		// save Etag in cache
 		$this->saveEtagInCache( $uri, $etag );
 		
-		return $this->saveInCache( $uri, $text, $timeout );		
+		return $this->saveInCache( $uri, $text );		
 	}
 	/**
-	 * 
+	 * Remote Etag not available
 	 */
-	protected function doCase3( &$uri, &$rEtag, &$lEtag, $timeout ) 
+	protected function doCase3( &$uri )
 	{
-		$text = $this->getFromCache( $uri );
-		
-		// if we run into a problem, try case #2.
-		if ( $text === false ) 
-			return $this->doCase2( $uri, $etag, $timeout );
-		
-	}
-	/**
-	 * 
-	 * @return 
-	 * @param $uri string
-	 */	
-	protected function fetchRemotePage( &$uri )
-	{
-		// try to fetch from cache
-		$text = $this->getFromCache( $euri );
-		if ( $text === false)
-		{
-			$text = Http::get( $uri, $timeout );
-			if ( $text !== false )
-				$this->saveInCache( $euri, $text, $timeout + 86400 /*1day*/  );
-		}
-		
-		return $text;
+		return $this->getFromCache( $uri );
 	}
 
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -242,7 +223,7 @@ class SecureTransclusion
 	 */
 	protected function saveEtagInCache( &$uri, &$etag )
 	{
-		return $this->saveInCache( $uri.'-etag', $etag, 86400 /*1day*/ );
+		return $this->saveInCache( $uri.'-etag', $etag, self::pageEtagTimeout );
 	}
 	/**
 	 * Get Etag from the cache

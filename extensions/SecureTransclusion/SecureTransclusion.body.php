@@ -42,7 +42,11 @@ class SecureTransclusion
 	protected function getRemotePage( &$parser, &$title, &$error_msg, $timeout )
 	{
 		$uri = $title->getFullUrl();
-		$text = $this->fetch( $uri, $timeout );
+
+		// just encode the string to make sure
+		// we don't break anything downstream.
+		$euri = urlencode( $uri );		
+		$text = $this->fetch( $euri, $timeout );
 		
 		// if we didn't succeed, turn off parser caching
 		// hoping to get lucky next time around.
@@ -55,9 +59,7 @@ class SecureTransclusion
 		return $text;
 	}	 
 	/**
-		1- IF the page is protected for 'edit' THEN allow execution
-		2- IF the page's last contributor had the 'strans' right THEN allow execution
-		3- ELSE deny execution
+	 *
 	 */
 	private static function checkExecuteRight( &$title )
 	{
@@ -84,7 +86,7 @@ class SecureTransclusion
 	/**
 	 * Gets from the cache
 	 */
-	protected function getFromCache( $uri )
+	protected function getFromCache( &$uri )
 	{
 		$parserCache =& ParserCache::singleton();
 		return $parserCache->mMemc->get( $uri );
@@ -102,13 +104,91 @@ class SecureTransclusion
 	}
 	/**
 	 *  Fetches an external page from either the parser cache or external uri
+	 *  If we get here, it means either:
+	 *  1) The parser cache entry for the page has expired
+	 *  2) Parser caching is not in use thus the page must be fetched on every page view (expensive !)
+	 *  
+	 *  Cases to cover:
+	 *  case 1: Etag of remote page === Etag of locally cached page
+	 *  		=> just use the locally cached page
+	 *  		=> refresh cached Etag
+	 *  
+	 *  case 2: Etag of remote page !== Etag of locally cached page
+	 *  		=> fetch remote page
+	 *  		=> store in cache (page & Etag)
+	 *  
+	 *  case 3: Etag of remote page NOT available
+	 *  		=> return locally cached page (if available)
+	 *  		=> if not available, try fetching it
 	 */	
 	protected function fetch( $uri, $timeout )
 	{
-		// just encode the string to make sure
-		// we don't break anything downstream.
-		$euri = urlencode( $uri );
+		$rEtag = null;
+		$lEtag = null;
+		 
+		$r = $this->compareEtags( $uri, $rEtag, $lEtag );
+		switch ( $r )
+		{
+			case true:
+				return $this->doCase1( $uri, $rEtag, $timeout );
+			case false:
+				return $this->doCase2( $uri, $rEtag, $timeout );
+			case null:
+				break;
+		}		
+			return $this->doCase3( $uri, $rEtag, $lEtag, $timeout );
+	}
+	/**
+	 * Etag remote === Etag local
+	 */
+	protected function doCase1( &$uri, &$etag, $timeout ) 
+	{
+		$text = $this->getFromCache( $uri );
 		
+		// if we run into a problem, try case #2.
+		if ( $text === false ) 
+			return $this->doCase2( $uri, $etag, $timeout );
+
+		// refresh Etag in cache
+		$this->saveEtagInCache( $uri, $etag );
+		
+		return $this->saveInCache( $uri, $text, $timeout );
+	}
+	/**
+	 * Etag remote !== Etag local
+	 */
+	protected function doCase2( &$uri, &$etag, $timeout ) 
+	{
+		$text = $this->getRemotePage( $uri, $timeout );
+		
+		// if we can't fetch from the remote server, bail out.
+		if ( $text === false )
+			return false;
+
+		// save Etag in cache
+		$this->saveEtagInCache( $uri, $etag );
+		
+		return $this->saveInCache( $uri, $text, $timeout );		
+	}
+	/**
+	 * 
+	 */
+	protected function doCase3( &$uri, &$rEtag, &$lEtag, $timeout ) 
+	{
+		$text = $this->getFromCache( $uri );
+		
+		// if we run into a problem, try case #2.
+		if ( $text === false ) 
+			return $this->doCase2( $uri, $etag, $timeout );
+		
+	}
+	/**
+	 * 
+	 * @return 
+	 * @param $uri string
+	 */	
+	protected function fetchRemotePage( &$uri )
+	{
 		// try to fetch from cache
 		$text = $this->getFromCache( $euri );
 		if ( $text === false)
@@ -120,21 +200,31 @@ class SecureTransclusion
 		
 		return $text;
 	}
-	/**
-	 *
-	 */
-	protected function processFetch()
-	{
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// ETAG related
 		
-	}	 
+	/**
+	 * Compare Etags
+	 * 
+	 * @return bool
+	 */
+	protected function compareEtags( &$uri, &$rEtag, &$lEtag )
+	{
+		$rEtag = $this->getRemoteEtag( $uri );
+		$lEtag = $this->getEtagFromCache( $uri );
+		
+		if ( $rEtag === null ) return null;
+		return ( $rEtag === $lEtag );
+	}
 	/**
 	 * Get E-tag
 	 * Requires pecl module ''pecl_http''
 	 *
 	 */
-	protected function getEtag( &$uri )
+	protected function getRemoteEtag( &$uri )
 	{
-		if (!function_exists('http_head'))
+		if (!$this->checkEtagProcessing())
 			return null;
 
 		$head = @http_head( $uri );
@@ -160,6 +250,13 @@ class SecureTransclusion
 	protected function getEtagFromCache( &$uri )
 	{
 		return $this->getFromCache( $uri.'-etag' );
-	}	 
+	}
+	/**
+	 *  Check for Etag processing capability
+	 */ 
+	protected function checkEtagProcessing()
+	{
+		 return function_exists('http_head');
+	}
 } // end class
 //</source>

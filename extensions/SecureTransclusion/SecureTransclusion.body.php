@@ -89,7 +89,7 @@ class SecureTransclusion
 	/**
 	 * Gets from the cache
 	 */
-	protected function getFromCache( &$uri )
+	protected function getFromCache( $uri )
 	{
 		$parserCache =& ParserCache::singleton();
 		return $parserCache->mMemc->get( $uri );
@@ -163,7 +163,7 @@ class SecureTransclusion
 	 */
 	protected function doCase2( &$uri, &$etag, $timeout ) 
 	{
-		$text = $this->getRemotePage( $uri, $timeout );
+		$text = $this->realRemoteGetPage( $uri, $timeout );
 		
 		// if we can't fetch from the remote server, bail out.
 		if ( $text === false )
@@ -182,6 +182,13 @@ class SecureTransclusion
 		return $this->getFromCache( $uri );
 	}
 
+	/**
+	 * 
+	 */
+	protected function realRemoteGetPage( $uri, $timeout )
+	{
+		return Http::get( $uri, $timeout );
+	}	
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	// ETAG related
 		

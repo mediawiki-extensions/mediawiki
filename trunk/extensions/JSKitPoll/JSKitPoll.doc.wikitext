@@ -21,7 +21,7 @@ Provides integration with [http://js-kit.com/polls/ JS-Kit Polls], an AJAX based
 Just use the following parser function <nowiki>{{#jskitpoll: [optional parameters] }}</nowiki> on the desired wiki page.
 
 == Parameters ==
-For a complete description, please see [http://js-kit.com/polss/custom.html JS-Kit Polls Customization].
+For a complete description, please see [http://js-kit.com/polls/custom.html JS-Kit Polls Customization].
 {|border=1 class='sortable'
 ! Parameter !! Description
 |-

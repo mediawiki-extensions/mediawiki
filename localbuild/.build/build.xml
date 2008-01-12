@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+
+<!--
+	PHING build file for creating a local copy of the PEAR channel
+	
+	@author Jean-Lou Dupont
+	@version $Id: build.xml 257 2007-11-16 16:13:27Z JeanLou.Dupont $
+
+	Source directory is assumed to be located in:
+	../../rest
+	../../tags
+
+	Destination for local copy:
+	../../local
+-->
+
+<project name="build_local_pear" basedir="." default='all' >
+
+	<!--
+		CUSTOMIZATION HERE
+	-->
+	<property name='source_channel' value='mediawiki.googlecode.com\/svn' />
+	<property name='destination_channel' value='localhost' />
+
+	<resolvepath propertyName="rest.path" file="${project.basedir}/../../rest" />
+	<resolvepath propertyName="tags.path" file="${project.basedir}/../../tags" />
+	<resolvepath propertyName="dest.path" file="${project.basedir}/../../local/" />
+
+	<target name='all'>
+		<echo>Building local PEAR</echo>
+
+		<echo>Source REST directory: ${rest.path}</echo>
+		<echo>Source TAGS directory: ${tags.path}</echo>
+		<echo>Destination directory: ${dest.path}</echo>
+
+		<fileset dir="${rest.path}/" id='rest.files' >
+			<include name="**/**" />
+		</fileset>
+
+		<fileset dir="${tags.path}/" id='tags.files' >
+			<include name="**/**" />
+		</fileset>
+	
+		<copy todir="${dest.path}/rest">
+			<fileset refid='rest.files' />
+			<filterchain>
+			  <replaceregexp>
+				<regexp pattern="${source_channel}" replace="${destination_channel}" ignoreCase="true"/>
+			  </replaceregexp>
+			</filterchain>
+		</copy>
+
+		<copy todir="${dest.path}/tags">
+			<fileset refid='tags.files' />
+			<filterchain>
+			  <replaceregexp>
+				<regexp pattern="${source_channel}" replace="${destination_channel}" ignoreCase="true"/>
+			  </replaceregexp>
+			</filterchain>
+		</copy>
+
+	</target>
+
+</project>

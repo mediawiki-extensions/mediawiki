@@ -11,9 +11,6 @@ class JSKitRating
 	const thisType = 'other';
 	const thisName = 'JSKitRating';
 
-	// for i18n messages
-	static $msg = array();
-	
 	// make sure we only include the script once per page!
 	var $scriptIncluded = false;
 	

@@ -16,11 +16,12 @@
 
 <project name="build_local_pear" basedir="." default='all' >
 
-	<!--
-		CUSTOMIZATION HERE
-	-->
+	<!-- CUSTOMIZATION HERE -->
 	<property name='source_channel' value='mediawiki.googlecode.com\/svn' />
-	<property name='destination_channel' value='localhost' />
+	<property name='destination_channel' value='localhost/mediawiki/local' />
+	<!-- END CUSTOMIZATION -->
+
+	<taskdef classname='JLD.PhingTools.FileSet2PropertyTask' name='fs2prop' />
 
 	<resolvepath propertyName="rest.path" file="${project.basedir}/../../rest" />
 	<resolvepath propertyName="tags.path" file="${project.basedir}/../../tags" />
@@ -29,16 +30,22 @@
 	<target name='all'>
 		<echo>Building local PEAR</echo>
 
+<!--
 		<echo>Source REST directory: ${rest.path}</echo>
 		<echo>Source TAGS directory: ${tags.path}</echo>
 		<echo>Destination directory: ${dest.path}</echo>
-
+-->
 		<fileset dir="${rest.path}/" id='rest.files' >
 			<include name="**/**" />
 		</fileset>
 
 		<fileset dir="${tags.path}/" id='tags.files' >
 			<include name="**/**" />
+			<exclude name="**/*.tgz" />
+		</fileset>
+
+		<fileset dir="${tags.path}/" id='tags.zip.files' >
+			<include name="**/*.tgz" />
 		</fileset>
 	
 		<copy todir="${dest.path}/rest">
@@ -59,6 +66,38 @@
 			</filterchain>
 		</copy>
 
+		<fs2prop fsid='tags.zip.files' prop='tags.zip.liste' />
+
+		<!-- move file to /r/$package -->
+		<foreach list="${tags.zip.liste}" param="base_name" target="processOne" />
+
 	</target>
 
+	<target name='processOne'>
+		<uptodate property="processNotRequired" targetfile="${dest.path}/tags/${base_name}" 
+			srcfile="${tags.path}/${base_name}" />
+		<available file="${dest.path}/tags/${base_name}" property="file.available" value="true" />
+		<if>
+			<equals arg1="${file.available}" arg2="true"/>
+			<then></then>
+			<else>
+				<phingcall target="processThis">
+					<property name="file" value="${base_name}" />
+				</phingcall>
+			</else>
+		</if>
+		<if>
+			<istrue value="${processNotRequired}"/>
+			<then></then>
+			<else>
+				<phingcall target="processThis">
+					<property name="file" value="${base_name}" />
+				</phingcall>
+			</else>
+		</if>
+	</target>
+
+	<target name="processThis">
+		<echo>Processing ${file}</echo>
+	</target>
 </project>

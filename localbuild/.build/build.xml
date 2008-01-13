@@ -99,5 +99,29 @@
 
 	<target name="processThis">
 		<echo>Processing ${file}</echo>
+
+		<!-- copy -->
+		<copy file="${tags.path}/${file}" todir="${dest.path}/tags/${file}" overwrite="true" />
+		<!-- delete -->
+		<delete dir="${dest.path}/tags/tmp" />
+		<!-- unzip -->
+		<unzip file="'${dest.path}/tags/${file}'" todir="'${dest.path}/tags/tmp/'"/>
+		<!-- process -->
+		<reflexive>
+			<fileset dir="${dest.path}/tags/tmp/">
+				<include name="**/**"/>
+			</fileset>
+			<filterchain>
+			  <replaceregexp>
+				<regexp pattern="${source_channel}" replace="${destination_channel}" ignoreCase="true"/>
+			  </replaceregexp>
+			</filterchain>
+		</reflexive>
+		<!-- rezip -->
+		<zip destfile="'${dest.path}/tags/${file}'">
+			<fileset dir="'${dest.path}/tags/tmp/'">
+				<include name="**/**"/>
+			</fileset>
+		</zip>
 	</target>
 </project>

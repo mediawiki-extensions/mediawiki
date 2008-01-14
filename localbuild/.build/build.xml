@@ -107,11 +107,11 @@
 		<echo>Copy archive file in tmp dir</echo>
 		<copy file="${tags.path}/${file}" tofile="${dest.tags.path}/tmp/archive.tgz" overwrite="true" />
 		<!-- unzip -->
-		<echo>Unzip archive file in tmp dir</echo>
-		<unzip file="${dest.tags.path}/tmp/archive.tgz" todir="${dest.tags.path}/tmp/"/>
+		<echo>Untar archive file in tmp dir</echo>
+		<untar file="${dest.tags.path}/tmp/archive.tgz" todir="${dest.tags.path}/tmp/"/>
 		<!-- delete -->
 		<echo>Delete source archive</echo>
-		<delete dir="${dest.tags.path}/tmp/archive.tgz" />
+		<delete file="${dest.tags.path}/tmp/archive.tgz" />
 		<!-- process -->
 		<echo>Perform replacements</echo>
 		<reflexive>
@@ -125,11 +125,11 @@
 			</filterchain>
 		</reflexive>
 		<!-- rezip -->
-		<echo>Rezip</echo>
-		<zip destfile="${dest.tags.path}/${file}">
+		<echo>Re-tar</echo>
+		<tar destfile="${dest.tags.path}/${file}" compression='gzip' >
 			<fileset dir="${dest.tags.path}/tmp/">
 				<include name="**/**"/>
 			</fileset>
-		</zip>
+		</tar>
 	</target>
 </project>

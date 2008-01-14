@@ -36,15 +36,37 @@ class ImageLink
 	 * d: default value
 	 */
 	static $parameters = array(
-		'image'	=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null ),
-		'default'=>array( 'm' => false, 's' => false, 'l' => false, 'd' => null ),		
-		'page'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => '' ),
-		'alt'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null ),
-		'height'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null  ),
-		'width' => array( 'm' => false, 's' => true,  'l' => true,  'd' => null  ),
-		'alt'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null  ),
-		'title' => array( 'm' => false, 's' => true,  'l' => true,  'd' => null  ),
-		'border'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null  )
+		'image'		=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null ),
+		'default'	=>array( 'm' => false, 's' => false, 'l' => false, 'd' => null ),		
+		'page'		=> array( 'm' => false, 's' => false, 'l' => false, 'd' => '' ),
+		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true ),
+		'height'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'width' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'title' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'border'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+
+		// events
+		'onchange'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onsubmit'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onreset'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onselect'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+
+		'onblur'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onfocus'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		
+		'onkeydown'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onkeyup'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onkeypress'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+
+		'onclick'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'ondblclick'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+
+		'onmousedown'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onmousemove'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onmouseout' => array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onmouseover'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onmouseup'	 => array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
 	);
 	/**
 	 * Initialize the messages
@@ -211,6 +233,22 @@ class ImageLink
 	 *			[|border=border-parameter]	 
 	 *			[|title=title-parameter]
 	 *			[|default=image-page-used-for-default]
+	 *			[|onchange=onchange-handler]
+	 *			[|onsubmit=onsubmit-handler]	 
+	 *			[|onreset=onreset-handler]	 
+	 *			[|onselect=onselect-handler]	 
+	 *			[|onblur=onblur-handler]	 
+	 *			[|onfocus=onfocus-handler]	 
+	 *			[|onkeydown=onkeydown-handler]	 
+	 *			[|onkeyup=onkeyup-handler]	 
+	 *			[|onkeypress=onkeypress-handler]	 
+	 *			[|onclick=onclick-handler]	 
+	 *			[|ondblclick=ondblclick-handler]
+	 *			[|onmousedown=onmousedown-handler]
+	 *			[|onmousemove=onmousemove-handler]	 
+	 *			[|onmouseout=onmouseout-handler]	 	 
+	 *			[|onmouseover=onmouseover-handler]	 	 	 
+	 *			[|onmouseup=onmouseup-handler]	 	 	 
 	 * }} 
 	 */
 	public function mg_img( &$parser )
@@ -219,11 +257,11 @@ class ImageLink
 		
 		$liste = StubManager::processArgList( $params, true );
 		
-		$sliste= $this->doListSanitization( $liste, self::$parameters );
+		$sliste= ExtHelper::doListSanitization( $liste, self::$parameters );
 		if (!is_array( $sliste ))
 			return wfMsgForContent( 'imagelink'.self::codeMissingParameter, $sliste);
 		
-		$this->doSanitization( $sliste, self::$parameters );
+		ExtHelper::doSanitization( $sliste, self::$parameters );
 		
 		$html = $this->buildHTMLfromList( $sliste, self::$parameters );		
 		if ($this->isError( $html ))
@@ -252,71 +290,9 @@ class ImageLink
 		if ( $this->isError( $r ) && ( $r !== self::codeLinkLess) )
 			return $r;
 
-		$params = $this->buildList( $liste, $ref_liste );
+		$params = ExtHelper::buildList( $liste, $ref_liste );
 		
 		return $anchor_open."<img src='${img_url}' $params />".$anchor_close;
-	}
-	/**
-	 * Retrieves the specified list of parameters from the list.
-	 * Uses the ''l'' parameter from the reference list.
-	 */
-	protected function buildList( &$liste, &$ref_liste )	
-	{
-		if (empty( $liste ))
-			return self::codeEmptyList;
-			
-		$result = '';
-		// only pick the key:value pairs that have been
-		// explictly marked using the 'l' key in the
-		// reference list.
-		foreach( $liste as $key => &$value )
-			if ( $ref_liste[ $key ]['l'] === true )
-				$result .= " $key='$value'";
-
-		return $result;		
-	}
-	/**
-	 * Sanitize the parameters list. 
-	 * Just keeps the parameters defined in the reference list.
-	 */
-	protected function doListSanitization( &$liste, &$ref_liste )
-	{
-		if (empty( $liste ))
-			return array();
-
-		// first, let's make sure we only have valid parameters
-		$new_liste = array();
-		foreach( $liste as $key => &$value )
-			if (isset( $ref_liste[ $key ] ))
-				$new_liste[ $key ] = $value;
-				
-		// then make sure we have all mandatory parameters
-		foreach( $ref_liste as $key => &$instructions )
-			if ( $instructions['m'] === true )
-				if ( !isset( $liste[ $key ] ))
-					return $key;
-					
-		// finally, initialize to default values the missing parameters
-		foreach( $ref_liste as $key => &$instructions )
-			if ( $instructions['d'] !== null )
-				if ( !isset( $new_liste[ $key ] ))
-					$new_liste[ $key ] = $instructions['d'];
-				
-		return $new_liste;
-	}
-	/**
-	 * Only valid parameters should end-up here.
-	 */
-	protected function doSanitization( &$liste, &$ref_liste )
-	{
-		if (empty( $liste ))
-			return self::codeEmptyList;
-			
-		foreach( $liste as $key => &$value )
-		{
-			if ( $ref_liste[ $key ]['s'] === true )
-				$value = htmlspecialchars( $value );
-		}
 	}
 	/**
 	 * Returns 'true' if the code provided constitute an error code

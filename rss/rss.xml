@@ -8,6 +8,28 @@
 
 	
 	<item>
+			<title>ImageLink - 1.5.0</title>
+			<link>http://jldupont.com/Extension:ImageLink</link>
+			<description>Changelog:
+Added support for HTML ''event'' parameters
+			</description>
+			<pubDate>Mon, 14 Jan 08 10:39:44 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>StubManager - 1.2.0</title>
+			<link>http://jldupont.com/Extension:StubManager</link>
+			<description>Changelog:
+Added double-quotes sanitization functionality to ExtHelper
+			</description>
+			<pubDate>Mon, 14 Jan 08 10:27:18 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>JSKitNavigator - 1.0.0</title>
 			<link>http://jldupont.com/Extension:JSKitNavigator</link>
 			<description>Changelog:

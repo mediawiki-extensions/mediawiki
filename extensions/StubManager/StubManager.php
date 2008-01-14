@@ -733,8 +733,8 @@ class ExtHelper
 		{
 			// HTML sanitization
 			if (isset( $ref_liste[ $key ]['s'] ))
-					if ( $ref_liste[ $key ]['s'] === true )
-						$value = htmlspecialchars( $value );
+				if ( $ref_liste[ $key ]['s'] === true )
+					$value = htmlspecialchars( $value );
 						
 			// Remove leading & trailing double-quotes
 			if (isset( $ref_liste[ $key ]['dq'] ))
@@ -747,7 +747,29 @@ class ExtHelper
 			
 		}
 	}
+	/**
+	 * Checks for if the $liste contains parameters marked as ''r'' (i.e. restricted)
+	 *
+	 * @return bool null for empty list
+	 * @return string restricted key name
+	 * @return bool false if no restricted parameter found
+	 */
+	public static function checkListForRestrictions( &$liste, &$ref_liste )
+	{
+		if (empty( $liste ))
+			return null;
 
+		foreach( $liste as $key => &$value )
+		{
+			// HTML sanitization
+			if (isset( $ref_liste[ $key ]['r'] ))
+				if ( $ref_liste[ $key ]['r'] === true )
+					return $key;							
+			
+		}
+		
+		return false;		
+	}
 }// end class ExtHelpers
 
 //</source>

@@ -21,7 +21,7 @@ class SecureTransclusion
 		
 		$title = Title::newFromText( $page );
 		if (!is_object( $title ))
-			return 'SecureTransclusion: '.wfMsg('badtitle');
+			return 'SecureTransclusion: '.wfMsg('badtitle')." ($page)";
 		
 		if ( $title->isTrans() )
 			return $this->getRemotePage( $parser, $title, $errorMessage, $timeout );
@@ -131,16 +131,14 @@ class SecureTransclusion
 		 
 		// compareEtags method will fill in the etags variables		 
 		$r = $this->compareEtags( $uri, $rEtag, $lEtag );
-		switch ( $r )
-		{
-			case true:
-				return $this->doCase1( $uri, $rEtag, $timeout );
-			case false:
-				return $this->doCase2( $uri, $rEtag, $timeout );
-			case null:
-				break;
-		}		
-			return $this->doCase3( $uri );
+
+		if ( $r === true )
+			return $this->doCase1( $uri );
+
+		if ( $r === false )
+			return $this->doCase2( $uri );
+		
+		return $this->doCase3( $uri );
 	}
 	/**
 	 * Etag remote === Etag local

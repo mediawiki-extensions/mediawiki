@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package ImageLink
  * @version 1.5.0
- * @Id $Id: ImageLink.body.php 896 2008-01-14 15:12:17Z jeanlou.dupont $
+ * @Id $Id: ImageLink.body.php 898 2008-01-14 15:20:08Z jeanlou.dupont $
  */
 //<source lang=php>*/
 class ImageLink
@@ -38,34 +38,35 @@ class ImageLink
 		'image'		=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null ),
 		'default'	=>array( 'm' => false, 's' => false, 'l' => false, 'd' => null ),		
 		'page'		=> array( 'm' => false, 's' => false, 'l' => false, 'd' => '' ),
-		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true ),
-		'height'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'width' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'title' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'border'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true ),
+		'height'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		'width' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		'title' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		'border'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
 
-		// events
-		'onchange'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onsubmit'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onreset'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onselect'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		// Events
+		// Restricted parameters
+		'onchange'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onsubmit'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onreset'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onselect'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
 
-		'onblur'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onfocus'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onblur'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onfocus'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
 		
-		'onkeydown'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onkeyup'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onkeypress'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onkeydown'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onkeyup'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onkeypress'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
 
-		'onclick'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'ondblclick'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onclick'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'ondblclick'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
 
-		'onmousedown'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onmousemove'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onmouseout' => array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onmouseover'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
-		'onmouseup'	 => array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true  ),
+		'onmousedown'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onmousemove'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onmouseout' => array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onmouseover'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onmouseup'	 => array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
 	);
 	/**
 	 * Initialize the messages
@@ -316,14 +317,14 @@ class ImageLink
 		return wfMsgForContent( 'imagelink'.$code, $param );	
 	}
 	/**
-	 * 
+	 * @return bool false no-restriction
 	 */
 	protected function checkRestrictionStatus( &$title, $result )
 	{
 		$protected = $title->isProtected('edit');
 
 		// if the page is protected, then anything goes!
-		if ( $protected )
+		if ( $protected === true )
 			return false;
 		
 		// page is not protected... are there any restricted parameters then?

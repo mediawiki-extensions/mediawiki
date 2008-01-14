@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package StubManager
  * @version 1.2.0
- * @Id $Id: StubManager.php 894 2008-01-14 14:50:25Z jeanlou.dupont $
+ * @Id $Id: StubManager.php 899 2008-01-14 15:27:06Z jeanlou.dupont $
  */
 //<source lang=php>
 $wgExtensionCredits[StubManager::thisType][] = array( 
@@ -29,7 +29,7 @@ class StubManager
 	static $stubList;
 	const thisType = 'other';
 	const thisName = 'StubManager';
-	const thisVersion = '$Id: StubManager.php 894 2008-01-14 14:50:25Z jeanlou.dupont $';
+	const thisVersion = '$Id: StubManager.php 899 2008-01-14 15:27:06Z jeanlou.dupont $';
 	static $logTable;
 	
 	static $paramsList = array(	'class',		// mandatory
@@ -287,7 +287,7 @@ class StubManager
 		if ( $svnId === null || $svnId == ('$'.'Id'.'$' /* fool SVN */) )
 			return null;
 			
-		// e.g. $Id: StubManager.php 894 2008-01-14 14:50:25Z jeanlou.dupont $
+		// e.g. $Id: StubManager.php 899 2008-01-14 15:27:06Z jeanlou.dupont $
 		$data = explode( ' ', $svnId );
 		return $data[2];
 	}
@@ -731,11 +731,6 @@ class ExtHelper
 			
 		foreach( $liste as $key => &$value )
 		{
-			// HTML sanitization
-			if (isset( $ref_liste[ $key ]['s'] ))
-				if ( $ref_liste[ $key ]['s'] === true )
-					$value = htmlspecialchars( $value );
-						
 			// Remove leading & trailing double-quotes
 			if (isset( $ref_liste[ $key ]['dq'] ))
 					if ( $ref_liste[ $key ]['dq'] === true )
@@ -744,7 +739,11 @@ class ExtHelper
 						$value = rtrim( $value, "\" \t\n\r\0\x0B" );
 					}
 						
-			
+
+			// HTML sanitization
+			if (isset( $ref_liste[ $key ]['s'] ))
+				if ( $ref_liste[ $key ]['s'] === true )
+					$value = htmlspecialchars( $value );
 		}
 	}
 	/**

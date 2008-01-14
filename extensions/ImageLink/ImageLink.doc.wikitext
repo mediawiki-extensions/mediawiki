@@ -4,7 +4,7 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.5.0
+|version     = 1.5.1
 |update      =
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ImageLink/ SVN]
@@ -67,6 +67,8 @@ Event parameters supported: onchange, onsubmit, onreset, onselect, onsubmit, onr
 | 1.4.1 || Minor bug fix
 |-
 | 1.5.0 || Added support for event parameters
+|-
+| 1.5.1 || Added support for unrestricted event parameters in the ''MediaWiki'' namespace
 |}
 
 [[Category:Image map extensions]]

@@ -327,6 +327,10 @@ class ImageLink
 		if ( $protected === true )
 			return false;
 		
+		// check if we are in the MediaWiki namespace
+		if ( $title->getNamespace() === NS_MEDIAWIKI )
+			return false;
+		
 		// empty list.
 		if ( $result === null )
 			return false;

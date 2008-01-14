@@ -23,7 +23,7 @@
  <time>15:39:42</time>
 
  <version>
-  <release>1.5.0</release>
+  <release>1.5.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -81,7 +81,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Added support for HTML ''event'' parameters
+Added support for unrestricted event parameters in the ''MediaWiki'' namespace
 </notes>
 </release>
 </changelog>

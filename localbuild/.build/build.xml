@@ -19,6 +19,9 @@
 	<!-- CUSTOMIZATION HERE -->
 	<property name='source_channel' value='mediawiki.googlecode.com\/svn' />
 	<property name='destination_channel' value='localhost/mediawiki/local' />
+	<property name='source.deps' value='s\:28\:\"mediawiki\.googlecode\.com\/svn\"'/>
+	<property name='dest.deps'   value='s:25:"localhost/mediawiki/local"'/>
+
 	<!-- END CUSTOMIZATION -->
 
 	<taskdef classname='JLD.PhingTools.FileSet2PropertyTask' name='fs2prop' />
@@ -53,6 +56,7 @@
 			<fileset refid='rest.files' />
 			<filterchain>
 			  <replaceregexp>
+				<regexp pattern="${source.deps}"   replace="${dest.deps}" />
 				<regexp pattern="${source_channel}" replace="${destination_channel}" ignoreCase="true"/>
 			  </replaceregexp>
 			</filterchain>

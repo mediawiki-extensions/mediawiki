@@ -6,8 +6,6 @@
  * @Id $Id: ImageLink.body.php 896 2008-01-14 15:12:17Z jeanlou.dupont $
  */
 //<source lang=php>*/
-require 'ImageLink.i18n.php';
-
 class ImageLink
 {
 	// constants.
@@ -260,7 +258,7 @@ class ImageLink
 		
 		$sliste= ExtHelper::doListSanitization( $liste, self::$parameters );
 		if (!is_array( $sliste ))
-			return wfMsgForContent( 'imagelink'.self::codeMissingParameter, $sliste);
+			return $this->getErrorMsg( self::codeMissingParameter, $sliste);
 		
 		ExtHelper::doSanitization( $sliste, self::$parameters );
 		
@@ -270,7 +268,7 @@ class ImageLink
 		// first check for restricted parameter usage
 		$check = $this->checkRestrictionStatus( $title, $result );
 		if ($this->isError( $check ))
-			return $this->getErrorMsg( $html, $check );
+			return $this->getErrorMsg( $check, $result );
 		
 		$html = $this->buildHTMLfromList( $sliste, self::$parameters );		
 		if ($this->isError( $html ))
@@ -332,4 +330,5 @@ class ImageLink
 		return ( $result !== false ) ? self::codeRestrictedParam:false;
 	}
 } // end class definition.
+require 'ImageLink.i18n.php';
 //</source>

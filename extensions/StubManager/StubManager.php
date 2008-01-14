@@ -159,6 +159,14 @@ class StubManager
 	{
 		return self::version;
 	}
+	/**
+	 * Returns ''true'' if the current version of StubManager
+	 * is at least $version.
+	 */
+	public static function isAtLeast( $version )
+	{
+		return version_compare( self::version, $version, ">=" );
+	}	 
 	public static function getRevision()
 	{
 		return self::getRevisionId( self::thisVersion );	
@@ -674,10 +682,13 @@ class ExtHelper
 		// explictly marked using the 'l' key in the
 		// reference list.
 		foreach( $liste as $key => &$value )
+		{
+			$key = trim( $key );
+			$val = trim( $value );
 			if ( isset( $ref_liste[ $key ] ) )
 				if ( $ref_liste[ $key ]['l'] === true )
-					$result .= " $key='$value'";
-
+					$result .= " $key='$val'";
+		}
 		return $result;		
 	}
 	/**
@@ -710,6 +721,7 @@ class ExtHelper
 		return $new_liste;
 	}
 	/**
+	 * Performs various sanitization.
 	 * Only valid parameters should end-up here.
 	 */
 	public static function doSanitization( &$liste, &$ref_liste )
@@ -719,9 +731,20 @@ class ExtHelper
 			
 		foreach( $liste as $key => &$value )
 		{
-			if (isset( $ref_liste[ $key ] ))			
-				if ( $ref_liste[ $key ]['s'] === true )
-					$value = htmlspecialchars( $value );
+			// HTML sanitization
+			if (isset( $ref_liste[ $key ]['s'] ))
+					if ( $ref_liste[ $key ]['s'] === true )
+						$value = htmlspecialchars( $value );
+						
+			// Remove leading & trailing double-quotes
+			if (isset( $ref_liste[ $key ]['dq'] ))
+					if ( $ref_liste[ $key ]['dq'] === true )
+					{
+						$value = ltrim( $value, "\" \t\n\r\0\x0B" );
+						$value = rtrim( $value, "\" \t\n\r\0\x0B" );
+					}
+						
+			
 		}
 	}
 

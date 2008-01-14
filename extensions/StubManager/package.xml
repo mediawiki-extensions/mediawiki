@@ -23,7 +23,7 @@
  <time>05:12:30</time>
 
  <version>
-  <release>1.1.1</release>
+  <release>1.2.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -74,7 +74,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Minor bug fix
+Added double-quotes sanitization functionality to ExtHelper
 </notes>
   </release>
 </changelog>

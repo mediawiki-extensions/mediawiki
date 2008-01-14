@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>ImageLink - 1.5.1</title>
+			<link>http://jldupont.com/Extension:ImageLink</link>
+			<description>Changelog:
+Added support for unrestricted event parameters in the ''MediaWiki'' namespace
+			</description>
+			<pubDate>Mon, 14 Jan 08 15:16:12 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>ImageLink - 1.5.0</title>
 			<link>http://jldupont.com/Extension:ImageLink</link>
 			<description>Changelog:

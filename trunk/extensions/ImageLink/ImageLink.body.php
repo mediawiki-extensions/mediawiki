@@ -327,6 +327,10 @@ class ImageLink
 		if ( $protected === true )
 			return false;
 		
+		// empty list.
+		if ( $result === null )
+			return false;
+		
 		// page is not protected... are there any restricted parameters then?
 		return ( $result !== false ) ? self::codeRestrictedParam:false;
 	}

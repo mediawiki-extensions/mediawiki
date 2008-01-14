@@ -14,7 +14,8 @@ ImageLink::$msg['en'] = array(
 	'imagelink'.ImageLink::codeMissingParameter		=> 'ImageLink: invalid or missing parameter ($1)',
 	'imagelink'.ImageLink::codeDefaultNotProvided	=> 'ImageLink: default image page not specified',
 	'imagelink'.ImageLink::codeImageNotExist		=> 'ImageLink: image page does not exist',	
-	'imagelink'.ImageLink::codeEmptyList			=> 'ImageLink: parameter list empty',		
+	'imagelink'.ImageLink::codeEmptyList			=> 'ImageLink: parameter list empty',
+	'imagelink'.ImageLink::codeRestrictedParam		=> 'ImageLink: usage of restricted parameter ($1) on non-protected page',
 	#'' => '',
 );
 //</source>

@@ -27,7 +27,8 @@ class ImageLink
 	const codeImageNotExist		= 4;
 	const codeDefaultNotProvided= 5;
 	const codeMissingParameter  = 6;
-	const codeEmptyList  		= 7;	
+	const codeEmptyList  		= 7;
+	const codeRestrictedParam   = 8;
 	
 	/*
 	 * m: mandatory parameter
@@ -263,6 +264,14 @@ class ImageLink
 		
 		ExtHelper::doSanitization( $sliste, self::$parameters );
 		
+		$result = ExtHelper::checkListForRestrictions( $sliste, self::$parameters );
+		$title  = $parser->mTitle;
+		
+		// first check for restricted parameter usage
+		$check = $this->checkRestrictionStatus( $title, $result );
+		if ($this->isError( $check ))
+			return $this->getErrorMsg( $html, $check );
+		
 		$html = $this->buildHTMLfromList( $sliste, self::$parameters );		
 		if ($this->isError( $html ))
 			return $this->getErrorMsg( $html );
@@ -304,9 +313,23 @@ class ImageLink
 	/**
 	 * Returns the corresponding error message
 	 */
-	protected function getErrorMsg( $code )
+	protected function getErrorMsg( $code, $param = null )
 	{
-		return wfMsg( 'imagelink'.$code );	
+		return wfMsgForContent( 'imagelink'.$code, $param );	
+	}
+	/**
+	 * 
+	 */
+	protected function checkRestrictionStatus( &$title, $result )
+	{
+		$protected = $title->isProtected('edit');
+
+		// if the page is protected, then anything goes!
+		if ( $protected )
+			return false;
+		
+		// page is not protected... are there any restricted parameters then?
+		return ( $result !== false ) ? self::codeRestrictedParam:false;
 	}
 } // end class definition.
 //</source>

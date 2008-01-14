@@ -25,7 +25,8 @@
 
 	<resolvepath propertyName="rest.path" file="${project.basedir}/../../rest" />
 	<resolvepath propertyName="tags.path" file="${project.basedir}/../../tags" />
-	<resolvepath propertyName="dest.path" file="${project.basedir}/../../local/" />
+	<resolvepath propertyName="dest.rest.path" file="${project.basedir}/../../local/rest/" />
+	<resolvepath propertyName="dest.tags.path" file="${project.basedir}/../../local/tags/" />
 
 	<target name='all'>
 		<echo>Building local PEAR</echo>
@@ -48,7 +49,7 @@
 			<include name="**/*.tgz" />
 		</fileset>
 	
-		<copy todir="${dest.path}/rest">
+		<copy todir="${dest.rest.path}">
 			<fileset refid='rest.files' />
 			<filterchain>
 			  <replaceregexp>
@@ -57,7 +58,7 @@
 			</filterchain>
 		</copy>
 
-		<copy todir="${dest.path}/tags">
+		<copy todir="${dest.tags.path}">
 			<fileset refid='tags.files' />
 			<filterchain>
 			  <replaceregexp>
@@ -74,9 +75,9 @@
 	</target>
 
 	<target name='processOne'>
-		<uptodate property="processNotRequired" targetfile="${dest.path}/tags/${base_name}" 
+		<uptodate property="processNotRequired" targetfile="${dest.tags.path}/${base_name}" 
 			srcfile="${tags.path}/${base_name}" />
-		<available file="${dest.path}/tags/${base_name}" property="file.available" value="true" />
+		<available file="${dest.tags.path}/${base_name}" property="file.available" value="true" />
 		<if>
 			<equals arg1="${file.available}" arg2="true"/>
 			<then></then>
@@ -99,16 +100,22 @@
 
 	<target name="processThis">
 		<echo>Processing ${file}</echo>
-
-		<!-- copy -->
-		<copy file="${tags.path}/${file}" todir="${dest.path}/tags/${file}" overwrite="true" />
 		<!-- delete -->
-		<delete dir="${dest.path}/tags/tmp" />
+		<echo>Delete temporary directory</echo>
+		<delete dir="${dest.tags.path}/tmp" />
+		<!-- copy -->
+		<echo>Copy archive file in tmp dir</echo>
+		<copy file="${tags.path}/${file}" tofile="${dest.tags.path}/tmp/archive.tgz" overwrite="true" />
 		<!-- unzip -->
-		<unzip file="'${dest.path}/tags/${file}'" todir="'${dest.path}/tags/tmp/'"/>
+		<echo>Unzip archive file in tmp dir</echo>
+		<unzip file="${dest.tags.path}/tmp/archive.tgz" todir="${dest.tags.path}/tmp/"/>
+		<!-- delete -->
+		<echo>Delete source archive</echo>
+		<delete dir="${dest.tags.path}/tmp/archive.tgz" />
 		<!-- process -->
+		<echo>Perform replacements</echo>
 		<reflexive>
-			<fileset dir="${dest.path}/tags/tmp/">
+			<fileset dir="${dest.tags.path}/tmp">
 				<include name="**/**"/>
 			</fileset>
 			<filterchain>
@@ -118,8 +125,9 @@
 			</filterchain>
 		</reflexive>
 		<!-- rezip -->
-		<zip destfile="'${dest.path}/tags/${file}'">
-			<fileset dir="'${dest.path}/tags/tmp/'">
+		<echo>Rezip</echo>
+		<zip destfile="${dest.tags.path}/${file}">
+			<fileset dir="${dest.tags.path}/tmp/">
 				<include name="**/**"/>
 			</fileset>
 		</zip>

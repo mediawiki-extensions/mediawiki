@@ -17,10 +17,10 @@
 |example     =
 }}
 == Purpose==
-Provides the capability to add arbitrary wikitext to the toolbox on the Monobook skin.
+Provides the capability to add arbitrary wikitext to the toolbox on the Monobook skin. 
 
 == Usage ==
-Edit the page <code>MediaWiki:Registry/ToolboxExtender</code> with the desired wikitext. 
+Edit the page <code>MediaWiki:Registry/ToolboxExtender</code> with the desired wikitext; ''raw'' HTML is also enabled on this page.
 
 == Example ==
 The following is an example page for <code>MediaWiki:Registry/ToolboxExtender</code>. 

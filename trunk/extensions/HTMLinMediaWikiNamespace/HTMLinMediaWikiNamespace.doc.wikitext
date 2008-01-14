@@ -1,0 +1,33 @@
+{{Extension
+|name        = HTMLinMediaWikiNamespace
+|status      = stable
+|type        = 
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/HTMLinMediaWikiNamespace/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides access to unrestricted HTML in the ''MediaWiki'' namespace (i.e. NS_MEDIAWIKI). The behavior will be exactly the same as if the ''$wgRawHtml'' global would be set to ''true''.
+
+Access to the ''MediaWiki'' is normally restricted to the members of the ''sysop'' group thus providing some level of security.
+
+== Dependancy ==
+* none
+
+{{Pear|HTMLinMediaWikiNamespace}}
+
+== History ==
+{|border=1
+! Release !! Notes
+|-
+| 1.0.0 || Initial release
+|}

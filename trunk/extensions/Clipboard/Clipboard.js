@@ -25,7 +25,7 @@ mwClipboardClass.prototype =
 	_CookieName:     'Clipboard',
 	_TitleDelimiter: '~',
 	_EditAreaList: [ 'wpTextbox1',  // from 'EditPage' when performing edition on an article
-					 'pages',		// from 'Special:Export'
+					 'pages'		// from 'Special:Export'
 	 				],
 
 	add: function()

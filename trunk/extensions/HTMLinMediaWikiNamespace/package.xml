@@ -7,10 +7,10 @@
 		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd 
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
- <name>StubManager</name>
+ <name>HTMLinMediaWikiNamespace</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Base class for most extension of this channel</summary>
- <description>Base extension class</description>
+ <summary>Provides unrestricted HTML in the MediaWiki namespace</summary>
+ <description>Provides unrestricted HTML in the MediaWiki namespace</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2008-01-14</date>
- <time>14:16:50</time>
+ <date>2008-01-06</date>
+ <time>05:20:05</time>
 
  <version>
-  <release>1.2.0</release>
+  <release>1.0.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -38,10 +38,9 @@
 
  <contents>
   <dir name="/">
-
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/StubManager" name="StubManager.php" role="php" />
+   <file baseinstalldir="MediaWiki/HTMLinMediaWikiNamespace" name="HTMLinMediaWikiNamespace.php" role="php" />
     <!-- }} -->
 
   </dir>
@@ -58,7 +57,7 @@
    <pearinstaller>
     <min>1.6.2</min>
    </pearinstaller>
-   
+ 
   </required>
  </dependencies>
 
@@ -71,12 +70,12 @@
  </phprelease>
 
 <changelog>
- <release>
-   <license uri="http://www.php.net/license">PHP License</license>
+<release>
+<license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Added double-quotes sanitization functionality to ExtHelper
+Initial Release
 </notes>
-  </release>
+</release>
 </changelog>
 
 </package>

@@ -738,6 +738,14 @@ class ExtHelper
 						$value = ltrim( $value, "\" \t\n\r\0\x0B" );
 						$value = rtrim( $value, "\" \t\n\r\0\x0B" );
 					}
+
+			// Remove leading & trailing single-quotes
+			if (isset( $ref_liste[ $key ]['sq'] ))
+					if ( $ref_liste[ $key ]['sq'] === true )
+					{
+						$value = ltrim( $value, "\' \t\n\r\0\x0B" );
+						$value = rtrim( $value, "\' \t\n\r\0\x0B" );
+					}
 						
 
 			// HTML sanitization

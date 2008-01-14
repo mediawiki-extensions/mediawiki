@@ -174,4 +174,3 @@ if ( !class_exists('ExtensionClass') )
 	echo 'ExtensionClass missing: Clipboard extension will not work!';	
 else
 	ClipboardClass::singleton();
-?>

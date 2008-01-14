@@ -1,0 +1,14 @@
+{{#img:image={{ImageClipboard_{{{1}}}}}|title="{{{2}}}"|onmousedown="return mwClipboard.{{{1}}}();"}}<noinclude>
+Configure the following Templates:
+* [[Template:ImageClipboard_show]]
+* [[Template:ImageClipboard_add]]
+* [[Template:ImageClipboard_paste]]
+* [[Template:ImageClipboard_empty]]
+Each of the aforementioned templates must contain a valid page title, e.g.:
+* Image:Clipboard_show.png
+And thus upload the necessary Images, e.g.:
+* [[Image:Clipboard_show.png]]
+* [[Image:Clipboard_add.png]]
+* [[Image:Clipboard_paste.png]]
+* [[Image:Clipboard_empty.png]]
+[[Template:Clipboard]]</noinclude>

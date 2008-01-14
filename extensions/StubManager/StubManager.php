@@ -731,11 +731,6 @@ class ExtHelper
 			
 		foreach( $liste as $key => &$value )
 		{
-			// HTML sanitization
-			if (isset( $ref_liste[ $key ]['s'] ))
-				if ( $ref_liste[ $key ]['s'] === true )
-					$value = htmlspecialchars( $value );
-						
 			// Remove leading & trailing double-quotes
 			if (isset( $ref_liste[ $key ]['dq'] ))
 					if ( $ref_liste[ $key ]['dq'] === true )
@@ -744,7 +739,11 @@ class ExtHelper
 						$value = rtrim( $value, "\" \t\n\r\0\x0B" );
 					}
 						
-			
+
+			// HTML sanitization
+			if (isset( $ref_liste[ $key ]['s'] ))
+				if ( $ref_liste[ $key ]['s'] === true )
+					$value = htmlspecialchars( $value );
 		}
 	}
 	/**

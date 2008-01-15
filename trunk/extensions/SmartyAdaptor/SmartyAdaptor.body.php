@@ -6,7 +6,7 @@
  * @Id $Id$
  */
 //<source lang=php>
-@require 'Smarty/Smarty.class.php';
+@include_once 'Smarty/Smarty.class.php';
 
 class SmartyAdaptor
 {

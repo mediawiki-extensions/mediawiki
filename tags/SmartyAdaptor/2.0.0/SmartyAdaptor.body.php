@@ -6,7 +6,7 @@
  * @Id $Id: SmartyAdaptor.body.php 923 2008-01-15 20:18:04Z jeanlou.dupont $
  */
 //<source lang=php>
-@require 'Smarty/Smarty.class.php';
+@include_once 'Smarty/Smarty.class.php';
 
 class SmartyAdaptor
 {

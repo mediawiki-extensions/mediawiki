@@ -30,6 +30,7 @@ class Ohloh
 		'account'	=> array( 'm' => true,  's' => true, 'l' => false, 'd' => null,   'sq' => true, 'dq' => true  ),
 		'ref'		=> array( 'm' => false, 's' => true, 'l' => false, 'd' => 'Tiny', 'sq' => true, 'dq' => true  ),
 		'alt'		=> array( 'm' => false, 's' => true, 'l' => true,  'd' => null,   'sq' => true, 'dq' => true  ),
+		'title'		=> array( 'm' => false, 's' => true, 'l' => true,  'd' => null,   'sq' => true, 'dq' => true  ),		
 		'width'		=> array( 'm' => false, 's' => true, 'l' => true,  'd' => '80',   'sq' => true, 'dq' => true  ),
 		'height'	=> array( 'm' => false, 's' => true, 'l' => true,  'd' => '15',   'sq' => true, 'dq' => true  ),		
 	);
@@ -67,6 +68,9 @@ class Ohloh
 	{
 		// check mandatory parameters
 		$sliste= ExtHelper::doListSanitization( $liste, self::$parameters );
+		if (empty( $sliste ))
+			return $this->getErrorMsg( self::codeListEmpty );
+		
 		if (!is_array( $sliste ) || empty( $sliste ))
 			return $this->getErrorMsg( self::codeMissingParameter, $sliste);
 

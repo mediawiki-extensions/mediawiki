@@ -32,6 +32,8 @@ For a complete description, please see the ''widgets'' section on Ohloh.
 | ref       || one of: Tiny, Rank, Detailed
 |-
 | alt		|| Alternate text to ''img'' element
+|-
+| title		|| Title text to ''img'' element
 |}
 
 <!--{{

@@ -1,25 +1,16 @@
 <?php
 /**
- * SmartyAdaptor.php
- * 
- * MediaWiki Extension
- * @author: Jean-Lou Dupont (http://www.bluecortex.com)
- * $Id$
- * $LastChangedRevision$
- *
- * Internationalisation file for SmartyAdaptor extension.
- *
- * @addtogroup Extensions
-*/
-
-$wgSmartyAdaptorMessages = array();
-
-$wgSmartyAdaptorMessages['en'] = array(
-	'smartyadaptor-smarty-classnotfound' => 'Smarty Adaptor Extension: Smarty class not found',
-	'smartyadaptor-proc-filenotfound' => 'Smarty Adaptor Extension: processor script <b>$1</b> not found',
-	'smartyadaptor-tpl-filenotfound'  => 'Smarty Adaptor Extension: template script <b>$1</b> not found',
-	'smartyadaptor-cfg-filenotfound'  => 'Smarty Adaptor Extension: config file <b>$1</b> not found',
-	'smartyadaptor-class-notfound'    => 'Smarty Adaptor Extension: class <b>$1</b> not found',	
-	#'' => '',	
+ * @author Jean-Lou Dupont
+ * @package SmartyAdaptor
+ * @version @@package-version@@
+ * @Id $Id$
+ */
+//<source lang=php>
+SmartyAdaptor::$msg['en'] = array(
+	'smartyadaptor'.SmartyAdaptor::codeDebug	=> 'Smarty available: $1, Cache Directory available: $2, Compile Directory available: $3, Cache Directory Writable: $4, Compile Directory Writable: $5',
+	'smartyadaptor'.SmartyAdaptor::codeOK		=> 'OK',
+	'smartyadaptor'.SmartyAdaptor::codeError	=> '<b>no!</b>',
+	'smartyadaptor'.SmartyAdaptor::codeAllOK	=> 'Service is functional.',	
+	#'' => '',
 );
-?>
+//</source>

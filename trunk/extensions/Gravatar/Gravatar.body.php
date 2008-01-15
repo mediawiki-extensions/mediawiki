@@ -81,7 +81,7 @@ class Gravatar
 		if ( $code !== true )
 			return $code;
 		
-		return "<img $src $attrListe/>";
+		return "<img src='$src' $attrListe/>";
 	}
 	/**
 	 *
@@ -122,7 +122,7 @@ class Gravatar
 		if (!empty( $size ))
 			$size = '&amp;size='.$size;
 			
-		return "src='http://www.gravatar.com/avatar.php?gravatar_id=${id}${default}${size}'";
+		return "http://www.gravatar.com/avatar.php?gravatar_id=${id}${default}${size}";
 	}
 	
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

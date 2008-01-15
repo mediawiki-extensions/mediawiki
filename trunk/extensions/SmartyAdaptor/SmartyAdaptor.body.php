@@ -66,11 +66,13 @@ class SmartyAdaptor
 	public function hsmarty( &$name, $tpl, &$params, &$result )
 	{
 		// means nothing happened
+		// also reports if the extension is at least present.
 		$result = '';
 		
 		if (empty( $params ))
 			return true;
-			
+		
+		// one less crashing potential!
 		if (!is_file( $tpl ))
 			return true;
 			
@@ -85,11 +87,12 @@ class SmartyAdaptor
 			$smarty->assign( $key, $value );
 		
 		$result = $smarty->fetch( $tpl );
-		
+
 		return true;	
 	}	
 	/**
 	 * Hook called during [[Special:Version]]
+	 * Used for displaying debug information to the sysop.
 	 */	
 	public function hSpecialVersionExtensionTypes( &$sp, &$ext )
 	{
@@ -108,7 +111,7 @@ class SmartyAdaptor
 		return true;
 	}
 	/**
-	 * Formats debug information
+	 * Formats the debug information
 	 */	
 	protected function getDebugInformation()
 	{
@@ -131,7 +134,7 @@ class SmartyAdaptor
 								$p1, $p2, $p3, $p4, $p5 );
 	}
 	/**
-	 * 
+	 * Gets useful debug information.
 	 */	
 	protected static function getInformation()
 	{

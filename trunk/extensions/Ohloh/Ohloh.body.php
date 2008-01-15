@@ -26,14 +26,14 @@ class Ohloh
 	 */
 	static $parameters = array(
 		// Parameters:
-		'account'	=> array( 'm' => true,  's' => true, 'l' => false, 'd' => null ),
-		'ref'		=> array( 'm' => false, 's' => true, 'l' => false, 'd' => 'Tiny' ),
-		'alt'		=> array( 'm' => false, 's' => true, 'l' => true,  'd' => null ),
-		'width'		=> array( 'm' => false, 's' => true, 'l' => true,  'd' => '80' ),
-		'height'	=> array( 'm' => false, 's' => true, 'l' => true,  'd' => '15' ),		
+		'account'	=> array( 'm' => true,  's' => true, 'l' => false, 'd' => null,   'sq' => true, 'dq' => true  ),
+		'ref'		=> array( 'm' => false, 's' => true, 'l' => false, 'd' => 'Tiny', 'sq' => true, 'dq' => true  ),
+		'alt'		=> array( 'm' => false, 's' => true, 'l' => true,  'd' => null,   'sq' => true, 'dq' => true  ),
+		'width'		=> array( 'm' => false, 's' => true, 'l' => true,  'd' => '80',   'sq' => true, 'dq' => true  ),
+		'height'	=> array( 'm' => false, 's' => true, 'l' => true,  'd' => '15',   'sq' => true, 'dq' => true  ),		
 	);
 	static $map = array(
-		'tiny'		=> array( 'ref' => 'Tiny',     'src' => '/images/icons/ohloh_profile.png' ),
+		'tiny'		=> array( 'ref' => 'Tiny',     'src' => 'http://www.ohloh.net/images/icons/ohloh_profile.png' ),
 		'rank'		=> array( 'ref' => 'Rank',     'src' => 'http://www.ohloh.net/accounts/$1/widgets/account_rank.gif' ),
 		'detailed'	=> array( 'ref' => 'Detailed', 'src' => 'http://www.ohloh.net/accounts/$1/widgets/account_detailed.gif' ),
 	);
@@ -71,7 +71,7 @@ class Ohloh
 
 		$attrListe = null;
 		$r = ExtHelper::doSanitization( $sliste, self::$parameters );
-		$attrListe = ExtHelper::buildList( $liste, self::$parameters );
+		$attrListe = ExtHelper::buildList( $sliste, self::$parameters );
 		
 		$account = $sliste['account'];
 		
@@ -95,6 +95,7 @@ EOF;
 	 */
 	protected function getSrc( &$account, $ref )	 
 	{
+		$ref = strtolower( $ref );
 		$src = self::$map[ $ref ]['src'];
 		
 		$a = str_replace('$1', $account, $src );

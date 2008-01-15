@@ -20,7 +20,7 @@ else
 	
 	StubManager::createStub2(	array(	'class' 		=> 'Ohloh', 
 										'classfilename'	=> dirname(__FILE__).'/Ohloh.body.php',
-										'mgs'			=> array( 'Ohloh' )
+										'mgs'			=> array( 'ohloh' )
 									)
 							);
 }

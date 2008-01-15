@@ -38,7 +38,7 @@ The second method to install this extension requires the use of the following ex
 * [[Extension:ToolboxExtender]]
 * [[Extension:ImageLink]] (at least version 1.5.1)
 # Install the extensions listed above
-# Download the file ''Clipboard.js'' and place contents in [[MediaWiki:Common.js]]
+# Download the file [http://mediawiki.googlecode.com/svn/trunk/extensions/Clipboard/Clipboard.js Clipboard.js] and place contents in [[MediaWiki:Common.js]]
 # Configure ''LocalSettings.php'' with '''$wgUseSiteJs=true;'''
 # Download [http://mediawiki.googlecode.com/svn/trunk/extensions/Clipboard/Clipboard.template.wikitext Clipboard Template] and create the page [[Template:Clipboard]]
 # Download [http://mediawiki.googlecode.com/svn/trunk/extensions/Clipboard/Clipboard_element.template.wikitext] and create the page [[Template:Clipboard_element]]

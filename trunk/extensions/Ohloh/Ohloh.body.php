@@ -66,7 +66,7 @@ class Ohloh
 	{
 		// check mandatory parameters
 		$sliste= ExtHelper::doListSanitization( $liste, self::$parameters );
-		if (!is_array( $sliste ))
+		if (!is_array( $sliste ) || empty( $sliste ))
 			return $this->getErrorMsg( self::codeMissingParameter, $sliste);
 
 		$attrListe = null;

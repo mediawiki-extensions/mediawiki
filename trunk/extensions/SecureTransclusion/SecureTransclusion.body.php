@@ -118,9 +118,11 @@ class SecureTransclusion
 	 *  
 	 *  case 2: Etag of remote page !== Etag of locally cached page
 	 *  		=> fetch remote page
+	 *				=> if cannot fetch, then case3.
 	 *  		=> store in cache (page & Etag)
 	 *  
 	 *  case 3: Etag of remote page NOT available
+	 *			=> clear local Etag
 	 *  		=> return locally cached page (if available)
 	 *  		=> if not available, try fetching it
 	 */	
@@ -177,6 +179,7 @@ class SecureTransclusion
 	 */
 	protected function doCase3( &$uri )
 	{
+		$this->deleteEtagInCache( $uri );
 		return $this->getFromCache( $uri );
 	}
 
@@ -225,6 +228,13 @@ class SecureTransclusion
 			return false;
 			
 		return $match[1];
+	}
+	/**
+	 * Delete Etag in cache
+	 */
+	protected function deleteEtagInCache( &$uri  )
+	{
+		return $this->saveInCache( $uri.'-etag', null, 1 /* can't do better I think */ );
 	}
 	/**
 	 * Save Etag in cache

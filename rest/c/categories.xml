@@ -35,6 +35,7 @@
 	<c xlink:href="/rest/c/SecureTransclusion/info.xml">SecureTransclusion</c>
 	<c xlink:href="/rest/c/SimpleScript/info.xml">SimpleScript</c>
 	<c xlink:href="/rest/c/Skin/info.xml">Skin</c>
+	<c xlink:href="/rest/c/Smarty/info.xml">Smarty</c>
 	<c xlink:href="/rest/c/Social/info.xml">Social</c>
 	<c xlink:href="/rest/c/StubManager/info.xml">StubManager</c>
 	<c xlink:href="/rest/c/TagToTemplate/info.xml">TagToTemplate</c>

@@ -43,7 +43,7 @@ For a complete description, please see the ''widgets'' section on Ohloh.
 
 == Dependancy ==
 * [[Extension:StubManager|StubManager extension version >= 1.1.0 ]]
-{{Pear|JSKitNavigator}}
+{{Pear|Ohloh}}
 
 == History ==
 {|border=1

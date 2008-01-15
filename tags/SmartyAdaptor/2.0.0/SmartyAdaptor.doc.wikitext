@@ -8,7 +8,7 @@
 |mediawiki   = 1.11 (should work on other versions)
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/SmartyAdaptor/ SVN]
 |readme      =
-|changelog   = See SVN ($Id: SmartyAdaptor.doc.wikitext 923 2008-01-15 20:18:04Z jeanlou.dupont $)
+|changelog   = See SVN ($Id: SmartyAdaptor.doc.wikitext 926 2008-01-15 20:30:35Z jeanlou.dupont $)
 |description = 
 |parameters  =
 |rights      =
@@ -26,6 +26,8 @@ Two directories must be accessible and '''writable''' by PHP / WEB Server:
 * ''$IP/smarty/cache'' 
 * ''$IP/smarty/compile''
 Where $IP is the global PHP variable denoting MediaWiki's installation path. E.g. ''/var/www/html/wiki''
+
+On Linux, one must use, as example, <pre>chown apache cache</pre> to make the directory writable for the owner ''apache''.
 
 == Hook ''smarty'' ==
 Other extensions use [[Extension:SmartyAdaptor]] for their templating needs through the ''hook'' '''smarty'''.

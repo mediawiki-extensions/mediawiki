@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package SmartyAdaptor
  * @version 2.0.0
- * @Id $Id: SmartyAdaptor.body.php 923 2008-01-15 20:18:04Z jeanlou.dupont $
+ * @Id $Id: SmartyAdaptor.body.php 926 2008-01-15 20:30:35Z jeanlou.dupont $
  */
 //<source lang=php>
 @include_once 'Smarty/Smarty.class.php';
@@ -74,6 +74,10 @@ class SmartyAdaptor
 		
 		// one less crashing potential!
 		if (!is_file( $tpl ))
+			return true;
+			
+		// bail out if we have already concluded that this service is non-operable			
+		if (!self::$allOK)
 			return true;
 			
 		$smarty = new Smarty();

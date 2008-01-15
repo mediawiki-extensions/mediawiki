@@ -1,8 +1,8 @@
 {* Smarty Adaptor Mediawiki extension -- Test Template *}
 {* $Id$ *}
 
-Variable: {$testvariable}
 <br/>
-Page: {$smarty.get.page}
+{$testvar}
+ ==== 
+{$testvar2}
 <br/>
-Server Name: {$smarty.server.SERVER_NAME}

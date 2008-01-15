@@ -76,6 +76,10 @@ class SmartyAdaptor
 		if (!is_file( $tpl ))
 			return true;
 			
+		// bail out if we have already concluded that this service is non-operable			
+		if (!self::$allOK)
+			return true;
+			
 		$smarty = new Smarty();
 		
 		// the caller *must* supply the full path to the template anyways

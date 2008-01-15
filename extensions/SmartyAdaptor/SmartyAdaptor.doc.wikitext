@@ -27,6 +27,8 @@ Two directories must be accessible and '''writable''' by PHP / WEB Server:
 * ''$IP/smarty/compile''
 Where $IP is the global PHP variable denoting MediaWiki's installation path. E.g. ''/var/www/html/wiki''
 
+On Linux, one must use, as example, <pre>chown apache cache</pre> to make the directory writable for the owner ''apache''.
+
 == Hook ''smarty'' ==
 Other extensions use [[Extension:SmartyAdaptor]] for their templating needs through the ''hook'' '''smarty'''.
 

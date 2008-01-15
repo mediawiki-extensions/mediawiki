@@ -17,6 +17,7 @@ class Ohloh
 	// Error Codes
 	const codeMissingParameter  = 1;
 	const codeInvalidRef  		= 2;
+	const codeListEmpty         = 3;
 
 	/*
 	 * m: mandatory parameter

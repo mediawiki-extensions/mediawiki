@@ -16,6 +16,9 @@
 
 <project name="build_local_pear" basedir="." default='all' >
 
+	<target name='all'>
+		<echo>Building local PEAR</echo>
+
 	<!-- CUSTOMIZATION HERE -->
 	<property name='source_channel' value='mediawiki.googlecode.com\/svn' />
 	<property name='destination_channel' value='localhost/mediawiki/local' />
@@ -30,9 +33,6 @@
 	<resolvepath propertyName="tags.path" file="${project.basedir}/../../tags" />
 	<resolvepath propertyName="dest.rest.path" file="${project.basedir}/../../local/rest/" />
 	<resolvepath propertyName="dest.tags.path" file="${project.basedir}/../../local/tags/" />
-
-	<target name='all'>
-		<echo>Building local PEAR</echo>
 
 <!--
 		<echo>Source REST directory: ${rest.path}</echo>
@@ -81,7 +81,7 @@
 	<target name='processOne'>
 		<uptodate property="processNotRequired" targetfile="${dest.tags.path}/${base_name}" 
 			srcfile="${tags.path}/${base_name}" />
-		<available file="${dest.tags.path}/${base_name}" property="file.available" value="true" />
+		<available file="${dest.tags.path}/${base_name}" property="file.available" />
 		<if>
 			<equals arg1="${file.available}" arg2="true"/>
 			<then></then>
@@ -92,7 +92,7 @@
 			</else>
 		</if>
 		<if>
-			<istrue value="${processNotRequired}"/>
+			<equals arg1="${processNotRequired}" arg2="true" />
 			<then></then>
 			<else>
 				<phingcall target="processThis">

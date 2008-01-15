@@ -3,6 +3,78 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
 			<p>
+				<n>Ohloh</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Social">Social</ca>
+				<l>$license$</l>
+				<s>Provides integration with http://www.ohloh.net</s>
+				<d>Provides integration with http://www.ohloh.net</d>
+				<r xlink:href="/rest/r/Ohloh">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>Ohloh</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Social">Social</ca>
+				<l>$license$</l>
+				<s>Provides integration with http://www.ohloh.net</s>
+				<d>Provides integration with http://www.ohloh.net</d>
+				<r xlink:href="/rest/r/Ohloh">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>Ohloh</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Social">Social</ca>
+				<l>$license$</l>
+				<s>Provides integration with http://www.ohloh.net</s>
+				<d>Provides integration with http://www.ohloh.net</d>
+				<r xlink:href="/rest/r/Ohloh">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>Ohloh</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Social">Social</ca>
+				<l>$license$</l>
+				<s>Provides integration with http://www.ohloh.net</s>
+				<d>Provides integration with http://www.ohloh.net</d>
+				<r xlink:href="/rest/r/Ohloh">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>JSKitNavigator</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/Social">Social</ca>

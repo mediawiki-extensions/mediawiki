@@ -27,6 +27,7 @@ class ImageLink
 	const codeMissingParameter  = 6;
 	const codeEmptyList  		= 7;
 	const codeRestrictedParam   = 8;
+	const codeListEmpty         = 9;
 	
 	/*
 	 * m: mandatory parameter
@@ -36,7 +37,7 @@ class ImageLink
 	 */
 	static $parameters = array(
 		'image'		=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null ),
-		'default'	=>array( 'm' => false, 's' => false, 'l' => false, 'd' => null ),		
+		'default'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => null ),		
 		'page'		=> array( 'm' => false, 's' => false, 'l' => false, 'd' => '' ),
 		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true ),
 		'height'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
@@ -258,6 +259,9 @@ class ImageLink
 		$liste = StubManager::processArgList( $params, true );
 		
 		$sliste= ExtHelper::doListSanitization( $liste, self::$parameters );
+		if (empty( $sliste ))
+			return $this->getErrorMsg( self::codeListEmpty );
+		
 		if (!is_array( $sliste ))
 			return $this->getErrorMsg( self::codeMissingParameter, $sliste);
 		

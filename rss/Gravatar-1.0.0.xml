@@ -6,12 +6,12 @@
 		<link>${rss.link}</link>
 		<description>${rss.description}</description>
 		<item>
-			<title>Ohloh - 1.0.0</title>
-			<link>http://jldupont.com/Extension:Ohloh</link>
+			<title>Gravatar - 1.0.0</title>
+			<link>http://jldupont.com/Extension:Gravatar</link>
 			<description>Changelog:
 Initial release
 			</description>
-			<pubDate>Tue, 15 Jan 08 10:39:26 -0500</pubDate>
+			<pubDate>Tue, 15 Jan 08 10:39:33 -0500</pubDate>
 		</item>
 	</channel>
 </rss>

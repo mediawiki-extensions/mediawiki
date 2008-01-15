@@ -9,16 +9,17 @@
 
 <project name="jldupont" basedir="." default='all' >
 
-	<taskdef classname='JLD.PhingTools.SvnStatusTask' name='svn_status' />
-	<taskdef classname='JLD.PhingTools.SvnAddTask' name='svn_add' />
-	<taskdef classname='JLD.PhingTools.SvnPropsetTask' name='svn_propset' />
-	<taskdef classname='JLD.PhingTools.FileSet2PropertyTask' name='fs2prop' />
-	<taskdef classname='JLD.PhingTools.Text2PngTask' name='txt2png' />
-	<taskdef classname='JLD.PhingTools.ReadFileTask' name='readfile' />
-
-	<resolvepath propertyName="r.path" file="${project.basedir}/../" />
-
 	<target name='all' >
+
+		<taskdef classname='JLD.PhingTools.SvnStatusTask' name='svn_status' />
+		<taskdef classname='JLD.PhingTools.SvnAddTask' name='svn_add' />
+		<taskdef classname='JLD.PhingTools.SvnPropsetTask' name='svn_propset' />
+		<taskdef classname='JLD.PhingTools.FileSet2PropertyTask' name='fs2prop' />
+		<taskdef classname='JLD.PhingTools.Text2PngTask' name='txt2png' />
+		<taskdef classname='JLD.PhingTools.ReadFileTask' name='readfile' />
+	
+		<resolvepath propertyName="r.path" file="${project.basedir}/../" />
+	
 
 		<delete includeemptydirs="true" quiet="Yes">
 			<fileset dir="${r.path}/_all">

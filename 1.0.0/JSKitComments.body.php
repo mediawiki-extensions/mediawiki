@@ -11,6 +11,8 @@ class JSKitComments
 	const thisType = 'other';
 	const thisName = 'JSKitComments';
 
+	var $scriptIncluded = false;
+	
 	/*
 	 * m: mandatory parameter
 	 * s: sanitization required

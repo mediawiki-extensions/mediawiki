@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+
+<!--
+	PHING build file for changing the PEAR channel identifier
+	throughout the REST structure
+	
+	@author Jean-Lou Dupont
+	@version $Id: build.xml 257 2007-11-16 16:13:27Z JeanLou.Dupont $
+-->
+
+<project name="jldupont" basedir="." default='all' >
+
+	<!--
+		CUSTOMIZE HERE
+		IMPORTANT NOTE: must adjust /r/$package/deps*.txt files !!
+		
+		e.g. s:28:"mediawiki.pear.jldupont.com"
+			 TO
+			 s:27:"mediawiki.pear.jldupont.com"
+		
+	-->
+	<property name="channel.from1"	value="mediawiki\.googlecode\.com\/svn" /> <!-- 28 chars -->
+	<property name="channel.to1" 	value="mediawiki.pear.jldupont.com" />  <!-- 27 chars -->
+
+	<property name="channel.from2"	value='s\:28\:"mediawiki\.googlecode\.com\/svn"' /> <!-- 28 chars -->
+	<property name="channel.to2" 	value='s:27:"mediawiki.pear.jldupont.com"' />  <!-- 27 chars -->
+	
+
+	<target name='all'>
+		<echo>From: (regex) ${channel.from1} and (regex) ${channel.from2}</echo>
+		<echo>To:   ${channel.to1} and ${channel.to2}</echo>
+
+		<!-- First file set -->
+		<fileset dir="${project.basedir}/../" id='file_set_1' >
+			<include name="**/*.xml" />
+			<include name="**/*.php" />
+			<include name="**/*.wikitext" />			
+			<include name="**/*.tpl" />
+			<exclude name=".build/**" />		
+		</fileset>
+
+		<!-- Second file set -->
+		<fileset dir="${project.basedir}/../" id='file_set_2' >
+			<include name="**/*.txt" />
+			<exclude name=".build/**" />					
+		</fileset>
+	
+		<!-- -->
+	
+		<reflexive>
+			<fileset refid='file_set_1' />
+			<filterchain>
+				<replaceregexp>
+					<regexp pattern="${channel.from1}" replace="${channel.to1}" ignoreCase="true"/>				
+				</replaceregexp>					
+			</filterchain>				
+		</reflexive>			
+
+		<reflexive>
+			<fileset refid='file_set_2' />
+			<filterchain>
+				<replaceregexp>									
+					<regexp pattern="${channel.from2}" replace="${channel.to2}" ignoreCase="true"/>				
+				</replaceregexp>									
+			</filterchain>				
+		</reflexive>			
+	
+	</target>
+
+</project>

@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2007-12-28</date>
- <time>21:04:42</time>
+ <date>2008-02-20</date>
+ <time>16:25:38</time>
 
  <version>
-  <release>1.3.1</release>
+  <release>1.3.2</release>
   <api>1.0.0</api>
  </version>
  
@@ -119,7 +119,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Fixed issue with parser function ''cuserfromgroup'' in [[Extension:UserTools]]
+Added magic word '#parsercacheexpire'' to [[Extension:ParserTools]]
 </notes>
 </release>
 </changelog>

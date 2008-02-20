@@ -1,10 +1,10 @@
 {{Extension
 |name        = ParserTools
-|status      = beta
+|status      = stable
 |type        = other
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
@@ -17,7 +17,7 @@
 }}
 == Purpose==
 This extension allows for disabling 'parser caching' on a per-page basis through the
-tag <nowiki><noparsercaching/></nowiki>.
+tag <nowiki><noparsercaching/></nowiki>. This extension also provides the magic word ''#parsercacheexpire'' used to control the expiration timeout of parser cached pages.
 
 == Dependancy ==
 * [[Extension:StubManager]] extension
@@ -25,3 +25,8 @@ tag <nowiki><noparsercaching/></nowiki>.
 {{Pear|ParserExt}}
 
 == History ==
+{|border=1
+! Release !! Notes
+|-
+| 1.1.0 || added magic word ''#parsercacheexpire''
+|}

@@ -28,6 +28,7 @@ Provides per-namespace and per-page header + footer inclusion.
 Edit the pages:
 * <code>MediaWiki:hf-nsheader-''namespace name'' </code>
 * <code>MediaWiki:hf-nsfooter-''namespace name'' </code>
+For the 'main' namespace, just use ''blank'' i.e. no string.
 === Per-Page Header and Footer ===
 Edit the pages:
 * <code>MediaWiki:hf-header-''page name'' </code>

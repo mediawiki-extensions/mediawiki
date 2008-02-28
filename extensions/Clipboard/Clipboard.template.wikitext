@@ -1,7 +1,0 @@
-{|
-| {{Clipboard_element|show|Show Clipboard}}
-| {{Clipboard_element|add|Add to Clipboard}}
-| {{Clipboard_element|paste|Paste Clipboard Contents}}
-| {{Clipboard_element|empty|Empty Clipboard}}
-|}
-<noinclude>[[Template:Clipboard_element]]</noinclude>

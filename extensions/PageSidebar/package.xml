@@ -7,10 +7,10 @@
 		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd 
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
- <name>SidebarWikiText</name>
+ <name>PageSidebar</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Provides per-page arbitrary wikitext for the sidebar</summary>
- <description>Provides per-page arbitrary wikitext for the sidebar</description>
+ <summary>Provides per-page sidebar</summary>
+ <description>Provides per-page sidebar</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -19,8 +19,8 @@
   <active>yes</active>
  </lead>
 
- <date>2008-01-15</date>
- <time>15:39:32</time>
+ <date>2008-02-28</date>
+ <time>02:08:53</time>
 
  <version>
   <release>1.0.0</release>
@@ -41,8 +41,8 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/SidebarWikiText" name="SidebarWikiText.php" role="php" />
-   <file baseinstalldir="MediaWiki/SidebarWikiText" name="SidebarWikiText.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/PageSidebar" name="PageSidebar.php" role="php" />
+   <file baseinstalldir="MediaWiki/PageSidebar" name="PageSidebar.body.php" role="php" />
     <!-- }} -->
 
   </dir>

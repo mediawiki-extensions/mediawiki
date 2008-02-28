@@ -7,5 +7,5 @@
  <n>Skin</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>Skin</a> <!-- alias? -->
- <d>Extension which adds the capability to include unrestricted wikitext in the toolbox area</d>
+ <d>Provides per-page sidebar</d>
 </c>

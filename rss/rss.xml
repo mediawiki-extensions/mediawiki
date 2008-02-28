@@ -8,23 +8,34 @@
 
 	
 	<item>
-			<title>ParserExt - 1.3.2</title>
-			<link>http://jldupont.com/Extension:ParserExt</link>
+			<title>PageSidebar - 1.0.0</title>
+			<link>http://jldupont.com/Extension:PageSidebar</link>
 			<description>Changelog:
-Added magic word '#parsercacheexpire'' to [[Extension:ParserTools]]
+Initial release
 			</description>
-			<pubDate>Wed, 20 Feb 08 11:25:41 -0500</pubDate>
+			<pubDate>Wed, 27 Feb 08 21:13:04 -0500</pubDate>
 		</item>
 
 
 	
 	<item>
 			<title>ParserExt - 1.3.1</title>
-			<link>http://jldupont.com/Extension:ParserExt</link>
+			<link>http://mediawiki.googlecode.com/svn</link>
 			<description>Changelog:
 Fixed issue with parser function ''cuserfromgroup'' in [[Extension:UserTools]]
 			</description>
-			<pubDate>Wed, 20 Feb 08 11:24:40 -0500</pubDate>
+			<pubDate>Fri, 28 Dec 07 16:04:46 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ParserExt - 1.3.2</title>
+			<link>http://jldupont.com/Extension:ParserExt</link>
+			<description>Changelog:
+Added magic word '#parsercacheexpire'' to [[Extension:ParserTools]]
+			</description>
+			<pubDate>Wed, 20 Feb 08 11:25:41 -0500</pubDate>
 		</item>
 
 

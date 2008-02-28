@@ -3,18 +3,18 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
 			<p>
-				<n>ToolboxExtender</n>
+				<n>PageSidebar</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/Skin">Skin</ca>
 				<l>$license$</l>
-				<s>Toolbox enhancement through wikitext</s>
-				<d>Extension which adds the capability to include unrestricted wikitext in the toolbox area</d>
-				<r xlink:href="/rest/r/ToolboxExtender">
+				<s>Provides per-page sidebar</s>
+				<d>Provides per-page sidebar</d>
+				<r xlink:href="/rest/r/PageSidebar">
 				</r>
 			</p>
 			<a>
 				<r>
-					<v>1.0.1</v>
+					<v>1.0.0</v>
 					<s>stable</s>
 				</r>
 			</a>

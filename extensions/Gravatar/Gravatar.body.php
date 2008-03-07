@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Jean-Lou Dupont
- * @package Ohloh
+ * @package Gravatar
  * @version @@package-version@@
  * @Id $Id$
  */

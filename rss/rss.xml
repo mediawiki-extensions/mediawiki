@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>Quimble - 1.0.0</title>
+			<link>http://jldupont.com/Extension:Quimble</link>
+			<description>Changelog:
+Initial release - support for http://quimble.com polls.
+			</description>
+			<pubDate>Fri, 07 Mar 08 09:25:47 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>PageSidebar - 1.0.0</title>
 			<link>http://jldupont.com/Extension:PageSidebar</link>
 			<description>Changelog:

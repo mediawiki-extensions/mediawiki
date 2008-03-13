@@ -12,7 +12,7 @@
 |description = 
 |parameters  =
 |rights      =
-|example     =
+|example     = see [http://jldupont.com/Extension:Quimble]
 }}
 == Purpose ==
 Provides integration with [http://Quimble.com/ Quimble].
@@ -23,12 +23,10 @@ Just use the following parser function <nowiki>{{#quimble_poll: index=index_of_p
 == Example ==
 <nowiki>{{#quimble_poll: index=9257 }}</nowiki> This will show the "Which OS do you run?" poll.
 
-<!--{{
 == Example ==
-[[{{FULLPAGENAMEE}}/Tests]]
-}}-->
+{{#quimble_poll: index=9257}}
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension version >= 1.1.0 ]]
 {{Pear|Gravatar}}
 

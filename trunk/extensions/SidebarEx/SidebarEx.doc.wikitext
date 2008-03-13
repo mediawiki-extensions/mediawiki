@@ -28,13 +28,8 @@ Provides a means of adding page links to the 'sidebar' based on group membership
 * Per-Namespace sidebars using 'MediaWiki:Sidebar/Ns/...namespace name here...'
 
 == Usage Note ==
-This extension replaces the standard sidebar defined at [[MediaWiki:Sidebar]]. The new default sidebar
+This extension adds to the standard sidebar defined at [[MediaWiki:Sidebar]]. The new default sidebar
 is located at [[MediaWiki:Sidebar/*]].
-
-== DEPENDANCY ==
-* ExtensionClass extension (>v1.5)
-** Tested Compatibility:  MW 1.10
-** Patches for MW 1.8.x and MW 1.9.x available
 
 === Parameters ===
 <source lang='php'>
@@ -48,11 +43,9 @@ $bwSidebarPage = 'Sidebars';
 $bwSidebarSearch = array ('somegroup', 'sysop', 'user', '*' );
 </source>
 
-== INSTALLATION NOTES ==
+== CONFIGURATION NOTES ==
 === Group membership based sidebars ===
 <pre>
- Add to LocalSettings.php:
- 
  1) Define (if desired) the base namespace where the pages will be fetched:
     $bwSidebarNs = NS_ADMIN;  // must be defined prior
  
@@ -67,10 +60,6 @@ $bwSidebarSearch = array ('somegroup', 'sysop', 'user', '*' );
 		MediaWiki:Sidebar/sysop
 		MediaWiki:Sidebar/user
 		MediaWiki:Sidebar/*
- 
- 4) Include the required scripts: 
-  require("extensions/ExtensionClass.php");
-  require("extensions/SidebarEx/SidebarEx.php");
 </pre>
 === Per-User sidebars ===
 Edit the page 'User:username/Sidebar'.

@@ -7,7 +7,7 @@
 |version     = 1.0.0
 |update      =
 |mediawiki   = 1.82, 1.93, 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/SidebarEx SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 

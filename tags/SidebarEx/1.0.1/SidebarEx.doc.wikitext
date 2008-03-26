@@ -9,7 +9,7 @@
 |mediawiki   = 1.82, 1.93, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/SidebarEx SVN]
 |readme      =
-|changelog   = See SVN ($Id: SidebarEx.doc.wikitext 944 2008-03-16 19:59:24Z jeanlou.dupont $)
+|changelog   = See SVN ($Id: SidebarEx.doc.wikitext 945 2008-03-26 01:17:45Z jeanlou.dupont $)
 |description = 
 |parameters  =
 |rights      =

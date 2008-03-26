@@ -39,6 +39,24 @@
 		</pi>
 		<pi>
 			<p>
+				<n>SidebarEx</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Skin">Skin</ca>
+				<l>$license$</l>
+				<s>Summary...</s>
+				<d>Description...</d>
+				<r xlink:href="/rest/r/SidebarEx">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.1</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>PageSidebar</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/Skin">Skin</ca>

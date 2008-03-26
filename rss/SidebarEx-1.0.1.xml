@@ -11,7 +11,7 @@
 			<description>Changelog:
 Removed integration with default MediaWiki sidebar as it was causing some non-deterministic behavior.
 			</description>
-			<pubDate>Tue, 25 Mar 08 21:16:47 -0400</pubDate>
+			<pubDate>Tue, 25 Mar 08 21:28:03 -0400</pubDate>
 		</item>
 	</channel>
 </rss>

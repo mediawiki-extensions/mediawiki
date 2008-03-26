@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
  <n>SidebarEx</n>
  <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/Skin">Skin</ca>
- <l>PHP License</l>
- <s>Provides customization for the sidebar.</s>
- <d>See [http://mediawiki.org/wiki/Extension:SidebarEx].</d>
+ <ca xlink:href="/rest/Skin">Skin</ca>
+ <l>$license$</l>
+ <s></s>
+ <d></d>
  <r xlink:href="/rest/r/sidebarex"/>
 </p>

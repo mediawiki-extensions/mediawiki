@@ -4,7 +4,7 @@
 |type        = mywiki
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.82, 1.93, 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/SidebarEx SVN]
@@ -28,7 +28,7 @@ Provides a means of adding page links to the 'sidebar' based on group membership
 * Per-Namespace sidebars using 'MediaWiki:Sidebar/Ns/...namespace name here...'
 
 == Usage Note ==
-This extension adds to the standard sidebar defined at [[MediaWiki:Sidebar]]. The new default sidebar
+This extension replaces to the standard sidebar defined at [[MediaWiki:Sidebar]]. The new default sidebar
 is located at [[MediaWiki:Sidebar/*]].
 
 === Parameters ===
@@ -73,8 +73,10 @@ Examples:
 {{Pear|SidebarEx}}
 
 == History ==
-* Corrected bug with article validity checking (e.g. affects BizzWiki fresh installs)
-* Moved singleton invocation to address some PHP warning
-* Added 'per-user' sidebars
-* Added 'per-namespace' sidebars
-* Fix for PHP warning when NS_MAIN is not defined (Thanks Dr DBW)
+{|border=1
+! Release !! Notes
+|-
+| 1.0.0 || Initial Release
+|-
+| 1.0.1 || Removed integration of default sidebar
+|}

@@ -3,6 +3,24 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
 			<p>
+				<n>SidebarEx</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Skin">Skin</ca>
+				<l>$license$</l>
+				<s>Summary...</s>
+				<d>Description...</d>
+				<r xlink:href="/rest/r/SidebarEx">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.1</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>PageSidebar</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/Skin">Skin</ca>
@@ -33,24 +51,6 @@
 			<a>
 				<r>
 					<v>1.0.1</v>
-					<s>stable</s>
-				</r>
-			</a>
-		</pi>
-		<pi>
-			<p>
-				<n>SidebarEx</n>
-				<c>mediawiki.googlecode.com/svn</c>
-				<ca xlink:href="/rest/c/Skin">Skin</ca>
-				<l>PHP License</l>
-				<s>Provides customization of the sidebar.</s>
-				<d>See [http://mediawiki.org/wiki/Extension:SidebarEx]</d>
-				<r xlink:href="/rest/r/sidebarex">
-				</r>
-			</p>
-			<a>
-				<r>
-					<v>1.0.0</v>
 					<s>stable</s>
 				</r>
 			</a>

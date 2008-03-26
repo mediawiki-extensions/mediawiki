@@ -2,7 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package SidebarEx
- * @version $Id$
+ * @version $Id: SidebarEx.body.php 528 2007-10-11 23:00:03Z jeanlou.dupont $
  */
 //<source lang=php>
 class SidebarEx
@@ -10,7 +10,7 @@ class SidebarEx
 	// constants.
 	const thisName = 'SidebarEx';
 	const thisType = 'other';  // must use this type in order to display useful info in Special:Version
-	const id       = '$Id$';	
+	const id       = '$Id: SidebarEx.body.php 528 2007-10-11 23:00:03Z jeanlou.dupont $';	
 	
 	// default values
 	static $baseNs   = NS_MEDIAWIKI;  	// default namespace

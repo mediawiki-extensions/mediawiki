@@ -43,10 +43,10 @@ class SidebarEx
 		$nbar = $this->doNsSidebar();		
 		
 		// get current sidebar text
-		$cbar = $tpl->data['sidebar'];
+		#$cbar = $tpl->data['sidebar'];
 
 		// add our own here
-		$tpl->set( 'sidebar', array_merge($cbar, $gbar, $nbar, $ubar) );		
+		$tpl->set( 'sidebar', array_merge(/*$cbar,*/ $gbar, $nbar, $ubar) );		
 		
 		return true;
 	}

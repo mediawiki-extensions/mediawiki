@@ -12,7 +12,7 @@ else
 	global $wgExtensionCredits;
 	$wgExtensionCredits['other'][] = array( 
 		'name'    		=> 'SidebarEx',
-		'version'		=> '1.0.0',
+		'version'		=> '1.0.1',
 		'author'		=> 'Jean-Lou Dupont',
 		'url'			=> 'http://www.mediawiki.org/wiki/Extension:SidebarEx',	
 		'description' 	=> "Provides customizable sidebars.", 

@@ -20,7 +20,7 @@
  </lead>
 
  <date>2008-03-26</date>
- <time>01:13:38</time>
+ <time>01:16:46</time>
 
  <version>
   <release>1.0.1</release>
@@ -41,9 +41,8 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki" name="SidebarEx/SidebarEx.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="SidebarEx/SidebarEx.body.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="SidebarEx/SidebarEx.doc.wikitext" role="doc" />
+   <file baseinstalldir="MediaWiki/SidebarEx" name="SidebarEx.php" role="php" />
+   <file baseinstalldir="MediaWiki/SidebarEx" name="SidebarEx.body.php" role="php" />
     <!-- }} -->
 
   </dir>

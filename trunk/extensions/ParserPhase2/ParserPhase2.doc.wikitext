@@ -5,9 +5,9 @@
 |type        = Parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.1.0
+|version     = 1.1.1
 |update      =
-|mediawiki   = 1.10, 1.11
+|mediawiki   = 1.10, 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ParserPhase2/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
@@ -101,6 +101,13 @@ There are some limitations in the usage of this extension with wikitext based ta
 * Removed unused variable in order to avoid unecessary PHP notice
 === 1.1.0 ===
 * Added 'master off' functionality
+
+{|border=1
+! Release !! Notes
+|-
+| 1.1.1 || Fixed for MediaWiki 1.12 compatiblity
+|}
+
 
 == TODO ==
 * possibly fix to allow mixing up (($..$)) and ((..)) patterns on the same page (TBD)

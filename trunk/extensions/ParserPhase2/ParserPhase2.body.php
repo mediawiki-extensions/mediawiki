@@ -211,6 +211,11 @@ class ParserPhase2
 	{
 		// ask our friendly MW parser for its help.
 		global $wgParser;
+		
+		// MW1.12 compatibility
+		if ( !isset( $wgParser->mOptions ))
+			$wgParser->mOptions = new ParserOptions();
+	
 		$value = $wgParser->getVariableValue( $varid );
 		
 		return $value;

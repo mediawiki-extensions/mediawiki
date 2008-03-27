@@ -8,12 +8,23 @@
 
 	
 	<item>
+			<title>ParserPhase2 - 1.1.1</title>
+			<link>http://jldupont.com/Extension:ParserPhase2</link>
+			<description>Changelog:
+
+			</description>
+			<pubDate>Thu, 27 Mar 08 13:54:44 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SidebarEx - 1.0.1</title>
 			<link>http://jldupont.com/Extension:SidebarEx</link>
 			<description>Changelog:
 Removed integration with default MediaWiki sidebar as it was causing some non-deterministic behavior.
 			</description>
-			<pubDate>Tue, 25 Mar 08 21:13:40 -0400</pubDate>
+			<pubDate>Tue, 25 Mar 08 21:28:03 -0400</pubDate>
 		</item>
 
 

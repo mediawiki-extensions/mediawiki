@@ -7,7 +7,7 @@
 |image       =
 |version     = 1.0.1
 |update      =
-|mediawiki   = 1.10 1.11
+|mediawiki   = 1.10, 1.11, 1.12
 |download    = see Installation
 |readme      =
 |changelog   = See SVN ($Id: SecurePHP.php 782 2007-09-16 01:22:37Z jeanlou.dupont $)

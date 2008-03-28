@@ -40,6 +40,12 @@ class AutoRedirect
 		$title   = Title::makeTitle( $ns, $page );
 		if ( $title->exists() )
 			return null;
+
+		$article = new Article( $title );
+		
+		// paranoia
+		if ( $article->getID() !=0 )
+			return null;			
 			
 		// the source page where the redirect should be created
 		// does not exist currently. Great.

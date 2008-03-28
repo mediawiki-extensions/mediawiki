@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>AutoRedirect - 1.0.1</title>
+			<link>http://jldupont.com/Extension:AutoRedirect</link>
+			<description>Changelog:
+* Fixed small bug due to porting
+			</description>
+			<pubDate>Fri, 28 Mar 08 14:20:28 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>ParserPhase2 - 1.1.1</title>
 			<link>http://jldupont.com/Extension:ParserPhase2</link>
 			<description>Changelog:

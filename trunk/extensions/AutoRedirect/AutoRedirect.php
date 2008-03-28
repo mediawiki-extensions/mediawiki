@@ -5,9 +5,9 @@
  * @version @@package-version@@
  * @Id $Id$
  */
-if (class_exist('StubManager'))
+if (class_exists('StubManager'))
 {
-	$wgExtensionCredits[AutoRedirect::thisType][] = array( 
+	$wgExtensionCredits['other'][] = array( 
 		'name'    => 'AutoRedirect',
 		'version' => '@@package-version@@',
 		'author'  => 'Jean-Lou Dupont',

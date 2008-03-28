@@ -4,9 +4,9 @@
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
-|mediawiki   = 1.10
+|mediawiki   = 1.10, 1.11
 |download    = [http://mediawiki.googlecode.com/svn/tags/AutoRedirect/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
@@ -30,6 +30,11 @@ E.g. [[current page|alternateText]]
 {{Pear|AutoRedirect}}
 
 == History ==
+{|border=1
+! Release !! Notes
+|-
+| 1.0.1 || Fixed minor porting bug
+|}
 
 == Todo ==
 * Prevent showing the newly create redirect page - stay on the current page.

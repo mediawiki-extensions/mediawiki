@@ -29,7 +29,8 @@ class ImageLink
 	const codeRestrictedParam   = 8;
 	const codeListEmpty         = 9;
 	
-	/*
+	/* Parameters for {{#img}} magic word
+	 * 
 	 * m: mandatory parameter
 	 * s: sanitization required
 	 * l: which parameters to pick from list
@@ -45,7 +46,8 @@ class ImageLink
 		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
 		'title' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
 		'border'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
-
+		'class'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		
 		// Events
 		// Restricted parameters
 		'onchange'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
@@ -69,6 +71,51 @@ class ImageLink
 		'onmouseover'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
 		'onmouseup'	 => array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
 	);
+	/* Parameters for {{#iconlink}} magic word
+	 * 
+	 * m: mandatory parameter
+	 * s: sanitization required
+	 * l: which parameters to pick from list
+	 * d: default value
+	 */
+	static $parametersIconLink = array(
+		'site'		=> array( 'm' => true,  's' => false, 'l' => false, 'd' => '' ),
+		'domaincheck'=> array( 'm' => false,'s' => false, 'l' => false, 'd' => 'y' ),		
+		
+		// same as for #img
+		'default'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => null ),		
+		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true ),
+		'height'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		'width' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		'title' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		'border'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		'class'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
+		
+		// Events
+		// Restricted parameters
+		'onchange'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onsubmit'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onreset'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onselect'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+
+		'onblur'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onfocus'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		
+		'onkeydown'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onkeyup'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onkeypress'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+
+		'onclick'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'ondblclick'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+
+		'onmousedown'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onmousemove'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onmouseout' => array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onmouseover'=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+		'onmouseup'	 => array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true, 'r' => true  ),
+	);
+
 	/**
 	 * Initialize the messages
 	 */
@@ -219,11 +266,24 @@ class ImageLink
 			$aClass = 'class="extiw"';
 		}
 		
-		$anchor_open = "<a ".$aClass." href='${tURL}'>";
-		$anchor_close = "</a>";
+		$this->formatLinkAnchor( $tURL, $anchor_open, $anchor_close );
 
 		return true;
 	}
+	/**
+	 * Formats an HTML anchor
+	 * 
+	 * @return $this
+	 * @param $url string
+	 * @param $anchor_open string
+	 * @param $anchor_close string
+	 */	
+	protected function formatLinkAnchor( &$url, &$anchor_open, &$anchor_close )
+	{
+		$anchor_open = "<a ".$aClass." href='${url}'>";
+		$anchor_close = "</a>";
+		return $this;
+	}	
 	
 	/**
 	 * {{#img:  image=image-page 
@@ -231,7 +291,8 @@ class ImageLink
 	 *			[|alt=alternate-text]
 	 *			[|height=height-parameter]
 	 *			[|width=width-parameter]	 
-	 *			[|border=border-parameter]	 
+	 *			[|border=border-parameter]
+	 *			[|class=class-parameter]
 	 *			[|title=title-parameter]
 	 *			[|default=image-page-used-for-default]
 	 *			[|onchange=onchange-handler]
@@ -282,15 +343,155 @@ class ImageLink
 		return array( $html, 'noparse' => true, 'isHTML' => true );			
 	}
 	/**
+	 * {{#iconlink:  
+	 *			[|site=url-of-page] 
+	 *			[|domaincheck=y|n] 
+	 *			[|alt=alternate-text]
+	 *			[|height=height-parameter]
+	 *			[|width=width-parameter]	 
+	 *			[|border=border-parameter]	 
+	 *			[|class=class-parameter]	 
+	 *			[|title=title-parameter]
+	 *			[|default=image-page-used-for-default]
+	 *			[|onchange=onchange-handler]
+	 *			[|onsubmit=onsubmit-handler]	 
+	 *			[|onreset=onreset-handler]	 
+	 *			[|onselect=onselect-handler]	 
+	 *			[|onblur=onblur-handler]	 
+	 *			[|onfocus=onfocus-handler]	 
+	 *			[|onkeydown=onkeydown-handler]	 
+	 *			[|onkeyup=onkeyup-handler]	 
+	 *			[|onkeypress=onkeypress-handler]	 
+	 *			[|onclick=onclick-handler]	 
+	 *			[|ondblclick=ondblclick-handler]
+	 *			[|onmousedown=onmousedown-handler]
+	 *			[|onmousemove=onmousemove-handler]	 
+	 *			[|onmouseout=onmouseout-handler]	 	 
+	 *			[|onmouseover=onmouseover-handler]	 	 	 
+	 *			[|onmouseup=onmouseup-handler]	 	 	 
+	 * }} 
+	 */
+	public function mg_iconlink( &$parser )
+	{
+		$params = func_get_args();
+		
+		$liste = StubManager::processArgList( $params, true );
+		
+		$sliste= ExtHelper::doListSanitization( $liste, self::$parametersIconLink );
+		if (empty( $sliste ))
+			return $this->getErrorMsg( self::codeListEmpty );
+		
+		if (!is_array( $sliste ))
+			return $this->getErrorMsg( self::codeMissingParameter, $sliste);
+		
+		ExtHelper::doSanitization( $sliste, self::$parameters );
+		
+		$result = ExtHelper::checkListForRestrictions( $sliste, self::$parametersIconLink );
+		$title  = $parser->mTitle;
+		
+		// first check for restricted parameter usage
+		$check = $this->checkRestrictionStatus( $title, $result );
+		if ($this->isError( $check ))
+			return $this->getErrorMsg( $check, $result );
+		
+		//
+		$site = $liste['site'];		
+		$domainCheckParam = $liste['domaincheck'];
+		$domainCheck = $this->extractBoolean( $domainCheckParam );
+		
+		$iconURL = $this->getFavicon( $site );
+				
+		//
+		$html = $this->buildHTMLfromList( $sliste, self::$parametersIconLink );		
+		if ($this->isError( $html ))
+			return $this->getErrorMsg( $html );
+					
+		return array( $html, 'noparse' => true, 'isHTML' => true );			
+	}
+	
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// IconLink functionality helpers	
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	/**
+	 * Retrieves the 'favicon' from the site pointed to by $url.
+	 * Currently, only the /favicon.ico icon is looked for.
+	 * 
+	 * @TODO: parse the root web page for the <link 'rel' ...>
+	 * 
+	 * @return string URL to favicon
+	 * @return null if none exists or isn't available
+	 * @param $url string
+	 */
+	protected function getFavicon( &$url )
+	{
+		$icoURL = $url.'/favicon.ico';
+		
+		if ( $this->validateURI( $icoURL ) === false )	
+			return null;
+
+		// check if the icon uri exists
+		$responseHeader = @get_headers( $icoURL );
+		$exists = !( strpos( $responseHeader, '200 OK' ) === FALSE );
+		
+		if ( !exists )
+			return null;
+		
+		return $icoURL;
+	}
+	/**
+	 * Validates a given URI using PEAR::Validate package
+	 * 
+	 * @param string $uri
+	 * @return boolean (if the function was able to perform the validation)
+	 * @return null if PEAR::Validate package isn't available
+	 */	
+	protected function validateURI( &$uri, $domainCheck = true )
+	{
+		@include_once 'Validate.php';
+		if (!class_exists( 'Validate' ))
+			return null;
+			
+		$validate = new Validate;
+		
+		return $validate->uri( $uri, array( 'domain_check' => $domainCheck ) );
+	}
+	/**
+	 * Extracts a 'boolean'
+	 * 
+	 * @return boolean
+	 * @param $param string
+	 */
+	protected function extractBoolean( $param )
+	{
+		$lc = strtolower( $param );
+		$result = false;
+		switch( $lc )
+		{
+			case 'y':
+			case '1':
+			case 'yes':
+				$result = true;
+				break;
+		}
+		return $result;
+	}
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// 	
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	
+	/**
 	 * @return false invalid image page title
 	 * @return null  invalid target title
 	 * @return -1    local article does not exist
 	 */
-	protected function buildHTMLfromList( &$liste, &$ref_liste )
+	protected function buildHTMLfromList( &$liste, &$ref_liste, &$img_url = null )
 	{
-		$img_url = $this->getImageURL( $liste['image'], $liste['default'] );
-		if ($this->isError( $img_url ))
-			return $img_url;
+		if ( $img_url === null )
+		{
+			$img_url = $this->getImageURL( $liste['image'], $liste['default'] );
+			if ($this->isError( $img_url ))
+				return $img_url;
+		}
 		
 		$page = $liste['page'];
 		
@@ -306,6 +507,11 @@ class ImageLink
 		
 		return $anchor_open."<img src='${img_url}' $params />".$anchor_close;
 	}
+	protected function buildHTMLfromList2( &$liste, &$ref_liste )
+	{
+		
+	}
+	
 	/**
 	 * Returns 'true' if the code provided constitute an error code
 	 */

@@ -6,7 +6,7 @@
 |version     = 1.0.0
 |update      =
 |mediawiki   = 1.11 (should work on other versions)
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/SmartyAdaptor/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/SmartyAdaptor/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 

@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>StubManager - 1.2.1</title>
+			<link>http://jldupont.com/Extension:StubManager</link>
+			<description>Changelog:
+Fixed issue #14
+			</description>
+			<pubDate>Wed, 02 Apr 08 15:02:58 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>PageServer - 2.0.0</title>
 			<link>http://jldupont.com/Extension:PageServer</link>
 			<description>Changelog:

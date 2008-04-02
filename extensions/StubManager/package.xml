@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2008-01-14</date>
- <time>15:27:16</time>
+ <date>2008-04-02</date>
+ <time>19:02:57</time>
 
  <version>
-  <release>1.2.0</release>
+  <release>1.2.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -74,7 +74,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Added double-quotes sanitization functionality to ExtHelper
+Fixed issue #14
 </notes>
   </release>
 </changelog>

@@ -128,7 +128,7 @@ require 'extensions/StubManager/StubManager.php';
 * Added 'auto-discovery' of [[Extension:ExtensionManager]]
 * Added 'getRevision' method.
 
-{|border=1 class='sortable'
+{|border=1 class='datatable'
 ! Version !! Notes
 |-
 | 1.0.1 || Adjusted for newest version of [[Extension:ExtensionManager]]
@@ -148,5 +148,7 @@ require 'extensions/StubManager/StubManager.php';
 | 1.1.1 || Minor bug fix
 |-
 | 1.2.0 || Added single/double-quotes sanitization to ExtHelper, Added check for ''restricted'' parameters
+|-
+| 1.2.1 || Fixed ''style'' for Special:Version
 |}
 

@@ -6,7 +6,7 @@
 |version     = 2.0.0
 |update      =
 |mediawiki   = 1.11 (should work on other versions)
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/HeaderFooter/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/HeaderFooter/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 

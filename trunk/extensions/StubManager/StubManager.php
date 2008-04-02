@@ -264,12 +264,22 @@ class StubManager
 		
 		$result = null;
 		
+		// style formatting
+		$first = true;
+		
 		if (!empty( self::$stubList ))
 			foreach( self::$stubList as $index => $obj )
 			{
-				$result .= '['.self::MWbaseURI.'/Extension:'.$obj['class'].' '.$obj['class']."],  ";
-				if ( $index % 4 == 0 )
+				if ( !$first )
+					$result .= ',  ';
+
+				if ( $index % 4 == 0 && !$first )
 					$result .= "<br/>";
+					
+				$result .= '['.self::MWbaseURI.'/Extension:'.$obj['class'].' '.$obj['class']."]";
+					
+				if ( $first === true )
+					$first = false;
 			}
 				
 		$result=trim($result);

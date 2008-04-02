@@ -13,6 +13,7 @@
 	<c xlink:href="/rest/c/Backup/info.xml">Backup</c>
 	<c xlink:href="/rest/c/Enhancements/info.xml">Enhancements</c>
 	<c xlink:href="/rest/c/ExtensionManager/info.xml">ExtensionManager</c>
+	<c xlink:href="/rest/c/ExtensionServices/info.xml">ExtensionServices</c>
 	<c xlink:href="/rest/c/Google/info.xml">Google</c>
 	<c xlink:href="/rest/c/GroupManager/info.xml">GroupManager</c>
 	<c xlink:href="/rest/c/HeadScripts/info.xml">HeadScripts</c>

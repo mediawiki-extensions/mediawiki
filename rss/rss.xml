@@ -8,12 +8,23 @@
 
 	
 	<item>
+			<title>PageServer - 2.0.0</title>
+			<link>http://jldupont.com/Extension:PageServer</link>
+			<description>Changelog:
+New revamped version
+			</description>
+			<pubDate>Wed, 02 Apr 08 11:30:30 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>AutoRedirect - 1.0.1</title>
 			<link>http://jldupont.com/Extension:AutoRedirect</link>
 			<description>Changelog:
 * Fixed small bug due to porting
 			</description>
-			<pubDate>Fri, 28 Mar 08 14:20:28 -0400</pubDate>
+			<pubDate>Fri, 28 Mar 08 14:28:12 -0400</pubDate>
 		</item>
 
 

@@ -122,7 +122,7 @@ class Gravatar
 		if (!empty( $size ))
 			$size = '&amp;size='.$size;
 			
-		return "http://www.gravatar.com/avatar.php?gravatar_id=${id}${default}${size}";
+		return "http://en.gravatar.com/avatar/${id}${default}${size}";
 	}
 	
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

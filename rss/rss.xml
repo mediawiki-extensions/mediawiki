@@ -8,6 +8,19 @@
 
 	
 	<item>
+			<title>ImageLink - 1.6.0</title>
+			<link>http://jldupont.com/Extension:ImageLink</link>
+			<description>Changelog:
+- Added #iconlink parser function (image link with favicon support)
+			- Added 'target' attribute for anchor element
+			- Added 'content' attribute for anchor's content
+			</description>
+			<pubDate>Thu, 03 Apr 08 10:55:55 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>StubManager - 1.2.1</title>
 			<link>http://jldupont.com/Extension:StubManager</link>
 			<description>Changelog:

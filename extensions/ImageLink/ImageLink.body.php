@@ -82,7 +82,7 @@ class ImageLink
 	 */
 	static $parametersIconLink = array(
 		'site'		 => array( 'm' => true,  's' => false, 'l' => false, 'd' => '' ),
-		'domaincheck'=> array( 'm' => false,'s' => false, 'l' => false, 'd' => 'y' ),		
+		'domaincheck'=> array( 'm' => false,'s' => false, 'l' => false,  'd' => 'n' ),		
 		
 		// same as for #img
 		'default'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => null ),		
@@ -410,7 +410,7 @@ class ImageLink
 		
 		// Normalize domainCheck parameter
 		$site = $liste[ 'site' ];
-		$domainCheckParam = $liste['domaincheck'];
+		$domainCheckParam = @$liste['domaincheck'];
 		$domainCheck = $this->extractBoolean( $domainCheckParam );
 		
 		$iconURL = $this->getFavicon( $site, $domainCheck );

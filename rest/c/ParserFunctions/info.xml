@@ -7,6 +7,5 @@
  <n>ParserFunctions</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>ParserFunctions</a> <!-- alias? -->
- <d>Provides a facility to perform a 'second pass' through a 'parser cached' page replacing for 
-'dynamic' variables.</d>
+ <d>Provides link/link-free image anchors</d>
 </c>

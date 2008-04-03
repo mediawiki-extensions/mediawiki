@@ -30,7 +30,7 @@ class PreloadManager
 		return $this->getPageContents( NS_MEDIAWIKI, $tpl_page );
 	}
 	/**
-	 *
+	 * Returns a page's content or NULL
 	 */
 	protected function getPageContents( $ns, $page )
 	{
@@ -44,9 +44,7 @@ class PreloadManager
 		if( is_object( $rev ) )
 		    $contents = $rev->getText();		
 		
-		$toinclude = $this->getIncludeOnly( $contents );
-		
-		return $toinclude;		
+		return $this->getIncludeOnly( $contents );
 	}	
 	/**
 	 * Only 1 includeonly section supported.

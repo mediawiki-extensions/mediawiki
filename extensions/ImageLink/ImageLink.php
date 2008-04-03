@@ -22,7 +22,7 @@ else
 								null,						// hooks
 								false, 						// no need for logging support
 								null,						// tags
-								array('imagelink', 'imagelink_raw', 'img' ),	// parser Functions
+								array('imagelink', 'imagelink_raw', 'img', 'iconlink' ),	// parser Functions
 								null
 							 );
 //</source>

@@ -4,9 +4,9 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.5.1
+|version     = 1.6.0
 |update      =
-|mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11
+|mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/ImageLink/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
@@ -21,6 +21,11 @@ Provides a clickable image link using an image stored in the Image namespace and
 The extension also supports the ''link-less'' mode thereby enabling a ''one-stop'' solution for both ''link'' and ''link-less'' requirements.
 
 Furthermore, the extension also supports ''events'' but '''only''' on ''edit'' protected pages.
+
+Lastly, the extension provides the parser function ''#iconlink'' which provides a clickable URL with the site's favicon.ico as image.
+
+== Usage Note ==
+Please use the ''#img'' parser function instead of the older ''#imagelink'' one.
 
 == Usage ==
 === Local Image ===
@@ -45,11 +50,15 @@ Event parameters supported: onchange, onsubmit, onreset, onselect, onsubmit, onr
 == Examples ==
 * <nowiki>{{#imagelink: New Clock.gif | Admin:Show Time | Current Time | 32 | 32 | 2 }}</nowiki>
 * <nowiki>{{#img: image=Star.png | page=Starred Page | height=100% | title=Some starred page }}</nowiki>
+* <nowiki>{{#iconlink: site=http://www.yahoo.com | domaincheck=y | target=_blank | content=YAHOO! }} </nowiki>
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|ImageLink}}
+
+== Optional Dependency ==
+The PEAR package [http://pear.php.net/package/Validate Validate] can be installed: the extension performs additional sanity check for {{#iconlink}} ''site'' parameter.
 
 <!--requires [[Extension:VersaComment]] -->
 <!--{{
@@ -69,6 +78,8 @@ Event parameters supported: onchange, onsubmit, onreset, onselect, onsubmit, onr
 | 1.5.0 || Added support for event parameters
 |-
 | 1.5.1 || Added support for unrestricted event parameters in the ''MediaWiki'' namespace
+|-
+| 1.6.0 || Added 'content' & 'target' parameters for <a>, added '#iconlink' parser function
 |}
 
 [[Category:Image map extensions]]

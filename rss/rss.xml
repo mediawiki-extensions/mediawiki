@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>Gravatar - 1.1.0</title>
+			<link>http://jldupont.com/Extension:Gravatar</link>
+			<description>Changelog:
+Changed to reflect the new URL structure adopted by Gravatar
+			</description>
+			<pubDate>Thu, 03 Apr 08 17:19:24 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>ImageLink - 1.6.0</title>
 			<link>http://jldupont.com/Extension:ImageLink</link>
 			<description>Changelog:

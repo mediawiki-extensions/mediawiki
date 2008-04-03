@@ -7,5 +7,5 @@
  <n>Social</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>Social</a> <!-- alias? -->
- <d>Provides integration of Quimble.com polls.</d>
+ <d>Provides integration with http://site.gravatar.com</d>
 </c>

@@ -23,7 +23,7 @@
  <time>20:16:09</time>
 
  <version>
-  <release>1.5.1</release>
+  <release>1.6.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -34,7 +34,7 @@
 
  <license uri="http://www.php.net/license">PHP License</license>
 
- <notes>$notes</notes>
+ <notes>MediaWiki ImageLink extension</notes>
 
  <contents>
   <dir name="/">
@@ -78,12 +78,14 @@
  </phprelease>
 
 <changelog>
-<release>
-<license uri="http://www.php.net/license">PHP License</license>
-<notes>
-Added support for unrestricted event parameters in the ''MediaWiki'' namespace
-</notes>
-</release>
+	<release>
+		<license uri="http://www.php.net/license">PHP License</license>
+		<notes>
+			- Added #iconlink parser function (image link with favicon support)
+			- Added 'target' attribute for anchor element
+			- Added 'content' attribute for anchor's content
+		</notes>
+	</release>
 </changelog>
 
 </package>

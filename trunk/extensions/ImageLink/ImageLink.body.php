@@ -40,6 +40,8 @@ class ImageLink
 		'image'		=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null ),
 		'default'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => null ),		
 		'page'		=> array( 'm' => false, 's' => false, 'l' => false, 'd' => '' ),
+		'content'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => null, 'dq' => true, 'sq' => true ),
+		'target'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => null, 'dq' => true, 'sq' => true ),
 		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true ),
 		'height'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
 		'width' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
@@ -79,11 +81,13 @@ class ImageLink
 	 * d: default value
 	 */
 	static $parametersIconLink = array(
-		'site'		=> array( 'm' => true,  's' => false, 'l' => false, 'd' => '' ),
+		'site'		 => array( 'm' => true,  's' => false, 'l' => false, 'd' => '' ),
 		'domaincheck'=> array( 'm' => false,'s' => false, 'l' => false, 'd' => 'y' ),		
 		
 		// same as for #img
 		'default'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => null ),		
+		'target'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => null, 'dq' => true, 'sq' => true ),		
+		'content'	=> array( 'm' => false, 's' => false, 'l' => false, 'd' => null, 'dq' => true, 'sq' => true ),		
 		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true ),
 		'height'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
 		'width' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
@@ -238,7 +242,7 @@ class ImageLink
 	/**
 	 * getLinkToPage
 	 */
-	protected function getLinkToPageAnchor( &$page, &$anchor_open, &$anchor_close )
+	protected function getLinkToPageAnchor( &$page, &$anchor_open, &$anchor_close, $target = null, $content = null )
 	{
 		// check if we are asked to render a 'link-less' element
 		if (empty( $page ))
@@ -266,7 +270,7 @@ class ImageLink
 			$aClass = 'class="extiw"';
 		}
 		
-		$this->formatLinkAnchor( $tURL, $anchor_open, $anchor_close );
+		$this->formatLinkAnchor( $tURL, $aClass, $anchor_open, $anchor_close, $target, $content );
 
 		return true;
 	}
@@ -278,10 +282,13 @@ class ImageLink
 	 * @param $anchor_open string
 	 * @param $anchor_close string
 	 */	
-	protected function formatLinkAnchor( &$url, &$anchor_open, &$anchor_close )
+	protected function formatLinkAnchor( &$url, &$classe, &$anchor_open, &$anchor_close, 
+										$target = null, $content = null )
 	{
-		$anchor_open = "<a ".$aClass." href='${url}'>";
-		$anchor_close = "</a>";
+		$_target = !is_null( $target ) ? 'target="'.$target.'"':null;
+			
+		$anchor_open = "<a ".$classe." $_target href='${url}'>";
+		$anchor_close = "$content</a>";
 		return $this;
 	}	
 	
@@ -289,6 +296,8 @@ class ImageLink
 	 * {{#img:  image=image-page 
 	 *			[|page=page-to-link-to] 
 	 *			[|alt=alternate-text]
+	 *			[|target=target-text] 
+ 	 *			[|content=anchor-text] 
 	 *			[|height=height-parameter]
 	 *			[|width=width-parameter]	 
 	 *			[|border=border-parameter]
@@ -343,9 +352,14 @@ class ImageLink
 		return array( $html, 'noparse' => true, 'isHTML' => true );			
 	}
 	/**
+	 * Creates an 'icon link':
+	 *  Fetches a site's ''favicon.ico''
+	 * 
 	 * {{#iconlink:  
 	 *			[|site=url-of-page] 
 	 *			[|domaincheck=y|n] 
+	 *			[|target=target-text] 
+ 	 *			[|content=anchor-text] 
 	 *			[|alt=alternate-text]
 	 *			[|height=height-parameter]
 	 *			[|width=width-parameter]	 
@@ -394,18 +408,18 @@ class ImageLink
 		if ($this->isError( $check ))
 			return $this->getErrorMsg( $check, $result );
 		
-		//
-		$site = $liste['site'];		
+		// Normalize domainCheck parameter
+		$site = $liste[ 'site' ];
 		$domainCheckParam = $liste['domaincheck'];
 		$domainCheck = $this->extractBoolean( $domainCheckParam );
 		
-		$iconURL = $this->getFavicon( $site );
-				
-		//
-		$html = $this->buildHTMLfromList( $sliste, self::$parametersIconLink );		
+		$iconURL = $this->getFavicon( $site, $domainCheck );
+		
+		// Build the HTML element
+		$html = $this->buildHTMLfromList( $sliste, self::$parametersIconLink, $iconURL );	
 		if ($this->isError( $html ))
 			return $this->getErrorMsg( $html );
-					
+
 		return array( $html, 'noparse' => true, 'isHTML' => true );			
 	}
 	
@@ -422,18 +436,20 @@ class ImageLink
 	 * @return null if none exists or isn't available
 	 * @param $url string
 	 */
-	protected function getFavicon( &$url )
+	protected function getFavicon( &$url, $domainCheck = true )
 	{
 		$icoURL = $url.'/favicon.ico';
 		
-		if ( $this->validateURI( $icoURL ) === false )	
+		// if we were to get NULL as return code, then we couldn't
+		// provide much feedback in terms of error checking...
+		if ( $this->validateURI( $icoURL, $domainCheck ) === false )	
 			return null;
 
 		// check if the icon uri exists
 		$responseHeader = @get_headers( $icoURL );
-		$exists = !( strpos( $responseHeader, '200 OK' ) === FALSE );
+		$exists = !( strpos( $responseHeader[0], '200 OK' ) === FALSE );
 		
-		if ( !exists )
+		if ( !$exists )
 			return null;
 		
 		return $icoURL;
@@ -484,7 +500,7 @@ class ImageLink
 	 * @return null  invalid target title
 	 * @return -1    local article does not exist
 	 */
-	protected function buildHTMLfromList( &$liste, &$ref_liste, &$img_url = null )
+	protected function buildHTMLfromList( &$liste, &$ref_liste, $img_url = null )
 	{
 		if ( $img_url === null )
 		{
@@ -493,25 +509,41 @@ class ImageLink
 				return $img_url;
 		}
 		
-		$page = $liste['page'];
+		// <a> anchor 'target' attribute
+		$target  = @!is_null( $liste['target'] )  ? $liste['target'] :null;
 		
+		// text between the <a> $content </a>
+		$content = @!is_null( $liste['content'] ) ? $liste['content']:null;
+		
+		$page = null;
+		$link = null;
+
 		// prepare for 'link-less' case ... if required.
 		$anchor_open = '';
 		$anchor_close = '';
 		
-		$r = $this->getLinkToPageAnchor( $page, $anchor_open, $anchor_close );
-		if ( $this->isError( $r ) && ( $r !== self::codeLinkLess) )
-			return $r;
+		// #img case
+		if ( isset( $liste['page'] ))
+		{
+			$page = $liste['page'];
+			// returns a formatted <a> anchor with href etc.
+			$r = $this->getLinkToPageAnchor( $page, $anchor_open, $anchor_close, $target, $content );
+			if ( $this->isError( $r ) && ( $r !== self::codeLinkLess) )
+				return $r;
+		}
+		
+		// #iconlink case
+		if ( isset( $liste['site'] ))
+		{
+			$link = $liste['site'];
+			$classe = 'class="extiw"';
+			$this->formatLinkAnchor( $link, $classe, $anchor_open, $anchor_close, $target, $content );
+		}
 
 		$params = ExtHelper::buildList( $liste, $ref_liste );
 		
 		return $anchor_open."<img src='${img_url}' $params />".$anchor_close;
 	}
-	protected function buildHTMLfromList2( &$liste, &$ref_liste )
-	{
-		
-	}
-	
 	/**
 	 * Returns 'true' if the code provided constitute an error code
 	 */
@@ -527,7 +559,9 @@ class ImageLink
 		return wfMsgForContent( 'imagelink'.$code, $param );	
 	}
 	/**
-	 * @return bool false no-restriction
+	 * Verifies a page's edit protection status 
+	 * 
+	 * @return bool false means ''no-restriction''
 	 */
 	protected function checkRestrictionStatus( &$title, $result )
 	{
@@ -538,6 +572,7 @@ class ImageLink
 			return false;
 		
 		// check if we are in the MediaWiki namespace
+		// i.e. edit protected by default.
 		if ( $title->getNamespace() === NS_MEDIAWIKI )
 			return false;
 		
@@ -549,5 +584,7 @@ class ImageLink
 		return ( $result !== false ) ? self::codeRestrictedParam:false;
 	}
 } // end class definition.
+
+// ugly but effective.
 require 'ImageLink.i18n.php';
 //</source>

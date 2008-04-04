@@ -288,7 +288,7 @@ class ImageLink
 		$_target = !is_null( $target ) ? 'target="'.$target.'"':null;
 			
 		$anchor_open = "<a ".$classe." $_target href='${url}'>";
-		$anchor_close = "$content</a>";
+		$anchor_close = " $content</a>";
 		return $this;
 	}	
 	

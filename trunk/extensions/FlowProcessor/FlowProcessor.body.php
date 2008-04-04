@@ -15,8 +15,12 @@ class FlowProcessor
 	const thisName = 'FlowProcessor';
 	const thisType = 'other';
 	
+	static $_PEAR = "MediaWiki/Flows";
+	
 	/**
 	 * Canonical namespace name
+	 * ucfirst!
+	 * 
 	 * @private
 	 */
 	static $_nsName = "Flow";
@@ -83,14 +87,9 @@ class FlowProcessor
 		// Extract the $flow from the title
 		$flowTitle = $this->extractFlowFromTitle( $titleText );
 		
-		// page name must start with "Flow"
-		$baseId = ucfirst( @$flowTitle[0] );
-		if ( $baseId !== self::$_nsName )
-			return true;
-
 		// Flow identifier comes next
-		$flow = @$flowTitle[1];
-		
+		$flow = @$flowTitle[0];
+	
 		// just in case...
 		if ( empty( $flow ))
 			return true;
@@ -100,24 +99,13 @@ class FlowProcessor
 			return true;
 		
 		// Format the page name as a function of the raw title / classe
-		$page = $flow;
+		$page = self::$_nsName.$flow;
 		
 		// Insert in the list
-		$liste[ $page ] = array( 'UnlistedSpecialPage', $classe );
+		$liste[ $page ] = array( 'UnlistedSpecialPage', $page );
 
 		// continue hook-chain
 		return true;
-	}
-	/**
-	 * Sets up a factory that will be used to instantiate
-	 * an object of class $classe
-	 * 
-	 * @return void
-	 * @param $classe string
-	 */
-	protected function setupFactory( &$classe )
-	{
-		
 	}
 	/**
 	 * Extracts the flow identifier from a page title
@@ -129,7 +117,27 @@ class FlowProcessor
 	 */
 	protected function extractFlowFromTitle( &$title )
 	{
-		return explode( '/' , $title );
+		$bits = explode( '/' , $title );
+		
+		// FlowXYZ ...
+		$bit0 = ucfirst( @$bits[0] );
+		
+		array_shift( $bits );
+		
+		if ( empty( $bit0 ))
+			return null;
+
+		// make sure we have "Flow" for starters
+		$len = strlen( self::$_nsName );
+		$baseId = substr( $bit0, 0, $len );
+		$flowId = substr( $bit0, $len );
+		
+		if ( $baseId !== self::$_nsName )
+			return null;
+		
+		array_unshift( $bits, $flowId );		
+		
+		return $bits;
 	}
 	/**
 	 * Verifies if the namespace corresponds to what we need
@@ -163,20 +171,22 @@ class FlowProcessor
 			return $classe;
 			
 		// check C1
-		@include_once( $PEAR.'/'.$flow.'/controller.php' );
+		$path = self::$_PEAR.'/'.$flow.'/controller.php';
+		@include_once( $path );
 		if ( class_exists( $classe ))
 			return $classe;
 
 		// check C2 
 		$code = null;
 		$page = self::$_nsName.':'.$flow;
-		if ( !$this->verifyFlowPage( $page, $code ) )
+		if ( !$this->verifyFlowPage( $page, $contents) )
 			return false;
+			
+		$code = $this->extractCodeFromContents( $contents );
 		
 		// instantite the class as to make it
 		// readily available
-		if ( !$this->prepareCode( $code ))
-			return false;
+		$this->prepareCode( $code );
 			
 		return $classe;
 	}
@@ -221,9 +231,25 @@ class FlowProcessor
 
 		return $contents;
 	}
-
+	/**
+	 * Extracts the PHP code from the $contents
+	 * The code can either be 'straight' in the page or
+	 * enclosed in a <source> tag section, the latter
+	 * having priority.
+	 * 
+	 * @return $code string
+	 * @param $contents string
+	 */
+	protected function extractCodeFromContents( &$contents )	
+	{
+		$result = preg_match( "/<source(?:.*)>(.*)<\/source>/siU" , $contents, $match );
+		if ( $result === 1 )
+			return $match[1];
+			
+		return $contents;
+	}
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// HELPERS
+	// Special:Version helper
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	
 	public function hSpecialVersionExtensionTypes( &$sp, &$extensionTypes )

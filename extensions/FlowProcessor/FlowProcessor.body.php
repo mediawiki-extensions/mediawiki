@@ -57,8 +57,8 @@ class FlowProcessor
 	}
 
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// HOOK
-	// ====
+	// MAIN HOOK
+	// =========
 	
 	/**
 	 * Hook for SpecialPage list manipulation.

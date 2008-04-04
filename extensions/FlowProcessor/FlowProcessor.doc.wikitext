@@ -1,0 +1,43 @@
+{{Extension
+|name        = FlowProcessor
+|status      = beta
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/PageSidebar/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+Provides a framework for an MVC (Model, View, Controller) flow system.
+
+== Theory Of Operation ==
+A flow can be located in the following location (in priority order):
+* PEAR director
+
+== Usage ==
+
+<!--requires [[Extension:VersaComment]]-->
+<!--{{
+== Example ==
+[[{{FULLPAGENAMEE}}/Tests]]
+}}-->
+
+== Dependencies ==
+* [[Extension:StubManager|StubManager extension version >= 1.2.0 ]]
+* [[Extension:Geshi]] is optional; it is used to syntax highlight PHP code in ''controller'' pages when these are located in database as standard MediaWiki pages.
+
+{{Pear|FlowProcessor}}
+
+== History ==
+{|class='datatable'
+! Release !! Notes
+|-
+| 1.0.0 || Initial Release
+|}

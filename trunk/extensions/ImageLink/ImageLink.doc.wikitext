@@ -82,5 +82,8 @@ The PEAR package [http://pear.php.net/package/Validate Validate] can be installe
 | 1.6.0 || Added 'content' & 'target' parameters for <a>, added '#iconlink' parser function
 |}
 
+== Changes in Trunk ==
+* Added a ''space'' between $content and img in anchor (thanks Mitchelln)
+
 [[Category:Image map extensions]]
 [[Category:Link extensions]]

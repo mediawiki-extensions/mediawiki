@@ -28,6 +28,12 @@ class MW_ClassProcessor
 	static $_prefixDatabase = "Code:";
 	
 	/**
+	 * Additional autoloaders
+	 * @private
+	 */
+	static $_eAutoloaders = array();
+	
+	/**
 	 * Register the extension
 	 */
 	public static function init()
@@ -45,7 +51,11 @@ class MW_ClassProcessor
 		
 		// register the default MediaWiki autoloader if it isn't already
 		spl_autoload_register( '__autoload' );		
-	}	
+	}
+	public static function add( $autoloader )
+	{
+		self::$_eAutoloaders[] = $autoloader;
+	}
 	/**
 	 * Autoloader
 	 * 
@@ -54,6 +64,11 @@ class MW_ClassProcessor
 	 */	
 	public static function autoloader( $className )
 	{
+		// try the other registered autoloaders
+		// great for adding/replacing standard functionality.
+		if ( self::tryOthers( $className ) )
+			return;
+			
 		// make sure we are asked to load a class
 		// with the configured prefix name
 		$len = strlen( self::$_prefix );
@@ -75,7 +90,24 @@ class MW_ClassProcessor
 
 		//3rd location: Database in namespace ''Code''
 		self::loadFromDatabase( $name );
-	}	
+	}
+	/**
+	 * Iterates through the extra autoloaders
+	 * 
+	 * @return $result boolean
+	 * @param $className string
+	 */
+	protected static function tryOthers( &$className )
+	{
+		foreach( self::$_eAutoloaders as $a )
+		{
+			$a->autoload( $className );
+			if ( class_exists( $className ))
+				return true;
+		}
+		
+		return false;
+	}
 	/**
 	 * Tries loading a class from the PEAR directory
 	 * 

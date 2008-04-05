@@ -11,7 +11,7 @@
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ParserPhase2/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = This extension enables performing a 'second pass' through a 'parser cached' page replacing for 'dynamic' variables.
 |parameters  =
 |rights      =
 |example     =

@@ -20,7 +20,7 @@ class MW_ClassProcessor
 	/**
 	 * @private
 	 */
-	static $_prefix = 'MW_Class_';
+	static $_prefix = 'MW_';
 	
 	/**
 	 * @private
@@ -44,8 +44,7 @@ class MW_ClassProcessor
 		spl_autoload_register( array( __CLASS__, 'autoloader' ) );
 		
 		// register the default MediaWiki autoloader if it isn't already
-		if ( !function_exists( '__autoload') )
-			spl_autoload_register( '__autoload' );		
+		spl_autoload_register( '__autoload' );		
 	}	
 	/**
 	 * Autoloader
@@ -124,7 +123,8 @@ class MW_ClassProcessor
 	}
 	
 	/**
-	 * Fetches a page ''raw'' content from the database
+	 * Fetches a page's ''raw'' content from the database
+	 * The page must be ''edit protected'' for security reasons
 	 * 
 	 * @return $content string
 	 * @param $page string
@@ -135,6 +135,9 @@ class MW_ClassProcessor
 		if (!is_object( $title ))		
 			return false;
 			
+		if ($title->isProtected('edit'))
+			return false;
+		
 		$contents = null;
 
 		$rev = Revision::newFromTitle( $title );

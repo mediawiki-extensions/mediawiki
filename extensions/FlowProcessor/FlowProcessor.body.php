@@ -225,7 +225,7 @@ class FlowProcessor
 			return false;
 
 		if ($title->isProtected('edit'))
-			return true;
+			return false;
 			
 		$contents = null;
 

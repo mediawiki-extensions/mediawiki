@@ -6,7 +6,7 @@
 |version     = 1.1.0
 |update      =
 |mediawiki   = 1.11, 1.12
-|download    = [http://mediawiki.googlecode.com/svn/tags/PageSidebar/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/FlowProcessor/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 

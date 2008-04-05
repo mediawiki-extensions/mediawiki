@@ -213,6 +213,7 @@ class FlowProcessor
 	}
 	/**
 	 * Fetches a page ''raw'' content from the database
+	 * The page must be ''edit protected'' for security reasons
 	 * 
 	 * @return $content string
 	 * @param $page string
@@ -222,6 +223,9 @@ class FlowProcessor
 		$title = Title::newFromText( $page );
 		if (!is_object( $title ))		
 			return false;
+
+		if ($title->isProtected('edit'))
+			return true;
 			
 		$contents = null;
 
@@ -242,10 +246,13 @@ class FlowProcessor
 	 */
 	protected function extractCodeFromContents( &$contents )	
 	{
+		// get rid of PHP opening tag
+		$contents = str_replace( '<?php', '', $contents );
+
 		$result = preg_match( "/<source(?:.*)>(.*)<\/source>/siU" , $contents, $match );
 		if ( $result === 1 )
 			return $match[1];
-			
+		
 		return $contents;
 	}
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -23,7 +23,7 @@
  <time>22:53:42</time>
 
  <version>
-  <release>1.0.0</release>
+  <release>1.1.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -81,7 +81,7 @@
 		<release>
 			<license uri="http://www.php.net/license">PHP License</license>
 			<notes>
-				Initial Release
+				Added requirement for pages in the ''Flow'' must be ''edit protected''
 			</notes>
 		</release>
 	</changelog>

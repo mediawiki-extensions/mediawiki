@@ -8,23 +8,23 @@
 
 	
 	<item>
+			<title>ClassProcessor - 1.0.0</title>
+			<link>http://jldupont.com/Extension:ClassProcessor</link>
+			<description>Changelog:
+Initial Release
+			</description>
+			<pubDate>Sat, 05 Apr 08 17:16:16 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>FlowProcessor - 1.1.0</title>
 			<link>http://jldupont.com/Extension:FlowProcessor</link>
 			<description>Changelog:
 Added requirement for pages in the ''Flow'' must be ''edit protected''
 			</description>
 			<pubDate>Sat, 05 Apr 08 17:15:00 -0400</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>ClassProcessor - 1.0.0</title>
-			<link>http://jldupont.com/Extension:ClassProcessor</link>
-			<description>Changelog:
-Initial Release
-			</description>
-			<pubDate>Sat, 05 Apr 08 12:17:52 -0400</pubDate>
 		</item>
 
 

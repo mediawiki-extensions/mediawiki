@@ -7,5 +7,5 @@
  <n>Flow</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>Flow</a> <!-- alias? -->
- <d>Provides a ''flow processor'' for MVC-like flow processing</d>
+ <d>Provides versatile PHP class autoloading for MediaWiki</d>
 </c>

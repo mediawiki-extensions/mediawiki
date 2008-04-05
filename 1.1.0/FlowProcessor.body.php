@@ -4,7 +4,7 @@
  * @package FlowProcessor
  * @category Flow
  * @version 1.1.0
- * @Id $Id: FlowProcessor.body.php 974 2008-04-05 11:35:00Z jeanlou.dupont $
+ * @Id $Id: FlowProcessor.body.php 977 2008-04-05 12:03:54Z jeanlou.dupont $
  */
 //<source lang='php'>
 class FlowProcessor
@@ -224,7 +224,7 @@ class FlowProcessor
 		if (!is_object( $title ))		
 			return false;
 
-		if ($title->isProtected('edit'))
+		if (!$title->isProtected('edit'))
 			return false;
 			
 		$contents = null;

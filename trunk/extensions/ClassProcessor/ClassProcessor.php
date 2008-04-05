@@ -42,7 +42,10 @@ class MW_ClassProcessor
 	public static function setup()
 	{
 		spl_autoload_register( array( __CLASS__, 'autoloader' ) );
-		spl_autoload_register( '__autoload' );		
+		
+		// register the default MediaWiki autoloader if it isn't already
+		if ( !function_exists( '__autoload') )
+			spl_autoload_register( '__autoload' );		
 	}	
 	/**
 	 * Autoloader
@@ -94,6 +97,7 @@ class MW_ClassProcessor
 	 */	
 	protected static function loadFromExtensions( &$className )
 	{
+		global $IP;
 		@include_once "$IP/extensions/Classes/$className.php";
 		return class_exists( self::$_prefix.$className );
 	}	

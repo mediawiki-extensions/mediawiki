@@ -167,7 +167,7 @@ class MW_ClassProcessor
 		if (!is_object( $title ))		
 			return false;
 			
-		if ($title->isProtected('edit'))
+		if (!$title->isProtected('edit'))
 			return false;
 		
 		$contents = null;

@@ -3,7 +3,7 @@
 |status      = beta
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.1.0
+|version     = 1.0.0
 |update      =
 |mediawiki   = 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/ClassProcessor/ SVN]
@@ -15,11 +15,22 @@
 |example     =
 }}
 == Purpose ==
+Provides versatile PHP class autoloading.
 
+== Features ==
+* Flexible: multiple class locations 
+* Secure: classes retrieved through the database must be in the ''Code'' namespace and be ''edit protected''
+* Extensible: the static method ''add'' can be used to register additional autoloaders
 
 == Theory Of Operation ==
-
-=== Controller Code ===
+When a class is required (e.g. [[Extension:FlowProcessor]]) for processing, the following options are available:
+* do a ''require/include'' statement with the path to the class file
+* rely on PHP's autoloading feature
+This extension taps itself on the latter on provides flexible class loading by searching (in priority):
+* The extra autoloaders registered through the extension's ''add'' static method
+* The PEAR directory under '''MediaWiki/Classes/$class.php'''
+* The MediaWiki installation ''extensions'' directory i.e. '''$IP/extensions/Classes/$class.php'''
+* The MediaWiki page database under the namespace ''Code'' i.e. '''Code:$class'''
 
 <!--requires [[Extension:VersaComment]]-->
 <!--{{
@@ -27,17 +38,17 @@
 [[{{FULLPAGENAMEE}}/Tests]]
 }}-->
 
-== Dependencies ==
+== Dependency ==
+None.
 
 {{Pear|ClassProcessor}}
 
-== Further Installation Notes ==
+== Usage ==
+The extension is meant to be used in conjunction with [[Extension:FlowProcessor]] and others. By itself, it does not provide useful facilities to end-users.
 
 == History ==
 {|class='datatable'
 ! Release !! Notes
 |-
 | 1.0.0 || Initial Release
-|-
-| 1.1.0 || Added requirement for pages in the ''Flow'' must be ''edit protected''
 |}

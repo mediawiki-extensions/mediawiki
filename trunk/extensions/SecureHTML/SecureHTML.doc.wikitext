@@ -11,7 +11,7 @@
 |download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/SecureHTML/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = This extension securely inserts HTML section(s) or pages on a wiki page. 
 |parameters  =
 |rights      =
 |example     =

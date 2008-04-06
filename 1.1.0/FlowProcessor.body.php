@@ -4,7 +4,7 @@
  * @package FlowProcessor
  * @category Flow
  * @version 1.1.0
- * @Id $Id: FlowProcessor.body.php 977 2008-04-05 12:03:54Z jeanlou.dupont $
+ * @Id $Id: FlowProcessor.body.php 982 2008-04-05 20:15:45Z jeanlou.dupont $
  */
 //<source lang='php'>
 class FlowProcessor
@@ -165,7 +165,7 @@ class FlowProcessor
 	 */	
 	protected function checkClass( &$flow )
 	{
-		$classe = "MW_Flow_$flow";
+		$classe = "MW_Flow$flow";
 		// check C0
 		if ( class_exists( $classe ))
 			return $classe;

@@ -78,6 +78,7 @@ class MW_ClassProcessor
 			return;
 			
 		// remove the prefix to get the name
+		// e.g. MW_
 		$name = substr( $className, $len );			
 
 		//1st location: PEAR			

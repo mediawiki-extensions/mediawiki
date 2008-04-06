@@ -17,6 +17,9 @@
 == Purpose ==
 Provides a framework for an MVC (Model, View, Controller) flow system; ''flows'' are implemented separately.
 
+== Features ==
+
+
 == Theory Of Operation ==
 * A user accesses a ''flow based'' special page through '''Special:Flow$flow''' where ''$flow$'' is the identifier of the ''flow''
 * The controller for flow ''$flow'' can be located in the following (in priority order):
@@ -29,6 +32,10 @@ The controller code, whether located in a file or in the MediaWiki database uses
 
 <source lang='php'>
 
+	/**
+	 * Standard MediaWiki entry point for
+	 * ''Special Page'' FlowTest
+	 */
 	 function wfSpecialFlowTest( $params )
 	 {
 		$proc = new MW_Flow_Test( $params );

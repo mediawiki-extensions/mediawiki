@@ -165,7 +165,7 @@ class FlowProcessor
 	 */	
 	protected function checkClass( &$flow )
 	{
-		$classe = "MW_Flow_$flow";
+		$classe = "MW_Flow$flow";
 		// check C0
 		if ( class_exists( $classe ))
 			return $classe;

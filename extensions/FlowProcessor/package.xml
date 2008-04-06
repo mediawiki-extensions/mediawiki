@@ -23,7 +23,7 @@
  <time>02:07:22</time>
 
  <version>
-  <release>1.1.0</release>
+  <release>1.2.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -81,7 +81,7 @@
 		<release>
 			<license uri="http://www.php.net/license">PHP License</license>
 			<notes>
-				Added requirement for pages in the ''Flow'' must be ''edit protected''
+				Simplified operation: only look for ''wfSpecialFlow$flow'' function
 			</notes>
 		</release>
 	</changelog>

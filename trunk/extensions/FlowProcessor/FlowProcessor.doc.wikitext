@@ -3,7 +3,7 @@
 |status      = beta
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.1.0
+|version     = 1.2.0
 |update      =
 |mediawiki   = 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/FlowProcessor/ SVN]
@@ -80,4 +80,6 @@ The controller code, whether located in a file or in the MediaWiki database uses
 | 1.0.0 || Initial Release
 |-
 | 1.1.0 || Added requirement for pages in the ''Flow'' must be ''edit protected''
+|-
+| 1.2.0 || Simplified operation: only look for ''wfSpecialFlow$flow'' function
 |}

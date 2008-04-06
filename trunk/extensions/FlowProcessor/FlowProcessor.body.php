@@ -94,8 +94,8 @@ class FlowProcessor
 		if ( empty( $flow ))
 			return true;
 			
-		// Is there a class available to handle the requested flow?
-		if (  ( $classe = $this->checkClass( $flow ) ) === false )
+		// Is there a 'wfSpecial$flow' function available to handle the requested flow?
+		if (  ( $func = $this->check_wfSpecial( $flow ) ) === false )
 			return true;
 		
 		// Format the page name as a function of the raw title / classe
@@ -150,8 +150,8 @@ class FlowProcessor
 		return Namespace::getCanonicalIndex( $nsName );
 	}
 	/**
-	 * Figures out if a class is available to handle
-	 * a requested flow.
+	 * Figures out if a the required 'wfSpecial' function 
+	 * is available to handle a requested flow.
 	 * In priority order:
 	 * 0) In memory
 	 * 
@@ -163,18 +163,18 @@ class FlowProcessor
 	 * @return $class string
 	 * @param $flow string
 	 */	
-	protected function checkClass( &$flow )
+	protected function check_wfSpecial( &$flow )
 	{
-		$classe = "MW_Flow$flow";
+		$func = "wfSpecialFlow$flow";
 		// check C0
-		if ( class_exists( $classe ))
-			return $classe;
+		if ( function_exists( $func ))
+			return $func;
 			
 		// check C1
 		$path = self::$_PEAR.'/'.$flow.'/controller.php';
 		@include_once( $path );
-		if ( class_exists( $classe ))
-			return $classe;
+		if ( function_exists( $func ))
+			return $func;
 
 		// check C2 
 		$code = null;
@@ -188,7 +188,7 @@ class FlowProcessor
 		// readily available
 		$this->prepareCode( $code );
 			
-		return $classe;
+		return $func;
 	}
 	/**
 	 * Instantiate the class

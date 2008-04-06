@@ -14,6 +14,24 @@
 			</p>
 			<a>
 				<r>
+					<v>1.2.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
+				<n>FlowProcessor</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Flow">Flow</ca>
+				<l>$license$</l>
+				<s>Provides a ''flow processor'' for MVC-like flow processing</s>
+				<d>Provides a ''flow processor'' for MVC-like flow processing</d>
+				<r xlink:href="/rest/r/FlowProcessor">
+				</r>
+			</p>
+			<a>
+				<r>
 					<v>1.1.0</v>
 					<s>stable</s>
 				</r>

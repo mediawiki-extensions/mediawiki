@@ -4,7 +4,7 @@
  * @package PageServer
  * @category ExtensionServices
  * @version 2.1.0
- * @Id $Id: PageServer.body.php 994 2008-04-07 15:24:50Z jeanlou.dupont $
+ * @Id $Id: PageServer.body.php 995 2008-04-07 15:49:13Z jeanlou.dupont $
  */
 //<source lang=php>
 class PageServer
@@ -207,9 +207,17 @@ class PageServer
 
 		if (is_string( $contents ) && !empty( $contents ))
 		{
+			global $wgRawHtml;
+
+			// make sure we have raw html processing handy			
+			$tmp = $wgRawHtml;
+			$wgRawHtml = true;
+
 			self::initParser();
 			$po = self::$parser->parse( $contents, $title, new ParserOptions() );
 			$contents = $po->getText();
+			
+			$wgRawHtml = $tmp;
 		}
 
 		return $contents;

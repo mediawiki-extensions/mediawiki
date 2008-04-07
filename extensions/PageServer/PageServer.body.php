@@ -110,8 +110,10 @@ class PageServer
 	{
 		$result = null;
 		
+		$title = null;
+		
 		// first, let's try the parser cache
-		$article = $this->buildArticle( $prefix, $name );
+		$article = $this->buildArticle( $prefix, $name, $title );
 		if ( is_object( $article ))
 			if ( $article->getID() !=0 )
 				$result = $this->fetchParserCache( $article, $id );	
@@ -119,7 +121,7 @@ class PageServer
 		// next, let's try the database directly
 		// happens when parser caching isn't available (unfortunately)				
 		if ( !is_string( $result ))
-			$result = $this->fetchDatabase( $prefix, $name, $id );
+			$result = $this->fetchDatabase( $prefix, $name, $id, $title );
 				
 		// next, try PEAR directory
 		if ( !is_string( $result ))
@@ -156,7 +158,7 @@ class PageServer
 	 * @param $prefix string
 	 * @param $name string
 	 */
-	protected function buildArticle( &$prefix, &$name )
+	protected function buildArticle( &$prefix, &$name, &$title )
 	{
 		// build a title object
 		$title = Title::newFromText( $prefix.$name );
@@ -192,15 +194,22 @@ class PageServer
 	 * @param $prefix string
 	 * @param $name string
 	 */
-	protected function fetchDatabase( &$prefix, &$name, &$id )
+	protected function fetchDatabase( &$prefix, &$name, &$id, &$title )
 	{
 		$contents = null;
-		$title = Title::newFromText( $prefix.'/'.$name );
 		$rev = Revision::newFromTitle( $title );
+
 		if( $rev )
 		{
 			$id = $rev->getId();
 		    $contents = $rev->getText();		
+		}
+
+		if (is_string( $contents ) && !empty( $contents ))
+		{
+			self::initParser();
+			$po = self::$parser->parse( $contents, $title, new ParserOptions() );
+			$contents = $po->getText();
 		}
 
 		return $contents;

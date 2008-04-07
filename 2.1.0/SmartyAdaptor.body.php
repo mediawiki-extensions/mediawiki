@@ -118,6 +118,7 @@ class SmartyAdaptor
 			return true;
 		
 		$handler = new MW_Smarty;
+		$handler->setName( $name);
 		$handler->setContents( $source );		
 			
 		$smarty = new Smarty();
@@ -133,7 +134,7 @@ class SmartyAdaptor
 		foreach( $params as $key => &$value )
 			$smarty->assign( $key, $value );
 		
-		$result = $smarty->fetch( 'mwpage' /*not used*/ );
+		$result = $smarty->fetch( 'mwpage:'.$name );
 
 		return true;	
 	}	
@@ -213,9 +214,19 @@ class MW_Smarty
 	 */
 	var $_contents = null;
 
+	/**
+	 * @private
+	 */
+	var $_name = null;
+	
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	// PUBLIC INTERFACE	
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	public function setName( &$name )
+	{
+		$this->_name = $name;
+		return $this;
+	}
 	public function setContents( &$contents )
 	{
 		$this->_contents = $contents;

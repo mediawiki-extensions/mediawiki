@@ -9,8 +9,8 @@
 
  <name>SmartyAdaptor</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Provides integration with http://smarty.net</summary>
- <description>Provides integration with http://smarty.net</description>
+ <summary>Provides integration with http://smarty.net templating system</summary>
+ <description>Provides integration with http://smarty.net templating system</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -23,7 +23,7 @@
  <time>23:33:19</time>
 
  <version>
-  <release>2.0.0</release>
+  <release>2.1.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -34,7 +34,7 @@
 
  <license uri="http://www.php.net/license">PHP License</license>
 
- <notes>$notes</notes>
+ <notes>[[Extension:SmartyAdaptor]]</notes>
 
  <contents>
   <dir name="/">
@@ -82,7 +82,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-New revamped version
+Added support for new hook ''smarty_direct'': enables direct passing of template source code
 </notes>
 </release>
 </changelog>

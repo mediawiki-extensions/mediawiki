@@ -56,6 +56,7 @@ class SmartyAdaptor
 			$wgMessageCache->addMessages( self::$msg[$key], $key );		
 	}
 	/**
+	 * HOOK: smarty
 	 * Service to other extensions
 	 *
 	 * @param $name name of the template: useful if other extensions hook themselves here
@@ -91,6 +92,48 @@ class SmartyAdaptor
 			$smarty->assign( $key, $value );
 		
 		$result = $smarty->fetch( $tpl );
+
+		return true;	
+	}	
+	/**
+	 * HOOK: smarty_direct
+	 * Service to other extensions
+	 *
+	 * @param $name name of the template: useful if other extensions hook themselves here
+	 * @param $source string Template source
+	 * @param $params array of parameters
+	 * @param $result holds the result
+	 */
+	public function hsmarty_direct( &$name, &$source, &$params, &$result )
+	{
+		// means nothing happened
+		// also reports if the extension is at least present.
+		$result = '';
+		
+		if (empty( $params ) || empty( $source ) )
+			return true;
+		
+		// bail out if we have already concluded that this service is non-operable			
+		if (!self::$allOK)
+			return true;
+		
+		$handler = new MW_Smarty;
+		$handler->setContents( $source );		
+			
+		$smarty = new Smarty();
+
+		// Register our default template loading function
+		$smarty->default_template_handler_func = array( $handler, 'handler' );
+		
+		// the caller *must* supply the full path to the template anyways
+		$smarty->template_dir = '.'; 
+		$smarty->compile_dir  = self::$compileDir;
+		$smarty->cache_dir    = self::$cacheDir;
+		
+		foreach( $params as $key => &$value )
+			$smarty->assign( $key, $value );
+		
+		$result = $smarty->fetch( 'mwpage' /*not used*/ );
 
 		return true;	
 	}	
@@ -158,4 +201,36 @@ class SmartyAdaptor
 	
 } // END CLASS DEFINITION
 require 'SmartyAdaptor.i18n.php';
+
+
+/**
+ * Default handler
+ */
+class MW_Smarty
+{
+	/**
+	 * @private
+	 */
+	var $_contents = null;
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// PUBLIC INTERFACE	
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	public function setContents( &$contents )
+	{
+		$this->_contents = $contents;
+		return $this;
+	}
+	
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// PLUGIN INTERFACE	
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	function handler( $type, $name, &$source, &$timestamp, &$sm )
+	{
+		$source = $this->_contents;
+		return true;	
+	}
+
+}
+
 //</source>

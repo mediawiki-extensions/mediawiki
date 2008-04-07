@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>PageServer - 2.0.1</title>
+			<link>http://jldupont.com/Extension:PageServer</link>
+			<description>Changelog:
+Fixed parser cache related bug
+			</description>
+			<pubDate>Mon, 07 Apr 08 10:12:15 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SmartyAdaptor - 2.1.0</title>
 			<link>http://jldupont.com/Extension:SmartyAdaptor</link>
 			<description>Changelog:

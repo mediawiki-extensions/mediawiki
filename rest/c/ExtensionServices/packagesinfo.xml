@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo
-    http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 
+<f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo     http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
-		<p>
-			 <n>PageServer</n>
-			 <c>mediawiki.googlecode.com/svn</c>
-			 <ca xlink:href="/rest/c/ExtensionServices">ExtensionServices</ca>
-			 <l>$license$</l>
-			 <s>PagerServer provides services to other extensions</s>
-			 <d>PagerServer provides services to other extensions</d>
-			 <r xlink:href="/rest/r/PageServer"/>
-		</p>
-		<a>
-			<!-- 
-				not all releases need to appear here!
-				only the latest one!
-			-->
-					<r>
-			<v>2.0.0</v>
-			<s>stable</s>
-		</r>
-
-		</a>
-	</pi>
-
-	
+			<p>
+				<n>PageServer</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ExtensionServices">ExtensionServices</ca>
+				<l>$license$</l>
+				<s>PagerServer provides services to other extensions</s>
+				<d>PagerServer provides services to other extensions</d>
+				<r xlink:href="/rest/r/PageServer">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>2.0.1</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
 </f>

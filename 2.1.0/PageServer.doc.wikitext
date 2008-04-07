@@ -1,0 +1,61 @@
+{{Extension
+|name        = PageServer
+|status      = beta
+|type        = other
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = @see SVN / tags
+|update      =
+|mediawiki   = 1.10, 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/PageServer/ SVN]
+|readme      =
+|changelog   =
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides:
+* Page loading facility to other extensions
+* Parser functions (#mwmsg, #mwmsgx) and services to other extensions ( 'loadAndParse' )
+
+== Features ==
+* Page loading ''hook'': page_server
+* Page loading from (in priority):
+** Parser Cache
+** Database
+** PEAR directory (/$pear/MediaWiki)
+** MediaWiki extensions directory in local installation
+* Page loading parser function: #load_page
+* On-demand loading of wiki page from filesystem
+* Optional parsing (with the MediaWiki parser) of the wiki page
+** All stock & extended functionality (i.e. through parser functions, parser tags) available during parsing phase
+* Parser functions:
+** #mwmsg    ( 'MediaWiki Message' )
+** #mwmsgx   ( 'MediaWiki Message with parameters' )
+
+== Usage ==
+=== Parser Functions ===
+* <nowiki>{{#mwmsg:msg id}}</nowiki> will output the raw message from the message cache
+* <nowiki>{{#mwmsgx:msg id [|p1][|p2][|p3][|p4]}}</nowiki> will output the parsed message from the message cache
+including up to 4 parameters (i.e. the $n parameters when using 'wfMsgForContent' global function)
+=== Server to other extensions ===
+* Use <code>PageServer::XYZ</code> where XYZ is the desired function name.
+* Use ''wfRunHooks'': page_server
+
+== Dependency ==
+* [[Extension:StubManager]]
+
+{{Pear|PageServer}}
+
+== History ==
+{|class='datatable'
+! Release !! Notes
+|-
+| 2.0.0 || Fully redesigned version
+|-
+| 2.0.1 || Fixed parser cache related bug
+|-
+| 2.1.0 || Added support for page identifier (modification timestamp)
+|}

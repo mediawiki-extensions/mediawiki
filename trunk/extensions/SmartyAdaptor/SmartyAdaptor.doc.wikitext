@@ -35,7 +35,7 @@ On Linux, one must use, as example, <pre>chown apache cache</pre> to make the di
 Other extensions use [[Extension:SmartyAdaptor]] for their templating needs through the ''hook'' '''smarty'''.
 
 === Calling Method ===
-<pre>wfRunHooks( 'smarty', $name, $tpl_path, $params, $result );</pre>
+<pre>wfRunHooks( 'smarty', array( $name, $tpl_path, $params, &$result ) );</pre>
 * $name: name of template; only useful when other extensions want to insert themselves in the chain
 * $tpl_path: absolute path to the template file
 * $params: array of parameters. E.g. array( 'var1' => 'value1' ... )
@@ -45,7 +45,7 @@ Other extensions use [[Extension:SmartyAdaptor]] for their templating needs thro
 Other extensions use [[Extension:SmartyAdaptor]] for their templating needs through the ''hook'' '''smarty_direct'''.
 
 === Calling Method ===
-<pre>wfRunHooks( 'smarty_direct', $name, $tpl_source, $params, $result );</pre>
+<pre>wfRunHooks( 'smarty_direct', array( $name, $tpl_source, $params, &$result ) );</pre>
 * $name: name of template; only useful when other extensions want to insert themselves in the chain
 * $tpl_source: template source
 * $params: array of parameters. E.g. array( 'var1' => 'value1' ... )

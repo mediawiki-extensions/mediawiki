@@ -170,7 +170,11 @@ class PageServer
 		global $wgUser;
 				
 		$parserCache =& ParserCache::singleton();
-		return $parserCache->get( $article, $wgUser );
+		$po = $parserCache->get( $article, $wgUser );
+		if ( is_object( $po ))
+			return $po->getText();
+			
+		return null;
 	}
 	/**
 	 * Fetches a page directly from the database

@@ -54,4 +54,6 @@ including up to 4 parameters (i.e. the $n parameters when using 'wfMsgForContent
 ! Release !! Notes
 |-
 | 2.0.0 || Fully redesigned version
+|-
+| 2.0.1 || Fixed parser cache related bug
 |}

@@ -8,12 +8,12 @@
 
 	
 	<item>
-			<title>PageServer - 2.0.1</title>
+			<title>PageServer - 2.1.0</title>
 			<link>http://jldupont.com/Extension:PageServer</link>
 			<description>Changelog:
-Fixed parser cache related bug
+Added support for returning the page's modification identifier (e.g. timestamp)
 			</description>
-			<pubDate>Mon, 07 Apr 08 10:12:15 -0400</pubDate>
+			<pubDate>Mon, 07 Apr 08 11:24:03 -0400</pubDate>
 		</item>
 
 
@@ -24,7 +24,18 @@ Fixed parser cache related bug
 			<description>Changelog:
 Added support for new hook ''smarty_direct'': enables direct passing of template source code
 			</description>
-			<pubDate>Mon, 07 Apr 08 09:36:28 -0400</pubDate>
+			<pubDate>Mon, 07 Apr 08 10:25:45 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>PageServer - 2.0.1</title>
+			<link>http://jldupont.com/Extension:PageServer</link>
+			<description>Changelog:
+Fixed parser cache related bug
+			</description>
+			<pubDate>Mon, 07 Apr 08 10:12:15 -0400</pubDate>
 		</item>
 
 

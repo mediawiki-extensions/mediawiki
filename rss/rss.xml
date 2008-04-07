@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>SmartyAdaptor - 2.1.0</title>
+			<link>http://jldupont.com/Extension:SmartyAdaptor</link>
+			<description>Changelog:
+Added support for new hook ''smarty_direct'': enables direct passing of template source code
+			</description>
+			<pubDate>Mon, 07 Apr 08 09:36:28 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>FlowProcessor - 1.2.0</title>
 			<link>http://jldupont.com/Extension:FlowProcessor</link>
 			<description>Changelog:

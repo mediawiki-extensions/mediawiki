@@ -9,7 +9,7 @@
 |download    = [http://mediawiki.googlecode.com/svn/tags/SmartyAdaptor/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides integration with [http://smarty.net/ Smarty Template Engine] by providing a ''hook'' to other extensions.
 |parameters  =
 |rights      =
 |example     =

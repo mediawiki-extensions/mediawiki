@@ -7,5 +7,5 @@
  <n>Smarty</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>Smarty</a> <!-- alias? -->
- <d>Provides integration with http://smarty.net</d>
+ <d>Provides integration with http://smarty.net templating system</d>
 </c>

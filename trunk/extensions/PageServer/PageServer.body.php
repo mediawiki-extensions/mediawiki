@@ -207,9 +207,17 @@ class PageServer
 
 		if (is_string( $contents ) && !empty( $contents ))
 		{
+			global $wgRawHtml;
+
+			// make sure we have raw html processing handy			
+			$tmp = $wgRawHtml;
+			$wgRawHtml = true;
+
 			self::initParser();
 			$po = self::$parser->parse( $contents, $title, new ParserOptions() );
 			$contents = $po->getText();
+			
+			$wgRawHtml = $tmp;
 		}
 
 		return $contents;

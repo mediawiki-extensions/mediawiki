@@ -1,0 +1,11 @@
+Relies on [[Extension:SecurePHP]]
+
+<runphp>
+
+ global $IP;
+ $tpl = $IP.'/smarty/SmartyTest.tpl';
+ $params = array( 'testvar' => 'just a test variable', 'testvar2' => 'second test variable' );
+ wfRunHooks( 'smarty', array( 'name', $tpl, &$params, &$result ) );
+ echo $result;
+
+</runphp>

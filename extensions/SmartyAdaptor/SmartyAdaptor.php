@@ -20,7 +20,9 @@ else
 	
 	StubManager::createStub2(	array(	'class' 		=> 'SmartyAdaptor', 
 										'classfilename'	=> dirname(__FILE__).'/SmartyAdaptor.body.php',
-										'hooks'			=> array( 'smarty', 'SpecialVersionExtensionTypes' )
+										'hooks'			=> array(	'smarty', 
+																	'smarty_direct',
+																	'SpecialVersionExtensionTypes' )
 									)
 							);
 }

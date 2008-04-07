@@ -87,12 +87,12 @@ class PageServer
 	 * @param $name   name of page
 	 * @param $result holds the result
 	 */
-	public function hpage_server( &$prefix, &$name, &$result )
+	public function hpage_server( &$prefix, &$name, &$result, &$id )
 	{
 		// The calling party should place $result = NULL
 		// and verify that $result !== NULL => extension present.
 
-		$result = $this->fetch_page( $prefix, $name );
+		$result = $this->fetch_page( $prefix, $name, $id );
 		
 		return true;	
 	}	
@@ -106,7 +106,7 @@ class PageServer
 	 * @param $prefix string
 	 * @param $name string
 	 */
-	protected function fetch_page( &$prefix, &$name )
+	protected function fetch_page( &$prefix, &$name, &$id )
 	{
 		$result = null;
 		
@@ -114,21 +114,25 @@ class PageServer
 		$article = $this->buildArticle( $prefix, $name );
 		if ( is_object( $article ))
 			if ( $article->getID() !=0 )
-				$result = $this->fetchParserCache( $article );	
+				$result = $this->fetchParserCache( $article, $id );	
 				
 		// next, let's try the database directly
 		// happens when parser caching isn't available (unfortunately)				
 		if ( !is_string( $result ))
-			$result = $this->fetchDatabase( $prefix, $name );
+			$result = $this->fetchDatabase( $prefix, $name, $id );
 				
 		// next, try PEAR directory
 		if ( !is_string( $result ))
-			$result = $this->fetchPear( $name );
+			$result = $this->fetchPear( $name, $id );
 		
 		global $IP;
 		// finally, try the /extensions directory
 		if ( empty( $result ))
-			$result = @file_get_contents( $IP.'/extensions/'.$name );
+		{
+			$path = $IP.'/extensions/'.$name;
+			$id = @filemtime( $path );
+			$result = @file_get_contents( $path );
+		}
 		
 		return $result;
 	}
@@ -138,10 +142,12 @@ class PageServer
 	 * @return $result string
 	 * @param $name string
 	 */
-	protected function fetchPear( &$name )
+	protected function fetchPear( &$name, &$id )
 	{
 		$pearPath = $this->findPearPath();
-		return @file_get_contents( $pearPath.'/'.self::$pear.'/'.$name );
+		$path = $pearPath.'/'.self::$pear.'/'.$name;
+		$id = @filemtime( $path ) ;
+		return @file_get_contents( $path );
 	}
 	/**
 	 * Builds a valid article object
@@ -165,14 +171,17 @@ class PageServer
 	 * @return $result string
 	 * @param $article Object
 	 */
-	protected function fetchParserCache( &$article )
+	protected function fetchParserCache( &$article, &$id )
 	{
 		global $wgUser;
 				
 		$parserCache =& ParserCache::singleton();
 		$po = $parserCache->get( $article, $wgUser );
 		if ( is_object( $po ))
+		{
+			$id = $po->getCacheTime();
 			return $po->getText();
+		}
 			
 		return null;
 	}
@@ -183,13 +192,16 @@ class PageServer
 	 * @param $prefix string
 	 * @param $name string
 	 */
-	protected function fetchDatabase( &$prefix, &$name )
+	protected function fetchDatabase( &$prefix, &$name, &$id )
 	{
 		$contents = null;
 		$title = Title::newFromText( $prefix.'/'.$name );
 		$rev = Revision::newFromTitle( $title );
 		if( $rev )
+		{
+			$id = $rev->getId();
 		    $contents = $rev->getText();		
+		}
 
 		return $contents;
 	}

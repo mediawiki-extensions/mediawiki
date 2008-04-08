@@ -1,3 +1,4 @@
+{{Page security extension disclaimer}}
 {{Extension
 |name        = SecurePHP
 |status      = stable
@@ -7,11 +8,11 @@
 |image       =
 |version     = 1.0.1
 |update      =
-|mediawiki   = 1.10, 1.11, 1.12
-|download    = see Installation
+|mediawiki   = 1.10,1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/SecurePHP SVN]
 |readme      =
 |changelog   = See SVN ($Id: SecurePHP.php 782 2007-09-16 01:22:37Z jeanlou.dupont $)
-|description = 
+|description = Provides secure execution of PHP code embedded in 'runphp' tagged section.
 |parameters  =
 |rights      =
 |example     =
@@ -43,5 +44,8 @@ considerable care when using templates on the same page.
 == History ==
 * Moved to MediaWiki on GoogleCode project
 * Standardized entry point; now, always SecurePHP.php whatever installation method.
+
+== Sites using this extension ==
+* [http://jldupont.com author's web site]
 
 [[Category:Script embedding extensions]]

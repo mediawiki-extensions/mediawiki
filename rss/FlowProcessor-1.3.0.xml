@@ -6,12 +6,12 @@
 		<link>${rss.link}</link>
 		<description>${rss.description}</description>
 		<item>
-			<title>FlowProcessor - 1.2.0</title>
+			<title>FlowProcessor - 1.3.0</title>
 			<link>http://jldupont.com/Extension:FlowProcessor</link>
 			<description>Changelog:
 Added debug/configuration helper messages in [[Special:Version]] through the new version of [[Extension:StubManager]]
 			</description>
-			<pubDate>Mon, 07 Apr 08 20:40:25 -0400</pubDate>
+			<pubDate>Mon, 07 Apr 08 20:40:47 -0400</pubDate>
 		</item>
 	</channel>
 </rss>

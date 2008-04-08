@@ -36,7 +36,7 @@ The net effect is lower transaction times thereby speeding up MediaWiki based si
 This extension is meant for 'extension writers'.
 
 == Special:Version Customization ==
-Customization of the extensions' state message can be done through the page [[Template:ExtensionState]]. The first parameter passed to the template is the ''state'' variable.
+Customization of the extensions' state message can be done through the page [[MediaWiki:ExtensionState]]. The first parameter passed to the template is the ''state'' variable.
 
 === States ===
 {|class=datatable

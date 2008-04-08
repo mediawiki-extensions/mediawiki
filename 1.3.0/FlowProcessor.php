@@ -7,7 +7,9 @@
  * @Id $Id: FlowProcessor.php 968 2008-04-04 18:37:38Z jeanlou.dupont $
  */
 //<source lang=php>
-if (class_exists( 'StubManager' ))
+if (!class_exists('StubManager') || (version_compare( StubManager::version(), '1.3.0', '<' ) ))
+	echo '[[Extension:FlowProcessor]] requires [[Extension:StubManager]] version >= 1.3.0';							
+else
 {
 	$wgExtensionCredits['other'][] = array( 
 		'name'        => 'FlowProcessor', 
@@ -24,6 +26,4 @@ if (class_exists( 'StubManager' ))
 									)
 							);
 }
-else
-	echo '[[Extension:FlowProcessor]] requires [[Extension:StubManager]].';
 //</source>

@@ -265,7 +265,10 @@ class FlowProcessor
 		global $wgExtensionCredits;
 
 		$result  = "Namespace <i>".self::$_nsName."</i> is ";
-		$result .= ( $this->verifyNs() ? "available.": "<b>not available</b>." );
+		
+		$state = $this->verifyNs() ? StubManager::STATE_OK: StubManager::STATE_ATTENTION;
+		$result .= ( $state == StubManager::STATE_OK ) ? "available.": "<b>not available</b> (missing namespace <i>Flow</i>) .";
+		StubManager::registerState( __CLASS__, $state );
 
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (isset($el['name']))		

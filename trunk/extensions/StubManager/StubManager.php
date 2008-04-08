@@ -34,7 +34,7 @@ class StubManager
 	 * Template (in the MediaWiki namespace)
 	 * for the Special:Version page
 	 */
-	static $_templateName = "ExtensionState";
+	static $_templateName = "MediaWiki:ExtensionState";
 	
 	/**
 	 * State constants
@@ -371,7 +371,7 @@ class StubManager
 		
 		// Template available?
 		$tpl_present = false;
-		$title_tpl = Title::newFromText("Template:" . self::$_templateName );
+		$title_tpl = Title::newFromText( self::$_templateName );
 		if ( is_object( $title_tpl ))
 		{
 			$article_tpl = new Article( $title_tpl );
@@ -380,7 +380,7 @@ class StubManager
 		
 		$tpl_link = null;
 		if ( $_isSysop && !$tpl_present )
-			$tpl_link = "Customization template: [[Template:".self::$_templateName."]]. ";
+			$tpl_link = "Customization template: [[".self::$_templateName."]]. ";
 		
 		// style formatting
 		$first = true;

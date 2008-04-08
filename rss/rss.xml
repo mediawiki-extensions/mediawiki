@@ -8,12 +8,24 @@
 
 	
 	<item>
+			<title>StubManager - 1.3.0</title>
+			<link>http://jldupont.com/Extension:StubManager</link>
+			<description>Changelog:
+* Added ''ExtImages'' class: provides access to images. This facility is intended for registered extensions in order to provide visual feedback regarding their state (e.g. functional / missing parameters etc.)
+* Added additional per-extension information in [[Special:Version]], Added method for registering extension state
+			</description>
+			<pubDate>Mon, 07 Apr 08 20:31:29 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>PageServer - 2.1.0</title>
 			<link>http://jldupont.com/Extension:PageServer</link>
 			<description>Changelog:
 Added support for returning the page's modification identifier (e.g. timestamp)
 			</description>
-			<pubDate>Mon, 07 Apr 08 11:24:03 -0400</pubDate>
+			<pubDate>Mon, 07 Apr 08 11:56:28 -0400</pubDate>
 		</item>
 
 

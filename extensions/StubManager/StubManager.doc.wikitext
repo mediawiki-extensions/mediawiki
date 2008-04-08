@@ -4,13 +4,13 @@
 |type        = framework
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.2.0
+|version     = 1.3.0
 |update      =
-|mediawiki   = 1.10, 1.11
-|download    = pear install mediawiki/stubmanager
+|mediawiki   = 1.10, 1.11, 1.12
+|download    = @see Installation section
 |readme      =
 |changelog   = See SVN ($Id: StubManager.php 368 2007-10-03 17:10:25Z jeanlou.dupont $)
-|description = 
+|description = Framework extension for the vast majority of Jean-Lou Dupont's MediaWiki extensions
 |parameters  =
 |rights      =
 |example     =
@@ -22,6 +22,8 @@ This extension is meant to address 'rare events' handling through class object '
 The net effect is lower transaction times thereby speeding up MediaWiki based sites.
 
 == Features ==
+* Provides extension status messages through [[Special:Version]]
+** Customizable through [[Template:ExtensionState]] page
 * Handles 'hook' registration (e.g. <code>ArticleSave, UserCan</code> etc.)
 * Handles 'parser function' registration (e.g. <code>{{ #magicword: ... }} </code>)
 * Handles 'parser magic word' registration
@@ -32,6 +34,22 @@ The net effect is lower transaction times thereby speeding up MediaWiki based si
 
 == Audience ==
 This extension is meant for 'extension writers'.
+
+== Special:Version Customization ==
+Customization of the extensions' state message can be done through the page [[Template:ExtensionState]]. The first parameter passed to the template is the ''state'' variable.
+
+=== States ===
+{|class=datatable
+! Value !! Description
+|-
+|   0   ||  OK
+|-
+|   1   ||  ERROR
+|-
+|   2   ||  ATTENTION
+|-
+|   3   ||  DISABLED
+|}
 
 == Usage ==
 To create a stub, use: 
@@ -87,7 +105,7 @@ in <code>LocalSettings.php</code> after the require line <code>require( ...'Stub
 == Examples ==
 See [[Extension:EmailLog|Email Log extension]].
 
-== Dependancy ==
+== Dependency ==
 None.
 
 == Installation ==
@@ -110,25 +128,8 @@ require 'extensions/StubManager/StubManager.php';
 </source>
 
 == History ==
-* Added one more parameter to '__call' method to accomodate hooks such as ArticleSave.
-* Added registration functionality for:
-** 'tag' handlers (XML style section)
-** 'mg' (i.e. parser functions)
-** 'MW' (i.e. parser Magic Words)
-* fixed annoying warning about undefined offset.
-* added namespace triggering functionality
-** Only load an extension when the extension's target namespace(s) are in focus.
-* Added support for non-BizzWiki environments
-* Added automatic linking to page on MediaWiki.org for each extension
-* Added 'isExtensionRegistered' method
-* Added 'configureExtension' method
-* Added 'version' method
-* Moved to MediaWiki project on GoogleCode
-** Added to PEAR channel
-* Added 'auto-discovery' of [[Extension:ExtensionManager]]
-* Added 'getRevision' method.
 
-{|border=1 class='datatable'
+{|class='datatable'
 ! Version !! Notes
 |-
 | 1.0.1 || Adjusted for newest version of [[Extension:ExtensionManager]]
@@ -150,5 +151,7 @@ require 'extensions/StubManager/StubManager.php';
 | 1.2.0 || Added single/double-quotes sanitization to ExtHelper, Added check for ''restricted'' parameters
 |-
 | 1.2.1 || Fixed ''style'' for Special:Version
+|-
+| 1.3.0 || Added ''ExtImages'' class: provides access to images. This facility is intended for registered extensions in order to provide visual feedback regarding their state (e.g. functional / missing parameters etc.) * Added additional per-extension information in [[Special:Version]], Added method for registering extension state
 |}
 

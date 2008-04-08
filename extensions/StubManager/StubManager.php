@@ -10,7 +10,7 @@ $wgExtensionCredits[StubManager::thisType][] = array(
 	'name'    		=> StubManager::thisName,
 	'version' 		=> StubManager::version,
 	'author'  		=> 'Jean-Lou Dupont',
-	'description'	=> 'Provides stubbing facility for extensions handling rare events. Extensions registered:<br/>', 
+	'description'	=> 'Provides stubbing facility for extensions handling rare events. $1Extensions registered:<br/>', 
 	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
 );
 
@@ -20,17 +20,49 @@ class StubManager
 	// the corresponding PEAR package.
 	const version = '@@package-version@@';
 
+	const thisType = 'other';
+	const thisName = 'StubManager';
+	const thisVersion = '$Id$';
+
 	// pointer to extensions directory
 	// whether be in a PEAR context or MW root installation
 	static $edir = null;
 	
 	const MWbaseURI = 'http://www.mediawiki.org/wiki';
 	
-	static $stubList;
-	const thisType = 'other';
-	const thisName = 'StubManager';
-	const thisVersion = '$Id$';
-	static $logTable;
+	/**
+	 * Template (in the MediaWiki namespace)
+	 * for the Special:Version page
+	 */
+	static $_templateName = "ExtensionState";
+	
+	/**
+	 * State constants
+	 */
+	const STATE_OK        = 0;	
+	const STATE_ERROR     = 1;
+	const STATE_ATTENTION = 2;
+	const STATE_DISABLED  = 3;
+	
+	static $state_icons = array(
+		self::STATE_OK			=> 'icon_ok.png',
+		self::STATE_ERROR		=> 'icon_error.png',
+		self::STATE_ATTENTION	=> 'icon_attention.png',
+		self::STATE_DISABLED	=> 'icon_disabled.png',
+	);
+	
+	static $state_messages = array(
+		self::STATE_OK			=> 'ok',
+		self::STATE_ERROR		=> 'error',
+		self::STATE_ATTENTION	=> 'attention required',
+		self::STATE_DISABLED	=> 'disabled',
+	);
+	
+	/**
+	 * Contains the list of registered extensions
+	 * @private
+	 */	
+	static $stubList = array();
 	
 	static $paramsList = array(	'class',		// mandatory
 								'classfilename',// mandatory
@@ -45,7 +77,8 @@ class StubManager
 								);
 	
 	/**
-	
+	 * Create Stub
+	 * Facility for extensions
 	 */
 	public static function createStub2( $params )
 	{
@@ -85,8 +118,6 @@ class StubManager
 		// merge with the other parameters.
 		$dListe = array_merge( $liste, $cListe );
 
-		#var_dump( $dListe );
-		
 		self::$stubList[] = $dListe;
 		
 		// need to wait for the proper timing
@@ -97,13 +128,14 @@ class StubManager
 		$wgAutoloadClasses[$liste['class']] = $liste['classfilename']; 
 	}
 	
-	/*
-		$class: 		class of object to create when 'destubbing'
-		$filename:		filename where class definition resides
-		$i18nfilename:	filename where internationalisation messages reside
-		$hooks:			array of hooks
-		$logging:		if logging support is required
-	*/
+	/**
+	 * @deprecated
+	 * $class: 		class of object to create when 'destubbing'
+	 * $filename:		filename where class definition resides
+	 * $i18nfilename:	filename where internationalisation messages reside
+	 * $hooks:			array of hooks
+	 * $logging:		if logging support is required
+	 */
 	public static function createStub(	$class, $filename, $i18nfilename = null, 
 										$hooks, 
 										$logging = false,
@@ -131,6 +163,64 @@ class StubManager
 									'mws'			=> $mws,
 									);
 	}
+	/**
+	 * Register the state of an extension
+	 * 
+	 * @return void
+	 * @param $classe string
+	 * @param $state boolean
+	 */	
+	public static function registerState( $classe, $state )	 
+	{
+		foreach( self::$stubList as &$stub )
+			if ( @$stub['class'] == $classe )
+				$stub[ 'state' ] = $state;
+	}
+	/**
+	 * Returns the current state of an extension
+	 * 
+	 * @return constant
+	 * @param $classe string
+	 */
+	public static function getState( $classe )
+	{
+		foreach( self::$stubList as &$stub )
+			if ( @$stub['class'] == $classe )
+				if ( isset( $stub['state'] ))
+					return $stub[ 'state' ];
+				
+		return null;
+	}
+	/**
+	 * Returns the icon corresponding to $state
+	 * 
+	 * @return $name string
+	 * @param $state constant
+	 */
+	public static function getStateIcon( $state )
+	{
+		if ( in_array( $state, self::$state_icons ))		
+			return self::$state_icons[ $state ];
+		return null;
+	}
+	/**
+	 * 
+	 * @return $message string
+	 * @param $state constant
+	 */
+	public static function getStateMessage( $state )
+	{
+		if ( in_array( $state, self::$state_messages ))		
+			return self::$state_messages[ $state ];
+		return null;
+	}
+	/**
+	 * Configure Extension
+	 * @return 
+	 * @param $classe Object
+	 * @param $parameter Object
+	 * @param $value Object
+	 */	
 	public static function configureExtension( $classe, $parameter, $value )
 	{
 		foreach( self::$stubList as &$stub )
@@ -243,6 +333,9 @@ class StubManager
 					$wgMessageCache->addMessages( $msg[$key], $key );		
 		}
 	}
+	/**
+	 * Special:Page hook setup
+	 */
 	private static function setupCreditsHook()
 	{
 		static $updateCreditsHooked = false;
@@ -258,11 +351,36 @@ class StubManager
 			#echo $e['classfilename'].' ';
 		#	require_once( $e['classfilename'] );
 	}
+	/**
+	 * Lists all the extension registered through StubManager
+	 * 
+	 * @param $sp Object
+	 * @param $ext Object
+	 */
 	public function hUpdateExtensionCredits( &$sp, &$ext )
 	{
 		global $wgExtensionCredits;
 		
 		$result = null;
+		
+		// is sysop viewing the page?
+		// alert if the template isn't available
+		global $wgUser;
+		$_groups = $wgUser->getGroups();
+		$_isSysop = in_array( 'sysop', $_groups );
+		
+		// Template available?
+		$tpl_present = false;
+		$title_tpl = Title::newFromText("Template:" . self::$_templateName );
+		if ( is_object( $title_tpl ))
+		{
+			$article_tpl = new Article( $title_tpl );
+			$tpl_present = $article_tpl->getId() != 0;
+		}	
+		
+		$tpl_link = null;
+		if ( $_isSysop && !$tpl_present )
+			$tpl_link = "Customization template: [[Template:".self::$_templateName."]]. ";
 		
 		// style formatting
 		$first = true;
@@ -275,6 +393,14 @@ class StubManager
 
 				if ( $index % 4 == 0 && !$first )
 					$result .= "<br/>";
+
+				$state = self::getState( @$obj['class'] );
+				$state_present = !is_null( $state );
+				
+				// extension state set && template present?
+				// build the information
+				if ($state_present && $tpl_present)
+					$result .= "{{". self::$_templateName . "|$state}}";
 					
 				$result .= '['.self::MWbaseURI.'/Extension:'.$obj['class'].' '.$obj['class']."]";
 					
@@ -287,7 +413,11 @@ class StubManager
 		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
 			if (@isset($el['name']))
 				if ($el['name']==self::thisName)
-					$el['description'] .= $result.'.';
+				{
+					$desc = $el['description'];
+					$desc = str_replace( '$1', $tpl_link, $desc );
+					$el['description'] = $desc . $result.'.';
+				}
 		
 		return true;
 	}
@@ -302,7 +432,7 @@ class StubManager
 		return $data[2];
 	}
 	/**
-	 * DEPRECATED.
+	 * @deprecated
 	 */
 	static function getFullUrl( $filename )
 	{ return 'http://www.bizzwiki.org/index.php?title=Filesystem:'.self::getRelativePath( $filename );	}
@@ -313,7 +443,9 @@ class StubManager
 		$relPath = str_replace( $IP, '', $filename ); 
 		return str_replace( '\\', '/', $relPath );    // at least windows & *nix agree on this!
 	}
-
+	/**
+	 * @deprecated
+	 */
 	public static function processArgList( $liste, $getridoffirstparam=false )
 	/*
 	 * The resulting list contains:
@@ -369,6 +501,9 @@ class StubManager
 		foreach( $templateElements as $index => &$el )
 			$alist[$el['key']] = self::getParam( $alist, $el['key'], $el['index'], $el['default'] );
 	}
+	/**
+	 * @deprecated 
+	 */
 	public function formatParams( &$alist , &$template )
 	// look at yuiPanel extension for usage example.
 	// $alist = { 'key' => 'value' ... }
@@ -377,6 +512,9 @@ class StubManager
 			// format the entry.
 			self::formatParam( $key, $value, $template );
 	}
+	/**
+	 * @deprecated
+	 */
 	private static function formatParam( &$key, &$value, &$template )
 	{
 		$format = self::getFormat( $key, $template );
@@ -438,6 +576,9 @@ class StubManager
 
 
 
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// STUB class
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -664,14 +805,22 @@ class Stub
 
 } // end class Stub
 
+
+
 // Perform auto-discovery of [[Extension:ExtensionManager]]
+// --------------------------------------------------------
 StubManager::$edir = realpath( dirname( dirname(__FILE__) ) );
 if (file_exists( StubManager::$edir.'/ExtensionManager/ExtensionManager.php'))
 	include StubManager::$edir.'/ExtensionManager/ExtensionManager.php';
 
 
+
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// ExtHelper Class
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 /**
  * Some helper functions for extensions
@@ -788,5 +937,40 @@ class ExtHelper
 		return false;		
 	}
 }// end class ExtHelpers
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// ExtImages Class
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+class ExtImages
+{
+	// Uses CoralCDN
+	static $_baseURL = "http://mediawiki.googlecode.com.nyud.net/svn/resources/images/";
+	
+	/**
+	 * Returns a formed HTML IMG tag
+	 * 
+	 * @return $html string
+	 * @param $icon string
+	 * @param $params mixed: array[optional] / string for title
+	 */
+	public function getIconImgTag( $icon, $params = array() )
+	{
+		$path = self::$_baseURL . $icon;
+
+		$paramsList = null;
+		
+		if ( is_array( $params ) )
+			foreach( $params as $key => $value )
+				$paramsList .= "$key='$value'";
+		elseif ( is_string( $params ) && (!empty( $params )) )
+			$paramsList = "title='$params'";
+		
+		return "<img src='$path' $paramsList />";
+	}
+	
+} // end class ExtIcons
 
 //</source>

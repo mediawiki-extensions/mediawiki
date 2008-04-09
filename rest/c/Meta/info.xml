@@ -7,5 +7,5 @@
  <n>Meta</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>Meta</a> <!-- alias? -->
- <d>Provides META tags to HEAD whilst integrating with parser caching.</d>
+ <d>Provides META and LINK tags to HEAD whilst integrating with parser caching.</d>
 </c>

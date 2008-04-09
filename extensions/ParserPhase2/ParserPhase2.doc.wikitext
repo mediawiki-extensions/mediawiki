@@ -8,7 +8,7 @@
 |version     = 1.1.1
 |update      =
 |mediawiki   = 1.10, 1.11, 1.12
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ParserPhase2/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/ParserPhase2/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = This extension enables performing a 'second pass' through a 'parser cached' page replacing for 'dynamic' variables.

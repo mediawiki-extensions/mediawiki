@@ -20,6 +20,18 @@ class PageServer
 	 */
 	static $pear = 'MediaWiki';
 	 	
+	static $_expiry         = 86400;	//24*60*60 == 1day
+	const CACHE_PREFIX      = "pageserver-p";
+	const CACHE_PREFIX_FLAG = "pageserver-f";	
+		
+	const SOURCE_ERROR  = 0;
+	const SOURCE_CACHE  = 1;
+	const SOURCE_REMOTE = 2;
+
+	const STATE_ERROR       = 0;	
+	const STATE_CACHE_OK    = 1;
+	const STATE_CACHE_STALE = 2;
+		
 	/**
 	 * Local Parser instance
 	 * @private
@@ -115,23 +127,100 @@ class PageServer
 
 	/**
 	 * Fetches a page located remotely i.e. accessible through HTTP
-	 * Caching is provided through MediaWiki article database
+	 * Caching is provided through MediaWiki's parser cache.
+	 * NOTE that the parser cache is used to store the ''raw'' article
+	 *      text without having being parsed. This behavior departs from
+	 *      the normal MediaWiki one.
+	 *      
+	 * NOTE2 if parser caching isn't configured, performance will be
+	 *       affected accordingly.
 	 * 
 	 * @return boolean
 	 * @param $base_uri string base URI for HTTP accessible page
 	 * @param $name string
-	 * @param $result string receives the page contents
+	 * @param $page string receives the page contents
 	 * @param $etag string
+	 * @param $source constant page's origin
+	 * @param $state constant page's state
+	 * @param $expiry integer expiry timeout
 	 */
-	public function hpage_remote( &$base_uri, &$name, &$result, &$etag )
+	public function hpage_remote(	&$base_uri, &$name, &$page, &$etag, 
+									&$source, &$state, $expiry = null )
 	{
+		$uri = $base_uri.'/'.$name;
+	
+		// prepare worst case
+		$source      = self::SOURCE_ERROR;
+		$state       = self::STATE_ERROR;
 		
+		$etag        = null;
+		$page        = null;
+		
+		$cache_etag  = null;
+		$remote_etag = null;
+		$remote_page = null;
+			
+		// FLOW 1: cache HIT
+		// verify if we have the page in the cache already
+		// and it is not expired
+		if ( $this->flow1( $uri, $page, $cache_etag ) )
+		{
+			$etag = $cache_etag;
+			$source = self::SOURCE_CACHE;
+			$state  = self::STATE_CACHE_OK;
+			return true;
+		}
+		
+		// Flag expired... 
+		// Can we access the remote page?
+		// If YES, update our cache and return it
+		// NOTE that the page's etag is already embedded in the contents
+		$remote_page = PageServer_Remote::getAndProcessRemotePage( $uri , $remote_etag );
+		if ( is_string( $remote_page ))
+		{
+			$this->flow2( $uri, $remote_page );
+			$etag = $remote_etag;
+			$source = self::SOURCE_REMOTE;
+			$state  = self::STATE_CACHE_OK;
+			return true;
+		}
+		// we can't access the remote page BUT
+		// do we have a local cache copy of the page?
+		elseif ( is_string( $page ) && !empty( $page ))
+		{
+			$source = self::SOURCE_CACHE;
+			$state  = self::STATE_CACHE_STALE;
+			$etag = $cache_etag;
+			return true;
+		}
+		
+		// from this point:
+		// 1- no cache copy of the page
+		// 2- nor is the remote page accessible
+		// Worst case is already prepared ... just bail out.
+		
+		return true;
 	}
 
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	// HOOK HELPERS
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+	/**
+	 * Check cache
+	 * 
+	 * @return 
+	 */
+	private function flow1( &$uri, &$page, &$etag )
+	{
+		$flag = $this->getFromCache( $uri, $page );
+		$etag = PageServer_Remote::extractEtag( $page );
+		return ( is_string( $flag ) );
+	}
+	private function flow2( &$uri, &$page )
+	{
+		return $this->saveInCache( $uri, $page );
+	}
 	/**
 	 * Loads a page from one of these sources (in priority order):
 	 * 1) Parser Cache
@@ -318,7 +407,84 @@ class PageServer
 				return $e;
 									
 		return null;			
-	} 
+	}
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// CACHE related
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	protected function saveInCache( &$name, &$contents, $expiry = null )
+	{
+		$cache = null;
+		
+		if ( !$this->verifyParserCache( $cache ) )
+			return false;
+			
+		// default expiry
+		if ( is_null( $expiry ))
+			$expiry = self::$_expiry;
+			
+		$key_name = wfMemcKey( self::CACHE_PREFIX,      $name );
+		$key_flag = wfMemcKey( self::CACHE_PREFIX_FLAG, $name );		
+		
+		// don't expiry the page's content, just the etag
+		$cache->set( $key_name, $contents, 0 );
+		
+		// just a flag set to expire
+		$cache->set( $key_flag, "flag",    $expiry );		
+		
+		return true;
+	}
+	/**
+	 * Gets a page from the cache
+	 * 
+	 * @return $contents mixed string/boolean
+	 * @param $name Object
+	 */
+	protected function getFromCache( &$name, &$contents )
+	{
+		$cache = null;
+		
+		if ( !$this->verifyParserCache( $cache ) )
+			return false;
+		
+		$key_name = wfMemcKey( self::CACHE_PREFIX,      $name );
+		$key_flag = wfMemcKey( self::CACHE_PREFIX_FLAG, $name );		
+
+		$contents = $cache->get( $key_name );		
+		return $cache->get( $key_flag );				
+	}
+	/**
+	 * Verifies if parser caching is available
+	 * 
+	 * @return $result boolean
+	 */	
+	protected function verifyParserCache( &$cache = null )
+	{
+		$cache = wfGetParserCacheStorage();
+		return ( $cache instanceof FakeMemCachedClient ) ? false:true ;
+	}
+	
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// Special:Version helper
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	
+	public function hSpecialVersionExtensionTypes( &$sp, &$extensionTypes )
+	// setup of this hook occurs in 'ExtensionClass' base class.
+	{
+		global $wgExtensionCredits;
+
+		// Parser Caching in place?
+		$result = "Parser Caching is ";
+		$state  = $this->verifyParserCache() ? StubManager::STATE_OK: StubManager::STATE_ATTENTION;
+		$result .= ( $state == StubManager::STATE_OK ) ? "available.": "<b>not available</b>.";
+		StubManager::registerState( __CLASS__, $state );
+
+		foreach ( $wgExtensionCredits[self::thisType] as $index => &$el )
+			if (isset($el['name']))		
+				if ($el['name'] == self::thisName)
+					$el['description'] .= $result.'<br/>';
+				
+		return true; // continue hook-chain.
+	}	
 	
 } // end class
 

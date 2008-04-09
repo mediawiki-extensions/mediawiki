@@ -44,8 +44,9 @@ including up to 4 parameters (i.e. the $n parameters when using 'wfMsgForContent
 * Use <code>PageServer::XYZ</code> where XYZ is the desired function name.
 * Use ''wfRunHooks'': page_server
 
-== Dependency ==
+== Dependencies ==
 * [[Extension:StubManager]]
+* PEAR package "HTTP/Request" is optional but required if "page_remote" hook is to be used
 
 {{Pear|PageServer}}
 

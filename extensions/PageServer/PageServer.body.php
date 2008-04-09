@@ -34,23 +34,31 @@ class PageServer
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 	/**
-		Called using PageServer::loadPage()
+	 * Used to load a page from the filesystem.
+	 * Called using PageServer::loadPage().
+	 * 
+	 * @return $contents string
+	 * @param $filename string
 	 */
 	public static function loadPage( &$filename )
 	{
 		return @file_get_contents( $filename );	
 	}
-
 	/**
-		Called using PageServer::loadAndParse()
-
-		This function is targeted at 'template' pages where newline characters
-		are used to document the said page but would otherwise cause 
-		unnecessary 'holes' once processed.
-		
-		E.g. use when combining an 'header' page to a 'form' page where the
-		'header' page consists mostly of commands/templates etc.
-
+	 * Used to complete the ''load'' method with parsing
+	 * Called using PageServer::loadAndParse()
+	 * This function is targeted at 'template' pages where newline characters
+	 * are used to document the said page but would otherwise cause 
+	 * unnecessary 'holes' once processed.
+	 * 
+	 * E.g. use when combining an 'header' page to a 'form' page where the
+	 * 'header' page consists mostly of commands/templates etc.
+	 * 
+	 * @return $contents string
+	 * @param $filename string
+	 * @param $title Title object
+	 * @param $minify boolean[optional] removes newline
+	 *
 	 */
 	public static function loadAndParse( &$filename, &$title, $minify = false )
 	{
@@ -78,10 +86,18 @@ class PageServer
 		return $contents;		
 	}
 
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// HOOK SERVICES to other extensions
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	/**
 	 * Page loading service to other extensions
-	 * NOTE that $prefix is only useful for page located in the
+	 * NOTE that $prefix is only useful for pages located in the
 	 *      MediaWiki database
+	 * In priority order, this hook tries fetching the page from:
+	 * 1- Parser Cache
+	 * 2- MediaWiki article database 
+	 * 3- PEAR repository under the MediaWiki/$name directory
+	 * 4- MediaWiki installation directory i.e. $IP.'/extensions/'.$name
 	 * 
 	 * @param $prefix prefix of the page in case it is found in the database
 	 * @param $name   name of page
@@ -96,6 +112,26 @@ class PageServer
 		
 		return true;	
 	}	
+
+	/**
+	 * Fetches a page located remotely i.e. accessible through HTTP
+	 * Caching is provided through MediaWiki article database
+	 * 
+	 * @return boolean
+	 * @param $base_uri string base URI for HTTP accessible page
+	 * @param $name string
+	 * @param $result string receives the page contents
+	 * @param $etag string
+	 */
+	public function hpage_remote( &$base_uri, &$name, &$result, &$etag )
+	{
+		
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// HOOK HELPERS
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 	/**
 	 * Loads a page from one of these sources (in priority order):
 	 * 1) Parser Cache
@@ -224,7 +260,7 @@ class PageServer
 	}
 	
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// PARSER FUNCTIONS
+	// PARSER FUNCTIONS SERVICES
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	/**
 	 * Parser Function: #load_page
@@ -244,7 +280,6 @@ class PageServer
 	{
 		return wfMsg( $msgId );	
 	}
-
 	/**
 	 * Parser Function: #mwmsgx
 	 */

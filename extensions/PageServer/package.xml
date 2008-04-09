@@ -43,6 +43,7 @@
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki/PageServer" name="PageServer.php" role="php" />
    <file baseinstalldir="MediaWiki/PageServer" name="PageServer.body.php" role="php" />
+   <file baseinstalldir="MediaWiki/PageServer" name="PageServer.remote.php" role="php" />   
     <!-- }} -->
 
   </dir>

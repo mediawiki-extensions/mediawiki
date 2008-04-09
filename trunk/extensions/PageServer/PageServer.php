@@ -24,7 +24,8 @@ else
 	StubManager::createStub2(	array(	'class' 		=> 'PageServer', 
 										'classfilename'	=> dirname(__FILE__).'/PageServer.body.php',
 										'mgs'			=> array( 'mwmsg', 'mwmsgx', 'load_page' ),
-										'hooks'			=> array( 'page_server', 'page_remote' )										
+										'hooks'			=> array( 'page_server', 'page_remote',
+																	'SpecialVersionExtensionTypes' )										
 									)
 							);
 	// Required PEAR class

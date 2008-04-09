@@ -1,0 +1,47 @@
+{{Extension
+|name        = MetaTags
+|status      = stable
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.1.0
+|update      =
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/MetaTags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: MetaTags.doc.wikitext 1005 2008-04-09 18:03:40Z jeanlou.dupont $)
+|description = Provides a means including META and LINK tags to a page's HEAD whilst still integrating with parser caching.
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides a means including META and LINK tags to a page's HEAD whilst still integrating with parser caching.
+
+== Examples ==
+* <nowiki>{{#meta: Content-Type | text/html; charset=utf-8 }}</nowiki>
+* <nowiki>{{#link: stylesheet | text/css | theme.css }}</nowiki>
+
+== Usage ==
+=== Meta ===
+ <nowiki>{{#meta: HTTP-EQUIV | CONTENT [| NAME] }}</nowiki>
+Where the first parameter corresponds the the ''http-equiv'' attribute, the second to the ''content'' attribute and the optional third corresponds to the ''name'' attribute.
+
+Any field can be left blank and thus won't be included. Example:
+ <nowiki>{{#meta: | noindex,nofollow | robots }}</nowiki>
+Will produce <nowiki><meta name="robots" content="noindex,nofollow" ></nowiki>
+
+=== Link ===
+ <nowiki>{{#link: rel | type | href }}</nowiki>
+
+== Dependency ==
+* [[Extension:StubManager|StubManager extension]] of version >= 1.3.0
+{{Pear|MetaTags}}
+
+== History ==
+{|class=datatable
+! Release !! Notes
+|-
+| 1.0.0 || Initial Release
+|-
+| 1.1.0 || Added #link parser function
+|}

@@ -12,6 +12,21 @@ class MetaTags
 	const thisName = 'MetaTags';
 	
 	/**
+	 * {{#link: rel | type | href }}
+	 */
+	public function mg_meta( &$parser, $rel, $type, $href )
+	{
+		if (!self::checkExecuteRight( $parser->mTitle ))
+			return 'MetaTags: '.wfMsg('badaccess');
+		
+		$_rel  = $this->process( 'rel',  $rel );
+		$_type = $this->process( 'type', $type );
+		$_href = $this->process( 'href', $href );
+
+		$parser->mOutput->addHeadItem("<link{$_rel}{$_type}{$_href}>\n");
+	}
+	
+	/**
 	 * {{#meta: HTTP-EQUIV | CONTENT [| NAME] }}
 	 */
 	public function mg_meta( &$parser, $httpAtt, $contentAtt, $nameAtt='' )
@@ -26,7 +41,8 @@ class MetaTags
 		$parser->mOutput->addHeadItem("<meta{$http}{$cont}{$name}>\n");
 	}
 	/**
-	 * 
+	 * Processes an HTML tag attribute for security reasons
+	 * @protected 
 	 */
 	protected function process( $att, $input )
 	{
@@ -38,6 +54,9 @@ class MetaTags
 		return " $att=\"$out\"";
 	}	 
 	/**
+	 * Verifies if the current user has the required right to use the
+	 * parser functions defined in this extension
+	 * 
 	 *	1- IF the page is protected for 'edit' THEN allow execution
 	 *	2- IF the page's last contributor had the 'meta' right THEN allow execution
 	 *	3- ELSE deny execution

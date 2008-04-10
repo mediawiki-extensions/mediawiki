@@ -78,7 +78,7 @@ class PageServer_Remote
 	 */	
 	public static function wget( &$uri, $timeout, &$req_headers, &$response_headers, &$body, &$code )
 	{
-		$request =& new HTTP_Request( 'http://' . $uri );
+		$request =& new HTTP_Request( $uri );
 										
 		$request->_timeout = $timeout;
 		

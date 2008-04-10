@@ -80,7 +80,7 @@ class SecureTransclusion
 		
 		wfRunHooks( 'page_remote', array( $uri, &$page, &$etag, &$source, &$state, $timeout ) );
 		
-		return ( is_string( $page ));
+		return $page;
 	}
 } // end class
 //</source>

@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package SecureTransclusion
  * @version 2.0.0
- * @Id $Id: SecureTransclusion.body.php 1010 2008-04-10 00:34:44Z jeanlou.dupont $
+ * @Id $Id: SecureTransclusion.body.php 1012 2008-04-10 01:08:54Z jeanlou.dupont $
  */
 //<source lang=php>
 class SecureTransclusion
@@ -45,10 +45,7 @@ class SecureTransclusion
 	{
 		$uri = $title->getFullUrl();
 
-		// just encode the string to make sure
-		// we don't break anything downstream.
-		$euri = urlencode( $uri );		
-		$text = $this->fetch( $euri, $timeout );
+		$text = $this->fetch( $uri, $timeout );
 		
 		// if we didn't succeed, turn off parser caching
 		// hoping to get lucky next time around.

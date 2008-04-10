@@ -14,7 +14,7 @@ class MetaTags
 	/**
 	 * {{#link: rel | type | href }}
 	 */
-	public function mg_meta( &$parser, $rel, $type, $href )
+	public function mg_link( &$parser, $rel, $type, $href )
 	{
 		if (!self::checkExecuteRight( $parser->mTitle ))
 			return 'MetaTags: '.wfMsg('badaccess');

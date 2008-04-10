@@ -19,14 +19,20 @@
 Provides:
 * Page loading facility to other extensions
 * Parser functions (#mwmsg, #mwmsgx) and services to other extensions ( 'loadAndParse' )
+* Hooks: 
+** Local page:  page_server( &$prefix, &$name, &$result, &$id )
+** Remote page: page_remote(	&$base_uri, &$name, &$page, &$etag, &$source, &$state, $expiry = null )
 
 == Features ==
-* Page loading ''hook'': page_server
-* Page loading from (in priority):
+* Page loading ''hook'': page_server, page_remote
+* Local Page loading from (in priority):
 ** Parser Cache
 ** Database
 ** PEAR directory (/$pear/MediaWiki)
 ** MediaWiki extensions directory in local installation
+* Remote Page loading from (in priority):
+** Cache
+** Remote HTTP URI
 * Page loading parser function: #load_page
 * On-demand loading of wiki page from filesystem
 * Optional parsing (with the MediaWiki parser) of the wiki page
@@ -59,4 +65,6 @@ including up to 4 parameters (i.e. the $n parameters when using 'wfMsgForContent
 | 2.0.1 || Fixed parser cache related bug
 |-
 | 2.1.0 || Added support for page identifier (modification timestamp)
+|-
+| 2.2.0 || Added remote page loading hook ''page_remote'' with caching
 |}

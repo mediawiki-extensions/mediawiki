@@ -45,10 +45,7 @@ class SecureTransclusion
 	{
 		$uri = $title->getFullUrl();
 
-		// just encode the string to make sure
-		// we don't break anything downstream.
-		$euri = urlencode( $uri );		
-		$text = $this->fetch( $euri, $timeout );
+		$text = $this->fetch( $uri, $timeout );
 		
 		// if we didn't succeed, turn off parser caching
 		// hoping to get lucky next time around.

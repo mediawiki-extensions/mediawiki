@@ -21,7 +21,7 @@ Provides:
 * Parser functions (#mwmsg, #mwmsgx) and services to other extensions ( 'loadAndParse' )
 * Hooks: 
 ** Local page:  page_server( &$prefix, &$name, &$result, &$id )
-** Remote page: page_remote(	&$base_uri, &$name, &$page, &$etag, &$source, &$state, $expiry = null )
+** Remote page: page_remote( &$uri, &$page, &$etag, &$source, &$state, $expiry = null )
 
 == Features ==
 * Page loading ''hook'': page_server, page_remote

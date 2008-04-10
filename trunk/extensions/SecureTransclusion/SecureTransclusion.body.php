@@ -62,200 +62,26 @@ class SecureTransclusion
 		return $text;
 	}	 
 	/**
-	 *
+	 * Verifies if the current user can execute the parser function
 	 */
 	private static function checkExecuteRight( &$title )
 	{
-		/*
-		global $wgUser;
-		if ($wgUser->isAllowed('strans'))
-			return true;
-		*/
-		if ($title->isProtected('edit'))
-			return true;
-		
-		// Last resort; check the last contributor.
-		/*
-		$rev    = Revision::newFromTitle( $title );
-		
-		$user = User::newFromId( $rev->mUser );
-		$user->load();
-		
-		if ($user->isAllowed( 'strans' ))
-			return true;
-		*/
-		return false;
-	}
-	/**
-	 * Gets from the cache
-	 */
-	protected function getFromCache( $uri )
-	{
-		$parserCache =& ParserCache::singleton();
-		return $parserCache->mMemc->get( $uri );
-	}
-	/**
-	 * Saves in the cache
-	 */
-	protected function saveInCache( &$uri, &$text )
-	{
-		$parserCache =& ParserCache::singleton();
-		
-		// keep in cache a little longer to give time to the HEAD lookup 
-		// to determine if the source page has really changed
-		return $parserCache->mMemc->set( $uri, $text, self::pageCacheTimeout );
+		return ( $title->isProtected('edit') );
 	}
 	/**
 	 *  Fetches an external page from either the parser cache or external uri
-	 *  If we get here, it means either:
-	 *  1) The parser cache entry for the page has expired
-	 *  2) Parser caching is not in use thus the page must be fetched on every page view (expensive !)
-	 *  
-	 *  Cases to cover:
-	 *  case 1: Etag of remote page === Etag of locally cached page
-	 *  		=> just use the locally cached page
-	 *  		=> refresh cached Etag
-	 *  
-	 *  case 2: Etag of remote page !== Etag of locally cached page
-	 *  		=> fetch remote page
-	 *				=> if cannot fetch, then case3.
-	 *  		=> store in cache (page & Etag)
-	 *  
-	 *  case 3: Etag of remote page NOT available
-	 *			=> clear local Etag
-	 *  		=> return locally cached page (if available)
-	 *  		=> if not available, try fetching it
+	 *  This extension uses the services of [[Extension:PageServer]] to this end
 	 */	
 	protected function fetch( $uri, $timeout )
 	{
-		$rEtag = null;
-		$lEtag = null;
-		 
-		// compareEtags method will fill in the etags variables		 
-		$r = $this->compareEtags( $uri, $rEtag, $lEtag );
-
-		if ( $r === true )
-			return $this->doCase1( $uri );
-
-		if ( $r === false )
-			return $this->doCase2( $uri );
+		$base_uri = "mediawiki.googlecode.com/svn/resources/images";
+		$name     = "icon_attention.png";
+		$page     = null;
+		$etag     = null;
+		$source   = null;
+		$state    = null;
 		
-		return $this->doCase3( $uri );
-	}
-	/**
-	 * Etag remote === Etag local
-	 */
-	protected function doCase1( &$uri, &$etag, $timeout ) 
-	{
-		$text = $this->getFromCache( $uri );
-		
-		// if we run into a problem, try case #2.
-		if ( $text === false ) 
-			return $this->doCase2( $uri, $etag, $timeout );
-
-		// refresh Etag in cache
-		$this->saveEtagInCache( $uri, $etag );
-		
-		return $this->saveInCache( $uri, $text, self::pageCacheTimeout );
-	}
-	/**
-	 * Etag remote !== Etag local
-	 */
-	protected function doCase2( &$uri, &$etag, $timeout ) 
-	{
-		$text = $this->realRemoteGetPage( $uri, $timeout );
-		
-		// if we can't fetch from the remote server, bail out.
-		if ( $text === false )
-			return false;
-
-		// save Etag in cache
-		$this->saveEtagInCache( $uri, $etag );
-		
-		return $this->saveInCache( $uri, $text );		
-	}
-	/**
-	 * Remote Etag not available
-	 */
-	protected function doCase3( &$uri )
-	{
-		$this->deleteEtagInCache( $uri );
-		return $this->getFromCache( $uri );
-	}
-
-	/**
-	 * 
-	 */
-	protected function realRemoteGetPage( $uri, $timeout )
-	{
-		return Http::get( $uri, $timeout );
-	}	
-	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// ETAG related
-		
-	/**
-	 * Compare Etags
-	 * 
-	 * @return bool
-	 */
-	protected function compareEtags( &$uri, &$rEtag, &$lEtag )
-	{
-		$rEtag = $this->getRemoteEtag( $uri );
-		$lEtag = $this->getEtagFromCache( $uri );
-		
-		if (!is_string( $rEtag ) || !is_string( $lEtag))
-			return null;
-		
-		if ( $rEtag === null ) return null;
-		return ( $rEtag === $lEtag );
-	}
-	/**
-	 * Get E-tag
-	 * Requires pecl module ''pecl_http''
-	 *
-	 */
-	protected function getRemoteEtag( &$uri )
-	{
-		if (!$this->checkEtagProcessing())
-			return null;
-
-		$head = @http_head( $uri );
-		if ( $head === false )
-			return false;
-			
-		$r = preg_match( "/Etag:.\"(.*)\"\n/i", $head, $match );
-		if ( ( $r === false ) || ($r === 0) )
-			return false;
-			
-		return $match[1];
-	}
-	/**
-	 * Delete Etag in cache
-	 */
-	protected function deleteEtagInCache( &$uri  )
-	{
-		return $this->saveInCache( $uri.'-etag', null, 1 /* can't do better I think */ );
-	}
-	/**
-	 * Save Etag in cache
-	 */
-	protected function saveEtagInCache( &$uri, &$etag )
-	{
-		return $this->saveInCache( $uri.'-etag', $etag, self::pageEtagTimeout );
-	}
-	/**
-	 * Get Etag from the cache
-	 */
-	protected function getEtagFromCache( &$uri )
-	{
-		return $this->getFromCache( $uri.'-etag' );
-	}
-	/**
-	 *  Check for Etag processing capability
-	 */ 
-	protected function checkEtagProcessing()
-	{
-		 return function_exists('http_head');
+		wfRunHooks( 'page_remote', array( $base_uri, $name, &$page, &$etag, &$source, &$state ) );
 	}
 } // end class
 //</source>

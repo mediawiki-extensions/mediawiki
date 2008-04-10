@@ -8,12 +8,23 @@
 
 	
 	<item>
+			<title>SecureTransclusion - 2.0.0</title>
+			<link>http://jldupont.com/Extension:SecureTransclusion</link>
+			<description>Changelog:
+Enhanced caching functionality: added integration with [[Extension:PageServer]]
+			</description>
+			<pubDate>Wed, 09 Apr 08 20:33:58 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>PageServer - 2.2.0</title>
 			<link>http://jldupont.com/Extension:PageServer</link>
 			<description>Changelog:
 Added ''page_remote'' for retrieving remote pages accessible through HTTP
 			</description>
-			<pubDate>Wed, 09 Apr 08 20:09:37 -0400</pubDate>
+			<pubDate>Wed, 09 Apr 08 20:28:17 -0400</pubDate>
 		</item>
 
 

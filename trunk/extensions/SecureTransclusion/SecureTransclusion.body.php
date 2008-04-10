@@ -11,8 +11,7 @@ class SecureTransclusion
 	const thisType = 'other';
 	const thisName = 'SecureTransclusion';
 	
-	const pageCacheTimeout = 172800; // 2days
-	const pageEtagTimeout  = 86400;  // 1day
+	const pageCacheTimeout = 86400; // 1day
 	
 	public function mg_strans( &$parser, $page, $errorMessage = null, $timeout = 5 )
 	{
@@ -74,14 +73,14 @@ class SecureTransclusion
 	 */	
 	protected function fetch( $uri, $timeout )
 	{
-		$base_uri = "mediawiki.googlecode.com/svn/resources/images";
-		$name     = "icon_attention.png";
-		$page     = null;
+		$page     = false;
 		$etag     = null;
 		$source   = null;
 		$state    = null;
 		
-		wfRunHooks( 'page_remote', array( $base_uri, $name, &$page, &$etag, &$source, &$state ) );
+		wfRunHooks( 'page_remote', array( $uri, &$page, &$etag, &$source, &$state, $timeout ) );
+		
+		return ( is_string( $page ));
 	}
 } // end class
 //</source>

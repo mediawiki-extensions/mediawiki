@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>PageServer - 2.2.0</title>
+			<link>http://jldupont.com/Extension:PageServer</link>
+			<description>Changelog:
+Added ''page_remote'' for retrieving remote pages accessible through HTTP
+			</description>
+			<pubDate>Wed, 09 Apr 08 20:09:37 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>MetaTags - 1.1.0</title>
 			<link>http://jldupont.com/Extension:MetaTags</link>
 			<description>Changelog:

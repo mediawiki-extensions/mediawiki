@@ -136,19 +136,16 @@ class PageServer
 	 *       affected accordingly.
 	 * 
 	 * @return boolean
-	 * @param $base_uri string base URI for HTTP accessible page
-	 * @param $name string
+	 * @param $uri string base URI for HTTP accessible page
 	 * @param $page string receives the page contents
 	 * @param $etag string
 	 * @param $source constant page's origin
 	 * @param $state constant page's state
 	 * @param $expiry integer expiry timeout
 	 */
-	public function hpage_remote(	&$base_uri, &$name, &$page, &$etag, 
+	public function hpage_remote(	&$uri, &$page, &$etag, 
 									&$source, &$state, $expiry = null )
 	{
-		$uri = $base_uri.'/'.$name;
-	
 		// prepare worst case
 		$source      = self::SOURCE_ERROR;
 		$state       = self::STATE_ERROR;

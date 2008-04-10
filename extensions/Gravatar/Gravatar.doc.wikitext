@@ -5,11 +5,11 @@
 |image       =
 |version     = 1.1.0
 |update      =
-|mediawiki   = 1.11 (should work on other versions)
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/Gravatar/ SVN]
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/Gravatar/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides integration with [http://site.gravatar.com/ Gravatar].
 |parameters  =
 |rights      =
 |example     =
@@ -46,12 +46,12 @@ For a complete description, please see the ''widgets'' section on Ohloh.
 [[{{FULLPAGENAMEE}}/Tests]]
 }}-->
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension version >= 1.1.0 ]]
 {{Pear|Gravatar}}
 
 == History ==
-{|border=1
+{|class=datatable
 ! Release !! Notes
 |-
 | 1.0.0 || Initial Release

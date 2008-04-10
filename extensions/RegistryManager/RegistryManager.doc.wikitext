@@ -6,11 +6,11 @@
 |image       =
 |version     = 1.0.1
 |update      =
-|mediawiki   = 1.11
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/RegistryManager/ SVN]
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/RegistryManager/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides a facility for extensions to store/retrieve configuration parameters.
 |parameters  =
 |rights      =
 |example     =
@@ -28,7 +28,7 @@ Provides a facility for extensions to store/retrieve configuration parameters.
 
 == Example ==
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|RegistryManager}}

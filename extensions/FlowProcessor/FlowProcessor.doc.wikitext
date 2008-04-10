@@ -9,7 +9,7 @@
 |download    = [http://mediawiki.googlecode.com/svn/tags/FlowProcessor/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides a framework for an MVC (Model, View, Controller) flow system; ''flows'' are implemented separately.
 |parameters  =
 |rights      =
 |example     =

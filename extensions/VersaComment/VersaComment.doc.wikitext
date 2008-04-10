@@ -6,7 +6,7 @@
 |version     = 1.0.0
 |update      =
 |mediawiki   = tested on 1.11
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/VersaComment/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/VersaComment/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = 
@@ -28,7 +28,7 @@ Just include the comments to be displayed between the <nowiki><!-- {{</nowiki> <
 {{Pear|VersaComment}}
 
 == History ==
-{|border=1
+{|class='datatable'
 ! Release !! Notes
 |-
 | 1.0.0 || Initial Release

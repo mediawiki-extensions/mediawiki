@@ -6,11 +6,11 @@
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags/AlternateRawPage SVN]
+|mediawiki   = 1.10, 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/AlternateRawPage/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides another means of extracting articles in 'raw' format. 
 |parameters  =
 |rights      =
 |example     =
@@ -33,7 +33,7 @@ None.
 {{Pear|AlternateRawPage}}
 
 == History ==
-{|border=1
+{|class=datatable
 ! Release !! Notes
 |-
 | 1.0.0 || Initial public release

@@ -9,7 +9,7 @@
 |download    = [http://mediawiki.googlecode.com/svn/tags/ParserFunctionsHelper SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides services to parser function extensions which require inserting content after the parsing phase. 
 |parameters  =
 |rights      =
 |example     =
@@ -26,13 +26,13 @@ This extension allows for registering ''raw'' content which will replace ''ancho
 
 == Usage ==
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|ParserFunctionsHelper}}
 
 == History ==
-{|border=1
+{|class=datatable
 ! Release !! Notes
 |-
 | 1.0.0 || Initial public release

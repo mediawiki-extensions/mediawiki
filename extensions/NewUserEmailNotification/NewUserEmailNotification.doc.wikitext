@@ -6,11 +6,11 @@
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = 1.10, 1.11
-|download    = [http://bizzwiki.googlecode.com/svn/trunk/BizzWiki/extensions/NewUserEmailNotification/ SVN]
+|mediawiki   = 1.10, 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/NewUserEmailNotification/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides email notification of new user account creation.
 |parameters  =
 |rights      =
 |example     =
@@ -22,7 +22,7 @@ Provides email notification of new user account creation.
 * Uses '$wgSitename' as 'to' contact name
 * Uses '$wgEmergencyContact' as 'to' contact address
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|NewUserEmailNotification}}

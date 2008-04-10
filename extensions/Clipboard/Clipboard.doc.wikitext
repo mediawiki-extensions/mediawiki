@@ -7,7 +7,7 @@
 |version     = 1.01
 |update      =
 |mediawiki   = tested on 1.8.2, 1.9.3, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/Clipboard/]
+|download    = [http://mediawiki.googlecode.com/svn/tags/Clipboard/ SVN]
 |readme      =
 |changelog   =
 |description = Provides a simple 'clipboard' to add/paste article titles.
@@ -27,7 +27,7 @@
 * Upload the file 'Clipboard.js' to the installation's ''root/jsscripts'' folder
 * Upload the file 'ClipboardClass.php'  to the installation's extension folder
 
-=== Dependancy ===
+=== Dependency ===
 This extension requires [[Extension:ExtensionClass]].
 
 === Changes to LocalSettings.php ===

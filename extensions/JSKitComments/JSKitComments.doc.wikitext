@@ -5,11 +5,11 @@
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = 1.11 (should work on other versions)
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/JSKitComments/ SVN]
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/JSKitComments/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides integration with [http://js-kit.com/comments/ JS-Kit Comments], an AJAX based social tool.
 |parameters  =
 |rights      =
 |example     =
@@ -46,12 +46,12 @@ For a complete description, please see [http://js-kit.com/comments/custom.html J
 [[{{FULLPAGENAMEE}}/Tests]]
 }}-->
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension version >= 1.2.0 ]]
 {{Pear|JSKitComments}}
 
 == History ==
-{|border=1
+{|class=datatable
 ! Release !! Notes
 |-
 | 1.0.0 || Initial Release

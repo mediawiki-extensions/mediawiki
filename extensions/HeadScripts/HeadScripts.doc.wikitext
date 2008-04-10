@@ -8,11 +8,11 @@
 |image       =
 |version     = 1.1.0
 |update      =
-|mediawiki   = 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/HeadScripts/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides adding scripts & css links to the site's HEAD. 
 |parameters  =
 |rights      =
 |example     =
@@ -34,7 +34,7 @@ Here is an example of 'MediaWiki:Registry/HeadScripts' page:
 	|}
 </pre>
 
-== Dependancies ==
+== Dependencies ==
 * [[Extension:StubManager|StubManager extension]]
 * [[Extension:RegistryManager|RegistryManager extension]]
 

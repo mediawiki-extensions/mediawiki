@@ -7,10 +7,10 @@
 |version     = 1.0.1
 |update      =
 |mediawiki   = 1.11
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ConditionalContent SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/ConditionalContent/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides parser functions ''#cc'' and ''#ccd'' for controlling the conditional inclusion of pages. 
 |parameters  =
 |rights      =
 |example     =
@@ -46,14 +46,14 @@ The text following the semicolon should read ''true'' : {{#cc:Extension:Conditio
 === Example2 ===
 The text following the semicolon should read ''false'' : {{#cc:Extension:ConditionalContent_testpage_true|0|1|Extension:ConditionalContent_testpage_false}}
 
-== Dependancies ==
+== Dependencies ==
 * [[Extension:StubManager|StubManager extension]]
 * [[Extension:ParserPhase2|ParserPhase2]] is only required for ''#ccd''. 
 
 {{Pear|ConditionalContent}}
 
 == History ==
-{|border=1
+{|class=datatable
 ! Release !! Notes
 |-
 | 1.0.0 || Initial Release

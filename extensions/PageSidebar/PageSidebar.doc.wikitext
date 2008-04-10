@@ -9,7 +9,7 @@
 |download    = [http://mediawiki.googlecode.com/svn/tags/PageSidebar/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides page scoped sidebar.
 |parameters  =
 |rights      =
 |example     =
@@ -43,7 +43,7 @@ Provides page scoped sidebar.
 {{Pear|PageSidebar}}
 
 == History ==
-{|border=1
+{|class=datatable
 ! Release !! Notes
 |-
 | 1.0.0 || Initial Release

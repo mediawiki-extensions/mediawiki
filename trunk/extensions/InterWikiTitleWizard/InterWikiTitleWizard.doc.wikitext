@@ -6,11 +6,11 @@
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = 1.11
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/InterWikiTitleWizard/ SVN]
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/InterWikiTitleWizard/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides allowing for special HTML character entities in inter-wiki titles. 
 |parameters  =
 |rights      =
 |example     =
@@ -20,7 +20,7 @@ Provides allowing for special HTML character entities in inter-wiki titles.
 This extension 'decodes' all the inter-wiki titles allowing for characters such as ' ? ' and ' = ' to be valid title characters.
 This facilitates building redirect pages to external web sites such as Google Presentation.
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|InterWikiTitleWizard}}

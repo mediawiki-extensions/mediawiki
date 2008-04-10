@@ -38,14 +38,14 @@ The following enables viewing FreeMind diagrams through an interwiki link ''mwgc
 |width=100%
 }}
 
-== Dependancies ==
+== Dependencies ==
 * [[Extension:StubManager|StubManager extension >= v1.0.6]]
 * [[Extension:ParserFunctionsHelper|ParserFunctionsHelper extension]]
 
 {{Pear|EmbedObject}}
 
 == History ==
-{|border=1
+{|class='datatable'
 ! Release !! Notes
 |-
 | 1.0.0 || Initial public release

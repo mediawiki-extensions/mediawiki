@@ -6,14 +6,6 @@
  * @Id $Id$
  */
 //<source lang=php>
-$wgExtensionCredits[StubManager::thisType][] = array( 
-	'name'    		=> StubManager::thisName,
-	'version' 		=> StubManager::version,
-	'author'  		=> 'Jean-Lou Dupont',
-	'description'	=> 'Provides stubbing facility for extensions handling rare events. $1Extensions registered:<br/>', 
-	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
-);
-
 class StubManager
 {
 	// This version number must match that of 
@@ -216,7 +208,7 @@ class StubManager
 	}
 	/**
 	 * Configure Extension
-	 * @return 
+	 * @return void
 	 * @param $classe Object
 	 * @param $parameter Object
 	 * @param $value Object
@@ -972,5 +964,13 @@ class ExtImages
 	}
 	
 } // end class ExtIcons
+
+$wgExtensionCredits[StubManager::thisType][] = array( 
+	'name'    		=> StubManager::thisName,
+	'version' 		=> StubManager::version,
+	'author'  		=> 'Jean-Lou Dupont',
+	'description'	=> 'Provides stubbing facility for extensions handling rare events. $1Extensions registered:<br/>', 
+	'url'			=> 'http://mediawiki.org/wiki/Extension:StubManager',				
+);
 
 //</source>

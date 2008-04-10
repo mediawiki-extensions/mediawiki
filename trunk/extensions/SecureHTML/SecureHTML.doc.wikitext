@@ -8,7 +8,7 @@
 |version     = 2.1.0
 |update      =
 |mediawiki   = 1.10, 1.11, 1.12
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/SecureHTML/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/SecureHTML/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
 |description = This extension securely inserts HTML section(s) or pages on a wiki page. 

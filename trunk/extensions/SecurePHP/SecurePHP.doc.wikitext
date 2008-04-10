@@ -35,7 +35,7 @@ Provides secure execution of PHP code embedded in 'runphp' tagged section.
 and consequently only the last contributor's right acts as protection measure, it is advised to use
 considerable care when using templates on the same page.
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 ** Automatically resolved if using PEAR
 

@@ -6,11 +6,11 @@
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/InterWikiLinkManager/ SVN]
+|mediawiki   = 1.10, 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/InterWikiLinkManager/ SVN]
 |readme      =
 |changelog   = See SVN ($Id: InterWikiLinkManager.php 793 2007-09-18 16:01:55Z jeanlou.dupont $)
-|description = 
+|description = This MediaWiki extension enables a user with the appropriate rights to manage the InterWiki Links of the database.
 |parameters  =
 |rights      =
 |example     =
@@ -31,7 +31,7 @@ This MediaWiki extension enables a user with the appropriate rights to manage th
 == Example ==
 An example of [[MediaWiki:Registry/InterWikiLinks]] using the magic word '#iwl' [[Extension:InterWikiLinkManager/Example|here]].
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|InterWikiLinkManager}}

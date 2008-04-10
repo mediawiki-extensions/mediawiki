@@ -10,7 +10,7 @@
 |download    = [http://mediawiki.googlecode.com/svn/tags/GoogleCharts SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides a simple interface for embedding GoogleCharts.
 |parameters  =
 |rights      =
 |example     =
@@ -47,13 +47,13 @@ The parser function ''gcharts_senc'' implements the ''Simple Encoding'' function
 == Documentation ==
 The official source of information for GoogleCharts can be found [http://code.google.com/apis/chart/ here].
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|GoogleCharts}}
 
 == History ==
-{|border=1
+{|class=datatable
 ! Release !! Notes
 |-
 | 1.0.0 || Initial public release

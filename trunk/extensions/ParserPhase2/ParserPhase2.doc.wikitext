@@ -74,35 +74,14 @@ Recursive invocation is supported; example:
 == Issues with Wikitext tables ==
 There are some limitations in the usage of this extension with wikitext based tables since parameters are separated through the pipe ''|'' character. 
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|ParserPhase2}}
 
 == History ==
-* fixed client side caching logic due to a bug in PHP's preg_match_all function
-* fixed issue with $wgParser not having a valid 'mTitle' property set
-* added 'disable' command
-* Removed dependency on 'ExtensionClass'
-* Added 'stub' capability
-* Added 'EndParserPhase2' hook
-* Added pattern: ((magic word|... )) which more closely maps to standard MW parser function calling
-** DO NOT MIX PATTERNS ON THE SAME PAGE i.e. no (($...$)) mixing up with ((...))
-* Added functionality to execute parser functions/magic words just after the 'tidy' process
-* Added functionality to execute parser functions/magic words just BEFORE the 'strip' process i.e. before the parser really begins.
-* Added 'enable' magic word
-* Added support for 'sectional execution' i.e. replacement between 'enable' and 'disable' magic words
-* Added 'recursive' (aka 'nesting') processing functionality
-* Changed calls to $this->execute in order to remove PHP warning.
 
-=== 1.0.0 ===
-* Moved to PEAR repository
-=== 1.0.1 ===
-* Removed unused variable in order to avoid unecessary PHP notice
-=== 1.1.0 ===
-* Added 'master off' functionality
-
-{|border=1
+{|class=datatable
 ! Release !! Notes
 |-
 | 1.1.1 || Fixed for MediaWiki 1.12 compatiblity

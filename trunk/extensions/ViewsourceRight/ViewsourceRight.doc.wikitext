@@ -7,10 +7,10 @@
 |version     = 1.1.0
 |update      =
 |mediawiki   = 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ViewsourceRight/ SVN]
+|download    = [http://mediawiki.googlecode.com/svn/tags/ViewsourceRight/ SVN]
 |readme      =
 |changelog   = See SVN ($Id: ViewsourceRight.php 782 2007-09-16 01:22:37Z jeanlou.dupont $)
-|description = 
+|description = This extension adds a 'viewsource' right. Only the users with the 'viewsource' permission can 'view' an article's source wikitext.
 |parameters  =
 |rights      =
 |example     =

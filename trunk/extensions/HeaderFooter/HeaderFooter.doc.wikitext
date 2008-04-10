@@ -5,11 +5,11 @@
 |image       =
 |version     = 2.0.0
 |update      =
-|mediawiki   = 1.11 (should work on other versions)
+|mediawiki   = 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/HeaderFooter/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides per-namespace and per-page header + footer inclusion.
 |parameters  =
 |rights      =
 |example     =
@@ -49,12 +49,12 @@ On ''edit'' protected pages, one can add
 # Page [[MediaWiki:hf-nsheader-Extension]] would contain the wikitext to be included as header for all pages of the ''Extension'' namespace.
 # Page [[MediaWiki:hf-footer-Extension:HeaderFooter]] would contain the wikitext to be included as footer for the page [[Extension:HeaderFooter]].
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 {{Pear|HeaderFooter}}
 
 == History ==
-{|border=1
+{|class=datatable
 ! Release !! Notes
 |-
 | 2.0.0 || Complete redesign

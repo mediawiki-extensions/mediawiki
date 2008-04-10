@@ -9,11 +9,11 @@
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = 1.10, 1.11
-|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|mediawiki   = 1.10, 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/WatchRight SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides watch/unwatch rights enforcement.
 |parameters  =
 |rights      =
 |example     =
@@ -21,7 +21,7 @@
 == Purpose==
 Provides watch/unwatch rights enforcement.
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|WatchRight}}

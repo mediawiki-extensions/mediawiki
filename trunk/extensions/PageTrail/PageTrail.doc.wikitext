@@ -7,10 +7,10 @@
 |version     = 1.0.5
 |update      =
 |mediawiki   = tested on 1.11
-|download    = see Installation
+|download    = [http://mediawiki.googlecode.com/svn/tags/PageTrail/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides a trail for recently visited pages.
 |parameters  =
 |rights      =
 |example     =
@@ -23,7 +23,7 @@ Provides a trail for recently visited pages.
 ** Local Browser caching limitations still apply.
 * Configurable on a per-user basis (see [[Special:Preferences]] under 'Misc' tab)
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 ** Automatically resolved if using PEAR
 

@@ -6,11 +6,11 @@
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = tested on 1.10
+|mediawiki   = 1.10, 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/ShowRedirectPageText/ SVN]
 |readme      =
 |changelog   =
-|description = 
+|description = Show the wikitext included in a 'redirect' page.
 |parameters  =
 |rights      =
 |example     =

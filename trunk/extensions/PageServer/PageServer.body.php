@@ -423,7 +423,7 @@ class PageServer
 		$key_name = wfMemcKey( self::CACHE_PREFIX,      $name );
 		$key_flag = wfMemcKey( self::CACHE_PREFIX_FLAG, $name );		
 		
-		// don't expiry the page's content, just the etag
+		// don't expiry the page's content
 		$cache->set( $key_name, $contents, 0 );
 		
 		// just a flag set to expire

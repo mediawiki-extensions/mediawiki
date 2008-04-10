@@ -6,11 +6,11 @@
 |image       =
 |version     = 1.1.0
 |update      =
-|mediawiki   = 1.11
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/PreloadManager/ SVN]
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/PreloadManager/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides per-namespace specific text preloading upon page creation.
 |parameters  =
 |rights      =
 |example     =
@@ -26,13 +26,13 @@ The text to be included must be enclosed in a <nowiki><includeonly></nowiki> tag
 == Example ==
 To configure ''preload'' text for the NS_TEMPLATE namespace (aka ''Template''), place the ''preload'' text in the page '''MediaWiki:PreloadManager/Template'''.
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|PreloadManager}}
 
 == History ==
-{|border=1
+{|class='datatable'
 ! Release !! Notes
 |-
 | 1.0.0 || Initial release

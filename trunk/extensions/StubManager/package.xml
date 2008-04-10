@@ -74,8 +74,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-* Added ''ExtImages'' class: provides access to images. This facility is intended for registered extensions in order to provide visual feedback regarding their state (e.g. functional / missing parameters etc.)
-* Added additional per-extension information in [[Special:Version]], Added method for registering extension state
+* Moved ''wgExtensionCredits'' at the end of the script: should help with some failure cases
 </notes>
   </release>
 </changelog>

@@ -6,11 +6,11 @@
 |image       =
 |version     = See SVN ($Id$)
 |update      =
-|mediawiki   = tested on 1.10 but probably works with a earlier versions
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/RawPageTools/ SVN]
+|mediawiki   = 1.10, 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/RawPageTools/ SVN]
 |readme      =
 |changelog   =
-|description = 
+|description = Removes 'js' and 'css' tag sections from a queried 'raw page'. This allows for documenting the page in normal page views using 'geshi' type extensions.
 |parameters  =
 |rights      =
 |example     =
@@ -46,7 +46,7 @@ a 'geshi' extension:
 A request could be sent for the page using 'action=raw&ctype=text/javascript' and the corresponding 'js' would be
 returned from the said page.
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
 {{Pear|RawPageTools}}

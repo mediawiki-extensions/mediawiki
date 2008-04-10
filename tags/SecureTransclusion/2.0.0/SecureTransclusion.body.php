@@ -3,7 +3,7 @@
  * @author Jean-Lou Dupont
  * @package SecureTransclusion
  * @version 2.0.0
- * @Id $Id: SecureTransclusion.body.php 1009 2008-04-10 00:28:46Z jeanlou.dupont $
+ * @Id $Id: SecureTransclusion.body.php 1010 2008-04-10 00:34:44Z jeanlou.dupont $
  */
 //<source lang=php>
 class SecureTransclusion
@@ -80,7 +80,7 @@ class SecureTransclusion
 		
 		wfRunHooks( 'page_remote', array( $uri, &$page, &$etag, &$source, &$state, $timeout ) );
 		
-		return ( is_string( $page ));
+		return $page;
 	}
 } // end class
 //</source>

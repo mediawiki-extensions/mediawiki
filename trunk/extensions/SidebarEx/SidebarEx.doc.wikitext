@@ -6,11 +6,11 @@
 |image       =
 |version     = 1.0.1
 |update      =
-|mediawiki   = 1.82, 1.93, 1.10, 1.11
+|mediawiki   = 1.82, 1.93, 1.10, 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/SidebarEx SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides customizable sidebars.
 |parameters  =
 |rights      =
 |example     =

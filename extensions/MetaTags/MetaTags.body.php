@@ -23,7 +23,7 @@ class MetaTags
 		$_type = $this->process( 'type', $type );
 		$_href = $this->process( 'href', $href );
 
-		$parser->mOutput->addHeadItem("<link{$_rel}{$_type}{$_href}>\n");
+		$parser->mOutput->addHeadItem("<link{$_rel}{$_type}{$_href} />\n");
 	}
 	
 	/**
@@ -38,7 +38,7 @@ class MetaTags
 		$cont = $this->process( 'content', $contentAtt );
 		$name = $this->process( 'name', $nameAtt );
 
-		$parser->mOutput->addHeadItem("<meta{$http}{$cont}{$name}>\n");
+		$parser->mOutput->addHeadItem("<meta{$http}{$cont}{$name} />\n");
 	}
 	/**
 	 * Processes an HTML tag attribute for security reasons

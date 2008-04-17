@@ -6,11 +6,11 @@
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = tested on 1.10 but probably works with a earlier versions
-|download    = [http://bizzwiki.googlecode.com/svn/trunk/BizzWiki/extensions/UserSettingsChangedLog/ SVN]
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/UserSettingsChangedLog/ SVN]
 |readme      =
 |changelog   = See SVN ($Id: UserSettingsChangedLog.php 782 2007-09-16 01:22:37Z jeanlou.dupont $)
-|description = 
+|description = Provides logging of user settings changes. 
 |parameters  =
 |rights      =
 |example     =
@@ -18,7 +18,7 @@
 == Purpose==
 Provides logging of user settings changes.
 
-== Dependancy ==
+== Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 * Patched '/includes/User.php' file (get from BizzWiki SVN)
 

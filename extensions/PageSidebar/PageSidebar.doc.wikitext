@@ -1,11 +1,11 @@
 {{Extension
 |name        = PageSidebar
-|status      = beta
+|status      = stable
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
 |version     = 1.0.0
 |update      =
-|mediawiki   = 1.11 (should work on other versions)
+|mediawiki   = 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/PageSidebar/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)

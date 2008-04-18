@@ -1,6 +1,6 @@
 {{Extension
 |name        = PreloadManager
-|status      = beta
+|status      = stable
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =

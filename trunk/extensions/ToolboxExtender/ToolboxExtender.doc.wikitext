@@ -7,11 +7,11 @@
 |image       = ToolboxExtender.jpg
 |version     = 1.0.1
 |update      =
-|mediawiki   = only tested on 1.11 but should work on previous versions
-|download    = [http://mediawiki.googlecode.com/svn/trunk/extensions/ToolboxExtender/ SVN]
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/ToolboxExtender/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = 
+|description = Provides the capability to add arbitrary wikitext to the toolbox on the Monobook skin. 
 |parameters  =
 |rights      =
 |example     =

@@ -1,4 +1,0 @@
-<restrictions>
-
- $restrictions$
-</restrictions>

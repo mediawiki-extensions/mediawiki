@@ -8,23 +8,12 @@
 
 	
 	<item>
-			<title>SecureTransclusion - 2.0.0</title>
-			<link>http://jldupont.com/Extension:SecureTransclusion</link>
+			<title>EditTalkRight - 1.0.0</title>
+			<link>http://jldupont.com/Extension:EditTalkRight</link>
 			<description>Changelog:
-Enhanced caching functionality: added integration with [[Extension:PageServer]]
+Initial release
 			</description>
-			<pubDate>Wed, 09 Apr 08 20:33:58 -0400</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>PageServer - 2.2.0</title>
-			<link>http://jldupont.com/Extension:PageServer</link>
-			<description>Changelog:
-Added ''page_remote'' for retrieving remote pages accessible through HTTP
-			</description>
-			<pubDate>Wed, 09 Apr 08 20:28:17 -0400</pubDate>
+			<pubDate>Sun, 20 Apr 08 00:42:43 -0400</pubDate>
 		</item>
 
 
@@ -35,7 +24,29 @@ Added ''page_remote'' for retrieving remote pages accessible through HTTP
 			<description>Changelog:
 Added #link parser function
 			</description>
-			<pubDate>Wed, 09 Apr 08 14:03:48 -0400</pubDate>
+			<pubDate>Wed, 09 Apr 08 21:36:43 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>SecureTransclusion - 2.0.0</title>
+			<link>http://jldupont.com/Extension:SecureTransclusion</link>
+			<description>Changelog:
+Enhanced caching functionality: added integration with [[Extension:PageServer]]
+			</description>
+			<pubDate>Wed, 09 Apr 08 21:15:25 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>PageServer - 2.2.0</title>
+			<link>http://jldupont.com/Extension:PageServer</link>
+			<description>Changelog:
+Added ''page_remote'' for retrieving remote pages accessible through HTTP
+			</description>
+			<pubDate>Wed, 09 Apr 08 21:08:27 -0400</pubDate>
 		</item>
 
 

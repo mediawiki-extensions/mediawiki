@@ -3,6 +3,24 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo   http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
 			<p>
+				<n>EditTalkRight</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>
+				<l>$license$</l>
+				<s>Enforces the 'edit_talk' right</s>
+				<d>Enforces the 'edit_talk' right</d>
+				<r xlink:href="/rest/r/EditTalkRight">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>PageRestrictions</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/PermissionManagement">PermissionManagement</ca>

@@ -7,5 +7,5 @@
  <n>PermissionManagement</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>PermissionManagement</a> <!-- alias? -->
- <d>Adds page level restrictions. The setting of these restrictions is granted to a user with the 'protect' right.</d>
+ <d>Enforces the 'edit_talk' right</d>
 </c>

@@ -91,5 +91,3 @@ function AuthorRestrictionSpecialPage()
 	
 	return true; // continue hook-chain.
 }
-
-?>

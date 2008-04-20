@@ -1,0 +1,37 @@
+{{Extension
+|name        = EditTalkRight
+|status      = stable
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/EditTalkRight/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = Enforces the "edit_talk" right
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+Enforces the "edit_talk" right.
+
+== Usage Example ==
+Users (i.e. members of the 'user' group) can be limited in their right to ''edit'' only the ''talk'' pages.
+In LocalSettings.php:
+ $wgGroupPermissions['*'    ]['edit']      = false;
+ $wgGroupPermissions['user' ]['edit']      = false;
+ $wgGroupPermissions['user' ]['edit_talk'] = true;
+ 
+== Dependency ==
+None.
+
+{{Pear|EditTalkRight}}
+
+== History ==
+{|class='datatable'
+! Release !! Notes
+|-
+| 1.0.0 || Initial Release
+|}

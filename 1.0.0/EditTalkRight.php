@@ -22,7 +22,6 @@ class MW_EditTalkRight
 	}	
 	/**
 	 * Sets hook and credit
-	 * @return 
 	 */
 	public static function setup()
 	{
@@ -39,23 +38,21 @@ class MW_EditTalkRight
 		$wgHooks['UserGetRights'][] = array( new MW_EditTalkRight );
 	}
 	/**
-	 * Hook 'userCan'
+	 * Hook 'UserGetRights'
 	 * 
-	 * @return $hookResult boolean
-	 * @param $title Object
 	 * @param $user Object
-	 * @param $action Object
-	 * @param $result Object
+	 * @param $rights array
 	 */
 	public static function onUserGetRights( &$user, &$rights )
 	{
 		global $wgTitle;
 		
+		// paranoia
 		if ( !is_object( $wgTitle ))
 			return true;
 			
 		// furthermore, only care about the 'talk' namespaces
-		if ( $wgTitle->getNamespace() % 2 !== 1 )
+		if ( $wgTitle->isTalkPage() )
 			return true;
 		
 		// add the 'edit' right if the current operation

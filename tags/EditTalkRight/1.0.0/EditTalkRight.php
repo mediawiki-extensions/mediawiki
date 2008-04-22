@@ -35,7 +35,7 @@ class MW_EditTalkRight
 		);
 
 		global $wgHooks;
-		$wgHooks['UserGetRights'][] = array( new MW_EditTalkRight );
+		$wgHooks['UserGetRights'][] = array( new MW_EditTalkRight, "onUserGetRights" );
 	}
 	/**
 	 * Hook 'UserGetRights'
@@ -48,7 +48,7 @@ class MW_EditTalkRight
 		global $wgTitle;
 		
 		// paranoia
-		if ( !is_object( $wgTitle ))
+		if ( !is_object( $wgTitle ) )
 			return true;
 			
 		// furthermore, only care about the 'talk' namespaces

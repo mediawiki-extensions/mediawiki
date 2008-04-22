@@ -2,30 +2,14 @@
 /**
  * @author Jean-Lou Dupont
  * @package ExtensionManager
+ * @category ExtensionManager
+ * @version @@package-version@@
  */
 //<source lang=php>
 
-if (!class_exists('StubManager'))
-	echo '[[Extension:ExtensionManager]] <b>requires</b> [[Extension:StubManager]]'."\n";
-elseif (version_compare( StubManager::version(), '1.0.0','<' ))
-	echo '[[Extension:ExtensionManager]] <b>requires</b> a newer version of [[Extension:StubManager]]'."\n";
-else
-{
-	StubManager::createStub2(	array(	'class' 		=> 'ExtensionManager', 
-										'classfilename'	=> dirname(__FILE__).'/ExtensionManager.body.php',
-										'hooks'			=> array( ),
-										'mgs'			=> array( )
-									)
-							);
-}
-
-/**
- *	Loads all the installed extensions.
- *	
- */
-global $IP;
 require_once $IP.'/includes/ObjectCache.php';
 require_once $IP.'/includes/BagOStuff.php';
+require_once 'ExtensionBaseClass.php';
 
 class ExtensionLoader
 {
@@ -269,6 +253,8 @@ class ExtensionLoader
 		return $liste;
 	} // getList
 }
+
+// ================================================================
 // This procedure loads the extensions in the global scope.
 // (fix for the ::run function)
 $extListe = ExtensionLoader::getList();
@@ -282,10 +268,11 @@ if (!empty( $extListe ))
 			ExtensionLoader::flushCache();
 	}
 
+// ================================================================
 // Update some fields in [[Special:Version]] page.
 $wgExtensionCredits['other'][] = array( 
 	'name'    		=> 'Extension Manager',
-	'version'		=> '1.1.2',
+	'version'		=> '@@package-version@@',
 	'author'		=> 'Jean-Lou Dupont',
 	'url'			=> 'http://www.mediawiki.org/wiki/Extension:ExtensionManager',	
 	'description' 	=> "Provides management of MediaWiki extensions.".

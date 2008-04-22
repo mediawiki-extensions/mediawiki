@@ -35,7 +35,7 @@ class MW_EditTalkRight
 		);
 
 		global $wgHooks;
-		$wgHooks['UserGetRights'][] = array( new MW_EditTalkRight );
+		$wgHooks['UserGetRights'][] = array( new MW_EditTalkRight, "onUserGetRights" );
 	}
 	/**
 	 * Hook 'UserGetRights'

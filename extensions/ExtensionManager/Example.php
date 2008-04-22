@@ -24,11 +24,8 @@ class MW_ExampleExtension extends ExtensionBaseClass
 	protected function setup(){
 		global $wgExtensionCredits;
 
-		$name = get_class( $this );
-		$name = str_replace( 'MW_', '', $name );
-				
 		$wgExtensionCredits['other'][] = array( 
-			'name'        => $name, 
+			'name'        => $this->getName(), 
 			'version'     => '@@package-version@@',
 			'author'      => 'Jean-Lou Dupont', 
 			'description' => 'Some description. ',
@@ -42,13 +39,10 @@ class MW_ExampleExtension extends ExtensionBaseClass
 	public function onSpecialVersionExtensionTypes( &$sp, &$extensionTypes ){
 		global $wgExtensionCredits;
 		
-		$name = get_class( $this );
-		$name = str_replace( 'MW_', '', $name );
-		
 		foreach( $wgExtensionCredits as &$types )
 			foreach( $types as $index => &$extension )
 				if (isset($extension['name']))		
-					if ($extension['name'] == $name )
+					if ($extension['name'] == $this->getName() )
 						$extension['description'] .= "Some Status".'<br/>';			
 		
 		// required

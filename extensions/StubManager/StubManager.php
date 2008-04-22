@@ -264,8 +264,7 @@ class StubManager
 		$initHooked = true;
 		
 		global $wgExtensionFunctions;
-#		$wgExtensionFunctions[] = __CLASS__.'::setup'; // PHP <v5.2.2 issues a warning on this one.
-		$wgExtensionFunctions[] = create_function( '', 'return '.__CLASS__.'::setup();' );
+		$wgExtensionFunctions[] = array( __CLASS__, 'setup' );		
 	}
 	public static function setup()
 	{
@@ -336,7 +335,7 @@ class StubManager
 		$updateCreditsHooked = true;
 		
 		global $wgHooks;
-		$wgHooks['SpecialVersionExtensionTypes'][] = 'StubManager::hUpdateExtensionCredits';
+		$wgHooks['SpecialVersionExtensionTypes'][] = array( __CLASS__, 'hUpdateExtensionCredits' );
 		
 		// load all the extensions so they get a change to show their credits
 		#foreach( self::$stubList as $index => $e )

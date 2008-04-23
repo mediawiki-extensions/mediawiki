@@ -15,6 +15,8 @@
 class MW_ExampleExtension 
 	extends ExtensionBaseClass
 {
+	const VERSION = '@@package-version@@';
+	
 	/**
 	 * If a constructor is required, then the
 	 * parent class must be called first. 
@@ -38,12 +40,14 @@ class MW_ExampleExtension
 		
 		$this->setCreditDetails( array( 
 			'name'        => $this->getName(), 
-			'version'     => '@@package-version@@',
+			'version'     => self::VERSION,
 			'author'      => 'Jean-Lou Dupont', 
 			'description' => 'Some description. ',
 			'url' 		=> 'http://mediawiki.org/wiki/Extension:ExtensionManager',			
 			) );
 		
+		$this->setStatus( self::STATE_OK );
+			
 		// do some other stuff here
 	}
 	/**
@@ -51,14 +55,8 @@ class MW_ExampleExtension
 	 */	
 	public function hookSpecialVersionExtensionTypes( &$sp, &$extensionTypes ){
 
-		global $wgExtensionCredits;
-		
-		foreach( $wgExtensionCredits as &$types )
-			foreach( $types as $index => &$extension )
-				if (isset($extension['name']))		
-					if ($extension['name'] == $this->getName() )
-						$extension['description'] .= "Some Status".'<br/>';			
-		
+		$this->addToCreditDescription( "Some Status Message<br/>" );
+				
 		// required for all hooks
 		return true; #continue hook-chain
 	}

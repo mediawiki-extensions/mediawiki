@@ -86,12 +86,27 @@ abstract class ExtensionBaseClass
 		
 		// if the sub-class requires any additional setup time
 		@$this->setup();
+		
+		$this->doRegistration();
 	}
-
+	/**
+	 * Returns the current state of this extension
+	 * @return $state mixed
+	 */
+	public function getStatus() {
+	
+		return 	$this->status;
+	
+	}
 	
 	// ======================================================================
 	// 									PRIVATE
 	// ======================================================================	
+	
+	private function doRegistration() {
+		
+		ExtensionManager::registerExtension( get_class( $this ) );
+	}
 	
 	
 	/**
@@ -165,25 +180,40 @@ abstract class ExtensionBaseClass
 	/**
 	 * Sets credits details
 	 */	
-	protected function setCreditDetails( $details ){
+	protected function setCreditDetails( $details, $type = 'other' ) {
+		
 		global $wgExtensionCredits;
-
-		$wgExtensionCredits['other'][] = $details;
+		$wgExtensionCredits[ $type ][] = $details;
 	}
 	/**
 	 * Adds some text to the extension's Description field
 	 * in the Credit array (displayed in Special:Version)
 	 */
-	protected function addToCreditDescription( $message ) {
+	protected function addToCreditDescription( $message, $name = null ) {
+		
+		if ( null === $name )
+			$name = $this->getName();
+
+		$this->updateCreditField( $message, $name, 'description' );
+			
+	}
+
+	/**
+	 * Adds some text to the extension's Description field
+	 * in the Credit array (displayed in Special:Version)
+	 */
+	protected function updateCreditField( $message, $name, $field, $replace = false ) {
 		
 		global $wgExtensionCredits;
 		
 		foreach( $wgExtensionCredits as &$types )
 			foreach( $types as $index => &$extension )
 				if (isset($extension['name']))		
-					if ($extension['name'] == $this->getName() )
-						$extension['description'] .= $message ;			
-		
+					if ($extension['name'] == $name )
+						if ( true === $replace )
+							$extension[ $field ] = $message ;
+						else
+							$extension[ $field ] .= $message ;									
 	}
 	
 	/**
@@ -209,7 +239,9 @@ abstract class ExtensionBaseClass
 		
 		$this->status = $status;
 		return $this;
+		
 	}
+	
 } //end class
 
 //</source>

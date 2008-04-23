@@ -461,7 +461,7 @@ class ExtensionHelperClass
 	 */	
 	protected function doTypeVerification()	{
 	
-		if ( !get_class( 'Validate' ))
+		if ( !class_exists( 'Validate' ))
 			return null;
 	
 		$this->typeErrorsList = array();

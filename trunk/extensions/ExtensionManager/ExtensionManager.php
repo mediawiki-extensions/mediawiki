@@ -45,6 +45,16 @@ class ExtensionManager extends ExtensionBaseClass
 			" Using real cache: " . ExtensionLoader::realCacheStatus() . '. '
 		);
 		
+		// Is the PEAR::Validate package available?
+		$result = @include_once 'Validate.php';
+		$pear_validate = ( get_class( 'Validae') && $result );
+
+		if ( !$pear_validate )
+			$this->addToCreditDescription( 
+				" PEAR::Validate package not available. "
+			);
+		
+		
 		// Per-Extension 'decorator'
 		foreach( self::$_registeredExtensionsList as &$classe ) {
 			

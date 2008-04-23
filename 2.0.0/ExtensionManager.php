@@ -46,7 +46,7 @@ class ExtensionManager extends ExtensionBaseClass
 		);
 		
 		// Is the PEAR::Validate package available?
-		if ( !get_class( 'Validate') )
+		if ( !class_exists( 'Validate') )
 			$this->addToCreditDescription( 
 				" PEAR::Validate package not available. "
 			);

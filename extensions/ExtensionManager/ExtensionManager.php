@@ -10,6 +10,7 @@
 require_once $IP.'/includes/ObjectCache.php';
 require_once $IP.'/includes/BagOStuff.php';
 require_once 'ExtensionBaseClass.php';
+require_once 'ExtensionHelperClass.php';
 
 class ExtensionLoader
 {
@@ -22,8 +23,9 @@ class ExtensionLoader
 	static $installed = null;
 
 	/**
+	 * Initialization
 	 */
-	static function init()
+	private static function init()
 	{
 		clearstatcache();
 		
@@ -33,6 +35,8 @@ class ExtensionLoader
 			self::$realCache = false;
 	}
 	/**
+	 * Retrieves the list of registered extensions
+	 * either through the cache or filesystem
 	 */
 	static function getExtensions()
 	{
@@ -55,16 +59,15 @@ class ExtensionLoader
 		return $exts;
 	}
 	/**
-		Reads all the installed extensions from the filesystem
-		
-		This function assumes a fixed relative path structure
-		e.g.
-		/$dirX
-		/$dirX/ExtensionManager/ExtensionManager_stub.php
-		
-		where $dirX is just the parent directory.
-		
-		Extensions are located in /extensions
+	 * Reads all the installed extensions from the filesystem
+	 * This function assumes a fixed relative path structure
+	 * e.g.
+	 * 	/$dirX
+	 * 	/$dirX/ExtensionManager/ExtensionManager_stub.php
+	 * 
+	 * 	where $dirX is just the parent directory.
+	 * 
+	 * 	Extensions are located in /extensions
 	 */
 	static function readFromFileSystem()
 	{
@@ -75,10 +78,10 @@ class ExtensionLoader
 		return self::extractFiles( $dirs );
 	}
 	/**
-		Assumption: Directory Name --> Extension Name[_stub].php
-		
-		Return array structure:
-		[ extension directory => [ file, disabled flag ] ]
+	 * Assumption: Directory Name --> Extension Name[_stub].php
+	 * 
+	 * 	Return array structure:
+	 * 	[ extension directory => [ file, disabled flag ] ]
 	 */
 	static function extractFiles( &$dirs )
 	{
@@ -126,6 +129,8 @@ class ExtensionLoader
 		return $files;
 	}
 	/**
+	 * Retrieves the list of directories from
+	 * a base directory
 	 */
 	static function getDirs( &$cdir )
 	{
@@ -152,6 +157,7 @@ class ExtensionLoader
 		return $dirs;
 	}
 	/**
+	 * Writes the list of extensions to the cache
 	 */
 	static function writeToCache( $key, &$exts )
 	{
@@ -162,6 +168,7 @@ class ExtensionLoader
 		self::$cache->set( $key, $s, self::$expiryPeriod );
 	}
 	/**
+	 * Reads the list of extensions from the cache
 	 */
 	static function readFromCache( $key )
 	{
@@ -174,6 +181,7 @@ class ExtensionLoader
 		return $us;
 	}
 	/**
+	 * Flushes the entries from the cache
 	 */
 	static function flushCache()
 	{
@@ -190,16 +198,21 @@ class ExtensionLoader
 		return true;
 	}
 	/**
+	 * Builds the cache key
 	 */
 	static function getKey( )
 	{
 		return '~#ExtensionManager#~';
 	}
+	/**
+	 * Returns the list of installed extensions
+	 */
 	static function getInstalled()
 	{
 		return self::$installed;
 	}
 	/**
+	 * Verifies if a 'real' cache is available
 	 */
 	static function realCacheStatus()
 	{

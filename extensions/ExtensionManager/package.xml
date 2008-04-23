@@ -9,8 +9,8 @@
 
  <name>ExtensionManager</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Summary...</summary>
- <description>Description...</description>
+ <summary>Provides various facilities to extensions</summary>
+ <description>Provides various facilities to extensions</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -23,7 +23,7 @@
  <time>23:27:05</time>
 
  <version>
-  <release>1.1.1</release>
+  <release>2.0.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -41,9 +41,10 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionManager.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionBaseClass.body.php" role="php" />
-   <file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionManager.doc.wikitext" role="doc" />
+	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionManager.php" role="php" />
+	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionBaseClass.php" role="php" />
+	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionHelperClass.php" role="php" />   
+	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionManager.doc.wikitext" role="doc" />
     <!-- }} -->
 
   </dir>
@@ -75,7 +76,9 @@
 <changelog>
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes></notes>
+   <notes>
+   Revamped version
+   </notes>
   </release>
 </changelog>
 

@@ -10,6 +10,7 @@
 
 abstract class ExtensionBaseClass
 {
+	static $_hook = 'hook';
 	static $_ptag = 'ptag';
 	static $_pfnc = 'pfnc';
 	
@@ -53,12 +54,12 @@ abstract class ExtensionBaseClass
 
 		global $wgHooks;
 		
-		// scan the sub-class for all the methods
-		// starting with 'on'
+		$len = strlen( self::$_hook );		
+		
 		if ( !empty( $methods ) )
 			foreach( $methods as $method )
-				if ( substr( $method, 0, 2 ) == 'on' )
-					$wgHooks[ substr( $method, 2 ) ][] = array( $this, $method );
+				if ( substr( $method, 0, $len ) == self::$_hook )
+					$wgHooks[ substr( $method, $len ) ][] = array( $this, $method );
 		
 	}
 	/** 
@@ -107,6 +108,15 @@ abstract class ExtensionBaseClass
 		$name = get_class( $this );
 		return str_replace( 'MW_', '', $name );
 	}
+	/**
+	 * Sets credits details
+	 */	
+	protected function setCreditDetails( $details ){
+		global $wgExtensionCredits;
+
+		$wgExtensionCredits['other'][] = $details;
+	}
+	
 } //end class
 
 //</source>

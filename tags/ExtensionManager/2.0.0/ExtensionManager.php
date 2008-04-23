@@ -46,10 +46,7 @@ class ExtensionManager extends ExtensionBaseClass
 		);
 		
 		// Is the PEAR::Validate package available?
-		$result = @include_once 'Validate.php';
-		$pear_validate = ( get_class( 'Validate') && $result );
-
-		if ( !$pear_validate )
+		if ( !get_class( 'Validate') )
 			$this->addToCreditDescription( 
 				" PEAR::Validate package not available. "
 			);

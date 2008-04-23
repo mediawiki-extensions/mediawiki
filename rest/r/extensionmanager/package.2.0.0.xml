@@ -20,7 +20,7 @@
  </lead>
 
  <date>2008-04-23</date>
- <time>23:31:02</time>
+ <time>23:34:58</time>
 
  <version>
   <release>2.0.0</release>
@@ -41,12 +41,12 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionManager.php" role="php" />
-	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionBaseClass.php" role="php" />
-	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionHelperClass.php" role="php" />
-	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionLoader.php" role="php" />
-	<file baseinstalldir="MediaWiki" name="ExtensionManager/Example.php" role="php" />	
-	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionManager.doc.wikitext" role="doc" />
+	<file baseinstalldir="MediaWiki/ExtensionManager" name="ExtensionManager.php" role="php" />
+	<file baseinstalldir="MediaWiki/ExtensionManager" name="ExtensionBaseClass.php" role="php" />
+	<file baseinstalldir="MediaWiki/ExtensionManager" name="ExtensionHelperClass.php" role="php" />
+	<file baseinstalldir="MediaWiki/ExtensionManager" name="ExtensionLoader.php" role="php" />
+	<file baseinstalldir="MediaWiki/ExtensionManager" name="Example.php" role="php" />	
+	<file baseinstalldir="MediaWiki/ExtensionManager" name="ExtensionManager.doc.wikitext" role="doc" />
     <!-- }} -->
 
   </dir>

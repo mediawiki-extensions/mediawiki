@@ -7,12 +7,18 @@
  */
 //<source lang=php>
 
-require_once 'ExtensionLoader.php';
 require_once 'ExtensionBaseClass.php';
 require_once 'ExtensionHelperClass.php';
+require_once 'ExtensionLoader.php';
 
 class ExtensionManager extends ExtensionBaseClass 
 {
+	/**
+	 * Array of registered extensions
+	 * @private
+	 */
+	static $_registeredExtensionsList = array();
+	
 	public function __construct() {
 		parent::__construct();
 	}
@@ -36,11 +42,48 @@ class ExtensionManager extends ExtensionBaseClass
 	public function hookSpecialVersionExtensionTypes( &$sp, &$extensionTypes ) {
 
 		$this->addToCreditDescription( 
-			" Using real cache: " . ExtensionLoader::realCacheStatus() . '.'
+			" Using real cache: " . ExtensionLoader::realCacheStatus() . '. '
 		);
-				
+		
+		// Per-Extension 'decorator'
+		foreach( self::$_registeredExtensionsList as &$classe ) {
+			
+			wfRunHooks( 'ExtensionManager_Credits', 
+				array( $classe, &$name, &$replaceName, &$desc, &$replaceDesc ) );
+			
+			$this->updateCreditField( $name, $classe, 'name', $replaceName );
+			$this->updateCreditField( $desc, $classe, 'description', $replaceDesc );
+						
+		}
+		
 		// required for all hooks
 		return true; #continue hook-chain
+	}
+	
+	/**
+	 * Registers an extension with this manager
+	 */
+	public static function registerExtension( $classe ) {
+		
+		self::$_registeredExtensionsList[] = $classe;
+	}
+	
+	
+	// ======================================================================
+	// 									HOOKS
+	// ======================================================================	
+	
+	/**
+	 * HOOK 'ExtensionManagerGetList'
+	 * 
+	 * @param $liste reference to array of registered extensions i.e. class name
+	 * @return $result boolean Standard MediaWiki return code
+	 */
+	public function hookExtensionManagerGetList( &$liste ) {
+	
+		$liste = self::$_registeredExtensionsList;
+		
+		return true;
 	}
 	
 	

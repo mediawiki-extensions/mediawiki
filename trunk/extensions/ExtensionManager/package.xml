@@ -45,6 +45,7 @@
 	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionBaseClass.php" role="php" />
 	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionHelperClass.php" role="php" />
 	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionLoader.php" role="php" />
+	<file baseinstalldir="MediaWiki" name="ExtensionManager/Example.php" role="php" />	
 	<file baseinstalldir="MediaWiki" name="ExtensionManager/ExtensionManager.doc.wikitext" role="doc" />
     <!-- }} -->
 

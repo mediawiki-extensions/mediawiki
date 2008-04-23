@@ -10,9 +10,48 @@
 
 abstract class ExtensionBaseClass
 {
+	/**
+	 * Method Prefixes
+	 */
 	static $_hook = 'hook';
 	static $_ptag = 'ptag';
 	static $_pfnc = 'pfnc';
+	
+	/**
+	 * State constants
+	 * NOTE: same as Extension:StubManager
+	 */
+	const STATE_OK        = 0;	
+	const STATE_ERROR     = 1;
+	const STATE_ATTENTION = 2;
+	const STATE_DISABLED  = 3;
+	
+	static $state_icons = array(
+		self::STATE_OK			=> 'icon_ok.png',
+		self::STATE_ERROR		=> 'icon_error.png',
+		self::STATE_ATTENTION	=> 'icon_attention.png',
+		self::STATE_DISABLED	=> 'icon_disabled.png',
+	);
+	
+	static $state_messages = array(
+		self::STATE_OK			=> 'ok',
+		self::STATE_ERROR		=> 'error',
+		self::STATE_ATTENTION	=> 'attention required',
+		self::STATE_DISABLED	=> 'disabled',
+	);
+	
+	/**
+	 * Status of this extension
+	 */
+	var $status = null;
+	
+	
+	
+	// ======================================================================
+	// 									PUBLIC
+	// ======================================================================	
+	
+	
 	
 	/**
 	 * Base constructor
@@ -29,11 +68,13 @@ abstract class ExtensionBaseClass
 			
 	}
 	/**
-	 * Setup of the extension's
+	 * Setup of the extension's :
 	 * - Hooks
 	 * - Parser Tags
 	 * - Parser Functions
 	 * - Custom setup
+	 * 
+	 * @return void
 	 */
 	public function _setup()
 	{
@@ -46,6 +87,13 @@ abstract class ExtensionBaseClass
 		// if the sub-class requires any additional setup time
 		@$this->setup();
 	}
+
+	
+	// ======================================================================
+	// 									PRIVATE
+	// ======================================================================	
+	
+	
 	/**
 	 * Sets hooks
 	 * @param $methods array of class methods
@@ -98,6 +146,12 @@ abstract class ExtensionBaseClass
 				}
 		
 	}
+
+	
+	// ======================================================================
+	// 									PROTECTED
+	// ======================================================================	
+	
 	
 	/** 
 	 * Returns the name of the extension
@@ -116,7 +170,46 @@ abstract class ExtensionBaseClass
 
 		$wgExtensionCredits['other'][] = $details;
 	}
+	/**
+	 * Adds some text to the extension's Description field
+	 * in the Credit array (displayed in Special:Version)
+	 */
+	protected function addToCreditDescription( $message ) {
+		
+		global $wgExtensionCredits;
+		
+		foreach( $wgExtensionCredits as &$types )
+			foreach( $types as $index => &$extension )
+				if (isset($extension['name']))		
+					if ($extension['name'] == $this->getName() )
+						$extension['description'] .= $message ;			
+		
+	}
 	
+	/**
+	 * Registers a class for autoloading
+	 * Useful for extensions that use 'stubbing' practice
+	 * i.e. only a stub is loaded at first and the 'main'
+	 * part is loaded on demand.
+	 */
+	protected function registerAutoload( $classe, $filename ){
+		
+		global $wgAutoloadClasses;
+		$wgAutoloadClasses[$classe] = $filename;
+		
+	}
+	/**
+	 * Sets the status of this extension
+	 * Will be retrieved through ExtensionManager
+	 * 
+	 * @param $status 
+	 * @return $this
+	 */
+	protected function setStatus( $status = self::STATE_OK ) {
+		
+		$this->status = $status;
+		return $this;
+	}
 } //end class
 
 //</source>

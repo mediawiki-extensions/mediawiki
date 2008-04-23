@@ -8,12 +8,23 @@
 
 	
 	<item>
+			<title>ExtensionManager - 2.0.0</title>
+			<link>http://jldupont.com/Extension:ExtensionManager</link>
+			<description>Changelog:
+Revamped version
+			</description>
+			<pubDate>Wed, 23 Apr 08 19:31:05 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>EditTalkRight - 1.0.0</title>
 			<link>http://jldupont.com/Extension:EditTalkRight</link>
 			<description>Changelog:
 Initial release
 			</description>
-			<pubDate>Sun, 20 Apr 08 00:42:43 -0400</pubDate>
+			<pubDate>Tue, 22 Apr 08 12:30:29 -0400</pubDate>
 		</item>
 
 

@@ -1,0 +1,41 @@
+{{Extension
+|name        = ExtensionManager
+|status      = beta
+|type        = parser
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 2.0.0
+|update      =
+|mediawiki   = 1.10, 1.11, 1.12
+|download    = see installation section or use [http://mediawiki.googlecode.com/svn/tags/ExtensionManager/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: ExtensionManager.doc.wikitext 552 2007-10-13 23:26:26Z jeanlou.dupont $)
+|description = Provides a means of easily installing 'extensions' to MediaWiki.
+|parameters  =
+|rights      =
+|example     =
+}}
+Provides a means of easily installing 'extensions' to MediaWiki. Once installed, other extensions retrieved through Jean-Lou Dupont's PEAR channel do not have to be explicitly added to <code>LocalSettings.php</code>
+
+== Dependency ==
+* [optional] PEAR::Validate
+
+{{Pear|ExtensionManager}}
+
+== Functional Notes ==
+* Use real caching e.g. PHP/pecl APC
+** Else, the extension directories will be rescanned on each request (i.e. much slower)
+
+== For Extension Developers ==
+An example file ''Example.php'' is made available in the installation tarball / PEAR package.
+
+== History ==
+{|class='datatable'
+! Release !! Notes
+|-
+| 1.1.0 || Enhancement to help extensions which rely on being 'required' in the global scope.
+|-
+| 1.1.1 || Added 'clearstatcache' to help with PHP file status caching issue
+|-
+| 2.0.0 || Revamped version: defines a ''base class'' for easier extension development, ''helper class'' for parameter list processing, no more dependency on [[Extension:StubManager]]
+|}

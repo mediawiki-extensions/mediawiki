@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>ExtensionManager</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>ExtensionManager</a>
- <d>none</d>
+ <a>ExtensionManager</a> <!-- alias? -->
+ <d>Provides various facilities to extensions</d>
 </c>

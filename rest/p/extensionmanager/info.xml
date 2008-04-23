@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd">
  <n>ExtensionManager</n>
  <c>mediawiki.googlecode.com/svn</c>
- <ca xlink:href="/rest/c/ExtensionManager">ExtensionManager</ca>
- <l>PHP License</l>
- <s>MediaWiki Extension: an easy way to install and manage extensions.</s>
- <d>This extension provides management services for extensions.</d>
+ <ca xlink:href="/rest/ExtensionManager">ExtensionManager</ca>
+ <l>$license$</l>
+ <s></s>
+ <d></d>
  <r xlink:href="/rest/r/extensionmanager"/>
 </p>

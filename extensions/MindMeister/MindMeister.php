@@ -88,6 +88,8 @@ class MW_MindMeister
 	public function pfuncMindMeister( &$parser ) {
 	
 		$params = func_get_args();	
+		
+		$h = new ExtensionHelperClass( $params, self::$parameters );
 	
 	}
 	

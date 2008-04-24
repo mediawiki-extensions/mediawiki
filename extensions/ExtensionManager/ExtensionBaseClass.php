@@ -364,10 +364,15 @@ abstract class ExtensionBaseClass
 			
 		$message .= '.';
 
+		// include HELP message
 		$help_message = wfMsg( $baseMsgId.'-help' );
 		$message .= $help_message;		
 		
-		return $message;
+		// include EXAMPLE
+		$example_message = wfMsg( $baseMsgId.'-example' );
+		$message .= $example_message;		
+				
+		return array( $message, 'noparse' => true, 'isHTML' => true );	;
 	}
 	
 	/**

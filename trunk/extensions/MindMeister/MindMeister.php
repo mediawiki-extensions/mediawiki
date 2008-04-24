@@ -89,7 +89,9 @@ class MW_MindMeister
 	
 		$params = func_get_args();	
 		
-		$h = new ExtensionHelperClass( $params, self::$parameters );
+		$p = ExtensionHelperClass::processArgList( $params );
+		
+		$h = new ExtensionHelperClass( $p, self::$parameters );
 	
 	}
 	

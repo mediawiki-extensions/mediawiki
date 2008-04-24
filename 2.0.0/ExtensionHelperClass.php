@@ -4,7 +4,7 @@
  * @package ExtensionManager
  * @category ExtensionManager
  * @version 2.0.0
- * @Id $Id: ExtensionHelperClass.php 1044 2008-04-24 18:57:54Z jeanlou.dupont $
+ * @Id $Id: ExtensionHelperClass.php 1049 2008-04-24 19:33:32Z jeanlou.dupont $
  * @dependency PEAR::Validate package [optional]
  * 
  * Use Cases:
@@ -53,7 +53,7 @@
  */
 //<source lang=php>
 
-include_once 'Validate.php'; // PEAR::Validate package
+@include_once 'Validate.php'; // PEAR::Validate package
 
 class ExtensionHelperClass
 {

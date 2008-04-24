@@ -335,6 +335,115 @@ abstract class ExtensionBaseClass
 		return $this;
 		
 	}
+
+	// ======================================================================
+	// 									HELPERS
+	// 						FOR PARAMETER LIST PROCESSING
+	// ======================================================================	
+	
+	/**
+	 * Handles errors from the ExtensionHelperClass
+	 * - Invalid parameters
+	 * - Missing mandatory parameters
+	 * - Parameters with type error
+	 * 
+	 * @param $h Object
+	 */
+	protected function handleErrors( &$h, $baseMsgId ) {
+	
+		$message = wfMsg( $baseMsgId );
+	
+		if ( $h->foundMissing() )
+			$insertSeparator = $this->handleMissingErrors( $h, $message, $baseMsgId );
+			
+		if ( $h->foundInvalid() )
+			$insertSeparator = $this->handleInvalidErrors( $h, $message, $baseMsgId, $insertSeparator );
+			
+		if ( $h->foundTypeErrors() )
+			$this->handleTypeErrors( $h, $message, $baseMsgId, $insertSeparator );
+			
+		$message .= '.';
+
+		$help_message = wfMsg( $baseMsgId.'-help' );
+		$message .= $help_message;		
+		
+		return $message;
+	}
+	
+	/**
+	 * Returns a formatted error message
+	 * regarding the "missing mandatory parameters"
+	 * 
+	 * @return $msg string
+	 */
+	protected function handleMissingErrors( &$h, &$msg, &$baseMsgId ) {
+		
+		$liste = $h->getMissingList();
+		if ( empty( $liste ))
+			return false;
+		
+		foreach( $liste as $index => &$param ) {
+		
+			if ( $index !== 0 )
+				$msg .= ', ';
+				
+			$msg .= wfMsg( $baseMsgId . '-tpl-missing', $param );
+		}
+		return true;
+	}
+
+	/**
+	 * Returns a formatted error message
+	 * regarding the "invalid parameters"
+	 * 
+	 * @return $msg string
+	 */
+	protected function handleInvalidErrors( &$h, &$msg, &$baseMsgId, $insertSeparator ) {
+
+		$liste = $h->getInvalidList();
+		if ( empty( $liste ))
+			return false;
+
+		if ( $insertSeparator )
+			$msg .= ', ';
+			
+		foreach( $liste as $index => &$param ) {
+
+			if ( $index !== 0 )
+				$msg .= ', ';
+				
+			$msg .= wfMsg( $baseMsgId . '-tpl-invalid', $param );		
+		}
+	
+		return true;
+	}
+
+	/**
+	 * Returns a formatted error message
+	 * regarding the "type errors in parameters"
+	 * 
+	 * @return $msg string
+	 */
+	protected function handleTypeErrors( &$h, &$msg, &$baseMsgId, $insertSeparator ) {
+		
+		$liste = $h->getTypeErrorsList();
+		if ( empty( $liste ))
+			return;
+
+		if ( $insertSeparator )
+			$msg .= ', ';
+			
+		foreach( $liste as $index => &$entry ) {
+
+			if ( $index !== 0 )
+				$msg .= ', ';
+		
+			$msg .= wfMsg( $baseMsgId . '-tpl-type', $entry['key'], $entry['type'] );
+		}
+		
+	}
+	
+	
 	
 } //end class
 

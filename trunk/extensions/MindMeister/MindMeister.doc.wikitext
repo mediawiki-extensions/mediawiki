@@ -71,3 +71,4 @@ Provides integration with [http://www.mindmeister.com MindMeister mindmaps]
 |}
 
 [[Category:Image map extensions]]
+[[Category:Graph extensions]]

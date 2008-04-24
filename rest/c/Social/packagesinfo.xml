@@ -21,6 +21,24 @@
 		</pi>
 		<pi>
 			<p>
+				<n>MindMeister</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Social">Social</ca>
+				<l>$license$</l>
+				<s>Provides integration with http://www.mindmeister.com</s>
+				<d>Provides integration with http://www.mindmeister.com</d>
+				<r xlink:href="/rest/r/MindMeister">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>Gravatar</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/Social">Social</ca>

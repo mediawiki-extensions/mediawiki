@@ -48,12 +48,8 @@ class MW_MindMeister
 	public function __construct(){
 		
 		parent::__construct();
-		
-		// do some stuff starting here
-		// NOTE: don't touch too much MediaWiki's internals here;
-		//       use the 'setup' method to do this instead.
-	}
 
+	}
 	/**
 	 * Optional setup: called once it is safe
 	 *  to perform additional setup on the MediaWiki platform.
@@ -71,18 +67,6 @@ class MW_MindMeister
 			) );
 		
 		$this->setStatus( self::STATE_OK );
-			
-		// do some other stuff here
-	}
-	/**
-	 * Example hook (Special:Version page)
-	 */	
-	public function hookSpecialVersionExtensionTypes( &$sp, &$extensionTypes ){
-
-		$this->addToCreditDescription( "Some Status Message<br/>" );
-				
-		// required for all hooks
-		return true; #continue hook-chain
 	}
 	
 	public function pfuncMindMeister( &$parser ) {
@@ -92,6 +76,20 @@ class MW_MindMeister
 		$p = ExtensionHelperClass::processArgList( $params );
 		
 		$h = new ExtensionHelperClass( $p, self::$parameters );
+	
+		if ( $h->isError() )
+			return $this->handleErrors( $h );
+	}
+	
+	/**
+	 * Handles errors from the ExtensionHelperClass
+	 * - Invalid parameters
+	 * - Missing mandatory parameters
+	 * - Parameters with type error
+	 * 
+	 * @param $h Object
+	 */
+	protected function handleErrors( &$h ) {
 	
 	}
 	

@@ -4,7 +4,7 @@
  * @package ExtensionManager
  * @category ExtensionManager
  * @version 2.0.0
- * @Id $Id: ExtensionHelperClass.php 1038 2008-04-24 00:25:42Z jeanlou.dupont $
+ * @Id $Id: ExtensionHelperClass.php 1044 2008-04-24 18:57:54Z jeanlou.dupont $
  * @dependency PEAR::Validate package [optional]
  * 
  * Use Cases:
@@ -15,8 +15,10 @@
  * 
  * Parameters of the reference list:
  * m:  mandatory TRUE/FALSE
+ * n:  name to use instead of 'key'
  * s:  perform HTML sanitization TRUE/FALSE
  * l:  include in string list TRUE/FALSE
+ * u:  include in the 'url' parameters list TRUE/FALSE
  * d:  default value
  * r:  restricted parameter TRUE/FALSE
  * t:  value type verification [number, email, string, date, uri]
@@ -130,6 +132,11 @@ class ExtensionHelperClass
 	var $stringList = null;
 	
 	/**
+	 * URL parameters list
+	 */
+	var $urlString = null;
+	
+	/**
 	 * Valid parameter types
 	 * @see PEAR::Validate for more information
 	 * @access private
@@ -149,6 +156,8 @@ class ExtensionHelperClass
 	 */
 	static $validRefParameters = array(
 		'm',
+		'n',
+		'u',
 		's',
 		'l',
 		'd',
@@ -213,6 +222,14 @@ class ExtensionHelperClass
 	public function getStringList() {
 	
 		return $this->stringList;			
+	}
+	/**
+	 * Returns the list of URL parameters in a string form
+	 * @return $string string
+	 */	
+	public function getUrlString() {
+	
+		return $this->urlString;			
 	}
 	/**
 	 * Returns the processed output list
@@ -343,7 +360,8 @@ class ExtensionHelperClass
 		$this->restrictedFound = $this->checkListForRestrictions();
 		$this->doSanitization();
 		$this->typeErrorsFound = $this->doTypeVerification();
-		$this->buildString();	
+		$this->buildString();
+		$this->buildUrlString();
 	}
 	/**
 	 * Verifies the validity of the provided
@@ -360,6 +378,34 @@ class ExtensionHelperClass
 			foreach( $instructions as $instruction => &$o )
 				if ( !in_array( $instruction, self::$validRefParameters ))
 					throw new Exception( __METHOD__.": invalid instruction in reference list ( $instruction )" );
+	}
+
+	protected function buildUrlString() {
+
+		if (empty( $this->oList ))
+			return;
+		
+		$this->urlString = '';
+	
+		$index = 0;
+		foreach( $this->oList as $key => &$value ) {
+
+			if ( isset( $this->refList[ $key ] ) )
+				if ( $this->refList[ $key ]['u'] === true ) {
+
+					if ( 0 != $index )
+						$this->urlString .= '&';
+				
+					if ( 0 == $index )
+						$this->urlString = '?';
+						
+					$name = ( isset( $this->refList[$key]['n'] ) ) ? $this->refList[$key]['n']:$key;
+					$this->urlString .= "$name=$value";
+					
+					$index++;					
+				}
+
+		}
 	}
 	
 	/**
@@ -398,9 +444,6 @@ class ExtensionHelperClass
 	 */
 	protected function doListSanitization( ) {
 	
-		if (empty( $this->iList ))
-			return array();
-
 		// first, let's make sure we only have valid parameters
 		$this->oList = array();
 		foreach( $this->iList as $key => &$value )
@@ -517,11 +560,11 @@ class ExtensionHelperClass
 				$result = $validator->$type( $value, $opt );
 				
 				if ( $result===false )
-					$this->typeErrorsList[] = array( $key => $type);
+					$this->typeErrorsList[] = array( 'key' => $key, 'type' => $type);
 			}
 		
 		return !( empty( $this->typeErrorsList ) );
 	}
-	
+		
 }// end class definition
 

@@ -4,7 +4,7 @@
  * @category ExtensionManager
  * @author Jean-Lou Dupotn
  * @version 2.0.0 
- * @Id $Id: Example.php 1030 2008-04-23 23:29:47Z jeanlou.dupont $
+ * @Id $Id: Example.php 1043 2008-04-24 16:58:57Z jeanlou.dupont $
  */
 // No need to include the dependency
 // as it is already included by default
@@ -53,7 +53,7 @@ class MW_ExampleExtension
 	/**
 	 * Example hook (Special:Version page)
 	 */	
-	public function hookSpecialVersionExtensionTypes( &$sp, &$extensionTypes ){
+	public function hook_SpecialVersionExtensionTypes( &$sp, &$extensionTypes ){
 
 		$this->addToCreditDescription( "Some Status Message<br/>" );
 				

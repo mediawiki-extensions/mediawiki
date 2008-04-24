@@ -4,7 +4,7 @@
  * @package ExtensionManager
  * @category ExtensionManager
  * @version 2.0.0
- * @Id $Id: ExtensionBaseClass.php 1030 2008-04-23 23:29:47Z jeanlou.dupont $
+ * @Id $Id: ExtensionBaseClass.php 1041 2008-04-24 11:54:08Z jeanlou.dupont $
  */
 //<source lang=php>
 
@@ -16,6 +16,11 @@ abstract class ExtensionBaseClass
 	static $_hook = 'hook';
 	static $_ptag = 'ptag';
 	static $_pfnc = 'pfnc';
+	
+	/**
+	 * i18n messages
+	 */
+	static $msg = array();
 	
 	/**
 	 * State constants
@@ -177,13 +182,20 @@ abstract class ExtensionBaseClass
 					$wgMessageCache->addMessages( $msg[$key], $key );		
 	}
 	
-	/** 
-	 * Default implementation
-	 * Must be sub-classed
+	/**
+	 * Returns the array of i18n messages 
 	 */
 	public function getMessages( ) {
 	
-		return array();
+		return self::$msg;
+	}
+	/** 
+	 * Sets the i18n message array
+	 * @param $msg array
+	 */
+	public function setMessages( &$msg ) {
+	
+		self::$msg = $msg;
 	}
 	
 	// ======================================================================

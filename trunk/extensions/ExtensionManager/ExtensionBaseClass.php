@@ -18,6 +18,11 @@ abstract class ExtensionBaseClass
 	static $_pfnc = 'pfnc';
 	
 	/**
+	 * i18n messages
+	 */
+	static $msg = array();
+	
+	/**
 	 * State constants
 	 * NOTE: same as Extension:StubManager
 	 */
@@ -177,13 +182,20 @@ abstract class ExtensionBaseClass
 					$wgMessageCache->addMessages( $msg[$key], $key );		
 	}
 	
-	/** 
-	 * Default implementation
-	 * Must be sub-classed
+	/**
+	 * Returns the array of i18n messages 
 	 */
 	public function getMessages( ) {
 	
-		return array();
+		return self::$msg;
+	}
+	/** 
+	 * Sets the i18n message array
+	 * @param $msg array
+	 */
+	public function setMessages( &$msg ) {
+	
+		self::$msg = $msg;
 	}
 	
 	// ======================================================================

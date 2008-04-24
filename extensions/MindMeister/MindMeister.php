@@ -2,7 +2,7 @@
 /**
  * @package ExtensionManager
  * @category ExtensionManager
- * @author Jean-Lou Dupotn
+ * @author Jean-Lou Dupont
  * @version @@package-version@@ 
  * @Id $Id$
  */
@@ -88,8 +88,6 @@ class MW_MindMeister
 	protected function format( &$h ) {
 	
 		$liste = $h->getOutputList();
-		
-		$url_params_liste = array();
 		
 		// mandatory
 		$mmid   = $liste[ 'mmid' ];

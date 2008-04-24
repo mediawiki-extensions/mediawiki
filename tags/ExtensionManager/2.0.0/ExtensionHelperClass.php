@@ -4,7 +4,7 @@
  * @package ExtensionManager
  * @category ExtensionManager
  * @version 2.0.0
- * @Id $Id: ExtensionHelperClass.php 1030 2008-04-23 23:29:47Z jeanlou.dupont $
+ * @Id $Id: ExtensionHelperClass.php 1036 2008-04-23 23:56:57Z jeanlou.dupont $
  * @dependency PEAR::Validate package [optional]
  * 
  * Use Cases:
@@ -163,17 +163,14 @@ class ExtensionHelperClass
  	/**
  	 * Constructor
  	 * 
- 	 * @param array $params		array where:
- 	 * 							'list'  is the input list to process
- 	 * 							'ref'   is the reference list
+ 	 * @param $liste array is the input list to process
+ 	 * @param $ref array is the reference list
  	 * 
  	 */
-	public function __construct( $params ) {
+	public function __construct( &$liste, &$ref ) {
 	
-		parent::__construct( $params );
-		
-		@$this->iList = $params['list'];
-		@$this->refList = $params['ref'];
+		@$this->iList = $liste;
+		@$this->refList = $ref;
 		
 		$this->process();
 	}

@@ -80,6 +80,7 @@ abstract class ExtensionBaseClass
 	{
 		$methods = get_class_methods( $this );
 		
+		$this->setupMessages( );
 		$this->setupHooks( $methods );
 		$this->setupTags( $methods );
 		$this->setupParserFunctions( $methods );
@@ -161,7 +162,29 @@ abstract class ExtensionBaseClass
 				}
 		
 	}
-
+	/**
+	 * Sets the message cache
+	 * @return void
+	 */
+	private function setupMessages() {
+	
+		global $wgMessageCache;
+		
+		$msg = $this->getMessages( );
+		
+			if (!empty( $msg ))
+				foreach( $msg as $key => &$value )
+					$wgMessageCache->addMessages( $msg[$key], $key );		
+	}
+	
+	/** 
+	 * Default implementation
+	 * Must be sub-classed
+	 */
+	public function getMessages( ) {
+	
+		return array();
+	}
 	
 	// ======================================================================
 	// 									PROTECTED

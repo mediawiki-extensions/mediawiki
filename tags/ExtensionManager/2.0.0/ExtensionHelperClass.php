@@ -4,7 +4,7 @@
  * @package ExtensionManager
  * @category ExtensionManager
  * @version 2.0.0
- * @Id $Id: ExtensionHelperClass.php 1037 2008-04-24 00:22:17Z jeanlou.dupont $
+ * @Id $Id: ExtensionHelperClass.php 1038 2008-04-24 00:25:42Z jeanlou.dupont $
  * @dependency PEAR::Validate package [optional]
  * 
  * Use Cases:

@@ -45,11 +45,6 @@ class MW_MindMeister
 	
 	);
 	/**
-	 * Embedding URL
-	 */
-	static $url = 'http://www.mindmeister.com/maps/public_map_shell/$id?width=$width&height=$height&zoom=$zoom';
-	
-	/**
 	 * If a constructor is required, then the
 	 * parent class must be called first. 
 	 */
@@ -77,18 +72,39 @@ class MW_MindMeister
 		$this->setStatus( self::STATE_OK );
 	}
 	
-	public function pfuncMindMeister( &$parser ) {
+	public function pfnc_mindmeister( &$parser ) {
 	
 		$params = func_get_args();	
 		
-		$p = ExtensionHelperClass::processArgList( $params );
+		$p = ExtensionHelperClass::processArgList( $params, true );
 		
 		$h = new ExtensionHelperClass( $p, self::$parameters );
 	
 		if ( $h->isError() )
 			return $this->handleErrors( $h );
+			
+		$output = $this->format( $h );
+			
+		return array( $output, 'noparse' => true, 'isHTML' => true );		
 	}
+	/**
+	 * Formats the required HTML
+	 */
+	protected function format( &$h ) {
 	
+		$liste = $h->getOutputList();
+		
+		$mmid   = $liste[ 'mmid' ];
+		$width  = $liste[ 'width' ];
+		$height = $liste[ 'height' ];
+		$zoom   = $liste[ 'zoom' ];
+		
+		$params = $h->getStringList( );
+		
+		$html = wfMsg( 'mindmeister-html', $mmid, $width, $height, $zoom, $params );
+		
+		return $html;
+	}
 	/**
 	 * Handles errors from the ExtensionHelperClass
 	 * - Invalid parameters
@@ -99,9 +115,68 @@ class MW_MindMeister
 	 */
 	protected function handleErrors( &$h ) {
 	
+		$message = wfMsg( 'mindmeister' );
+	
+		if ( $h->foundMissing() )
+			$this->handleMissingErrors( $h, $message );
+			
+		if ( $h->foundInvalid() )
+			$this->handleInvalidErrors( $h, $message );
+			
+		if ( $h->foundTypeErrors() )
+			$this->handleTypeErrors( $h, $message );
+			
+		return $message;
+	}
+	
+	/**
+	 * Returns a formatted error message
+	 * regarding the "missing mandatory parameters"
+	 * 
+	 * @return $msg string
+	 */
+	protected function handleMissingErrors( &$h, &$msg ) {
+		
+		$liste = $h->getMissingList();
+		
+		foreach( $liste as $param )
+			$msg .= wfMsg( 'mindmeister-tpl-missing', $param );
+	}
+
+	/**
+	 * Returns a formatted error message
+	 * regarding the "invalid parameters"
+	 * 
+	 * @return $msg string
+	 */
+	protected function handleInvalidErrors( &$h, &$msg ) {
+
+		$liste = $h->getInvalidList();
+		
+		foreach( $liste as $param )
+			$msg .= wfMsg( 'mindmeister-tpl-invalid', $param );
+	
+	}
+
+	/**
+	 * Returns a formatted error message
+	 * regarding the "type errors in parameters"
+	 * 
+	 * @return $msg string
+	 */
+	protected function handleTypeErrors( &$h, &$msg ) {
+		
+		$liste = $h->getTypeErrorsList();
+		
+		foreach( $liste as $param => &$type )
+			$msg .= wfMsg( 'mindmeister-tpl-type', $param, $type );
+	
 	}
 	
 }//end class definition
 
 // REQUIRED to bootstrap the extension setup process
 new MW_MindMeister;
+
+// i18n Messages
+include 'MindMeister.i18n.php';

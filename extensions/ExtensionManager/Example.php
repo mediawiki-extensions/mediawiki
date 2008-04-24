@@ -53,7 +53,7 @@ class MW_ExampleExtension
 	/**
 	 * Example hook (Special:Version page)
 	 */	
-	public function hookSpecialVersionExtensionTypes( &$sp, &$extensionTypes ){
+	public function hook_SpecialVersionExtensionTypes( &$sp, &$extensionTypes ){
 
 		$this->addToCreditDescription( "Some Status Message<br/>" );
 				

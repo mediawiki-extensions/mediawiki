@@ -20,7 +20,7 @@
  </lead>
 
  <date>2008-04-24</date>
- <time>16:14:19</time>
+ <time>19:26:42</time>
 
  <version>
   <release>2.0.0</release>
@@ -79,7 +79,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
    <notes>
-   Revamped version
+   Revamped Version
    </notes>
   </release>
 </changelog>

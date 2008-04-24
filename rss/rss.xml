@@ -8,12 +8,23 @@
 
 	
 	<item>
+			<title>MindMeister - 1.0.0</title>
+			<link>http://jldupont.com/Extension:MindMeister</link>
+			<description>Changelog:
+Initial Release
+			</description>
+			<pubDate>Thu, 24 Apr 08 15:26:53 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>ExtensionManager - 2.0.0</title>
 			<link>http://jldupont.com/Extension:ExtensionManager</link>
 			<description>Changelog:
-Revamped version
+Revamped Version
 			</description>
-			<pubDate>Wed, 23 Apr 08 19:31:05 -0400</pubDate>
+			<pubDate>Thu, 24 Apr 08 15:26:45 -0400</pubDate>
 		</item>
 
 

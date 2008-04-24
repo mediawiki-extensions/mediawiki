@@ -53,7 +53,7 @@
  */
 //<source lang=php>
 
-include_once 'Validate.php'; // PEAR::Validate package
+@include_once 'Validate.php'; // PEAR::Validate package
 
 class ExtensionHelperClass
 {

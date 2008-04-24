@@ -23,17 +23,25 @@ class MW_MindMeister
 	const VERSION = '@@package-version@@';
 	
 	static $parameters = array(
-		'id'			=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null, 't' => 'number' ),
+	
+		#URL parameters
+		'mmid'			=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null, 't' => 'number' ),
 		'width'			=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null, 't' => 'number' ),
 		'height'		=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null, 't' => 'number' ),
 		'zoom'			=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null, 't' => 'number' ),	
 
+		#HTML (iframe) specified in example from mindmeister	
 		'frame_width'	=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 't' => 'number', 'sq' => true, 'dq' => true ),
 		'frame_height'	=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 't' => 'number', 'sq' => true, 'dq' => true ),
 	
+		#HTML specified in example from mindmeister
 		'style'			=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 'sq' => true, 'dq' => true ),
 		'frameborder'	=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 'sq' => true, 'dq' => true ),	
 		'scrolling'		=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 't' => 'string', 'sq' => true, 'dq' => true ),		
+		
+		#HTML
+		'id'			=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 'sq' => true, 'dq' => true ),	
+		'class'			=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 'sq' => true, 'dq' => true ),	
 	
 	);
 	/**

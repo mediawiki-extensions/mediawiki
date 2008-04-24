@@ -163,17 +163,14 @@ class ExtensionHelperClass
  	/**
  	 * Constructor
  	 * 
- 	 * @param array $params		array where:
- 	 * 							'list'  is the input list to process
- 	 * 							'ref'   is the reference list
+ 	 * @param $liste array is the input list to process
+ 	 * @param $ref array is the reference list
  	 * 
  	 */
-	public function __construct( $params ) {
+	public function __construct( &$liste, &$ref ) {
 	
-		parent::__construct( $params );
-		
-		@$this->iList = $params['list'];
-		@$this->refList = $params['ref'];
+		@$this->iList = $liste;
+		@$this->refList = $ref;
 		
 		$this->process();
 	}

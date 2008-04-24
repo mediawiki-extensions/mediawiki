@@ -6,11 +6,6 @@
  * @version @@package-version@@ 
  * @Id $Id$
  */
-// No need to include the dependency
-// as it is already included by default
-// through ExtensionManager.
-// NOTE that 'require_once' is a slow  process
-#require_once "ExtensionBaseClass.php";
 
 if (!class_exists( 'ExtensionBaseClass' )) {
 	echo "Missing dependency <a href='http://mediawiki.org/wiki/Extension:ExtensionManager'>ExtensionManager</a>";
@@ -26,13 +21,13 @@ class MW_MindMeister
 	
 		#URL parameters
 		'mmid'			=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null, 't' => 'number' ),
-		'width'			=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null, 't' => 'number' ),
-		'height'		=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null, 't' => 'number' ),
-		'zoom'			=> array( 'm' => true,  's' => false, 'l' => false, 'd' => null, 't' => 'number' ),	
+		'mm_width'		=> array( 'm' => true, 'u' => true, 'n' => 'width' , 's' => false, 'l' => false, 'd' => null, 't' => 'number' ),
+		'mm_height'		=> array( 'm' => true, 'u' => true, 'n' => 'height', 's' => false, 'l' => false, 'd' => null, 't' => 'number' ),
+		'mm_zoom'		=> array( 'm' => false, 'u' => true, 'n' => 'zoom',   's' => false, 'l' => false, 'd' => null, 't' => 'number' ),	
 
 		#HTML (iframe) specified in example from mindmeister	
-		'frame_width'	=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 't' => 'number', 'sq' => true, 'dq' => true ),
-		'frame_height'	=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 't' => 'number', 'sq' => true, 'dq' => true ),
+		'width'		=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 'sq' => true, 'dq' => true ),
+		'height'	=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 'sq' => true, 'dq' => true ),
 	
 		#HTML specified in example from mindmeister
 		'style'			=> array( 'm' => false,  's' => false, 'l' => true, 'd' => null, 'sq' => true, 'dq' => true ),
@@ -81,7 +76,7 @@ class MW_MindMeister
 		$h = new ExtensionHelperClass( $p, self::$parameters );
 	
 		if ( $h->isError() )
-			return $this->handleErrors( $h );
+			return $this->handleErrors( $h, 'mindmeister' );
 			
 		$output = $this->format( $h );
 			
@@ -94,83 +89,20 @@ class MW_MindMeister
 	
 		$liste = $h->getOutputList();
 		
+		$url_params_liste = array();
+		
+		// mandatory
 		$mmid   = $liste[ 'mmid' ];
-		$width  = $liste[ 'width' ];
-		$height = $liste[ 'height' ];
-		$zoom   = $liste[ 'zoom' ];
 		
-		$params = $h->getStringList( );
+		$url_params =  $h->getUrlString();
+				
+		$url_params = $mmid . $url_params;
 		
-		$html = wfMsg( 'mindmeister-html', $mmid, $width, $height, $zoom, $params );
+		$html_params = $h->getStringList( );
+		
+		$html = wfMsg( 'mindmeister-html', $url_params, $html_params );
 		
 		return $html;
-	}
-	/**
-	 * Handles errors from the ExtensionHelperClass
-	 * - Invalid parameters
-	 * - Missing mandatory parameters
-	 * - Parameters with type error
-	 * 
-	 * @param $h Object
-	 */
-	protected function handleErrors( &$h ) {
-	
-		$message = wfMsg( 'mindmeister' );
-	
-		if ( $h->foundMissing() )
-			$this->handleMissingErrors( $h, $message );
-			
-		if ( $h->foundInvalid() )
-			$this->handleInvalidErrors( $h, $message );
-			
-		if ( $h->foundTypeErrors() )
-			$this->handleTypeErrors( $h, $message );
-			
-		return $message;
-	}
-	
-	/**
-	 * Returns a formatted error message
-	 * regarding the "missing mandatory parameters"
-	 * 
-	 * @return $msg string
-	 */
-	protected function handleMissingErrors( &$h, &$msg ) {
-		
-		$liste = $h->getMissingList();
-		
-		foreach( $liste as $param )
-			$msg .= wfMsg( 'mindmeister-tpl-missing', $param );
-	}
-
-	/**
-	 * Returns a formatted error message
-	 * regarding the "invalid parameters"
-	 * 
-	 * @return $msg string
-	 */
-	protected function handleInvalidErrors( &$h, &$msg ) {
-
-		$liste = $h->getInvalidList();
-		
-		foreach( $liste as $param )
-			$msg .= wfMsg( 'mindmeister-tpl-invalid', $param );
-	
-	}
-
-	/**
-	 * Returns a formatted error message
-	 * regarding the "type errors in parameters"
-	 * 
-	 * @return $msg string
-	 */
-	protected function handleTypeErrors( &$h, &$msg ) {
-		
-		$liste = $h->getTypeErrorsList();
-		
-		foreach( $liste as $param => &$type )
-			$msg .= wfMsg( 'mindmeister-tpl-type', $param, $type );
-	
 	}
 	
 }//end class definition

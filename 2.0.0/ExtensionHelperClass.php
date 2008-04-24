@@ -390,7 +390,7 @@ class ExtensionHelperClass
 		$index = 0;
 		foreach( $this->oList as $key => &$value ) {
 
-			if ( isset( $this->refList[ $key ] ) )
+			if ( isset( $this->refList[ $key ]['u'] ) )
 				if ( $this->refList[ $key ]['u'] === true ) {
 
 					if ( 0 != $index )

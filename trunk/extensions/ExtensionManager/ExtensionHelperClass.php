@@ -288,6 +288,38 @@ class ExtensionHelperClass
 		return $this->typeErrorsList;
 	}
 
+	/**
+	 * The resulting list contains:
+	 * - The parameters extracted by 'key=value' whereby (key => value) entries in the list
+	 * - The parameters extracted by 'index' whereby ( index = > value) entries in the list
+	 */
+	public static function processArgList( $liste, $getridoffirstparam=false )
+	{
+		if ($getridoffirstparam)   
+			array_shift( $liste );
+			
+		// the parser sometimes includes a boggie
+		// null parameter. get rid of it.
+		if (count($liste) >0 )
+			if (empty( $liste[count($liste)-1] ))
+				unset( $liste[count($liste)-1] );
+		
+		$result = array();
+		foreach ($liste as $index => $el )
+		{
+			$t = explode("=", $el);
+			if (!isset($t[1])) 
+				continue;
+			$result[ "{$t[0]}" ] = trim( $t[1] );
+			unset( $liste[$index] );
+		}
+		if (empty($result)) 
+			return $liste;
+			
+		return array_merge( $result, $liste );	
+	}
+	
+	
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
 	// INTERNAL
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%				

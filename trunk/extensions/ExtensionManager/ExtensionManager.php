@@ -39,7 +39,7 @@ class ExtensionManager extends ExtensionBaseClass
 	/**
 	 * Example hook (Special:Version page)
 	 */	
-	public function hookSpecialVersionExtensionTypes( &$sp, &$extensionTypes ) {
+	public function hook_SpecialVersionExtensionTypes( &$sp, &$extensionTypes ) {
 
 		$this->addToCreditDescription( 
 			" Using real cache: " . ExtensionLoader::realCacheStatus() . '. '
@@ -86,7 +86,7 @@ class ExtensionManager extends ExtensionBaseClass
 	 * @param $liste reference to array of registered extensions i.e. class name
 	 * @return $result boolean Standard MediaWiki return code
 	 */
-	public function hookExtensionManagerGetList( &$liste ) {
+	public function hook_ExtensionManagerGetList( &$liste ) {
 	
 		$liste = self::$_registeredExtensionsList;
 		

@@ -205,7 +205,15 @@ class ExtensionHelperClass
 		return $this->foundInvalid() || 
 				$this->foundTypeErrors() ||
 				$this->foundMissing();
-	}				
+	}
+	/**
+	 * Returns the list of parameters in a list form
+	 * @return $string string
+	 */	
+	public function getStringList() {
+	
+		return $this->stringList;			
+	}
 	/**
 	 * Returns the processed output list
 	 * 

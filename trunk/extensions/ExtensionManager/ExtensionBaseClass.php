@@ -13,14 +13,24 @@ abstract class ExtensionBaseClass
 	/**
 	 * Method Prefixes
 	 */
-	static $_hook = 'hook';
-	static $_ptag = 'ptag';
-	static $_pfnc = 'pfnc';
+	static $_hook = 'hook_';
+	static $_ptag = 'ptag_';
+	static $_pfnc = 'pfnc_';
 	
 	/**
 	 * i18n messages
 	 */
 	static $msg = array();
+	
+	/** 
+	 * List of registered parser functions
+	 */
+	var $pfnc_list = array();
+	
+	/**
+	 * Methods of this class
+	 */
+	var $methods = array();
 	
 	/**
 	 * State constants
@@ -66,10 +76,14 @@ abstract class ExtensionBaseClass
 	 */
 	public function __construct() {
 	
-		// Register the extension so that it gets
+			// Register the extension so that it gets
 		// initialized in the correct sequence
 		global $wgExtensionFunctions;
 		$wgExtensionFunctions[] = array( $this, '_setup' );
+		
+		// some initialization must be done
+		// prior to the "setup" phase
+		$this->init();
 			
 	}
 	/**
@@ -83,12 +97,10 @@ abstract class ExtensionBaseClass
 	 */
 	public function _setup()
 	{
-		$methods = get_class_methods( $this );
-		
 		$this->setupMessages( );
-		$this->setupHooks( $methods );
-		$this->setupTags( $methods );
-		$this->setupParserFunctions( $methods );
+		$this->setupHooks( );
+		$this->setupTags(  );
+		$this->setupParserFunctions( );
 		
 		// if the sub-class requires any additional setup time
 		@$this->setup();
@@ -108,20 +120,56 @@ abstract class ExtensionBaseClass
 	// ======================================================================
 	// 									PRIVATE
 	// ======================================================================	
+
+	/** 
+	 * Phase 1 initialization
+	 */	
+	private function init() {
+
+		global $wgHooks;
+		$wgHooks['LanguageGetMagic'][]  = array( $this, "hook_LanguageGetMagic" );
+
+		$this->methods = get_class_methods( $this );
 	
+		// init the parser functions list
+		// for the benefit of the hook 'GetLanguageMagic'
+		$this->get_pfnc_list();
+	}
+	/** 
+	 * Retrieves the parser functions list
+	 * from the defined methods in the sub-class
+	 */
+	private function get_pfnc_list() {
+
+		// shortcut
+		$methods = $this->methods;
+	
+		$len = strlen( self::$_pfnc );		
+		
+		foreach( $methods as $method )
+			if ( substr( $method, 0, $len ) == self::$_pfnc ) {
+				$key = substr( $method, $len );
+				$this->pfnc_list[] = $key;
+			}
+	}
+	
+	/**
+	 * Registers an extension with ExtensionManager
+	 */
 	private function doRegistration() {
 		
 		ExtensionManager::registerExtension( get_class( $this ) );
 	}
 	
-	
 	/**
 	 * Sets hooks
 	 * @param $methods array of class methods
 	 */
-	private function setupHooks( &$methods ){
+	private function setupHooks( ){
 
 		global $wgHooks;
+		
+		$methods = $this->methods; #shortcut
 		
 		$len = strlen( self::$_hook );		
 		
@@ -135,10 +183,12 @@ abstract class ExtensionBaseClass
 	 * Sets the parser 'tags'
 	 * @param $methods array of class methods 
 	 */
-	private function setupTags( &$methods ){
+	private function setupTags( ){
 
 		global $wgParser;
 		
+		$methods = $this->methods; #shortcut
+				
 		$len = strlen( self::$_ptag );		
 		
 		if ( !empty( $methods ))
@@ -153,19 +203,28 @@ abstract class ExtensionBaseClass
 	 * Sets the parser functions
 	 * @param $methods array of class methods 
 	 */
-	private function setupParserFunctions( &$methods ){
+	private function setupParserFunctions( ){
 
 		global $wgParser;
 		
-		$len = strlen( self::$_pfnc );		
+		$liste = $this->pfnc_list; #shortcut
 		
-		if ( !empty( $methods ))
-			foreach( $methods as $method )
-				if ( substr( $method, 0, $len ) == self::$_pfnc ) {
-					$key = substr( $method, $len );
-					$wgParser->setFunctionHook( "$key", array( $this, self::$_pfnc.$key ) );
-				}
-		
+		if ( empty( $liste ) )
+			return;
+			
+		foreach( $liste as $word )
+			$wgParser->setFunctionHook( "$word", array( $this, self::$_pfnc.$word ) );
+
+	}
+	/** 
+	 * HOOK 'LanguageGetMagic'
+	 */
+	public function hook_LanguageGetMagic( &$words, $langCode ) {
+	
+		foreach( $this->pfnc_list as $word )
+			$words[ $word ] = array( 0, $word );
+			
+		return true;
 	}
 	/**
 	 * Sets the message cache
@@ -193,7 +252,7 @@ abstract class ExtensionBaseClass
 	 * Sets the i18n message array
 	 * @param $msg array
 	 */
-	public function setMessages( &$msg ) {
+	public function setMessages( $msg ) {
 	
 		self::$msg = $msg;
 	}

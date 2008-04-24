@@ -4,7 +4,7 @@
  * @package ExtensionManager
  * @category ExtensionManager
  * @version 2.0.0
- * @Id $Id: ExtensionBaseClass.php 1041 2008-04-24 11:54:08Z jeanlou.dupont $
+ * @Id $Id: ExtensionBaseClass.php 1042 2008-04-24 14:43:47Z jeanlou.dupont $
  */
 //<source lang=php>
 

@@ -205,7 +205,15 @@ class ExtensionHelperClass
 		return $this->foundInvalid() || 
 				$this->foundTypeErrors() ||
 				$this->foundMissing();
-	}				
+	}
+	/**
+	 * Returns the list of parameters in a list form
+	 * @return $string string
+	 */	
+	public function getStringList() {
+	
+		return $this->stringList;			
+	}
 	/**
 	 * Returns the processed output list
 	 * 
@@ -390,9 +398,6 @@ class ExtensionHelperClass
 	 */
 	protected function doListSanitization( ) {
 	
-		if (empty( $this->iList ))
-			return array();
-
 		// first, let's make sure we only have valid parameters
 		$this->oList = array();
 		foreach( $this->iList as $key => &$value )

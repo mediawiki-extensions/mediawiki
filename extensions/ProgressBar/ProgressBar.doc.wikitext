@@ -1,2 +1,0 @@
-
-{{#progressbar: type=[v,h] | scale= | weight = | width= | color=[red, green, blue, ...] }}

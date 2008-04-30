@@ -18,7 +18,7 @@
  * 
  * 
  */
-// the format is important here too: 'msg'.$classname
+
 MW_MindMeister::setMessages(
 	array( 'en' => 
 		array(

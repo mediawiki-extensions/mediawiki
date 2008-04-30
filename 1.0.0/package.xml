@@ -20,7 +20,7 @@
  </lead>
 
  <date>2008-04-30</date>
- <time>01:11:50</time>
+ <time>09:56:40</time>
 
  <version>
   <release>1.0.0</release>
@@ -42,7 +42,7 @@
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki/AutomaticHtmlTitle" name="AutomaticHtmlTitle.php" role="php" />
-   <file baseinstalldir="MediaWiki/AutomaticHtmlTitle" name="AutomaticHtmlTitle.i18n.php" role="php" />
+   <file baseinstalldir="MediaWiki/AutomaticHtmlTitle" name="AutomaticHtmlTitle.doc.wikitext" role="doc" />
     <!-- }} -->
 
   </dir>

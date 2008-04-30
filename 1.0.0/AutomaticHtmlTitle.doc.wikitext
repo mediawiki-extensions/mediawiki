@@ -24,7 +24,7 @@ Provides automatic HTML TITLE element generation in the HEAD section.
 * Use wikitext for template   
 * Extensible through a custom hook 'AutomaticHtmlTitle'
 * Documentation aware
-** Use a tag section <noinclude> in the template for documentation purpose
+** Use a tag section <nowiki>< noinclude ></nowiki> in the template for documentation purpose
 
 == Usage ==
 Edit the required template for a given namespace e.g. for the ''main'' namespace, use the following article title:
@@ -43,12 +43,12 @@ This functionality is useful for pages that are visible to web-crawlers despite 
 
 == Example Template ==
 An example template page follows:
-<pre>
+<pre><nowiki>
  SEO - {{PAGENAME}} - some more SEO keywords
  <noinclude>
    I can document my template here
  </noinclude>
-</pre>
+</nowiki></pre>
 
 == Hook ''AutomaticHtmlTitle'' ==
 A custom hook ''AutomaticHtmlTitle'' is created by this extension. This hook is useful for ''injecting'' custom variables in the title.

@@ -24,7 +24,7 @@ Provides automatic HTML TITLE element generation in the HEAD section.
 * Use wikitext for template   
 * Extensible through a custom hook 'AutomaticHtmlTitle'
 * Documentation aware
-** Use a tag section <noinclude> in the template for documentation purpose
+** Use a tag section <nowiki><noinclude></nowiki> in the template for documentation purpose
 
 == Usage ==
 Edit the required template for a given namespace e.g. for the ''main'' namespace, use the following article title:

@@ -6,6 +6,6 @@
     http://pear.php.net/dtd/rest.category.xsd">
  <n>PageMetaData</n>
  <c>mediawiki.googlecode.com/svn</c>
- <a>PageMetaData</a>
- <d></d>
+ <a>PageMetaData</a> <!-- alias? -->
+ <d>Provides automatic HTML title element generation in the HEAD section</d>
 </c>

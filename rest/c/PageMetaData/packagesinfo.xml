@@ -21,6 +21,24 @@
 		</pi>
 		<pi>
 			<p>
+				<n>AutomaticHtmlTitle</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/PageMetaData">PageMetaData</ca>
+				<l>$license$</l>
+				<s>Provides automatic HTML title element generation in the HEAD section</s>
+				<d>Provides automatic HTML title element generation in the HEAD section</d>
+				<r xlink:href="/rest/r/AutomaticHtmlTitle">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.0.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>PageMetaData</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/PageMetaData">PageMetaData</ca>

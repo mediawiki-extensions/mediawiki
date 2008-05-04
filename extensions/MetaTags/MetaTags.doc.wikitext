@@ -9,14 +9,13 @@
 |download    = [http://mediawiki.googlecode.com/svn/tags/MetaTags/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
-|description = Provides a means including META and LINK tags to a page's HEAD whilst still integrating with parser caching.
+|description = Allows users to add META and LINK tags to an individual page's HEAD coding. This extension still allows the mediawiki page to be parser cached.
 |parameters  =
 |rights      =
 |example     =
 }}
 == Purpose==
-Provides a means including META and LINK tags to a page's HEAD whilst still integrating with parser caching.
-
+Allows users to add META and LINK tags to an individual page's HEAD coding. This extension still allows the mediawiki page to be parser cached.
 == Examples ==
 * <nowiki>{{#meta: Content-Type | text/html; charset=utf-8 }}</nowiki>
 * <nowiki>{{#link: stylesheet | text/css | theme.css }}</nowiki>

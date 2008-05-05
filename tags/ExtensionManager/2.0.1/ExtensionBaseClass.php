@@ -4,7 +4,7 @@
  * @package ExtensionManager
  * @category ExtensionManager
  * @version 2.0.1
- * @Id $Id: ExtensionBaseClass.php 1059 2008-05-05 19:21:42Z jeanlou.dupont $
+ * @Id $Id: ExtensionBaseClass.php 1061 2008-05-05 19:26:15Z jeanlou.dupont $
  */
 //<source lang=php>
 
@@ -21,7 +21,7 @@ abstract class ExtensionBaseClass
 	 * i18n messages
 	 */
 	# must be declared in sub-classes
-	#static $msg = array();
+	#var $msg = array();
 	
 	/** 
 	 * List of registered parser functions
@@ -247,7 +247,7 @@ abstract class ExtensionBaseClass
 	 */
 	public function getMessages( ) {
 	
-		return self::$msg;
+		return $this->msg;
 	}
 	/** 
 	 * Sets the i18n message array
@@ -255,7 +255,7 @@ abstract class ExtensionBaseClass
 	 */
 	public function setMessages( $msg ) {
 	
-		self::$msg = $msg;
+		$this->msg = $msg;
 	}
 	
 	// ======================================================================

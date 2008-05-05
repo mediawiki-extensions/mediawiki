@@ -4,7 +4,7 @@
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 2.0.0
+|version     = 2.0.1
 |update      =
 |mediawiki   = 1.10, 1.11, 1.12
 |download    = see installation section or use [http://mediawiki.googlecode.com/svn/tags/ExtensionManager/ SVN]
@@ -38,4 +38,6 @@ An example file ''Example.php'' is made available in the installation tarball / 
 | 1.1.1 || Added 'clearstatcache' to help with PHP file status caching issue
 |-
 | 2.0.0 || Revamped version: defines a ''base class'' for easier extension development, ''helper class'' for parameter list processing, no more dependency on [[Extension:StubManager]]
+|-
+| 2.0.1 || Corrected major bug with message interface
 |}

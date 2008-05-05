@@ -4,7 +4,7 @@
  * @package ExtensionManager
  * @category ExtensionManager
  * @version 2.0.1
- * @Id $Id: ExtensionBaseClass.php 1062 2008-05-05 19:31:00Z jeanlou.dupont $
+ * @Id $Id: ExtensionBaseClass.php 1063 2008-05-05 19:38:51Z jeanlou.dupont $
  */
 //<source lang=php>
 
@@ -369,6 +369,8 @@ abstract class ExtensionBaseClass
 	
 		$message = wfMsg( $baseMsgId );
 	
+		$insertSeparator = false;
+		
 		if ( $h->foundMissing() )
 			$insertSeparator = $this->handleMissingErrors( $h, $message, $baseMsgId );
 			

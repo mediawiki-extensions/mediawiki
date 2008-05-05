@@ -12,7 +12,7 @@
  <script type="text/javascript"> gliffy_did = "1422012"; embedGliffy(); </script>
  */
 
-MW_Gliffy::getInstance()->setMessages(
+MW_Gliffy::getInstance('MW_Gliffy')->setMessages(
 	array( 'en' => 
 		array(
 			'gliffy'				=> 'Gliffy: ',

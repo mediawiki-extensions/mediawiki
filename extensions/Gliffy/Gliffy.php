@@ -9,7 +9,7 @@
 
 if (!class_exists( 'ExtensionBaseClass' )) {
 
-	echo "Missing dependency <a href='http://mediawiki.org/wiki/Extension:ExtensionManager'>ExtensionManager</a>";
+	echo "Missing dependency <a href='http://mediawiki.org/wiki/Extension:ExtensionManager'>ExtensionManager >= v2.0.1</a>";
 	die(-1);
 	
 }
@@ -19,11 +19,6 @@ class MW_Gliffy
 {
 	const VERSION = '@@package-version@@';
 	const NAME    = 'gliffy';
-	
-	/** 
-	 * LOCAL messages
-	 */
-	static $msg = array();
 	
 	static $parameters = array(
 	
@@ -88,8 +83,6 @@ class MW_Gliffy
 		// mandatory
 		$did   = $liste[ 'did' ];
 
-		wfVarDump( $this );
-		
 		$html = wfMsg( 'gliffy-html', $did );
 		
 		return $html;

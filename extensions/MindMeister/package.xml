@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2008-04-24</date>
- <time>19:31:59</time>
+ <date>2008-05-05</date>
+ <time>19:41:20</time>
 
  <version>
-  <release>1.0.0</release>
+  <release>1.0.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -63,7 +63,7 @@
 	<package>
 		<name>ExtensionManager</name>
 		<channel>mediawiki.googlecode.com/svn</channel>
-		<min>2.0.0</min>
+		<min>2.0.1</min>
 	</package>
 
   </required>
@@ -81,7 +81,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Initial Release
+Aligned with Extension:ExtensionManager v2.0.1
 </notes>
 </release>
 </changelog>

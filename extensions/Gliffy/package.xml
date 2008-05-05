@@ -63,7 +63,7 @@
 	<package>
 		<name>ExtensionManager</name>
 		<channel>mediawiki.googlecode.com/svn</channel>
-		<min>2.0.0</min>
+		<min>2.0.1</min>
 	</package>
 
   </required>

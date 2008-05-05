@@ -8,7 +8,7 @@
  */
 
 if (!class_exists( 'ExtensionBaseClass' )) {
-	echo "Missing dependency <a href='http://mediawiki.org/wiki/Extension:ExtensionManager'>ExtensionManager</a>";
+	echo "Missing dependency <a href='http://mediawiki.org/wiki/Extension:ExtensionManager'>ExtensionManager >= 2.0.1</a>";
 	die(-1);
 }
 

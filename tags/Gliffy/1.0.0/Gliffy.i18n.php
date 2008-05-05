@@ -2,7 +2,7 @@
 /**
  * @author Jean-Lou Dupont
  * @package Gliffy
- * @version @@package-version@@
+ * @version 1.0.0
  * @Id $Id$
  */
 //<source lang=php>

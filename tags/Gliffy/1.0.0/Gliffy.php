@@ -3,7 +3,7 @@
  * @package Gliffy
  * @category Social
  * @author Jean-Lou Dupont
- * @version @@package-version@@ 
+ * @version 1.0.0 
  * @Id $Id$
  */
 
@@ -17,7 +17,7 @@ if (!class_exists( 'ExtensionBaseClass' )) {
 class MW_Gliffy 
 	extends ExtensionBaseClass
 {
-	const VERSION = '@@package-version@@';
+	const VERSION = '1.0.0';
 	const NAME    = 'gliffy';
 	
 	static $parameters = array(

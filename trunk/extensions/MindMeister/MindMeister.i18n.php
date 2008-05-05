@@ -19,7 +19,7 @@
  * 
  */
 
-MW_MindMeister::setMessages(
+MW_MindMeister::getInstance('MW_MindMeister')->setMessages(
 	array( 'en' => 
 		array(
 			'mindmeister'				=> 'MindMeister: ',

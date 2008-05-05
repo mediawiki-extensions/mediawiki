@@ -8,16 +8,12 @@
 <!-- a file of this type must appear in each release directory -->
 
  <c>mediawiki.googlecode.com/svn</c>    
- <p>MindMeister</p>
+ <p>Gliffy</p>
 
 <!-- THE ORDER IS IMPORTANT HERE 
      ELSE THE UPGRADE PROCESS WON'T WORK -->
 
 	
-	<r>
-		<v>1.0.1</v>
-		<s>stable</s>
-	</r>
 	<r>
 		<v>1.0.0</v>
 		<s>stable</s>

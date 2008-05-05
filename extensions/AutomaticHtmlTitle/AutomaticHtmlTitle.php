@@ -1,6 +1,6 @@
 <?php
 /**
- * @package ExtensionManager
+ * @package AutomaticHtmlTitle
  * @category PageMetaData
  * @author Jean-Lou Dupont
  * @version @@package-version@@ 
@@ -9,7 +9,7 @@
 
 if (!class_exists( 'ExtensionBaseClass' )) {
 
-	echo "Missing dependency <a href='http://mediawiki.org/wiki/Extension:AutomaticHtmlTitle'>ExtensionManager</a>";
+	echo "Missing dependency <a href='http://mediawiki.org/wiki/Extension:ExtensionManager'>ExtensionManager</a>";
 	die(-1);
 	
 }

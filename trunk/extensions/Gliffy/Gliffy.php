@@ -20,6 +20,11 @@ class MW_Gliffy
 	const VERSION = '@@package-version@@';
 	const NAME    = 'gliffy';
 	
+	/** 
+	 * LOCAL messages
+	 */
+	static $msg = array();
+	
 	static $parameters = array(
 	
 		#URL parameters

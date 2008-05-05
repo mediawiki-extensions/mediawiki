@@ -20,7 +20,8 @@ abstract class ExtensionBaseClass
 	/**
 	 * i18n messages
 	 */
-	var $msg = array();
+	# must be declared in sub-classes
+	#static $msg = array();
 	
 	/** 
 	 * List of registered parser functions
@@ -246,7 +247,7 @@ abstract class ExtensionBaseClass
 	 */
 	public function getMessages( ) {
 	
-		return $this->msg;
+		return self::$msg;
 	}
 	/** 
 	 * Sets the i18n message array
@@ -254,7 +255,7 @@ abstract class ExtensionBaseClass
 	 */
 	public function setMessages( $msg ) {
 	
-		$this->msg = $msg;
+		self::$msg = $msg;
 	}
 	
 	// ======================================================================

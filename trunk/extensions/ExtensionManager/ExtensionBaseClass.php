@@ -18,10 +18,14 @@ abstract class ExtensionBaseClass
 	static $_pfnc = 'pfnc_';
 	
 	/**
+	 * Extensions registered
+	 */
+	static $exts = array();
+	
+	/**
 	 * i18n messages
 	 */
-	# must be declared in sub-classes
-	#var $msg = array();
+	var $msg = array();
 	
 	/** 
 	 * List of registered parser functions
@@ -82,6 +86,9 @@ abstract class ExtensionBaseClass
 		global $wgExtensionFunctions;
 		$wgExtensionFunctions[] = array( $this, '_setup' );
 		
+		// add to list of registered extensions
+		self::$exts[ get_class( $this ) ] = $this;
+		
 		// some initialization must be done
 		// prior to the "setup" phase
 		$this->init();
@@ -116,6 +123,14 @@ abstract class ExtensionBaseClass
 	
 		return 	$this->status;
 	
+	}
+	/** 
+	 * Returns the object instance corresponding
+	 * to the registered extension
+	 */
+	public static function getInstance( $classe ) {
+	 
+		return self::$exts[ $classe ];
 	}
 	
 	// ======================================================================

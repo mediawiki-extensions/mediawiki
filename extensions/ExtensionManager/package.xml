@@ -23,7 +23,7 @@
  <time>20:31:18</time>
 
  <version>
-  <release>2.0.0</release>
+  <release>2.0.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -79,7 +79,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
    <notes>
-   Revamped Version
+   Corrected major bug with message interface
    </notes>
   </release>
 </changelog>

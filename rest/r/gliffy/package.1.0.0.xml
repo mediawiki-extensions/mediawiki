@@ -20,7 +20,7 @@
  </lead>
 
  <date>2008-05-05</date>
- <time>19:41:31</time>
+ <time>19:46:12</time>
 
  <version>
   <release>1.0.0</release>
@@ -42,6 +42,7 @@
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki/Gliffy" name="Gliffy.php" role="php" />
+   <file baseinstalldir="MediaWiki/Gliffy" name="Gliffy.i18n.php" role="php" />   
    <file baseinstalldir="MediaWiki/Gliffy" name="Gliffy.doc.wikitext" role="doc" />
     <!-- }} -->
 

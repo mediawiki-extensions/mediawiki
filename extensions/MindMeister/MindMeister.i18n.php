@@ -23,7 +23,7 @@ MW_MindMeister::getInstance('MW_MindMeister')->setMessages(
 	array( 'en' => 
 		array(
 			'mindmeister'				=> 'MindMeister: ',
-			'mindmeister-help'			=> "\n\n".'<pre><div class="error-help">MindMeister Help: {{#mindmeiser: mmid=id [|mm_width=] [|mm_height=] [|mm_zoom=] [|width=] [|height=] [|class=] [|frameborder=] [|scrolling=] [|style=] [|id=] }}</div></pre>',
+			'mindmeister-help'			=> "\n\n".'<pre><div class="error-help">MindMeister Help: <nowiki>{{# mindmeister: mmid=id [|mm_width=] [|mm_height=] [|mm_zoom=] [|width=] [|height=] [|class=] [|frameborder=] [|scrolling=] [|style=] [|id=] }}</nowiki></div></pre>',
 			'mindmeister-html'			=> '<iframe src="http://www.mindmeister.com/maps/public_map_shell/$1" $2></iframe>',
 			'mindmeister-example'		=> '<br/><html><div class="error-example"><iframe width="600" height="400" frameborder="0" src="http://www.mindmeister.com/maps/public_map_shell/6089041?width=600&height=600&zoom=1" scrolling="no" style="overflow:hidden"></iframe></div></html>', 
 			'mindmeister-tpl-missing'	=> 'missing mandatory parameter <b>$1</b>',

@@ -369,6 +369,8 @@ abstract class ExtensionBaseClass
 	
 		$message = wfMsg( $baseMsgId );
 	
+		$insertSeparator = false;
+		
 		if ( $h->foundMissing() )
 			$insertSeparator = $this->handleMissingErrors( $h, $message, $baseMsgId );
 			

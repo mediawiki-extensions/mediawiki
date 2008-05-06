@@ -184,5 +184,3 @@ class MW_AutomaticHtmlTitle
 
 // REQUIRED to bootstrap the extension setup process
 new MW_AutomaticHtmlTitle;
-
-#include 'AutomaticHtmlTitle.i18n.php';

@@ -8,12 +8,45 @@
 
 	
 	<item>
-			<title>MindMeister - 1.0.0</title>
-			<link>http://jldupont.com/Extension:MindMeister</link>
+			<title>Gliffy - 1.0.0</title>
+			<link>http://jldupont.com/Extension:Gliffy</link>
 			<description>Changelog:
 Initial Release
 			</description>
-			<pubDate>Thu, 24 Apr 08 15:26:53 -0400</pubDate>
+			<pubDate>Mon, 05 May 08 20:09:37 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ExtensionManager - 2.0.1</title>
+			<link>http://jldupont.com/Extension:ExtensionManager</link>
+			<description>Changelog:
+Corrected major bug with message interface
+			</description>
+			<pubDate>Mon, 05 May 08 15:48:09 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>MindMeister - 1.0.1</title>
+			<link>http://jldupont.com/Extension:MindMeister</link>
+			<description>Changelog:
+Aligned with Extension:ExtensionManager v2.0.1
+			</description>
+			<pubDate>Mon, 05 May 08 15:41:22 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>AutomaticHtmlTitle - 1.0.0</title>
+			<link>http://jldupont.com/Extension:AutomaticHtmlTitle</link>
+			<description>Changelog:
+Initial Release
+			</description>
+			<pubDate>Wed, 30 Apr 08 05:56:42 -0400</pubDate>
 		</item>
 
 
@@ -24,7 +57,18 @@ Initial Release
 			<description>Changelog:
 Revamped Version
 			</description>
-			<pubDate>Thu, 24 Apr 08 15:26:45 -0400</pubDate>
+			<pubDate>Thu, 24 Apr 08 16:31:19 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>MindMeister - 1.0.0</title>
+			<link>http://jldupont.com/Extension:MindMeister</link>
+			<description>Changelog:
+Initial Release
+			</description>
+			<pubDate>Thu, 24 Apr 08 15:32:00 -0400</pubDate>
 		</item>
 
 

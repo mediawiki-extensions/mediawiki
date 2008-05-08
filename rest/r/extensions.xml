@@ -1,0 +1,1824 @@
+<extensions>
+
+<a xmlns="http://pear.php.net/dtd/rest.allreleases" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>AddScriptCss</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>AlternateRawPage</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>AutomaticHtmlTitle</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>AutoRedirect</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>Backup</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ClassProcessor</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ConditionalContent</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>EditTalkRight</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>EmailLog</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>EmbedObject</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ExtensionManager</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>2.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>2.0.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>FlowProcessor</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.3.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>geshi</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>Gliffy</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>GoogleCharts</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>GoogleCode</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>Gravatar</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>GroupManager</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>HeaderFooter</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>2.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>HeadScripts</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r> 
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>HNP</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.1.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ImageLink</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.6.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.5.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.5.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.4.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.4.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.3.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"     
+	xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+	 <p>ImagePageEx</p>
+	 <c>mediawiki.googlecode.com/svn</c>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"     
+	xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+	 <p>InterWikiLinkManager</p>
+	 <c>mediawiki.googlecode.com/svn</c>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>InterWikiTitleWizard</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>JSKitComments</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>JSKitNavigator</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>JSKitPoll</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>JSKitRating</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.4.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.3.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ManageNamespaces</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>MetaTags</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>MindMeister</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>NewUserEmailNotification</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>NewUserLog</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>Ohloh</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>PageAfterAndBefore</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.7</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.6</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>PageMetaData</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>PageRestrictions</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>PageServer</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>2.2.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>2.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>2.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>2.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>PageSidebar</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>PageTrail</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.5</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.4</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.3</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ParserExt</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.3.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.3.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.3.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"     
+	xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+	 <p>ParserFunctions</p>
+	 <c>mediawiki.googlecode.com/svn</c>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ParserFunctionsHelper</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ParserPhase2</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.1.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>PreloadManager</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>Quimble</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>RawPageTools</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>RawRight</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ReCaptcha</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>RegistryManager</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r> 
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>SecureHTML</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>2.3.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>2.2.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>2.1.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>2.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>2.0.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>SecurePHP</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r> 
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>SecureProperties</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>SecureTransclusion</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>2.0.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.3</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ShowRedirectPageText</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>SidebarEx</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>SimpleScript</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+			<r>
+				<v>1.0.0</v>
+				<s>stable</s>
+			</r>
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>SmartyAdaptor</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>2.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>2.0.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>StubManager</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.3.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.2.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.6</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.5</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.4</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.3</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>SysopDisableSiteCounters</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>TagToTemplate</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.3</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.2</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ToolboxExtender</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.1</v>
+		<s>stable</s>
+	</r>
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>UserAccountManager</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>UserLoginLogoutLog</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>UserSettingsChangedLog</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>VersaComment</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r>
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>ViewsourceRight</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.1.0</v>
+		<s>stable</s>
+	</r> 
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>WatchLog</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a>
+<a xmlns="http://pear.php.net/dtd/rest.allreleases"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"     
+    xsi:schemaLocation="http://pear.php.net/dtd/rest.allreleases
+    http://pear.php.net/dtd/rest.allreleases.xsd">
+
+
+
+
+ <c>mediawiki.googlecode.com/svn</c>    
+ <p>WatchRight</p>
+
+<!-- THE ORDER IS IMPORTANT HERE 
+     ELSE THE UPGRADE PROCESS WON'T WORK -->
+
+	<r>
+		<v>1.0.0</v>
+		<s>stable</s>
+	</r> 
+
+</a></extensions>

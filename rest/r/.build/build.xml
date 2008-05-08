@@ -20,7 +20,9 @@
 	
 		<resolvepath propertyName="r.path" file="${project.basedir}/../" />
 	
-
+		<!--
+			STARTUP CLEAN-UP
+		-->
 		<delete includeemptydirs="true" quiet="Yes">
 			<fileset dir="${r.path}/_all">
 				<include name="**/**" />
@@ -43,9 +45,8 @@
 			<include name="**/**" />
 		</fileset>
 
-<!--
+<!--DEBUG
 		<fs2prop fsid='allfiles_txt' prop='liste' />
-	
 		<echo>Liste: ${liste}</echo>
 -->
 
@@ -66,6 +67,11 @@
 			<include name="**/**" />
 		</fileset>
 
+		<!--
+			GENERATE EACH FILE "$package" CONTAINING
+			THE LATEST VERSION NUMBER IN PLAIN TEXT
+		-->
+		<echo>GENERATING "$package" FILES</echo>
 		<copy todir="${r.path}/_all" overwrite="true" >
 			<fileset refid="allfiles_txt_todo" />
 			<filterchain>
@@ -91,6 +97,36 @@
 			</filterchain>			
 		</copy>
 
+		<!--
+			GENERATE EACH FILE "$package.xml" CONTAINING
+			THE LATEST VERSION NUMBER IN XML FORMAT
+		-->
+		<echo>GENERATING "$package.xml" FILES</echo>		
+		<copy todir="${r.path}/_all" overwrite="true" >
+			<fileset refid="allfiles_txt_todo" />
+			<mapper type="glob" from="*.txt" to="*.xml"/>
+			<filterchain>
+				<replaceregexp>
+					<regexp pattern="\x3c\?(.*)\?>" replace=""/>
+					<regexp pattern="\x3c!--(.*)-->" replace=""/>
+				</replaceregexp>
+			</filterchain>				
+		</copy>
+
+		<!--
+			GENERATING "extensions.xml" FILE
+		-->
+		<copy file="${project.basedir}/header.xml" tofile="${r.path}/extensions.xml" overwrite="true" />
+		<append destFile="${r.path}/extensions.xml">
+			<fileset dir="${r.path}/_all">
+				<include name="**.xml" />
+			</fileset>
+		</append>
+		<append file="${project.basedir}/footer.xml" destFile="${r.path}/extensions.xml" />		
+		
+		<!--
+			CLEANUP
+		-->
 		<delete includeemptydirs="true">
 			<fileset dir="${r.path}/all">
 				<include name="**/**" />
@@ -110,18 +146,25 @@
 
 		<fileset dir="${r.path}/_all" id='allfiles_2' >
 			<include name="**/**" />
+			<exclude name="**/*.xml" />
 		</fileset>
 	
 		<fs2prop fsid='allfiles_2' prop='liste' />
 
-		<!-- move file to /r/$package -->
+		<!-- 
+				1) move file to /r/$package
+				2) generate PNG file 
+		-->
+	
 		<foreach list="${liste}" param="base_name" target="moveOne" />
 
+		<!--
 		<delete includeemptydirs="true">
 			<fileset dir="${r.path}/_all">
 				<include name="**/**" />
 			</fileset>
 		</delete>
+		-->
 
 	</target>
 

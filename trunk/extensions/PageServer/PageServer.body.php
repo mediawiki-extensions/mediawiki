@@ -466,7 +466,6 @@ class PageServer
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	
 	public function hSpecialVersionExtensionTypes( &$sp, &$extensionTypes )
-	// setup of this hook occurs in 'ExtensionClass' base class.
 	{
 		global $wgExtensionCredits;
 

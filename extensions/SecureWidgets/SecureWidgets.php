@@ -23,10 +23,15 @@ class MW_SecureWidgets
 	const VERSION = '@@package-version@@';
 	const NAME    = 'securewidgets';
 	
+	/**
+	 * namespace prefix for the trans-cache
+	 */
+	static $prefixTransCache = 'sw-';
+	
 	/** 
 	 * Widget repository
 	 */
-	static $_eSrc = "http://mediawiki.googlecode.com/svn/widgets/";
+	static $repositoryURL = "http://mediawiki.googlecode.com/svn/widgets/";
 	
 	/**
 	 * If a constructor is required, then the
@@ -58,12 +63,15 @@ class MW_SecureWidgets
 	/**
 	 * Parser Function #gliffy
 	 */
-	public function pfnc_widget( &$parser, $name ) {
+	public function pfnc_widget( &$parser, $_name ) {
 	
 		$params = func_get_args();	
         array_shift($params); # $parser 
         array_shift($params); # $name
 		
+        // make sure we are not tricked
+        $name = $this->makeSecureName( $_name );
+        
         // make sure we have some code to work with
         $code = $this->fetchWidgetCode( $name );
         if ( $code === false )
@@ -80,7 +88,22 @@ class MW_SecureWidgets
 		return array( $output, 'noparse' => true, 'isHTML' => true );		
 	}
 	
+	/**
+	 * Validates a Widget name for security reasons
+	 * since we will be using this name as key in 
+	 * the database downstream
+	 * 
+	 * @param $_name string
+	 * @return $name string
+	 */
+	protected function makeSecureName( &$_name ) {
 	
+		$name = strtolower( $_name );
+		$name = ltrim( $name, "\'\" \t\n\r\0\x0B" );
+		$name = rtrim( $name, "\'\" \t\n\r\0\x0B" );
+	
+		return $name;
+	}
 	
 	
 	/**
@@ -116,10 +139,28 @@ class MW_SecureWidgets
 	 */
 	protected function fetchFromRepository( &$name ) {
 	
+		$url = $this->formatNameForRepository( $name );
+		
+		$code = Http::get( $url );
+		if ( $code === false )
+			return false;
+	
 		// if we got lucky, save it to the trans-cache
 		$this->saveInTransCache( $name, $code );
 	
 		return $code;
+	}
+	
+	/**
+	 * Formats an URL for accessing the external repository
+	 * 
+	 * @param $name string
+	 * @return $url string
+	 */
+	protected function formatNameForRepository( &$name ) {
+	
+		return self::$repositoryURL . $name . '/' . $name . '.wikitext' ;
+		
 	}
 	
 	/**
@@ -189,6 +230,8 @@ class MW_SecureWidgets
 	 * @return $key string
 	 */
 	protected function formatNameForTransCache( &$name ) {
+	
+		return self::$prefixTransCache . $name ;
 	
 	}
 	

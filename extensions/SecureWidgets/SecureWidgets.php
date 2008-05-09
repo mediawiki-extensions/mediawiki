@@ -127,30 +127,6 @@ class MW_SecureWidgets
 	 */
 	protected function fetchWidgetCode( &$name ) {
 	
-		// try the trans-cache
-		$code = $this->fetchFromTransCache( $name );
-		if ( $code !== false ) return $code;
-		
-		// setup for database access
-		$title = null;
-		$id = null;
-		$db_name = $this->formatNameForDatabase( $name );
-		$article = $this->buildArticle( $db_name, $title );
-		
-		// try the page-cache in database
-		$code = $this->fetchFromPageParserCache( $article, $id );
-		if ( $code !== false ) return $code;
-
-		// try the in the "Widget" namespace		
-		$code = $this->fetchPageFromDatabase( $title );
-		if ( $code !== false ) return $code;
-		
-		// FINALLY:
-		// try the external repository
-		$code = $this->fetchFromRepository( $name );
-		if ( $code !== false ) return $code;
-			
-		return false;	
 	
 	}
 	

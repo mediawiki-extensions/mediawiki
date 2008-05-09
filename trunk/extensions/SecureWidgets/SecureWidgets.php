@@ -14,6 +14,10 @@ if (!class_exists( 'ExtensionBaseClass' )) {
 	
 }
 
+include "WidgetCodeStorage.php";
+include "WidgetCodeStorage_Database.php";
+include "WidgetCodeStorage_Repository.php";
+
 /**
  * Class definition
  */
@@ -23,10 +27,7 @@ class MW_SecureWidgets
 	const VERSION = '@@package-version@@';
 	const NAME    = 'securewidgets';
 	
-	/**
-	 * namespace prefix for the trans-cache
-	 */
-	static $prefixTransCache = 'sw-';
+	var $codeStores = array();
 	
 	/** 
 	 * Widget repository
@@ -41,7 +42,19 @@ class MW_SecureWidgets
 		
 		parent::__construct();
 
+		$this->registerStorage();
 	}
+	/**
+	 * 
+	 */
+	public function registerStorage( ) {
+	
+		$this->codeStore[] = new WidgetCodeStorage_Database;
+		$this->codeStore[] = new WidgetCodeStorage_Repository;		
+		return $this;
+	
+	}
+	
 	/**
 	 * Optional setup: called once it is safe
 	 *  to perform additional setup on the MediaWiki platform.
@@ -54,7 +67,7 @@ class MW_SecureWidgets
 			'name'        => $this->getName(), 
 			'version'     => self::VERSION,
 			'author'      => 'Jean-Lou Dupont', 
-			'description' => 'Provides ',
+			'description' => 'Provides secure widgets',
 			'url' 		=> 'http://mediawiki.org/wiki/Extension:SecureWidgets',			
 			) );
 		
@@ -108,6 +121,9 @@ class MW_SecureWidgets
 	
 	/**
 	 * Fetches a widget's code
+	 * 
+	 * @param $name string
+	 * @return $code mixed
 	 */
 	protected function fetchWidgetCode( &$name ) {
 	
@@ -115,14 +131,21 @@ class MW_SecureWidgets
 		$code = $this->fetchFromTransCache( $name );
 		if ( $code !== false ) return $code;
 		
-		// try the page-cache
-		$code = $this->fetchFromPageCache( $name );
+		// setup for database access
+		$title = null;
+		$id = null;
+		$db_name = $this->formatNameForDatabase( $name );
+		$article = $this->buildArticle( $db_name, $title );
+		
+		// try the page-cache in database
+		$code = $this->fetchFromPageParserCache( $article, $id );
 		if ( $code !== false ) return $code;
 
 		// try the in the "Widget" namespace		
-		$code = $this->fetchFromPage( $name );
+		$code = $this->fetchPageFromDatabase( $title );
 		if ( $code !== false ) return $code;
 		
+		// FINALLY:
 		// try the external repository
 		$code = $this->fetchFromRepository( $name );
 		if ( $code !== false ) return $code;
@@ -188,20 +211,6 @@ class MW_SecureWidgets
 	
 		return $text;
 	}
-	/** 
-	 * Fetches a widget's code from the page database
-	 */
-	protected function fetchFromPage( &$name ) {
-	
-	}
-
-	/**
-	 * Fetches a widget's code from the parser cache
-	 */
-	protected function fetchFromPageCache( &$name ) {
-	
-	}
-	
 
 	/**
 	 * Saves a widget's code in the trans-cache
@@ -238,6 +247,9 @@ class MW_SecureWidgets
 	protected function getWidgetVersion( &$code ) {
 	
 	}
+	
+	
+	
 	
 }//end class definition
 

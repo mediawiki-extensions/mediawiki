@@ -32,90 +32,110 @@ class WidgetCodeStorageDatabase
 	}
 
 	public function get() {
-	
-		if ()
-	
-		$dbName = $this->formatName( $this->name );
-	
+
+		$code = $this->fetchFromTransCache( $this->name );
+		if ( $code !== false )
+			return $code;
+		
+		$code = $this->fetchFromRepository( $this->name );
+		if ( $code !== false )
+			return $code;
+			
+		$entry = array( 'id' => 'securewidget-csrepo-not-found' );
+		$this->pushError( $entry );
+		return null;
 	}
 
 	/**
-	 * Formats the widget name for access through the database
+	 * Fetches a widget's code from the external Repository
 	 * 
-	 * @param $name string
-	 * @return $dbname string
+	 * @param $name string Name of the widget
+	 * @return $code mixed
 	 */
-	protected function formatName( &$name ) {
-
-		return self::$nsName . $name ;
+	protected function fetchFromRepository( &$name ) {
+			
+		$url = $this->formatNameForRepository( $name );
 	
-	}
-	
-	/**
-	 * Verifies if the given namespace exists
-	 * 
-	 * @param $nsname string
-	 * @return $result boolean
-	 */
-	protected function nsExists( &$nsname ) {
-	
-	}
-	
-	/**
-	 * Builds a valid article object
-	 * 
-	 * @return $article Object
-	 * @param $prefix string
-	 * @param $name string
-	 */
-	protected function buildArticle( &$name, &$title ) {
-	
-		// build a title object
-		$title = Title::newFromText( $name );
-		if (!is_object( $title ))
+		$code = Http::get( $url );
+		if ( $code === false )
 			return false;
-			
-		return new Article( $title );
-	}
-	/**
-	 * Fetches a given article from the parser cache
-	 * 
-	 * @return $result string
-	 * @param $article Object
-	 */
-	protected function fetchPageFromParserCache( &$article, &$id ) {
 	
-		global $wgUser;
-				
-		$parserCache =& ParserCache::singleton();
-		$po = $parserCache->get( $article, $wgUser );
-		if ( is_object( $po ) ) {
-			$id = $po->getCacheTime();
-			return $po->getText();
-		}
-			
-		return false;
+		// if we got lucky, save it to the trans-cache
+		$this->saveInTransCache( $name, $code );
+	
+		return $code;
 	}
+	
 	/**
-	 * Fetches a page directly from the database
+	 * Formats an URL for accessing the external repository
 	 * 
-	 * @return $result string
-	 * @param $prefix string
 	 * @param $name string
+	 * @return $url string
 	 */
-	protected function fetchPageFromDatabase( &$title ) {
+	protected function formatNameForRepository( &$name ) {
 	
-		$contents = false;
-		$rev = Revision::newFromTitle( $title );
-
-		if( is_object( $rev ) )	{
-			$id = $rev->getId();
-		    $contents = $rev->getText();		
-		}
-
-		return $contents;
+		return self::$repositoryURL . $name . '/' . $name . '.wikitext' ;
+		
 	}
 	
+	/**
+	 * Fetches a widget's code from the trans-cache
+	 * 
+	 * @param $name string Name of the widget
+	 * @return $code mixed
+	 */
+	protected function fetchFromTransCache( &$name ) {
+	
+		$text = false;
+	
+		global $wgTranscludeCacheExpiry;
+		$dbr = wfGetDB(DB_SLAVE);
+		$obj = $dbr->selectRow(	'transcache', 
+								array('tc_time', 'tc_contents'),
+								array('tc_url' => $url ));
+		if ($obj) {
+			$time = $obj->tc_time;
+			$text = $obj->tc_contents;
+			if ($time && time() < $time + $wgTranscludeCacheExpiry ) {
+				return $text;
+			}
+			return false;
+		}
+	
+		return $text;
+	}
+
+	/**
+	 * Saves a widget's code in the trans-cache
+	 * @param $name string
+	 * @param $code string
+	 * @return $result boolean
+	 */	
+	protected function saveInTransCache( &$name, &$code ) {
+	
+		$url = $this->formatNameForTransCache( $name );
+	
+		$dbw = wfGetDB(DB_MASTER);
+		$dbw->replace(	'transcache', 
+						array(	'tc_url' ), 
+						array(	'tc_url' 	=> $url,
+								'tc_time' 	=> time(),
+								'tc_contents' => $code ));
+		return true;
+	
+	}
+	
+	/**
+	 * Generates a valid key for the trans-cache
+	 * 
+	 * @param $name string
+	 * @return $key string
+	 */
+	protected function formatNameForTransCache( &$name ) {
+	
+		return self::$prefixTransCache . $name ;
+	
+	}
 	
 	
 }

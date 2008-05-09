@@ -49,8 +49,8 @@ class MW_SecureWidgets
 	 */
 	public function registerStorage( ) {
 	
-		$this->codeStore[] = new WidgetCodeStorage_Database;
-		$this->codeStore[] = new WidgetCodeStorage_Repository;		
+		$this->codeStore[] = new MW_WidgetCodeStorage_Database;
+		$this->codeStore[] = new MW_WidgetCodeStorage_Repository;		
 		return $this;
 	
 	}
@@ -154,95 +154,6 @@ class MW_SecureWidgets
 	
 	}
 	
-	/**
-	 * Fetches a widget's code from the external Repository
-	 * 
-	 * @param $name string Name of the widget
-	 * @return $code mixed
-	 */
-	protected function fetchFromRepository( &$name ) {
-	
-		$url = $this->formatNameForRepository( $name );
-		
-		$code = Http::get( $url );
-		if ( $code === false )
-			return false;
-	
-		// if we got lucky, save it to the trans-cache
-		$this->saveInTransCache( $name, $code );
-	
-		return $code;
-	}
-	
-	/**
-	 * Formats an URL for accessing the external repository
-	 * 
-	 * @param $name string
-	 * @return $url string
-	 */
-	protected function formatNameForRepository( &$name ) {
-	
-		return self::$repositoryURL . $name . '/' . $name . '.wikitext' ;
-		
-	}
-	
-	/**
-	 * Fetches a widget's code from the trans-cache
-	 * 
-	 * @param $name string Name of the widget
-	 * @return $code mixed
-	 */
-	protected function fetchFromTransCache( &$name ) {
-	
-		$url = $this->formatNameForTransCache( $name );
-	
-		global $wgTranscludeCacheExpiry;
-		$dbr = wfGetDB(DB_SLAVE);
-		$obj = $dbr->selectRow(	'transcache', 
-								array('tc_time', 'tc_contents'),
-								array('tc_url' => $url ));
-		if ($obj) {
-			$time = $obj->tc_time;
-			$text = $obj->tc_contents;
-			if ($time && time() < $time + $wgTranscludeCacheExpiry ) {
-				return $text;
-			}
-		}
-	
-		return $text;
-	}
-
-	/**
-	 * Saves a widget's code in the trans-cache
-	 * @param $name string
-	 * @param $code string
-	 * @return $result boolean
-	 */	
-	protected function saveInTransCache( &$name, &$code ) {
-	
-		$url = $this->formatNameForTransCache( $name );
-	
-		$dbw = wfGetDB(DB_MASTER);
-		$dbw->replace(	'transcache', 
-						array(	'tc_url' ), 
-						array(	'tc_url' 	=> $url,
-								'tc_time' 	=> time(),
-								'tc_contents' => $code ));
-		return true;
-	
-	}
-	
-	/**
-	 * Generates a valid key for the trans-cache
-	 * 
-	 * @param $name string
-	 * @return $key string
-	 */
-	protected function formatNameForTransCache( &$name ) {
-	
-		return self::$prefixTransCache . $name ;
-	
-	}
 	
 	protected function getWidgetVersion( &$code ) {
 	

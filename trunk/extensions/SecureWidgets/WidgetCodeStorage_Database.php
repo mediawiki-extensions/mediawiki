@@ -7,18 +7,13 @@
  * @Id $Id$
  */
 
-class WidgetCodeStorage_Database
+class MW_WidgetCodeStorage_Database
 	extends WidgetCodeStorage {
 
 	const VERSION = '@@package-version@@';
 	const NAME    = 'securewidgets-csdb';
 		
 	static $nsName = "Widget";
-	
-	/**
-	 * namespace prefix for the trans-cache
-	 */
-	static $prefixTransCache = 'sw-';
 	
 	/**
 	 * Widget Name
@@ -36,8 +31,31 @@ class WidgetCodeStorage_Database
 
 	public function get() {
 	
+		// verify if the namespace exists
+		if ( !$this->nsExists( self::$nsName ) ) {
+
+			$entry = array( 'id' => self::NAME . '-not-ns',
+							'p'	 => array( self::$nsName ) );
+			$this->pushError( $entry );
+			return null;
+		}
+		
+		// we can now try to fetch the code from the database
+		$id = null;
+		$title = null;
 		$dbName = $this->formatName( $this->name );
-	
+		$article = $this->buildArticle( $this->name, $title );
+		$code = $this->fetchPageFromParserCache( $article, $id );
+		if ( $code !== false )
+			return $code;
+			
+		$code = $this->fetchPageFromDatabase( $title );
+		if ( $code !== false )
+			return $code;
+		
+		$entry = array( 'id' => self::NAME . '-not-db' );
+		$this->pushError( $entry );
+		return null;
 	}
 
 	/**
@@ -60,6 +78,8 @@ class WidgetCodeStorage_Database
 	 */
 	protected function nsExists( &$nsname ) {
 	
+		$id = Namespace::getCanonicalIndex( $nsname );
+		return ( is_null( $id ) ? false:true );
 	}
 	
 	/**
@@ -117,8 +137,6 @@ class WidgetCodeStorage_Database
 		return $contents;
 	}
 	
-	
-	
 }
-new WidgetCodeStorage_Database;
+
 include "WidgetCodeStorage_Database.i18n.php";

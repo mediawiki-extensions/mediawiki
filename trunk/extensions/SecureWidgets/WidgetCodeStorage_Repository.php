@@ -10,28 +10,25 @@
 class WidgetCodeStorageDatabase
 	extends WidgetCodeStorage {
 
-	static $nsName = "Widget";
-	
 	/**
 	 * namespace prefix for the trans-cache
 	 */
 	static $prefixTransCache = 'sw-';
 	
 	/**
-	 * Widget Name
-	 */
-	var $name = null;
-
-	/**
 	 * Constructor
 	 */
-	public function __construct( &$name ) {
+	public function __construct( ) {
 	
-		parent::__construct( $name );
+		parent::__construct( );
 	
 	}
-
-	public function get() {
+	/**
+	 * Retrieves the code
+	 * 
+	 * @return $code string
+	 */
+	public function getCode() {
 
 		$code = $this->fetchFromTransCache( $this->name );
 		if ( $code !== false )
@@ -45,7 +42,6 @@ class WidgetCodeStorageDatabase
 		$this->pushError( $entry );
 		return null;
 	}
-
 	/**
 	 * Fetches a widget's code from the external Repository
 	 * 
@@ -65,7 +61,6 @@ class WidgetCodeStorageDatabase
 	
 		return $code;
 	}
-	
 	/**
 	 * Formats an URL for accessing the external repository
 	 * 
@@ -77,7 +72,6 @@ class WidgetCodeStorageDatabase
 		return self::$repositoryURL . $name . '/' . $name . '.wikitext' ;
 		
 	}
-	
 	/**
 	 * Fetches a widget's code from the trans-cache
 	 * 
@@ -104,7 +98,6 @@ class WidgetCodeStorageDatabase
 	
 		return $text;
 	}
-
 	/**
 	 * Saves a widget's code in the trans-cache
 	 * @param $name string
@@ -124,7 +117,6 @@ class WidgetCodeStorageDatabase
 		return true;
 	
 	}
-	
 	/**
 	 * Generates a valid key for the trans-cache
 	 * 
@@ -137,5 +129,4 @@ class WidgetCodeStorageDatabase
 	
 	}
 	
-	
-}
+}//[class WidgetCodeStorageDatabase]

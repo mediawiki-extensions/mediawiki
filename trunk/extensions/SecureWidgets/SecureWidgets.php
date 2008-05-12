@@ -45,7 +45,8 @@ class MW_SecureWidgets
 		$this->registerStorage();
 	}
 	/**
-	 * 
+	 * Must be placed in order of priority with
+	 * regards to searching locations.
 	 */
 	public function registerStorage( ) {
 	
@@ -54,7 +55,6 @@ class MW_SecureWidgets
 		return $this;
 	
 	}
-	
 	/**
 	 * Optional setup: called once it is safe
 	 *  to perform additional setup on the MediaWiki platform.
@@ -90,8 +90,9 @@ class MW_SecureWidgets
         if ( $code === false )
         	return $this->processNoCodeError( $name );
         
+        // we have the widget's code, now process the parameters
         $inputParameters = $this->extractRequiredInputParameters( $code );
-        
+
         	
 		$_p = $this->processParameters( $params );
 		if ( $this->isError( $_p ) )
@@ -127,6 +128,13 @@ class MW_SecureWidgets
 	 */
 	protected function fetchWidgetCode( &$name ) {
 	
+		foreach( $this->codeStore as $store ) {
+		
+			$store->setName( $name );
+			$code = $store->getCode();
+			if ( $code !== null )
+				return $code;
+		}
 	
 	}
 	

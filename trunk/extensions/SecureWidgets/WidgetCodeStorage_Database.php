@@ -16,20 +16,15 @@ class MW_WidgetCodeStorage_Database
 	static $nsName = "Widget";
 	
 	/**
-	 * Widget Name
-	 */
-	var $name = null;
-
-	/**
 	 * Constructor
 	 */
-	public function __construct( &$name ) {
+	public function __construct( ) {
 	
-		parent::__construct( $name );
+		parent::__construct( );
 	
 	}
 
-	public function get() {
+	public function getCode() {
 	
 		// verify if the namespace exists
 		if ( !$this->nsExists( self::$nsName ) ) {

@@ -23,14 +23,17 @@ abstract class WidgetCodeStorage
 	/**
 	 * Constructor
 	 */
-	public function __construct( &$name ) {
+	public function __construct( ) {
+	}
 	
-		$this->name = $name;
+	public function setName( &$name ) {
+	
+		$this->name = $name;	
 	}
 	/**
 	 * Retrieve the code from the storage
 	 */
-	abstract public function get();
+	abstract public function getCode();
 
 	/**
 	 * Returns the HTML version of the
@@ -72,6 +75,6 @@ abstract class WidgetCodeStorage
 	 * Returns the error status
 	 */
 	public function isError() {
-		return ( !empty( $this->errMsgIdList ) );
+		return ( !empty( $this->errMsgList ) );
 	}
 }

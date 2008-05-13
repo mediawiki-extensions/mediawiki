@@ -38,13 +38,15 @@ abstract class WidgetCodeStorage
 	/**
 	 * Returns the HTML version of the
 	 * last error message
+	 * 
+	 * @return $msg Array of strings
 	 */
 	public function getLastErrorMessages() {
 	
 		if ( empty( $this->errMsgList ) )
 			return null;
 		
-		$msg = '';
+		$msg = array();
 		foreach( $this->errMsgList as $entry ) {
 		
 			$id = $entry['id'];
@@ -61,7 +63,7 @@ abstract class WidgetCodeStorage
 			else
 				$f .= ');';
 			
-			$msg .= eval( $f );
+			$msg[] = eval( $f );
 		}
 			
 		return $msg;

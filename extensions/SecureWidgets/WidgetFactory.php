@@ -10,6 +10,7 @@
 include "WidgetCodeStorage.php";
 include "WidgetCodeStorage_Database.php";
 include "WidgetCodeStorage_Repository.php";
+#include "SecureWidgetsMessageList.php";
 
 class WidgetFactory
 	extends ExtensionBaseClass {
@@ -49,8 +50,15 @@ class WidgetFactory
 	
 		return self::$instance;
 	}
-	
+	/**
+	 * Go through all registered code store
+	 * 
+	 * @param $name string
+	 * @return $obj mixed Widget / MW_SecureWidgetsMessageList
+	 */
 	public function newWidgetFromName( &$name ) {
+	
+		$msgs = new MW_SecureWidgetsMessageList;
 	
 		foreach( $this->codeStore as $store ) {
 		
@@ -59,11 +67,11 @@ class WidgetFactory
 			if ( $code !== null )
 				return new Widget( $name, $code );
 			
-			$this->msgList[] = $store->getLastErrorMessages();
+			$msgs->pushMessages( $store->getLastErrorMessages() );
 		}
 	
 		// error
-		return false;
+		return $msgs;
 	
 	}
 	/****************************************************************

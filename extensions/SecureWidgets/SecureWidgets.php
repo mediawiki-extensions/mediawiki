@@ -13,10 +13,8 @@ if (!class_exists( 'ExtensionBaseClass' )) {
 	die(-1);
 	
 }
-
-include "WidgetCodeStorage.php";
-include "WidgetCodeStorage_Database.php";
-include "WidgetCodeStorage_Repository.php";
+// These includes will anyhow only get included once
+include "Widget.php";
 
 /**
  * Class definition
@@ -27,12 +25,10 @@ class MW_SecureWidgets
 	const VERSION = '@@package-version@@';
 	const NAME    = 'securewidgets';
 	
-	var $codeStores = array();
-	
-	/** 
-	 * Widget repository
+	/**
+	 * Message list
 	 */
-	static $repositoryURL = "http://mediawiki.googlecode.com/svn/widgets/";
+	var $msgList = array();
 	
 	/**
 	 * If a constructor is required, then the
@@ -41,19 +37,6 @@ class MW_SecureWidgets
 	public function __construct(){
 		
 		parent::__construct();
-
-		$this->registerStorage();
-	}
-	/**
-	 * Must be placed in order of priority with
-	 * regards to searching locations.
-	 */
-	public function registerStorage( ) {
-	
-		$this->codeStore[] = new MW_WidgetCodeStorage_Database;
-		$this->codeStore[] = new MW_WidgetCodeStorage_Repository;		
-		return $this;
-	
 	}
 	/**
 	 * Optional setup: called once it is safe
@@ -86,20 +69,24 @@ class MW_SecureWidgets
         $name = $this->makeSecureName( $_name );
         
         // make sure we have some code to work with
-        $code = $this->fetchWidgetCode( $name );
+        $msgList = null;
+        $code = $this->fetchWidgetCode( $name, $msgList );
         if ( $code === false )
-        	return $this->processNoCodeError( $name );
+        	return $this->processError( $name );
         
         // we have the widget's code, now process the parameters
         $inputParameters = $this->extractRequiredInputParameters( $code );
 
-        	
 		$_p = $this->processParameters( $params );
 		if ( $this->isError( $_p ) )
 			return $this->processErrors( $_p );	
 		
 		
 		return array( $output, 'noparse' => true, 'isHTML' => true );		
+	}
+	
+	protected function processError( &$name ) {
+	
 	}
 	
 	/**
@@ -126,7 +113,7 @@ class MW_SecureWidgets
 	 * @param $name string
 	 * @return $code mixed
 	 */
-	protected function fetchWidgetCode( &$name ) {
+	protected function fetchWidgetCode( &$name, &$msgList ) {
 	
 		foreach( $this->codeStore as $store ) {
 		
@@ -134,8 +121,12 @@ class MW_SecureWidgets
 			$code = $store->getCode();
 			if ( $code !== null )
 				return $code;
+			
+			$this->msgList[] = $store->getLastErrorMessages();
 		}
 	
+		// error
+		return false;
 	}
 	
 	

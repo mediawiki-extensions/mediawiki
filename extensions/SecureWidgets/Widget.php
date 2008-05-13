@@ -1,5 +1,4 @@
 <?php
-<?php
 /**
  * @package SecureWidgets
  * @category Widgets

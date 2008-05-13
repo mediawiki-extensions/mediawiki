@@ -7,10 +7,10 @@
  * @Id $Id$
  */
 
-class MW_SecureWidgetsMessageList 
-	implements Iterator {
+require_once 'WidgetIterator.php';
 
-	var $liste = array();
+class MW_SecureWidgetsMessageList
+	extends WidgetIterator { 
 
 	public function __construct() {
 	}
@@ -30,34 +30,5 @@ class MW_SecureWidgetsMessageList
 		$this->liste[] = $msg;
 		return $this;
 	}
-	
-	/*********************************************************
-	 * 				Iterator Interface
-	 ********************************************************/	
-	public function count() {
-
-		return count( $this->liste );
-	}
-	public function current() {
-
-		return current( $this->liste );
-	}
-	public function key() {
-
-		return key( $this->liste );
-	}
-	public function next() {
-
-		return next( $this->liste );
-	}
-	public function rewind() {
-	
-		return rewind( $this->liste );
-	}
-	public function valid() {
-
-		return valid( $this->liste );
-	}
-		
 	
 } //end class definition

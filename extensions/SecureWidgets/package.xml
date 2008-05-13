@@ -41,8 +41,13 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
+   <file baseinstalldir="MediaWiki/SecureWidgets" name="Widget.php" role="php" />
+   <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetFactory.php" role="php" />   
+   <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetIterator.php" role="php" />
+   <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetParameters.php" role="php" />
    <file baseinstalldir="MediaWiki/SecureWidgets" name="SecureWidgets.i18n.php" role="php" />
    <file baseinstalldir="MediaWiki/SecureWidgets" name="SecureWidgets.php" role="php" />
+   <file baseinstalldir="MediaWiki/SecureWidgets" name="SecureWidgetsMessageList.php" role="php" />
    <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetCodeStorage.php" role="php" />   
    <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetCodeStorage_Database.php" role="php" />   
    <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetCodeStorage_Database.i18n.php" role="php" />   

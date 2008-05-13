@@ -10,6 +10,11 @@
 class WidgetCodeStorageDatabase
 	extends WidgetCodeStorage {
 
+	/** 
+	 * Widget repository
+	 */
+	static $repositoryURL = "http://mediawiki.googlecode.com/svn/widgets/";
+	
 	/**
 	 * namespace prefix for the trans-cache
 	 */

@@ -12,6 +12,13 @@
 
 require_once 'WidgetIterator.php';
 
+/*
+ *   { 'n'  =>  param-name,
+ *     't'  =>  param-type,
+ *	   'v'  =>  param-value }
+ * 
+ */
+
 class WidgetParameters 
 	extends WidgetIterator {
 
@@ -56,11 +63,19 @@ class WidgetParameters
 			
 		}
 	} //__construct
+	
+	/**
+	 * Given an input parameter list, 
+	 */
+	public function setParams( &$inputList ) {
+	
+	}
+	
 	/**
 	 * Verifies if a given param exists
 	 * @return mixed $index if found, FALSE otherwise
 	 */
-	protected function isParam( &$name ) {
+	public function isParam( &$name ) {
 
 		// assume worst case
 		$result = false;
@@ -88,12 +103,17 @@ class WidgetParameters
 	
 		return $this->status;
 	}
+	
+	/******************************************************************
+	 * 						TEMPLATE related
+	 ******************************************************************/
+	
 	/**
 	 * Factory
 	 */
 	public static function newFromTemplate( &$code ) {
 	
-		$params = self::extractRawParams( $code );
+		$params = self::extractRawParamsFromTemplate( $code );
 		$liste  = self::processRawList( $params );
 		
 		return new WidgetParameters( $liste );
@@ -108,7 +128,7 @@ class WidgetParameters
 	 * 		{@{param | type}@}
 	 * 
 	 */
-	protected static function extractRawParams( &$code ) {
+	protected static function extractRawParamsFromTemplate( &$code ) {
 	
 		if ( empty( $code ))
 			return self::NO_CODE;
@@ -123,7 +143,7 @@ class WidgetParameters
 	 * Each array element:
 	 * 		{ 'n' => param-name, 't' => required-type }
 	 */
-	protected static function processRawList( &$params ) {
+	protected static function processRawList( &$params, $delimiter ='|' ) {
 	
 		if ( $params === self::NO_CODE || $params === self::NO_PARAMS_FOUND )
 			return $params;
@@ -134,7 +154,7 @@ class WidgetParameters
 		
 			$p = array();
 			
-			$bits = explode( "|", $e );
+			$bits = explode( $delimiter, $e );
 			
 			switch( count( $bits ) ) {
 				// param-name | type
@@ -161,5 +181,51 @@ class WidgetParameters
 		
 		return $plist;
 	}
+
+	/******************************************************************
+	 * 						Parameter List related
+	 * 						e.g.  param-name=param-value
+	 ******************************************************************/
+	
+	public static function newFromParamList( &$params ) {
+	
+		$pl = self::processRawParamsList( $params, '=' );
+		
+		return new WidgetParameters( $pl );
+	}
+	/**
+	 * Process list of the form 'key=value'
+	 */
+	protected function processRawParamsList( &$params ) {
+	 
+		if ( empty( $params ) )
+			return self::NO_PARAMS_FOUND;
+			
+		$pl = array();
+		
+		foreach( $params as $index => &$e ) {
+			
+			$p = array();
+			$bits = explode( "=", $e );
+			
+			switch( count( $bits ) ) {
+			
+				// normal case
+				case 2:
+					$p['n'] = $bits[0];
+					$p['v'] = $bits[1];
+					break;
+				
+				default:
+					$p['t'] = self::PARAM_ERROR;
+					break;
+			}//switch
+			
+			$pl[] = $p;
+			
+		}//foreach
+		
+		return $pl;
+	}//method
 	
 } //end class definition

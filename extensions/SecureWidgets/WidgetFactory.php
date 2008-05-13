@@ -19,6 +19,9 @@ class WidgetFactory
 	 */
 	var $codeStores = array();
 
+	/**
+	 * Singleton instance reference
+	 */
 	private static $instance = null;
 	
 	/**
@@ -82,10 +85,15 @@ class WidgetFactory
 	 * 							HOOKS
 	 ****************************************************************/
 	/**
-	 * HOOK
+	 * HOOK: provides a facility to add code storage locations
+	 * 
+	 * @param $object MW_WidgetCodeStorage class
 	 */
-	public function hook_widget_register_storage( ) {
+	public function hook_widget_register_storage( &$store ) {
 	
+		$this->codeStore[] = $store;
+		
+		return true;
 	}
 	
 

@@ -33,13 +33,24 @@ class Widget {
 	/**
 	 * Constructor
 	 */
-	public function __construct( $name, $code, $params, $version = null ) {
+	public function __construct( $name, $code ) {
 	
 		$this->name    = $name;
 		$this->code    = $code;
-		$this->params  = $params;
-		$this->version = $version;
 		
 	}
-
+	/**
+	 * Renders a Widget based on the input parameters
+	 * 
+	 * @param $params Array
+	 * @return $code  String
+	 */
+	public function render( &$params ) {
+	
+	}
+	
+	protected function extractVersion() {
+	
+	}
+	
 } //Widget: end class definition

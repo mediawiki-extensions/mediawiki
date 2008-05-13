@@ -15,6 +15,7 @@ if (!class_exists( 'ExtensionBaseClass' )) {
 }
 // These includes will anyhow only get included once
 include "Widget.php";
+include "WidgetFactory.php";
 
 /**
  * Class definition
@@ -24,11 +25,6 @@ class MW_SecureWidgets
 {
 	const VERSION = '@@package-version@@';
 	const NAME    = 'securewidgets';
-	
-	/**
-	 * Message list
-	 */
-	var $msgList = array();
 	
 	/**
 	 * If a constructor is required, then the
@@ -68,27 +64,29 @@ class MW_SecureWidgets
         // make sure we are not tricked
         $name = $this->makeSecureName( $_name );
         
-        // make sure we have some code to work with
-        $msgList = null;
-        $code = $this->fetchWidgetCode( $name, $msgList );
-        if ( $code === false )
-        	return $this->processError( $name );
-        
-        // we have the widget's code, now process the parameters
-        $inputParameters = $this->extractRequiredInputParameters( $code );
+        // get Factory istance
+        $factory = WidgetFactory::gs();
 
-		$_p = $this->processParameters( $params );
-		if ( $this->isError( $_p ) )
-			return $this->processErrors( $_p );	
+        // try building a widget from the provided name
+        $widget = $factory->newFromWidgetName( $name );
+        
+		if ( $widget !instanceof Widget )
+			return $this->handleError( $widget );
 		
+		// render the widget with the provided parameters
+		$output = $widget->render( $params );
 		
+		if ( $output !instanceof String )
+			return $this->handlerError( $output );
+			
 		return array( $output, 'noparse' => true, 'isHTML' => true );		
 	}
-	
-	protected function processError( &$name ) {
+	/**
+	 * 
+	 */
+	protected function handleError( &obj ) {
 	
 	}
-	
 	/**
 	 * Validates a Widget name for security reasons
 	 * since we will be using this name as key in 
@@ -105,37 +103,6 @@ class MW_SecureWidgets
 	
 		return $name;
 	}
-	
-	
-	/**
-	 * Fetches a widget's code
-	 * 
-	 * @param $name string
-	 * @return $code mixed
-	 */
-	protected function fetchWidgetCode( &$name, &$msgList ) {
-	
-		foreach( $this->codeStore as $store ) {
-		
-			$store->setName( $name );
-			$code = $store->getCode();
-			if ( $code !== null )
-				return $code;
-			
-			$this->msgList[] = $store->getLastErrorMessages();
-		}
-	
-		// error
-		return false;
-	}
-	
-	
-	protected function getWidgetVersion( &$code ) {
-	
-	}
-	
-	
-	
 	
 }//end class definition
 

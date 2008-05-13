@@ -24,11 +24,6 @@ class WidgetParameters
 	/**
 	 * 
 	 */
-	var $rawList = array();
-
-	/**
-	 * 
-	 */
 	var $status = self::NO_STATUS;
 	
 	/**
@@ -42,7 +37,7 @@ class WidgetParameters
 	const NO_PARAMS_FOUND = false;
 	
 	const DEFAULT_TYPE    = 'string';
-	const TYPE_ERROR      = 'invalid';
+	const PARAM_ERROR     = 'param-error';
 	
 	/**
 	 * Constructor
@@ -51,15 +46,40 @@ class WidgetParameters
 	
 		if ( $params !== NO_CODE && $params !== NO_PARAMS_FOUND ) {
 		
-			$this->rawList = $params;
+			$this->liste = $params;
 			$this->status  = self::OK_STATUS;
 			
 		} else {
 
-			$this->rawList = array();
+			$this->liste = array();
 			$this->status  = $params;
 			
 		}
+	} //__construct
+	/**
+	 * Verifies if a given param exists
+	 * @return mixed $index if found, FALSE otherwise
+	 */
+	protected function isParam( &$name ) {
+
+		// assume worst case
+		$result = false;
+		
+		foreach( $this->liste as $index => &$e ) {
+		
+			if ( isset( $e['n'] == $name ) )
+				$result = $index;
+		}
+		
+		return $result;
+	}
+	
+	public function getParamByIndex( &$index ) {
+	
+		if ( isset( $this->liste[ $index ] ) )
+			return $this->liste[ $index ];
+		
+		throw new Exception( __METHOD__. ": invalid index" );
 	}
 	/**
 	 * 
@@ -100,7 +120,8 @@ class WidgetParameters
 		return $matches[1];
 	}
 	/**
-	 * 
+	 * Each array element:
+	 * 		{ 'n' => param-name, 't' => required-type }
 	 */
 	protected static function processRawList( &$params ) {
 	
@@ -116,21 +137,21 @@ class WidgetParameters
 			$bits = explode( "|", $e );
 			
 			switch( count( $bits ) ) {
-				// param | type
+				// param-name | type
 				case 2: 
-					$p['p'] = $bits[0];
+					$p['n'] = $bits[0];
 					$p['t'] = $bits[1];
 					break;
 									
 				// param
 				case 1:
-					$p['p'] = $bits[0];
+					$p['n'] = $bits[0];
 					$p['t'] = self::DEFAULT_TYPE;
 					break;
 					
 				// wrong!
 				default:
-					$p['t'] = self::TYPE_ERROR;
+					$p['t'] = self::PARAM_ERROR;
 					break;
 			} //switch
 			

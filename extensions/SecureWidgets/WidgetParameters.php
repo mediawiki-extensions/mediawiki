@@ -63,13 +63,6 @@ class WidgetParameters
 	} //__construct
 	
 	/**
-	 * Given an input parameter list, 
-	 */
-	public function setParams( &$inputList ) {
-	
-	}
-	
-	/**
 	 * Verifies if a given param exists
 	 * @return mixed $index if found, FALSE otherwise
 	 */
@@ -103,6 +96,9 @@ class WidgetParameters
 		return $this->status;
 	}
 	
+	public function empty() {
+		return ( $this->status === self::NO_PARAMS_FOUND );
+	}
 	/******************************************************************
 	 * 						TEMPLATE related
 	 ******************************************************************/
@@ -195,7 +191,7 @@ class WidgetParameters
 	/**
 	 * Process list of the form 'key=value'
 	 */
-	protected function processRawParamsList( &$params ) {
+	protected function processRawParamsList( &$params, $delimiter = '=' ) {
 	 
 		if ( empty( $params ) )
 			return self::NO_PARAMS_FOUND;
@@ -205,7 +201,7 @@ class WidgetParameters
 		foreach( $params as $index => &$e ) {
 			
 			$p = array();
-			$bits = explode( "=", $e );
+			$bits = explode( $delimiter, $e );
 			
 			switch( count( $bits ) ) {
 			

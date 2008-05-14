@@ -29,9 +29,14 @@ class MW_WidgetRenderer
 	public static function render( &$widget, &$params ) {
 	
 		// extract parameters from widget template
+		$tp = WidgetParameters::newFromTemplate( $widget->getCode() );
 		
 		// prepare the input variables
-	
+		$ip = WidgetParameters::newFromParamList( $params );
+		
+		// Case 1: template has parameters but no input variables provided
+		// Case 2: template specifies parameter types and input variables do not match
+		
 	}
 	
 }//end class definition

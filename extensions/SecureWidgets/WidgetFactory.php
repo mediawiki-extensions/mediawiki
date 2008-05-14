@@ -7,11 +7,6 @@
  * @Id $Id$
  */
 
-include "WidgetCodeStorage.php";
-include "WidgetCodeStorage_Database.php";
-include "WidgetCodeStorage_Repository.php";
-##include "MessageList.php";
-
 class MW_WidgetFactory
 	extends ExtensionBaseClass {
 

@@ -14,11 +14,7 @@ if (!class_exists( 'ExtensionBaseClass' )) {
 	
 }
 // These includes will anyhow only get included once
-include "Widget.php";
-include "WidgetRenderer.php";
-include "WidgetFactory.php";
-include "MessageList.php";
-
+ 
 /**
  * Class definition
  */
@@ -28,12 +24,34 @@ class MW_SecureWidgets
 	const VERSION = '@@package-version@@';
 	const NAME    = 'securewidgets';
 	
+	private static $components = array(
+
+		'Widget'							=> 'Widget',
+		'WidgetRenderer'					=> 'WidgetRenderer',
+		'WidgetParameters'					=> 'WidgetParameters',
+		'WidgetIterator'					=> 'WidgetIterator',	
+	
+		'MessageList'						=> 'MessageList',
+
+		'MW_WidgetFactory'					=> 'WidgetFactory',
+		'MW_WidgetCodeStorage' 				=> 'WidgetCodeStorage',
+		'MW_WidgetCodeStorage_Database' 	=> 'WidgetCodeStorage_Database',
+		'MW_WidgetCodeStorage_Repository'	=> 'WidgetCodeStorage_Repository',
+		
+	);
+	
 	/**
 	 * If a constructor is required, then the
 	 * parent class must be called first. 
 	 */
 	public function __construct(){
+	
+		global $wgAutoloadClasses;
 		
+		$dir = dirname( __FILE__ ).'/';
+		foreach( self::$components as $classe => &$filename )
+			$wgAutoloadClasses[ $classe ] = $dir . $filename . '.php';
+	
 		parent::__construct();
 	}
 	/**
@@ -135,5 +153,8 @@ class MW_SecureWidgets
 
 // REQUIRED to bootstrap the extension setup process
 new MW_SecureWidgets;
-
 include 'SecureWidgets.i18n.php';
+
+include 'WidgetCodeStorage.php';
+include 'WidgetCodeStorage_Database.php';
+include 'WidgetCodeStorage_Repository.php';

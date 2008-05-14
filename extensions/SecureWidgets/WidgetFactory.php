@@ -58,7 +58,7 @@ class WidgetFactory
 	 */
 	public function newWidgetFromName( &$name ) {
 	
-		$msgs = new MW_SecureWidgetsMessageList;
+		$msgs = new MessageList;
 	
 		foreach( $this->codeStore as $store ) {
 		

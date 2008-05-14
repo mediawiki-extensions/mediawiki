@@ -56,7 +56,8 @@
    <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetIterator.php" role="php" />
    <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetParameters.php" role="php" />
    
-   <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetRenderer.php" role="php" />   
+   <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetRenderer.php" role="php" />
+   <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetRenderer.i18n.php" role="php" />   
     <!-- }} -->
 
   </dir>

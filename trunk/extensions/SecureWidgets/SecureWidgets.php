@@ -27,12 +27,12 @@ class MW_SecureWidgets
 	private static $components = array(
 
 		'Widget'							=> 'Widget',
-		'WidgetRenderer'					=> 'WidgetRenderer',
 		'WidgetParameters'					=> 'WidgetParameters',
 		'WidgetIterator'					=> 'WidgetIterator',	
 	
 		'MessageList'						=> 'MessageList',
 
+		'MW_WidgetRenderer'					=> 'WidgetRenderer',	
 		'MW_WidgetFactory'					=> 'WidgetFactory',
 		'MW_WidgetCodeStorage' 				=> 'WidgetCodeStorage',
 		'MW_WidgetCodeStorage_Database' 	=> 'WidgetCodeStorage_Database',
@@ -94,8 +94,8 @@ class MW_SecureWidgets
 			return $this->handleError( $widget );
 		
 		// render the widget with the provided parameters
-		$renderer = new WidgetRenderer();
-		$output = $renderer( $widget, $params );
+		$renderer = MW_WidgetRenderer::gs();
+		$output = $renderer->render( $widget, $params );
 		
 		if (!( $output instanceof String ))
 			return $this->handlerError( $output );

@@ -10,8 +10,8 @@
 MW_WidgetCodeStorage_Repository::getInstance('MW_WidgetCodeStorage_Repository')->setMessages(
 	array( 'en' => 
 		array(
-			'securewidget-csrepo'			=> 'SecureWidgets - SVN Repository',
-			'securewidget-csrepo-not-found'	=> 'code not in the SVN repository.',
+			'securewidgets-csrepo'			=> 'SecureWidgets - SVN Repository',
+			'securewidgets-csrepo-not-found'	=> 'code not in the SVN repository.',
 			#'' => '',
 		),
 			#other languages

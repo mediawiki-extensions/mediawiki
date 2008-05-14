@@ -10,9 +10,9 @@
 MW_WidgetCodeStorage_Database::getInstance('MW_WidgetCodeStorage_Database')->setMessages(
 	array( 'en' => 
 		array(
-			'securewidget-csdb'			=> 'SecureWidgets - Database Repository',
-			'securewidget-csdb-not-ns'	=> 'namespace <i>$1</i> not defined.',		
-			'securewidget-csdb-not-db'	=> 'code not in the database.',		
+			'securewidgets-csdb'			=> 'SecureWidgets - Database Repository',
+			'securewidgets-csdb-not-ns'	=> 'namespace <i>$1</i> not defined.',		
+			'securewidgets-csdb-not-db'	=> 'code not in the database.',		
 			#'' => '',
 		),
 			#other languages

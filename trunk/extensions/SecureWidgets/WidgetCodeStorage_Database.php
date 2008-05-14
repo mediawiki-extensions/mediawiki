@@ -29,6 +29,8 @@ class MW_WidgetCodeStorage_Database
 		parent::__construct( );
 	
 	}
+	public function setup() {
+	}
 	public static function gs() {
 		return self::$instance;
 	}

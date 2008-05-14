@@ -66,7 +66,7 @@ class MW_SecureWidgets
         $name = $this->makeSecureName( $_name );
         
         // get Factory istance
-        $factory = WidgetFactory::gs();
+        $factory = MW_WidgetFactory::gs();
 
         // try building a widget from the provided name
         $widget = $factory->newFromWidgetName( $name );
@@ -90,7 +90,7 @@ class MW_SecureWidgets
 		if (!( $obj instanceof MessageList ))
 			throw new Exception( __METHOD__. ": invalid error object");
 			
-		$msg = '';
+		$msg = wfMsg( self::NAME ) . ': ';
 		// use the iterator interface
 		foreach( $obj as $msgEntry )
 			$msg .= $msgEntry;

@@ -10,7 +10,7 @@
 include "WidgetCodeStorage.php";
 include "WidgetCodeStorage_Database.php";
 include "WidgetCodeStorage_Repository.php";
-#include "MessageList.php";
+##include "MessageList.php";
 
 class MW_WidgetFactory
 	extends ExtensionBaseClass {
@@ -34,9 +34,15 @@ class MW_WidgetFactory
 			throw new Exception( __CLASS__. ": there can only be one instance of this class" );
 			
 		self::$instance = $this;
+
+		parent::__construct();		
 		
 		$this->registerDefaultStorages();
 	}
+	
+	public function setup() {
+	}
+	
 	/****************************************************************
 	 *							PUBLIC 
 	 ****************************************************************/
@@ -56,7 +62,7 @@ class MW_WidgetFactory
 	 * @param $name string
 	 * @return $obj mixed Widget / MW_SecureWidgetsMessageList
 	 */
-	public function newWidgetFromName( &$name ) {
+	public function newFromWidgetName( &$name ) {
 	
 		$msgs = new MessageList;
 	

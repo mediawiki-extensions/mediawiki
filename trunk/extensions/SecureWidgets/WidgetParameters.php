@@ -49,7 +49,7 @@ class WidgetParameters
 	 */
 	public function __construct( &$params ) {
 	
-		if ( $params !== NO_CODE && $params !== NO_PARAMS_FOUND ) {
+		if ( $params !== self::NO_CODE && $params !== self::NO_PARAMS_FOUND ) {
 		
 			$this->liste = $params;
 			$this->status  = self::OK_STATUS;

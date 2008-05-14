@@ -102,7 +102,6 @@ class MW_WidgetFactory
 			
 		return $match[1];
 	}
-	
 	/**
 	 * Uses a 'hook' to look around if other extensions are capable
 	 * of providing 'storage' capabilities. 

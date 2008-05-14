@@ -83,7 +83,7 @@ class MW_WidgetCodeStorage_Database
 	 */
 	protected function nsExists( &$nsname ) {
 	
-		$id = Namespace::getCanonicalIndex( $nsname );
+		$id = Namespace::getCanonicalIndex( strtolower( $nsname ) );
 		return ( is_null( $id ) ? false:true );
 	}
 	

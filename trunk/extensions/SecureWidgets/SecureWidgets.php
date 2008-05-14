@@ -16,7 +16,7 @@ if (!class_exists( 'ExtensionBaseClass' )) {
 // These includes will anyhow only get included once
 include "Widget.php";
 include "WidgetFactory.php";
-include "SecureWidgetsMessageList.php";
+include "MessageList.php";
 
 /**
  * Class definition
@@ -87,19 +87,29 @@ class MW_SecureWidgets
 	 */
 	protected function handleError( &obj ) {
 	
-		if ( $obj !instanceof SecureWidgetsMessageList )
+		if ( $obj !instanceof MessageList )
 			throw new Exception( __METHOD__. ": invalid error object");
-	
-		$msg  = $obj->getMessage();
+			
+		$msg = '';
+		// use the iterator interface
+		foreach( $obj as $msgEntry )
+			$msg .= $msgEntry;
+
 		$msg .= $this->getHelpMessage();
+		$msg .= $this->getExampleMessage();		
 	
 		return $msg;
+	}
+	protected function getExampleMessage() {
+	
+		return wfMsg( self::NAME . '-example' );	
 	}
 	/**
 	 * 
 	 */
 	protected function getHelpMessage() {
 	
+		return wfMsg( self::NAME . '-help' );	
 	}
 	/**
 	 * Validates a Widget name for security reasons

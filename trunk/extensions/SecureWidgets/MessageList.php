@@ -9,7 +9,7 @@
 
 require_once 'WidgetIterator.php';
 
-class MW_SecureWidgetsMessageList
+class MessageList
 	extends WidgetIterator { 
 
 	public function __construct() {

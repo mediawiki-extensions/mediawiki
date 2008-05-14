@@ -53,6 +53,7 @@
    <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetCodeStorage.php" role="php" />
       
    <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetFactory.php" role="php" />   
+   <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetFactory.i18n.php" role="php" />   
    <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetIterator.php" role="php" />
    <file baseinstalldir="MediaWiki/SecureWidgets" name="WidgetParameters.php" role="php" />
    

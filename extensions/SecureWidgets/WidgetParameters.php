@@ -96,7 +96,7 @@ class WidgetParameters
 		return $this->status;
 	}
 	
-	public function empty() {
+	public function isEmpty() {
 		return ( $this->status === self::NO_PARAMS_FOUND );
 	}
 	/******************************************************************

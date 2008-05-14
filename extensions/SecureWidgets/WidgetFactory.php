@@ -10,6 +10,8 @@
 class MW_WidgetFactory
 	extends ExtensionBaseClass {
 
+	const NAME = 'securewidgets-factory';
+	
 	/**
 	 * Code store list
 	 */
@@ -68,9 +70,15 @@ class MW_WidgetFactory
 		foreach( $this->codeStore as $store ) {
 		
 			$store->setName( $name );
-			$code = $store->getCode();
-			if ( $code !== null )
+			$rawCode = $store->getCode();
+			if ( $rawCode !== null ) {
+			
+				$code = self::extractCode( $rawCode );
+				if ( $code === false )
+					return $msgs->pushMessageById( self::NAME . '-nocode' );
+					
 				return new Widget( $name, $code );
+			}
 			
 			$msgs->pushMessages( $store->getLastErrorMessages() );
 		}
@@ -82,6 +90,18 @@ class MW_WidgetFactory
 	/****************************************************************
 	 * 							PROTECTED
 	 ****************************************************************/
+	/**
+	 * Just pick up the code between in the <includeonly> tag section
+	 */
+	static $codeSectionPattern = '/\<includeonly\>(.*)\<\/includeonly\>/siU';
+	protected static function extractCode( &$code ) {
+	
+		$result = preg_match( self::$codeSectionPattern, $code, $match );
+		if ( $result === false )
+			return false;
+			
+		return $match[1];
+	}
 	
 	/**
 	 * Uses a 'hook' to look around if other extensions are capable
@@ -111,3 +131,4 @@ class MW_WidgetFactory
 } //Widget: end class definition
 
 new MW_WidgetFactory;
+include 'WidgetFactory.i18n.php';

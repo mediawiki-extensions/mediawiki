@@ -12,6 +12,8 @@ class MW_WidgetRenderer
 
 	const NAME = 'securewidgets-renderer';
 	
+	static $instance = null;
+	
 	public function __construct( ) {
 
 		if ( self::$instance !== null )
@@ -36,19 +38,23 @@ class MW_WidgetRenderer
 		$code = $widget->getCode();
 		
 		// extract parameters from widget template
-		$tp = WidgetParameters::newFromTemplate(  );
+		$tp = WidgetParameters::newFromTemplate( $code );
 		
 		// prepare the input variables
 		$ip = WidgetParameters::newFromParamList( $params );
 		
+		var_dump( $tp );
+		var_dump( $ip );
+		die;
+		
 		// Case 1: template does not have parameters
 		//         Don't make waves even in the case where 
 		//         input variables are provided where none are required...
-		if ( $tp->empty() )
+		if ( $tp->isEmpty() )
 			return $code;
 			
 		// Case 2: template has parameters but no input variables provided
-		if ( $ip->empty() ) {
+		if ( $ip->isEmpty() ) {
 			$msg = new MessageList;
 			return $msg->pushMessageById( self::NAME . '-missing-inputs' );
 		}

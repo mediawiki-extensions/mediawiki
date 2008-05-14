@@ -27,14 +27,9 @@ class WidgetParameters
 	#var $liste = array();
 	
 	/**
-	 * 
+	 * Status Flag
 	 */
 	var $status = self::NO_STATUS;
-	
-	/**
-	 * 
-	 */
-	var $inputList = array();
 	
 	const NO_STATUS       = 0;
 	const OK_STATUS       = 1;
@@ -89,13 +84,15 @@ class WidgetParameters
 		throw new Exception( __METHOD__. ": invalid index" );
 	}
 	/**
-	 * 
+	 * SETS the status
 	 */
 	public function getStatus() {
 	
 		return $this->status;
 	}
-	
+	/**
+	 * Verifies if there is at least one parameter
+	 */
 	public function isEmpty() {
 		return ( $this->status === self::NO_PARAMS_FOUND );
 	}
@@ -114,7 +111,7 @@ class WidgetParameters
 		return new WidgetParameters( $liste );
 	}
 	/**
-	 * 
+	 * Match pattern for retrieving parameters 
 	 */
 	private static $paramPattern = '/\{\@\{(.*)\}\@\}/siU';
 	
@@ -130,7 +127,7 @@ class WidgetParameters
 
 		$result = preg_match_all( self::$paramPattern, $code, $matches );
 		if ( $result === false )
-			return NO_PARAMS_FOUND;
+			return self::NO_PARAMS_FOUND;
 			
 		return $matches[1];
 	}

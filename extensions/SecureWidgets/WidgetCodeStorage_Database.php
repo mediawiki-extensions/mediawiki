@@ -8,22 +8,30 @@
  */
 
 class MW_WidgetCodeStorage_Database
-	extends WidgetCodeStorage {
+	extends MW_WidgetCodeStorage {
 
 	const VERSION = '@@package-version@@';
 	const NAME    = 'securewidgets-csdb';
 		
 	static $nsName = "Widget";
 	
+	static $instance = null;
+	
 	/**
 	 * Constructor
 	 */
 	public function __construct( ) {
 	
+		if ( self::$instance !== null )
+			throw new Exception( __CLASS__.": singleton required" );
+		self::$instance = $this;
+	
 		parent::__construct( );
 	
 	}
-
+	public static function gs() {
+		return self::$instance;
+	}
 	public function getCode() {
 	
 		// verify if the namespace exists
@@ -133,5 +141,5 @@ class MW_WidgetCodeStorage_Database
 	}
 	
 }
-
+new MW_WidgetCodeStorage_Database;
 include "WidgetCodeStorage_Database.i18n.php";

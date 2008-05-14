@@ -7,8 +7,8 @@
  * @Id $Id$
  */
 
-class WidgetCodeStorageDatabase
-	extends WidgetCodeStorage {
+class MW_WidgetCodeStorage_Repository
+	extends MW_WidgetCodeStorage {
 
 	/** 
 	 * Widget repository
@@ -20,13 +20,22 @@ class WidgetCodeStorageDatabase
 	 */
 	static $prefixTransCache = 'sw-';
 	
+	static $instance = null;
+	
 	/**
 	 * Constructor
 	 */
 	public function __construct( ) {
+
+		if ( self::$instance !== null )
+			throw new Exception( __CLASS__.": singleton required" );
+		self::$instance = $this;
 	
 		parent::__construct( );
 	
+	}
+	public static function gs() {
+		return self::$instance;
 	}
 	/**
 	 * Retrieves the code
@@ -135,3 +144,6 @@ class WidgetCodeStorageDatabase
 	}
 	
 }//[class WidgetCodeStorageDatabase]
+
+new MW_WidgetCodeStorage_Repository;
+include "WidgetCodeStorage_Repository.i18n.php";

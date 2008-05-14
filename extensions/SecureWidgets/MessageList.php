@@ -17,7 +17,7 @@ class MessageList
 	
 	public function pushMessages( &$liste ) {
 	
-		if ($liste !instanceof Array)
+		if (!is_array( $liste ))
 			throw new Exception( __METHOD__.': list must be an array' );
 			
 		foreach( $liste as $index => &$msg )

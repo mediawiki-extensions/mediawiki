@@ -7,9 +7,12 @@
  * @Id $Id$
  */
 
-abstract class WidgetCodeStorage 
+abstract class MW_WidgetCodeStorage 
 	extends ExtensionBaseClass {
 
+	const VERSION = '@@package-version@@';
+	const NAME    = 'securewidgets';
+		
 	/**
 	 * Widget Name
 	 */
@@ -24,6 +27,8 @@ abstract class WidgetCodeStorage
 	 * Constructor
 	 */
 	public function __construct( ) {
+	
+		parent::__construct();
 	}
 	
 	public function setName( &$name ) {

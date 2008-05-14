@@ -10,8 +10,8 @@
 MW_SecureWidgets::getInstance('MW_SecureWidgets')->setMessages(
 	array( 'en' => 
 		array(
-			'securewidgets-help'	=> 'SecureWidgets - SVN Repository',
-			'securewidgets-example'	=> 'code not in the SVN repository.',
+			'securewidgets-help'	=> 'SecureWidgets - help',
+			'securewidgets-example'	=> 'SecureWidgets - example',
 			#'' => '',
 		),
 			#other languages

@@ -10,9 +10,9 @@
 include "WidgetCodeStorage.php";
 include "WidgetCodeStorage_Database.php";
 include "WidgetCodeStorage_Repository.php";
-#include "SecureWidgetsMessageList.php";
+#include "MessageList.php";
 
-class WidgetFactory
+class MW_WidgetFactory
 	extends ExtensionBaseClass {
 
 	/**
@@ -84,8 +84,8 @@ class WidgetFactory
 	 */
 	protected function registerDefaultStorages( ) {
 	
-		$this->codeStore[] = new MW_WidgetCodeStorage_Database;
-		$this->codeStore[] = new MW_WidgetCodeStorage_Repository;		
+		$this->codeStore[] = MW_WidgetCodeStorage_Database::gs();
+		$this->codeStore[] = MW_WidgetCodeStorage_Repository::gs();		
 		return $this;
 	
 	}
@@ -107,4 +107,4 @@ class WidgetFactory
 
 } //Widget: end class definition
 
-new WidgetFactory;
+new MW_WidgetFactory;

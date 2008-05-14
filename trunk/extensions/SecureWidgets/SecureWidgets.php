@@ -71,13 +71,13 @@ class MW_SecureWidgets
         // try building a widget from the provided name
         $widget = $factory->newFromWidgetName( $name );
         
-		if ( $widget !instanceof Widget )
+		if (!( $widget instanceof Widget ))
 			return $this->handleError( $widget );
 		
 		// render the widget with the provided parameters
 		$output = $widget->render( $params );
 		
-		if ( $output !instanceof String )
+		if (!( $output instanceof String ))
 			return $this->handlerError( $output );
 			
 		return array( $output, 'noparse' => true, 'isHTML' => true );		
@@ -85,9 +85,9 @@ class MW_SecureWidgets
 	/**
 	 * 
 	 */
-	protected function handleError( &obj ) {
+	protected function handleError( &$obj ) {
 	
-		if ( $obj !instanceof MessageList )
+		if (!( $obj instanceof MessageList ))
 			throw new Exception( __METHOD__. ": invalid error object");
 			
 		$msg = '';

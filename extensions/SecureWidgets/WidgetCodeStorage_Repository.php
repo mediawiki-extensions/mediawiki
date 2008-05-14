@@ -34,6 +34,8 @@ class MW_WidgetCodeStorage_Repository
 		parent::__construct( );
 	
 	}
+	public function setup() {
+	}
 	public static function gs() {
 		return self::$instance;
 	}
@@ -52,7 +54,7 @@ class MW_WidgetCodeStorage_Repository
 		if ( $code !== false )
 			return $code;
 			
-		$entry = array( 'id' => 'securewidget-csrepo-not-found' );
+		$entry = array( 'id' => 'securewidgets-csrepo-not-found' );
 		$this->pushError( $entry );
 		return null;
 	}
@@ -94,6 +96,8 @@ class MW_WidgetCodeStorage_Repository
 	 */
 	protected function fetchFromTransCache( &$name ) {
 	
+		$url = $this->formatNameForTransCache( $name );
+			
 		$text = false;
 	
 		global $wgTranscludeCacheExpiry;

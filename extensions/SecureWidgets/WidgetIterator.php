@@ -33,11 +33,11 @@ class WidgetIterator
 	}
 	public function rewind() {
 	
-		return rewind( $this->liste );
+		return reset( $this->liste );
 	}
 	public function valid() {
 
-		return valid( $this->liste );
+		return ( key( $this->liste ) !== null );
 	}
 	
 } // end class definition

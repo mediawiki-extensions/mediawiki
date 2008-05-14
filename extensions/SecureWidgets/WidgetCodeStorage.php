@@ -62,12 +62,16 @@ abstract class MW_WidgetCodeStorage
 			// create parameter list as coma delimited string
 			if ( !empty( $p )) {
 				foreach( $p as $e )
-					$f .= ", $e";
+					if ( is_string( $e ) ) 
+						$f .= ", '$e'";
+					else
+						$f .= ", $e";
 				$f .= ');';
 			}
 			else
 				$f .= ');';
 			
+			#echo __METHOD__." id=$id  f=$f \n";
 			$msg[] = eval( $f );
 		}
 			

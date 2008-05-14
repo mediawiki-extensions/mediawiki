@@ -90,13 +90,14 @@ class MW_SecureWidgets
 		if (!( $obj instanceof MessageList ))
 			throw new Exception( __METHOD__. ": invalid error object");
 			
-		$msg = wfMsg( self::NAME ) . ': ';
+		$msg = null;
+		$msgHeader = wfMsg( self::NAME ) . ': ';
 		// use the iterator interface
 		foreach( $obj as $msgEntry )
-			$msg .= $msgEntry;
+			$msg .= $msgHeader . $msgEntry . "<br/>\n";
 
-		$msg .= $this->getHelpMessage();
-		$msg .= $this->getExampleMessage();		
+		$msg .= $this->getHelpMessage() . "<br/>\n";
+		$msg .= $this->getExampleMessage() . "<br/>\n";		
 	
 		return $msg;
 	}

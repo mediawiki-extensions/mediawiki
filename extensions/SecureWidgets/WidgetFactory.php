@@ -20,6 +20,8 @@ class MW_WidgetFactory
 	 */
 	private static $instance = null;
 	
+	var $fetchedOtherStores = false;
+	
 	/**
 	 * Constructor
 	 */
@@ -59,6 +61,8 @@ class MW_WidgetFactory
 	 */
 	public function newFromWidgetName( &$name ) {
 	
+		$this->fetchOtherStores();
+	
 		$msgs = new MessageList;
 	
 		foreach( $this->codeStore as $store ) {
@@ -80,6 +84,19 @@ class MW_WidgetFactory
 	 ****************************************************************/
 	
 	/**
+	 * Uses a 'hook' to look around if other extensions are capable
+	 * of providing 'storage' capabilities. 
+	 */
+	protected function fetchOtherStores() {
+	
+		// just do this once
+		if ( $this->fetchedOtherStores )
+			return;
+		$this->fetchedOtherStores = true;
+		
+		wfRunHooks( 'widget_register_storage', array( &$this->codeStore ) );
+	}
+	/**
 	 * Must be placed in order of priority with
 	 * regards to searching locations.
 	 */
@@ -90,21 +107,6 @@ class MW_WidgetFactory
 		return $this;
 	
 	}
-	/****************************************************************
-	 * 							HOOKS
-	 ****************************************************************/
-	/**
-	 * HOOK: provides a facility to add code storage locations
-	 * 
-	 * @param $object MW_WidgetCodeStorage class
-	 */
-	public function hook_widget_register_storage( &$store ) {
-	
-		$this->codeStore[] = $store;
-		
-		return true;
-	}
-	
 
 } //Widget: end class definition
 

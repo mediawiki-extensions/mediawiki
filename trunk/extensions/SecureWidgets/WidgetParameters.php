@@ -10,8 +10,6 @@
  * 
  */
 
-require_once 'WidgetIterator.php';
-
 /*
  *   { 'n'  =>  param-name,
  *     't'  =>  param-type,
@@ -82,8 +80,9 @@ class WidgetParameters
 		
 		foreach( $this->liste as $index => &$e ) {
 		
-			if ( isset( $e['n'] == $name ) )
-				$result = $index;
+			if ( isset( $e['n'] ) )
+				if ( $e['n'] == $name )
+					$result = $index;
 		}
 		
 		return $result;

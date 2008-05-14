@@ -49,7 +49,7 @@ class MW_WidgetCodeStorage_Database
 		$id = null;
 		$title = null;
 		$dbName = $this->formatName( $this->name );
-		$article = $this->buildArticle( $this->name, $title );
+		$article = $this->buildArticle( $dbName, $title );
 		$code = $this->fetchPageFromParserCache( $article, $id );
 		if ( $code !== false )
 			return $code;
@@ -71,7 +71,7 @@ class MW_WidgetCodeStorage_Database
 	 */
 	protected function formatName( &$name ) {
 
-		return self::$nsName . $name ;
+		return self::$nsName . ':' . $name ;
 	
 	}
 	

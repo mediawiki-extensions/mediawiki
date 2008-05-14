@@ -140,9 +140,9 @@ class MW_SecureWidgets
 	 * @param $_name string
 	 * @return $name string
 	 */
-	protected function makeSecureName( &$_name ) {
+	protected function makeSecureName( &$name ) {
 	
-		$name = strtolower( $_name );
+		#$name = strtolower( $_name );
 		$name = ltrim( $name, "\'\" \t\n\r\0\x0B" );
 		$name = rtrim( $name, "\'\" \t\n\r\0\x0B" );
 	

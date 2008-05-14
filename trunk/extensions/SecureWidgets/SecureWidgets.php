@@ -15,6 +15,7 @@ if (!class_exists( 'ExtensionBaseClass' )) {
 }
 // These includes will anyhow only get included once
 include "Widget.php";
+include "WidgetRenderer.php";
 include "WidgetFactory.php";
 include "MessageList.php";
 
@@ -75,7 +76,8 @@ class MW_SecureWidgets
 			return $this->handleError( $widget );
 		
 		// render the widget with the provided parameters
-		$output = $widget->render( $params );
+		$renderer = new WidgetRenderer();
+		$output = $renderer( $widget, $params );
 		
 		if (!( $output instanceof String ))
 			return $this->handlerError( $output );

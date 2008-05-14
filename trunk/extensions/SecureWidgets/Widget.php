@@ -38,18 +38,4 @@ class Widget {
 		$this->code    = $code;
 		
 	}
-	/**
-	 * Renders a Widget based on the input parameters
-	 * 
-	 * @param $params Array
-	 * @return $code  String
-	 */
-	public function render( &$params ) {
-	
-	}
-	
-	protected function extractVersion() {
-	
-	}
-	
 } //Widget: end class definition

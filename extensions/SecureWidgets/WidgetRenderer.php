@@ -56,7 +56,14 @@ class MW_WidgetRenderer
 		}
 			
 		// Case 3: template specifies parameter types and input variables do not match
+		foreach( $tp as $index => &$e ) {
 		
+			$inputElement = $ip->getParam();
+			
+			$param= $e['n'];
+			$type = $e['t'];
+			$result = TypeChecker::checkParam();
+		}
 		
 		// Step 4: perform type checking
 		

@@ -8,7 +8,7 @@
  */
 
 class RepositoryFeed
-	implements Iterator {
+	extends WidgetIterator {
 
 	const DEFAULT_FEED = "http://feeds.feedburner.com/jldupont/mw-widgets";
 	
@@ -53,32 +53,13 @@ class RepositoryFeed
 
 		return true;
 	}
-	/*********************************************************
-	 * 				Iterator Interface
-	 ********************************************************/	
-	public function count() {
 
-		return count( $this->liste );
-	}
-	public function current() {
-
-		return current( $this->liste );
-	}
-	public function key() {
-
-		return key( $this->liste );
-	}
-	public function next() {
-
-		return next( $this->liste );
-	}
-	public function rewind() {
+	public function getWidgetLocatorByName( $name ) {
 	
-		return reset( $this->liste );
+		foreach( $this->liste as $item ) {
+			if ( $item->name == $name )
+				return $item;
+		}
+		return null;
 	}
-	public function valid() {
-
-		return ( key( $this->liste ) !== null );
-	}
-	
 }//end class

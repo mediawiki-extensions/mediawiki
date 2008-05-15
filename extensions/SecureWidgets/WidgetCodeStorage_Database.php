@@ -39,10 +39,9 @@ class MW_WidgetCodeStorage_Database
 		// verify if the namespace exists
 		if ( !$this->nsExists( self::$nsName ) ) {
 
-			$entry = array( 'id' => self::NAME . '-not-ns',
-							'p'	 => array( self::$nsName ) );
-			$this->pushError( $entry );
-			return null;
+			$msg = new MessageList();
+			$msg->pushMessageById(self::NAME . '-not-ns', array( self::$nsName ) );
+			return $msg;
 		}
 		
 		// we can now try to fetch the code from the database
@@ -58,9 +57,9 @@ class MW_WidgetCodeStorage_Database
 		if ( $code !== false )
 			return $code;
 		
-		$entry = array( 'id' => self::NAME . '-not-db' );
-		$this->pushError( $entry );
-		return null;
+		$msg = new MessageList();
+		$msg->pushMessageById(self::NAME . '-not-db', array( $name ) );
+		return $msg;
 	}
 
 	/**

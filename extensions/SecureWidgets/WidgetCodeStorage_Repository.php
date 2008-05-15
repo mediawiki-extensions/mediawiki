@@ -10,10 +10,7 @@
 class MW_WidgetCodeStorage_Repository
 	extends MW_WidgetCodeStorage {
 
-	/** 
-	 * Widget repository
-	 */
-	static $repositoryURL = "http://mediawiki.googlecode.com/svn/widgets/";
+	const NAME = 'securewidgets-csrepo';
 	
 	/**
 	 * namespace prefix for the trans-cache
@@ -21,6 +18,7 @@ class MW_WidgetCodeStorage_Repository
 	static $prefixTransCache = 'sw-';
 	
 	static $instance = null;
+	
 	
 	/**
 	 * Constructor
@@ -37,6 +35,7 @@ class MW_WidgetCodeStorage_Repository
 	public function setup() {
 	}
 	public static function gs() {
+	
 		return self::$instance;
 	}
 	/**
@@ -50,13 +49,8 @@ class MW_WidgetCodeStorage_Repository
 		if ( $code !== false )
 			return $code;
 		
-		$code = $this->fetchFromRepository( $this->name );
-		if ( $code !== false )
-			return $code;
-			
-		$entry = array( 'id' => 'securewidgets-csrepo-not-found' );
-		$this->pushError( $entry );
-		return null;
+		// error messageList OR (string) code is returned
+		return $this->fetchFromRepository( $this->name );
 	}
 	/**
 	 * Fetches a widget's code from the external Repository
@@ -66,16 +60,37 @@ class MW_WidgetCodeStorage_Repository
 	 */
 	protected function fetchFromRepository( &$name ) {
 			
-		$url = $this->formatNameForRepository( $name );
-	
-		$code = Http::get( $url );
-		if ( $code === false )
-			return false;
-	
+		// default feed
+		$feed   = new RepositoryFeed();
+		$result = $feed->fetch();
+		if ( $result === false ) {
+			$this->msgs->pushMessageById( self::NAME . '-error-feed' );
+			return $this->msgs;
+		}
+		
+		$_name = strtolower( $name );
+		
+		$widgetLocator = $feed->getWidgetLocatorByName( $name );
+		if ( !($widgetLocator instanceof WidgetLocator ) ) {
+			$this->msgs->pushMessageById( self::NAME . '-widget-not-found', $name );
+			return $this->msgs;
+		}
+		
+		$url = $widgetLocator->codelink;
+		$code = $this->wget( $url );
+		if ( $code === false ) {
+			$this->msgs->pushMessageById( self::NAME . '-error-code-fetch', $name );
+			return $this->msgs;
+		}
+		
 		// if we got lucky, save it to the trans-cache
 		$this->saveInTransCache( $name, $code );
 	
 		return $code;
+	}
+	protected function wget( &$url ) {
+
+		return Http::get( $url );
 	}
 	/**
 	 * Formats an URL for accessing the external repository

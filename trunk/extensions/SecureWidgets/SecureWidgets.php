@@ -79,7 +79,13 @@ class MW_SecureWidgets
 	/**
 	 * Parser Function #gliffy
 	 */
-	public function pfnc_widget( &$parser, $_name ) {
+	public function pfnc_widget( &$parser, $_name = null ) {
+	
+		if ( empty( $_name )) {
+			$msg = new MessageList();
+			$msg->pushMessageById( self::NAME . '-missing-name' );
+			return $this->handleError( $msg );
+		}
 	
 		$params = func_get_args();	
         array_shift($params); # $parser 

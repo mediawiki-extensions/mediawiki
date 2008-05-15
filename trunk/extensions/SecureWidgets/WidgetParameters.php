@@ -57,7 +57,14 @@ class WidgetParameters
 			
 		}
 	} //__construct
-	
+	/**
+	 * 
+	 */
+	public function getParam( &$name ) {
+		if ( isset( $this->liste[$name] ) )
+			return $this->liste[ $name ];
+		throw new Exception( __METHOD__.": invalid parameter name" );
+	}
 	/**
 	 * Verifies if a given param exists
 	 * @return mixed $index if found, FALSE otherwise
@@ -148,6 +155,7 @@ class WidgetParameters
 			$p = array();
 			
 			$bits = explode( $delimiter, $e );
+			$name = @$bits[0];
 			
 			switch( count( $bits ) ) {
 				// param-name | type | default
@@ -171,11 +179,12 @@ class WidgetParameters
 					
 				// wrong!
 				default:
+					$name = $index;
 					$p['t'] = self::PARAM_ERROR;
 					break;
 			} //switch
 			
-			$plist[] = $p;
+			$plist[ $name ] = $p;
 			
 		}//foreach
 		
@@ -207,6 +216,7 @@ class WidgetParameters
 			
 			$p = array();
 			$bits = explode( $delimiter, $e );
+			$name = @$bits[0];
 			
 			switch( count( $bits ) ) {
 			
@@ -217,11 +227,12 @@ class WidgetParameters
 					break;
 				
 				default:
+					$name = $index;
 					$p['t'] = self::PARAM_ERROR;
 					break;
 			}//switch
 			
-			$pl[] = $p;
+			$pl[ $name ] = $p;
 			
 		}//foreach
 		

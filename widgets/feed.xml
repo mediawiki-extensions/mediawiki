@@ -9,8 +9,8 @@
 			<title>Gliffy - 1.0.0</title>
 			<link>http://jldupont.com/Widget:Gliffy</link>
 			<description><![CDATA[
-				<a href="http://jldupont.com/Widget:Gliffy">Help page</a>
-				<a href="http://mediawiki.googlecode.com/widget/gliffy-1.0.0.html">Code Page</a>
+				<a class="widget-help" href="http://jldupont.com/Widget:Gliffy">Help page</a>
+				<a class="widget-code" href="http://mediawiki.googlecode.com/widget/gliffy-1.0.0.html">Code Page</a>
 			]]></description>
 			<pubDate>Mon, 05 May 08 20:09:37 -0400</pubDate>
 		</item>

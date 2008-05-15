@@ -13,6 +13,7 @@
 /*
  *   { 'n'  =>  param-name,
  *     't'  =>  param-type,
+ * 	   'd'  =>  default-value,
  *	   'v'  =>  param-value }
  * 
  */
@@ -117,7 +118,7 @@ class WidgetParameters
 	
 	/**
 	 * Extracts the raw parameters of the form:
-	 * 		{@{param | type}@}
+	 * 		{@{param | type | default}@}
 	 * 
 	 */
 	protected static function extractRawParamsFromTemplate( &$code ) {
@@ -149,6 +150,13 @@ class WidgetParameters
 			$bits = explode( $delimiter, $e );
 			
 			switch( count( $bits ) ) {
+				// param-name | type | default
+				case 3: 
+					$p['n'] = $bits[0];
+					$p['t'] = $bits[1];
+					$p['d'] = $bits[2];
+					break;
+			
 				// param-name | type
 				case 2: 
 					$p['n'] = $bits[0];

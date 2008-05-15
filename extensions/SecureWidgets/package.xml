@@ -42,6 +42,8 @@
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
    <file baseinstalldir="MediaWiki/SecureWidgets" name="MessageList.php" role="php" />
+   <file baseinstalldir="MediaWiki/SecureWidgets" name="TypeChecker.php" role="php" />
+      
    <file baseinstalldir="MediaWiki/SecureWidgets" name="SecureWidgets.i18n.php" role="php" />
    <file baseinstalldir="MediaWiki/SecureWidgets" name="SecureWidgets.php" role="php" />
 

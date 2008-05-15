@@ -26,6 +26,8 @@ class MW_SecureWidgets
 	
 	private static $components = array(
 
+		'TypeChecker'						=> 'TypeChecker',
+	
 		'Widget'							=> 'Widget',
 		'WidgetParameters'					=> 'WidgetParameters',
 		'WidgetIterator'					=> 'WidgetIterator',	

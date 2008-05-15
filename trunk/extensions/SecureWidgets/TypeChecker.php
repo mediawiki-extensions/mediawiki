@@ -21,9 +21,9 @@ class TypeChecker {
 		
 		'?'				=> array( 'call' => array( __CLASS__, 'isUnspecified' ),  'cast' => null ),
 	
-		'string'		=> array( 'call' => 'is_string' , 'cast' => 'string' ),
-		'integer'		=> array( 'call' => 'is_integer', 'cast' => 'integer'),	
-		'float'			=> array( 'call' => 'is_float'  , 'cast' => 'float'  ),
+		'string'		=> array( 'call' => 'is_string' , 'cast' => 'strval' ),
+		'integer'		=> array( 'call' => 'is_integer', 'cast' => 'intval'),	
+		'float'			=> array( 'call' => 'is_float'  , 'cast' => 'floatval'  ),
 	
 	);
 
@@ -72,15 +72,17 @@ class TypeChecker {
 		if ( !is_callable( $call ) )
 			throw new Exception( __METHOD__. ": type checking function/method must be callable ($type)" );
 		
+		$_param = $param;
+		$cparam = $param;
+		
 		// type-casting trick...
 		if ( !is_null( $cast ) ) {
-			$_param = eval( "return ($cast)$param;" );
-			if ( $_param != $param )
-				return false;
-			$param = $_param;
+			$cparam = call_user_func( $cast, $param );
 		}
-			
-					
+
+		if ( strval( $cparam ) == strval( $param ) )
+			return true;
+		
 		return call_user_func( $call, $param );
 	}
 	/**********************************************************

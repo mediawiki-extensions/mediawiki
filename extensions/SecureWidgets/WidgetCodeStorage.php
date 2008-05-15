@@ -19,16 +19,10 @@ abstract class MW_WidgetCodeStorage
 	var $name = null;
 
 	/**
-	 * Error list
-	 */
-	var $msgs = null;
-	
-	/**
 	 * Constructor
 	 */
 	public function __construct( ) {
-	
-		$this->msgs = new MessageList();
+
 		parent::__construct();
 	}
 	

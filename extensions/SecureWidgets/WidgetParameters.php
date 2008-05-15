@@ -19,7 +19,8 @@
  */
 
 class WidgetParameters 
-	extends WidgetIterator {
+	extends WidgetIterator 
+	implements ArrayAccess {
 
 	/**
 	 * RESULTS list
@@ -38,6 +39,7 @@ class WidgetParameters
 	const NO_PARAMS_FOUND = false;
 	
 	const DEFAULT_TYPE    = 'string';
+	const TYPE_UNSPECIFIED = '?';
 	const PARAM_ERROR     = 'param-error';
 	
 	/**
@@ -56,15 +58,55 @@ class WidgetParameters
 			$this->status  = $params;
 			
 		}
+		parent::__construct();
 	} //__construct
+	
+	public function setParam( $name, $key, &$value ) {
+		$this->liste[ $name ][ $key ] = $value;
+		return $this;
+	}
+	
+	/*********************************************************
+	 * 				ArrayAccess Interface
+	 ********************************************************/	
 	/**
 	 * 
+	 * @param $index integer
+	 * @return boolean
 	 */
-	public function getParam( &$name ) {
-		if ( isset( $this->liste[$name] ) )
-			return $this->liste[ $name ];
-		throw new Exception( __METHOD__.": invalid parameter name" );
+	public function offsetExists( $index ) {
+	
+		return ( isset( $this->liste[ $index ]) );
 	}
+	/**
+	 * This method assumes 'offsetExists' has been called 
+	 * to ensure that the required $index exists
+	 */
+	public function offsetGet( $index ) {
+		if ( isset( $this->liste[ $index ]) )
+			return $this->liste[ $index ];
+			
+		throw new Exception( __METHOD__.": unset offset" );
+	}
+	public function offsetSet( $index, $value ) {
+	
+		$this->liste[ $index ] = $value;
+		
+		//chainability
+		return $this;
+	}
+	public function offsetUnset( $index ) {
+	
+		if ( isset( $this->liste[ $index ] ) )
+			unset( $this->liste[$index] );
+	
+		//chainability			
+		return $this;
+	}
+	/*********************************************************
+	 * 				/ArrayAccess Interface
+	 ********************************************************/	
+	
 	/**
 	 * Verifies if a given param exists
 	 * @return mixed $index if found, FALSE otherwise
@@ -154,6 +196,8 @@ class WidgetParameters
 		
 			$p = array();
 			
+			// keep raw match for later in the replacement phase...
+			$p['r'] = $e;
 			$bits = explode( $delimiter, $e );
 			$name = @$bits[0];
 			
@@ -174,7 +218,7 @@ class WidgetParameters
 				// param
 				case 1:
 					$p['n'] = $bits[0];
-					$p['t'] = self::DEFAULT_TYPE;
+					$p['t'] = self::TYPE_UNSPECIFIED;
 					break;
 					
 				// wrong!
@@ -205,7 +249,7 @@ class WidgetParameters
 	/**
 	 * Process list of the form 'key=value'
 	 */
-	protected function processRawParamsList( &$params, $delimiter = '=' ) {
+	protected static function processRawParamsList( &$params, $delimiter = '=' ) {
 	 
 		if ( empty( $params ) )
 			return self::NO_PARAMS_FOUND;
@@ -238,5 +282,27 @@ class WidgetParameters
 		
 		return $pl;
 	}//method
+
+	/******************************************************************
+	 * 						Parameter setting
+	 * 						back in template
+	 ******************************************************************/
+	
+	/**
+	 * The 'r' item in $templateParameters must be present
+	 */
+	public static function doReplacementsInWidgetTemplate( &$widget, &$templateParameters ) {
+	
+		$code    = $widget->getCode();
+	
+		foreach( $templateParameters as $name => $e ) {
+			
+			$pattern = '{@{' . $e['r'] . '}@}';
+			$value   = $e['v'];
+			$code    = str_replace( $pattern, $value, $code );	
+		}
+		
+		return $code;
+	}
 	
 } //end class definition

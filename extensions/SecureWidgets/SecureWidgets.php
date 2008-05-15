@@ -99,8 +99,8 @@ class MW_SecureWidgets
 		$renderer = MW_WidgetRenderer::gs();
 		$output = $renderer->render( $widget, $params );
 		
-		if (!( $output instanceof String ))
-			return $this->handlerError( $output );
+		if ( !is_string( $output ) )
+			return $this->handleError( $output );
 			
 		return array( $output, 'noparse' => true, 'isHTML' => true );		
 	}
@@ -160,3 +160,5 @@ include 'SecureWidgets.i18n.php';
 include 'WidgetCodeStorage.php';
 include 'WidgetCodeStorage_Database.php';
 include 'WidgetCodeStorage_Repository.php';
+
+include 'WidgetRenderer.php';

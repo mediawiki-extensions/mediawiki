@@ -19,11 +19,11 @@ class TypeChecker {
 	 */
 	static $types = array(
 		
-		'string'		=> array( 'is_string' ),
-		'integer'		=> array( 'is_integer' ),	
-		'float'			=> array( 'is_float'  ),
-		'scalar'		=> array( 'is_scalar' ),
-		'numeric'		=> array( 'is_numeric'),
+		'?'				=> array( 'call' => array( __CLASS__, 'isUnspecified' ),  'cast' => null ),
+	
+		'string'		=> array( 'call' => 'is_string' , 'cast' => 'string' ),
+		'integer'		=> array( 'call' => 'is_integer', 'cast' => 'integer'),	
+		'float'			=> array( 'call' => 'is_float'  , 'cast' => 'float'  ),
 	
 	);
 
@@ -50,7 +50,7 @@ class TypeChecker {
 			
 		foreach( $liste as $param => &$targetType ) {
 		
-			$results[ $param ] self::checkParam( $targetType, $param );
+			$results[ $param ] = self::checkParam( $targetType, $param );
 		}
 		
 		return $results;
@@ -58,22 +58,39 @@ class TypeChecker {
 	public static function checkParam( &$targetType, &$param ) {
 	
 		// can we understand the type at least?
-		if ( self::isSupported( $targetType ))
+		if ( !self::isSupported( $targetType ))
 			return null;
 			
 		return self::doTypeCheck( $targetType, $param );
 	}
 	protected static function doTypeCheck( &$type, &$param ) {
 	
-		$callable  = self::$types[ $type ];
-		if ( !is_callable( $callable ) )
+		$entry  = self::$types[ $type ];
+		$call   = $entry['call'];
+		$cast   = $entry['cast'];
+		
+		if ( !is_callable( $call ) )
 			throw new Exception( __METHOD__. ": type checking function/method must be callable ($type)" );
+		
+		// type-casting trick...
+		if ( !is_null( $cast ) ) {
+			$_param = eval( "return ($cast)$param;" );
+			if ( $_param != $param )
+				return false;
+			$param = $_param;
+		}
+			
 					
-		return call_user_func( $callable, $param );
+		return call_user_func( $call, $param );
 	}
 	/**********************************************************
 	 * 					PROTECTED interface
 	 **********************************************************/
+
+	protected static function isUnspecified( $type ) {
+	
+		return true;
+	}
 	
 	protected static function callHooks() {
 	

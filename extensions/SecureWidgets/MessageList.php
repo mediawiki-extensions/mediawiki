@@ -25,13 +25,18 @@ class MessageList
 	
 		return $this;
 	}
+	public function isEmpty() {
+	
+		return empty( $this->liste );
+	}
+	
 	public function pushMessage( &$msg ) {
 	
 		$this->liste[] = $msg;
 		return $this;
 	}
 	
-	public function pushMessageById( $id, &$p ) {
+	public function pushMessageById( $id, $p ) {
 	
 		$f  = 'return wfMsg( $id ';
 		
@@ -46,7 +51,7 @@ class MessageList
 			}
 		}
 		
-		$f .= ');';
+		$f .= ' );';
 		
 		$this->liste[] = eval( $f );
 		

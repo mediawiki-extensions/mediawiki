@@ -58,7 +58,7 @@ class MW_WidgetCodeStorage_Database
 			return $code;
 		
 		$msg = new MessageList();
-		$msg->pushMessageById(self::NAME . '-not-db', array( $name ) );
+		$msg->pushMessageById(self::NAME . '-not-db', array( $this->name ) );
 		return $msg;
 	}
 

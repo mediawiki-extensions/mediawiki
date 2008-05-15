@@ -60,27 +60,29 @@ class MW_WidgetCodeStorage_Repository
 	 */
 	protected function fetchFromRepository( &$name ) {
 			
+		$msgs = new MessageList();
+	
 		// default feed
 		$feed   = new RepositoryFeed();
 		$result = $feed->fetch();
 		if ( $result === false ) {
-			$this->msgs->pushMessageById( self::NAME . '-error-feed' );
-			return $this->msgs;
+			$msgs->pushMessageById( self::NAME . '-error-feed' );
+			return $msgs;
 		}
 		
 		$_name = strtolower( $name );
 		
-		$widgetLocator = $feed->getWidgetLocatorByName( $name );
+		$widgetLocator = $feed->getWidgetLocatorByName( $_name );
 		if ( !($widgetLocator instanceof WidgetLocator ) ) {
-			$this->msgs->pushMessageById( self::NAME . '-widget-not-found', $name );
-			return $this->msgs;
+			$msgs->pushMessageById( self::NAME . '-widget-not-found', array( $name ) );
+			return $msgs;
 		}
 		
 		$url = $widgetLocator->codelink;
 		$code = $this->wget( $url );
 		if ( $code === false ) {
-			$this->msgs->pushMessageById( self::NAME . '-error-code-fetch', $name );
-			return $this->msgs;
+			$msgs->pushMessageById( self::NAME . '-error-code-fetch', array( $name ) );
+			return $msgs;
 		}
 		
 		// if we got lucky, save it to the trans-cache

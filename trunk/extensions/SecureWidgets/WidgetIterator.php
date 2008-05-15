@@ -10,6 +10,9 @@
 class WidgetIterator
 	implements Iterator {
 	
+	public function __construct() {
+	}
+	
 	var $liste = array();
 	
 	/*********************************************************

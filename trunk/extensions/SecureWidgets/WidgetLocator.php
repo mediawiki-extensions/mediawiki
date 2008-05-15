@@ -17,6 +17,8 @@ class WidgetLocator {
 	
 	// example: http://mediawiki.googlecode.com/widget/gliffy-1.0.0.html
 	const VERSION_PATTERN   = '/widget\/(?:.+)\-(.*)\.html/siU';
+	const NAME_PATTERN      = '/widget\/(.*)-/siU';
+	
 	const CODE_CLASS        = 'widget-code';
 	const HELP_CLASS		= 'widget-help';
 
@@ -31,6 +33,7 @@ class WidgetLocator {
 	
 		// must appear *AFTER* codelink
 		'version'  => true,
+		'name'	   => true,
 	);
 	
 	public function __construct( &$obj ) {
@@ -39,8 +42,6 @@ class WidgetLocator {
 	
 	}
 	public function __get( $key ) {
-	
-		echo __METHOD__;
 	
 		if ( !array_key_exists( $key, self::$paramsList ))
 			throw new Exception( __METHOD__ .": invalid parameter ($key)");
@@ -64,7 +65,8 @@ class WidgetLocator {
 			$method = "extract_$key";
 			$this->$method();
 		}
-			
+
+		unset( $this->obj );
 	}
 	protected function extractAnchors() {
 	
@@ -100,7 +102,17 @@ class WidgetLocator {
 			$v = $match[1];
 		$this->params['version'] = $v;
 	}
-	
+	protected function extract_name() {
+		// version information is available through the codelink
+		$cl = $this->params['codelink'];
+		
+		$r  = preg_match( self::NAME_PATTERN, $cl, $match );
+		if ( $r === false )
+			$n = null;
+		else
+			$n = $match[1];
+		$this->params['name'] = $n;
+	}
 	protected function getElementByClass( $classe ) {
 	
 		foreach( $this->anchors as $index => $anchor ) {

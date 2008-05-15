@@ -12,7 +12,7 @@ MW_WidgetCodeStorage_Database::getInstance('MW_WidgetCodeStorage_Database')->set
 		array(
 			'securewidgets-csdb'		=> 'SecureWidgets - Database Repository',
 			'securewidgets-csdb-not-ns'	=> 'optional namespace <i>$1</i> not defined.',		
-			'securewidgets-csdb-not-db'	=> 'code not in the database.',		
+			'securewidgets-csdb-not-db'	=> 'code for widget <i>$1</i> not in the database.',		
 			#'' => '',
 		),
 			#other languages

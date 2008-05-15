@@ -58,5 +58,8 @@ class MessageList
 		// chainability
 		return $this;
 	}
-	
+	public function insertMessages( &$msgObj ) {
+		foreach( $msgObj as $msg )
+			$this->liste[] = $msg;
+	}
 } //end class definition

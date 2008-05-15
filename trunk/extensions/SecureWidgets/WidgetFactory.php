@@ -71,18 +71,19 @@ class MW_WidgetFactory
 		
 			$store->setName( $name );
 			$rawCode = $store->getCode();
-			if ( $rawCode !== null ) {
+			if ( is_string( $rawCode ) ) {
 			
 				$code = self::extractCode( $rawCode );
-				if ( $code === false )
-					return $msgs->pushMessageById( self::NAME . '-nocode' );
-					
+				if ( $code === false ) {
+					$msgs->pushMessageById( self::NAME . '-nocode' );
+					continue;
+				}
 				return new Widget( $name, $code );
 			}
-			
-			$msgs->pushMessages( $store->getLastErrorMessages() );
-		}
-	
+			else
+				$msgs->insertMessages( $rawCode );
+		} //foreach
+		
 		// error
 		return $msgs;
 	

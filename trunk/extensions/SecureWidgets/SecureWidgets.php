@@ -30,8 +30,10 @@ class MW_SecureWidgets
 	
 		'Widget'							=> 'Widget',
 		'WidgetParameters'					=> 'WidgetParameters',
-		'WidgetIterator'					=> 'WidgetIterator',	
+		'WidgetIterator'					=> 'WidgetIterator',
+		'WidgetLocator'						=> 'WidgetLocator',	
 	
+		'RepositoryFeed'					=> 'RepositoryFeed',
 		'MessageList'						=> 'MessageList',
 
 		'MW_WidgetRenderer'					=> 'WidgetRenderer',	

@@ -43,10 +43,6 @@ class MW_WidgetRenderer
 		// prepare the input variables
 		$ip = WidgetParameters::newFromParamList( $params );
 		
-		var_dump( $tp );
-		var_dump( $ip );
-		die;
-		
 		// Case 1: template does not have parameters
 		//         Don't make waves even in the case where 
 		//         input variables are provided where none are required...
@@ -60,6 +56,10 @@ class MW_WidgetRenderer
 		}
 			
 		// Case 3: template specifies parameter types and input variables do not match
+		
+		
+		// Step 4: perform type checking
+		
 		
 	}
 	

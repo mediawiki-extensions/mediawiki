@@ -19,9 +19,12 @@
 Provides secure inclusion of ''widgets''
 
 == Features ==
-* ''Batteries included'': no need to copy code from other pages to access the widgets: they are readily available through a repository
+* Performance: widget code is cached (in the ''transcache'' database table)
+* ''Batteries included'': no need to copy code from other pages to get widgets: they are readily available through a repository
+* Extensible: new widgets can be created by editing pages in the ''Widget'' namespace
 ** The list is available [[{{FULLPAGENAME}}#Widget_List]]
-* Security:  
+* Secure: Widgets are controlled  through a ''read-only'' SVN repository
+** For locally administered widgets in the ''Widget'' namespace, the appropriate access-control must be put in place manually
 
 == Usage ==
 <nowiki>{{#widget:widget-name|optional-parameters}}</nowiki>
@@ -34,6 +37,9 @@ Provides secure inclusion of ''widgets''
 The list of available widgets is available as an [http://feeds.feedburner.com/jldupont/mw-widgets RSS feed]. The widget name can be inferred by the entry title; e.g.:
  Widget:Gliffy - version 1.0.0
 thus the widget name would be ''Gliffy'' and one could use it through <nowiki>{{#widget:Gliffy ...}}</nowiki>
+
+== Widget Namespace ==
+One can use [[Extension:ManageNamespaces]] to add and manage the ''Widget'' namespace. This is entirely optional.
 
 == Dependencies ==
 * [[Extension:ExtensionManager]] of version >= 2.0.1

@@ -41,6 +41,7 @@ class MW_WidgetRenderer
 		$msgs = new MessageList();
 	
 		$code = $widget->getCode();
+		$name = $widget->getName();
 		
 		// extract parameters from widget template
 		$tp = WidgetParameters::newFromTemplate( $code );
@@ -57,7 +58,7 @@ class MW_WidgetRenderer
 		// Case 2: template has parameters but no input variables provided
 		if ( $ip->isEmpty() ) {
 			$msg = new MessageList;
-			return $msg->pushMessageById( self::NAME . '-missing-inputs' );
+			return $msg->pushMessageById( self::NAME . '-missing-inputs', array( $name ) );
 		}
 			
 		// Case 3: template specifies parameter types and input variables do not match

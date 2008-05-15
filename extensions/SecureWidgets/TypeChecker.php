@@ -79,7 +79,8 @@ class TypeChecker {
 		if ( !is_null( $cast ) ) {
 			$cparam = call_user_func( $cast, $param );
 		}
-
+		#echo __METHOD__. ": cast: $cast -- cparam: $cparam \n<br/>";
+		
 		if ( strval( $cparam ) == strval( $param ) )
 			return true;
 		

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>Jean-Lou Dupont's MediaWiki Widget channel</title>
+		<link>http://mediawiki.googlecode.com/</link>
+		<description>Jean-Lou Dupont's MediaWiki Widget channel</description>
+
+		<item>
+			<title>Gliffy - 1.0.0</title>
+			<link>http://jldupont.com/Widget:Gliffy</link>
+			<description><![CDATA[
+				<a href="http://jldupont.com/Widget:Gliffy">Help page</a>
+				<a href="http://mediawiki.googlecode.com/widget/gliffy-1.0.0.html">Code Page</a>
+			]]></description>
+			<pubDate>Mon, 05 May 08 20:09:37 -0400</pubDate>
+		</item>
+
+	</channel>
+</rss>
+		

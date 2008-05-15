@@ -36,7 +36,7 @@ class MessageList
 		return $this;
 	}
 	
-	public function pushMessageById( $id, $p ) {
+	public function pushMessageById( $id, $p = null ) {
 	
 		$f  = 'return wfMsg( $id ';
 		

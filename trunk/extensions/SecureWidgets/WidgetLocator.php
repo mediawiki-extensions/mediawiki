@@ -16,8 +16,8 @@ class WidgetLocator {
 	const HREF_PATTERN 		= '/href=[\'\"](.+)[\'\"]/siU';
 	
 	// example: http://mediawiki.googlecode.com/widget/gliffy-1.0.0.html
-	const VERSION_PATTERN   = '/widget\/(?:.+)\-(.*)\.html/siU';
-	const NAME_PATTERN      = '/widget\/(.*)-/siU';
+	const VERSION_PATTERN   = '/widgets\/(?:.+)\-(.*)\.html/siU';
+	const NAME_PATTERN      = '/widgets\/(.*)-/siU';
 	
 	const CODE_CLASS        = 'widget-code';
 	const HELP_CLASS		= 'widget-help';

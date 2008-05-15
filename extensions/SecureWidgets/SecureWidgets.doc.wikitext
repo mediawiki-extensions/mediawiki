@@ -1,0 +1,49 @@
+{{Extension
+|name        = SecureWidgets
+|status      = stable
+|type1       = parser function
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.11, 1.12 (probably works with earlier versions too)
+|download    = [http://mediawiki.googlecode.com/svn/tags/SecureWidgets/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = Provides secure inclusion of ''widgets''
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides secure inclusion of ''widgets''
+
+== Features ==
+* ''Batteries included'': no need to copy code from other pages to access the widgets: they are readily available through a repository
+** The list is available [[{{FULLPAGENAME}}#Widget_List]]
+* Security:  
+
+== Usage ==
+<nowiki>{{#widget:widget-name|optional-parameters}}</nowiki>
+
+== Example ==
+<!-- The following is only available where the extension is installed -->
+{{#widget:Gliffy|id=1422053}}
+
+== Widget List ==
+The list of available widgets is available as an [http://feeds.feedburner.com/jldupont/mw-widgets RSS feed]. The widget name can be inferred by the entry title; e.g.:
+ Widget:Gliffy - version 1.0.0
+thus the widget name would be ''Gliffy'' and one could use it through <nowiki>{{#widget:Gliffy ...}}</nowiki>
+
+== Dependencies ==
+* [[Extension:ExtensionManager]] of version >= 2.0.1
+** Automatically resolved if using PEAR
+
+{{Pear|SecureWidgets}}
+
+== History ==
+{|class='datatable'
+! Release !! Notes
+|-
+| 1.0.0 || Initial Release
+|}

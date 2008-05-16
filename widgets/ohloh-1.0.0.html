@@ -1,0 +1,33 @@
+=Widget Ohlog=
+Includes customizable badges from [http://www.ohloh.net Ohloh].
+
+==Usage==
+ <nowiki>{{#widget:Ohloh
+ | account= 13446
+ | ref    = detailed
+ | width  = 191
+ | height = 35
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| account     || desired Ohloh account # || 13446
+|-
+| ref         || 'detailed'  or 'rank'   || detailed
+|-
+| width       || picture width           || 191
+|-
+| height      || picture height          || 35
+|-
+|}
+
+==Example==
+{{#widget:Ohloh|account=13446|ref=detailed|width=191|height=35}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><a href="http://www.ohloh.net/accounts/{@{account|integer|13446}@}/?ref={@{ref|string|detailed}@}">
+<img src="http://www.ohloh.net/accounts/{@{account|integer|13446}@}/widgets/account_{@{ref|string|detailed}@}.gif" width="{@{width|string|191}@}" height="{@{height|string|35}@}" /></a></includeonly>

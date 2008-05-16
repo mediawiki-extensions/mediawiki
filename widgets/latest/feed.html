@@ -1,0 +1,43 @@
+=Feed Widget=
+This widget allows you to add any RSS feed to your wiki page. This widget uses code and service from [http://www.feed2js.org Feed2JS].
+
+==Usage Example==
+ <nowiki>{{#widget:Feed
+|feedurl=http://feeds.feedburner.com/jldupont/mw-widgets
+|chan=y
+|num=5
+|desc=50
+|date=n
+|targ=n
+}}</nowiki>
+===Parameters===
+{|class=datatable
+! Parameter !! Notes
+|-
+| feedurl || URL of the feed to show
+|-
+| chan    || show channel info or not (y/title/n)
+|-
+| num     || number of items to show (0 means all available)
+|-
+| desc    || number of characters to show from description (0 means show full description)
+|-
+| date    || show date (y/n)
+|-
+| targ    || open links in new window (y/n)
+|}
+
+== Example ==
+{{#widget:Feed
+|feedurl=http://feeds.feedburner.com/jldupont/mw-widgets
+|chan=y
+|num=10
+|desc=300
+|date=n
+|targ=n
+}}
+
+==Code==
+You do not need to copy this; just provided as reference.
+
+<includeonly><script language="JavaScript" src="http://feed2js.org//feed2js.php?src={@{feedurl|string|http://feeds.feedburner.com/jldupont/mw-widgets}@}&amp;chan={@{chan|string|y}@}&amp;num={@{num|integer|0}@}&amp;desc={@{desc|string|y}@}&amp;date={@{date|string|y}@}&amp;targ={@{targ|string|y}@}&amp;utf=y" type="text/javascript"></script></includeonly>

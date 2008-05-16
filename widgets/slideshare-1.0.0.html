@@ -1,0 +1,17 @@
+= Slideshare Widget =
+See [http://www.slideshare.net/ SlideShare] for more details.
+
+== Usage ==
+ <nowiki>{{#widget:Slideshare
+|doc=amazing-photos-1192957086440148-5
+|width=424
+|height=348
+}}</nowiki>
+
+* Parameters ''width'' and ''height'' are optional with 424x348 being the default values.
+* Parameter ''doc'' is mandatory
+
+== Example ==
+{{#widget:Slideshare|doc=amazing-photos-1192957086440148-5}}
+
+<includeonly><object style="margin:0px" width="{@{width|integer|424}@}" height="{@{height|integer|348}@}"><param name="movie" value="http://static.slideshare.net/swf/ssplayer2.swf?doc={@{doc|string|amazing-photos-1192957086440148-5}@}"/><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed src="http://static.slideshare.net/swf/ssplayer2.swf?doc={@{doc|string|amazing-photos-1192957086440148-5}@}" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="{@{width|integer|424}@}" height="{@{height|integer|348}@}"></embed></object></includeonly>

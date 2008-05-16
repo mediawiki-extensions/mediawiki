@@ -6,6 +6,16 @@
 		<description>Jean-Lou Dupont's MediaWiki Widget channel</description>
 
 		<item>
+			<title>Widget:Slideshare - version 1.0.0</title>
+			<link>http://jldupont.com/Widget:Slideshare</link>
+			<description><![CDATA[
+				<a class="widget-help" href="http://jldupont.com/Widget:Slideshare">Help page</a> and
+				<a class="widget-code" href="http://mediawiki.googlecode.com/svn/widgets/slideshare-1.0.0.html">Code Page</a>
+			]]></description>
+			<pubDate>Thu, 16 May 08 20:09:37 -0400</pubDate>
+		</item>
+
+		<item>
 			<title>Widget:Gliffy - version 1.0.0</title>
 			<link>http://jldupont.com/Widget:Gliffy</link>
 			<description><![CDATA[

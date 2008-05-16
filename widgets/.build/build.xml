@@ -7,6 +7,7 @@
 	S1 - READ list
 	S2 - FILTER for updated
 	S3 - EXTRACT name, version etc. information
+			* from filename ...  => requires new TASK...
 	S4 - WRITE in /latest
 	S5 - UPDATE feed.xml
 	

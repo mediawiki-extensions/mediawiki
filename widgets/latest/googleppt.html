@@ -1,0 +1,34 @@
+=GoogleDocs Presentation Widget=
+This widget allows you to add [http://docs.google.com/ GoogleDocs Presentation] documents to your wiki page.
+
+==Usage==
+ <nowiki>{{#widget:googleppt
+|docid=dgstxrxv_40f7wnh9
+|width=410
+|height=342
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| docid   || doc identifier    || dgstxrxv_40f7wnh9
+|-
+| width   || frame width       || 410
+|-
+| height  || frame height      || 342
+|-
+| frameborder || frame border  || 0
+|-
+| iframeid    || id attribute for iframe wrapper   || gppt1
+|-
+| iframeclass || class attribute for iframe wrapper || gppt
+|}
+
+==Example==
+{{#widget:googleppt|docid=dgstxrxv_40f7wnh9}}
+
+==Code==
+Only provided for reference.
+
+<includeonly><iframe id='{@{iframeid|string|gppt1}@}' class='{@{iframeclass|string|gppt}@}' src='http://docs.google.com/EmbedSlideshow?docid={@{docid|string|dgstxrxv_40f7wnh9}@}' frameborder='{@{frameborder|integer|0}@}' width='{@{width|integer|410}@}' height='{@{height|integer|342}@}'></iframe></includeonly>

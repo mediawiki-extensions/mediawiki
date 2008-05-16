@@ -8,23 +8,21 @@
  */
 //<source lang=php>
 
-class MW_EditTalkRight
-{
+class MW_EditTalkRight {
+
 	protected function __construct(){}
 	
 	/**
 	 * Register the extension
 	 */
-	public static function init()
-	{
+	public static function init() {
 		global $wgExtensionFunctions;
 		$wgExtensionFunctions[] = array( __CLASS__, 'setup' );
 	}	
 	/**
 	 * Sets hook and credit
 	 */
-	public static function setup()
-	{
+	public static function setup() {
 		global $wgExtensionCredits;
 		$wgExtensionCredits['other'][] = array( 
 			'name'        => 'EditTalkRight', 
@@ -43,8 +41,8 @@ class MW_EditTalkRight
 	 * @param $user Object
 	 * @param $rights array
 	 */
-	public static function onUserGetRights( &$user, &$rights )
-	{
+	public static function onUserGetRights( &$user, &$rights ) {
+
 		global $wgTitle;
 		
 		// paranoia
@@ -57,8 +55,11 @@ class MW_EditTalkRight
 		
 		// add the 'edit' right if the current operation
 		// is performed in a 'talk' namespace && the user has the 'edit_talk' right
-		if ( in_array( 'edit_talk', $rights ) )
+		if ( in_array( 'edit_talk', $rights ) ) {
+		
 			$rights[] = 'edit';
+			$rights[] = 'createtalk';
+		}
 				
 		return true;		
 	}

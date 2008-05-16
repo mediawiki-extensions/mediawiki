@@ -3,7 +3,7 @@
 |status      = stable
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/EditTalkRight/ SVN]
@@ -34,4 +34,6 @@ None.
 ! Release !! Notes
 |-
 | 1.0.0 || Initial Release
+|-
+| 1.0.1 || Added 'createtalk' right
 |}

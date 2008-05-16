@@ -15,6 +15,16 @@
 			<pubDate>Thu, 15 May 08 20:09:37 -0400</pubDate>
 		</item>
 
+		<item>
+			<title>Widget:Mindmeister - version 1.0.0</title>
+			<link>http://jldupont.com/Widget:Mindmeister</link>
+			<description><![CDATA[
+				<a class="widget-help" href="http://jldupont.com/Widget:Mindmeister">Help page</a> and
+				<a class="widget-code" href="http://mediawiki.googlecode.com/svn/widgets/mindmeister-1.0.0.html">Code Page</a>
+			]]></description>
+			<pubDate>Thu, 15 May 08 20:09:37 -0400</pubDate>
+		</item>
+
 	</channel>
 </rss>
 		

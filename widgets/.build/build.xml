@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	PHING build file
+	@author Jean-Lou Dupont
+	
+	S1 - READ list
+	S2 - FILTER for updated
+	S3 - EXTRACT name, version etc. information
+	S4 - WRITE in /latest
+	S5 - UPDATE feed.xml
+	
+-->

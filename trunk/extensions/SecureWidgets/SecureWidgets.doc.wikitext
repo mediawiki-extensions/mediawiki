@@ -21,6 +21,12 @@ Provides secure inclusion of ''widgets''
 == Features ==
 * Performance: widget code is cached (in the ''transcache'' database table)
 * ''Batteries included'': no need to copy code from other pages to get widgets: they are readily available through a repository
+* User-Friendly:
+** Comprenhensive error messages 
+** Link to help page upon error
+** Example given upon error
+** Parameter type-checking
+** Default-value can be specified in widget templates
 * Extensible: new widgets can be created by editing pages in the ''Widget'' namespace
 ** The list is available [[{{FULLPAGENAME}}#Widget_List]]
 * Secure: Widgets are controlled  through a ''read-only'' SVN repository
@@ -41,7 +47,23 @@ thus the widget name would be ''Gliffy'' and one could use it through <nowiki>{{
 == Widget Namespace ==
 One can use [[Extension:ManageNamespaces]] to add and manage the ''Widget'' namespace. This is entirely optional.
 
-== Dependencies ==
+== Widget Creation ==
+The extension allows for user-generated widgets provided that one configures the ''Widget'' namespace. 
+===Parameters===
+Parameters are provided through the escape sequence:
+* '''{@{parameter-name}@}''' when only a parameter can be specified
+* '''{@{parameter-name|type}@}''' when a parameter and its type are specified
+* '''{@{parameter-name|type|default-value}@}''' when a parameter, its type and a default-value are specified
+===Example Template===
+<pre>
+<includeonly>
+<!-- Gliffy Widget For Mediawiki by Jean-Lou Dupont -->
+<script src="http://www.gliffy.com/diagramEmbed.js" type="text/javascript"></script>
+<script type="text/javascript"> gliffy_did = "{@{id|integer}@}"; embedGliffy(); </script>
+</includeonly>
+</pre>
+
+== Dependency ==
 * [[Extension:ExtensionManager]] of version >= 2.0.1
 ** Automatically resolved if using PEAR
 

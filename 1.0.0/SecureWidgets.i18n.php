@@ -13,7 +13,7 @@ MW_SecureWidgets::getInstance('MW_SecureWidgets')->setMessages(
 			'securewidgets'				=> 'SecureWidgets',		
 			'securewidgets-missing-name'=> 'name parameter is missing.',		
 			'securewidgets-help'	=> 'SecureWidgets: help is available by following this [http://mediawiki.org/wiki/Extension:SecureWidgets link].',
-			'securewidgets-example'	=> 'SecureWidgets: example using <pre>{{#widget:Gliffy|id=1422053}}</pre>',
+			'securewidgets-example'	=> 'SecureWidgets: example usage { { #widget:Gliffy|id=1422053 } }',
 			#'' => '',
 		),
 			#other languages

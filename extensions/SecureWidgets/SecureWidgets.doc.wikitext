@@ -43,6 +43,8 @@ Provides secure inclusion of ''widgets''
 The list of available widgets is available as an [http://feeds.feedburner.com/jldupont/mw-widgets RSS feed]. The widget name can be inferred by the entry title; e.g.:
  Widget:Gliffy - version 1.0.0
 thus the widget name would be ''Gliffy'' and one could use it through <nowiki>{{#widget:Gliffy ...}}</nowiki>
+<!--requires [[Extension:VersaComment]] -->
+<!--{{You can also consult [[Category:Widgets]] to access this list.}}-->
 
 == Widget Namespace ==
 One can use [[Extension:ManageNamespaces]] to add and manage the ''Widget'' namespace. This is entirely optional.

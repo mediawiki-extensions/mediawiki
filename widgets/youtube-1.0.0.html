@@ -1,0 +1,29 @@
+=YouTube Widget=
+This widget allows you to add [http://video.google.com/ YouTube] player to your wiki page.
+
+==Usage==
+ <nowiki>{{#widget:youtube
+|vid=vhgzIM-9lfA
+|width=425
+|height=355
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| vid     ||  video identifier || vhgzIM-9lfA
+|-
+| width   || frame width       || 425
+|-
+| height  || frame height      || 355
+|-
+| divid   || id attribute for div wrapper || yt1
+|-
+| divclass|| class attribute for div wrapper || yt
+|}
+
+==Example==
+{{#widget:youtube|vid=vhgzIM-9lfA}}
+
+<includeonly><div id='{@{divid|string|yt1}@}' class='{@{divclass|string|yt}@}'><object width="{@{width|string|425}@}" height="{@{height|string|355}@}"><param name="movie" value="http://www.youtube.com/v/{@{vid|string|vhgzIM-9lfA}@}"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/{@{vid|string|vhgzIM-9lfA}@}" type="application/x-shockwave-flash" wmode="transparent" width="{@{width|string|425}@}" height="{@{height|string|355}@}"></embed></object></div></includeonly>

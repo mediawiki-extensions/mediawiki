@@ -10,5 +10,70 @@
 			* from filename ...  => requires new TASK...
 	S4 - WRITE in /latest
 	S5 - UPDATE feed.xml
-	
+	S6 - ADD to SVN
+		
 -->
+
+<project name="jldupont" basedir="." default='all' >
+
+	<taskdef classname='JLD.PhingTools.SvnStatusTask' name='svn_status' />
+	<taskdef classname='JLD.PhingTools.SvnAddTask' name='svn_add' />
+	<taskdef classname='JLD.PhingTools.SvnPropsetTask' name='svn_propset' />
+	<taskdef classname='JLD.PhingTools.SortTask' name='sort' />
+
+	<resolvepath propertyName="widget.path" file="${project.basedir}/../" />
+
+	<target name='all'>
+
+		<echo>Building 'feed.xml'</echo>
+
+		<fileset dir="${widget.path}/" id='widget-files' >
+			<include name="*.html" />
+			<exclude name="feed.xml" />
+		</fileset>
+
+		<delete file="${widget.path}/feed.xml" />
+
+		<sort sid='widget-files' key='mtime' dir='d' tid='sorted-widget-files' />
+
+		<echo>Copying template</echo>
+		<copy file= 'feed.template.xml' tofile="${widget.path}/feed.xml" overwrite="true" />
+
+		<echo>Appending entries</echo>
+		<append destFile="${widget.path}/feed.xml">
+
+			<fileset refid='sorted-widget-files' />
+
+			<filterchain>
+			    <xsltfilter style="feed.xsl">
+			    </xsltfilter>
+			</filterchain>			
+
+		</append>
+
+		<append destFile="${widget.path}/feed.xml">
+<![CDATA[
+	</channel>
+</rss>]]>
+		</append>
+
+
+		<svn_status path='"${widget.path}/feed.xml"' 
+					result="feed.xml.svn" />
+		<if>
+			<contains substring="?" string="${feed.xml.svn}" />
+			<then>
+				<echo>SVN: adding 'feed.xml' to SVN</echo>
+				<svn_add path='"${widget.path}/feed.xml"' />
+				<echo>SVN: setting 'application/xml' MIME-type</echo>
+				<svn_propset path='"${widget.path}/feed.xml"' 
+				           	propname="svn:mime-type" 
+				           	propval="application/xml" />
+			</then>
+			<else>
+				<echo>'feed.xml' already in SVN</echo>
+			</else>
+		</if>
+	</target>
+
+</project>

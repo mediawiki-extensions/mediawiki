@@ -1,0 +1,50 @@
+= Mindmeister Widget =
+
+== Usage ==
+<pre>
+{{#widget:Mindmeister
+|mmid=mindmap-identifier
+|mm_width=mindmap-width
+|mm_height=mindmap-height
+|mm_zoom=mindmap-zoom
+|scrolling=scrolling-parameter e.g. no '''or''' yes
+|frameborder=iframe-frameborder-attribute
+|width =iframe-width-attribute
+|height=iframe-height-attribute
+|id = iframe-id-attribute
+|class = iframe-class-attribute
+}}
+</pre>
+
+== Defaults ==
+{|class=datatable
+! Parameter !! Value
+|-
+| id    || mm1
+|-
+| class || mm
+|-
+| frameborder || 0
+|-
+| scrolling   || no
+|-
+| mm_width    || 400
+|-
+| mm_height   || 800
+|-
+| mm_zoom     || 1
+|-
+| width       || 100%
+|-
+| height      || 800
+|}
+
+== Example ==
+All default parameters except for the required mindmap identifier:
+{{#widget:Mindmeister|mmid=6089041}}
+
+<includeonly><iframe id='{@{id|string|mm1}@}' class='{@{class|string|mm}@}' frameborder='{@{frameborder|integer|0}@}' src="http://www.mindmeister.com/maps/public_map_shell/{@{mmid|integer}@}?width={@{mm_width|integer|600}@}&height={@{mm_height|integer|800}@}&zoom={@{mm_zoom|integer|1}@}" width='{@{width|string|100%}@}' height='{@{height|string|800}@}' scrolling='{@{scrolling|string|no}@}'></iframe></includeonly>
+
+<!--
+<iframe width="600" height="400" frameborder="0" src="http://www.mindmeister.com/maps/public_map_shell/6260154?width=600&height=400&zoom=1" scrolling="no" style="overflow:hidden"></iframe>
+-->

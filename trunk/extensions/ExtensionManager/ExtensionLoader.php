@@ -64,8 +64,6 @@ class ExtensionLoader
 	 * 	/$dirX/ExtensionManager/ExtensionManager_stub.php
 	 * 
 	 * 	where $dirX is just the parent directory.
-	 * 
-	 * 	Extensions are located in /extensions
 	 */
 	static function readFromFileSystem()
 	{
@@ -117,7 +115,7 @@ class ExtensionLoader
 				$win = $file1;
 
 			// only if case #1 fails that we accept case #2
-			if ( ( $r2 === true ) && ($win === null))
+			if ( ( $r2 === true ) && ($win === null) )
 				$win = $file2;
 
 			if (!empty( $win ))

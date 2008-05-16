@@ -7,5 +7,5 @@
  <n>Social</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>Social</a> <!-- alias? -->
- <d>Provides integration with online diagram publishing tool Gliffy [http://www.gliffy.com]</d>
+ <d>Provides a secure way of including "widgets" on pages</d>
 </c>

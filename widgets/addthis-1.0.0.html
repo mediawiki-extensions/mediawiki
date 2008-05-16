@@ -1,0 +1,79 @@
+=Addthis Widget=
+This widget allows you to add the [http://www.addthis.com/ AddThis] social-bookmarking button to your wiki page.
+
+==Usage==
+ <nowiki>{{#widget:Addthis
+|page_name={{PAGENAME}}
+|page_url={{fullurl:{{PAGENAME}}}}
+|account_id=my-account-id
+|logo_url=
+|logo_background=FFFFFF
+|logo_color=FFFFFF
+|brand=My Wiki
+|options=favorites, email, digg, delicious, more
+|offset_top=0
+|offset_left=0
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| page_name   || The page name which will appear in the bookmark  || <nowiki>{{PAGENAME}}</nowiki>
+|-
+| page_url    || The page's URL to bookmark                       || <nowiki>{{fullurl:{{PAGENAME}}}}</nowiki>
+|-
+| account_id  || The account-id to which to bookmarks will be attributed to || none
+|-
+| logo_url    || The site logo [optional]    || none
+|-
+| logo_bkg    || The logo's background color || FFFFFF
+|-
+| logo_color  || The logo's color            || FFFFFF
+|-
+| brand       || The ''brand'' name that should appear in the badge || <nowiki>{{SITENAME}}</nowiki>
+|-
+| options     || The bookmarking sites       || favorites, email, digg, delicious 
+|-
+| offset_top  || offset at the top           || 0
+|-
+| offset_left || offset from the left        || 0
+|}
+
+===Usage Notes===
+You are encouraged to use a template (e.g. <nowiki>[[Template:Addthis]]</nowiki> to use this widget.
+
+===More information===
+You can read more about these options on [http://www.addthis.com/customization.html the AddThis documentation page].
+
+== Example ==
+{{#widget:{{PAGENAME}}
+|page_name={{PAGENAME}}
+|page_url={{fullurl:{{PAGENAME}}}}
+|account_id=jldupont
+|logo_url=/favicon.ico
+|logo_background=FFFFFF
+|logo_color=FFFFFF
+|brand={{SITENAME}}
+|options=favorites, email, digg, delicious, more
+|offset_top=0
+|offset_left=0
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- AddThis Button BEGIN --><div style="cursor: pointer" onClick="return addthis_open(this, '', '{@{page_url|string}@}', '{@{page_name|string}@}')" onmouseout="addthis_close()"><img src="http://s9.addthis.com/button1-share.gif" width="125" height="16" border="0" alt="" /></div><!-- AddThis Button END -->
+<!-- AddThis Rollover BEGIN -->
+<script type="text/javascript">
+addthis_pub             = '{@{account_id|string}@}';
+addthis_logo            = '{@{logo_url|string|/favicon.ico}@}';
+addthis_logo_color      = '{@{logo_color|string|FFFFFF}@}';
+addthis_logo_background = '{@{logo_bkg|string|FFFFFF}@}';
+addthis_brand           = '{@{brand|string|{{SITENAME}}}@}';
+addthis_options         = '{@{options|string|favorites, email, digg, delicious}@}';
+addthis_offset_top      = '{@{offset_top|integer|0}@}';
+addthis_offset_left     = '{@{offset_left|integer|0}@}';
+</script><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+<!-- AddThis Rollover END -->
+</includeonly>

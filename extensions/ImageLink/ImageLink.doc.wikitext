@@ -16,7 +16,7 @@
 |example     =
 }}
 == Purpose==
-Provides a clickable image link using an image stored in the Image namespace and an article title (which may or may not existin the database).
+Provides a clickable image link using an image (either stored in the Image namespace or accessible through an ''interwiki'' prefix) and an article title (which may or may not existin the database).
 
 The extension also supports the ''link-less'' mode thereby enabling a ''one-stop'' solution for both ''link'' and ''link-less'' requirements.
 
@@ -44,8 +44,29 @@ When the parameter ''image'' points to a non-existing image page, then ''default
 * <nowiki>{{#imagelink: interwiki_prefix:image-page-name | page name | alternate text | width | height | border }}</nowiki>
 * <nowiki>{{#img: image=interwiki_prefix:image-page-name ... }}</nowiki>
 
-== Event Parameters ==
-Event parameters supported: onchange, onsubmit, onreset, onselect, onsubmit, onreset, onselect, onblur, onfocus, onkeydown, onkeyup, onkeypress, onclick, ondblclick, onmousedown, onmousemove, onmouseout, onmouseover, onmouseup.
+== List of supported HTML attributes ==
+{|class=datatable
+! HTML attribute !! Notes
+|-
+| target || e.g. ''target=_blank'' for opening link in new window
+|-
+| alt
+|-
+| height
+|-
+| width
+|-
+| alt
+|-
+| title || e.g. for tooltip functionality
+|-
+| border
+|-
+| class
+|}
+
+== Event Attributes ==
+Event attributes supported: onchange, onsubmit, onreset, onselect, onsubmit, onreset, onselect, onblur, onfocus, onkeydown, onkeyup, onkeypress, onclick, ondblclick, onmousedown, onmousemove, onmouseout, onmouseover, onmouseup.
 
 == Examples ==
 * <nowiki>{{#imagelink: New Clock.gif | Admin:Show Time | Current Time | 32 | 32 | 2 }}</nowiki>
@@ -81,6 +102,9 @@ The PEAR package [http://pear.php.net/package/Validate Validate] can be installe
 |-
 | 1.6.0 || Added 'content' & 'target' parameters for <a>, added '#iconlink' parser function
 |}
+
+== Sites using this extension ==
+* [http://jldupont.com author's web site]
 
 == Changes in Trunk ==
 * Added a ''space'' between $content and img in anchor (thanks Mitchelln)

@@ -98,7 +98,7 @@ class MW_WidgetFactory
 	protected static function extractCode( &$code ) {
 	
 		$result = preg_match( self::$codeSectionPattern, $code, $match );
-		if ( $result === false )
+		if ( ( $result === false ) || ($result === 0 ) )
 			return false;
 			
 		return $match[1];

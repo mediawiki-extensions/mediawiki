@@ -23,7 +23,7 @@
  <time>17:11:39</time>
 
  <version>
-  <release>1.0.1</release>
+  <release>1.0.2</release>
   <api>1.0.0</api>
  </version>
  
@@ -74,7 +74,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Added 'createtalk' right support
+Fixed missing negation...
 </notes>
 </release>
 </changelog>

@@ -50,7 +50,7 @@ class MW_EditTalkRight {
 			return true;
 			
 		// furthermore, only care about the 'talk' namespaces
-		if ( $wgTitle->isTalkPage() )
+		if ( !$wgTitle->isTalkPage() )
 			return true;
 		
 		// add the 'edit' right if the current operation

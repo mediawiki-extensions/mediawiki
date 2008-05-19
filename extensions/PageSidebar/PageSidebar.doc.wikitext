@@ -33,6 +33,9 @@ Provides page scoped sidebar.
  </pagesidebar>
 </pre>
 
+== Usage Note ==
+Note that [[Extension:SidebarEx]] '''replaces''' the sidebar and thus this extension ([[{{FULLPAGENAME}}]]) will not work with it.
+
 <!--{{
 == Example ==
 [[{{FULLPAGENAMEE}}/Tests]]

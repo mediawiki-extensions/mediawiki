@@ -59,9 +59,6 @@ $wgExtensionCredits['other'][] = array(
 	'url'     => 'http://www.bluecortex.com',
 );
 
-// Let's create a single instance of this class
-PageTools::singleton();
-
 class PageTools extends ExtensionClass
 {
 	static $mgwords = array('pageincategory', 'pagenumcategories' , 'pagecategory', 
@@ -195,4 +192,6 @@ class PageTools extends ExtensionClass
 	}
 
 } // end class	
-?>
+
+// Let's create a single instance of this class
+PageTools::singleton();

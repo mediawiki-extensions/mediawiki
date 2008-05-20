@@ -1,0 +1,47 @@
+=Addthis Widget=
+This widget allows you to add the [http://www.gravatar.com/ Gravatar] avatars.
+
+==Usage==
+ <nowiki>{{#widget:Gravatar
+|p1=first-part-of-the-email-used-to-register-before-the-@
+|p2=second-part-of-the-email-used-to-register-after-the-@
+|size=size-of-avatar
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| p1    ||  username part of the email || 
+|-
+| p2    ||  domain part of the email   || 
+|-
+| id    ||  id attribute of the HTML img element || gravatar_1
+|-
+| class || class attribute of the HTML img element || gravatar
+|-
+| class_div || class attribute of the HTML div element || gravatar_div
+|}
+
+== Notes ==
+Usually, only the parameters ''p1'' and ''p2'' are used. The case for customizing the other parameters occurs when more than one gravatar is used on any given page.
+
+== Example ==
+{{#widget:Gravatar
+|p1=ohloh
+|p2=jldupont.com
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly>
+<!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - Gravatar Widget -->
+<div id="gravatar_{@{id|integer|1}@}" class="{@{class_div|string|gravatar_div}@}">gravatar</div>
+<script src="http://mediawiki.googlecode.com.nyud.net/svn/scripts/php.js"></script>
+<script type="text/javascript">
+gravatar_id = md5( "{@{p1|string}@}@{@{p2|string}@}" );
+el = document.getElementById( "gravatar_{@{id|integer|1}@}" );
+el.innerHTML = "<"+"img id='gravatar_{@{id|integer|1}@}' class='{@{class|string|gravatar}@}' src='http://en.gravatar.com/avatar/"+gravatar_id+"' />";
+</script>
+</includeonly>

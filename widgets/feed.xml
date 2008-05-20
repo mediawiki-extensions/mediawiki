@@ -6,6 +6,16 @@
 		<description>Jean-Lou Dupont's MediaWiki Widget channel</description>
 
 		<item>
+			<title>Widget:Gravatar - version 1.0.0</title>
+			<link>http://jldupont.com/Widget:Gravatar</link>
+			<description><![CDATA[
+				<a class="widget-help" href="http://jldupont.com/Widget:Gravatar">Help page</a> and
+				<a class="widget-code" href="http://mediawiki.googlecode.com/svn/widgets/gravatar-1.0.0.html">Code Page</a>
+			]]></description>
+			<pubDate>Thu, 20 May 08 20:09:37 -0400</pubDate>
+		</item>
+
+		<item>
 			<title>Widget:Quimble - version 1.0.0</title>
 			<link>http://jldupont.com/Widget:Quimble</link>
 			<description><![CDATA[

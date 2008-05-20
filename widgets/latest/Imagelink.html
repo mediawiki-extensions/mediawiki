@@ -1,0 +1,44 @@
+=Imagelink Widget=
+This widget allows you to add the clickable images to your wiki similar to [[Extension:ImageLink]].
+
+==Usage==
+ <nowiki>{{#widget:Imagelink
+|
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| image   ||  image-page-url         ||  /favicon.ico
+|-
+| page    ||  page-url to link to    ||  # 
+|-
+| content ||  content of the HTML anchor element   ||   
+|-
+| target  ||  target attribute of the HTML anchor element    ||  _self 
+|-
+| title   ||  title attribute of the HTML anchor element    || image-link-title 
+|-
+| alt     ||  alt attribute of the HTML anchor element    || image-link-alt 
+|-
+| height  ||  height attribute of the HTML img element    || 100%
+|-
+| width   ||  width attribute of the HTML img element    || 100% 
+|-
+| class   ||  class attribute of the HTML img element    || imglink 
+|-
+| id      ||  id attribute of the HTML img element    || img-id1 
+|}
+
+== Example ==
+{{#widget:Imagelink
+|image=
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><a href="{@{page|string|#}@}" target="{@{target|string|_self}@}">
+<img src="{@{image|string|/favicon.ico}@}" title="{@{title|string|image-link-title}@}" alt="{@{alt|string|image-link-alt}@}" class="{@{class|string|imglink}@}" id="{@{id|string|img-id1}@}" height="{@{height|string|100%}@}" width="{@{width|string|100%}@}"></img>
+{@{content|string|}@}</a></includeonly>

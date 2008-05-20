@@ -266,8 +266,14 @@ class WidgetParameters
 			
 				// normal case
 				case 2:
-					$p['n'] = $bits[0];
-					$p['v'] = $bits[1];
+					// some XSS protection
+					$name = strtr( $bits[0], "'\"", "  " );
+					$name = trim( $name );
+					$value = strtr( $bits[1], "'\"", "  ");
+					$value = trim( $value );
+					
+					$p['n'] = $name;
+					$p['v'] = $value;
 					break;
 				
 				default:

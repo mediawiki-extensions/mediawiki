@@ -169,4 +169,5 @@ include 'WidgetCodeStorage.php';
 include 'WidgetCodeStorage_Database.php';
 include 'WidgetCodeStorage_Repository.php';
 
+include 'WidgetFactory.php';
 include 'WidgetRenderer.php';

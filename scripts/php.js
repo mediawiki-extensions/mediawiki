@@ -50,9 +50,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */ 
 
+//{{added by JLD
 if (typeof PHP_JS == "undefined" || !PHP_JS) {
 
 	var PHP_JS = {};
+//}}
 
 	// {{{ array
 	function array( ) {

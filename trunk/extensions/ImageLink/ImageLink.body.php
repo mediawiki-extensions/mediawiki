@@ -45,7 +45,6 @@ class ImageLink
 		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true ),
 		'height'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
 		'width' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
-		'alt'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
 		'title' 	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
 		'border'	=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),
 		'class'		=> array( 'm' => false, 's' => true,  'l' => true,  'd' => null, 'dq' => true, 'sq' => true  ),

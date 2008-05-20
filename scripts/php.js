@@ -50,9 +50,9 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */ 
 
-if ( php_js == undefined ) {
-	
-	php_js = {};
+if (typeof PHP_JS == "undefined" || !PHP_JS) {
+
+	var PHP_JS = {};
 
 	// {{{ array
 	function array( ) {

@@ -23,7 +23,7 @@
  <time>13:50:04</time>
 
  <version>
-  <release>1.0.0</release>
+  <release>1.0.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -101,7 +101,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Initial Release
+Changed Widget Feed address
 </notes>
 </release>
 </changelog>

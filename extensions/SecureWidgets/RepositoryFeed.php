@@ -10,7 +10,7 @@
 class RepositoryFeed
 	extends WidgetIterator {
 
-	const DEFAULT_FEED = "http://feeds.feedburner.com/jldupont/mw-widgets";
+	const DEFAULT_FEED = "http://feeds.feedburner.com/jldupont/widgets";
 	
 	var $feed = null;
 	var $contents = null;

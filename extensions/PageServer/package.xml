@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2008-04-10</date>
- <time>01:08:26</time>
+ <date>2008-05-20</date>
+ <time>19:16:18</time>
 
  <version>
-  <release>2.2.0</release>
+  <release>2.2.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -82,7 +82,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Added ''page_remote'' for retrieving remote pages accessible through HTTP
+Added etag information in HTML comment
 </notes>
 </release>
 </changelog>

@@ -1,6 +1,6 @@
 {{Extension
 |name        = PageServer
-|status      = beta
+|status      = Stable
 |type        = other
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
@@ -67,4 +67,6 @@ including up to 4 parameters (i.e. the $n parameters when using 'wfMsgForContent
 | 2.1.0 || Added support for page identifier (modification timestamp)
 |-
 | 2.2.0 || Added remote page loading hook ''page_remote'' with caching
+|-
+| 2.2.1 || Added ''etag'' information through HTML comment
 |}

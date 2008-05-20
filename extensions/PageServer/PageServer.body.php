@@ -175,9 +175,9 @@ class PageServer
 		$remote_page = PageServer_Remote::getAndProcessRemotePage( $uri , $remote_etag );
 		if ( is_string( $remote_page ))
 		{
-			$page = $remote_page;
-			$this->flow2( $uri, $remote_page );
 			$etag = $remote_etag;
+			$page = $remote_page."<!--PageServer etag:$etag-->";
+			$this->flow2( $uri, $remote_page );
 			$source = self::SOURCE_REMOTE;
 			$state  = self::STATE_CACHE_OK;
 			return true;

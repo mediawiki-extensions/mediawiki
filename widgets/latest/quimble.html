@@ -1,0 +1,30 @@
+=Quimble Widget=
+This widget allows you to add the [http://www.quimble.com/ Quimble] polls to your wiki page.
+
+==Usage==
+ <nowiki>{{#widget:Quimble
+|index=poll-index
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| index   || poll-index  || 9257 i.e. ''Which OS do you run?''
+|}
+
+===Usage Notes===
+You are encouraged to use a template (e.g. <nowiki>[[Template:Addthis]]</nowiki> to use this widget.
+
+===More information===
+You can read more about these options on [http://www.addthis.com/customization.html the AddThis documentation page].
+
+== Example ==
+{{#widget:Quimble
+|index=9257
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><script type='text/javascript' src='http://quimble.com/inpage/index/{@{index|integer|9257}@}'></script></includeonly>

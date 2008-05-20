@@ -4,7 +4,7 @@
 |type1       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.0.1
 |update      =
 |mediawiki   = 1.11, 1.12 (probably works with earlier versions too)
 |download    = [http://mediawiki.googlecode.com/svn/tags/SecureWidgets/ SVN]
@@ -40,11 +40,12 @@ Provides secure inclusion of ''widgets''
 {{#widget:Gliffy|id=1422053}}
 
 == Widget List ==
-The list of available widgets is available as an [http://feeds.feedburner.com/jldupont/mw-widgets RSS feed]. The widget name can be inferred by the entry title; e.g.:
+The list of available widgets is available as an [http://feeds.feedburner.com/jldupont/widgets RSS feed]. The widget name can be inferred by the entry title; e.g.:
  Widget:Gliffy - version 1.0.0
 thus the widget name would be ''Gliffy'' and one could use it through <nowiki>{{#widget:Gliffy ...}}</nowiki>
 <!--requires [[Extension:VersaComment]] -->
-<!--{{You can also consult [[Category:Widgets]] to access this list.}}-->
+<!--{{You can also consult [[:Category:Widgets]] to access this list.}}-->
+The widget list is also available at [http://jldupont.com/Category:Widgets].
 
 == Widget Namespace ==
 One can use [[Extension:ManageNamespaces]] to add and manage the ''Widget'' namespace. This is entirely optional.
@@ -76,4 +77,6 @@ Parameters are provided through the escape sequence:
 ! Release !! Notes
 |-
 | 1.0.0 || Initial Release
+|-
+| 1.0.1 || Widget Feed address change
 |}

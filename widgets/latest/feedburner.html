@@ -1,0 +1,33 @@
+=Feedburner Widget=
+This widget allows you to add the [http://www.feedburner.com/ Feedburner] chicklets.
+
+==Usage==
+ <nowiki>{{#widget:Feedburner
+|feed=feedburner-feed-url-fragment
+|title=some-title-here
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| feed  || feedburner url fragment     || jldupont/Mediawiki
+|-
+| title || attribute ''title'' of HTML anchor element || feed-title 
+|}
+
+== Notes ==
+The complete URL for a feed starts with with '''http://feeds.feedburner.com/''' but only the last part of the URL is required for parameter ''feed''. 
+
+== Example ==
+{{#widget:Feedburner
+|feed=jldupont/Mediawiki
+|title=Jean-Lou Dupont's MediaWiki extensions
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - Feedburner Widget -->
+<a alt='{@{title|string|feed-title}@}' title='{@{title|string|feed-title}@}' href="http://feeds.feedburner.com/{@{feed|string|jldupont/Mediawiki}@}"><img src="http://feeds.feedburner.com/~fc/{@{feed|string|jldupont/Mediawiki}@}?bg=99CCFF&amp;fg=444444&amp;anim=1" height="26" width="88" style="border:0" alt="" /></a>
+</includeonly>

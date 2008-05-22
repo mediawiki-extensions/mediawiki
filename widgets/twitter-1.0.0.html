@@ -1,0 +1,29 @@
+=Twitter Widget=
+This widget allows you to add the [http://www.twitter.com/ Twitter] social tool.
+
+==Usage==
+ <nowiki>{{#widget:Twitter
+|id=account-identifier
+|count=number-of-twits-to-show
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| id    || account id  || 
+|-
+| count || twit count to display || 5 
+|}
+
+== Example ==
+{{#widget:Twitter
+|id=openomy
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - Twitter Widget -->
+<ul id="twitter_update_list"></ul>
+<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script><script text="text/javascript" src="http://twitter.com/statuses/user_timeline/{@{id|string}@}.json?callback=twitterCallback2&count={@{count|integer|5}@}"></script></includeonly>

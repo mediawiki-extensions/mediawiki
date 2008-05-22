@@ -1,0 +1,26 @@
+=Yahoo IM Widget=
+This widget allows you to add the [http://messenger.yahoo.com/ Yahoo Instant Messenger] service.
+
+==Usage==
+ <nowiki>{{#widget:yahoo_im
+|target=target-yahoo-im-account
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| target || yahoo im account || 
+|}
+
+== Example ==
+{{#widget:Yahoo_im
+|target=jl_dupont260203
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - Yahoo IM Widget -->
+<a href="http://messenger.yahoo.com/edit/send/?.target={@{target|string}@}"><img border="0" src="http://opi.yahoo.com/yahooonline/u={@{target|string}@}/m=g/t=2/l=us/opi.jpg"></a>
+</html></includeonly>

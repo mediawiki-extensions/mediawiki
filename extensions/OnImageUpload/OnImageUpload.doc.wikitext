@@ -19,7 +19,8 @@ Provides text preloading when uploading files. The ''preload text'' is added to 
 
 == Features ==
 * Easy to customize: edit the page [[Mediawiki:Onimageupload-text]] to add arbitrary wikitext.
-* Secure: preload text is located in the namespace ''Mediawiki'' which by default is restricted access  
+* Secure: preload text is located in the namespace ''Mediawiki'' which by default is restricted access 
+* Help available: a user of the sysop group is provided with a link to the preload-text page on the [[Special:Version]] page. 
 
 == Dependency ==
 * [[Extension:ExtensionManager|ExtensionManager extension]] >= 2.0.1

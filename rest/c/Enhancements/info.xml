@@ -7,5 +7,5 @@
  <n>Enhancements</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>Enhancements</a> <!-- alias? -->
- <d>This extension enables the display of the text included in a 'redirect' page.</d>
+ <d>Provides an automated way of adding header and footer text to Image description pages</d>
 </c>

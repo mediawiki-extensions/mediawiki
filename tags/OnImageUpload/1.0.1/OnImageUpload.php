@@ -3,7 +3,7 @@
  * @package OnImageUpload
  * @category Enhancements
  * @author Jean-Lou Dupont
- * @version @@package-version@@ 
+ * @version 1.0.1 
  * @Id $Id$
  */
 
@@ -20,7 +20,7 @@ if (!class_exists( 'ExtensionBaseClass' )) {
 class MW_OnImageUpload 
 	extends ExtensionBaseClass
 {
-	const VERSION = '@@package-version@@';
+	const VERSION = '1.0.1';
 	const NAME    = 'onimageupload';
 	const TEXT    = 'onimageupload-text';
 	

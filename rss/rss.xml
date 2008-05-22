@@ -8,6 +8,72 @@
 
 	
 	<item>
+			<title>OnImageUpload - 1.0.1</title>
+			<link>http://jldupont.com/Extension:OnImageUpload</link>
+			<description>Changelog:
+Initial Release
+			</description>
+			<pubDate>Thu, 22 May 08 08:53:27 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>SecureWidgets - 1.0.1</title>
+			<link>http://jldupont.com/Extension:SecureWidgets</link>
+			<description>Changelog:
+Changed Widget Feed address
+			</description>
+			<pubDate>Tue, 20 May 08 16:43:05 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>PageServer - 2.2.1</title>
+			<link>http://jldupont.com/Extension:PageServer</link>
+			<description>Changelog:
+Added etag information in HTML comment
+			</description>
+			<pubDate>Tue, 20 May 08 15:16:21 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>SecureWidgets - 1.0.0</title>
+			<link>http://jldupont.com/Extension:SecureWidgets</link>
+			<description>Changelog:
+Initial Release
+			</description>
+			<pubDate>Tue, 20 May 08 09:50:06 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>EditTalkRight - 1.0.2</title>
+			<link>http://jldupont.com/Extension:EditTalkRight</link>
+			<description>Changelog:
+Fixed missing negation...
+			</description>
+			<pubDate>Fri, 16 May 08 21:57:15 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>EditTalkRight - 1.0.1</title>
+			<link>http://jldupont.com/Extension:EditTalkRight</link>
+			<description>Changelog:
+Added 'createtalk' right support
+			</description>
+			<pubDate>Fri, 16 May 08 13:11:41 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>Gliffy - 1.0.0</title>
 			<link>http://jldupont.com/Extension:Gliffy</link>
 			<description>Changelog:

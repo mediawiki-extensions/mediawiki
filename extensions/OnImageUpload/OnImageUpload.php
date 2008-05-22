@@ -22,6 +22,7 @@ class MW_OnImageUpload
 {
 	const VERSION = '@@package-version@@';
 	const NAME    = 'onimageupload';
+	const TEXT    = 'onimageupload-text';
 	
 	/**
 	 * If a constructor is required, then the
@@ -32,33 +33,75 @@ class MW_OnImageUpload
 		parent::__construct();
 	}
 	/**
-	 * Optional setup: called once it is safe
-	 *  to perform additional setup on the MediaWiki platform.
-	 * 
-	 * @optional This method can be omitted.
+	 * Credits
 	 */
 	protected function setup(){
 		
+	
 		$this->setCreditDetails( array( 
 			'name'        => $this->getName(), 
 			'version'     => self::VERSION,
 			'author'      => 'Jean-Lou Dupont', 
-			'description' => 'Provides automated header and footer text to Image description pages on upload',
+			'description' => 'Provides automated header and footer text to Image description pages on upload. ',
 			'url' 		=> 'http://mediawiki.org/wiki/Extension:OnImageUpload',			
 			) );
 		
 		$this->setStatus( self::STATE_OK );
 	}
 	/**
+	 *  Help message in [[Special:Version]] page
+	 */	
+	public function hook_SpecialVersionExtensionTypes( &$sp, &$extensionTypes ){
+
+		global $wgUser;
+		$groups = $wgUser->getGroups();
+		
+		if ( !in_array( 'sysop', $groups ) )
+			return true;
+			
+		$this->addToCreditDescription( 'Image namespace [[Mediawiki:' . self::TEXT . '|preload text]] page.' );
+				
+		// required for all hooks
+		return true; #continue hook-chain
+	}
+	/**
 	 * HOOK ArticleSave
 	 */
 	public function hook_ArticleSave( &$article, &$user, &$text, &$summary, $minor,	$na1, $na2, &$flags) {
-	
+
+		$title = $article->mTitle;
+		$ns    = $title->getNamespace();	
+		$id = $article->getID();
+		
 		// make sure we are dealing with an article in the Image namespace
-		
+		if ( NS_IMAGE != $ns )
+			return true;	
+	
 		// make sure it is a new page too
+		if ( 0 != $id )
+			return true;
+			
+		// we are good to go!
+		$preloadText = $this->getMsg( self::TEXT );
 		
+		$text = $header . $preloadText. $footer;
+		
+		return true;
 	}
+
+	/**
+	 * Gets a message from the NS_MEDIAWIKI namespace
+	 */
+	protected function getMsg( $msgId )
+	{
+		$msgText = wfMsgExt( $msgId );
+		
+		if ( wfEmptyMsg( $msgId, $msgText ))
+			return null;
+			
+		return $msgText;			
+	}	 
+	
 	
 }//end class definition
 

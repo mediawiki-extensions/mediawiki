@@ -1,0 +1,31 @@
+=FreshShoutbox Widget=
+This widget allows you to add the [http://www.freeshoutbox.net/ FreshShoutBox] shoutboxes.
+
+==Usage==
+ <nowiki>{{#widget:Freshshoutbox
+|id=shoutbox-identifier
+|width=width-of-box
+|height=height-of-box
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| id || shoutbox identifier || 
+|-
+| width  || width of box || 300
+|-
+| height || height of box || 500
+|}
+
+== Example ==
+{{#widget:Freshshoutbox
+|id=jldupont
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - Freshshoutbox Widget -->
+<noscript>Enable Javascript to get full functionality of this <a href="http://www.freeshoutbox.net/">shoutbox</a><br /></noscript><iframe src="http://{@{id|string|jldupont}@}.freeshoutbox.net/" height="{@{height|string|300}@}" width="{@{width|string|500}@}" frameborder="0"></iframe></includeonly>

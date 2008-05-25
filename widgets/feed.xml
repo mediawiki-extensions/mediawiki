@@ -6,6 +6,16 @@
 		<description>Jean-Lou Dupont's MediaWiki Widget channel</description>
 
 		<item>
+			<title>Widget:Whos_amung_us - version 1.0.0</title>
+			<link>http://jldupont.com/Widget:Whos_amung_us</link>
+			<description><![CDATA[
+				<a class="widget-help" href="http://jldupont.com/Widget:Whos_amung_us">Help page</a> and
+				<a class="widget-code" href="http://mediawiki.googlecode.com/svn/widgets/whos_amung_us-1.0.0.html">Code Page</a>
+			]]></description>
+			<pubDate>Sun, 25 May 2008 13:44:00 -0400</pubDate>
+		</item>
+
+		<item>
 			<title>Widget:Freshshoutbox - version 1.0.0</title>
 			<link>http://jldupont.com/Widget:Freshshoutbox</link>
 			<description><![CDATA[

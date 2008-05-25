@@ -1,0 +1,32 @@
+=Who's amung us Widget=
+This widget allows you to add the [http://whos.amung.us/ Who's Amung Us] site tracking service.
+
+==Usage==
+ <nowiki>{{#widget:whos_amung_us
+|id=site-identifier
+|width=width-of-box
+|height=height-of-box
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| id     || site identifier || 
+|-
+| width  || width of box  || 81
+|-
+| height || height of box || 29
+|}
+
+== Example ==
+{{#widget:whos_amung_us
+|id=ic39goe9
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - Whos_amung_us Widget -->
+<a href="http://whos.amung.us/show/{@{id|string}@}">
+<img src="http://whos.amung.us/widget/{@{id|string}@}.png" alt="hit counter" width="{@{width|string|81}@}" height="{@{height|string|29}@}" border="0" /></a></includeonly>

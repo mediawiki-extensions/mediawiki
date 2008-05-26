@@ -1,0 +1,34 @@
+=Skype Widget=
+This widget allows you to add the [http://www.Skype.com/ Skype] status button.
+
+==Usage==
+ <nowiki>{{#widget:Feedburner
+|user=skype-username
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| user  || skype username     || 
+|}
+
+== Example ==
+{{#widget:Skype
+|user=jean-lou.dupont
+}}
+
+== Note ==
+The user's status must be publically available. The user must have this option set in "tools->options->privacy->Allow my status to be shown on the web".
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - Skype Widget -->
+<!--
+Skype 'My status' button
+http://www.skype.com/go/skypebuttons
+-->
+<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
+<a href="skype:{@{user|string}@}?call"><img src="http://mystatus.skype.com/bigclassic/{@{user|string}@}" style="border: none;" width="182" height="44" alt="My status" /></a>
+</includeonly>

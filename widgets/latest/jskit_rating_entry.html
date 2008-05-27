@@ -1,0 +1,71 @@
+=JS-Kit Rating (entry) Widget=
+This widget allows you to add the [http://www.js-kit.com/ JS-Kit] interactive rating tool.
+This widget complements [[Widget:Jskit_ratings]] by enabling multiple entries per page. The only difference with the latter is the javascript which isn't loaded: the script is taken care of in [[Widget:Jskit_ratings]].
+
+==Usage==
+ <nowiki>{{#widget:jskit_ratings_entry
+|title
+|permalink
+|path
+|starColor
+|view
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+|title		|| title                     ||
+|-
+|permalink	|| permanent link to page    || <nowiki>{{FULLURL: {{FULLPAGENAME}}}}</nowiki>
+|-
+|path		|| url relative path to page || <nowiki>{{FULLPAGENAME}}</nowiki>
+|-
+|starColor	|| color of the stars        || Ruby, Red, Golden (default), Green, Emerald, Blue, Indigo, Violet
+|-
+|view		|| view style                || combo , split (default), score
+|}
+
+For further details, please consult [http://js-kit.com/ratings/custom.html customization].
+
+== Notes ==
+Multiple entries can be placed per page. The procedure to do this follows:
+* for the first entries, use this widget
+* for the last entry, use [[Widget:Jskit_ratings]]
+
+== Example ==
+<nowiki>
+{{#widget:jskit_ratings_entry
+ |title=Widget Js-Kit Ratings Entry
+ |permalink={{FULLURL: Widget:Jskit_ratings}}
+ |path=Widget:Jskit_ratings
+ }}
+{{#widget:jskit_ratings
+ |title=Widget Js-Kit Ratings
+ |permalink={{FULLURL: {{FULLPAGENAMEE}}}}
+ |path={{FULLPAGENAMEE}}
+ }}
+</nowiki>
+
+{{#widget:jskit_ratings_entry
+ |title=Widget Js-Kit Ratings Entry
+ |permalink={{FULLURL: Widget:Jskit_ratings}}
+ |path=Widget:Jskit_ratings
+ }}
+{{#widget:jskit_ratings
+ |title=Widget Js-Kit Ratings
+ |permalink={{FULLURL: {{FULLPAGENAMEE}}}}
+ |path={{FULLPAGENAMEE}}
+ }}
+
+==Related==
+See [[Widget:Jskit_ratings]]
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - JS-Kit Rating Widget -->
+<div class="js-kit-rating" title="{@{title|string}@}" path="{@{path|string}@}" permalink="{@{permalink|string}@}" starcolor="{@{starcolor|string|Golden}@}" view="{@{view|string|split}@}"></div></script>
+</includeonly>
+
+__NONSFOOTER__

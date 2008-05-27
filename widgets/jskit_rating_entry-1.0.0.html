@@ -7,7 +7,7 @@ This widget complements [[Widget:Jskit_ratings]] by enabling multiple entries pe
 |title
 |permalink
 |path
-|starColor
+|starColor 
 |view
 }}</nowiki>
 
@@ -19,7 +19,7 @@ This widget complements [[Widget:Jskit_ratings]] by enabling multiple entries pe
 |-
 |permalink	|| permanent link to page    || <nowiki>{{FULLURL: {{FULLPAGENAME}}}}</nowiki>
 |-
-|path		|| url relative path to page || <nowiki>{{FULLPAGENAME}}</nowiki>
+|path		|| url relative path to page || <nowiki>{{lc:{{FULLPAGENAME}}}}</nowiki>
 |-
 |starColor	|| color of the stars        || Ruby, Red, Golden (default), Green, Emerald, Blue, Indigo, Violet
 |-
@@ -35,28 +35,28 @@ Multiple entries can be placed per page. The procedure to do this follows:
 
 == Example ==
 <nowiki>
-{{#widget:jskit_ratings_entry
+{{#widget:Jskit_ratings_entry
  |title=Widget Js-Kit Ratings Entry
  |permalink={{FULLURL: Widget:Jskit_ratings}}
- |path=Widget:Jskit_ratings
+ |path={{lc:Widget:Jskit_ratings}}
  }}
-{{#widget:jskit_ratings
+{{#widget:Jskit_ratings
  |title=Widget Js-Kit Ratings
  |permalink={{FULLURL: {{FULLPAGENAMEE}}}}
- |path={{FULLPAGENAMEE}}
- }}
+ |path={{lc:{{FULLPAGENAMEE}}}}
+}}
 </nowiki>
 
-{{#widget:jskit_ratings_entry
+{{#widget:Jskit_ratings_entry
  |title=Widget Js-Kit Ratings Entry
  |permalink={{FULLURL: Widget:Jskit_ratings}}
- |path=Widget:Jskit_ratings
+ |path={{lc:Widget:Jskit_ratings}}
  }}
-{{#widget:jskit_ratings
+{{#widget:Jskit_ratings
  |title=Widget Js-Kit Ratings
  |permalink={{FULLURL: {{FULLPAGENAMEE}}}}
- |path={{FULLPAGENAMEE}}
- }}
+ |path={{lc:{{FULLPAGENAMEE}}}}
+}}
 
 ==Related==
 See [[Widget:Jskit_ratings]]

@@ -23,7 +23,7 @@
  <time>03:21:52</time>
 
  <version>
-  <release>2.0.0</release>
+  <release>2.0.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -81,7 +81,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-New version
+Fixed bug related to disable keywords (e.g. __NONSFOOTER__)
 </notes>
 </release>
 </changelog>

@@ -1,11 +1,11 @@
 {{Extension
 |name        = HeaderFooter
-|status      = beta
+|status      = stable
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 2.0.0
+|version     = 2.0.1
 |update      =
-|mediawiki   = 1.11, 1.12
+|mediawiki   = 1.10, 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/HeaderFooter/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
@@ -58,6 +58,8 @@ On ''edit'' protected pages, one can add
 ! Release !! Notes
 |-
 | 2.0.0 || Complete redesign
+|-
+| 2.0.1 || Fixed bug related to disable keywords (e.g. __NONSFOOTER__)
 |}
 
 == See also ==

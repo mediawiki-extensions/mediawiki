@@ -6,6 +6,16 @@
 		<description>Jean-Lou Dupont's MediaWiki Widget channel</description>
 
 		<item>
+			<title>Widget:Jskit_ratings - version 1.0.0</title>
+			<link>http://jldupont.com/Widget:Jskit_ratings</link>
+			<description><![CDATA[
+				<a class="widget-help" href="http://jldupont.com/Widget:Jskit_ratings">Help page</a> and
+				<a class="widget-code" href="http://mediawiki.googlecode.com/svn/widgets/jskit_ratings-1.0.0.html">Code Page</a>
+			]]></description>
+			<pubDate>Tue, 27 May 2008 08:50:00 -0400</pubDate>
+		</item>
+
+		<item>
 			<title>Widget:Skype - version 1.0.0</title>
 			<link>http://jldupont.com/Widget:Skype</link>
 			<description><![CDATA[

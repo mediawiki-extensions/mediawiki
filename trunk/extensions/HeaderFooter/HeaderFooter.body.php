@@ -59,7 +59,7 @@ class HeaderFooter
 	protected function conditionalInclude( &$text, $disableWord, &$content, $protect )
 	{
 		// is there a disable command lurking around?
-		$disable = strpos( $content, $disableWord ) !== false ;
+		$disable = strpos( $text, $disableWord ) !== false ;
 		
 		// if there is, get rid of it
 		// make sure that the disableWord does not break the REGEX below!

@@ -1,0 +1,34 @@
+=Diigo TagRolls Widget=
+This widget allows you to add the tagrolls from [http://www.diigo.com/ Diigo Social Bookmarking] tool.
+
+==Usage==
+ <nowiki>{{#widget:Diigo_tagrolls
+|username=username-parameter
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+|username	|| username                   ||
+|}
+
+== Example ==
+<nowiki>
+{{#widget:Diigo_tagrolls
+ |username=jldupont
+}}
+</nowiki>
+
+{{#widget:Diigo_tagrolls
+ |username=jldupont
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - Diigo Social Bookmarking Tagrolls Widget -->
+<script type="text/javascript" src="http://www.diigo.com/tools/tagrolls_script/{@{username|string|jldupont}@}?icon;size=11-23;color=87ceeb-0000ff;title=My%20Diigo%20Tags;name;showadd"></script>
+</includeonly>
+
+__NONSFOOTER__

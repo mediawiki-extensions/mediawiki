@@ -6,6 +6,16 @@
 		<description>Jean-Lou Dupont's MediaWiki Widget channel</description>
 
 		<item>
+			<title>Widget:Diigo TagRolls - version 1.0.0</title>
+			<link>http://jldupont.com/Widget:Diigo_tagrolls</link>
+			<description><![CDATA[
+				<a class="widget-help" href="http://jldupont.com/Widget:Diigo_tagrolls">Help page</a> and
+				<a class="widget-code" href="http://mediawiki.googlecode.com/svn/widgets/diigo_tagrolls-1.0.0.html">Code Page</a>
+			]]></description>
+			<pubDate>Wed, 28 May 2008 08:50:00 -0400</pubDate>
+		</item>
+
+		<item>
 			<title>Widget:Diigo - version 1.0.0</title>
 			<link>http://jldupont.com/Widget:Diigo</link>
 			<description><![CDATA[

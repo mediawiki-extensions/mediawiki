@@ -1,0 +1,35 @@
+=Google Gtalk Widget=
+This widget allows you to add [http://www.google.com/talk/ Google Gtalk] badge.
+
+==Usage==
+ <nowiki>{{#widget:Gtalk
+|tk=tk-parameter
+|width=width-parameter
+|height=height-parameter
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| tk      || tk identifier    || 
+|-
+| width   || frame width       || 200
+|-
+| height  || frame height      || 600
+|}
+
+== Gtalk Service ==
+Get the ''tk'' parameter by visiting the page [http://www.google.com/talk/service/badge/New Create a Google Talk chatback badge].
+].
+
+==Example==
+{{#widget:gtalk
+|tk=z01q6amlqrr2u66cb9ftm2f9mdh2kd7ii4lkdgtc1cvo24gqb6nmjviqd6gqs0haso4edvs2fnh0uh2frmfd9blsh996ucg3nt9autbif2qht79qnh4c5fbd3vaodujabgagc4tur78rk2niermdn184v1jtc1reel64pat93
+}}
+
+==Code==
+Only provided for reference.
+
+<includeonly><!-- SecureWidgets extension: Google Gtalk Widget For Mediawiki by Jean-Lou Dupont -->
+<iframe src="http://www.google.com/talk/service/badge/Show?tk={@{tk|string}@}&amp;w={@{width|integer|200}@}&amp;h={@{height|integer|60}@}" frameborder="0" allowtransparency="true" width="{@{width|integer|200}@}" height="{@{height|integer|60}@}"></iframe></includeonly>

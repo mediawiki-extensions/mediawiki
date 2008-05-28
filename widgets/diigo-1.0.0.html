@@ -1,0 +1,37 @@
+=Diigo Widget=
+This widget allows you to add the [http://www.diigo.com/ Diigo Social Bookmarking] tool.
+
+==Usage==
+ <nowiki>{{#widget:Diigo
+|username=username-parameter
+|count=number-of-links-to-display
+}}</nowiki>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+|username	|| username                   ||
+|-
+|count	    || number-of-links-to-display || 10
+|}
+
+== Example ==
+<nowiki>
+{{#widget:Diigo
+ |username=jldupont
+}}
+</nowiki>
+
+{{#widget:Diigo
+ |username=jldupont
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- Jean-Lou Dupont's MediaWiki SecureWidget extension - Diigo Social Bookmarking Widget -->
+<script type="text/javascript" src="http://www.diigo.com/roll2/linkrolls?username={@{username|string|jldupont}@}&l_type=0&count={@{count|integer|10}@}&desc=1&style=standard&title=My%20Diigo&tags="></script><noscript><a href="http://www.diigo.com/user/{@{username|string|jldupont}@}">My Diigo</a></noscript>
+</includeonly>
+
+__NONSFOOTER__

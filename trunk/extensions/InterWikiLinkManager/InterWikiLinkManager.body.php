@@ -83,6 +83,7 @@ class InterWikiLinkManager
 	public function hEditFormPreloadText( &$text, &$title )
 
 	{
+		//TODO use canonical index for namespace comparison => multi-language support
 		// Are we dealing with the page which contains the links to manage?
 		if ( $title->getFullText() != self::mPage ) return true;
 		

@@ -8,10 +8,10 @@
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
   <!-- $Id$ -->
- <name>PreloadManager</name>
+ <name>QuickEditProtect</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Provides per-namespace specific text preloading upon page creation.</summary>
- <description>Provides per-namespace specific text preloading upon page creation.</description>
+ <summary>Provides AJAX protect/unprotect for the edit right.</summary>
+ <description>Provides AJAX protect/unprotect for the edit right.</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -20,11 +20,11 @@
   <active>yes</active>
  </lead>
 
- <date>2008-01-06</date>
- <time>20:17:52</time>
+ <date>2008-06-13</date>
+ <time>19:12:57</time>
 
  <version>
-  <release>1.1.0</release>
+  <release>1.0.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -42,8 +42,9 @@
 
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/PreloadManager" name="PreloadManager.body.php" role="php" />
-   <file baseinstalldir="MediaWiki/PreloadManager" name="PreloadManager.php" role="php" />
+   <file baseinstalldir="MediaWiki/QuickEditProtect" name="QuickEditProtect.php" role="php" />
+   <file baseinstalldir="MediaWiki/QuickEditProtect" name="QuickEditProtect.i18n.php" role="php" />
+   <file baseinstalldir="MediaWiki/QuickEditProtect" name="QuickEditProtect.js" role="doc" />   
     <!-- }} -->
 
   </dir>
@@ -62,9 +63,9 @@
    </pearinstaller>
  
 	<package>
-		<name>StubManager</name>
+		<name>ExtensionManager</name>
 		<channel>mediawiki.googlecode.com/svn</channel>
-		<min>1.0.5</min>
+		<min>2.0.1</min>
 	</package>
 
   </required>
@@ -82,7 +83,7 @@
 	<release>
 		<license uri="http://www.php.net/license">PHP License</license>
 		<notes>
-			Support for ''includeonly'' section
+			Initial Release
 		</notes>
 	</release>
 </changelog>

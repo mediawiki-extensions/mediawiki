@@ -77,7 +77,7 @@ class MW_SecureWidgets
 		$this->setStatus( self::STATE_OK );
 	}
 	/**
-	 * Parser Function #gliffy
+	 * Parser Function #widget
 	 */
 	public function pfnc_widget( &$parser, $_name = null ) {
 	
@@ -104,6 +104,7 @@ class MW_SecureWidgets
 			return $this->handleError( $widget );
 		
 		// render the widget with the provided parameters
+		// TODO change to 'borg' pattern
 		$renderer = MW_WidgetRenderer::gs();
 		$output = $renderer->render( $widget, $params );
 		
@@ -113,7 +114,7 @@ class MW_SecureWidgets
 		return array( $output, 'noparse' => true, 'isHTML' => true );		
 	}
 	/**
-	 * 
+	 * Handler for errors
 	 */
 	protected function handleError( &$obj ) {
 	
@@ -131,12 +132,15 @@ class MW_SecureWidgets
 	
 		return $msg;
 	}
+	/**
+	 * Formats an 'example' message
+	 */
 	protected function getExampleMessage() {
 	
 		return wfMsg( self::NAME . '-example' );	
 	}
 	/**
-	 * 
+	 * Formats the 'help' message
 	 */
 	protected function getHelpMessage() {
 	

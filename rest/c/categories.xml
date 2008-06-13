@@ -8,6 +8,7 @@
 
 <!-- DO NOT EDIT BELOW HERE -->
 <ch>mediawiki.googlecode.com/svn</ch> <!-- not read by list-all command -->
+	<c xlink:href="/rest/c/AJAX/info.xml">AJAX</c>
 	<c xlink:href="/rest/c/AddScriptCss/info.xml">AddScriptCss</c>
 	<c xlink:href="/rest/c/AutoRedirect/info.xml">AutoRedirect</c>
 	<c xlink:href="/rest/c/Backup/info.xml">Backup</c>

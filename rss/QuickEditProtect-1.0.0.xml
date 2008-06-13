@@ -6,12 +6,12 @@
 		<link>${rss.link}</link>
 		<description>${rss.description}</description>
 		<item>
-			<title>PreloadManager - 1.1.0</title>
-			<link>http://jldupont.com/Extension:PreloadManager</link>
+			<title>QuickEditProtect - 1.0.0</title>
+			<link>http://jldupont.com/Extension:QuickEditProtect</link>
 			<description>Changelog:
-Support for ''includeonly'' section
+Initial Release
 			</description>
-			<pubDate>Fri, 13 Jun 08 15:10:33 -0400</pubDate>
+			<pubDate>Fri, 13 Jun 08 15:13:00 -0400</pubDate>
 		</item>
 	</channel>
 </rss>

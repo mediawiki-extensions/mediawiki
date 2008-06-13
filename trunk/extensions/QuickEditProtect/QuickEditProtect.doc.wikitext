@@ -1,0 +1,39 @@
+{{Extension
+|name        = QuickEditProtect
+|status      = stable
+|type1       = parser function
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0
+|update      =
+|mediawiki   = 1.11, 1.12 (probably works with earlier versions too)
+|download    = [http://mediawiki.googlecode.com/svn/tags/QuickEditProtect/ SVN]
+|readme      =
+|changelog   = See SVN ($Id$)
+|description = Provides secure inclusion of ''widgets''
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides an AJAX shortcut to edit protect/un-protect a page. The usual way (through the ''protect/unprotect'' form) is still provided.
+
+== Features ==
+* AJAX controlled for performace
+* Secure: respects permissions (usually members of the ''sysop'' group have the ''protect'' right) 
+
+== Installation of Javascript file ==
+The file ''QuickEditProtect.js'' is provided in the tarball distribution and should be included in the wiki's [[Mediawiki:Common.js]] page. The reason to include the javascript code directly in Common.js relates to performance: the less separate JS files, the better.
+
+== Dependency ==
+* [[Extension:ExtensionManager]] of version >= 2.0.1
+** Automatically resolved if using PEAR
+
+{{Pear|QuickEditProtect}}
+
+== History ==
+{|class='datatable'
+! Release !! Notes
+|-
+| 1.0.0 || Initial Release
+|}

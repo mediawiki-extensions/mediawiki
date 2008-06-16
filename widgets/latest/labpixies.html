@@ -1,0 +1,53 @@
+=LabPixies Widget=
+This widget allows you to add the [http://www.labpixies.com/ LabPixies] widgets to your wiki page.
+
+==Usage==
+ <nowiki>{{#widget:Labpixies
+|url=widget-url
+|allowtransparency=true OR false
+|width=width
+|height=height
+}}</nowiki>
+
+<iframe allowTransparency="true" 
+		align="middle" 
+		scrolling="no" 
+		width="280" 
+		height="202" 
+		frameborder="0" src="http://www.labpixies.com/campaigns/progress/progress.html"> </iframe>
+
+===Parameters===
+{|class=datatable
+! Parameter !! Notes !! Default Value
+|-
+| url         || The url ''fragment'' of the widget ||
+|-
+|allowtransparency || allowTransparency attribute || true 
+|-
+| width       || iframe's width  || 280
+|-
+| height      || iframe's height || 202
+|}
+
+===URL Fragment===
+
+===More information===
+Visit [http://www.labpixies.com] for more information. Each widget page is presented with an ''< embed code >'' button where the ''url-fragment'' can be found i.e. look at the iframe's src element.
+
+== Example ==
+<nowiki>
+{{#widget:Labpixies
+|url=/babylon/babylon.html
+}}
+</nowiki>
+{{#widget:Labpixies
+|url=/babylon/babylon.html
+}}
+
+==Code==
+Provided as reference only.
+
+<includeonly><!-- LabPixies Widget for Mediawiki. Using SecureWidgets extension by Jean-Lou Dupont -->
+<iframe allowTransparency="{@{allowtransparency|string|true}@}" align="middle" scrolling="no" width="{@{width|string|280}@}" height="{@{height|string|202}@}"
+frameborder="0" src="http://www.labpixies.com/campaigns/{@{url|string|babylon/babylon.html}@}"></iframe>
+</includeonly>

@@ -6,6 +6,16 @@
 		<description>Jean-Lou Dupont's MediaWiki Widget channel</description>
 
 		<item>
+			<title>Widget:Labpixies - version 1.0.0</title>
+			<link>http://jldupont.com/Widget:Labpixies</link>
+			<description><![CDATA[
+				<a class="widget-help" href="http://jldupont.com/Widget:Labpixies">Help page</a> and
+				<a class="widget-code" href="http://mediawiki.googlecode.com/svn/widgets/labpixies-1.0.0.html">Code Page</a>
+			]]></description>
+			<pubDate>Mon, 16 June 2008 10:00:00 -0400</pubDate>
+		</item>
+
+		<item>
 			<title>Widget:Diigo TagRolls - version 1.0.0</title>
 			<link>http://jldupont.com/Widget:Diigo_tagrolls</link>
 			<description><![CDATA[

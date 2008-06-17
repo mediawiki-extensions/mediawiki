@@ -9,8 +9,8 @@
 
  <name>SidebarEx</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Summary...</summary>
- <description>Description...</description>
+ <summary>Provides versatile sidebar customization</summary>
+ <description>Provides versatile sidebar customization</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -23,7 +23,7 @@
  <time>01:28:02</time>
 
  <version>
-  <release>1.0.1</release>
+  <release>1.1.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -34,7 +34,7 @@
 
  <license uri="http://www.php.net/license">PHP License</license>
 
- <notes>$notes</notes>
+ <notes></notes>
 
  <contents>
   <dir name="/">
@@ -81,7 +81,7 @@
  <release>
    <license uri="http://www.php.net/license">PHP License</license>
    <notes>
-   	Removed integration with default MediaWiki sidebar as it was causing some non-deterministic behavior.
+   	Added support for integration with [[Extension:PageSidebar]]
    </notes>
   </release>
 </changelog>

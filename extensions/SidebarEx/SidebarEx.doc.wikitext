@@ -4,7 +4,7 @@
 |type        = mywiki
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.1
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.82, 1.93, 1.10, 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/SidebarEx SVN]
@@ -19,6 +19,7 @@
 Provides a means of adding page links to the 'sidebar' based on group membership & per-user basis.
 
 == Features ==
+* Integration with [[Extension:PageSidebar]]
 * Can be used independantly of BizzWiki environment
 * all defined groups are supported (standard MW and ones defined in installation)
 * sidebar page name corresponds to 'group' name
@@ -79,4 +80,6 @@ Examples:
 | 1.0.0 || Initial Release
 |-
 | 1.0.1 || Removed integration of default sidebar
+|-
+| 1.1.0 || Added Integration with [[Extension:PageSidebar]]
 |}

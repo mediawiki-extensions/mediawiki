@@ -10,7 +10,10 @@ class SidebarEx
 	// constants.
 	const thisName = 'SidebarEx';
 	const thisType = 'other';  // must use this type in order to display useful info in Special:Version
-	const id       = '$Id$';	
+	const id       = '$Id$';
+
+	// Integration with PageSidebar extension
+	const DISABLE_PAGESIDEBAR_CMD =' @@disable_pagesidebar@@';
 	
 	// default values
 	static $baseNs   = NS_MEDIAWIKI;  	// default namespace
@@ -38,22 +41,28 @@ class SidebarEx
 	}
 	public function hSkinTemplateOutputPageBeforeExec( &$skin, &$tpl )
 	{
+		$pbar = array();
+		$foundPageSidebarDisableCommand = false;
+		
 		$gbar = $this->doGroupSidebar();
 		$ubar = $this->doUserSidebar();
-		$nbar = $this->doNsSidebar();		
+		$nbar = $this->doNsSidebar( $foundPageSidebarDisableCommand );
+		
+		if ( !$foundPageSidebarDisableCommand )
+			$pbar = $this->doPageSidebar();		
 		
 		// get current sidebar text
 		#$cbar = $tpl->data['sidebar'];
 
 		// add our own here
-		$tpl->set( 'sidebar', array_merge(/*$cbar,*/ $gbar, $nbar, $ubar) );		
+		$tpl->set( 'sidebar', array_merge(/*$cbar,*/ $gbar, $nbar, $ubar, $pbar ) );		
 		
 		return true;
 	}
 	/**
 		Fetches the per-namespace sidebar according to 'MediaWiki:Sidebar/Ns/$ns'
 	 */
-	private function doNsSidebar()
+	private function doNsSidebar( &$pagesidebar_disable_cmd )
 	{
 		global $wgTitle;
 		
@@ -77,6 +86,10 @@ class SidebarEx
 			return array();
 			
 		$text = $a->getContent();
+		
+		// extract disable command
+		$pagesidebar_disable_cmd = $this->cmdDisablePresent( $text );
+		
 		$bar  = $this->processSidebarText( $text );
 
 		return $bar;		
@@ -199,5 +212,41 @@ class SidebarEx
 		}
 	}
 
+	/*==========================================================================
+	 * INTEGRATION with PageSidebar extension
+	 ==========================================================================*/
+	
+	/**
+	 * Verifies if the 'disable pagesidebar' command is present
+	 * in the $content text provided
+	 */
+	protected function cmdDisablePresent( &$content ) {
+		
+		if ( stripos( $content, self::DISABLE_PAGESIDEBAR_CMD ) === false )
+			return false;
+			
+		$content = str_replace( self::DISABLE_PAGESIDEBAR_CMD, '', $content );
+		
+		return true;
+	}
+	/**
+	 * Handles the retrieval of the 'page level' sidebar
+	 *  Requires a participating extension such as [[Extension:PageSidebar]]
+	 */
+	protected function doPageSidebar() {
+		
+		$contents = false;
+		wfRunHooks( 'PageSidebar', array( &$content ) );
+		
+		// PageSidebar extension either:
+		//  1- not present
+		//  2- not recent enough i.e. does not support 'PageSidebar' hook
+		if ( $contents === false ) {
+			return array();
+		}
+		
+		return $this->processSidebarText( $contents );
+	}
+	
 } // END CLASS DEFINITION
 // </source>

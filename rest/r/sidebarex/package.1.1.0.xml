@@ -20,7 +20,7 @@
  </lead>
 
  <date>2008-06-17</date>
- <time>20:10:28</time>
+ <time>20:13:55</time>
 
  <version>
   <release>1.1.0</release>
@@ -34,7 +34,7 @@
 
  <license uri="http://www.php.net/license">PHP License</license>
 
- <notes></notes>
+ <notes>Extension:SidebarEx</notes>
 
  <contents>
   <dir name="/">

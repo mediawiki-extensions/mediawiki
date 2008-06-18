@@ -241,7 +241,7 @@ class SidebarEx
 		// PageSidebar extension either:
 		//  1- not present
 		//  2- not recent enough i.e. does not support 'PageSidebar' hook
-		if ( $contents === false ) {
+		if ( !is_array( $contents ) ) {
 			return array();
 		}
 		

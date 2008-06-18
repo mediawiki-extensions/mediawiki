@@ -20,7 +20,7 @@ else
 	
 	StubManager::createStub2(	array(	'class' 		=> 'PageSidebar', 
 										'classfilename'	=> dirname(__FILE__).'/PageSidebar.body.php',
-										'hooks'			=> array( 'SkinTemplateOutputPageBeforeExec', 'OutputPageParserOutput' ),
+										'hooks'			=> array( 'SkinTemplateOutputPageBeforeExec', 'OutputPageParserOutput','PageSidebar' ),
 										'tags'			=> array( 'pagesidebar' ),
 									)
 							);

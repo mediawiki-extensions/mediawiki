@@ -19,8 +19,8 @@
   <active>yes</active>
  </lead>
 
- <date>2008-03-26</date>
- <time>01:28:02</time>
+ <date>2008-06-18</date>
+ <time>00:55:16</time>
 
  <version>
   <release>1.1.0</release>
@@ -34,7 +34,7 @@
 
  <license uri="http://www.php.net/license">PHP License</license>
 
- <notes></notes>
+ <notes>Extension:SidebarEx</notes>
 
  <contents>
   <dir name="/">

@@ -21,6 +21,24 @@
 		</pi>
 		<pi>
 			<p>
+				<n>SidebarEx</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/Skin">Skin</ca>
+				<l>$license$</l>
+				<s>Provides versatile sidebar customization</s>
+				<d>Provides versatile sidebar customization</d>
+				<r xlink:href="/rest/r/SidebarEx">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.1.0</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>PageSidebar</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/Skin">Skin</ca>

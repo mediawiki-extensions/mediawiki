@@ -1,0 +1,55 @@
+{{Extension
+|name        = PageSidebar
+|status      = stable
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.1.0
+|update      =
+|mediawiki   = 1.11, 1.12
+|download    = [http://mediawiki.googlecode.com/svn/tags/PageSidebar/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: PageSidebar.doc.wikitext 1189 2008-06-18 00:39:55Z jeanlou.dupont $)
+|description = Provides page scoped sidebar.
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose ==
+Provides page scoped sidebar.
+
+== Usage ==
+<pre>
+ <pagesidebar>
+ ...place standard sidebar wikitext here...
+ </pagesidebar>
+</pre>
+== Example ==
+<pre>
+ <pagesidebar>
+ * navigation2
+ ** mainpage|mainpage
+ ** recentchanges-url|recentchanges
+ ** randompage-url|randompage
+ </pagesidebar>
+</pre>
+
+== Usage Note ==
+With version 1.1.0, PageSidebar integrates with [[Extension:SidebarEx]].
+
+<!--{{
+== Example ==
+[[{{FULLPAGENAMEE}}/Tests]]
+}}-->
+
+== Dependency ==
+* [[Extension:StubManager|StubManager extension version >= 1.1.0 ]]
+{{Pear|PageSidebar}}
+
+== History ==
+{|class=datatable
+! Release !! Notes
+|-
+| 1.0.0 || Initial Release
+|-
+| 1.1.0 || Integration with [[Extension:SidebarEx]]
+|}

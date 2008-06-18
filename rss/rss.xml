@@ -8,6 +8,61 @@
 
 	
 	<item>
+			<title>SidebarEx - 1.1.0</title>
+			<link>http://jldupont.com/Extension:SidebarEx</link>
+			<description>Changelog:
+Added support for integration with [[Extension:PageSidebar]]
+			</description>
+			<pubDate>Tue, 17 Jun 08 20:55:17 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>PageSidebar - 1.1.0</title>
+			<link>http://jldupont.com/Extension:PageSidebar</link>
+			<description>Changelog:
+Integration with [[Extension:SidebarEx]] version &gt;= 1.1.0
+			</description>
+			<pubDate>Tue, 17 Jun 08 20:46:44 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>QuickEditProtect - 1.0.0</title>
+			<link>http://jldupont.com/Extension:QuickEditProtect</link>
+			<description>Changelog:
+Initial Release
+			</description>
+			<pubDate>Fri, 13 Jun 08 15:13:00 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>PreloadManager - 1.1.0</title>
+			<link>http://jldupont.com/Extension:PreloadManager</link>
+			<description>Changelog:
+Support for ''includeonly'' section
+			</description>
+			<pubDate>Fri, 13 Jun 08 15:10:33 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>HeaderFooter - 2.0.1</title>
+			<link>http://jldupont.com/Extension:HeaderFooter</link>
+			<description>Changelog:
+Fixed bug related to disable keywords (e.g. __NONSFOOTER__)
+			</description>
+			<pubDate>Tue, 27 May 08 08:38:34 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>OnImageUpload - 1.0.1</title>
 			<link>http://jldupont.com/Extension:OnImageUpload</link>
 			<description>Changelog:
@@ -578,17 +633,6 @@ Initial release on PEAR channel
 * Removed ''strans'' right enforcement
 			</description>
 			<pubDate>Sun, 06 Jan 08 15:26:27 -0500</pubDate>
-		</item>
-
-
-	
-	<item>
-			<title>PreloadManager - 1.1.0</title>
-			<link>http://jldupont.com/Extension:PreloadManager</link>
-			<description>Changelog:
-Support for ''includeonly'' section
-			</description>
-			<pubDate>Sun, 06 Jan 08 15:17:54 -0500</pubDate>
 		</item>
 
 

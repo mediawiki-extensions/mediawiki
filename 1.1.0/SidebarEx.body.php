@@ -245,7 +245,7 @@ class SidebarEx
 			return array();
 		}
 		
-		return $this->processSidebarText( $contents );
+		return ( $contents );
 	}
 	
 } // END CLASS DEFINITION

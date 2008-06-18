@@ -236,7 +236,7 @@ class SidebarEx
 	protected function doPageSidebar() {
 		
 		$contents = false;
-		wfRunHooks( 'PageSidebar', array( &$content ) );
+		wfRunHooks( 'PageSidebar', array( &$contents ) );
 		
 		// PageSidebar extension either:
 		//  1- not present

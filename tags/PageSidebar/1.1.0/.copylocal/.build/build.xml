@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<!--
+	Generic PHING build file 
+	
+	@author Jean-Lou Dupont
+	@version $Id: build.xml 257 2007-11-16 16:13:27Z JeanLou.Dupont $
+-->
+
+<project name="jldupont" basedir="." default='all' >
+
+	<!-- CUSTOMIZE HERE -->
+	<property name="task.name" value= "copylocal" />
+
+	<!-- DO NOT TOUCH BELOW HERE -->
+	<resolvepath propertyName="package.path" 
+				file="${project.basedir}/../../" /> <!-- 2 level down -->	
+	<taskdef classname='JLD.PhingTools.FindFileTask' 
+				name='findfiletask' />
+
+	<target name='all'>
+		<echo>Locating build files</echo>
+		<findfiletask dir="${project.basedir}"
+						source=".build/build.${task.name}.xml"
+						result="task.file" />
+		<echo>Calling task '${task.name}'</echo>						
+		<phing phingfile="${task.file}" 
+				inheritRefs="true" 
+				inheritAll="true"
+				target="all" />
+	</target>
+
+</project>

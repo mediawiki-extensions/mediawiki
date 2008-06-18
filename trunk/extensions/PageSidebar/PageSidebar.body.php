@@ -60,7 +60,21 @@ class PageSidebar
 			
 		$serialized_text = base64_decode( $match[1] );
 		$this->sidebarText = unserialize( $serialized_text );
-	}		
+	}
+
+	/*==========================================================================
+	 * HOOKS
+	 ==========================================================================*/
+	/**
+	 * [[Extension:SidebarEx]] calls this hook
+	 */
+	public function hPageSidebar( &$content ) {
+		
+		$content = $this->sidebarText;
+		
+		return true;
+	}
+	
 	/**
 	 * Handler for OutputPageParserOutput
 	 * NOTE: this method is called even if parser caching 
@@ -89,6 +103,12 @@ class PageSidebar
 	 */
 	public function hSkinTemplateOutputPageBeforeExec( &$skin, &$tpl )
 	{
+		// if [[Extension:SidebarEx]] is present, then
+		//  don't bother trying to modify the sidebar
+		if ( class_exists( 'SidebarEx') ) {
+			return true;
+		}
+		
 		// make sure we have something to add
 		if ( $this->sidebarText === null )
 			return true;
@@ -101,6 +121,11 @@ class PageSidebar
 		
 		return true;
 	}
+	
+	/*==========================================================================
+	 * HELPERS
+	 ==========================================================================*/
+	
 	/**
 	 * processSidebarText
 	 * NOTE: copied from SkinTemplate MW 1.8.x SVN

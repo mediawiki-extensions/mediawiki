@@ -3,7 +3,7 @@
 |status      = stable
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.0.0
+|version     = 1.1.0
 |update      =
 |mediawiki   = 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/PageSidebar/ SVN]
@@ -34,7 +34,7 @@ Provides page scoped sidebar.
 </pre>
 
 == Usage Note ==
-Note that [[Extension:SidebarEx]] '''replaces''' the sidebar and thus this extension ([[{{FULLPAGENAME}}]]) will not work with it.
+With version 1.1.0, PageSidebar integrates with [[Extension:SidebarEx]].
 
 <!--{{
 == Example ==
@@ -50,4 +50,6 @@ Note that [[Extension:SidebarEx]] '''replaces''' the sidebar and thus this exten
 ! Release !! Notes
 |-
 | 1.0.0 || Initial Release
+|-
+| 1.1.0 || Integration with [[Extension:SidebarEx]]
 |}

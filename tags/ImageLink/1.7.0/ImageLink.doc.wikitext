@@ -9,7 +9,7 @@
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/ImageLink/ SVN]
 |readme      =
-|changelog   = See SVN ($Id$)
+|changelog   = See SVN ($Id: ImageLink.doc.wikitext 1129 2008-05-16 12:44:55Z jeanlou.dupont $)
 |description = Provides a clickable image link using an image stored in the Image namespace and an article title (which may or may not existin the database).
 |parameters  =
 |rights      =

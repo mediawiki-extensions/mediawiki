@@ -131,6 +131,7 @@ class ImageLink
 	}	 
 	/**
 	 * legacy parser function... please use #img instead
+	 * @deprecated 
 	 */
 	public function mg_imagelink( &$parser, $img, $page='',  							// mandatory parameters  
 								$alt=null, $width=null, $height=null, $border=null, $title = null )// optional parameters
@@ -241,33 +242,40 @@ class ImageLink
 	/**
 	 * getLinkToPage
 	 */
-	protected function getLinkToPageAnchor( &$page, &$anchor_open, &$anchor_close, $target = null, $content = null )
-	{
+	protected function getLinkToPageAnchor( &$page, &$anchor_open, &$anchor_close, $target = null, $content = null ) {
+	
 		// check if we are asked to render a 'link-less' element
 		if (empty( $page ))
 			return self::codeLinkLess;
 			
 		$ptitle = Title::newFromText( $page );
+
+		// Extract fragment i.e. #section-on-page
+		$fragment = null;
+		$fragmentStart = stripos( $page, '#' );
+		if ( $fragmentStart !== false ) {
+			$fragment = substr( $page, $fragmentStart );
+		}
 		
 		// this might happen in templates...
 		if (!is_object( $ptitle ))
 			return self::codeInvalidTitleLink;
 				
-		if ( $ptitle->isLocal() )
-		{
+		if ( $ptitle->isLocal() ) {
 			// check if the local article exists
 			if ( !$ptitle->exists() )
 				return self::codeArticleNotExist;
 				
 			$tURL = $ptitle->getLocalUrl();
 			$aClass=''; 			
-		}
-		else
-		{
+		} else {
 			// we can't know easily what is at the end of this URL...
 			$tURL = $ptitle->getFullURL();
 			$aClass = 'class="extiw"';
 		}
+		
+		// Add fragment back to url
+		$tURL .= $fragment;
 		
 		$this->formatLinkAnchor( $tURL, $aClass, $anchor_open, $anchor_close, $target, $content );
 

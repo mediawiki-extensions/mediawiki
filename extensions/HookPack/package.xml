@@ -7,10 +7,10 @@
 		xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd 
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
- <name>ImageLink</name>
+ <name>HookPack</name>
  <channel>mediawiki.googlecode.com/svn</channel>
- <summary>Provides link/link-free image anchors</summary>
- <description>Provides link/link-free image anchors</description>
+ <summary>Adds useful ''hooks'' to Mediawiki</summary>
+ <description>Adds useful ''hooks'' to Mediawiki</description>
 
  <lead>
   <name>Jean-Lou Dupont</name>
@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2008-07-05</date>
- <time>12:55:57</time>
+ <date>2008-05-17</date>
+ <time>01:57:14</time>
 
  <version>
-  <release>1.7.0</release>
+  <release>1.0.0</release>
   <api>1.0.0</api>
  </version>
  
@@ -34,15 +34,14 @@
 
  <license uri="http://www.php.net/license">PHP License</license>
 
- <notes>MediaWiki ImageLink extension</notes>
+ <notes>[[Extension:HookPack]]</notes>
 
  <contents>
   <dir name="/">
+
 	<!-- file list begin {{ -->
 	<!-- baseinstalldir: the target directory on the target machine -->
-   <file baseinstalldir="MediaWiki/ImageLink" name="ImageLink.php" role="php" />
-   <file baseinstalldir="MediaWiki/ImageLink" name="ImageLink.body.php" role="php" />
-   <file baseinstalldir="MediaWiki/ImageLink" name="ImageLink.i18n.php" role="php" />
+   <file baseinstalldir="MediaWiki/HookPack" name="HookPack.php" role="php" />
     <!-- }} -->
 
   </dir>
@@ -60,12 +59,6 @@
     <min>1.6.2</min>
    </pearinstaller>
  
-	<package>
-		<name>StubManager</name>
-		<channel>mediawiki.googlecode.com/svn</channel>
-		<min>1.2.0</min>
-	</package>
-  
   </required>
  </dependencies>
 
@@ -81,7 +74,7 @@
 	<release>
 		<license uri="http://www.php.net/license">PHP License</license>
 		<notes>
-			FIXED issue 22: added URL fragment support i.e. page-to-link-to#section-to-link-to
+		Initial Release
 		</notes>
 	</release>
 </changelog>

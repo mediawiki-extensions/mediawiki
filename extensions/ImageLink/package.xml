@@ -19,11 +19,11 @@
   <active>yes</active>
  </lead>
 
- <date>2008-07-05</date>
- <time>12:55:57</time>
+ <date>2008-07-14</date>
+ <time>10:35:27</time>
 
  <version>
-  <release>1.7.0</release>
+  <release>1.7.1</release>
   <api>1.0.0</api>
  </version>
  
@@ -81,7 +81,7 @@
 	<release>
 		<license uri="http://www.php.net/license">PHP License</license>
 		<notes>
-			FIXED issue 22: added URL fragment support i.e. page-to-link-to#section-to-link-to
+			Added fix for "#tab=section"
 		</notes>
 	</release>
 </changelog>

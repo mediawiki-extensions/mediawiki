@@ -267,14 +267,21 @@ class ImageLink
 				return self::codeArticleNotExist;
 				
 			$tURL = $ptitle->getLocalUrl();
-			$aClass=''; 			
+			$aClass='';
+			 			
 		} else {
 			// we can't know easily what is at the end of this URL...
 			$tURL = $ptitle->getFullURL();
 			$aClass = 'class="extiw"';
 		}
 		
+		//  Is there a # already? Strip it.
+		$tFragmentStart = stripos( $tURL, '#' );
+		if ( $tFragmentStart !== false ) {
+			$tURL = substr( $tURL, $tFragmentStart );
+		}
 		// Add fragment back to url
+		//  This is required to support things like "#tab=section"		
 		$tURL .= $fragment;
 		
 		$this->formatLinkAnchor( $tURL, $aClass, $anchor_open, $anchor_close, $target, $content );

@@ -4,7 +4,7 @@
 |type        = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.7.0
+|version     = 1.7.1
 |update      =
 |mediawiki   = 1.8.2, 1.9.3, 1.10, 1.11, 1.12
 |download    = [http://mediawiki.googlecode.com/svn/tags/ImageLink/ SVN]
@@ -103,6 +103,8 @@ The PEAR package [http://pear.php.net/package/Validate Validate] can be installe
 | 1.6.0 || Added 'content' & 'target' parameters for <a>, added '#iconlink' parser function
 |-
 | 1.7.0 || Added URL fragment support i.e. page-to-link-to#section-to-link-to (issue 22)
+|-
+| 1.7.1 || Added fix for "#tab=section"
 |}
 
 == Sites using this extension ==

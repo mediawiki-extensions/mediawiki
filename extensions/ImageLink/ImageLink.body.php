@@ -254,7 +254,7 @@ class ImageLink
 		$fragment = null;
 		$fragmentStart = stripos( $page, '#' );
 		if ( $fragmentStart !== false ) {
-			$fragment = substr( $page, $fragmentStart );
+			$fragment = substr( htmlspecialchars( $page ), $fragmentStart );
 		}
 		
 		// this might happen in templates...
@@ -278,7 +278,7 @@ class ImageLink
 		//  Is there a # already? Strip it.
 		$tFragmentStart = stripos( $tURL, '#' );
 		if ( $tFragmentStart !== false ) {
-			$tURL = substr( $tURL, $tFragmentStart );
+			$tURL = substr( $tURL, 0, $tFragmentStart );
 		}
 		// Add fragment back to url
 		//  This is required to support things like "#tab=section"		

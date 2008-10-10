@@ -8,6 +8,39 @@
 
 	
 	<item>
+			<title>StubManager - 1.3.1</title>
+			<link>http://jldupont.com/Extension:StubManager</link>
+			<description>Changelog:
+Fixed issue #25 (thanks to evgeny.fadeev )
+			</description>
+			<pubDate>Thu, 09 Oct 08 22:09:13 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ImageLink - 1.7.1</title>
+			<link>http://jldupont.com/Extension:ImageLink</link>
+			<description>Changelog:
+Added fix for "#tab=section"
+			</description>
+			<pubDate>Mon, 14 Jul 08 07:07:24 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
+			<title>ImageLink - 1.7.0</title>
+			<link>http://jldupont.com/Extension:ImageLink</link>
+			<description>Changelog:
+FIXED issue 22: added URL fragment support i.e. page-to-link-to#section-to-link-to
+			</description>
+			<pubDate>Sat, 05 Jul 08 08:56:01 -0400</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SidebarEx - 1.1.0</title>
 			<link>http://jldupont.com/Extension:SidebarEx</link>
 			<description>Changelog:

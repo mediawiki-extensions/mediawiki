@@ -6,8 +6,7 @@
  * @Id $Id$
  */
 //<source lang=php>
-class StubManager
-{
+class StubManager {
 	// This version number must match that of 
 	// the corresponding PEAR package.
 	const version = '@@package-version@@';
@@ -72,8 +71,8 @@ class StubManager
 	 * Create Stub
 	 * Facility for extensions
 	 */
-	public static function createStub2( $params )
-	{
+	public static function createStub2( $params ) {
+	
 		if (!is_array( $params ))
 			{ echo __METHOD__.' $params not an array.'; return; }
 
@@ -135,8 +134,8 @@ class StubManager
 										$mgs  = null,		// parser function e.g. {{#addscriptcss}}
 										$mws  = null,		// parser magic word e.g. {{CURRENTTIME}}
 										$nss  = null		// namespaces as trigger
-									)
-	{
+									)	{
+									
 		// need to wait for the proper timing
 		// to initialize things around.
 		self::setupInit();
@@ -162,8 +161,7 @@ class StubManager
 	 * @param $classe string
 	 * @param $state boolean
 	 */	
-	public static function registerState( $classe, $state )	 
-	{
+	public static function registerState( $classe, $state )	 {
 		foreach( self::$stubList as &$stub )
 			if ( @$stub['class'] == $classe )
 				$stub[ 'state' ] = $state;
@@ -174,8 +172,7 @@ class StubManager
 	 * @return constant
 	 * @param $classe string
 	 */
-	public static function getState( $classe )
-	{
+	public static function getState( $classe ) {
 		foreach( self::$stubList as &$stub )
 			if ( @$stub['class'] == $classe )
 				if ( isset( $stub['state'] ))
@@ -189,8 +186,7 @@ class StubManager
 	 * @return $name string
 	 * @param $state constant
 	 */
-	public static function getStateIcon( $state )
-	{
+	public static function getStateIcon( $state ) {
 		if ( in_array( $state, self::$state_icons ))		
 			return self::$state_icons[ $state ];
 		return null;
@@ -200,8 +196,7 @@ class StubManager
 	 * @return $message string
 	 * @param $state constant
 	 */
-	public static function getStateMessage( $state )
-	{
+	public static function getStateMessage( $state ) {
 		if ( in_array( $state, self::$state_messages ))		
 			return self::$state_messages[ $state ];
 		return null;
@@ -213,8 +208,7 @@ class StubManager
 	 * @param $parameter Object
 	 * @param $value Object
 	 */	
-	public static function configureExtension( $classe, $parameter, $value )
-	{
+	public static function configureExtension( $classe, $parameter, $value ) {
 		foreach( self::$stubList as &$stub )
 			if (isset( $stub['class'] ))
 				if ( $stub['class'] == $classe )
@@ -228,8 +222,7 @@ class StubManager
 					else
 						$stub[ $parameter ] = $value;
 	}
-	public static function isExtensionRegistered( $classe )
-	{
+	public static function isExtensionRegistered( $classe ) {
 		foreach( self::$stubList as &$stub )
 			if (isset( $stub['class'] ))
 				if ( $stub['class'] == $classe )
@@ -237,27 +230,23 @@ class StubManager
 					
 		return false;
 	}
-	public static function version()
-	{
+	public static function version() {
 		return self::version;
 	}
 	/**
 	 * Returns ''true'' if the current version of StubManager
 	 * is at least $version.
 	 */
-	public static function isAtLeast( $version )
-	{
+	public static function isAtLeast( $version ) {
 		return version_compare( self::version, $version, ">=" );
 	}	 
-	public static function getRevision()
-	{
+	public static function getRevision() {
 		return self::getRevisionId( self::thisVersion );	
 	}
 	/**
 		Create callback that will initialise all the stubs.
 	 */
-	private static function setupInit()
-	{
+	private static function setupInit() {
 		static $initHooked = false;
 		if ($initHooked)
 			return;
@@ -266,23 +255,20 @@ class StubManager
 		global $wgExtensionFunctions;
 		$wgExtensionFunctions[] = array( __CLASS__, 'setup' );		
 	}
-	public static function setup()
-	{
+	public static function setup() {
 		self::setupMessages();
 		self::setupLogging();
 		self::setupCreditsHook();
 		self::callSetupMethods();
 	}
-	private static function callSetupMethods()
-	{
+	private static function callSetupMethods() {
 		foreach( self::$stubList as $index => $e )
 		{
 			$obj = $e['object'];
 			$obj->setup();
 		}		
 	}
-	private static function setupLogging( )
-	{
+	private static function setupLogging( )	{
 		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 
 		foreach( self::$stubList as $index => $e )
@@ -305,8 +291,7 @@ class StubManager
 					$wgLogActions[$log.'/'.$action] = $log.'-'.$action.'-entry'; 
 		}		
 	}
-	private static function setupMessages( )
-	{
+	private static function setupMessages( ) {
 		global $wgMessageCache;
 		
 		foreach( self::$stubList as $index => $e )
@@ -327,8 +312,8 @@ class StubManager
 	/**
 	 * Special:Page hook setup
 	 */
-	private static function setupCreditsHook()
-	{
+	private static function setupCreditsHook() {
+	
 		static $updateCreditsHooked = false;
 		if ($updateCreditsHooked)
 			return;
@@ -348,8 +333,8 @@ class StubManager
 	 * @param $sp Object
 	 * @param $ext Object
 	 */
-	public function hUpdateExtensionCredits( &$sp, &$ext )
-	{
+	public function hUpdateExtensionCredits( &$sp, &$ext ) {
+	
 		global $wgExtensionCredits;
 		
 		$result = null;
@@ -412,8 +397,8 @@ class StubManager
 		
 		return true;
 	}
-	static function getRevisionId( $svnId=null )
-	{	
+	static function getRevisionId( $svnId=null ) {
+		
 		// fixed annoying warning about undefined offset.
 		if ( $svnId === null || $svnId == ('$'.'Id'.'$' /* fool SVN */) )
 			return null;
@@ -428,8 +413,7 @@ class StubManager
 	static function getFullUrl( $filename )
 	{ return 'http://www.bizzwiki.org/index.php?title=Filesystem:'.self::getRelativePath( $filename );	}
 
-	static function getRelativePath( $filename )
-	{
+	static function getRelativePath( $filename ) {
 		global $IP;
 		$relPath = str_replace( $IP, '', $filename ); 
 		return str_replace( '\\', '/', $relPath );    // at least windows & *nix agree on this!
@@ -749,10 +733,12 @@ class Stub
 		return true;
 	}
 	
-	// intercept all methods called
-	// instantiate the necessary object... only once.
-	function __call( $method, $args )
-	{
+	/**
+	 * intercept all methods called
+	 * and instantiate the necessary object... only once. 
+	 */
+	function __call( $method, $args ) {
+	
 		// Check triggers
 		if (!$this->checkNss( $method, $args ))
 			return true;
@@ -762,6 +748,7 @@ class Stub
 		else
 			$obj = $this->obj;
 		
+		/*
 		switch ( count($args) )
 		{
 			case 0:
@@ -792,6 +779,8 @@ class Stub
 				return $obj->$method( $args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6], $args[7], $args[8], $args[9], $args[10], $args[11]   );			
 		}
 		throw new MWException( __CLASS__.": too many arguments to method called in ".__METHOD__ );
+		*/
+		return call_user_func_array( array( $obj, $method), $args );
 	}
 
 } // end class Stub
@@ -816,14 +805,12 @@ if (file_exists( StubManager::$edir.'/ExtensionManager/ExtensionManager.php'))
 /**
  * Some helper functions for extensions
  */
-class ExtHelper
-{
+class ExtHelper {
 	/**
 	 * Retrieves the specified list of parameters from the list.
 	 * Uses the ''l'' parameter from the reference list.
 	 */
-	public static function buildList( &$liste, &$ref_liste )	
-	{
+	public static function buildList( &$liste, &$ref_liste ) {
 		if (empty( $liste ))
 			return null;
 			
@@ -845,8 +832,7 @@ class ExtHelper
 	 * Sanitize the parameters list. 
 	 * Just keeps the parameters defined in the reference list.
 	 */
-	public static function doListSanitization( &$liste, &$ref_liste )
-	{
+	public static function doListSanitization( &$liste, &$ref_liste ) {
 		if (empty( $liste ))
 			return array();
 
@@ -874,8 +860,7 @@ class ExtHelper
 	 * Performs various sanitization.
 	 * Only valid parameters should end-up here.
 	 */
-	public static function doSanitization( &$liste, &$ref_liste )
-	{
+	public static function doSanitization( &$liste, &$ref_liste ) {
 		if (empty( $liste ))
 			return null;
 			
@@ -911,8 +896,7 @@ class ExtHelper
 	 * @return string restricted key name
 	 * @return bool false if no restricted parameter found
 	 */
-	public static function checkListForRestrictions( &$liste, &$ref_liste )
-	{
+	public static function checkListForRestrictions( &$liste, &$ref_liste )	{
 		if (empty( $liste ))
 			return null;
 
@@ -935,8 +919,7 @@ class ExtHelper
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-class ExtImages
-{
+class ExtImages {
 	// Uses CoralCDN
 	static $_baseURL = "http://mediawiki.googlecode.com.nyud.net/svn/resources/images/";
 	
@@ -947,8 +930,7 @@ class ExtImages
 	 * @param $icon string
 	 * @param $params mixed: array[optional] / string for title
 	 */
-	public function getIconImgTag( $icon, $params = array() )
-	{
+	public function getIconImgTag( $icon, $params = array() ) {
 		$path = self::$_baseURL . $icon;
 
 		$paramsList = null;

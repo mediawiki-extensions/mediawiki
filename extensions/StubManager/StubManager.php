@@ -320,7 +320,7 @@ class StubManager {
 		$updateCreditsHooked = true;
 		
 		global $wgHooks;
-		$wgHooks['SpecialVersionExtensionTypes'][] = array( __CLASS__, 'hUpdateExtensionCredits' );
+		$wgHooks['SpecialVersionExtensionTypes'][] = __CLASS__.'::hUpdateExtensionCredits';
 		
 		// load all the extensions so they get a change to show their credits
 		#foreach( self::$stubList as $index => $e )

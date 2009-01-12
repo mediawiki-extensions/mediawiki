@@ -1,0 +1,30 @@
+{{Extension
+|name        = NamespaceFunctions
+|status      = beta
+|type        = other
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.0.0 
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: NamespaceFunctions.doc.wikitext 492 2007-10-10 16:27:42Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Collection of namespace management functionality.
+
+== Features ==
+
+== Usage ==
+
+== Dependancies ==
+* [[Extension:StubManager|StubManager]] extension (v>=306)
+
+{{Pear|ParserExt}}
+
+== History ==

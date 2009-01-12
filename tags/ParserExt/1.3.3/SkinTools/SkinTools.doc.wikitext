@@ -1,0 +1,39 @@
+(($disable$))
+{{Extension
+|name        = SkinTools
+|status      = beta
+|type        = parser
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 1.1.0
+|update      =
+|mediawiki   = 1.10, 1.11
+|download    = [http://mediawiki.googlecode.com/svn/tags/ SVN]
+|readme      =
+|changelog   = See SVN ($Id: SkinTools.doc.wikitext 610 2007-10-22 16:01:02Z jeanlou.dupont $)
+|description = 
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides skin level functions.
+
+== Usage Note ==
+This extension is really meant to be used with [[Extension:ParserPhase2]].
+
+== Features ==
+* Clear all actions from the page: (($#clearactions$))
+* Remove a list of actions from the page: (($#removeactions|action1|action ...$))
+* Add an action on the current page: (($#addaction|action|action text$))
+* Add an action with more granular control: (($#addaction|action|action text|subpage|action name in tab$))
+
+== Dependancy ==
+* [[Extension:StubManager|StubManager extension]]
+* [[Extension:ParserPhase2|ParserPhase2 extension]]
+
+{{Pear|ParserExt}}
+
+== History ==
+=== 1.1.0 ===
+* added hook 'clearSkinTabActions'

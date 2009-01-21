@@ -6,15 +6,15 @@
  * @Id $Id$
  */
 //<source lang=php>
-class SecureTransclusion
-{
+class SecureTransclusion {
+	
 	const thisType = 'other';
 	const thisName = 'SecureTransclusion';
 	
 	const pageCacheTimeout = 86400; // 1day
 	
-	public function mg_strans( &$parser, $page, $errorMessage = null, $timeout = 5 )
-	{
+	public function mg_strans( &$parser, $page, $errorMessage = null, $timeout = 5 ) {
+		
 		if (!self::checkExecuteRight( $parser->mTitle ))
 			return 'SecureTransclusion: '.wfMsg('badaccess');
 		
@@ -23,15 +23,17 @@ class SecureTransclusion
 			return 'SecureTransclusion: '.wfMsg('badtitle')." ($page)";
 		
 		if ( $title->isTrans() )
-			return $this->getRemotePage( $parser, $title, $errorMessage, $timeout );
-		
-		return $this->getLocalPage( $title, $errorMessage );
+			$content = $this->getRemotePage( $parser, $title, $errorMessage, $timeout );
+		else
+			$content = $this->getLocalPage( $title, $errorMessage );
+			
+		return array( $content, 'noparse' => false, 'isHTML' => false );
 	}
 	/**
 	 * Retrieves a local page.
 	 */
-	protected function getLocalPage( &$title, $error_msg )
-	{
+	protected function getLocalPage( &$title, $error_msg ) {
+		
 		$contents = $error_msg;
 		$rev = Revision::newFromTitle( $title );
 		if( is_object( $rev ) )
@@ -41,8 +43,8 @@ class SecureTransclusion
 	/**
 	 * Retrieves a page located on a remote server.
 	 */
-	protected function getRemotePage( &$parser, &$title, &$error_msg, $timeout )
-	{
+	protected function getRemotePage( &$parser, &$title, &$error_msg, $timeout ) {
+		
 		$uri = $title->getFullUrl();
 
 		$text = $this->fetch( $uri, $timeout );
@@ -60,16 +62,16 @@ class SecureTransclusion
 	/**
 	 * Verifies if the current user can execute the parser function
 	 */
-	private static function checkExecuteRight( &$title )
-	{
+	private static function checkExecuteRight( &$title ) {
+		
 		return ( $title->isProtected('edit') );
 	}
 	/**
 	 *  Fetches an external page from either the parser cache or external uri
 	 *  This extension uses the services of [[Extension:PageServer]] to this end
 	 */	
-	protected function fetch( $uri, $timeout )
-	{
+	protected function fetch( $uri, $timeout ) {
+		
 		$page     = false;
 		$etag     = null;
 		$source   = null;

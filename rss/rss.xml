@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>ParserPhase2 - 1.1.2</title>
+			<link>http://jldupont.com/Extension:ParserPhase2</link>
+			<description>Changelog:
+Fix for MW1.13.x
+			</description>
+			<pubDate>Wed, 21 Jan 09 14:51:36 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 2.0.1</title>
 			<link>http://jldupont.com/Extension:SecureTransclusion</link>
 			<description>Changelog:

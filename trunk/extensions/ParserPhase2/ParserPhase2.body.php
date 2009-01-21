@@ -268,7 +268,7 @@ class ParserPhase2
 		{
 			$funcArgs = array_map( 'trim', $params );
 			$funcArgs = array_merge( array( &$wgParser) , $funcArgs );
-			$result = call_user_func_array( $wgParser->mFunctionHooks[$function], $funcArgs );
+			$result = @call_user_func_array( $wgParser->mFunctionHooks[$function], $funcArgs );
 
 			if ( is_array( $result ) ) 
 			{

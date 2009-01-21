@@ -7,5 +7,5 @@
  <n>SecureTransclusion</n>
  <c>mediawiki.googlecode.com/svn</c>
  <a>SecureTransclusion</a> <!-- alias? -->
- <d>Provides a secure way of transcluding interwiki accessible pages</d>
+ <d>This extension enables the transclusion of local or external (outside the target wiki) accessible HTTP uri.</d>
 </c>

@@ -19,8 +19,8 @@
   <active>yes</active>
  </lead>
 
- <date>2008-04-10</date>
- <time>01:15:24</time>
+ <date>2009-01-21</date>
+ <time>18:19:01</time>
 
  <version>
   <release>2.0.1</release>
@@ -87,7 +87,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Corrected issue arising with MW1.13.x : the <nowiki> tags weren't parsed correctly.
+Corrected issue arising with MW1.13.x : the ''nowiki'' tags weren't parsed correctly.
 </notes>
 </release>
 </changelog>

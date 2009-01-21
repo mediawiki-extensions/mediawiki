@@ -3,6 +3,26 @@
 <f xmlns="http://pear.php.net/dtd/rest.categorypackageinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.categorypackageinfo   http://pear.php.net/dtd/rest.categorypackageinfo.xsd">
 		<pi>
 			<p>
+				<n>ParserPhase2</n>
+				<c>mediawiki.googlecode.com/svn</c>
+				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>
+				<l>$license$</l>
+				<s>Provides a facility to perform a 'second pass' through a 'parser cached' page replacing for 
+'dynamic' variables.</s>
+				<d>Provides a facility to perform a 'second pass' through a 'parser cached' page replacing for 
+'dynamic' variables.</d>
+				<r xlink:href="/rest/r/ParserPhase2">
+				</r>
+			</p>
+			<a>
+				<r>
+					<v>1.1.2</v>
+					<s>stable</s>
+				</r>
+			</a>
+		</pi>
+		<pi>
+			<p>
 				<n>ParserExt</n>
 				<c>mediawiki.googlecode.com/svn</c>
 				<ca xlink:href="/rest/c/ParserFunctions">ParserFunctions</ca>

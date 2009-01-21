@@ -4,9 +4,9 @@
 |type1       = parser function
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 2.0.0
+|version     = 2.0.1
 |update      =
-|mediawiki   = 1.11, 1.12
+|mediawiki   = 1.11, 1.12, 1.13
 |download    = [http://mediawiki.googlecode.com/svn/tags/SecureTransclusion SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
@@ -54,4 +54,6 @@ considerable care when using templates on the same page.
 ! Release !! Notes
 |-
 | 2.0.0 || Revamped version: now integrated with [[Extension:PageServer]] providing better caching
+|-
+| 2.0.1 || Corrected issue with ''nowiki'' tags introduced with MW1.13.x
 |}

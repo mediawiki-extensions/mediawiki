@@ -1,0 +1,59 @@
+{{Extension
+|name        = SecureTransclusion
+|status      = stable
+|type1       = parser function
+|author      = [[user:jldupont|Jean-Lou Dupont]]
+|image       =
+|version     = 2.0.1
+|update      =
+|mediawiki   = 1.11, 1.12, 1.13
+|download    = [http://mediawiki.googlecode.com/svn/tags/SecureTransclusion SVN]
+|readme      =
+|changelog   = See SVN ($Id: SecureTransclusion.doc.wikitext 1207 2009-01-21 18:12:20Z jeanlou.dupont $)
+|description = Provides secure transcluding of interwiki wikitext pages accessible without the 'action=raw' parameter.
+|parameters  =
+|rights      =
+|example     =
+}}
+== Purpose==
+Provides secure transcluding of interwiki wikitext pages accessible without the 'action=raw' parameter.
+
+== Features ==
+* Security: page must be protected for ''edit''
+* Local or remote pages
+
+== Usage ==
+<nowiki>{{#strans: interwiki-link OR local-page-name [|error-message] [|timeout-in-seconds]}}</nowiki>
+
+=== Setting InterWiki Links ===
+See [[Extension:InterWikiLinkManager|InterWikiLinkManager extension]] for more details.
+
+== Example ==
+Assuming the interwiki link 'mwgc' points to [http://mediawiki.googlecode.com/svn/trunk PEAR Channel]:
+<nowiki>{{#strans: mwgc:extensions/AddScriptCss/AddScriptCss.doc.wikitext | Page unavailable! }}</nowiki> would fetch the page 
+[http://mediawiki.googlecode.com/svn/trunk/extensions/AddScriptCss/AddScriptCss.doc.wikitext] and parse it.
+
+== Security Note ==
+* It is advisable to use 'cascading protection'
+* When page protection is not relied on to provide protection 
+and consequently only the last contributor's right acts as protection measure, it is advised to use
+considerable care when using templates on the same page.
+
+== Dependencies ==
+* [[Extension:StubManager|StubManager extension]] of version >= 1.3.0
+** Automatically resolved if using PEAR
+* [[Extension:PageServer]] of version >= 2.2.0
+
+== Notes ==
+* This extension relies on the global parameter <code>$wgHTTPTimeout</code> which is used in the <code>Http::get</code> method.
+
+{{Pear|SecureTransclusion}}
+
+== History ==
+{|class='datatable'
+! Release !! Notes
+|-
+| 2.0.0 || Revamped version: now integrated with [[Extension:PageServer]] providing better caching
+|-
+| 2.0.1 || Corrected issue with ''nowiki'' tags introduced with MW1.13.x
+|}

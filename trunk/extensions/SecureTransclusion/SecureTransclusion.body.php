@@ -27,7 +27,10 @@ class SecureTransclusion {
 		else
 			$content = $this->getLocalPage( $title, $errorMessage );
 			
-		return array( $content, 'noparse' => false, 'isHTML' => false );
+		$po = $parser->parse( $content, $parser->mTitle, new ParserOptions() );
+		$html = $po->getText();
+			
+		return array( $html, 'noparse' => true, 'isHTML' => true );
 	}
 	/**
 	 * Retrieves a local page.

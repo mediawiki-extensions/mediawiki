@@ -23,7 +23,7 @@
  <time>18:19:01</time>
 
  <version>
-  <release>2.0.1</release>
+  <release>2.0.2</release>
   <api>1.0.0</api>
  </version>
  
@@ -87,7 +87,7 @@
 <release>
 <license uri="http://www.php.net/license">PHP License</license>
 <notes>
-Corrected issue arising with MW1.13.x : the ''nowiki'' tags weren't parsed correctly.
+Fix to allow for parsing pages with templates.
 </notes>
 </release>
 </changelog>

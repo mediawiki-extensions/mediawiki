@@ -8,6 +8,17 @@
 
 	
 	<item>
+			<title>PreloadManager - 1.1.1</title>
+			<link>http://jldupont.com/Extension:PreloadManager</link>
+			<description>Changelog:
+Better support the ''main'' namespace
+			</description>
+			<pubDate>Fri, 23 Jan 09 08:39:31 -0500</pubDate>
+		</item>
+
+
+	
+	<item>
 			<title>SecureTransclusion - 2.0.2</title>
 			<link>http://jldupont.com/Extension:SecureTransclusion</link>
 			<description>Changelog:

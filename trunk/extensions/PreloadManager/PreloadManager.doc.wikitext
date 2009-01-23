@@ -4,9 +4,9 @@
 |type        = parser
 |author      = [[user:jldupont|Jean-Lou Dupont]]
 |image       =
-|version     = 1.1.0
+|version     = 1.1.1
 |update      =
-|mediawiki   = 1.11, 1.12
+|mediawiki   = 1.11, 1.12, 1.13
 |download    = [http://mediawiki.googlecode.com/svn/tags/PreloadManager/ SVN]
 |readme      =
 |changelog   = See SVN ($Id$)
@@ -26,6 +26,9 @@ The text to be included must be enclosed in a <nowiki><includeonly></nowiki> tag
 == Example ==
 To configure ''preload'' text for the NS_TEMPLATE namespace (aka ''Template''), place the ''preload'' text in the page '''MediaWiki:PreloadManager/Template'''.
 
+== Main Namespace ==
+For the main namespace, use [[MediaWiki:PreloadManager/Main]].
+
 == Dependency ==
 * [[Extension:StubManager|StubManager extension]]
 
@@ -38,4 +41,6 @@ To configure ''preload'' text for the NS_TEMPLATE namespace (aka ''Template''), 
 | 1.0.0 || Initial release
 |-
 | 1.1.0 || Support for ''includeonly'' section
+|-
+| 1.1.1 || Better support the ''main'' namespace
 |}
